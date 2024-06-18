@@ -1,0 +1,18 @@
+uuid: 40a75866-f2b9-4a1f-b1c2-980049555514
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+id: taxonomy_term.ml_occupancy_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: ml_occupancy_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

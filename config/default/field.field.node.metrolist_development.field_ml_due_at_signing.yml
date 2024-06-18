@@ -1,0 +1,29 @@
+uuid: 8a50ed97-3ea3-43e6-8121-28dddd81de1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_due_at_signing
+    - node.type.metrolist_development
+    - taxonomy.vocabulary.due_at_signing
+id: node.metrolist_development.field_ml_due_at_signing
+field_name: field_ml_due_at_signing
+entity_type: node
+bundle: metrolist_development
+label: 'Due at signing'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      due_at_signing: due_at_signing
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

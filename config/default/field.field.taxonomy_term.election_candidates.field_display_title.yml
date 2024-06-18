@@ -1,0 +1,19 @@
+uuid: b524a524-8692-487e-9129-99c61f46a1d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_term.election_candidates.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: election_candidates
+label: 'Candidate Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,27 @@
+uuid: 4a101006-fb1e-4986-9fe4-f532c4f40b22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_image
+    - node.type.bh_update
+  module:
+    - file
+id: node.bh_update.field_bh_image
+field_name: field_bh_image
+entity_type: node
+bundle: bh_update
+label: 'Project Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'jpg jpeg png'
+  max_filesize: ''
+  description_field: false
+field_type: file

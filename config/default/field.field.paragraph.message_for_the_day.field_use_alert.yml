@@ -1,0 +1,25 @@
+uuid: 56f76857-9c30-4841-811c-ed7fb5d94d31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_alert
+    - paragraphs.paragraphs_type.message_for_the_day
+_core:
+  default_config_hash: cPyFxRXEuRZVHTESm72LLjqOmoDIv0pb2bW-RF6iJSE
+id: paragraph.message_for_the_day.field_use_alert
+field_name: field_use_alert
+entity_type: paragraph
+bundle: message_for_the_day
+label: 'Use alert'
+description: 'Add <img src="/modules/custom/bos_components/modules/bos_messages/assets/alert.svg" height=10 /> emphasis to the icon.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

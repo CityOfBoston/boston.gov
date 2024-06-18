@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.department_profile
+  module:
+    - text
+id: node.department_profile.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: department_profile
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

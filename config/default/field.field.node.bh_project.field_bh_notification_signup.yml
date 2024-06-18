@@ -1,0 +1,32 @@
+uuid: 798964b1-f259-484a-8054-2d1c83f583d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_notification_signup
+    - node.type.bh_project
+    - webform.webform.bh_project_notification_signup
+  module:
+    - webform
+id: node.bh_project.field_bh_notification_signup
+field_name: field_bh_notification_signup
+entity_type: node
+bundle: bh_project
+label: 'Notification Sign-up'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: cefe5f53-d75d-4f63-95fc-89f97c56690d
+    default_data: ''
+    status: open
+    open: ''
+    close: ''
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

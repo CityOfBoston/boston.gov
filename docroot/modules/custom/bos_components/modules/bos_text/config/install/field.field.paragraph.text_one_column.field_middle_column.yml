@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_middle_column
+    - paragraphs.paragraphs_type.text_one_column
+  module:
+    - text
+id: paragraph.text_one_column.field_middle_column
+field_name: field_middle_column
+entity_type: paragraph
+bundle: text_one_column
+label: 'Middle Column'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

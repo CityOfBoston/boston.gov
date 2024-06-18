@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.public_notice
+target_entity_type_id: node
+target_bundle: public_notice
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.custom_hours_text.field_custom_hours_text
+    - field.field.paragraph.custom_hours_text.field_hours_icon
+    - field.field.paragraph.custom_hours_text.field_title
+    - paragraphs.paragraphs_type.custom_hours_text
+  module:
+    - content_moderation
+id: paragraph.custom_hours_text.default
+targetEntityType: paragraph
+bundle: custom_hours_text
+mode: default
+content:
+  field_custom_hours_text:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hours_icon:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

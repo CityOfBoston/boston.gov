@@ -1,0 +1,23 @@
+uuid: 0a8b646e-a3f6-4d7c-adac-46aae2c89db9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_image
+    - paragraphs.paragraphs_type.text
+  module:
+    - options
+_core:
+  default_config_hash: 8plJr3QNU6_xP6Uxe8G6h9jOTnB23mbJiQoVmMBWJb0
+id: paragraph.text.field_background_image
+field_name: field_background_image
+entity_type: paragraph
+bundle: text
+label: 'Background Image'
+description: 'Use this select if you would like to include the City Hall image as a background in the lower right of this component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

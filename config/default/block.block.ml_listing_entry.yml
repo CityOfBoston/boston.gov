@@ -1,0 +1,32 @@
+uuid: e62cb559-1f05-4b07-bd44-0515c67fa225
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.metrolist_listing_entry_form
+  module:
+    - system
+    - webform
+  theme:
+    - bos_theme
+id: ml_listing_entry
+theme: bos_theme
+region: content
+weight: -2
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: 'Webform: MetroList Listing Entry Form'
+  label_display: '0'
+  provider: webform
+  webform_id: metrolist_listing_entry_form
+  default_data: ''
+  redirect: false
+  lazy: false
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: "/departments/neighborhood-development/metrolist/metrolist-listing-form\r\n/metrolist/metrolist-listing-form\r\n/node/13026"

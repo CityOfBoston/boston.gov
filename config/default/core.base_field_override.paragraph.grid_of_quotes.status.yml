@@ -1,0 +1,22 @@
+uuid: eeb2db72-af2f-43fc-9811-40d96afb849f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_quotes
+id: paragraph.grid_of_quotes.status
+field_name: status
+entity_type: paragraph
+bundle: grid_of_quotes
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

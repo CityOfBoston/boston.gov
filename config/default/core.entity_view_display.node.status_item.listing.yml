@@ -1,0 +1,74 @@
+uuid: 2be60d68-3584-4497-b2d4-abd90ab1fe23
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.status_item.field_enabled
+    - field.field.node.status_item.field_icon
+    - field.field.node.status_item.field_messages
+    - field.field.node.status_item.field_title
+    - field.field.node.status_item.field_weight
+    - node.type.status_item
+  module:
+    - fences
+    - user
+_core:
+  default_config_hash: '-cTKppOjeaAtSnOs0n9Pmph4BBzuMhqc5ujbC7H7-X4'
+id: node.status_item.listing
+targetEntityType: node
+bundle: status_item
+mode: listing
+content:
+  field_enabled:
+    type: boolean
+    label: hidden
+    settings:
+      format: true-false
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: thumbnail
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  content_moderation_control: true
+  field_messages: true
+  field_weight: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,18 @@
+uuid: 5b0435a6-9f64-4ae8-899c-40620acdecf1
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.post
+id: node.post.created
+field_name: created
+entity_type: node
+bundle: post
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

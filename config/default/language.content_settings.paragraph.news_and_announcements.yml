@@ -1,0 +1,20 @@
+uuid: e17632d1-7834-4f5d-bfc8-3bcaa8365d80
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.news_and_announcements
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: D5LPONhPqyhyjvnKv5hXpLiQgb3-2K5vI8IENtBbtkI
+id: paragraph.news_and_announcements
+target_entity_type_id: paragraph
+target_bundle: news_and_announcements
+default_langcode: site_default
+language_alterable: false

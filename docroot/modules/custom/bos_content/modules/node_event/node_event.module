@@ -1,0 +1,392 @@
+<?php
+
+/**
+ * @file
+ * Provides an node_event entity type.
+ */
+
+use Drupal\Core\Render\Markup;
+use Drupal\Core\Render\Element;
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_theme().
+ */
+function node_event_theme() {
+  return [
+    'event' => [
+      'render element' => 'elements',
+    ],
+    'node__event' => [
+      'render element' => 'elements',
+      'base_hook' => 'node',
+    ],
+    'node__event__featured_item' => [
+      'base hook' => 'node',
+    ],
+    'field__node__field_event_type__event' => [
+      'base_hook' => 'field',
+    ],
+    'detail_item' => [
+      'template' => 'snippets/detail-item',
+      'variables' => [
+        "label" => NULL,
+        "body" => NULL,
+        "image" => NULL,
+        "classes" => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for event templates.
+ *
+ * Default template: event.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the event information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__event(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_event_preprocess_page(&$variables) {
+  _bos_content_fix_attributes($variables);
+
+  if (function_exists("_bos_theme_has_header")) {
+    _bos_theme_has_header($variables);
+  }
+  elseif (isset($variables['node']) && is_object($variables['node'])) {
+    $variables['cob']['header_image'] = ($variables['node']->hasField('field_intro_image')
+      && $variables['node']->get('field_intro_image')->count());
+  }
+
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "event") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+
+        // If there is a header then add a page class to relocate main body.
+        if ($variables['cob']['header_image']) {
+          $variables["attributes"]->addClass("page");
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_event_preprocess_node__event(&$variables) {
+
+  $ajax = FALSE;
+  if (NULL != \Drupal::request()->request->get("_drupal_ajax") || NULL != \Drupal::request()->request->get("ajax_page_state")) {
+    $ajax = TRUE;
+  }
+
+  if (!$ajax) {
+    _bos_core_fix_attributes($variables);
+    if (!empty($variables['attributes'])) {
+      $variables['attributes']->addClass('b');
+    }
+  }
+  else {
+    $variables['attributes']['style'][] = 'b';
+  }
+
+  $vars = [
+    'classes' => [
+      'icon' => 'icon-time',
+      'label' => 'detail-item--secondary',
+      'body' => 'detail-item__body--tertiary',
+      'detail' => 'detail-item--middle',
+    ],
+  ];
+
+  // Select the date to appear on the node.
+  if (isset($variables["content"]["field_event_date_recur"]["#object"])) {
+    $variables["content"]["field_event_date_recur"]["#object"];
+    $vdate = $variables["content"]["field_event_date_recur"][0];
+    if ($vdate["#is_recurring"]) {
+      // This is a recurring event.
+      if (!empty($vdate["#occurrences"])) {
+        // There are future occurrences scheduled.
+        $variables["event_date"] = $vdate['#occurrences'][0]['start_date']["#text"];
+      }
+      else {
+        if (isset($vdate["#date"]['start_date'])) {
+          $variables["event_date"] = $vdate["#date"]['start_date']['#text'];
+        }
+        else {
+          $variables["event_date"] = $vdate['#date']["#text"];
+        }
+      }
+      if (!empty($vdate["#interpretation"])) {
+        $vars['body'] = "Repeats " . $vdate["#interpretation"];
+      }
+    }
+    else {
+      if (!empty($vdate['#date']['start_date'])) {
+        $variables["event_date"] = $vdate['#date']['start_date']['#text'];
+        if ($variables["event_date"] != $vdate['#date']['end_date']['#text']) {
+          $variables["event_date"] = preg_replace('~\, [0-9]{4}~', '', $variables["event_date"]);
+          $variables["event_date"] .= " - " . $vdate['#date']['end_date']['#text'];
+        }
+      }
+      elseif (!empty($vdate['#date']['#text'])) {
+        $variables["event_date"] = $vdate['#date']['#text'];
+      }
+    }
+
+    // Render the time element of the event date into a detail_item.
+    $event_date = $variables['elements']['#node']->field_event_date_recur[0]->value;
+    // All dates stored in UTC in DB.
+    $event_date = strtotime($event_date . " +0000");
+    $vars["label"] = \Drupal::service('date.formatter')->format($event_date, "date_format_calendar_time", "", date_default_timezone_get());
+
+    if (!empty($variables['elements']['#node']->field_event_date_recur[0]->end_value
+      && $variables['elements']['#node']->field_event_date_recur[0]->value != $variables['elements']['#node']->field_event_date_recur[0]->end_value)) {
+      $event_end_date = $variables['elements']['#node']->field_event_date_recur[0]->end_value;
+      $event_end_date = strtotime($event_end_date . " +0000");
+      $vars["label"] .= " - " . \Drupal::service('date.formatter')
+        ->format($event_end_date, "date_format_calendar_time", "", date_default_timezone_get());
+    }
+    $variables["content"]["field_event_times"] = Drupal::theme()->render("detail_item", $vars);
+  }
+
+  $vars = [
+    'classes' => [
+      'label' => 'detail-item--left',
+      'body' => 'detail-item--secondary',
+      'detail' => 'detail-item--secondary',
+    ],
+  ];
+
+  // Render the cost into a details_item.
+  if (isset($variables["content"]["field_cost"]["#title"])) {
+    $vars["label"] = $variables["content"]["field_cost"]["#title"] . ":";
+    $vars["body"] = $variables["content"]["field_cost"];
+    $variables["content"]["cost"] = Drupal::theme()->render("detail_item", $vars);
+  }
+  else {
+    $vars["label"] = "Price:";
+    $vars["body"] = Markup::create('<div class="detail-item__body detail-item__body--secondary field-item">FREE</div>');
+    $variables["content"]["cost"] = Drupal::theme()->render("detail_item", $vars);
+  }
+
+  // Render the event_contact into a details_item.
+  if (isset($variables["content"]["field_event_contact"]["#title"])) {
+    $vars["label"] = $variables["content"]["field_event_contact"]["#title"] . ":";
+    $vars["body"] = $variables["content"]["field_event_contact"];
+    $variables["content"]["field_event_contact"] = Drupal::theme()
+      ->render("detail_item", $vars);
+  }
+  else {
+    unset($variables["content"]["field_event_contact"]);
+  }
+
+  if (!isset($variables["content"]["field_event_type"]["#title"])) {
+    unset($variables["content"]["field_event_type"]);
+  }
+
+  // Render the published_date into a details_item.
+  if (isset($variables["content"]["field_published_date"]["#title"])) {
+    $vars["label"] = "Posted:";
+    $vars["body"] = $variables["content"]["field_published_date"];
+    $variables["content"]["field_published_date"] = Drupal::theme()
+      ->render("detail_item", $vars);
+  }
+  else {
+    unset($variables["content"]["field_published_date"]);
+  }
+
+  // Render the field_multiple_neighborhoods into a details_item.
+  if (isset($variables["content"]["field_multiple_neighborhoods"]["#items"])) {
+    $vars["label"] = $variables["content"]["field_multiple_neighborhoods"]["#title"] . ":";
+    $vars["body"] = $variables["content"]["field_multiple_neighborhoods"];
+    $variables["content"]["field_multiple_neighborhoods"] = Drupal::theme()
+      ->render("detail_item", $vars);
+  }
+  else {
+    unset($variables["content"]["field_multiple_neighborhoods"]);
+  }
+
+  // Render the downloads (field_links) into a details_item.
+  if (isset($variables["content"]["field_links"]["#title"])) {
+    $vars["label"] = $variables["content"]["field_links"]["#title"] . ":";
+    $vars["body"] = $variables["content"]["field_links"];
+    $variables["content"]["field_links"] = Drupal::theme()
+      ->render("detail_item", $vars);
+  }
+  else {
+    unset($variables["content"]["field_links"]);
+  }
+
+  // Check for cancelled state.
+  $node = $variables['elements']['#node'];
+  if ($node->hasField("field_cancelled")) {
+    $variables["is_cancelled"] = ($node->get("field_cancelled")->value == "1");
+  }
+  if ($node->hasField("field_cancel_event")) {
+    $variables["is_cancelled"] = ($node->get("field_cancel_event")->value == "1");
+  }
+
+  // Now make and render the Intro_image block.
+  if (isset($variables["elements"]["field_intro_image"]["#items"]) && $variables["elements"]["field_intro_image"]["#items"]->count()) {
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+    $photo_id = Html::getUniqueId('hro');
+    $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+    $variables['#attached']['html_head'][] = [
+      [
+        "#tag" => "style",
+        "#value" => $css,
+        "#weight" => 100,
+      ],
+      'event-intro-image-css',
+    ];
+
+    $nestedElement = [
+      ["div" => "hero-image b b--fw b--fw--480"],
+      ["div" => "hro $photo_id hro--pt hro--pb"],
+    ];
+    $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+
+    if (!empty($variables['attributes']) && !$ajax) {
+      $variables["attributes"]->addClass("with-hero");
+    }
+    elseif (!empty($variables['attributes']) && $ajax) {
+      $variables["attributes"]['style'][] = "with-hero";
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_event_preprocess_node__event__featured_item(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->addClass("contextual-region");
+  $variables['attributes']->addClass("event-featured-item-wrapper");
+  $variables['attributes']->addClass("mobile-1-col");
+  $variables['attributes']->addClass("clearfix");
+  $variables['attributes']->setAttribute("id", "node-" . $variables['elements']["#node"]->id());
+  $variables["content"];
+
+  // Render the event cost into a details_item.
+  if (isset($variables["content"]["field_cost"])) {
+    $variables["cost"] = $variables["content"]["field_cost"][0];
+  }
+  else {
+    $variables["cost"] = "FREE";
+  }
+  // Render the event contact into a details_item.
+  if (isset($variables["elements"]["field_event_contact"])) {
+    $variables["contact"] = $variables["elements"]["field_event_contact"][0];
+  }
+  else {
+    unset($variables["elements"]["field_event_contact"]);
+  }
+  // Render the event contact email into a details_item.
+  if (isset($variables["elements"]["field_email"])) {
+    $variables["email"] = $variables["elements"]["field_email"][0];
+  }
+  else {
+    unset($variables["elements"]["field_email"]);
+  }
+  // Render the event contact phone number into a details_item.
+  if (isset($variables["elements"]["field_phone_number"])) {
+    $variables["phone"] = $variables["elements"]["field_phone_number"][0];
+    $variables["phone"]["#context"]["value"] = bos_core_format_telephone($variables["phone"]["#context"]["value"]);
+  }
+  else {
+    unset($variables["elements"]["field_phone_number"]);
+  }
+  // Render the event address into a details_item.
+  if (isset($variables["elements"]["field_address"])) {
+    $variables["address"] = $variables["elements"]["field_address"][0];
+  }
+  else {
+    unset($variables["elements"]["field_address"]);
+  }
+  // Render the event start and end value or dates into a details_item.
+  if (NULL != ($node = $variables["elements"] ?? NULL)) {
+
+    if ($node["field_event_date_recur"] && $node["field_event_date_recur"]["#items"][0]->value) {
+      if (!empty($node["field_event_date_recur"]) && $node["field_event_date_recur"]["#items"][0]->value) {
+        $start_date = "";
+        if (isset($node["field_event_date_recur"]["#items"][0]->value)) {
+          $start_date = $node["field_event_date_recur"]["#items"][0]->value;
+          if (is_string($start_date)) {
+            $start_date = new DateTime($start_date . "+0000");
+            $start_date->setTimezone(new DateTimeZone("America/new_york"));
+          }
+          $stdt = $start_date->format("F d, Y, g:i A");
+          $edt = "";
+        }
+        if (isset($node["field_event_date_recur"]["#items"][0]->end_value)) {
+          $end_date = $node["field_event_date_recur"]["#items"][0]->end_date;
+          $end_date->setTimezone(new DateTimeZone("America/new_york"));
+          if ($start_date->format("ymd") == $end_date->format("ymd")) {
+            if ($start_date->format("g:i A") != $end_date->format("g:i A")) {
+              $edt = $end_date->format(" - g:i A");
+            }
+          }
+          else {
+            $edt = $end_date->format(" - g:i A");
+          }
+        }
+        $variables["dates"] = $stdt . $edt;
+      }
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_event_preprocess_field__field_address(&$variables) {
+  // Hide the country field in the address.
+  if ($variables["element"]["#bundle"] != "event") {
+    return;
+  }
+  if (isset($variables["items"])) {
+    foreach ($variables["items"] as $key => &$item) {
+      $item["content"]["country"]["#attributes"]["class"][] = "hidden";
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_event_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "event", [
+    "field_contacts" => "Add another department",
+    "field_related" => "Add more related content",
+  ]);
+}

@@ -1,0 +1,40 @@
+uuid: df14ac73-f49c-492e-bd66-aeb1dbbf9591
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bh_parcel.body
+    - field.field.node.bh_parcel.field_bh_assessing_lot_size
+    - field.field.node.bh_parcel.field_bh_coordinates
+    - field.field.node.bh_parcel.field_bh_owned_by_dnd
+    - field.field.node.bh_parcel.field_bh_parcel_header
+    - field.field.node.bh_parcel.field_bh_parcel_name
+    - field.field.node.bh_parcel.field_bh_property_type
+    - field.field.node.bh_parcel.field_bh_street_address_temp
+    - field.field.node.bh_parcel.field_parcel_geo_polygon
+    - node.type.bh_parcel
+  module:
+    - user
+_core:
+  default_config_hash: aG1ZtvKV4W27T08dTvUY5M1aWNZweCJQDQ7k-2h0OKo
+id: node.bh_parcel.teaser
+targetEntityType: node
+bundle: bh_parcel
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_bh_assessing_lot_size: true
+  field_bh_coordinates: true
+  field_bh_owned_by_dnd: true
+  field_bh_parcel_header: true
+  field_bh_parcel_name: true
+  field_bh_property_type: true
+  field_bh_street_address_temp: true
+  field_parcel_geo_polygon: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,20 @@
+uuid: 97484315-34f6-4777-822d-53cdf173c69e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.how_to_contact_step
+_core:
+  default_config_hash: JdHyEk04V0TcplvUWG_J8b0t6IiKaWO2-8GXW8cMnA0
+id: paragraph.how_to_contact_step.created
+field_name: created
+entity_type: paragraph
+bundle: how_to_contact_step
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

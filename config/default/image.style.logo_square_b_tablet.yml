@@ -1,0 +1,15 @@
+uuid: d8293d81-1753-40b1-b0dd-862cba526815
+langcode: und
+status: true
+dependencies: {  }
+name: logo_square_b_tablet
+label: 'logo square b-tablet 1x (783x783)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 783
+      height: 783
+      anchor: center-center

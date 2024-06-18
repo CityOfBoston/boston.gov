@@ -1,0 +1,67 @@
+uuid: 18e03b51-1836-4f8f-88c2-b82a154e40c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.commissions.field_commission_id
+    - taxonomy.vocabulary.commissions
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: 0owmH-r1l_q2l9fgMtQswItTvkW6bAqjdNZrE3BIA7U
+id: taxonomy_term.commissions.default
+targetEntityType: taxonomy_term
+bundle: commissions
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_commission_id:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

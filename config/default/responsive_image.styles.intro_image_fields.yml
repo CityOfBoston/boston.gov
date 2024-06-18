@@ -1,0 +1,62 @@
+uuid: 38f26302-35ba-4785-a6b9-3ec0da094996
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.intro_image_desktop_1x
+    - image.style.intro_image_large_1x
+    - image.style.intro_image_mobile_1x
+    - image.style.intro_image_oversize_1x
+    - image.style.intro_image_tablet_1x
+  theme:
+    - bos_theme
+id: intro_image_fields
+label: 'Intro Image fields'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_mobile_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_tablet_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 1.5x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_desktop_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_tablet_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_desktop_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 1.5x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_large_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_desktop_1x
+    breakpoint_id: boston.hero.desktop
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_large_1x
+    breakpoint_id: boston.hero.large
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: intro_image_oversize_1x
+    breakpoint_id: boston.hero.oversize
+    multiplier: 1x
+breakpoint_group: hero
+fallback_image_style: intro_image_mobile_1x

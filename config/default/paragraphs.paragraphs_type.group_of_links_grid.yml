@@ -1,0 +1,13 @@
+uuid: ce4b3205-e602-4e89-8294-8539bb0d612c
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 6e22rg5pFEvS9hcNZ26DnHTqS94pUP_Cn6rvJGAWMUo
+id: group_of_links_grid
+label: 'Group of Links - Grid'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Group of Links - Grid'
+behavior_plugins: {  }

@@ -1,0 +1,25 @@
+uuid: 240ad077-95fa-4049-95df-7671a7f24a4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.fyi.field_extra_info
+    - field.field.paragraph.fyi.field_icon
+    - field.field.paragraph.fyi.field_link
+    - field.field.paragraph.fyi.field_short_title
+    - field.field.paragraph.fyi.field_title
+    - paragraphs.paragraphs_type.fyi
+_core:
+  default_config_hash: iuqD8xBn7qmADgucU-Is1hc2Zk63X2r1xKbGiQn0pqQ
+id: paragraph.fyi.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: fyi
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_extra_info: true
+  field_icon: true
+  field_link: true
+  field_short_title: true
+  field_title: true

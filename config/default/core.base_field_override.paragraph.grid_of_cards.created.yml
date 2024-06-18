@@ -1,0 +1,20 @@
+uuid: e0597fb4-eb95-493e-96f9-7d730f5d151d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_cards
+_core:
+  default_config_hash: j-Tvh-Uij1KYsmhiMlpKzQUALfhsVAW69cL58dqtQbw
+id: paragraph.grid_of_cards.created
+field_name: created
+entity_type: paragraph
+bundle: grid_of_cards
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

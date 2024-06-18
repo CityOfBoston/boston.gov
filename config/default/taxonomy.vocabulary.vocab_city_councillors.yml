@@ -1,0 +1,8 @@
+uuid: 3a69b8e9-80dd-4b4e-9597-d55261d1eaf4
+langcode: en
+status: true
+dependencies: {  }
+name: 'City Councillors'
+vid: vocab_city_councillors
+description: 'Roll Call: List of Current and Past City Councillors'
+weight: 0

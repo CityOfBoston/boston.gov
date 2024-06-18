@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Default theme implementation for Building Housing Developer Info.
+ *
+ * Available variables:
+ * - title: The title value of the item.
+ * - tags: The value of the tags.
+ * - tagIcon: The tagIcon value of the detail item.
+ * - label: The label value of the item.
+ * - link: The link value of the item.
+ * - icon: The icon value of the detail item.
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+{% if title %}
+  <div class="bh-project-developer-info m-b600">
+
+    <div>
+      <div typeof="foaf:Image" class="fl--l m-t100 m-r200"> {{ icon }} </div>
+      <h3 class="m-v200">{{ label }}</h3>
+    </div>
+
+
+    <h4 class="m-b100 m-t000">{{ title }}</h4>
+
+    <div class="p-b600">
+
+      {% if link %}
+        <div class="t--subinfo t--cb fl--l m-r300" style="text-decoration: underline; font-weight: 500;">
+          <a href="{{ link }}">Company Website</a>
+        </div>
+      {% endif %}
+
+
+      {% for tag in tags %}
+
+
+        {% if loop.index == 1%}
+          <div class="m-b100 fl--l" style="width: 50%">
+        {% else %}
+          <div class="m-v100">
+        {% endif %}
+
+          <div class="t--cb m-r200" style="width: 20px;">
+            <div typeof="foaf:Image"> {{ tagIcon }} </div>
+          </div>
+
+            <div class="detail-item__body--secondary m-l100" style="text-transform: unset;">
+              <div class="t--subinfo t--cb">{{ tag }}</div>
+            </div>
+
+          </div>
+
+      {% endfor %}
+
+      </div>
+
+  </div>
+
+{% endif %}

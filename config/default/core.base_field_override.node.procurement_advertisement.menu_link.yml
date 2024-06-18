@@ -1,0 +1,20 @@
+uuid: e5a84d9a-52cb-4374-9020-c224b3d01786
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.menu_link
+field_name: menu_link
+entity_type: node
+bundle: procurement_advertisement
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

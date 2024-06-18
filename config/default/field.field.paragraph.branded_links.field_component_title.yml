@@ -1,0 +1,21 @@
+uuid: 7eb99f71-18ad-4b41-b112-895fa86fd65d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.branded_links
+_core:
+  default_config_hash: QfHK1MFrag7bI01yBFuAMT-8wOYzgC7_YgyzEfufWDA
+id: paragraph.branded_links.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: branded_links
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

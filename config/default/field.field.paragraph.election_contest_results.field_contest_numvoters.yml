@@ -1,0 +1,23 @@
+uuid: 9179cb0b-e221-442f-8d46-dcaa3777410b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contest_numvoters
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_contest_numvoters
+field_name: field_contest_numvoters
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Num Voters'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,119 @@
+uuid: 4c896091-8274-478d-a911-dfee6ddb0126
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.charts.field_component_theme
+    - field.field.paragraph.charts.field_component_title
+    - field.field.paragraph.charts.field_components
+    - field.field.paragraph.charts.field_description
+    - field.field.paragraph.charts.field_hide_title_bar
+    - field.field.paragraph.charts.field_short_title
+    - paragraphs.paragraphs_type.charts
+  module:
+    - field_group
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_title:
+      children:
+        - field_component_title
+        - field_hide_title_bar
+      label: TitleGrp
+      region: content
+      parent_name: group_titling
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: g
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_titling:
+      children:
+        - group_title
+        - field_short_title
+      label: 'Component Title'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.charts.default
+targetEntityType: paragraph
+bundle: charts
+mode: default
+content:
+  field_component_theme:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_components:
+    type: paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: 'Chart Component'
+      title_plural: 'Chart Components'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: bos_chart
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bh_update.body
+    - field.field.node.bh_update.field_bh_attachment
+    - field.field.node.bh_update.field_bh_banner_status
+    - field.field.node.bh_update.field_bh_boston_based_business
+    - field.field.node.bh_update.field_bh_developer_name
+    - field.field.node.bh_update.field_bh_developer_website
+    - field.field.node.bh_update.field_bh_follower_emails
+    - field.field.node.bh_update.field_bh_headline
+    - field.field.node.bh_update.field_bh_image
+    - field.field.node.bh_update.field_bh_minority_owned_business
+    - field.field.node.bh_update.field_bh_project_images
+    - field.field.node.bh_update.field_bh_project_ref
+    - field.field.node.bh_update.field_bh_project_web_link
+    - field.field.node.bh_update.field_bh_text_updates
+    - field.field.node.bh_update.field_bh_update_posted_date
+    - field.field.node.bh_update.field_bh_update_type_ref
+    - field.field.node.bh_update.field_bh_veteran_owned_business
+    - field.field.node.bh_update.field_bh_women_owned_business
+    - field.field.node.bh_update.field_sf_web_update
+    - node.type.bh_update
+  module:
+    - text
+    - user
+id: node.bh_update.teaser
+targetEntityType: node
+bundle: bh_update
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    weight: 100
+    region: content
+  salesforce_id:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  salesforce_last_sync:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_bh_attachment: true
+  field_bh_banner_status: true
+  field_bh_boston_based_business: true
+  field_bh_developer_name: true
+  field_bh_developer_website: true
+  field_bh_follower_emails: true
+  field_bh_headline: true
+  field_bh_image: true
+  field_bh_minority_owned_business: true
+  field_bh_project_images: true
+  field_bh_project_ref: true
+  field_bh_project_web_link: true
+  field_bh_text_updates: true
+  field_bh_update_posted_date: true
+  field_bh_update_type_ref: true
+  field_bh_veteran_owned_business: true
+  field_bh_women_owned_business: true
+  field_sf_web_update: true
+  langcode: true
+  published_at: true

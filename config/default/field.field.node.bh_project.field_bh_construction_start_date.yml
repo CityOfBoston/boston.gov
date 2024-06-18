@@ -1,0 +1,21 @@
+uuid: 6502f2a6-211a-4ad2-9772-e9a3ed5a61cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_construction_start_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_construction_start_date
+field_name: field_bh_construction_start_date
+entity_type: node
+bundle: bh_project
+label: 'Construction Start Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

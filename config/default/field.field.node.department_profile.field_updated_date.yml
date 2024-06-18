@@ -1,0 +1,23 @@
+uuid: e6d46737-97f8-4f5e-9f30-aae52dab03e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.department_profile
+  module:
+    - datetime
+_core:
+  default_config_hash: jox2LmAU_ap0ULOdeFtzimmmorhnC9jcP60FeVsSwoc
+id: node.department_profile.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: department_profile
+label: 'Updated Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

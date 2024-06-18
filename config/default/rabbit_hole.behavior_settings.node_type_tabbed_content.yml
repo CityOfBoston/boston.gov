@@ -1,0 +1,14 @@
+uuid: f5e83c8f-af97-449e-aa65-d3ac2dbf85ef
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node_type_tabbed_content
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

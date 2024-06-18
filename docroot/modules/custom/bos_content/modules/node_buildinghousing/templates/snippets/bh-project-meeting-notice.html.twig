@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Default theme implementation for BH Project Meeting Notice.
+ *
+ * Available variables:
+ * - title: The title value of the display.
+ * - dateString: The label value of the Date as a sting.
+ * - detailsLink: The link to the details of a Meeting.
+ * - idForAddToCal: The entity id of a Meeting / Event used to render the Add To Cal widget.
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+<div class="bh-project-meeting-notice m-b300 m-b500--xxl bg--light-blue p-a600">
+  <div class="t--intro">{{ title }}</div>
+
+  <h4 class="t--w m-t200">{{ dateString }}</h4>
+
+  {% if idForAddToCal %}
+  <div class="m-v600">
+    {{ idForAddToCal }}
+  </div>
+  {% endif %}
+
+  <div class="m-v400">
+    <a class="btn btn--b btn--w" href="{{ detailsLink }}">Details</a>
+  </div>
+
+</div>

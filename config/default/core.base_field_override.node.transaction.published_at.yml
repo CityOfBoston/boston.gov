@@ -1,0 +1,20 @@
+uuid: 31631b20-4209-42dc-bb85-565a33ae124b
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+  module:
+    - publication_date
+id: node.transaction.published_at
+field_name: published_at
+entity_type: node
+bundle: transaction
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

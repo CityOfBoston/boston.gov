@@ -1,0 +1,19 @@
+uuid: 3a9b3646-7d5c-45fd-890c-0e581d786207
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_email
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors.field_email
+field_name: field_email
+entity_type: taxonomy_term
+bundle: vocab_city_councillors
+label: Email
+description: 'The Councillors business email address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

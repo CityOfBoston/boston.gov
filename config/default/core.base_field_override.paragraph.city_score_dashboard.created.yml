@@ -1,0 +1,20 @@
+uuid: 64651a80-a41c-42af-8893-40e6f76c353f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.city_score_dashboard
+_core:
+  default_config_hash: EvmPnNmWhqbkgcbrXJ_Qj243dJalJhbm-qly9xajrzk
+id: paragraph.city_score_dashboard.created
+field_name: created
+entity_type: paragraph
+bundle: city_score_dashboard
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

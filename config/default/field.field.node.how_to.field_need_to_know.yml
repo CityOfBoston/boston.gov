@@ -1,0 +1,23 @@
+uuid: 32fb70f3-71d6-4f43-b01b-2a3acb752ffc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_need_to_know
+    - node.type.how_to
+  module:
+    - text
+_core:
+  default_config_hash: 5WnCPgL-n4yiGSLupGHNPyXLfpp6Y8Yfpinsjc7KKLo
+id: node.how_to.field_need_to_know
+field_name: field_need_to_know
+entity_type: node
+bundle: how_to
+label: 'Need to Know'
+description: 'Add need-to-know information for this how-to here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

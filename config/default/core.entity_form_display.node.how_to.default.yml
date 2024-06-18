@@ -1,0 +1,407 @@
+uuid: 66e4e672-056d-4718-8ab9-80f896540f10
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_entity_browser
+    - field.field.node.how_to.body
+    - field.field.node.how_to.field_components
+    - field.field.node.how_to.field_contact
+    - field.field.node.how_to.field_hide_contact_form
+    - field.field.node.how_to.field_how_to_tabs
+    - field.field.node.how_to.field_intro_image
+    - field.field.node.how_to.field_links
+    - field.field.node.how_to.field_manual_date
+    - field.field.node.how_to.field_metatags
+    - field.field.node.how_to.field_need_to_know
+    - field.field.node.how_to.field_payment_info
+    - field.field.node.how_to.field_published_date
+    - field.field.node.how_to.field_sidebar_components
+    - field.field.node.how_to.field_updated_date
+    - node.type.how_to
+    - workflows.workflow.city_of_boston_workflows
+  module:
+    - content_moderation
+    - datetime
+    - entity_browser
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_how_to:
+      children:
+        - group_basic_information
+        - group_how_to_tab
+        - group_sidebar_info
+        - group_page_metadata
+        - group_sidebar_components
+        - group_components
+      label: How-To
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: vertical
+    group_basic_information:
+      children:
+        - title
+        - field_intro_image
+        - body
+      label: 'Basic Information'
+      region: content
+      parent_name: group_how_to
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_how_to_tab:
+      children:
+        - field_how_to_tabs
+      label: 'How-To Tab'
+      region: content
+      parent_name: group_how_to
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_sidebar_info:
+      children:
+        - field_need_to_know
+        - field_payment_info
+        - field_links
+        - group_group_contact
+      label: 'Sidebar Info'
+      region: content
+      parent_name: group_how_to
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_page_metadata:
+      children:
+        - field_manual_date
+        - field_published_date
+        - field_updated_date
+      label: 'Page Metadata'
+      region: content
+      parent_name: group_how_to
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_sidebar_components:
+      children:
+        - field_sidebar_components
+      label: 'Sidebar Components'
+      region: content
+      parent_name: group_how_to
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_components:
+      children:
+        - field_components
+      label: Components
+      region: content
+      parent_name: group_how_to
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_group_contact:
+      children:
+        - field_contact
+        - field_hide_contact_form
+      label: 'Group Contact'
+      region: content
+      parent_name: group_sidebar_info
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+_core:
+  default_config_hash: a4N_emjrrSKpL9PeGPBK_yH_9kGK-qurKvlH6h0f0_o
+id: node.how_to.default
+targetEntityType: node
+bundle: how_to
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_components:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: 'How-to Component'
+      title_plural: 'How-to Components'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_contact_form:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_how_to_tabs:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: 'How-To Tab'
+      title_plural: 'How-To Tabs'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: how_to_tab
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_intro_image:
+    type: entity_browser_entity_reference
+    weight: 1
+    region: content
+    settings:
+      entity_browser: image_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings:
+        view_mode: thumbnail
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_links:
+    type: paragraphs
+    weight: 2
+    region: content
+    settings:
+      title: 'Download Link'
+      title_plural: 'Download Links'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_manual_date:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 12
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_need_to_know:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_payment_info:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_published_date:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_sidebar_components:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: 'Sidebar Component'
+      title_plural: 'Sidebar Components'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_updated_date:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

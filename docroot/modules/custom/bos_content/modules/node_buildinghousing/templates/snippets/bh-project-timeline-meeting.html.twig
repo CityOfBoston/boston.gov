@@ -1,0 +1,90 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - title: The title value of the item.
+ * - label: The label value of the item.
+ * - body: The content value of the item.
+ * - icon: The icon value of the detail item.
+ * - date:
+ * - time:
+ * - link:
+ * - addTOCal:
+ * - currentState:
+ *
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+<div class="bh-project-timeline-item g g--12 timeline-meeting-{{ currentState }}" >
+
+  <div class="g g--2">
+
+    <div typeof="foaf:Image" class="bh-project-timeline-icon">
+      {{ icon }}
+    </div>
+
+  </div>
+
+  <div class="g--10 m-t400 m-b600 m-h100 p-a000  bh-project-timeline-content">
+    <h6 class="m-t000 m-b100 bh-timeline-season t--cb">{{ date }}</h6>
+
+    {% if currentState != 'past' %}
+      <h5 class="m-b100 m-t100 t--ob t--bold">{{ label }}</h5>
+    {% endif %}
+
+    <div class="b b--w m-t200 p-a600">
+
+      <div class="t--title t--ob">{{ title|raw }}</div>
+
+      {% if currentState == 'past' and attendees %}
+        <h6 class="m-v000">{{ attendees }}</h6>
+      {% else %}
+        <h6 class="m-v000">{{ date }} {{ time }}</h6>
+      {% endif %}
+
+      <div class=""><p>{{ body | raw }}</p></div>
+
+
+      <div class="g">
+
+        {% if currentState == 'past' and link %}
+          <div class="m-v200 bc--r t--nowrap t--s100 g--1">
+            <a href="{{ link }}" class="g">
+              <span  class="t--sans t--bold m-t100 m-l200">{{ label }}</span>
+              {% if recordingPassword %}
+                <span  class="m-l200" style="line-height: 0.5rem;">Password: {{ recordingPassword }}</span>
+              {% endif %}
+            </a>
+          </div>
+        {% else %}
+          <div class="m-v200 g--6 bh-add-to-cal">
+            {% if addToCal %}
+              {{ addToCal }}
+{#              <a class="btn btn--b btn--200 btn--c" href="{{ addToCal }}">Add to Cal</a>#}
+            {% endif %}
+          </div>
+
+          <div class="m-v200 g--6">
+            {% if addToCal %}
+              <a class="btn btn--b btn--200" href="{{ link }}">Learn More</a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+
+
+
+
+  </div>
+
+</div>
+

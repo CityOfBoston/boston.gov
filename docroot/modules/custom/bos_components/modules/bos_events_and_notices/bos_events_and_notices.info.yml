@@ -1,0 +1,18 @@
+name: bos_events_and_notices
+type: module
+description: 'Provides theming and configuration for bos_events_and_notices.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.entity_form_display.paragraph.events_and_notices.default
+  - core.entity_view_display.paragraph.events_and_notices.default
+  - field.field.paragraph.events_and_notices.field_component_title
+  - field.field.paragraph.events_and_notices.field_featured_item
+  - field.field.paragraph.events_and_notices.field_link
+  - field.field.paragraph.events_and_notices.field_list
+  - field.field.paragraph.events_and_notices.field_short_title
+  - paragraphs.paragraphs_type.events_and_notices
+  - views.view.events_and_notices

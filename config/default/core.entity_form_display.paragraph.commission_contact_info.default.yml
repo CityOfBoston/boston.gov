@@ -1,0 +1,30 @@
+uuid: 99178814-998a-4ffb-978c-6f2db352ced2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_contact_info.field_commission
+    - paragraphs.paragraphs_type.commission_contact_info
+_core:
+  default_config_hash: wdDlX3cGU99RVmBzSCrXy7ORmmkkKusd7UI1yRCF8TY
+id: paragraph.commission_contact_info.default
+targetEntityType: paragraph
+bundle: commission_contact_info
+mode: default
+content:
+  field_commission:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sidebar_text
+    - paragraphs.paragraphs_type.sidebar_item
+  module:
+    - text
+id: paragraph.sidebar_item.field_sidebar_text
+field_name: field_sidebar_text
+entity_type: paragraph
+bundle: sidebar_item
+label: 'Sidebar Text'
+description: 'Enter the text for the sidebar item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,12 @@
+uuid: 548d70b1-1502-44d3-a041-f08a499d4f85
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_neighborhoods
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

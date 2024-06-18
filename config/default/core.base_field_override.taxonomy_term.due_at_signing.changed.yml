@@ -1,0 +1,18 @@
+uuid: 34ecb834-c9ca-4e76-a2ef-9a9cefa0e4ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.due_at_signing
+id: taxonomy_term.due_at_signing.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: due_at_signing
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

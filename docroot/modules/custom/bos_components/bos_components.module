@@ -1,0 +1,574 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for bos_components module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_components_theme() {
+  $theme['field__field_components'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--field-components',
+  ];
+  $theme['field__component__field_component_title'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--component--field-component-title',
+  ];
+  $theme['field__component__field_short_title'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--component--field-short-title',
+  ];
+  $theme['field__component__field_contact'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--component--field-contact',
+  ];
+  $theme['field__field_subcomponents'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--field-subcomponents',
+  ];
+  $theme['field__subcomponent__field_component_title'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--subcomponent--field-component-title',
+  ];
+  $theme['field__subcomponent__field_short_title'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--subcomponent--field-short-title',
+  ];
+  $theme['field__subcomponent__field_contact'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/templates',
+    'template' => 'field--subcomponent--field-contact',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_components_preprocess_field(&$variables) {
+  _bos_component_embed_level($variables);
+
+  if ($variables['entity_type'] == "paragraph") {
+    switch ($variables['field_name']) {
+      case 'field_component_title':
+        if ($variables['is_component_field']) {
+          $component = $variables['element']['#object'];
+          $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+          if (empty($language)) {
+            $language = "und";
+          }
+          if ($component->hasField("field_short_title")) {
+            $short_title = $component->getTranslation($language)
+              ->get('field_short_title')
+              ->getValue();
+            if (empty($short_title)) {
+              $short_title = $component->getTranslation("en")
+                ->get('field_short_title')
+                ->getValue();
+            }
+            if (empty($short_title) && $language != "und") {
+              $short_title = $component->getTranslation("und")
+                ->get('field_short_title')
+                ->getValue();
+            }
+            if (!empty($short_title)) {
+              $variables['short_title'] = $short_title[0]['value'];
+              $short_title_link = preg_replace('@^[0-9\s]+@', '', strtolower($short_title[0]['value']));
+              $variables['short_title_link'] = preg_replace('@[^a-z0-9-]+@', '-', $short_title_link);
+            }
+          }
+        }
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_components_preprocess_paragraph(&$variables) {
+  if (!empty($variables['is_subcomponent_field'])) {
+    $variables['attributes']['class'][] = "paragraph-subcomponent";
+  }
+  elseif (!empty($variables['is_component_field'])) {
+    $variables['attributes']['class'][] = "paragraph-component";
+  }
+
+  if (is_object($variables['paragraph'])
+    && ($paragraph = $variables['paragraph'])
+    && $variables['paragraph']->hasField('field_component_theme')) {
+
+    if ($themeStyle = $paragraph->field_component_theme->value) {
+
+      switch ($themeStyle) {
+        case 'g':
+          //$variables['attributes']->addClass("b--g");
+          $variables['#attached']['library'][] = 'bos_components/component_theme.style';
+          $variables['attributes']['class'][] = "b--g";
+          $variables['prefix']['#markup'] = '<div class="b b--fw b--g">';
+          $variables['suffix']['#markup'] = '</div>';
+          break;
+        case 'w':
+          //$variables['attributes']->addClass("b--w");
+          $variables['#attached']['library'][] = 'bos_components/component_theme.style';
+          $variables['attributes']['class'][] = "b--w";
+          $variables['prefix']['#markup'] = '<div class="b b--fw b--w">';
+          $variables['suffix']['#markup'] = '</div>';
+          break;
+        case 'b':
+          //$variables['attributes']->addClass("b--b");
+          $variables['#attached']['library'][] = 'bos_components/component_theme.style';
+          $variables['attributes']['class'][] = "b--b";
+          $variables['prefix']['#markup'] = '<div class="b b--fw b--b">';
+          $variables['suffix']['#markup'] = '</div>';
+          break;
+      }
+
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_featured_topics_preprocess_field(&$variables) {
+  if (isset($variables['element'])) {
+    $element = $variables['element'];
+    if (isset($element['#field_name']) && $element['#field_name'] == 'field_short_title') {
+      $variables["short_title"] = $element["#items"]->value;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_components_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // If the form contains field_address, set default information on it.
+  _set_default_address_field_values($form);
+  // Remove Master view options from List components.
+  if (isset($form['field_components'])) {
+    $form['field_components'] = walk_recursive_remove($form['field_components'], '_remove_master_view_listings_from_view_fields');
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function bos_components_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  if ($variables["theme_hook_original"] == "input__submit__paragraph_action") {
+    return;
+  }
+  $field_name = $variables['element']['#field_name'];
+  $view_mode = $variables['element']['#view_mode'];
+  $bundle = $variables['element']['#bundle'];
+
+  // Add suggestions for paragraphs.
+  if ('paragraph' == ($entity_type = $variables['element']['#entity_type'])) {
+    _bos_component_embed_level($variables);
+    if ($variables['is_component_field']) {
+      $suggestions[] = 'field__component__' . $variables['element']['#field_name'];
+    }
+    if ($variables['is_subcomponent_field']) {
+      $suggestions[] = 'field__subcomponent__' . $variables['element']['#field_name'];
+    }
+  }
+  $base_suggestion = "field__$field_name";
+
+  // Add suggestions for taxonomy terms.
+  if ('taxonomy_term' == ($entity_type = $variables['element']['#entity_type'])) {
+    $suggestions[] = "{$base_suggestion}__{$bundle}";
+  }
+  $base_suggestion = "field__{$field_name}";
+  // Add view mode suggestions.
+  $suggestions[] = "{$base_suggestion}__mode__{$view_mode}";
+  $suggestions[] = "{$base_suggestion}__{$bundle}__mode__{$view_mode}";
+  $suggestions[] = "{$base_suggestion}__type__{$entity_type}__mode__{$view_mode}";
+}
+
+/**
+ * Implements hook_rebuild().
+ */
+function bos_components_rebuild() {
+  _bos_components_update_all_icons(FALSE);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function bos_components_theme_suggestions_paragraph_alter(array &$suggestions, array $variables) {
+  if (!isset($variables['elements']['#paragraph'])) {
+    return;
+  }
+  if ($variables['elements']['#paragraph']->getParentEntity() && $parent = $variables['elements']['#paragraph']->getParentEntity()->bundle()) {
+
+    $paragraphType = $variables['elements']['#paragraph']->bundle();
+
+    switch ($paragraphType) {
+      case "bos311":
+        $suggestions[] = 'paragraph__' . $parent . '__' . $paragraphType;
+        $suggestions[] = 'paragraph__node__' . $paragraphType;
+        break;
+
+      default:
+        return;
+    }
+  }
+
+}
+
+/**
+ * Implements hook_paragraphs_info().
+ */
+function bos_components_paragraphs_info() {
+  $items = [
+    'text' => [
+      'name' => 'Text',
+      'bundle' => 'text',
+      'locked' => '1',
+    ],
+    'text_one_column' => [
+      'name' => 'One Column Text',
+      'bundle' => 'text_one_column',
+      'locked' => '1',
+    ],
+    'text_three_column' => [
+      'name' => 'Three Column Text',
+      'bundle' => 'text_three_column',
+      'locked' => '1',
+    ],
+    'text_two_column' => [
+      'name' => 'Two Column Text',
+      'bundle' => 'text_two_column',
+      'locked' => '1',
+    ],
+  ];
+  return $items;
+}
+
+/**
+ * Implements hook_paragraph_summary_alter().
+ *
+ * This is the generic catch-all formatter for paragraph summaries.
+ * Individual components can be customized/overriden in hooks in their modules.
+ */
+function bos_components_paragraph_summary_alter(array $form_widget, array $para, array $attributes, string $hook) {
+  // First, find the component title.
+  if ($para["entity"]->hasField("field_component_title") && !empty($para["entity"]->get("field_component_title")->value)) {
+    $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  }
+  elseif ($para["entity"]->hasField("field_title") && !empty($para["entity"]->get("field_title")->value)) {
+    $markup[] = Markup::create($para["entity"]->get("field_title")->value);
+  }
+  elseif ($para["entity"]->hasField("title")) {
+    $markup[] = Markup::create($para["entity"]->get("title")->value);
+  }
+
+  // Second, find a contact if there is one.
+  if ($para["entity"]->hasField("field_contact")) {
+    if (!empty($contact_id = $para["entity"]->get("field_contact")->target_id)) {
+      if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+        $markup[] = Markup::create("<span class='contact'>" . $contact->name->value . "</span>");
+      }
+      else {
+        $markup[] = Markup::create("<span class='contact' style='color: red;'>(Broken Contact)</span>");
+      }
+    }
+    else {
+      $markup[] = Markup::create("<span class='contact'>No contact</span>");
+    }
+  }
+
+  // Find any text.
+  $at_settings = [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 25,
+  ];
+  if ($para["entity"]->hasField("field_description") && !empty($para["entity"]->get("field_description")->value)) {
+    $text = strip_tags($para["entity"]->get("field_description")->value);
+    $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, $at_settings) . "</span>");
+  }
+  elseif ($para["entity"]->hasField("field_left_column")
+    || $para["entity"]->hasField("field_middle_column")
+    || $para["entity"]->hasField("field_right_column")) {
+    $texts = [];
+    foreach (["field_left_column", "field_middle_column", "field_right_column"] as $field) {
+      if ($para["entity"]->hasField($field)) {
+        $texts[] = $para["entity"]->get($field)->value;
+      }
+    }
+    $text = strip_tags(implode(" ", $texts) ?? "");
+    $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, $at_settings) . "</span>");
+  }
+  elseif ($para["entity"]->hasField("field_sidebar_text")) {
+    $text = strip_tags($para["entity"]->get("field_sidebar_text")->value);
+    $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, $at_settings) . "</span>");
+  }
+
+  // Find any sub-fields.
+  foreach ($para["entity"]->getFields() as $field_name => $field) {
+    if ($field_name != "field_contact" &&
+      substr($field_name, 0, 5) == "field" &&
+      ($field->getFieldDefinition()->get("field_type") == "entity_reference_revisions"
+      || $field->getFieldDefinition()->get("field_type") == "entity_reference")) {
+      if (count($field) >= 1) {
+        // This is a collection with elements.
+        $markup[] = Markup::create("<span class='info'>has " . count($field) . " " . $field->getFieldDefinition()->get("label") . "</span>");
+      }
+      else {
+        // This is a collection, but has no elements.
+        $markup[] = Markup::create("<span class='info'>has no " . $field->getFieldDefinition()->get("label") . "!</span>");
+      }
+    }
+  }
+
+  if (empty($markup)) {
+    $markup[] = Markup::create("<span style='color: orange'>Pending!</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+
+}
+
+/**
+ * Sets is_component and is_subcomponent variables.
+ *
+ * Establishes whether the object subject of the variables array is embedded
+ * directly on a node or taxonomy term, or if it is embedded withing some other
+ * component.
+ *
+ * @param array $variables
+ *   Standard Drupal preprocess variables object.
+ */
+function _bos_component_embed_level(array &$variables) {
+  $variables['is_component_field'] = $variables['is_subcomponent_field'] = FALSE;
+
+  if (!empty($variables["field_name"])) {
+    return;
+  }
+
+  if (!empty($variables["element"]["#object"])) {
+    $object = $variables["element"]["#object"];
+
+    if ($object->getEntityTypeId() == "node") {
+      if (isset($parent) &&  in_array($parent->getEntityTypeId(), [
+        "paragraph",
+        "taxonomy",
+        "node",
+      ])) {
+        $variables['is_component_field'] = TRUE;
+        $parent = $object->getParentEntity();
+        if (isset($parent) && in_array($parent->getEntityTypeId(), [
+          "paragraph",
+          "taxonomy",
+          "node",
+        ])) {
+          $variables['is_component_field'] = FALSE;
+          $variables['is_subcomponent_field'] = TRUE;
+        }
+      }
+    }
+
+    elseif (in_array($object->getEntityTypeId(), ["paragraph", "taxonomy"])) {
+      $variables['is_component_field'] = TRUE;
+      $parent = $object->getParentEntity();
+      if (isset($parent) &&  in_array($parent->getEntityTypeId(), [
+          "paragraph",
+          "taxonomy"
+        ])) {
+        $variables['is_component_field'] = FALSE;
+        $variables['is_subcomponent_field'] = TRUE;
+      }
+      elseif (isset($parent) && $parent->getEntityTypeId() == "node") {
+        if (method_exists($parent, "getParentEntity")) {
+          $parent = $parent->getParentEntity();
+          if (isset($parent) && in_array($parent->getEntityTypeId(), [
+            "paragraph",
+            "taxonomy",
+            "node",
+          ])) {
+            $variables['is_component_field'] = FALSE;
+            $variables['is_subcomponent_field'] = TRUE;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Set Boston, MA as the default city and state on field_address.
+ *
+ * Walk the form recursively in order to account for nested paragraph forms.
+ *
+ * @param array $form
+ *   Drupal form to modify field_address default values for.
+ */
+function _set_default_address_field_values(array &$form) {
+  // If we're looking at field_address on the current level, set defaults
+  // if applicable.
+  if (array_key_exists('field_address', $form) && is_array($form['field_address'])) {
+    if (!empty($form['field_address'])) {
+      // Set Boston as the default city.
+      $language = Drupal::languageManager()->getDefaultLanguage()->getId();
+      if (empty($form['field_address'][$language][0]['#address']['locality'])) {
+        $form['field_address'][$language][0]['#address']['locality'] = "Boston";
+      }
+      // Set Massachusetts as the default state.
+      if (empty($form['field_address'][$language][0]['#address']['administrative_area'])) {
+        $form['field_address'][$language][0]['#address']['administrative_area'] = "MA";
+      }
+    }
+  }
+  // Continue to walk the forms array.
+  foreach ($form as $key => &$value) {
+    if ($key === 'field_address' || !is_array($value)) {
+      continue;
+    }
+    if (is_array($value)) {
+      _set_default_address_field_values($value);
+    }
+  }
+}
+
+/**
+ * Remove master view displays from view form fields.
+ *
+ * Callback to determine if key/value pair should be removed.
+ *
+ * @param mixed $list_option
+ *   Value being checked to determine if it is a master display label.
+ * @param mixed $key
+ *   Value being checked to determine if it is a master display key.
+ *
+ * @return bool
+ *   TRUE if this is a master display listing option, FALSE otherwise.
+ */
+function _remove_master_view_listings_from_view_fields($list_option, $key) {
+  if (strpos($key, '|default') !== FALSE && strpos($list_option, 'Master') !== FALSE) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Recursive search for a key/value pair and removes said pair from the array.
+ *
+ * @param array $array
+ *   Array being recursively searched on.
+ * @param callable $callback
+ *   Function must return boolean value indicating whether to remove the node.
+ *
+ * @return array
+ *   The array with all values removed based on callback.
+ */
+function walk_recursive_remove(array $array, callable $callback) {
+  foreach ($array as $k => $v) {
+    if (is_array($v)) {
+      $array[$k] = walk_recursive_remove($v, $callback);
+    }
+    else {
+      if ($callback($v, $k)) {
+        unset($array[$k]);
+      }
+    }
+  }
+
+  return $array;
+}
+
+/**
+ * Determines if passed paragraph is a direct child of the passed bundle.
+ *
+ * @return bool
+ *   If this is a child of FYI.
+ */
+function _paragraph_is_direct_child_of($entity, $bundle) {
+  if (!empty($entity) && is_a($entity, 'Drupal\paragraphs\Entity\Paragraph') && $entity->getParentEntity() != NULL && $entity->getParentEntity()->bundle() == $bundle) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Ensures the attributes element of a preprocess_hook is an attributes object.
+ *
+ * @param array $variables
+ *   The variables object from a preprocess hook.
+ * @param string $check_field
+ *   The attribute field.
+ */
+function _bos_components_fix_attributes(array &$variables, string $check_field = "attributes") {
+  if (function_exists("_bos_core_fix_attributes")) {
+    _bos_core_fix_attributes($variables, $check_field);
+  }
+}
+
+/**
+ * Runs a process which updates the icons for each module.
+ */
+function _bos_components_update_all_icons($safe = FALSE) {
+  $modules = \Drupal::service('extension.list.module')->getAllInstalledInfo();
+  $ignore = [
+    "bos_migration",
+    "bos_components",
+    "bos_content",
+    "bos_core",
+    "bos_vocab",
+  ];
+  foreach ($modules as $moduleName => $module) {
+    if (preg_match("/^(bos_)/", $moduleName)) {
+      if (!in_array($moduleName, $ignore)) {
+        _bos_core_install_icons($moduleName);
+      }
+    }
+  }
+  // Content Type modules with paragraphs ...
+  _bos_core_install_icons("node_how_to", FALSE);
+  _bos_core_install_icons("node_emergency_alert", FALSE);
+  _bos_core_install_icons("node_tabbed_content", FALSE);
+
+}
+
+/**
+ * Runs an iteration over all custom modules and exports configs (drush cde).
+ */
+function _bos_components_update_all_configs() {
+  require_once "/app/docroot/modules/contrib/config_devel/drush/config_devel.drush.inc";
+  $modules = \Drupal::service('extension.list.module')->getAllInstalledInfo();
+  $ignore = [
+    "bos_migration",
+    "bos_components",
+    "bos_content",
+    "bos_core",
+    "bos_vocab",
+  ];
+  foreach ($modules as $moduleName => $module) {
+    if (preg_match("/^(bos_)/", $moduleName)) {
+      if (!in_array($moduleName, $ignore)) {
+        drush_config_devel_export($moduleName);
+      }
+    }
+  }
+  drush_config_devel_export("bos_components");
+}

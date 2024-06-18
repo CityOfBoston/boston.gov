@@ -1,0 +1,68 @@
+uuid: 22bd4280-1499-4706-9644-db1cc9785e33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.vocab_city_councillors.field_active
+    - field.field.taxonomy_term.vocab_city_councillors.field_district
+    - field.field.taxonomy_term.vocab_city_councillors.field_email
+    - field.field.taxonomy_term.vocab_city_councillors.field_first_name
+    - taxonomy.vocabulary.vocab_city_councillors
+  module:
+    - fences
+id: taxonomy_term.vocab_city_councillors.default
+targetEntityType: taxonomy_term
+bundle: vocab_city_councillors
+mode: default
+content:
+  field_active:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_district:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_first_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_email: true
+  langcode: true

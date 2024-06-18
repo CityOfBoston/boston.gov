@@ -1,0 +1,16 @@
+uuid: a23b00cb-d1d5-6d23-a1f5-1b8ab3e22152
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+id: usefulness
+label: 'Likert: Usefulness'
+category: 'Feedback Form'
+likert: true
+options: |-
+  'very_useful': 'Very Useful'
+  'somewhat_useful': 'Useful'
+  'neutral': 'Neutral'
+  'not_useful': 'Not Useful'

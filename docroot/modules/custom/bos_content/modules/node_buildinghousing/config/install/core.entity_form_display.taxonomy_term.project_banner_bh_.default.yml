@@ -1,0 +1,109 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.project_banner_bh_.field_banner_moderation_state
+    - field.field.taxonomy_term.project_banner_bh_.field_banner_text
+    - field.field.taxonomy_term.project_banner_bh_.field_banner_title
+    - field.field.taxonomy_term.project_banner_bh_.field_show_banner
+    - taxonomy.vocabulary.project_banner_bh_
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_status
+        - group_banner
+      label: tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_status:
+      children:
+        - name
+        - field_banner_moderation_state
+      label: Status
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_banner:
+      children:
+        - field_show_banner
+        - field_banner_title
+        - field_banner_text
+      label: Banner
+      region: content
+      parent_name: group_tabs
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: taxonomy_term.project_banner_bh_.default
+targetEntityType: taxonomy_term
+bundle: project_banner_bh_
+mode: default
+content:
+  field_banner_moderation_state:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner_text:
+    type: text_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_banner_title:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_show_banner:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

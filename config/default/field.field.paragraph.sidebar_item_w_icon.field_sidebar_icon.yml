@@ -1,0 +1,23 @@
+uuid: 61451a4f-a4d2-47df-9ad7-0a9c7ccf78b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sidebar_icon
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+  module:
+    - options
+_core:
+  default_config_hash: t444XIAZC1EKQwUFnaoDcIoDZiHHeQbxVox2eLTpJcU
+id: paragraph.sidebar_item_w_icon.field_sidebar_icon
+field_name: field_sidebar_icon
+entity_type: paragraph
+bundle: sidebar_item_w_icon
+label: 'Sidebar Icon'
+description: 'Select from the list an icon for the sidebar item.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

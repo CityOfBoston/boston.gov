@@ -1,0 +1,19 @@
+uuid: 8eb6a8b0-3377-44e5-936f-1f3a4bcc41cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_follower_emails
+    - node.type.bh_update
+id: node.bh_update.field_bh_follower_emails
+field_name: field_bh_follower_emails
+entity_type: node
+bundle: bh_update
+label: 'Follower Emails'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

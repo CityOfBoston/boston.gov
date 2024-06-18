@@ -1,0 +1,18 @@
+uuid: cc17ffe4-c459-4d08-a388-0ffc2868a845
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.due_at_signing
+id: taxonomy_term.due_at_signing.name
+field_name: name
+entity_type: taxonomy_term
+bundle: due_at_signing
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

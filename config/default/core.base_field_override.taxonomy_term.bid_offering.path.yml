@@ -1,0 +1,20 @@
+uuid: 39d88764-f2a7-4ba7-8072-3762725b2bd3
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_offering
+  module:
+    - path
+id: taxonomy_term.bid_offering.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bid_offering
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,138 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_email module.
+ */
+
+use Drupal\bos_email\Services\DrupalService;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_email_theme($existing, $type, $theme, $path) {
+  return [
+    'mimemail_message__bos_email' => [
+      'base hook' => 'mimemail_message',
+      'template' => 'mimemail-message--bos-email',
+      ]
+    ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_email_preprocess_mimemail_message(&$variables) {
+  return;
+}
+
+/**
+ * Implements hook_mail().
+ */
+function bos_email_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case "hardbounce":
+      $message["from"] = "boston.gov<no-reply@boston.gov>";
+      $message["subject"] = "Boston.gov email recipient suppressed.";
+      $custom_msg = "Boston.gov email recipient ({$params["To"]}) has hard bounced, and is now suppressed in Postmark.";
+      $message["body"] =  _make_HTML_body(array_merge($params, $message), $custom_msg, Drupal::request()->headers->all());
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      break;
+
+    case "alerts.token":
+      $message["from"] = "boston.gov<no-reply@boston.gov>";
+      $message["subject"] = "Boston.gov email token issue.";
+      $custom_msg = "Authentication issue with PostMark email service in bos_email.<br>
+      There is an issue with the {$params["token_type"]}.<br>
+      This could indicate a hacking attempt to use the service as a relay.";
+      $message["body"] =  _make_HTML_body(array_merge($params, $message), $custom_msg, Drupal::request()->headers->all());
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      break;
+
+    case "alerts.honeypot":
+      $message["from"] = "boston.gov<no-reply@boston.gov>";
+      $message["subject"] = "Boston.gov honeypot issue.";
+      $custom_msg = "The honeypot for a form has some data in it.";
+      $message["body"] =  _make_HTML_body(array_merge($params, $message), $custom_msg, Drupal::request()->headers->all());
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      break;
+
+    case "monitor.all":
+      $message["from"] = "boston.gov<no-reply@boston.gov>";
+      $message["subject"] = "Postmark mailer issue on Boston.gov.";
+      $custom_msg = "There was an issue sending the following via Postmark.";
+      $message["body"] =  _make_HTML_body(array_merge($params, $message), $custom_msg, Drupal::request()->headers->all());
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      break;
+
+    default:
+      // This will handle templated emails.
+      DrupalService::renderEmail($params, $message);
+      break;
+  }
+
+}
+
+/**
+ * Creates an HTML table containing metadat from the email.
+ *
+ * @param $params
+ * @param $custom_msg
+ * @param $headers
+ *
+ * @return string[]
+ */
+function _make_HTML_body($params, $custom_msg, $headers) {
+  // Now build the html message.
+  $custom_table = "<p><table>";
+  if (!empty($params["subject"])) {
+    $custom_table .= "<tr><td>Subject: </td><td>{$params["subject"]}</td></tr>";
+  }
+  if (!empty($params["to"])) {
+    $custom_table .= "<tr><td>Recipient: </td><td>{$params["to"]}</td></tr>";
+  }
+  if (!empty($params["from"])) {
+    $custom_table .= "<tr><td>Recipient: </td><td>{$params["from"]}</td></tr>";
+  }
+  if (!empty($params["server"])) {
+    $custom_table .= "<tr><td>Service: </td><td>{$params["server"]}</td></tr>";
+  }
+  if (!empty($params["token_type"])) {
+    $custom_table .= "<tr><td>Authentication: </td><td>{$params["token_type"]}</td></tr>";
+  }
+  if (!empty($params["id"])) {
+    $custom_table .= "<tr><td>MailID: </td><td>{$params["id"]}</td></tr>";
+  }
+  $custom_table .= "</table></p>";
+  $custom_table .= "<table>";
+  $custom_table .= "<tr><td>Endpoint called</td><td>" . \Drupal::request()->getRequestUri() ."</td></tr>";
+  if (!empty($params["ErrorCode"])) {
+    $custom_table .= "<tr><td>HTTPCode: </td><td>{$params["ErrorCode"]}</td></tr>";
+  }
+  if (!empty($params["Message"])) {
+    $custom_table .= "<tr><td>Reported Error: </td><td>{$params["Message"]}</td></tr>";
+  }
+  $custom_table .= "<tr><td>Sender IP</td><td>" . \Drupal::request()->getClientIp() . "</td></tr>";
+  $custom_table .= "<tr><td>Headers</td><td>";
+  foreach($headers as $key => $values) {
+    $val = "";
+    foreach($values as $value) {
+      $val .= $value . "<br>";
+    }
+    $custom_table .= "- <b>{$key}:</b> {$val}";
+  }
+  $custom_table .= "</td></tr>";
+  if (\Drupal::request()->request && \Drupal::request()->request->has("email")) {
+    $custom_table .= "<tr><td>Original Payload</td><td>";
+    foreach(\Drupal::request()->get("email", []) as $key => $value) {
+      $custom_table .= "- <b>{$key}:</b> {$value}<br>";
+    }
+    $custom_table .= "</td></tr>";
+  }
+  $custom_table .= "</table>";
+
+  $custom_message = "<h2>{$custom_msg}</h2><p>{$custom_table}</p>";
+
+  return [$custom_message];
+}

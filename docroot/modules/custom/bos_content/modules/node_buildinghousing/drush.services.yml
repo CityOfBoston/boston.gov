@@ -1,0 +1,5 @@
+services:
+  node_buildinghousing.commands:
+    class: Drupal\node_buildinghousing\Commands\BHCommands
+    tags:
+      - { name: drush.command }

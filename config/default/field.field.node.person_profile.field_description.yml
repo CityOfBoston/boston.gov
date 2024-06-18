@@ -1,0 +1,21 @@
+uuid: 27e92152-20d6-4ec0-8bf7-367af3831d55
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.person_profile
+  module:
+    - text
+id: node.person_profile.field_description
+field_name: field_description
+entity_type: node
+bundle: person_profile
+label: Bio
+description: 'Please supply a biography.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

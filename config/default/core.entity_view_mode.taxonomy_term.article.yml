@@ -1,0 +1,13 @@
+uuid: b9cf5eb9-6f28-43d3-af3a-b5142ddf11ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: 4g0PrUgRTXpde8oBWBn0yXcGIiBYK_j6S-W2jOpcm84
+id: taxonomy_term.article
+label: Article
+description: ''
+targetEntityType: taxonomy_term
+cache: true

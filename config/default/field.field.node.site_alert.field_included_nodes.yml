@@ -1,0 +1,57 @@
+uuid: 2bbdb60d-5c9d-4bfc-b487-9065e5888a13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_included_nodes
+    - node.type.article
+    - node.type.department_profile
+    - node.type.event
+    - node.type.how_to
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.metrolist_affordable_housing
+    - node.type.person_profile
+    - node.type.place_profile
+    - node.type.post
+    - node.type.program_initiative_profile
+    - node.type.public_notice
+    - node.type.script_page
+    - node.type.site_alert
+    - node.type.tabbed_content
+    - node.type.topic_page
+id: node.site_alert.field_included_nodes
+field_name: field_included_nodes
+entity_type: node
+bundle: site_alert
+label: 'Show on Pages'
+description: "Add pages here to restrict where the Site Alert is shown.\r\n<b>If no pages are added, then the Site Alert will appear on all pages.</b>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      department_profile: department_profile
+      event: event
+      topic_page: topic_page
+      how_to: how_to
+      landing_page: landing_page
+      listing_page: listing_page
+      metrolist_affordable_housing: metrolist_affordable_housing
+      person_profile: person_profile
+      place_profile: place_profile
+      post: post
+      program_initiative_profile: program_initiative_profile
+      public_notice: public_notice
+      script_page: script_page
+      tabbed_content: tabbed_content
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

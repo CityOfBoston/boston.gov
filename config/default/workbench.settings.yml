@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: aGR45_bxRagev3Ecuwgjvr3x2Ccgsmsk-Evv-SIkwQM
+overview_left: 'workbench_my_edits:block_my_edits'
+overview_right: 'workbench_needs_review_cob:block_needs_review_cob'
+overview_main: 'archive:default'
+edits_main: 'workbench_edited:embed_1'
+all_main: 'workbench_recent_content:embed_1'

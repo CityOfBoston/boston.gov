@@ -1,0 +1,13 @@
+uuid: 2c1aa9bc-29a4-4cde-adca-5afadd837ce3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: uw1MtKgQ8zmCxxip8iRybspuHyjHL0NnlB36f8ipvQs
+id: node.example_node_list
+label: 'Example Node List'
+description: ''
+targetEntityType: node
+cache: true

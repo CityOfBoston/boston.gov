@@ -1,0 +1,25 @@
+uuid: 6a09b269-7144-4326-a063-bde39039acbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_iframe_size
+    - paragraphs.paragraphs_type.iframe
+  module:
+    - options
+_core:
+  default_config_hash: D_N7iMe2ibhqxrXPl2c4vA-Bq2LIfDhZ7HINahLX3pk
+id: paragraph.iframe.field_iframe_size
+field_name: field_iframe_size
+entity_type: paragraph
+bundle: iframe
+label: 'iFrame Size'
+description: 'This determines the height of the iframe. Auto will resize automatically. To get auto setup correctly, contact digital@boston.gov.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

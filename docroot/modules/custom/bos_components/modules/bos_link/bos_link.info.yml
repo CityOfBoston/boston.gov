@@ -1,0 +1,46 @@
+name:  HTML Link Components
+type: module
+description: Provides theming and config for link components and subcomponents.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.external_link.created
+  - core.base_field_override.paragraph.external_link.status
+  - core.entity_form_display.paragraph.external_link.default
+  - core.entity_view_display.paragraph.external_link.default
+  - core.entity_view_display.paragraph.external_link.group_of_links
+  - core.entity_view_display.paragraph.external_link.listing
+  - core.entity_view_display.paragraph.external_link.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.external_link.ribbon_link
+  - core.entity_view_display.paragraph.external_link.separated_title
+  - field.field.paragraph.external_link.field_external_link
+  - language.content_settings.paragraph.external_link
+  - paragraphs.paragraphs_type.external_link
+  - core.base_field_override.paragraph.internal_link.created
+  - core.base_field_override.paragraph.internal_link.status
+  - core.entity_form_display.paragraph.internal_link.default
+  - core.entity_view_display.paragraph.internal_link.default
+  - core.entity_view_display.paragraph.internal_link.listing
+  - core.entity_view_display.paragraph.internal_link.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.internal_link.ribbon_link
+  - core.entity_view_display.paragraph.internal_link.separated_title
+  - field.field.paragraph.internal_link.field_internal_link
+  - field.field.paragraph.internal_link.field_title
+  - language.content_settings.paragraph.internal_link
+  - paragraphs.paragraphs_type.internal_link
+  - core.entity_view_display.paragraph.document.separated_title
+  - core.base_field_override.paragraph.document.status
+  - core.entity_view_display.paragraph.document.default
+  - core.entity_view_display.paragraph.document.ribbon_link
+  - field.field.paragraph.document.field_title
+  - core.entity_view_display.paragraph.document.listing
+  - core.entity_view_display.paragraph.document.paragraphs_editor_preview
+  - paragraphs.paragraphs_type.document
+  - core.base_field_override.paragraph.document.created
+  - field.field.paragraph.document.field_document
+  - core.entity_form_display.paragraph.document.default
+  - language.content_settings.paragraph.document

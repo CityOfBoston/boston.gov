@@ -1,0 +1,23 @@
+uuid: 8b8cf8da-af9b-48a9-ae42-2afd7fc5a8d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sidebar_text
+    - paragraphs.paragraphs_type.sidebar_item
+  module:
+    - text
+_core:
+  default_config_hash: 9zZXx0SSgzRL71OHeADtUUR4gJUY9i2Wk99O4ff7tCI
+id: paragraph.sidebar_item.field_sidebar_text
+field_name: field_sidebar_text
+entity_type: paragraph
+bundle: sidebar_item
+label: 'Sidebar Text'
+description: 'Enter the text for the sidebar item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

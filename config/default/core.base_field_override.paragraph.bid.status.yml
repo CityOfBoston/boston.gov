@@ -1,0 +1,22 @@
+uuid: 72c6c3d4-555b-4e95-888e-3618af8e5e80
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bid
+id: paragraph.bid.status
+field_name: status
+entity_type: paragraph
+bundle: bid
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

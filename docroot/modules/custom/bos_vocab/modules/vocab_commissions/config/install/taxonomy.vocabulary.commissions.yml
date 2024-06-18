@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Boards and Commissions'
+vid: commissions
+description: 'References boards and commissions from the City Clerk database'
+weight: 0

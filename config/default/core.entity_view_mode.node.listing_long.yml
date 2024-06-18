@@ -1,0 +1,13 @@
+uuid: 67f3ece7-3fd3-4167-b1e6-ef809083b6e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Bp8q-WnlnlErTol1q9MnsWFqC2wyNP8fpyZXdNrWWKY
+id: node.listing_long
+label: 'Listing Long'
+description: ''
+targetEntityType: node
+cache: true

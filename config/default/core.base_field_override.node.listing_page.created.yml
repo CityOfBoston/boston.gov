@@ -1,0 +1,18 @@
+uuid: d20d41a1-b531-48e9-8095-e4dbc27654b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.created
+field_name: created
+entity_type: node
+bundle: listing_page
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

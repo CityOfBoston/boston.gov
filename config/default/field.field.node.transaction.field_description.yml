@@ -1,0 +1,21 @@
+uuid: aca61c95-8103-47b0-9bff-8ec4d07a9377
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.transaction
+  module:
+    - text
+id: node.transaction.field_description
+field_name: field_description
+entity_type: node
+bundle: transaction
+label: Description
+description: 'Describe what this transaction is for.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

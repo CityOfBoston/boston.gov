@@ -1,0 +1,24 @@
+uuid: 5fa7d287-8a81-4d03-8e5a-68c5fa02bac7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_data
+    - filter.format.json_friendly
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - text
+id: paragraph.bos_chart.field_component_data
+field_name: field_component_data
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart Data'
+description: "If type=\"url\" then this field must be a full public URL to the file.<br>\r\nif type=\"json_values then this field must be a json object with an array of rows: <br>e.g. <code>{\"values\": &lsqb;{\"a\": \"A\", \"b\": 28, \"predicted\": false}, {\"a\": \"B\", \"b\": 55, \"predicted\": false}&rsqb;}</code>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - json_friendly
+field_type: text_long

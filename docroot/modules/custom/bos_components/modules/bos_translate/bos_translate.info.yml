@@ -1,0 +1,9 @@
+name: bos_translate
+type: module
+description: 'Javascript based app to translate pages.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+
+
+

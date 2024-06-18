@@ -1,0 +1,20 @@
+uuid: 289273ed-ca8e-41da-af44-596e13663872
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_features
+  module:
+    - path
+id: taxonomy_term.ml_features.path
+field_name: path
+entity_type: taxonomy_term
+bundle: ml_features
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

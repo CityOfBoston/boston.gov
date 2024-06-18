@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.metatag
+field_name: metatag
+entity_type: node
+bundle: procurement_advertisement
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

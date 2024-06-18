@@ -1,0 +1,23 @@
+uuid: 90d782ed-7387-48e1-aeb5-3a0cef19c6db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contest_undervotes
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_contest_undervotes
+field_name: field_contest_undervotes
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Under Votes'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

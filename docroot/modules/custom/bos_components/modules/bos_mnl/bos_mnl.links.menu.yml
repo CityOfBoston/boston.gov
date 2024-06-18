@@ -1,0 +1,5 @@
+bos_mnl.admin:
+  title: 'MNL endpoint'
+  description: 'Administer the MNL endpoint module'
+  parent: system.admin_config_services
+  route_name: bos_mnl.admin

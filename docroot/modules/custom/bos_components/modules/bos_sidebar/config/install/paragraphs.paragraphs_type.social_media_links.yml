@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:7130af7c-f66e-4686-a4ca-7a61c9779da8'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'Contains multiple <b>Social Media<b> (social_networking) link items.'
+    image_path: sites/default/files/paragraphs_type_icon/social_media_links_icon.jpg
+id: social_media_links
+label: 'Social Media Links'
+icon_uuid: 7130af7c-f66e-4686-a4ca-7a61c9779da8
+icon_default: null
+description: 'Contains multiple <b>Social Media<b> (social_networking) link items.'
+behavior_plugins: {  }

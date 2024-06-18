@@ -1,0 +1,87 @@
+bos_email.token:
+  path: '/rest/email_token/{operation}'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::token'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.send:
+  path: '/rest/email/{service}'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::begin'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.cancel.scheduled:
+  path: '/rest/email_cancel/{service}'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::cancelEmail'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.send_token_session:
+  path: '/rest/email_session/{service}'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::beginSession'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.send_legacy:
+  path: '/emails'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::begin'
+  options:
+    no_cache: TRUE
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
+
+bos_email.newsletter_manager:
+  path: '/rest/email_newsletter/{operation}'
+  defaults:
+   _controller: '\Drupal\bos_email\Controller\UpakneeAPI::begin'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+   _access: 'TRUE'
+
+bos_email.newsletter_manager_legacy:
+  path: '/subscriptions'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\UpakneeAPI::begin'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.postmark.webhook:
+  path: '/rest/email/postmark/{service}/{stream}'
+  defaults:
+    _controller: '\Drupal\bos_email\Controller\EmailController::callback'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _access: 'TRUE'
+
+bos_email.admin.services:
+  path: '/admin/config/system/boston/email_services'
+  defaults:
+    _title: 'Email Services'
+    _form: '\Drupal\bos_email\Form\ConfigForm'
+  requirements:
+    _role: "site_administrator"

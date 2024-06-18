@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_date
+    - taxonomy.vocabulary.holidays
+  module:
+    - datetime
+id: taxonomy_term.holidays.field_date
+field_name: field_date
+entity_type: taxonomy_term
+bundle: holidays
+label: Date
+description: 'The date which this event falls on.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

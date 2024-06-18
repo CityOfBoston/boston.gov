@@ -1,0 +1,12 @@
+uuid: 4db9ae07-8089-496b-a00c-cedac16991a1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-uf0M0uot0Il3-eWXi6mFPybN1fLC2rfKWAPKjab-b4'
+machine: loc
+description: null
+name: Docker
+url: 'https://boston.lndo.site'
+fg_color: '#ffffff'
+bg_color: '#023e0a'

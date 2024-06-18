@@ -1,0 +1,21 @@
+uuid: a2bffd8e-c3e9-4ff1-b7ca-234d6d4ecedf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_initial_td_vote_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_initial_td_vote_date
+field_name: field_bh_initial_td_vote_date
+entity_type: node
+bundle: bh_project
+label: 'Initial TD Vote Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

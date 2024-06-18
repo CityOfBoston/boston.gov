@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:4e378e0d-1931-4536-bda6-3e35320716fe'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: sites/default/files/paragraphs_type_icon/daily_hours_icon.svg
+id: daily_hours
+label: 'Daily Hours'
+icon_uuid: 4e378e0d-1931-4536-bda6-3e35320716fe
+icon_default: null
+description: 'Migrated from paragraph bundle Daily Hours'
+behavior_plugins: {  }

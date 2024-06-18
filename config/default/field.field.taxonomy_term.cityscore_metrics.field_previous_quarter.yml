@@ -1,0 +1,25 @@
+uuid: e7bb0e25-36f0-48c4-b23c-d805dd14e264
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_previous_quarter
+    - taxonomy.vocabulary.cityscore_metrics
+_core:
+  default_config_hash: qUrRB3XxoiUIVShgSJZJg2JpPtjej3H9MQ0WezpFD6k
+id: taxonomy_term.cityscore_metrics.field_previous_quarter
+field_name: field_previous_quarter
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'Previous Quarter'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

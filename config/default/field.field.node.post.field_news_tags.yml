@@ -1,0 +1,30 @@
+uuid: 2e880d87-0b0c-43b6-b959-59d24df1a13e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_tags
+    - node.type.post
+    - taxonomy.vocabulary.news_tags
+_core:
+  default_config_hash: nz6D__jkZ7WTBEpk4_4zsjabUhxzra28r8DVqfNahQs
+id: node.post.field_news_tags
+field_name: field_news_tags
+entity_type: node
+bundle: post
+label: Tags
+description: 'Add <b>News Tags</b> to group similar news Posts together.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      news_tags: news_tags
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

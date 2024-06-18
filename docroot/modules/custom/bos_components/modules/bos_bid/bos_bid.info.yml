@@ -1,0 +1,26 @@
+name:  Bid Component
+type: module
+description: Specifies company bidding on RFP, the amount they bid, and whether or not they were awarded the project.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+config_devel:
+  - core.entity_form_display.paragraph.bid.default
+  - core.entity_form_display.taxonomy_term.bid_offering.default
+  - core.entity_form_display.taxonomy_term.bid_type.default
+  - core.entity_view_display.paragraph.bid.default
+  - core.entity_view_display.paragraph.bid.paragraphs_editor_preview
+  - core.entity_view_display.taxonomy_term.bid_offering.default
+  - core.entity_view_display.taxonomy_term.bid_type.default
+  - field.field.paragraph.bid.field_awarded
+  - field.field.paragraph.bid.field_bid_amount
+  - field.field.paragraph.bid.field_company_name
+  - language.content_settings.paragraph.bid
+  - language.content_settings.taxonomy_term.bid_offering
+  - language.content_settings.taxonomy_term.bid_type
+  - paragraphs.paragraphs_type.bid
+  - rabbit_hole.behavior_settings.taxonomy_vocabulary_bid_type
+  - taxonomy.vocabulary.bid_offering
+  - taxonomy.vocabulary.bid_type

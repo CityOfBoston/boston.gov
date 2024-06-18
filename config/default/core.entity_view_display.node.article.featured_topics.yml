@@ -1,0 +1,49 @@
+uuid: 7e99f672-494a-4453-bbc9-540e96f089ac
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_topics
+    - field.field.node.article.body
+    - field.field.node.article.field_components
+    - field.field.node.article.field_contact
+    - field.field.node.article.field_content_feeds
+    - field.field.node.article.field_hide_contact_form
+    - field.field.node.article.field_intro_text
+    - field.field.node.article.field_manual_date
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_published_date
+    - field.field.node.article.field_sidebar_components
+    - field.field.node.article.field_updated_date
+    - node.type.article
+  module:
+    - user
+_core:
+  default_config_hash: l5xo6I2w_3wxznBTVoQ0AoNoBspu8PE3RoSslkJY9YM
+id: node.article.featured_topics
+targetEntityType: node
+bundle: article
+mode: featured_topics
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_components: true
+  field_contact: true
+  field_content_feeds: true
+  field_hide_contact_form: true
+  field_intro_text: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

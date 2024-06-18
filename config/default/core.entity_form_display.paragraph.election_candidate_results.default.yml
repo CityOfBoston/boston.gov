@@ -1,0 +1,84 @@
+uuid: 450e891c-240c-4538-ba4e-4ca558a190ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_candidate_results.field_calc_percent
+    - field.field.paragraph.election_candidate_results.field_candidate_prtid
+    - field.field.paragraph.election_candidate_results.field_candidate_vot
+    - field.field.paragraph.election_candidate_results.field_candidate_wrind
+    - field.field.paragraph.election_candidate_results.field_election_candidate
+    - paragraphs.paragraphs_type.election_candidate_results
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_data:
+      children:
+        - field_candidate_vot
+        - field_candidate_wrind
+        - field_candidate_prtid
+        - field_calc_percent
+      label: 'Voting Results'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: flex
+        show_empty_fields: true
+        id: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+id: paragraph.election_candidate_results.default
+targetEntityType: paragraph
+bundle: election_candidate_results
+mode: default
+content:
+  field_calc_percent:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_prtid:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_vot:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_wrind:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_election_candidate:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

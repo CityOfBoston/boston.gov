@@ -1,0 +1,22 @@
+uuid: ed7b6aa0-8264-406b-aa0a-516be2fae6b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_disposition_type
+id: taxonomy_term.bh_disposition_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: bh_disposition_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

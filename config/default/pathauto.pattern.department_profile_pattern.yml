@@ -1,0 +1,25 @@
+uuid: 788576ed-a8ff-4624-be23-aa6a0dd5fc68
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: department_profile_pattern
+label: 'Contact or Department Type Pattern'
+type: 'canonical_entities:node'
+pattern: '[boston:contact-path]/[node:title]'
+selection_criteria:
+  715ff79b-c0ec-4bb1-ac91-16ead4efe64c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 715ff79b-c0ec-4bb1-ac91-16ead4efe64c
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      department_profile: department_profile
+      how_to: how_to
+      person_profile: person_profile
+selection_logic: and
+weight: -5
+relationships: {  }

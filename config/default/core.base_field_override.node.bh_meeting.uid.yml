@@ -1,0 +1,20 @@
+uuid: cb5c3545-9e8d-469a-9e86-e1ff55714ee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+id: node.bh_meeting.uid
+field_name: uid
+entity_type: node
+bundle: bh_meeting
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

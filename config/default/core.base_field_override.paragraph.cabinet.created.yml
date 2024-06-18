@@ -1,0 +1,20 @@
+uuid: 11d486af-6643-4de9-952b-73ee4fdd09f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cabinet
+_core:
+  default_config_hash: RackelEDRiK_wtrxLDQyp1PE6twGa4iG43okcOp_3M4
+id: paragraph.cabinet.created
+field_name: created
+entity_type: paragraph
+bundle: cabinet
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

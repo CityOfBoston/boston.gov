@@ -1,0 +1,7 @@
+name: 'Geocoding API'
+type: module
+description: 'Requests Address and Geolocation data from Geocoders'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies: { }
+config_devel: { }

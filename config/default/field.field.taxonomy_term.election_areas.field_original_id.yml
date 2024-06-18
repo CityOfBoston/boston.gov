@@ -1,0 +1,23 @@
+uuid: c7ee2667-c427-4cd4-9f54-c4edeaea0f93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_original_id
+    - taxonomy.vocabulary.election_areas
+id: taxonomy_term.election_areas.field_original_id
+field_name: field_original_id
+entity_type: taxonomy_term
+bundle: election_areas
+label: AreaId
+description: 'The Area ID from the imported file.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

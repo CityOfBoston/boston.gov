@@ -1,0 +1,191 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for node_how_to module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Prepares variables for event templates.
+ *
+ * Default template: event.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the event information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__how_to(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function node_how_to_theme() {
+  $theme['node__how_to'] = [
+    'base hook' => 'node',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['node__department_profile__article'] = [
+    'base hook' => 'node',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_how_to_tabs'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_contact__how_to__mode__full'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_intro_image__how_to'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_need_to_know'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_links__how_to__mode__full'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_payment_info'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['field__field_operation_hours'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['paragraph__how_to_contact_step'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['paragraph__how_to_tab'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['paragraph__how_to_text_step'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  $theme['paragraph__daily_hours'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_content/modules/node_how_to/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_how_to_preprocess_node__how_to(&$variables) {
+
+  $node = $variables['node'];
+  $field_how_to_tabs = $node->get('field_how_to_tabs');
+  $tab_paragraphs = $field_how_to_tabs->referencedEntities();
+  $tabs = [];
+  foreach ($tab_paragraphs as $tab_paragraph) {
+    $tabs[] = $tab_paragraph->field_how_to_title->value;
+  }
+
+  $variables['tabs'] = $tabs;
+
+  // Add the js to enable the tabs.
+  $variables['#attached']['library'][] = "bos_theme/page.tabbed_page";
+
+  $variables['image_class'] = "hro--d";
+  if ($node->hasField('field_intro_image') && $node->get('field_intro_image')->count()) {
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+    $photo_id = Html::getUniqueId('hro');
+    $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+    $variables['#attached']['html_head'][] = [
+      [
+        "#tag" => "style",
+        "#value" => $css,
+        "#weight" => 100,
+      ],
+      'how-to-intro-image-css',
+    ];
+    $variables['image_class'] = "$photo_id hro--t";
+  }
+
+  // Add markup to locate the contextual editor button.
+  if (function_exists("_bos_theme_fix_attributes")) {
+    _bos_theme_fix_attributes($variables);
+    $variables["attributes"]->addClass("desktop-100");
+    $variables["attributes"]->addClass("contextual-region");
+    $variables["attributes"]->addClass("tab-pc");
+    $variables["attributes"]->addClass("p-t500");
+    $variables["attributes"]->addClass("node-" . $variables["node"]->id());
+    $variables["attributes"]->addClass("clearfix");
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_how_to_preprocess_page(&$variables) {
+  // We dont ever want a hero section from the page template.
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      // $variables['node'] is the nid when a view_display version of the
+      // page is rendered.
+      return;
+    }
+
+    if ($node->bundle() == "how_to") {
+      // Add intro_image as background to the title panel.
+      // Now make and render the Intro_image block.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--fp");
+
+        // Attach custom CSS for overrides
+        $variables['#attached']['library'][] = 'node_how_to/node_how_to_styles';
+
+      }
+
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_how_to_preprocess_paragraph(&$variables) {
+
+  $paragraph = $variables['elements']['#paragraph'];
+  $paragraph_type = $paragraph->getType();
+  static $tabs_counter = -1;
+  if ($paragraph_type == 'how_to_tab') {
+    $variables['how_to_tabs_count'] = ++$tabs_counter;
+    $variables['how_to_tabs_total'] = $paragraph->getParentEntity()->field_how_to_tabs->count() ?? 0;
+  }
+  elseif ($paragraph_type == 'how_to_text_step' || $paragraph_type == 'how_to_contact_step') {
+    static $steps_counter;
+    static $previous_tab_count;
+    if ($previous_tab_count < $tabs_counter) {
+      $steps_counter = 0;
+      $previous_tab_count = $tabs_counter;
+    }
+    $variables['how_to_step_count'] = ++$steps_counter;
+  }
+
+}

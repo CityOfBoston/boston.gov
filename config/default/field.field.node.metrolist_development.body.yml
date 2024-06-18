@@ -1,0 +1,25 @@
+uuid: 602809a4-2d39-4857-963e-c8ac8e5d45f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.metrolist_development
+  module:
+    - text
+_core:
+  default_config_hash: K1b5UDJrAOilSLm1xTsRO5f0jyQFyZta08kvjQuTHZ0
+id: node.metrolist_development.body
+field_name: body
+entity_type: node
+bundle: metrolist_development
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

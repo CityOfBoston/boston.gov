@@ -1,0 +1,27 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.listing
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - link
+id: paragraph.external_link.listing
+targetEntityType: paragraph
+bundle: external_link
+mode: listing
+content:
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

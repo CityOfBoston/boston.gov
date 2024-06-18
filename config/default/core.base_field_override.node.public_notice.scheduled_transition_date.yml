@@ -1,0 +1,20 @@
+uuid: 9166f1f0-8154-436e-a2b3-f5f12386ac05
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+  module:
+    - datetime
+id: node.public_notice.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: public_notice
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,39 @@
+{#
+  Themes Views' default multi-select element as a set of checkboxes.
+
+  Available variables:
+    - element: The collection of checkboxes.
+    - children: An array of keys for the children of element.
+    - is_nested: TRUE if this is to be rendered as a nested list.
+    - depth: If is_nested is TRUE, this holds an array in the form of
+      child_id => nesting_level which defines the depth a given element should
+      appear in the nested list.
+#}
+{%
+  set classes = [
+    'form-checkboxes',
+    isNested ? 'bef-nested',
+    hasSelectAllNone ? 'bef-select-all-none',
+    hasSelectAllNoneNested ? 'bef-select-all-none-nested',
+  ]
+%}
+<div class="form-item form-type-select form-item-field-contact-target-id">
+  <div class="form-checkboxes bef-select-as-checkboxes bef-required-filter-processed">
+    <div class="bef-checkboxes">
+    {% set current_nesting_level = 0 %}
+    {% for child in children %}
+      {% set item = attribute(element, child) %}
+      {% if isNested %}
+        {% set new_nesting_level = attribute(depth, child) %}
+        {% include '@better_exposed_filters/bef-nested-elements.html.twig' %}
+        {% set current_nesting_level = new_nesting_level %}
+      {% else %}
+        <div class="form-item form-type-bef-checkbox form-item-{{ item['#id'] }}">
+          <input type="{{ item['#type'] }}" name="{{ item['#name'] }}" id="{{ item['#id'] }}" value="{{ item['#return_value'] }}">
+          <label class="option" for="{{ item['#id'] }}">{{ item['#title'] }}</label>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+/*
+  This stylesheet contains style defaults for the node_article entity when shown in ckeditor.
+  It will override those styles provided by bos_theme/css/ckeditor.boston.css.
+
+  IT WILL ONLY BE CALLED ON NODE_ARTICLE EDITOR PAGES.
+ */
+
+body.cke_editable {
+  text-align: center;
+}
+@media screen and (max-width: 576px) {
+  body.cke_editable p {
+    width: 95%;
+    margin: 20px auto;
+    font-size: 8.5px;
+  }
+}
+@media screen and (min-width: 576px) {
+  body.cke_editable p {
+    margin: 20px auto;
+    font-size: 1.5vw;
+    padding: 0 2px;
+  }
+}

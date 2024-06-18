@@ -1,0 +1,84 @@
+uuid: 8b0f47f6-0cd5-4e5a-b48c-f5ea1930107e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+
+    - field.field.node.event.field_cancel_event
+    - field.field.node.event.field_city_hall
+    - field.field.node.event.field_city_sponsored
+    - field.field.node.event.field_components
+    - field.field.node.event.field_contact
+    - field.field.node.event.field_cost
+    - field.field.node.event.field_details_link
+    - field.field.node.event.field_email
+    - field.field.node.event.field_event_contact
+    - field.field.node.event.field_event_dates
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_extra_info_event
+    - field.field.node.event.field_featured
+    - field.field.node.event.field_intro_image
+    - field.field.node.event.field_links
+    - field.field.node.event.field_multiple_neighborhoods
+    - field.field.node.event.field_people
+    - field.field.node.event.field_phone_number
+    - field.field.node.event.field_place
+    - field.field.node.event.field_program_initiative
+    - field.field.node.event.field_published_date
+    - field.field.node.event.field_related_content
+    - field.field.node.event.field_related_departments
+    - field.field.node.event.field_related_events_notices
+    - field.field.node.event.field_related_guides
+    - field.field.node.event.field_related_posts
+    - field.field.node.event.field_sidebar_components
+    - field.field.node.event.field_thumbnail
+    - field.field.node.event.field_type_of_content
+    - field.field.node.event.field_updated_date
+    - node.type.event
+  module:
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  comment_node_event: true
+  field_cancel_event: true
+  field_city_hall: true
+  field_city_sponsored: true
+  field_components: true
+  field_contact: true
+  field_cost: true
+  field_details_link: true
+  field_email: true
+  field_event_contact: true
+  field_event_dates: true
+  field_event_type: true
+  field_extra_info_event: true
+  field_featured: true
+  field_intro_image: true
+  field_links: true
+  field_multiple_neighborhoods: true
+  field_people: true
+  field_phone_number: true
+  field_place: true
+  field_program_initiative: true
+  field_published_date: true
+  field_related_content: true
+  field_related_departments: true
+  field_related_events_notices: true
+  field_related_guides: true
+  field_related_posts: true
+  field_sidebar_components: true
+  field_thumbnail: true
+  field_type_of_content: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

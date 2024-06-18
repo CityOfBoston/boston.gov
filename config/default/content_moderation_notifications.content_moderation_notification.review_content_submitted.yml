@@ -1,0 +1,25 @@
+uuid: 928cdcb5-c963-47e6-9fc5-166a8aa06763
+langcode: en
+status: false
+dependencies: {  }
+id: review_content_submitted
+workflow: city_of_boston_workflows
+transitions:
+  draft_from_published: draft_from_published
+  submit_for_review: submit_for_review
+  reject: reject
+  update_draft: update_draft
+roles:
+  authenticated: authenticated
+  administrator: administrator
+  content_editor: content_editor
+  content_reviewer: content_reviewer
+  content_author: content_author
+author: true
+site_mail: false
+emails: 'stella.ubaha@boston.gov, ogunor@gmail.com'
+subject: 'Your page has been published to Boston.gov!'
+body:
+  value: "<p>Thank you for submitting your content to “needs review”. The page below has been published:</p>\r\n\r\n<p>[url]</p>\r\n\r\n<p>If you have any questions or concerns, please email digital@boston.gov.</p>\r\n\r\n<p>Best,</p>\r\n\r\n<p>Digital Services Team</p>\r\n"
+  format: filtered_html
+label: 'Review Content Submitted'

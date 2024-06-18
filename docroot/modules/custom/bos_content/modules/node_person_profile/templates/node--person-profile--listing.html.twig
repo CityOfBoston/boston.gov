@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+#}
+<article {{ attributes.addClass('cdp m-t500 g--1 g--3--sl').removeClass('node-person-profile') }}>
+  <a href="{{ person_link }}" class="cdp-l d-b p-a300" role="group">
+
+    {{ content.field_person_photo }}
+
+    <div>
+
+      <div class="cdp-t t--sans t--upper">
+        {{ content.title.0 }}
+      </div>
+
+      {% if content.field_position_title['#items'].getValue() %}
+        <div class="cdp-st t--subinfo t--gd">
+          {{ content.field_position_title }}
+        </div>
+      {% endif %}
+
+    </div>
+
+  </a>
+
+  {% if preferred_contact %}
+
+    {% if preferred_contact == 'email' %}
+
+      {{ content.field_email }}
+
+    {% elseif preferred_contact == 'phone' %}
+
+      {{ content.field_phone_number }}
+
+    {% endif %}
+
+  {% endif %}
+
+</article>

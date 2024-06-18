@@ -1,0 +1,182 @@
+uuid: 3c4c8d8d-29d2-4b8b-ad3a-2d00f479ee8a
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.node.neighborhood_lookup.field_checksum
+    - field.field.node.neighborhood_lookup.field_import_date
+    - field.field.node.neighborhood_lookup.field_sam_address
+    - field.field.node.neighborhood_lookup.field_sam_id
+    - field.field.node.neighborhood_lookup.field_sam_neighborhood_data
+    - field.field.node.neighborhood_lookup.field_updated_date
+    - node.type.neighborhood_lookup
+  module:
+    - bos_core
+    - datetime
+    - fences
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_header:
+      children:
+        - field_sam_address
+        - field_sam_id
+        - published_at
+        - field_updated_date
+        - group_json
+        - field_checksum
+      label: ''
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: 'm-t300 m-b300'
+        show_empty_fields: false
+        id: ''
+        description: ''
+    group_json:
+      children:
+        - group_data
+      label: 'JSON Data >'
+      parent_name: group_header
+      region: content
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: 'lnk t--bold'
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'This information is provided from Civis.'
+    group_data:
+      children:
+        - field_sam_neighborhood_data
+      label: ''
+      parent_name: group_json
+      region: content
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+_core:
+  default_config_hash: 8w9Wwd-4T6WXNnRRi0rJnJ5u8Vm0HzeVDzwkflhBFlQ
+id: node.neighborhood_lookup.default
+targetEntityType: node
+bundle: neighborhood_lookup
+mode: default
+content:
+  field_checksum:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: 'fl--l m-r300'
+    weight: 6
+    region: content
+  field_sam_address:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: txt-l
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_sam_id:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: 'fl--l m-r300'
+    weight: 2
+    region: content
+  field_sam_neighborhood_data:
+    type: cob_formatter
+    label: hidden
+    settings:
+      filter: json
+      json_table_type: ulli
+      token_replace: '1'
+      autop: '1'
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: 'fl--l m-r300'
+    weight: 4
+    region: content
+  published_at:
+    type: timestamp
+    label: inline
+    settings:
+      date_format: date_format_medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: 'fl--l m-r300'
+    weight: 3
+    region: content
+hidden:
+  field_import_date: true
+  langcode: true
+  links: true

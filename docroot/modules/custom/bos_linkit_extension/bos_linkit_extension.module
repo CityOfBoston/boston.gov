@@ -1,0 +1,529 @@
+<?php
+
+/**
+ * @file
+ * The main module for the bos_linkit_extension module.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_rebuild().
+ */
+function bos_linkit_extension_rebuild() {
+  // Install icons and images from the images/custom folder.
+  $path = drupal::root() . "/sites/default/files/custom";
+  if (!file_exists($path)) {
+    mkdir($path, 0777, TRUE);
+  }
+
+  $modName = basename(__FILE__, ".module");
+  $modulePath = drupal::root() . '/' .\Drupal::service('extension.path.resolver')->getPath("module", $modName);
+  $fromPath = $modulePath . "/images/custom";
+  $dir = dir($fromPath);
+  $icons = [];
+  while (FALSE !== ($file = $dir->read())) {
+    if (strpos($file, ".svg") > 0 || strpos($file, ".png") || strpos($file, ".gif") > 0) {
+      $icons[] = $file;
+    }
+  }
+
+  foreach ($icons as $icon) {
+    $destIcon = $path . "/" . $icon;
+    if (file_exists($destIcon)) {
+      unlink($destIcon);
+    }
+    copy($fromPath . "/" . $icon, $destIcon);
+
+    // Check if the file exists that is listed in para.para_type.module.yml.
+    $filesystem = \Drupal::service('file_system');
+    if (!empty($filesystem)) {
+      $destination = "public://custom/" . $icon;
+      $image = Drupal::entityTypeManager()->getStorage("file")
+        ->loadByProperties(["uri" => $destination]);
+      if (count($image) == 0) {
+        $image = File::create();
+        $image->setFileUri($destination);
+        $image->setOwnerId(\Drupal::currentUser()->id());
+        $image->setMimeType('image/' . pathinfo($destination, PATHINFO_EXTENSION));
+        $image->setFileName($filesystem->basename($destination));
+        $image->setPermanent();
+        $image->save();
+      }
+
+      // Now install the CKEditor icon for the medial embed button.
+      if ($icon == "embed_button_image.png") {
+        $mod = \Drupal::entityTypeManager()
+          ->getStorage("embed_button")
+          ->load("media_entity_embed");
+        if (!empty($image) && is_array($image)) {
+          $image = array_pop($image);
+        }
+        $file_uuid = $image->get("uuid")->value;
+        $mod->set("icon_uuid", $file_uuid)->save();
+      }
+    }
+  }
+
+  // Make sure this runs last.
+  module_set_weight("bos_linkit_extension", 100);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function bos_linkit_extension_module_implements_alter(&$implementations, $hook) {
+  // Move this to run after the other media dialog editor functions.
+  if ($hook != "form_editor_link_dialog_alter") {
+    return;
+  }
+  unset($implementations["linkit"]);
+  unset($implementations["editor_advanced_link"]);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Add a title and a target fields on EditorLinkDialog if the filter allows it.
+ * Note: the editor_file module declares that its EditorFileDialog form uses
+ *   'editor_link_dialog' as base_form_id. In this case, the function above is
+ *   going to be called as an implementation of hook_form_BASE_FORM_ID_alter().
+ */
+function bos_linkit_extension_form_editor_link_dialog_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!isset($form["href_dirty_check"])) {
+    if (function_exists("linkit_form_editor_link_dialog_alter")) {
+      linkit_form_editor_link_dialog_alter($form, $form_state, $form_id);
+    }
+  }
+  if (!isset($form["advanced"])) {
+    if (function_exists("editor_advanced_link_form_editor_link_dialog_alter")) {
+      editor_advanced_link_form_editor_link_dialog_alter($form, $form_state, $form_id);
+    }
+  }
+
+  // Remap the storage directory if needed.
+  $editor = $form_state->getBuildInfo()["args"][0];
+  $directory = $editor->getThirdPartySetting("editor_file", "directory");
+  $editor->getThirdPartySetting("editor_file", "directory", $directory);
+
+  // Rewrite extisting form elements using placeholders.
+  $form["attributes"]["title"]["#placeholder"] = "Add a title attribute for the link";
+  $form["attributes"]["title"]["#description"] = Markup::create("<b>Tip:</b> <i>This usually appears as a tooltip on hover.</i>");
+  $form["attributes"]["href"]["#placeholder"] = "Start typing to find content";
+  $form["attributes"]["href"]["#description"] = Markup::create("<b>Tip:</b> <i>You can paste a URL copied from elsewhere.</i>");
+  // Urldecode the attributes display values.
+  // Urldecode the attributes display values.
+  $form["attributes"]["href"]["#default_value"] = urldecode($form["attributes"]["href"]["#default_value"]);
+  $form["attributes"]["title"]["#default_value"] = urldecode($form["attributes"]["title"]["#default_value"]);
+
+  $file_upload = json_decode('{"href":{"#title":"URL","#type":"textfield","#default_value":"","#maxlength":2048,"#required":false,"#access":false,"#weight":0},"title":{"#type":"textfield","#title":"Title","#description":"Populates the title attribute of the link, usually shown as a small tooltip on hover.","#default_value":"","#maxlength":512,"#weight":1,"#access":true},"class":{"#type":"textfield","#title":"CSS classes","#description":"List of CSS classes to add to the link, separated by spaces.","#default_value":"","#maxlength":512,"#access":false,"#group":"advanced"},"id":{"#type":"textfield","#title":"ID","#description":"Allows linking to this content using a <a href=\"https:\/\/en.wikipedia.org\/wiki\/Fragment_identifier\">URL fragment<\/a>). Must be unique.","#default_value":"","#maxlength":512,"#access":false,"#group":"advanced"},"target":{"#title":"Open in new window","#type":"checkbox","#default_value":false,"#return_value":"_blank","#access":false,"#group":"advanced"},"rel":{"#type":"textfield","#title":"Relation (rel)","#description":"Often used by JS galleries.","#default_value":"","#maxlength":512,"#access":false,"#group":"advanced"}}', TRUE);
+  $file_fid = json_decode('{"#title":"File","#type":"managed_file","#upload_location":"public:\/\/inline-files","#default_value":null,"#upload_validators":{"file_validate_extensions":["txt pdf doc xls ppt"],"file_validate_size":[0]}}', TRUE);
+
+  // Modify the file storage location to be date-driven.
+  $date = date("Y/m", strtotime("now"));
+  $file_fid["#upload_location"] = "public://file/" . $date;
+  $file_fid["#upload_validators"]["file_validate_extensions"][0] = "jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov mp4 m4a m4v mpeg avi ogg oga ogv weba webp webm svg";
+
+  // Create the horizontal tabs.
+  $form['cob_tabs'] = [
+    "#type" => "horizontal_tabs",
+    "#tree" => TRUE,
+    "stuff" => [
+      "0" => [
+        "#type" => 'details',
+        "#title" => "Internal / External",
+        "#attributes" => [
+          "class" => [10 => "cob-details-wrapper"],
+          "data-horiz-id" => 0,
+        ],
+        "form" => [
+          "#tree" => TRUE,
+          "#parents" => ["cob_tabs", "stuff", 0, "form"],
+          "attributes" => $form["attributes"],
+        ],
+      ],
+      "1" => [
+        "#type" => 'details',
+        "#title" => "Email / Phone",
+        "#attributes" => [
+          "class" => [10 => "cob-details-wrapper"],
+          "data-horiz-id" => 1,
+        ],
+        "form" => [
+          "#tree" => TRUE,
+          "#parents" => ["cob_tabs", "stuff", 1, "form"],
+          "email" => [
+            "#weight" => -100,
+            "radio-group" => [
+              "#type" => "fieldset",
+              "#attributes" => ["class" => [10 => "bos-boxed-content-t fieldgroup"]],
+              "link_type" => [
+                "#type" => "radios",
+                '#title' => t('Select Link Type'),
+                "#attributes" => ["class" => [10 => "cob-radio-wrapper"]],
+                '#options' => [
+                  "0" => t('Email'),
+                  "1" => t('Phone'),
+                ],
+                '#default_value' => "0",
+              ],
+            ],
+            "email-frame" => [
+              '#type' => 'container',
+              "#attributes" => ["class" => [10 => "cob-radio-frameset cob-radio-0"]],
+              '#markup' => "
+                <p>Provide initial values in the email that will be sent.<br>
+                <b>Note:</b> Most users email clients (e.g. gmail) will allow
+                 the user to change all values provided below.</p>
+              ",
+              "address" => [
+                '#type' => 'textfield',
+                '#title' => t('E-Mail Address'),
+                '#placeholder' => "The email address the user will send to.",
+                '#size' => 60,
+                '#maxlength' => 128,
+              ],
+              "subject" => [
+                '#type' => 'textfield',
+                '#title' => t('E-Mail Subject'),
+                '#placeholder' => "The default message subject the user email will send.",
+                '#size' => 60,
+                '#maxlength' => 128,
+              ],
+              "body" => [
+                '#type' => 'textarea',
+                '#title' => t('E-Mail Body'),
+                '#placeholder' => "The initial message body in mail the user will send.",
+                '#cols' => 60,
+                '#rows' => 5,
+              ],
+            ],
+            "phone-frame" => [
+              '#type' => 'container',
+              "#attributes" => ["class" => [10 => "cob-radio-frameset cob-radio-1"]],
+              "phone" => [
+                '#type' => 'textfield',
+                '#title' => t('Phone'),
+                '#placeholder' => "The phone number to dial.",
+                '#size' => 60,
+                '#maxlength' => 128,
+              ],
+            ],
+          ],
+        ],
+      ],
+      "2" => [
+        "#type" => 'details',
+        "#title" => "Upload & Link Document",
+        "#attributes" => [
+          "class" => [10 => "cob-details-wrapper"],
+          "data-horiz-id" => 2,
+        ],
+        "form" => [
+          "#tree" => TRUE,
+          "#parents" => ["cob_tabs", "stuff", 2, "form"],
+          "fid" => $file_fid,
+          "attributes" => $file_upload,
+        ],
+      ],
+    ],
+  ];
+
+  // Place email/phone link types into correct tabs.
+  $form["cob_tabs"]["#default_tab"] = "edit-cob-tabs-stuff-0";
+  $default_tab = 0;
+  $key = "://";
+  if (stripos($form["attributes"]["href"]["#default_value"], $key) === FALSE) {
+    $key = ":";
+  }
+  $protocol = explode($key, $form["attributes"]["href"]["#default_value"]);
+  if ($protocol[0] == "tel" && isset($protocol[1])) {
+    $form["cob_tabs"]["#default_tab"] = "edit-cob_tabs-stuff-1";
+    $default_tab = 1;
+    $form["cob_tabs"]["stuff"][1]["form"]["email"]["radio-group"]["link_type"]["#default_value"] = 1;
+    $phone = explode("?", $protocol[1]);
+    $form["cob_tabs"]["stuff"][1]["form"]["email"]["phone-frame"]["phone"]["#default_value"] = urldecode($phone[0]);
+    $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#default_value"] = "";
+  }
+  elseif ($protocol[0] == "mailto" && isset($protocol[1])) {
+    $form["cob_tabs"]["#default_tab"] = "edit-cob_tabs-stuff-1";
+    $default_tab = 1;
+    $form["cob_tabs"]["stuff"][1]["form"]["email"]["radio-group"]["link_type"]["#default_value"] = 0;
+    $link_query = explode("?", $protocol[1]);
+    $email = &$form["cob_tabs"]["stuff"][1]["form"]["email"]["email-frame"];
+    $email["address"]["#default_value"] = urldecode($link_query[0]);
+    if (isset($link_query[1])) {
+      $query = explode("&", $link_query[1]);
+      foreach ($query as $parts) {
+        $part = explode("=", $parts);
+        $email[$part[0]]["#default_value"] = urldecode($part[1]);
+      }
+    }
+    $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#default_value"] = "";
+  }
+
+  $form["current"] = [
+    '#type' => 'hidden',
+    "#attributes" => ["id" => "edit-current"],
+    '#default_value' => $default_tab,
+  ];
+
+  // Remove the attribues element which is now moved into a h-tab.
+  unset($form["attributes"]);
+
+  // Add css to drive horizontal tabs, and cob customization.
+  $form['#attached']['library'][] = 'field_group/formatter.horizontal_tabs';
+  $form['#attached']['library'][] = 'bos_linkit_extension/linkit-dialog';
+  $form['#attached']['library'][] = 'editor_file/drupal.ckeditor.drupalfile.admin';
+
+  // Add #validate callback that handles empty attributes.
+  array_unshift($form['#validate'], '_bos_linkit_extension_link_attributes_validate');
+
+  // Add #submit callback .
+  array_unshift($form['#submit'], 'bos_linkit_extension_editor_link_dialog_submit');
+
+  return $form;
+
+}
+
+/**
+ * Submit callback when adding links via linkit dialog.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form_state.
+ */
+function bos_linkit_extension_editor_link_dialog_submit(array &$form, FormStateInterface $form_state) {
+  // See what sort of link is being added.
+  $href = $form_state->getValue(['attributes', 'href']);
+  $href_dirty_check = $form_state->getValue(['href_dirty_check']);
+  if (!empty($href) && $href !== $href_dirty_check) {
+    // We are adding/updating a linkit link.
+    if ($form_state->getValue(["cob_tabs", "stuff", 2, "form", "fid"]) != "") {
+
+      $file_key = ["cob_tabs", "stuff", 2, "form"];
+
+      // Convert any uploaded files from the FID values to data-entity-uuid
+      // attributes and set data-entity-type to 'file'.
+      $fid = $form_state->getValue(array_merge($file_key, ['fid', 0]));
+
+      if (!empty($fid)) {
+        // Mark file as permenant.
+        $file = File::load($fid);
+        if (isset($file) && $file->isTemporary()) {
+          $file->setPermanent();
+          $file->save();
+        }
+        // Make sure this node is recorded as a "used in" value.
+        /*\Drupal::service('file.usage')->add($file, 'editor',
+        $entity->getEntityTypeId(), $entity->id());*/
+      }
+      return;
+    }
+  }
+}
+
+/**
+ * Validate callback when adding content into linkit dialog.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form_state.
+ */
+function _bos_linkit_extension_link_attributes_validate(array &$form, FormStateInterface $form_state) {
+  // Firstly, unpack the elements we added into horizontal tabs.
+  $attributes_key = ["cob_tabs", "stuff", 0, "form", "attributes"];
+  $attributes = $form_state->getValue($attributes_key);
+
+  // If the linkit href has been provided, check it resolves.
+  if ($form_state->getValue(array_merge($attributes_key, ["href"])) != "") {
+    $href = $form_state->getValue(array_merge($attributes_key, ["href"]));
+    $href_dirty_check = $form_state->getValue(['href_dirty_check']);
+    if (!empty($href) && $href !== $href_dirty_check) {
+      // We are adding/updating a linkit link.
+      // See if a tel or mailto link has been created.
+      if (substr($href, 0, 4) == "mail" || substr($href, 0, 3) == "tel") {
+        $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+        $name = implode("][", $name);
+        $form_state->setErrorByName($name, "Use 'Email / Phone Link' tab to create this link.");
+        return;
+      }
+
+      // See if the link is internal.
+      if (!\Drupal::pathValidator()->isValid($href)) {
+        // Not a valid internal path.
+        if (UrlHelper::isExternal($href)) {
+          $result = @file_get_contents($href, FALSE, NULL, 0, 32);
+          if (!$result) {
+            $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+            $name = implode("][", $name);
+            $form_state->setErrorByName($name, "The supplied URL does not resolve.");
+            return;
+          }
+        }
+        elseif (substr($href, 0, 2) == "//") {
+          $old_href = $href;
+          $href = "https:" . $href;
+          if (!($result = @file_get_contents($href, FALSE, NULL, 0, 32))) {
+            $href = "http:" . $old_href;
+            if (!($result = @file_get_contents($href, FALSE, NULL, 0, 32))) {
+              $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+              $name = implode("][", $name);
+              $form_state->setErrorByName($name, "The supplied URL does not resolve.");
+              return;
+            }
+          }
+          // Set the href in case it was changed.
+          $form_state->setValue([
+            "cob_tabs",
+            "stuff",
+            0,
+            "form",
+            "attributes",
+            "href",
+          ], $href);
+          $form_state->setValue(['attributes', 'href'], $href);
+        }
+        elseif (substr($href, 0, 3) != "htt") {
+          $old_href = $href;
+          $href = "https://" . $href;
+          if (!($result = @file_get_contents($href, FALSE, NULL, 0, 32))) {
+            $href = "http://" . $old_href;
+            if (!($result = @file_get_contents($href, FALSE, NULL, 0, 32))) {
+              $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+              $name = implode("][", $name);
+              $form_state->setErrorByName($name, "The supplied URL does not resolve.");
+              return;
+            }
+          }
+          // Set the href in case it was changed.
+          $form_state->setValue([
+            "cob_tabs",
+            "stuff",
+            0,
+            "form",
+            "attributes",
+            "href",
+          ], $href);
+          $form_state->setValue(['attributes', 'href'], $href);
+        }
+        else {
+          $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+          $name = implode("][", $name);
+          $form_state->setErrorByName($name, "URL is not a valid internal path.");
+          return;
+        }
+      }
+      else {
+        if (strpos($href, "://") === FALSE && substr($href, 0, 1) == "/") {
+          // Seems to be a valid local value.
+          $href = \Drupal::service('path_alias.manager')->getAliasByPath($href);
+          $form_state->setValue(array_merge($attributes_key, ["href"]), $href);
+          $attributes["href"] = $href;
+          $form_state->setValue(['href_dirty_check'], $href);
+        }
+        elseif (!($result = @file_get_contents($href, FALSE, NULL, 0, 32))) {
+          $name = $form["cob_tabs"]["stuff"][0]["form"]["attributes"]["href"]["#parents"];
+          $name = implode("][", $name);
+          $form_state->setErrorByName($name, "The supplied URL does not resolve.");
+          return;
+        }
+      }
+    }
+    $form_state->setValue("attributes", $attributes);
+    // Next validity check ...
+  }
+
+  elseif ($form_state->getValue([
+    "cob_tabs",
+    "stuff",
+    1,
+    "form",
+    "email",
+    "email-frame",
+    "address",
+  ]) != "") {
+    // Make sure any linkit value is removed.
+    $mail_key = ["cob_tabs", "stuff", 1, "form", "email"];
+    $email = $form_state->getValue($mail_key);
+    if ($email["radio-group"]["link_type"] == 0) {
+      // This is a mailto: link.
+      if (empty($email["email-frame"]["address"])) {
+        $name = $form["cob_tabs"]["stuff"][1]["form"]["email"]["email-frame"]["address"]["#parents"];
+        $name = implode("][", $name);
+        $form_state->setErrorByName($name, "Email type link requires at least an email address to send to.");
+        return;
+      }
+
+      // Build new href element.
+      $attributes["href"] = "mailto:" . Html::escape($email["email-frame"]["address"]);
+      $join = "?";
+      if (!empty($email["email-frame"]["subject"])) {
+        $attributes["href"] .= $join . "subject=" . Html::escape($email["email-frame"]["subject"]);
+        $join = "&";
+      }
+      if (!empty($email["email-frame"]["body"])) {
+        $body = Html::escape($email["email-frame"]["body"]);
+        $attributes["href"] .= $join . "body=" . Html::escape($body);
+      }
+      $form_state->setValue("attributes", $attributes);
+      $form_state->setValue("href_dirty_check", $attributes['href']);
+    }
+  }
+
+  elseif ($form_state->getValue([
+    "cob_tabs",
+    "stuff",
+    1,
+    "form",
+    "email",
+    "phone-frame",
+    "phone",
+  ]) != "") {
+    $mail_key = ["cob_tabs", "stuff", 1, "form", "email"];
+    $email = $form_state->getValue($mail_key);
+    // This is a tel: link.
+    if (empty($email["phone-frame"]["phone"])) {
+      $name = $form["cob_tabs"]["stuff"][1]["form"]["email"]["phone-frame"]["phone"]["#parents"];
+      $name = implode("][", $name);
+      $form_state->setErrorByName($name, "Phone type link requires a phone number.");
+      return;
+    }
+    // Build new href element.
+    $attributes["href"] = "tel:" . urlencode(Html::escape($email["phone-frame"]["phone"]));
+    $form_state->setValue("attributes", $attributes);
+    $form_state->setValue("href_dirty_check", $attributes['href']);
+  }
+
+  elseif ($form_state->getValue(["cob_tabs", "stuff", 2, "form", "fid"]) != "") {
+    // Make sure any linkit value is removed.
+    $file_key = ["cob_tabs", "stuff", 2, "form"];
+    $document = $form_state->getValue($file_key);
+    $document["attributes"]["title"] = urlencode(Html::escape($document["attributes"]["title"]));
+    $attributes = array_merge($attributes, $document["attributes"]);
+    $form_state->setValue("attributes", $attributes);
+
+    // Convert any uploaded files from the FID values to data-entity-uuid
+    // attributes and set data-entity-type to 'file'.
+    $fid = $form_state->getValue(array_merge($file_key, ['fid', 0]));
+
+    if (!empty($fid)) {
+      $file = File::load($fid);
+      $file_url = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+      $_SESSION['embed'][$form["form_build_id"]["#value"]] = $file;
+      // Transform absolute file URLs to relative file URLs: prevent problems
+      // on multisite set-ups and prevent mixed content errors.
+      $file_url =\Drupal::service('file_url_generator')->transformRelative($file_url);
+      $form_state->setValue(['attributes', 'href'], $file_url);
+      $form_state->setValue(['attributes', 'data-entity-uuid'], $file->uuid());
+      $form_state->setValue(['attributes', 'data-entity-type'], 'file');
+    }
+  }
+
+}

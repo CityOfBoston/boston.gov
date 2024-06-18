@@ -1,0 +1,18 @@
+uuid: f8a93280-1cac-46e1-aca9-43b89e588bfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.metatag
+field_name: metatag
+entity_type: node
+bundle: metrolist_development
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

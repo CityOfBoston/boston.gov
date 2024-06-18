@@ -1,0 +1,20 @@
+name: bos_web_app
+type: module
+description: 'Provides skeleton for JS based web applications.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - paragraphs.paragraphs_type.web_app
+  - field.field.paragraph.web_app.field_app_name
+  - core.entity_view_display.paragraph.web_app.default
+  - core.entity_form_display.paragraph.web_app.default
+  - field.field.paragraph.web_app.field_app_name
+  - field.storage.paragraph.field_webapp_name
+  - field.field.paragraph.web_app.field_webapp_name
+  - field.field.paragraph.web_app.field_short_title
+  - field.field.paragraph.web_app.field_hide_title_bar
+  - field.field.paragraph.web_app.field_component_title

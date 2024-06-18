@@ -1,0 +1,20 @@
+uuid: 1efc2718-5a2f-4cf4-8249-9180385b398f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_assessing_lot_size
+field_name: field_bh_assessing_lot_size
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

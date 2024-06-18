@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * For template substitutions on elements rendered in a RHS sidebar.
+ */
+#}
+{#
+  Note: this template overrides the template provided by fences at
+  modules/contrib/fences/field.html.twig because hook_theme_registry_alter in
+  bos_theme re-assigns this template after the fences modules theme_registry_alter()
+  assigns its custom template.
+  (Because the registry->build() function processes hook_theme_registry_alter()
+  functions in themes run *after* any functions defined in modules).
+  @see notes in bos_theme_theme_registry_alter().
+  This template is customized from the template lifted out of fences v8.x.2.0-alpha1.
+#}
+{%
+  set title_classes = [
+  "detail-item__label",
+  label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+<li class="sb-i">
+  {% if display_field_tag %}
+      <{{ field_tag|default('div') }}{{ attributes.addClass('detail-item') }}>
+  {% endif %}
+
+    {% if not label_hidden %}
+      {% if display_label_tag %}
+        <{{ label_tag|default('div') }}{{ title_attributes.addClass(title_classes) }}>
+          <div class="sb-t">{{ label }}:</div>
+        </{{ label_tag|default('div') }}>
+      {% else %}
+        <div class="sb-t">{{ label }}</div>
+      {% endif %}
+    {% endif %}
+
+    <div class="sb-d">
+      {% for item in items %}
+
+        {% if display_item_tag %}
+            <{{ field_item_tag|default('div') }}{{ item.attributes.addClass("detail-item_body") }}>
+        {% endif %}
+
+        {{ item.content }}
+
+        {% if display_item_tag %}
+            </{{ field_item_tag|default('div') }}>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+
+  {% if display_field_tag %}
+      </{{ field_tag|default('div') }}>
+  {% endif %}
+
+</li>

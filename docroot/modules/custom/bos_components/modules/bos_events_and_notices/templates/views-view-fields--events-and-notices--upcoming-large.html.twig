@@ -1,0 +1,59 @@
+{% if not is_expired %}
+
+<div class="g--6 b--w" style="margin-right: 0;">
+  <div class="p-a800" style="padding-top: 0;">
+    <ul class="dl">
+      <li class="dl-i evt-dl-i">
+        <a href="{{ event_link }}" class="{{ type_class }} featured-item-details--relative evt" title="{{ event_link }}" aria-label="{{ fields.title.content.value }}">
+          <div class="evt-c">
+            <div class="evt-t">
+              {{ fields.title.content }}
+            </div>
+          </div>
+          {% if date_recur %}
+            <svg class="svg-date-flag" style="width:90px;" title="On {{ date_recur }}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.08 44.31"><path d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z" fill="#288be4" stroke="#000" stroke-miterlimit="10"/></svg>
+            <p class="svg-date-flag date-flag-text">{{ date_recur }}</p>
+          {% endif %}
+        </a>
+      </li>
+      <li class="dl-i evt-dl-i">
+        <span class="dl-t">When</span>
+        <span class="dl-d">{{ dates }}</span>
+      </li>
+      <li class="dl-i evt-dl-i">
+        <span class="dl-t">Where</span>
+        <span class="dl-d">{{ fields.field_address.content }}</span>
+      </li>
+      <li class="dl-i evt-dl-i">
+        <span class="dl-t">Contact</span>
+        <span class="dl-d">{{ fields.field_event_contact.content }}</span>
+      </li>
+      {% if phone %}
+      <li class="dl-i evt-dl-i">
+        <span class="dl-t">Phone</span>
+        <span class="dl-d">{{ phone }}</span>
+      </li>
+      {% endif %}
+      {% if cost %}
+      <li class="dl-i evt-dl-i">
+        <span class="dl-t">Price</span>
+        <span class="dl-d">{{ fields.field_cost.content }}</span>
+      </li>
+      {% endif %}
+    </ul>
+    <div class="m-t600">
+      <a class="button inter" href="{{ event_link }}" title="{{ event_link }}" aria-label="{{ fields.title.content.value }}">See Events Details<span class="a11y--hidden"> for {{ fields.title.content }}</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="g--6 evt-thumbnails {{ type_class }}" style="width: 100%;">
+  {% if thumbnail %}
+      {{ thumbnail }}
+  {% else %}
+    <div class=" news-item-default-image">
+    </div>
+  {% endif %}
+</div>
+
+{% endif %}

@@ -1,0 +1,20 @@
+uuid: 3e8e75b9-3bde-42ae-ade1-be579b530935
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.uid
+field_name: uid
+entity_type: node
+bundle: bh_update
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

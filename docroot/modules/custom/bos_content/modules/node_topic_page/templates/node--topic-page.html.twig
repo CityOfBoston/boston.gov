@@ -1,0 +1,89 @@
+{#
+ * @file
+ * Returns the HTML for a node.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https%0%
+ #}
+<article{{ attributes }}>
+  <div class="b b--fw">
+    <div class="hros hros--t">
+      {{ title_prefix }}
+
+      {% if not page and title  %}
+
+        <h2{{ title_attributes }}>
+          <a href="{{ node_url }}">{{ title.0 }}</a>
+        </h2>
+
+      {% endif %}
+
+      {{ title_suffix }}
+
+      {% if title %}
+
+        {% if hero_image_url %}
+
+          <img src="{{ hero_image_url }}" class="hros--img" />
+
+        {% endif %}
+
+        <div class="hros-c">
+          <div class="hros-i hros-i--l">
+            <span></span>guide<span></span>
+          </div>
+
+          {{ title_prefix }}
+
+          <h1 class="hros-t hros-t--l">
+            {{ title.0 }}
+          </h1>
+          <div class="hros-i hros-i--l hros-st--w">
+            {% if (content.field_updated_date["#items"]) %}
+              Last updated: {{ content.field_updated_date }}
+            {% elseif (content.field_published_date["#items"]) %}
+              Last updated: {{ content.field_published_date }}
+            {% else %}
+              Not published yet!
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="intro-content">
+    <div class="topic-intro-text-container">
+      <div class="intro-text-top">
+        <div class="topic-intro-text-content">
+          {% if content.field_intro_text %}
+          <div class="intro-text">
+            {{ content.field_intro_text }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-b700 no-sidebar">
+    {% include 'themes/custom/bos_theme/templates/snippets/topic-nav.html.twig' %}
+  </div>
+
+
+  {{ content.field_components }}
+
+  {% if content.field_contacts.0 %}
+    <section class="b b--fw b--g">
+      <div class="b-c">
+        <div class="sh m-b500">
+          <h2 data-short-title="Departments" class="sh-title">Departments You May Need</h2>
+        </div>
+        <div class="g">
+          {{ content.field_contacts }}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+</article>

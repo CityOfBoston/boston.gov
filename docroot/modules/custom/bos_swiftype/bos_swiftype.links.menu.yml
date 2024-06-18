@@ -1,0 +1,5 @@
+bos_swiftype.admin:
+  title: 'Swiftype'
+  description: 'Administer the Boston Site Search'
+  parent: system.admin_config_search
+  route_name: bos_swiftype.admin

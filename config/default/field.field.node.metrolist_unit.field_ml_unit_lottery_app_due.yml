@@ -1,0 +1,21 @@
+uuid: 2987efbd-bf82-43ab-bba7-9c3c4ba49c87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_lottery_app_due
+    - node.type.metrolist_unit
+  module:
+    - datetime
+id: node.metrolist_unit.field_ml_unit_lottery_app_due
+field_name: field_ml_unit_lottery_app_due
+entity_type: node
+bundle: metrolist_unit
+label: 'Lottery Application Deadline'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

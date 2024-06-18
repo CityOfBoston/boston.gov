@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Theme implementation for webform html editor markup.
+ *
+ * Available variables
+ * - markup: HTML markup.
+ * - allowed_tags: Allowed tags.
+ * - content: Renderable HTML markup.
+ *
+ * Using Twig output modifer to remove extra carriage returns at the end of
+ * the generated markup.
+ *
+ * @see template_preprocess_webform_html_editor_markup()
+ * @see \Drupal\webform\Element\WebformHtmlEditor::checkMarkup
+ * @see https://www.drupal.org/project/drupal/issues/2245901
+ * @see https://twig.symfony.com/doc/2.x/templates.html#whitespace-control
+ * @ingroup themeable
+ */
+#}
+
+{{- content -}}
+{% if has_close_button %}
+  <div style="display: flex; clear: both;">
+    <button type="button"
+            class="btn button button--primary ui-widget"
+            title="Close"
+            onclick="event.preventDefault(); jQuery('.ui-dialog-titlebar-close').click();">
+      Close
+    </button>
+    <div style="clear: both;"></div>
+  </div>
+{% endif %}

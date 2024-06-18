@@ -1,0 +1,29 @@
+uuid: 6e9561c3-bed5-40e7-9d39-c0ad7bcddeb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_feeds
+    - node.type.post
+    - taxonomy.vocabulary.content_feed
+id: node.post.field_content_feeds
+field_name: field_content_feeds
+entity_type: node
+bundle: post
+label: 'Content Feeds'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_feed: content_feed
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

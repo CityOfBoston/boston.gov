@@ -1,0 +1,8 @@
+uuid: b27e64ff-7f39-4277-9a88-9c22d14343f9
+langcode: en
+status: true
+dependencies: {  }
+name: 'Vote Types'
+vid: vocab_votes
+description: 'RollCall: The types of vote (on a Docket) recorded during a Council Meeting.'
+weight: 0

@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * script creates template for contact form. JS is in patterns.
+ *
+ */
+#}
+<script id="contactFormTemplate" type="text/x-template">
+    <div class="md">
+        <div class="md-c">
+            <button class="md-cb">Close</button>
+            <div class="mb-b p-a300 p-a600--xl">
+                <div class="sh m-b500">
+                    <div class="sh-title">Contact Us</div>
+                </div>
+                <div>
+                    <div id="contactMessage" class="t--info m-b500">Have a question, or just need help? You can send an email through the form below.</div>
+                    <form id="contactForm" action="/rest/email_session/contactform" method="POST">
+                        <input id="contactFormToAddress" name="email[to_address]" type="hidden" value="">
+                        <input id="contactFormURL" name="email[url]" type="hidden" value="">
+                        <input id="contactFormBrowser" name="email[browser]" type="hidden" value="">
+                        <div class="fs">
+                            <div class="fs-c">
+                                <div class="txt m-b300">
+                                    <label for="contact-name" class="txt-l txt-l--mt000">Full Name</label>
+                                    <input id="contact-name" name="email[name]" type="text" class="txt-f bos-contact-name" size="10" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-address" class="txt-l txt-l--mt000">Email Address</label>
+                                    <input id="contact-address" name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f bos-contact-email" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                  <label for="contact-address-two" class="txt-l txt-l--mt000">Confirm Email Address</label>
+                                  <input id="contact-address-two" name="email2[from_address]" type="text" placeholder="re-enter email@address.com" class="txt-f bos-contact-email2" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                  <label for="contact-phone" class="txt-l txt-l--mt000">Phone</label>
+                                  <input id="contact-phone" name="email[phone]" type="text" placeholder="999-999-9999" class="txt-f bos-contact-phone" size="10" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-subject" class="txt-l txt-l--mt000">Subject</label>
+                                    <input id="contact-subject" name="email[subject]" type="text" class="txt-f bos-contact-subject" size="10" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-message" class="txt-l txt-l--mt000">Message</label>
+                                    <textarea id="contact-message" name="email[message]" type="text" class="txt-f bos-contact-message" rows="10"></textarea>
+                                </div>
+                                <div class="txt visually-hidden">
+                                    <label for="email[contact]" class="txt-l">Contact</label>
+                                    <input name="email[contact]" id="contact" type="text" value="" placeholder="Contact">
+                                    <input id="contact-token" name="email[token_session]" value="">
+                                </div>
+                            </div>
+                            <div class="bc bc--r p-t500">
+                                <button id="contactFormSubmitBtn" type="submit" class="btn btn--700" name="Send Message">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+

@@ -1,0 +1,39 @@
+uuid: 82a55c95-e02d-4eac-9bac-eb18e4bb5d51
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.poll_stub
+    - field.field.node.listing_page.field_components
+    - field.field.node.listing_page.field_header_component
+    - field.field.node.listing_page.field_intro_image
+    - field.field.node.listing_page.field_manual_date
+    - field.field.node.listing_page.field_metatags
+    - field.field.node.listing_page.field_published_date
+    - field.field.node.listing_page.field_updated_date
+    - node.type.listing_page
+  module:
+    - user
+id: node.listing_page.poll_stub
+targetEntityType: node
+bundle: listing_page
+mode: poll_stub
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_header_component: true
+  field_intro_image: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

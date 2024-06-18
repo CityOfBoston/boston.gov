@@ -1,0 +1,29 @@
+uuid: 2f562bd8-7cdf-4d94-aa67-f48b72d7d7d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_logo
+    - media.type.icon
+    - node.type.program_initiative_profile
+id: node.program_initiative_profile.field_program_logo
+field_name: field_program_logo
+entity_type: node
+bundle: program_initiative_profile
+label: 'Program/Initiative Logo'
+description: 'Please upload a square image of this programs logo to be displayed in the upper right hand corner of the page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

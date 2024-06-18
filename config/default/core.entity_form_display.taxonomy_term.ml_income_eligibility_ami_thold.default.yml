@@ -1,0 +1,36 @@
+uuid: 1ce1be4d-90e1-4e8c-84c7-2502f9bec1a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.ml_income_eligibility_ami_thold.field_total_house_income_data
+    - field.field.taxonomy_term.ml_income_eligibility_ami_thold.total_house_income_data_bpda
+    - field.field.taxonomy_term.ml_income_eligibility_ami_thold.total_house_income_data_hud
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.default
+targetEntityType: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  total_house_income_data_bpda:
+    type: number
+    weight: 1
+    region: content
+    settings:
+      placeholder: Income
+    third_party_settings: {  }
+hidden:
+  description: true
+  field_total_house_income_data: true
+  langcode: true
+  path: true
+  status: true
+  total_house_income_data_hud: true

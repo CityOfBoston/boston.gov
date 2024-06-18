@@ -1,0 +1,14 @@
+### Geocode on ArcGIS
+
+POST https://geocoder.boston.gov/arcgis/rest/services/SAMLocator/GeocodeServer/findAddressCandidates
+Content-Type: application/x-www-form-urlencoded
+
+singleline=1 Cityhall Plaza, Boston&Fields=PRIMARY_SAM_ID,PRIMARY_SAM_ADDRESS&matchOutOfRange=true&outSR=4326&f=pjson
+
+### Reverse Geocode on ArcGIS
+
+POST https://geocoder.boston.gov/arcgis/rest/services/SAMLocator/GeocodeServer/reverseGeocode
+Content-Type: application/x-www-form-urlencoded
+
+location={x:-71.058271500000757,y:42.360300000003122,spatialReference:{"wkid":4326}}&distance=0&locationType=street&returnIntersection=false&f=pjson
+

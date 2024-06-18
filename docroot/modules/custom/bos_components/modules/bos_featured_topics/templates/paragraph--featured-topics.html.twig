@@ -1,0 +1,76 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ #}
+
+ {% set guide_themes = [
+  'ob',
+  'cb',
+  'r',
+  'cb',
+  'cb',
+  'r',
+  'cb',
+  'ob',
+  'ob',
+  'cb',
+  'r',
+  'cb',
+  'cb',
+  'r',
+  'cb',
+  'ob',
+] %}
+
+{% set field_topics = elements.field_topics %}
+{% set nodes = [] %}
+{% for key,value in field_topics %}
+  {# check if key is an int #}
+  {% if key  matches '/^\\d+$/' %}
+    {% set nodes = nodes|merge([value['#node']]) %}
+  {% endif %}  
+{% endfor %}
+
+<div{{ attributes.addClass("b b--fw") }}>
+  <div class="clo">
+    {{ content.contextual_links }}
+  </div>
+  <div class="cdfg-oc">
+    {# content|without("contextual_links") #}
+    {% for i,node in nodes %}
+      <a href="{{ path('entity.node.canonical', {'node': node.nid.value}) }}" class="cdfg cdfg--{{ guide_themes[i] }}" style="background-image: url({{ guide_url[i] }})">
+        <div class="cdfg-c">
+          <div class="cdfg-i">
+            <span>{{ i + 1 }}</span>
+          </div>
+          <div class="cdfg-ic">
+            <div class="cdfg-d">Guide:</div>
+            <div class="cdfg-t">{{ node.title.value }}</div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+uuid: b005accd-ca06-498c-8766-9e2882de5a8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_status
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.bh_project_status
+target_entity_type_id: taxonomy_term
+target_bundle: bh_project_status
+default_langcode: site_default
+language_alterable: false

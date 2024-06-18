@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_custom_attributes
+    - paragraphs.paragraphs_type.bos_chart
+id: paragraph.bos_chart.field_anchor_custom_attributes
+field_name: field_anchor_custom_attributes
+entity_type: paragraph
+bundle: bos_chart
+label: 'Additional Anchor Attributes'
+description: 'Add additional attribute key:value pairs to the chart component anchor.<br>Place one attribute per line e.g. bos-data:viz-chart-1'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

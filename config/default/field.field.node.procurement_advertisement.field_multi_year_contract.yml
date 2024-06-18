@@ -1,0 +1,23 @@
+uuid: 0a61428e-05bf-4bad-b636-d239a33ce9fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_multi_year_contract
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_multi_year_contract
+field_name: field_multi_year_contract
+entity_type: node
+bundle: procurement_advertisement
+label: 'Multi-year Contract'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,20 @@
+uuid: a84929ef-a4fe-470e-84f7-d1000c8ac041
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+  module:
+    - path
+id: node.transaction.path
+field_name: path
+entity_type: node
+bundle: transaction
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

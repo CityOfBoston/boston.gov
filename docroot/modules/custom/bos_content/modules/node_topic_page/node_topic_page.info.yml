@@ -1,0 +1,32 @@
+name: Guide
+type: module
+description: 'Provides a guide entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.base_field_override.node.topic_page.promote
+  - core.base_field_override.node.topic_page.status
+  - core.base_field_override.node.topic_page.sticky
+  - core.base_field_override.node.topic_page.title
+  - core.base_field_override.node.topic_page.uid
+  - core.entity_form_display.node.topic_page.default
+  - core.entity_view_display.node.topic_page.default
+  - core.entity_view_display.node.topic_page.featured_topics
+  - core.entity_view_display.node.topic_page.listing
+  - core.entity_view_display.node.topic_page.listing_long
+  - field.field.node.topic_page.field_components
+  - field.field.node.topic_page.field_contacts
+  - field.field.node.topic_page.field_intro_image
+  - field.field.node.topic_page.field_manual_date
+  - field.field.node.topic_page.field_metatags
+  - field.field.node.topic_page.field_published_date
+  - field.field.node.topic_page.field_thumbnail
+  - field.field.node.topic_page.field_topic_category
+  - field.field.node.topic_page.field_updated_date
+  - language.content_settings.node.topic_page
+  - node.type.topic_page
+  - rabbit_hole.behavior_settings.node_type_topic_page
+  - xmlsitemap.settings.node.topic_page

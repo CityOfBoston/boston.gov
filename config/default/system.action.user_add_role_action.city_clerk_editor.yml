@@ -1,0 +1,14 @@
+uuid: e374aff8-0058-4133-a48c-12943f114ff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.city_clerk_editor
+  module:
+    - user
+id: user_add_role_action.city_clerk_editor
+label: 'Add the City Clerk Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: city_clerk_editor

@@ -1,0 +1,18 @@
+uuid: 0be693c6-a528-478f-85cb-70192c5cf77e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+id: node.metrolist_unit.changed
+field_name: changed
+entity_type: node
+bundle: metrolist_unit
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

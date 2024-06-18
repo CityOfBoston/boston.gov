@@ -1,0 +1,27 @@
+uuid: 26c931b8-a5ff-41e7-9ef0-86d6d8256e6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.list.field_component_theme
+    - field.field.paragraph.list.field_component_title
+    - field.field.paragraph.list.field_contact
+    - field.field.paragraph.list.field_hide_title_bar
+    - field.field.paragraph.list.field_list
+    - field.field.paragraph.list.field_short_title
+    - paragraphs.paragraphs_type.list
+_core:
+  default_config_hash: 1-MkLPekd0_gaCHH8G-PQusdnJbvLcpk-hvbtEFbMT0
+id: paragraph.list.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: list
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_list: true
+  field_short_title: true

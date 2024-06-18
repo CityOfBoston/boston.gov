@@ -1,0 +1,18 @@
+uuid: 8f964741-23c5-4566-98b0-d3e6d37e5a1f
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: procurement_advertisement
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

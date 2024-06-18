@@ -1,0 +1,186 @@
+#web-app {
+	padding:50px 0 30px;
+	min-height:500px;
+}
+#web-app .supporting-text,
+#web-app .supporting-text p{
+	padding-bottom:0;
+	margin-bottom:0;
+}
+#web-app .mnl-search button,
+#web-app .g button {
+	margin-top:50px;
+	padding:10px 15px;
+	color:#fff;
+}
+#web-app ul button {
+	width:100%;
+	text-align:left;
+}
+#web-app ul button:focus {
+	background-color: #288be4;
+}
+#web-app .mnl-c-group::after {
+	content: "";
+    padding: 1px 0;
+    margin: 5px 0 15px 0;
+    background-color: #D2D2D2;
+    width: 100%;
+    display: inline-block;
+}
+#web-app .mnl-c-group:last-child::after,
+#web-app .center-mnl .mnl-c-group::after {
+    display: none;
+}
+#web-app .link_underline {
+  border-top: 1px solid #000;
+  text-decoration: underline;
+  display: block;
+  padding: 20px 0;
+}
+#web-app .councilor-at-large .intro {
+  margin-bottom: 20px;
+}
+#web-app .cdp-st {
+	padding-bottom:10px;
+	line-height:24px;
+	color:#58585b
+}
+#web-app .cdp-st div{
+	line-height:24px;
+}
+#web-app .cdp-st div.no-heading {
+	padding:12px 0;
+}
+#web-app .t--upper.t--subtitle {
+	font-weight:bold;
+}
+#web-app .left-mnl {
+	text-align:left;
+}
+#web-app .center-mnl {
+	text-align:center;
+}
+#web-app spacefill{
+	display: inline-block;
+    width: 250px;
+}
+#web-app .pointer-mnl:hover .cdp-st, #web-app .pointer-mnl:focus .cdp-st {
+	color:#fff;
+}
+#web-app .mnl .g div:first-child{
+	width:100%;
+}
+
+/** styles for new input search box and search button **/
+#web-app .sf-i-f.search {
+	border:4px solid #000;
+	padding:10px 75px 10px 10px;
+	height:auto !important;
+}
+#web-app .sf-i-f.search::placeholder {
+	padding-bottom:10px;
+}
+#web-app .sf-i-b{
+	margin-right:20px;
+}
+
+/** styles for dynamic font-resize on search bar. **/
+#web-app .resize {
+	display:block;
+	position: absolute;
+    top: -9999px;
+    font-size:58px;
+}
+#web-app .resize span{
+	padding-right:50px;
+}
+
+/** styles for no-hover over-ride and section cards **/
+#web-app .pointer-mnl{
+	cursor:pointer;
+	min-height:400px;
+	border:2px solid #f3f3f3;
+}
+#web-app .pointer-mnl:hover .cd-ic, #web-app .pointer-mnl:focus .cd-ic{
+	background-color: #fff;
+}
+#web-app .pointer-mnl:hover .cd-c, #web-app .pointer-mnl:focus .cd-c{
+	background-color: #288be4;
+}
+#web-app .bg--cb{
+	text-align:center;
+}
+#web-app .section .bg--cb.t--upper:hover {
+	color:#fff;
+}
+#web-app .section.cdp-l:hover .cdp-st, #web-app .section.cdp-l:focus .cdp-st {
+    color:#58585B;
+}
+#web-app .section.cdp-l:hover, #web-app .section.cdp-l:focus {
+	background-color:#f3f3f3;
+  display: inline-block;
+}
+#web-app .mnl .pointer-mnl:focus {
+  background-color: #288be4;
+  color: #fff;
+}
+#web-app .section.cd:hover .cd-st, #web-app .section.cd:focus .cd-st {
+    color:#091f2f;
+}
+#web-app .section.cd:hover .cd-ic, #web-app .section.cd:focus .cd-ic {
+	background-color:#288be4;
+}
+#web-app .section.cd.bg--y .cd-ic,
+#web-app .section.cd.bg--y:hover .cd-ic,
+#web-app .section.cd.bg--y:focus .cd-ic {
+	background-color: #fcb61a
+}
+#web-app .mnl .focus-active:hover {
+  pointer-events: none;
+  background: transparent;
+}
+#web-app .mnl .dl-i.focus-active:hover {
+  padding-left: 0;
+}
+#web-app .cd.focus-active:hover .mnl-address, #web-app .mnl .cd.focus-active .mnl-address:hover {
+  color:#091f2f;
+}
+#web-app .cd.focus-active:focus .mnl-address, #web-app .mnl .cd.focus-active .mnl-address:focus {
+  color:#ffffff;
+}
+
+@media (max-width: 980px) {
+	#web-app div.cd{
+		display:block;
+	}
+	#web-app .cd-c img{
+		margin: 0 auto 10px;
+	}
+  #web-app .sf-i-f.search {
+    font-size:28px;
+  }
+}
+@media (max-width: 480px) {
+  #web-app .sf-i-f.search {
+    font-size:20px;
+  }
+}
+
+@media (max-width: 1050px) {
+	#web-app .sf-i-b{
+		background-size:70%;
+	}
+}
+
+@media (min-width: 980px) {
+	#web-app .sf-i-f.search {
+		font-size:58px;
+	}
+}
+
+/** for local debug **/
+.bos-messages-wrapper{
+display:none !important;
+}
+

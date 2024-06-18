@@ -1,0 +1,18 @@
+uuid: ec016b8b-39a2-43bc-8bf9-1b4a918307eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,18 @@
+uuid: 886871d5-a368-4f0e-a4e0-33467d504075
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: 1InJeqPEq0EnksZ4Hh92t5FtNAUJJpK8CYoZJmM0n1w
+id: internal_link
+label: 'Internal Link'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Internal Link'
+behavior_plugins: {  }

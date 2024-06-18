@@ -1,0 +1,21 @@
+uuid: faf50f1f-bdf8-4242-a38b-cc665244cfdf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_rfp_issued_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_rfp_issued_date
+field_name: field_bh_rfp_issued_date
+entity_type: node
+bundle: bh_project
+label: 'RFP Issued Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

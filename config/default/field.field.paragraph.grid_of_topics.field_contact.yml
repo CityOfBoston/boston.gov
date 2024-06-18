@@ -1,0 +1,32 @@
+uuid: e89768bd-af19-4feb-b613-238871556a8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.grid_of_topics
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: cBB1En-u-9GDJAi11HpW-jXcYw7ugm4LZXiOC6_dF68
+id: paragraph.grid_of_topics.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: grid_of_topics
+label: Contact
+description: 'Please select a Contact who owns this content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

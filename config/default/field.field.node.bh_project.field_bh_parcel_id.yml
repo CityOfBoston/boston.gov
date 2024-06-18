@@ -1,0 +1,19 @@
+uuid: 8d1c537d-dbce-4556-bc65-9f42a465699e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_parcel_id
+    - node.type.bh_project
+id: node.bh_project.field_bh_parcel_id
+field_name: field_bh_parcel_id
+entity_type: node
+bundle: bh_project
+label: 'Parcel ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

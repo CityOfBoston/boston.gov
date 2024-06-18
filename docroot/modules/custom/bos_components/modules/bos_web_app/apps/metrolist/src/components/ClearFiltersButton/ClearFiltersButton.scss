@@ -1,0 +1,24 @@
+// <ClearFiltersButton />
+@import '@globals';
+
+.ml-clear-filters-button,
+.ml-clear-filters-button.btn.btn--metrolist-secondary {
+  border-color: transparent;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ml-clear-filters-button.ml-clear-filters-button--has-interacted-with-filters {
+  transition: all linear .25s;
+}
+
+.ml-clear-filters-button__icon,
+.ml-clear-filters-button__text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ml-clear-filters-button__icon {
+  font-size: 1.5rem;
+  font-style: normal;
+}

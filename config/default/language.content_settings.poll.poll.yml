@@ -1,0 +1,17 @@
+uuid: 30e0b82b-5b5e-4097-b485-304d77b99c28
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - poll
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: poll.poll
+target_entity_type_id: poll
+target_bundle: poll
+default_langcode: site_default
+language_alterable: false

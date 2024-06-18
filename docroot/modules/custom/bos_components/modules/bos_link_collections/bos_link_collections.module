@@ -1,0 +1,357 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_link_collections_theme() {
+  $theme['paragraph__group_of_links_grid'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__grid_links'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__group_of_links_list'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__group_of_links_mini_grid'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__group_of_links_quick_links'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__gol_list_links'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__document__separated_title'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--separated-title',
+  ];
+  $theme['paragraph__internal_link__separated_title'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--separated-title',
+  ];
+  $theme['paragraph__internal_link__quick_links'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--quick-links',
+  ];
+  $theme['paragraph__external_link__quick_links'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--quick-links',
+  ];
+  $theme['field__field_external_link__external_link__mode__separated_title'] = [
+    'base hook' => 'field',
+    'template' => 'link--mode--separated-title',
+  ];
+  $theme['field__paragraph__gol_list_links'] = [
+    'base hook' => 'field',
+  ];
+  $theme['paragraph__document__ribbon_link'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--ribbon-link',
+  ];
+  $theme['paragraph__document__quick_links'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--quick-links',
+  ];
+  $theme['field__field_external_link__external_link__mode__ribbon_link'] = [
+    'base hook' => 'field',
+    'template' => 'link--mode--ribbon-link',
+  ];
+  $theme['paragraph__internal_link__ribbon_link'] = [
+    'base hook' => 'paragraph',
+    'template' => 'link--mode--ribbon-link',
+  ];
+  $theme['field__paragraph__group_of_links_mini_grid'] = [
+    'base hook' => 'field',
+  ];
+  $theme['field__paragraph__group_of_links_quick_links'] = [
+    'base hook' => 'field',
+  ];
+  $theme['field__paragraph__field_link__group_of_links_grid'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_collections_preprocess_paragraph__group_of_links_list(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $cta = _bos_core_paragraph_extract_link($vars['paragraph']->get('field_link')
+      ->getValue(), ['class' => ['btn']]);
+    $vars['cta'] = !empty($cta['link']) ? $cta['link'] : [];
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_collections_preprocess_paragraph__group_of_links_grid(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $cta = _bos_core_paragraph_extract_link($vars['paragraph']->get('field_link')->getValue(), ['class' => ['btn']]);
+    $vars['cta'] = !empty($cta['link']) ? $cta['link'] : [];
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_collections_preprocess_paragraph__group_of_links_quick_links(&$vars) {
+  $vars['content']['field_links'];
+  if (!empty($vars['paragraph'])) {
+    $vars['Quick_link'] = _bos_core_paragraph_extract_link($vars['paragraph']->get('field_links'));
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_collections_preprocess_paragraph__gol_list_links(&$vars) {
+  $vars['content']['field_link'];
+  if (!empty($vars['paragraph'])) {
+    $url = _bos_core_paragraph_extract_link($vars['paragraph']->get('field_link')->getValue());
+    $vars['url'] = $url['url'];
+    $vars['title'] = $url['title'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_collections_preprocess_paragraph__grid_links(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $paragraph = $vars['paragraph'];
+    if ($parent = $paragraph->getParentEntity()) {
+      try {
+        if ($parent->get('field_subheader')
+            ->isEmpty() && $parent->get('field_description')
+            ->isEmpty() && $parent->get('field_link')->isEmpty()) {
+          $vars['attributes']['class'][] = 'g--3 g--3--sl';
+        }
+        else {
+          $vars['attributes']['class'][] = 'g--4 g--4--sl';
+        }
+      }
+      catch (Exception $e) {
+        $vars['attributes']['class'][] = 'g--4 g--4--sl';
+      }
+    }
+    if ($paragraph->get('field_grid_link')->getValue()) {
+      $url = _bos_core_paragraph_extract_link($paragraph->get('field_grid_link')
+      ->getValue());
+      if (!empty($url)) {
+        $vars['url'] = $url['url'];
+        $vars['title'] = $url['title'];
+        $vars['icon_class'] = $url['icon_class'] ?? '';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph()
+ */
+function bos_link_collections_preprocess_paragraph(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $paragraph = $vars['paragraph'];
+
+    switch ($paragraph->bundle()) {
+      case 'document':
+        if ($vars['elements']['#view_mode'] == 'separated_title' || $vars['elements']['#view_mode'] == 'ribbon_link' || $vars['elements']['#view_mode'] == 'quick_links' || $vars['elements']['#view_mode'] == 'default') {
+          if (!$paragraph->get('field_document')->isEmpty()) {
+            $document = $paragraph->get('field_document')->getValue();
+            if ($paragraph->get('field_document')->isEmpty() || $paragraph->get('field_title')->isEmpty()) {
+              $vars['title'] = _bos_core_get_file_name($document['0']['target_id']);
+            }
+            else {
+              $title = $paragraph->get('field_title')->getValue();
+              $vars['title'] = $title['0']['value'];
+            }
+            $attributes = [
+              'attributes' => [
+                'title' => "Download {$vars['title']}",
+                'target' => '_blank',
+              ],
+            ];
+            $vars['link'] = _bos_core_get_file_link($document['0']['target_id'], $vars['title'], $attributes);
+            $link_items = _bos_core_paragraph_extract_link($paragraph);
+            $vars['url'] = $link_items['url'];
+            $vars['link_attributes'] = "_blank";
+            $vars['add_class'] = 'download';
+            $vars['add_icon'] = 'icon-document';
+            if ($vars['elements']['#view_mode'] != 'quick_links') {
+              $vars['attributes']['class'][] = 'download-link';
+            }
+            $vars['has_icon'] = TRUE;
+          }
+        }
+        break;
+
+      case 'internal_link':
+        if ($vars['elements']['#view_mode'] == 'separated_title' || $vars['elements']['#view_mode'] == 'ribbon_link' || $vars['elements']['#view_mode'] == 'quick_links') {
+          $link = $paragraph->get('field_internal_link')->getValue();
+          if (isset($link['0'])) {
+            $options = ['title' => "Go to {$link['0']['title']}"];
+            $link_items = _bos_core_paragraph_extract_link($paragraph, $options);
+            $vars['link'] = isset($link_items['link'])?$link_items['link']:"";
+            $vars['title'] = $link_items['title'];
+            $vars['url'] = isset($link_items['url'])?$link_items['url']:"";
+          }
+        }
+        break;
+
+      case 'external_link':
+        if ($vars['elements']['#view_mode'] == 'quick_links') {
+          $link = $paragraph->get('field_external_link')->getValue();
+          if (isset($link['0'])) {
+            $options = ['title' => "Go to {$link['0']['title']}"];
+            $link_items = _bos_core_paragraph_extract_link($paragraph, $options);
+            $vars['link'] = $link_items['link'];
+            $vars['title'] = $link_items['title'];
+            $vars['url'] = $link_items['url'];
+            $vars['link_attributes'] = "_blank";
+            $vars['add_class'] = 'external';
+            $vars['add_icon'] = 'external-link';
+          }
+        }
+        break;
+
+      case 'group_of_links_mini_grid':
+        //@TODO: Move to a new class and method
+        // set this block to be centered if it gets wrapped in a full width block for the theme change
+        $vars['attributes']['class'][] = "b--fw";
+        if ($paragraph->field_component_theme->value) {
+            $vars['attributes']['class'][] = "b--fw";
+        }
+        break;
+    }
+    if ($vars["paragraph"]->bundle() == "group_of_links_grid" || $vars["paragraph"]->bundle() == "group_of_links_list" || $vars["paragraph"]->bundle() == "group_of_links_mini_grid" && isset($vars['content']['field_hide_title_bar']['#items'])) {
+
+      if (!isset($vars["content"]["field_hide_title_bar"]["#items"])) {
+        $vars['hideTitle'] = FALSE;
+      }
+      else {
+        $vars["hideTitle"] = $vars["content"]["field_hide_title_bar"]["#items"][0]->value == 1;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_link_collections_preprocess_field(&$vars) {
+  if ($vars['entity_type'] == "paragraph") {
+    switch ($vars['field_name']) {
+      case 'field_external_link':
+        if ($vars['element']['#view_mode'] == 'separated_title' || $vars['element']['#view_mode'] == 'ribbon_link') {
+          $url = $vars['element']['0']['#url'];
+          $title = $vars['element']['0']['#title'];
+          $url->setOptions(array_merge($url->getOptions(), [
+            'attributes' => [
+              'title' => "Go to {$title}",
+              'target' => '_blank',
+            ],
+          ]));
+          $vars['link'] = Link::fromTextAndUrl($title, $url)->toString();
+          $vars['title'] = $title;
+          $vars['link_attributes'] = "_blank";
+          $vars['add_class'] = 'external';
+          $vars['add_icon'] = 'external-link';
+          $vars['url'] = $url;
+          $vars['attributes']['class'][] = 'external-link external';
+          $vars['attributes']["data-quickedit-entity-id"] = "paragraph/" . $vars["element"]["#object"]->id();
+          $vars['has_icon'] = TRUE;
+        }
+        break;
+
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_collections_paragraph_group_of_links_list_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></span>" . $contact->name->value);
+    }
+  }
+  if ($para["entity"]->hasField("field_list_links") && count($para["entity"]->get("field_list_links"))) {
+    $markup[] = Markup::create("<span class='info'>group with " . count($para["entity"]->get("field_list_links")) . " links.</span>");
+  }
+  if ($para["entity"]->hasField("field_link") && count($para["entity"]->get("field_link"))) {
+    $card = Paragraph::load($para["entity"]->get("field_link")->target_id);
+    $markup[] = Markup::create("<span class='info'>has " . $card->bundle() . " CTA.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>with no CTA.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_collections_paragraph_gol_list_links_summary_alter(array $form_widget, array $para, array $attributes) {
+  $title = advanced_text_formatter_trim_text(strip_tags($para["entity"]->get("field_description")->value), [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 40,
+  ]);
+  $markup[] = Markup::create($title);
+  if ($para["entity"]->hasField("field_link") && count($para["entity"]->get("field_link"))) {
+    $card = Paragraph::load($para["entity"]->get("field_link")->target_id);
+    $markup[] = Markup::create("<span class='info'>has " . $card->bundle() . " CTA.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>with no CTA.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function bos_link_collections_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (isset($element["#paragraph_type"]) && $element["#paragraph_type"] == 'group_of_links_quick_links') {
+    $links = isset($element['subform']['field_links']['widget']) ? Element::children($element['subform']['field_links']['widget']) : NULL;
+    $numberOfLinks = isset($links) ? count($links) : 0;
+    if ($numberOfLinks >= 10 && $numberOfLinks >= 2) {
+      // Disable the Duplicate action on current links so we don't go over 8.
+      foreach ($links as $linkKey => $linkValue) {
+        if (($linkValue != 'add_more' && $linkValue != 'header_actions') || $linkValue === 0) {
+          $element['subform']['field_links']['widget'][$linkValue]['top']['actions']['dropdown_actions']['duplicate_button']['#access'] = FALSE;
+        }
+      }
+      unset($element['subform']['field_links']['widget']['add_more']);
+      $element['subform']['field_links']['widget']['add_more'] = [
+        '#markup' => 'You cannot add more then 8 links.',
+        '#type' => 'container',
+      ];
+    }
+  }
+}

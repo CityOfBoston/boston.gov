@@ -1,0 +1,8 @@
+name: "Paragraph summary formatter"
+type: module
+description: "Creates hooks to cusomise the Paragraphs EXPEREMENTAL summary display."
+package: "Paragraphs"
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - paragraphs

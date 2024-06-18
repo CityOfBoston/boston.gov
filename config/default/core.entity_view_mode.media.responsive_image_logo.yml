@@ -1,0 +1,15 @@
+uuid: 60775f98-bf9a-4173-83aa-dc8ad90e88a9
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Render a featured-item thumbnail responsive image.'
+id: media.responsive_image_logo
+label: 'Logo (resp)'
+description: ''
+targetEntityType: media
+cache: true

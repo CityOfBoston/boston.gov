@@ -1,0 +1,23 @@
+uuid: 010159bd-403f-479c-83a2-e8291540f087
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_min_income_thold
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_min_income_thold
+field_name: field_ml_unit_min_income_thold
+entity_type: node
+bundle: metrolist_unit
+label: 'Minimum Income Threshold'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 999999.99
+  prefix: $
+  suffix: ' Minimum annual income'
+field_type: decimal

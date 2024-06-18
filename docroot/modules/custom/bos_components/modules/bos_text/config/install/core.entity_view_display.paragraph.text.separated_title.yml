@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.text.field_background_image
+    - field.field.paragraph.text.field_component_title
+    - field.field.paragraph.text.field_contact
+    - field.field.paragraph.text.field_hide_title_bar
+    - field.field.paragraph.text.field_short_title
+    - field.field.paragraph.text.field_text_blocks
+    - paragraphs.paragraphs_type.text
+id: paragraph.text.separated_title
+targetEntityType: paragraph
+bundle: text
+mode: separated_title
+content: {  }
+hidden:
+  field_background_image: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true
+  field_text_blocks: true

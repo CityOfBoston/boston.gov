@@ -1,0 +1,137 @@
+.translate {
+  position: relative;
+  display:block;
+  background: none;
+}
+.translate--visible {
+  display: block;
+}
+.translate-dd-link {
+  font-family: Montserrat,Arial,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+  min-width: 45px;
+  text-align: left;
+  line-height: 1;
+  padding: 1rem .2rem 1rem 0;
+  color: #fff;
+  font-size: 12px;
+  font-size: .75rem;
+  font-range: 480px 1440px;
+}
+.translate-dd li {
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+.translate-dd-link--hidden {
+  display: none;
+}
+.translate-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 21000;
+  width: 100%;
+  text-align: left;
+  color: #091f2f;
+}
+.translate-languages {
+  display: block;
+  background-color: #fff;
+  padding: 2rem 1.1rem 1.5rem;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.translate-dd {
+  padding: 0;
+  margin-right: 14px;
+}
+.translate-overlay-background {
+  visibility: hidden;
+}
+.translate-languages a {
+  margin: 0;
+}
+.translate-overlay a.md-cb {
+  color: #fff;
+}
+.translate-languages a:hover {
+  text-decoration: underline;
+}
+.translate-message {
+  display: none;
+  background-color: #fff;
+  padding: 1.2rem;
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#disclaimerLanguageSelect {
+  height: auto;
+  font-size: .9rem;
+}
+.translate-form label {
+  margin: 1rem 0;
+}
+.translate-disclaimer h4 {
+  margin-bottom: 1.5rem;
+  margin-bottom: .7rem;
+}
+.translate-disclaimer .translate-d-c {
+  margin-bottom: .5rem;
+  margin-bottom: .5rem;
+}
+.translate-disclaimer ol, .translate-disclaimer ol>li {
+  background: none;
+  list-style: decimal;
+  list-style-type: decimal;
+  margin-left: 20px;
+  padding-left: 8px;
+}
+.translate-disclaimer ol>li:before {
+  border: none;
+  border-radius: 0;
+  content: none;
+}
+.translate-disclaimer ul li, ul li.translate, li.translate, .translate ol li  {
+  background: none;
+}
+
+.translate-languages .translate-dd-link.ar,
+.translate-languages .translate-dd-link.az,
+.translate-languages .translate-dd-link.bs,
+.translate-languages .translate-dd-link.ha,
+.translate-languages .translate-dd-link.iw,
+.translate-languages .translate-dd-link.jw,
+.translate-languages .translate-dd-link.ku,
+.translate-languages .translate-dd-link.ms,
+.translate-languages .translate-dd-link.ps,
+.translate-languages .translate-dd-link.fa,
+.translate-languages .translate-dd-link.sd,
+.translate-languages .translate-dd-link.sw,
+.translate-languages .translate-dd-link.uz,
+.translate-languages .translate-dd-link.yi {
+  text-align: center;
+}
+
+@media(min-width:768px) {
+  .translate-overlay {
+    top: 10%;
+    left: 50%;
+    z-index: 21000;
+    margin-left: -300px;
+    width: 600px;
+    background-color: #1871bd;
+  }
+  .translate-languages {
+    max-height: 80vh;
+  }
+  .translate-message {
+    max-height: 80vh;
+  }
+}
+

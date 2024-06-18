@@ -1,0 +1,21 @@
+uuid: d59fc656-0199-45e3-b827-40cf9b9747a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_project_manager_name
+field_name: field_bh_project_manager_name
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

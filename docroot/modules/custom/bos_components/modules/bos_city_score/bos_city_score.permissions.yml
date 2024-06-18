@@ -1,0 +1,3 @@
+access rest cityscore:
+  title: 'Access Cityscore Data'
+  description: 'Access cityscore endpoints'

@@ -1,0 +1,21 @@
+uuid: 7bc1991f-ba54-4a54-9395-cb63731a701e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_source_url
+    - paragraphs.paragraphs_type.iframe
+_core:
+  default_config_hash: M9nh-ieUZ7L2UW2iSDi8gIchK2fZd0yi1UbFe2meX3A
+id: paragraph.iframe.field_source_url
+field_name: field_source_url
+entity_type: paragraph
+bundle: iframe
+label: 'Source URL'
+description: 'A valid URL for the iframe, such as "http://boston.gov/recent-trash-stories".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

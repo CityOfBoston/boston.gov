@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.article
+  module:
+    - datetime
+id: node.article.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: article
+label: 'Published Date'
+description: 'This field tracks the date the Article was first published.  It is not displayed to the user audience.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

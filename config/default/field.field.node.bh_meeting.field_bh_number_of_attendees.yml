@@ -1,0 +1,23 @@
+uuid: bcc75f59-aba7-4489-b3c0-c8d95487547a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_number_of_attendees
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_number_of_attendees
+field_name: field_bh_number_of_attendees
+entity_type: node
+bundle: bh_meeting
+label: 'Number of attendees'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,694 @@
+<?php
+
+/**
+ * @file
+ * Contains bos_metrolist.module.
+ */
+
+use Drupal\webform\Plugin\WebformHandlerInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+use Drupal\webform\Entity\WebformSubmission;
+use Drupal\bos_metrolist\MetroListSalesForceConnection;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+
+require_once "includes/metrolist_listing_webform.extensions.php";
+
+/**
+ * Implements hook_help().
+ */
+function bos_metrolist_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bos_metrolist module.
+    case 'help.page.bos_metrolist':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('MetroList features for the City of Boston') . '</p>';
+      return $output;
+
+  }
+  return "";
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bos_metrolist_theme($existing, $b, $c, $d) {
+  return [
+    'bos_metrolist' => [
+      'render element' => 'children',
+    ],
+    'field__boolean' => [
+      'base hook' => 'field'
+    ],
+    'views_view_table__metrolist_ami' => [
+      'base hook' => 'views'
+    ],
+    'views_view_metrolist_drawers' => [
+      'variables' => ['view' => NULL, 'rows' => NULL],
+      'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_metrolist') . '/templates',
+    ],
+    'paragraph__embed_view' => [
+      'base hook' => 'paragraph',
+    ],
+    'form_element__webform_checkbox' => [
+      'base hook' => 'form',
+    ],
+    'form_element__webform_select' => [
+      'base hook' => 'form',
+    ],
+    'webform_container_base_html__fieldset' => [
+      'base hook' => 'webform_container_base_html',
+    ],
+    'status_messages__bos_metrolist' => [
+      'base hook' => 'status_messages',
+      'render element' => 'status_messages',
+    ],
+    'webform_container_base_html__webform_wizard_page__update_contact_information' => [
+      'base hook' => 'webform_container_base_html',
+      'template' => 'webform-container-base-html--drawer'
+    ],
+    'webform_container_base_html__webform_wizard_page__property_information' => [
+      'base hook' => 'webform_container_base_html',
+      'template' => 'webform-container-base-html--drawer'
+    ],
+    'webform_container_base_html__webform_wizard_page__unit_information' => [
+      'base hook' => 'webform_container_base_html',
+      'template' => 'webform-container-base-html--drawer'
+    ],
+    'webform_container_base_html__webform_wizard_page__public_listing_information' => [
+      'base hook' => 'webform_container_base_html',
+      'template' => 'webform-container-base-html--drawer'
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function bos_metrolist_theme_suggestions_status_messages_alter(array &$suggestions, array $variables) {
+  if (\Drupal::request()->getPathInfo() == "/form/metrolist-listing") {
+    $suggestions[] = "status-messages--bos-metrolist";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param array $variables
+ *   Render variables.
+ */
+function bos_metrolist_preprocess_page(array &$variables) {
+  if (isset($variables['node']) && !is_string($variables['node']) && $variables['node']->bundle() == 'metrolist_development') {
+    $variables['#attached']['library'][] = 'bos_metrolist/metrolist_views';
+    if ($variables['attributes'] instanceof Attribute) {
+      $variables['attributes']->addClass('mn');
+      $variables['attributes']->addClass('page');
+      $variables['attributes']->setAttribute("id", 'page');
+    }
+    else {
+      $variables['attributes']['class'][] = 'mn page';
+      $variables['attributes']['id'] = 'page';
+    }
+  }
+
+  // @TODO: Find a better way to attach this class to the Webform MetroList Listing Page
+  // Notice: Indirect modification of overloaded element of
+  //          Drupal\Core\Template\Attribute has no effect on line 83
+  if (isset($variables["page"]["#title"]) && $variables["page"]["#title"] == "MetroList Listing") {
+    if ($variables['attributes'] instanceof Attribute) {
+      $variables['attributes']->addClass('mn');
+      $variables['attributes']->addClass('sa');
+      $variables['attributes']->setAttribute("id", 'page');
+    }
+    else {
+      $variables['attributes']['class'][] = 'mn';
+      $variables['attributes']['id'] = 'page';
+    }
+  }
+
+  // @TODO: attaching CSS to override the grid-of-cards, should move that CSS to separate file and lib for better reuse
+
+  if (isset($variables['node']) && !is_string($variables['node'])) {
+    $url = \Drupal::service('path_alias.manager')->getAliasByPath("/node/{$variables['node']->id()}");
+    if ($url == '/metrolist') {
+      $variables['#attached']['library'][] = 'bos_metrolist/metrolist_views';
+    }
+  }
+
+  // Remove the popup message on form - GitHub Ticket #2529
+  if ($variables["page"]["#title"] == "MetroList Listing" && count(\Drupal::messenger()->all()) > 0) {
+    foreach (\Drupal::messenger()->messagesByType("status") as $key => $status_message) {
+      $keep = [];
+      if (strpos(strtolower($status_message), "partially-completed form") === FALSE) {
+        $keep[] = $status_message;
+      }
+    }
+    \Drupal::messenger()->deleteByType(\Drupal::messenger()::TYPE_STATUS);
+    foreach ($keep ?? [] as $newmsg) {
+      \Drupal::messenger()->addStatus($newmsg);
+    }
+  }
+}
+
+/**
+ * Implements hook_block_build_alter().
+ */
+function bos_metrolist_form_taxonomy_term_ml_income_eligibility_ami_thold_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $incomeFields = [
+    'field_total_house_income_data',
+    'total_house_income_data_bpda',
+    'total_house_income_data_hud'
+  ];
+
+  foreach ($incomeFields as $incomeField) {
+    if (isset($form[$incomeField])) {
+      foreach (Element::children($form[$incomeField]['widget']) as $key => $field) {
+        $person_number = ($key + 1);
+        $person_label = ngettext(' person', ' people', $person_number);
+        $form[$incomeField]['widget'][$key]['value']['#field_suffix'] = " for <b>$person_number</b> $person_label / year";
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_hook()
+ */
+function bos_metrolist_preprocess_views_view_metrolist_drawers(&$variables) {
+  template_preprocess_views_view_unformatted($variables);
+
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+
+  $options = $view->style_plugin->options;
+
+  $variables['show_all_units_button'] = $options['show_all_units_button'];
+  $variables['show_all_units_button_text'] = $options['show_all_units_button_text'];
+  $variables['hide_all_units_button_text'] = $options['hide_all_units_button_text'];
+
+  // Set the bounds via Query params.
+  // 1+2+3.
+  $bounds['beds'] = $view->getRequest()->get('bedrooms') ?? NULL;
+  // 30-120
+  $bounds['ami'] = $view->getRequest()->get('ami') ?? NULL;
+  // Rent / own.
+  $bounds['type'] = $view->getRequest()->get('type') ?? NULL;
+
+  // Sort by type first if it is set so that we can populate the header and footer data correctly.
+  if (is_null($bounds['type']) || $bounds['type'] == 'rent') {
+    $variables['view']->sort['field_ml_unit_occupancy_type_target_id']->options['order'] = 'ASC';
+  }
+  else {
+    $variables['view']->sort['field_ml_unit_occupancy_type_target_id']->options['order'] = 'DESC';
+    $variables['view']->result = array_reverse($variables['view']->result);
+  }
+
+  foreach ($rows as $row) {
+    bos_metrolist_set_views_active_rows($rows, $bounds, $row);
+  }
+
+  $variables['email_button'] = $options['show_email_button'] ? bos_metrolist_build_email_button($variables) : NULL;
+  $variables['print_button'] = $options['show_print_button'] ? bos_metrolist_build_print_button($variables) : NULL;
+
+  // @TODO: Change out to a config.
+  $options['show_share_buttons'] = TRUE;
+  $variables['share_button_facebook'] = $options['show_share_buttons'] ? bos_metrolist_build_share_button($variables, 'facebook') : NULL;
+  $variables['share_button_twitter'] = $options['show_share_buttons'] ? bos_metrolist_build_share_button($variables, 'twitter') : NULL;
+  // $variables['share_button_instagram'] = $options['show_share_buttons'] ? bos_metrolist_build_share_button($variables, 'instagram') : NULL;
+
+  $variables['report_unavailable_button'] = bos_metrolist_build_unavailable_button($variables);
+
+}
+
+/**
+ * Implements hook_views_pre_build()
+ */
+function bos_metrolist_views_pre_build(ViewExecutable $view) {
+  if ($view->current_display == 'block_metrolist_development_units' && $view->filter) {
+
+    $type = $view->getRequest()->get('type') ?? NULL;
+    $assignments = $view->getRequest()->get('assignment') ?? NULL;
+
+    if ($type == 'rent') {
+      $view->filter['field_ml_unit_occupancy_type_target_id']->value = [33296];
+    }
+    elseif ($type == 'sale' || $type == 'own') {
+      $view->filter['field_ml_unit_occupancy_type_target_id']->value = [33356];
+    }
+
+    if ($assignments == 'first') {
+      $view->filter['field_ml_unit_user_guide_type_target_id']->value = [33326];
+    }
+    elseif ($assignments == 'lottery') {
+      $view->filter['field_ml_unit_user_guide_type_target_id']->value = [33306];
+    }
+    elseif ($assignments == 'waitlist') {
+      $view->filter['field_ml_unit_user_guide_type_target_id']->value = [33346];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_metrolist_preprocess_webform_submission_form(&$variables) {
+  if (isset($variables["form"]["#webform_id"]) && $variables["form"]["#webform_id"] == "metrolist_launch_feedback") {
+    $variables['#attached']['library'][] = 'bos_metrolist/metrolist_feedback';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array $rows
+ *   Referenced set of Rows.
+ * @param array $bounds
+ *   The bounds from the filter params.
+ * @param array $row
+ *   Current row.
+ */
+function bos_metrolist_set_views_active_rows(array &$rows, array $bounds = [], array $row = []) {
+  $rowResult = $row['content']['#row'] ?? NULL;
+  $index = $rowResult->index ?? NULL;
+
+  // Let value of 'sale' map to 'own' for the JsApp filter values.
+  $type = (strtolower($bounds['type']) == 'sale') ? 'own' : strtolower($bounds['type']);
+  $type = strtolower($rowResult->_relationship_entities["field_ml_unit_occupancy_type"]->label()) == $type ? TRUE : FALSE;
+
+  $amiValue = preg_replace('/\D/', '', $rowResult->_relationship_entities["field_ml_incm_elgblty_ami_thold"]->label());
+  $amiBounds = explode('-', $bounds['ami'] ?? "");
+  // Sort the ami bounds in case we are given them in the wrong order in the url filters.
+  sort($amiBounds);
+  $amiLow = $amiBounds[0] ?? NULL;
+  $amiHigh = $amiBounds[1] ?? NULL;
+
+  $ami = ($amiValue >= $amiLow && $amiValue <= $amiHigh) ? TRUE : FALSE;
+
+  $bedsBounds = explode(' ', $bounds['beds'] ?? "");
+  $beds = in_array($rowResult->node__field_ml_unit_num_of_bedrooms_field_ml_unit_num_of_bed, $bedsBounds);
+
+  if (!is_null($bounds['beds']) && !$beds) {
+    // $rows[$index] = $row;
+    return;
+  }
+  elseif (!is_null($bounds['ami']) && !$ami) {
+    // $rows[$index] = $row;
+    return;
+  }
+  elseif (!is_null($bounds['type']) && !$type) {
+    // $rows['outOfBounds'][$index] = $row;
+    return;
+  }
+  else {
+    // Set a class to bold the drawer title.
+    $rows[$index]['attributes']->addClass('active');
+    // $rows[$index] = $row;
+    return;
+  }
+
+}
+
+/**
+ * Build the email button.
+ */
+function bos_metrolist_build_email_button($variables) {
+  $nid = $variables['view']->argument['nid']->value[0] ?? NULL;
+  $development = $variables["view"]->result[0]->_relationship_entities["field_ml_development"] ?? NULL;
+
+  $developmentTitle = $development->label();
+  $developmentURL = $development->toUrl()->setOption('absolute', TRUE)->toString();
+
+  $button = [];
+
+  $title = [
+    '#type' => 'html_tag',
+    '#tag' => 'span',
+    // '#value' => $variables['view']->style_plugin->options['email_button_text'],
+    '#value' => '',
+    '#attributes' => [
+      'style' => ['display: block;', 'flex:2;', 'white-space: nowrap;'],
+      'class' => ['']
+    ],
+  ];
+
+  $icon = [
+    '#type' => 'html_tag',
+    '#tag' => 'img',
+    '#attributes' => [
+      'src' => 'https://assets.boston.gov/icons/experiential_icons/email.svg',
+      'style' => [
+        'max-height: 42px;',
+        'margin: 0;',
+        'padding: 0;',
+        'display: block;',
+        'flex:1'
+      ],
+      'class' => ['']
+    ],
+    'title' => $title,
+  ];
+
+  $button['#title'] = \Drupal::service('renderer')->render($icon);
+
+  $button['#type'] = 'link';
+
+  $button['#attributes'] = [
+    'class' => [
+      'ml-action-btn',
+      'hide-form'
+    ],
+    'title' => 'Email',
+    // 'style' => ['width: 10rem;', 'display: flex;', 'align-items: center;', 'padding: 0;'],
+  ];
+
+  $button['#url'] = Url::fromUri('mailto:')
+    ->setOption('query', [
+      'subject' => "Share Metrolist Listing - $developmentTitle",
+      'body' => "Share Metrolist Listing - $developmentTitle ( $developmentURL )",
+    ]);
+
+  // Use to link to a webform
+  // $button['#url'] = \Drupal\Core\Url::fromRoute('entity.webform.canonical')
+  // ->setRouteParameter('webform', 'share_metrolist_listing')
+  // ->setRouteParameter('source_entity_type', 'node')
+  // ->setRouteParameter('source_entity_id', $nid);.
+
+  return $button;
+}
+
+/**
+ * Build print button.
+ */
+function bos_metrolist_build_print_button($variables) {
+  $button = [];
+
+  $title = [
+    '#type' => 'html_tag',
+    '#tag' => 'span',
+    // '#value' => $variables['view']->style_plugin->options['print_button_text'],
+    '#value' => '',
+    '#attributes' => [
+      'style' => ['display: block;', 'flex:2;', 'white-space: nowrap;'],
+      'class' => ['']
+    ],
+  ];
+
+  $icon = [
+    '#type' => 'html_tag',
+    '#tag' => 'img',
+    '#attributes' => [
+      'src' => 'https://assets.boston.gov/icons/experiential_icons/printer.svg',
+      'style' => [
+        'max-height: 42px;',
+        'margin: 0;',
+        'padding: 0;',
+        'display: block;',
+        'flex:1'
+      ],
+      'class' => ['']
+    ],
+    'title' => $title,
+  ];
+
+  $button['#title'] = \Drupal::service('renderer')->render($icon);
+
+  $button['#type'] = 'link';
+
+  $button['#attributes'] = [
+    'class' => [
+      'ml-action-btn',
+      'hide-form'
+    ],
+    'title' => 'Print',
+    // 'style' => ['width: 10rem;', 'display: flex;', 'align-items: center;', 'padding: 0;'],
+    'onclick' => 'window.print()',
+  ];
+
+  $button['#url'] = Url::fromUri('internal:#print');
+
+  return $button;
+}
+
+/**
+ * Build share buttons.
+ *
+ * @param array $variables
+ *   Vars.
+ * @param string $provider
+ *   Social provider (facebook, twitter)
+ *
+ * @return array
+ *   Button render array
+ */
+function bos_metrolist_build_share_button(array $variables, $provider = '') {
+
+  // @todo: Change out to a yml config or field configs
+  $socials = [
+    'facebook' => [
+      'label' => 'Facebook',
+      'icon' => 'https://patterns.boston.gov/images/global/icons/social-media/icon-facebook.svg',
+      'url' => 'https://www.facebook.com/sharer/sharer.php',
+    ],
+    'twitter' => [
+      'label' => 'Twitter',
+      'icon' => 'https://patterns.boston.gov/images/global/icons/social-media/icon-twitter.svg',
+      'url' => 'https://twitter.com/intent/tweet',
+      'hashtags' => 'bosmetrolist,BosAH',
+    ],
+    'instagram' => [
+      'label' => 'Instagram',
+      'icon' => 'https://patterns.boston.gov/images/global/icons/social-media/icon-instagram.svg',
+      'url' => 'https://instagram.com',
+    ],
+  ];
+
+  $nid = $variables['view']->argument['nid']->value[0] ?? NULL;
+  $development = $variables["view"]->result[0]->_relationship_entities["field_ml_development"] ?? NULL;
+
+  $developmentTitle = $development->label();
+  $developmentURL = $development->toUrl()->setOption('absolute', TRUE)->toString();
+
+  $button = [];
+
+  $title = [
+    '#type' => 'html_tag',
+    '#tag' => 'span',
+    // '#value' => $variables['view']->style_plugin->options['email_button_text'],
+    // '#value' => $socials[$provider]['label'],
+    '#value' => '',
+    '#attributes' => [
+      'style' => ['display: block;', 'flex:2;', 'white-space: nowrap;'],
+      'class' => ['']
+    ],
+  ];
+
+  $icon = [
+    '#type' => 'html_tag',
+    '#tag' => 'img',
+    '#attributes' => [
+      'src' => $socials[$provider]['icon'],
+      'style' => [
+        'max-height: 36px;',
+        'margin: 0;',
+        'padding: 0;',
+        'display: block;',
+        'flex:1;',
+        'background-color: #fff;',
+        'border-radius: 50%;',
+        'border: 1px solid #fff;',
+      ],
+      'class' => ['']
+    ],
+    'title' => $title,
+  ];
+
+  $button['#title'] = \Drupal::service('renderer')->render($icon);
+
+  $button['#type'] = 'link';
+
+  $button['#attributes'] = [
+    'class' => [
+      'ml-action-btn',
+      'hide-form'
+    ],
+    'target' => '_blank',
+    'title' => $socials[$provider]['label'],
+    // 'style' => ['width: 10rem;', 'display: flex;', 'align-items: center;', 'padding: 0;'],
+  ];
+
+  $button['#url'] = Url::fromUri($socials[$provider]['url']);
+
+  if ($provider == 'facebook') {
+    $button['#url']->setOption('query', [
+      'u' => $developmentURL,
+    ]);
+  }
+
+  if ($provider == 'twitter') {
+    $button['#url']->setOption('query', [
+      // 'subject' => "Share Metrolist Listing - $developmentTitle",
+      // 'body' => "Share Metrolist Listing - $developmentTitle ( $developmentURL )",
+      // 'url' => \Drupal::token()->replace("[current-page:url]", ['node' => $development], ['clear' => TRUE]),
+      'url' => $developmentURL,
+      // 'text' => \Drupal::token()->replace("New listing on Boston Metrolist: [current-page:title]", ['node' => $development], ['clear' => TRUE]),
+      'text' => "New listing on Boston Metrolist: $developmentTitle",
+      'hashtags' => $socials[$provider]['hashtags'],
+    ]);
+  }
+
+  // Use to link to a webform
+  // $button['#url'] = \Drupal\Core\Url::fromRoute('entity.webform.canonical')
+  // ->setRouteParameter('webform', 'ml_listing_unavailable_form')
+  // ->setRouteParameter('source_entity_type', 'node')
+  // ->setRouteParameter('source_entity_id', $nid);.
+
+  return $button;
+}
+
+/**
+ * Build unavailable button.
+ *
+ * @param array $variables
+ *   Variables.
+ *
+ * @return array
+ *   Button render array
+ */
+function bos_metrolist_build_unavailable_button(array $variables) {
+
+  $nid = $variables['view']->argument['nid']->value[0] ?? NULL;
+  $development = $variables["view"]->result[0]->_relationship_entities["field_ml_development"] ?? NULL;
+
+  $developmentTitle = $development->label();
+  $developmentURL = $development->toUrl()->setOption('absolute', TRUE)->toString();
+
+  $button = [];
+
+  $title = [
+    '#type' => 'html_tag',
+    '#tag' => 'span',
+    '#value' => t("Report Unit as Unavailable"),
+    '#attributes' => [
+      'style' => ['display: block;', 'flex:2;', 'white-space: nowrap;'],
+      'class' => ['']
+    ],
+  ];
+
+  $icon = [
+    '#type' => 'html_tag',
+    '#tag' => 'img',
+    '#attributes' => [
+      'src' => 'https://patterns.boston.gov/images/global/icons/experiential/important.svg',
+      'style' => [
+        'max-height: 36px;',
+        'margin: 0;',
+        'padding: 0;',
+        'display: block;',
+        'flex:1;',
+        'background-color: #fff;',
+        'border-radius: 50%;',
+        'border: 1px solid #fff;',
+      ],
+      'class' => ['']
+    ],
+    'title' => $title,
+  ];
+
+  $button['#title'] = \Drupal::service('renderer')->render($icon);
+
+  $button['#type'] = 'link';
+
+  $button['#attributes'] = [
+    'class' => [
+      'webform-dialog',
+      'webform-dialog-narrow',
+      // 'btn btn--sm',
+      // 'm-r100',
+      'ml-action-btn',
+      'hide-form'
+    ],
+    'title' => t("Report Home Unavailable"),
+    // 'style' => ['width: 10rem;', 'display: flex;', 'align-items: center;', 'padding: 0;'],
+  ];
+
+  // Use to link to a webform.
+  $button['#url'] = Url::fromRoute('entity.webform.canonical')
+    ->setRouteParameter('webform', 'ml_listing_unavailable_form')
+    ->setRouteParameter('source_entity_type', 'node')
+    ->setRouteParameter('source_entity_id', $nid);
+
+  return $button;
+}
+
+/**
+ * Split all rows into two groups.
+ */
+function bos_metrolist_set_views_row_group(&$rowGroups = [], $bounds = [], $row = []) {
+  $rowResult = $row['content']['#row'] ?? NULL;
+  $index = $rowResult->index ?? NULL;
+
+  // Let value of 'sale' map to 'own' for the JsApp filter values.
+  $type = (strtolower($bounds['type']) == 'sale') ? 'own' : strtolower($bounds['type']);
+  $type = strtolower($rowResult->_relationship_entities["field_ml_unit_occupancy_type"]->label()) == $type ? TRUE : FALSE;
+
+  $amiValue = preg_replace('/\D/', '', $rowResult->_relationship_entities["field_ml_incm_elgblty_ami_thold"]->label());
+  $amiBounds = explode('-', $bounds['ami']);
+  // Sort the ami bounds in case we are given them in the wrong order in the url filters.
+  sort($amiBounds);
+  $amiLow = $amiBounds[0] ?? NULL;
+  $amiHigh = $amiBounds[1] ?? NULL;
+
+  $ami = ($amiValue >= $amiLow && $amiValue <= $amiHigh) ? TRUE : FALSE;
+
+  $bedsBounds = explode(' ', $bounds['beds']);
+  $beds = in_array($rowResult->node__field_ml_unit_num_of_bedrooms_field_ml_unit_num_of_bed, $bedsBounds);
+
+  if (!is_null($bounds['beds']) && !$beds) {
+    $rowGroups['outOfBounds'][$index] = $row;
+    return;
+  }
+  elseif (!is_null($bounds['ami']) && !$ami) {
+    $rowGroups['outOfBounds'][$index] = $row;
+    return;
+  }
+  elseif (!is_null($bounds['type']) && !$type) {
+    $rowGroups['outOfBounds'][$index] = $row;
+    return;
+  }
+  else {
+    $rowGroups['inBounds'][$index] = $row;
+    return;
+  }
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_metrolist_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $test = $form_state->getValues();
+}
+
+/**
+ * Implements hook_webform_element_alter().
+ */
+function bos_metrolist_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
+
+  if (!isset($element['#webform_id'])) {
+    return;
+  }
+  if ($context['form']["#webform_id"] != 'metrolist_listing' || $element["#webform"] != 'metrolist_listing'  ) {
+    return;
+  }
+
+  // Function contained in includes.
+  metrolist_listing_webform_element_alter($element, $form_state, $context);
+
+}

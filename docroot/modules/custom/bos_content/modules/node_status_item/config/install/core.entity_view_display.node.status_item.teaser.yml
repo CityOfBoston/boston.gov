@@ -1,0 +1,70 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.status_item.field_icon
+    - field.field.node.status_item.field_messages
+    - field.field.node.status_item.field_title
+    - image.style.square_icon_65px
+    - node.type.status_item
+  module:
+    - entity_reference_revisions
+    - fences
+    - svg_image
+    - user
+id: node.status_item.teaser
+targetEntityType: node
+bundle: status_item
+mode: teaser
+content:
+  field_icon:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: square_icon_65px
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: false
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_messages:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  content_moderation_control: true
+  field_enabled: true
+  field_weight: true
+  langcode: true
+  published_at: true

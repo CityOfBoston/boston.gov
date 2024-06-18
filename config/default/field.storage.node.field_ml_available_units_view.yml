@@ -1,0 +1,21 @@
+uuid: 15a2956c-cfef-4ac5-9514-56b81677bc26
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - viewfield
+    - views
+id: node.field_ml_available_units_view
+field_name: field_ml_available_units_view
+entity_type: node
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

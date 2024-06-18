@@ -1,0 +1,29 @@
+uuid: c56a573a-b254-48dd-95c3-920a2dbc3a15
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon
+    - media.type.icon
+    - node.type.site_alert
+id: node.site_alert.field_icon
+field_name: field_icon
+entity_type: node
+bundle: site_alert
+label: Icon
+description: 'This SVG icon will display as the left-most element on the site alert.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

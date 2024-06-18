@@ -1,0 +1,18 @@
+name: bos_mnl
+type: module
+description: 'Endpoint to POST MNL row content.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+
+config_devel:
+  install:
+    - bos_mnl.settings
+    - core.entity_form_display.node.neighborhood_lookup.default
+    - core.entity_view_display.node.neighborhood_lookup.default
+    - field.field.node.neighborhood_lookup.field_sam_address
+    - field.field.node.neighborhood_lookup.field_sam_id
+    - field.field.node.neighborhood_lookup.field_sam_neighborhood_data
+    - field.field.node.neighborhood_lookup.field_import_date
+    - language.content_settings.node.neighborhood_lookup
+    - node.type.neighborhood_lookup

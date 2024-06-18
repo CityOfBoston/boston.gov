@@ -1,0 +1,18 @@
+uuid: ccdd2beb-c9ae-4ad6-81c8-0d88057221d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.changed
+field_name: changed
+entity_type: node
+bundle: bh_update
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

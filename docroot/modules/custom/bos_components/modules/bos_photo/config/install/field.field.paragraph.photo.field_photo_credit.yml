@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_photo_credit
+    - paragraphs.paragraphs_type.photo
+id: paragraph.photo.field_photo_credit
+field_name: field_photo_credit
+entity_type: paragraph
+bundle: photo
+label: 'Photo Credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: 27dd6bdb-982b-4e05-8215-47928adc0841
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_election_contest
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_election_contest
+field_name: field_election_contest
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Election Contest'
+description: 'The Election Contest for these results.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: election_reports_2022
+      display_name: election_contest_autocomplete
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: ed556ed7-9d2c-4021-bdec-83b019f6219e
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_has_writeins
+field_name: field_has_writeins
+entity_type: taxonomy_term
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

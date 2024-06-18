@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for bos_components module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_vocab_theme() {
+  return [];
+}
+
+/**
+ * Runs an iteration over all custom modules and exports configs (drush cde).
+ */
+function _bos_vocab_update_all_configs() {
+  require_once "/app/docroot/modules/contrib/config_devel/drush/config_devel.drush.inc";
+  $modules = \Drupal::service('extension.list.module')->getAllInstalledInfo();
+  foreach ($modules as $moduleName => $module) {
+    if (preg_match("/^(vocab_)/", $moduleName)) {
+      drush_config_devel_export($moduleName);
+    }
+  }
+  drush_config_devel_export("bos_vocab");
+}

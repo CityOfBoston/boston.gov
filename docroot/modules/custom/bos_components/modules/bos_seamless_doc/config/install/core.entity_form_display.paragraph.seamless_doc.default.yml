@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.seamless_doc.field_document_id
+    - paragraphs.paragraphs_type.seamless_doc
+id: paragraph.seamless_doc.default
+targetEntityType: paragraph
+bundle: seamless_doc
+mode: default
+content:
+  field_document_id:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

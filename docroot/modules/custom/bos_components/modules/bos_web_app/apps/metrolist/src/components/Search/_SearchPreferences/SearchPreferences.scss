@@ -1,0 +1,32 @@
+// <SearchPreferences />
+@import '@globals';
+@import '@globals/typography/filters';
+
+.ml-search-preferences {
+  margin-top: ( $filters-panel-top-offset--half + $panel-spacing );
+  margin-bottom: 0;
+}
+@include media-breakpoint-up( large ) {
+  .ml-search-preferences {
+    margin-bottom: $panel-spacing;
+  }
+}
+
+.ml-search-preferences__hide-ineligible {
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+}
+@include media-breakpoint-up( large ) {
+  .ml-search-preferences__hide-ineligible {
+    justify-content: flex-end;
+  }
+}
+
+.ml-search-preferenceshide-ineligible-text {
+  display: inline-block;
+}
+
+.ml-search-preferences__hide-ineligible-checkbox {
+  width: 17.6rem;
+}

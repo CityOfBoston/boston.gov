@@ -1,0 +1,16 @@
+langcode: und
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Neighborhood Lookup'
+type: neighborhood_lookup
+description: 'Content source including SAM ID, SAM Address, and geo-address related data.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: true

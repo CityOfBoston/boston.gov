@@ -1,0 +1,34 @@
+uuid: 7f2bdb1e-946b-496b-b6aa-cfac610eab2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_type
+    - node.type.post
+    - taxonomy.vocabulary.place_type
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Check the boxes above if you want your post to be linked to all pages of a specific Place Profile type.'
+id: node.post.field_place_type
+field_name: field_place_type
+entity_type: node
+bundle: post
+label: 'Place Type'
+description: 'Check the boxes above if you want your post to be linked to all pages of a specific Place Profile type.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      place_type: place_type
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

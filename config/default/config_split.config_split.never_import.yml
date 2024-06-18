@@ -1,0 +1,18 @@
+uuid: 60c9cce0-6e36-456c-8348-6fb6cf1de2af
+langcode: en
+status: true
+dependencies: {  }
+id: never_import
+label: never_import
+description: 'Configurations which will never be imported.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/never_import
+module: {  }
+theme: {  }
+complete_list:
+  - bos_mnl.settings
+  - slackposter.settings
+partial_list: {  }

@@ -1,0 +1,18 @@
+uuid: a58de17c-27bb-46a1-9cdf-702132b3a62b
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.icons
+id: taxonomy_term.icons.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: icons
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

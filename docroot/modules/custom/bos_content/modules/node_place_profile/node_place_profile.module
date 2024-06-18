@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * Provides a place profile entity type.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function node_place_profile_theme() {
+  return [
+    'node__place_profile' => [
+      'render element' => 'elements',
+      'base hook' => 'node',
+    ],
+    'node__place_profile__listing' => [
+      'base hook' => 'node',
+    ],
+    'field__node__field_intro_text__place_profile__mode__listing' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_place_profile_preprocess_node__place_profile(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->setAttribute("id", "node-" . $variables['elements']['#node']->id());
+
+  if (isset($variables['content']['field_intro_image']) && $variables["node"]->get('field_intro_image')->count()) {
+    $photo_id = Html::getUniqueId('hro');
+
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+    $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+    $variables['#attached']['html_head'][] = [
+      [
+        "#tag" => "style",
+        "#value" => $css,
+        "#weight" => 100,
+      ],
+      'place-profile-intro-image-css-' . $photo_id,
+    ];
+    $nestedElement = [
+      ["div" => "b b--fw b--fw--480"],
+      ["div" => "hro $photo_id hro--pt hro--pb"],
+    ];
+    $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_place_profile_preprocess_node__place_profile__listing(&$variables) {
+  if (!empty($variables['elements']['#node'])) {
+    // Handle intro_image if present.
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $photo_id = Html::getUniqueId('cd-ic-' . $variables["elements"]['#node']->id());
+
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'place-profile-intro-image-css-' . $photo_id,
+      ];
+      // Var new_image_class is used in @bos_theme/snippets/grid-card.html.twig.
+      $variables['new_image_class'] = "cd-ic $photo_id";
+    }
+    else {
+      // Sets a hatched blue background in place of image.
+      // Var new_image_class is used in @bos_theme/snippets/grid-card.html.twig.
+      $variables['new_image_class'] = "cd-ic hro--d";
+    }
+
+    $variables["short_title"] = $variables["node"]->getTitle();
+
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_place_profile_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "place_profile") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--fp");
+      }
+    }
+  }
+
+}
+
+/**
+ * Prepares variables for place profile templates.
+ *
+ * Default template: place-profile.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the place profile information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__place_profile(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

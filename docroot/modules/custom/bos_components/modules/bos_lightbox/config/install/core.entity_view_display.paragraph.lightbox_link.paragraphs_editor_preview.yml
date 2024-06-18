@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.lightbox_link.field_lightbox_link
+    - paragraphs.paragraphs_type.lightbox_link
+id: paragraph.lightbox_link.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: lightbox_link
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_lightbox_link: true

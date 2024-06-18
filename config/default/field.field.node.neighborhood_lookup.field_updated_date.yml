@@ -1,0 +1,28 @@
+uuid: b799b483-d199-4691-b5c6-15e205360853
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.neighborhood_lookup
+  module:
+    - datetime
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Last Updated'
+id: node.neighborhood_lookup.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Imported Date'
+description: 'The date this record was last verified in an import.'
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

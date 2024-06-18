@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - salesforce_mapping
+id: node.field_salesforce_record
+field_name: field_salesforce_record
+entity_type: node
+type: salesforce_link
+settings: {  }
+module: salesforce_mapping
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

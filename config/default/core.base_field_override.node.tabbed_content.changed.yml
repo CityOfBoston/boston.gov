@@ -1,0 +1,18 @@
+uuid: 9d614ab8-1b93-4559-b31b-9fc06ba0de02
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node.tabbed_content.changed
+field_name: changed
+entity_type: node
+bundle: tabbed_content
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

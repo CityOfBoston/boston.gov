@@ -1,0 +1,35 @@
+### ZenCity free-form
+# @name free-form
+POST https://api-staging.zencity.io/api/mario/integrations/free-form?
+  jurisdictionId=61960496bc7dd47b9bbeeaf6
+Content-Type: application/json
+
+{
+  "submissions": [
+    {
+      "serial_number": "2",
+      "department": "Unknown",
+      "department_1": "Digital",
+      "url": "https://www.boston.gov/node/1",
+      "Easy to find information": "somewhat_easy",
+      "Infomation was useful": "neutral",
+      "Transaction Ease": "very_easy",
+      "qual_short_answer": "Freeform Text"
+      
+    }
+  ]
+}
+
+> {%
+  client.test("Request executed successfully", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+  });
+  client.test("Single Record Updated", function() {
+    client.assert(response.body.errors.length == 0, "Expected no errors");
+    client.assert(response.body.createdRecords === 1, "Expected createdRecords to be 1");
+  });
+%}
+### {
+#  "errors": [],
+#  "createdRecords": 1
+# }

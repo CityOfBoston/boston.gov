@@ -1,0 +1,29 @@
+uuid: 72b6d500-1f3d-44a4-b9b3-8ef320ac48b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_record_type
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_record_type
+id: node.bh_project.field_bh_record_type
+field_name: field_bh_record_type
+entity_type: node
+bundle: bh_project
+label: 'Record Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_record_type: bh_record_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

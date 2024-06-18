@@ -1,0 +1,182 @@
+<?xml version="1.0" standalone="yes"?>
+<ExportName>
+   <Terminology Subdivision="District" Subdivisions="Districts" PollingSubdivision="Precinct" PollingSubdivisions="Precincts" ParentSubdivision="Parent District" MultiPollingSubdivisionCollection="Multi-Precinct Collection" />
+   <Report_Info name="BOSTON MUNICIPAL ELECTION APRIL 2022" Report="Contest Overview Data" Create="2022-04-11 12:00:00" unofficial="Unofficial">
+      <Information Description="Election Project Name">BOSTON MUNICIPAL ELECTION APRIL 2022</Information>
+      <Information Description="Report Name">Contest Overview Data</Information>
+      <Information Description="Creation Date">2022-04-11 12:00:00</Information>
+      <Information Description="Note">Results are unofficial</Information>
+   </Report_Info>
+   <settings>
+      <ch ignoreSplits="1" officialResults="0" useCustomTitle="0" showFilters="1" />
+   </settings>
+   <contests>
+      <contest contestId="1" name="MAYOR" pos="1" writeins="1" eligible="442049" isAcclaimed="0" isDisabled="0" areaId="1" areaName="BOSTON" isMajor="0" sortOrder="4691" />
+      <contest contestId="3" name="COUNCILLOR DISTRICT 1" pos="1" writeins="1" eligible="47806" isAcclaimed="0" isDisabled="0" areaId="2" areaName="DISTRICT 1" isMajor="0" sortOrder="4692" />
+      <contest contestId="4" name="COUNCILLOR DISTRICT 2" pos="1" writeins="1" eligible="66820" isAcclaimed="0" isDisabled="0" areaId="3" areaName="DISTRICT 2" isMajor="0" sortOrder="4693" />
+      <contest contestId="5" name="COUNCILLOR DISTRICT 3" pos="1" writeins="1" eligible="45753" isAcclaimed="0" isDisabled="0" areaId="4" areaName="DISTRICT 3" isMajor="0" sortOrder="4694" />
+      <contest contestId="6" name="COUNCILLOR DISTRICT 4" pos="1" writeins="1" eligible="46420" isAcclaimed="0" isDisabled="0" areaId="5" areaName="DISTRICT 4" isMajor="0" sortOrder="4695" />
+      <contest contestId="7" name="COUNCILLOR DISTRICT 5" pos="1" writeins="1" eligible="53048" isAcclaimed="0" isDisabled="0" areaId="6" areaName="DISTRICT 5" isMajor="0" sortOrder="4696" />
+      <contest contestId="8" name="COUNCILLOR DISTRICT 6" pos="1" writeins="1" eligible="58015" isAcclaimed="0" isDisabled="0" areaId="7" areaName="DISTRICT 6" isMajor="0" sortOrder="4697" />
+      <contest contestId="9" name="COUNCILLOR DISTRICT 7" pos="1" writeins="1" eligible="41946" isAcclaimed="0" isDisabled="0" areaId="8" areaName="DISTRICT 7" isMajor="0" sortOrder="4698" />
+      <contest contestId="10" name="COUNCILLOR DISTRICT 8" pos="1" writeins="1" eligible="37274" isAcclaimed="0" isDisabled="0" areaId="9" areaName="DISTRICT 8" isMajor="0" sortOrder="4699" />
+      <contest contestId="11" name="COUNCILLOR DISTRICT 9" pos="1" writeins="1" eligible="44967" isAcclaimed="0" isDisabled="0" areaId="10" areaName="DISTRICT 9" isMajor="0" sortOrder="4700" />
+      <contest contestId="2" name="CITY COUNCILLOR AT LARGE" pos="4" writeins="4" eligible="442049" isAcclaimed="0" isDisabled="0" areaId="1" areaName="BOSTON" isMajor="0" sortOrder="4704" />
+      <contest contestId="19" name="QUESTION 1" pos="1" writeins="0" eligible="442049" isAcclaimed="0" isDisabled="0" areaId="1" areaName="BOSTON" isMajor="0" sortOrder="4709" />
+      <contest contestId="20" name="QUESTION 2" pos="1" writeins="0" eligible="442049" isAcclaimed="0" isDisabled="0" areaId="1" areaName="BOSTON" isMajor="0" sortOrder="4710" />
+      <contest contestId="21" name="QUESTION 3" pos="1" writeins="0" eligible="442049" isAcclaimed="0" isDisabled="0" areaId="1" areaName="BOSTON" isMajor="0" sortOrder="4711" />
+   </contests>
+   <choices>
+      <ch conId="1" chId="1" name="MICHELLE WU" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="1" chId="2" name="ANNISSA ESSAIBI GEORGE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="1" chId="36" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="11" name="LYDIA MARIE EDWARDS" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="39" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="4" chId="12" name="EDWARD M FLYNN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="4" chId="31" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="42" name="FRANK BAKER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="13" name="STEPHEN MCBRIDE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="41" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="6" chId="14" name="BRIAN J WORRELL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="6" chId="15" name="EVANDRO C CARVALHO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="6" chId="37" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="16" name="RICARDO ARROYO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="17" name="JOHN E WHITE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="38" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="8" chId="18" name="KENDRA ROSALIE HICKS" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="8" chId="19" name="MARY TAMER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="8" chId="40" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="9" chId="20" name="ROY A OWENS SR" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="9" chId="21" name="TANIA FERNANDES ANDERSON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="9" chId="32" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="10" chId="22" name="PRISCILLA KENZIE BOK" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="10" chId="35" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="23" name="MICHAEL J BIANCHI" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="24" name="LIZ A BREADON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="33" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="3" name="DAVID HALBERT" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="4" name="BRIDGET M NEE-WALSH" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="5" name="JULIA MEJIA" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="6" name="CARLA MONTEIRO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="7" name="RUTHZEE LOUIJEUNE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="8" name="ALTHEA GARRISON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="9" name="MICHAEL F FLAHERTY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="10" name="ERIN J MURPHY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="34" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="34" name="Write-in" dis="0" wri="1" wrInd="1" showVotes="1" />
+      <ch conId="2" chId="34" name="Write-in" dis="0" wri="1" wrInd="2" showVotes="1" />
+      <ch conId="2" chId="34" name="Write-in" dis="0" wri="1" wrInd="3" showVotes="1" />
+      <ch conId="19" chId="43" name="YES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="19" chId="44" name="NO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="20" chId="45" name="YES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="20" chId="46" name="NO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="21" chId="47" name="YES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="21" chId="48" name="NO" dis="0" wri="0" wrInd="0" showVotes="1" />
+   </choices>
+   <parties>
+      <party partyId="1" name="DEMOCRATIC" abbreviation="DEM" />
+      <party partyId="2" name="REPUBLICAN" abbreviation="REP" />
+      <party partyId="3" name="LIBERTARIAN" abbreviation="LIB" />
+   </parties>
+   <affiliations />
+   <conteststats>
+      <contest contestId="9" ballots="0" overvotes="0" undervotes="0" numVoters="9621" pushContests="0" />
+      <contest contestId="3" ballots="0" overvotes="0" undervotes="0" numVoters="10811" pushContests="0" />
+      <contest contestId="6" ballots="0" overvotes="0" undervotes="0" numVoters="12084" pushContests="0" />
+      <contest contestId="21" ballots="0" overvotes="0" undervotes="0" numVoters="125956" pushContests="0" />
+      <contest contestId="7" ballots="0" overvotes="0" undervotes="0" numVoters="17327" pushContests="0" />
+      <contest contestId="1" ballots="0" overvotes="0" undervotes="0" numVoters="142725" pushContests="0" />
+      <contest contestId="10" ballots="0" overvotes="0" undervotes="0" numVoters="7159" pushContests="0" />
+      <contest contestId="4" ballots="0" overvotes="0" undervotes="0" numVoters="15192" pushContests="0" />
+      <contest contestId="19" ballots="0" overvotes="0" undervotes="0" numVoters="121564" pushContests="0" />
+      <contest contestId="5" ballots="0" overvotes="0" undervotes="0" numVoters="13512" pushContests="0" />
+      <contest contestId="2" ballots="0" overvotes="0" undervotes="0" numVoters="131530" pushContests="0" />
+      <contest contestId="11" ballots="0" overvotes="0" undervotes="0" numVoters="10132" pushContests="0" />
+      <contest contestId="20" ballots="0" overvotes="0" undervotes="0" numVoters="121788" pushContests="0" />
+      <contest contestId="8" ballots="0" overvotes="0" undervotes="0" numVoters="24968" pushContests="0" />
+   </conteststats>
+   <results>
+      <res contId="11" chId="23" wrInd="0" prtId="0" vot="0" />
+      <res contId="4" chId="31" wrInd="0" prtId="0" vot="0" />
+      <res contId="11" chId="24" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="6" wrInd="0" prtId="0" vot="0" />
+      <res contId="21" chId="48" wrInd="0" prtId="0" vot="0" />
+      <res contId="7" chId="16" wrInd="0" prtId="0" vot="0" />
+      <res contId="10" chId="35" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="34" wrInd="3" prtId="0" vot="0" />
+      <res contId="9" chId="21" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="3" wrInd="0" prtId="0" vot="0" />
+      <res contId="5" chId="42" wrInd="0" prtId="0" vot="0" />
+      <res contId="20" chId="46" wrInd="0" prtId="0" vot="0" />
+      <res contId="3" chId="39" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="10" wrInd="0" prtId="0" vot="0" />
+      <res contId="7" chId="38" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="7" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="34" wrInd="0" prtId="0" vot="0" />
+      <res contId="6" chId="37" wrInd="0" prtId="0" vot="0" />
+      <res contId="5" chId="13" wrInd="0" prtId="0" vot="0" />
+      <res contId="20" chId="45" wrInd="0" prtId="0" vot="0" />
+      <res contId="9" chId="20" wrInd="0" prtId="0" vot="0" />
+      <res contId="11" chId="33" wrInd="0" prtId="0" vot="0" />
+      <res contId="1" chId="2" wrInd="0" prtId="0" vot="0" />
+      <res contId="5" chId="41" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="9" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="34" wrInd="2" prtId="0" vot="0" />
+      <res contId="4" chId="12" wrInd="0" prtId="0" vot="0" />
+      <res contId="8" chId="19" wrInd="0" prtId="0" vot="0" />
+      <res contId="19" chId="44" wrInd="0" prtId="0" vot="0" />
+      <res contId="6" chId="14" wrInd="0" prtId="0" vot="0" />
+      <res contId="1" chId="1" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="5" wrInd="0" prtId="0" vot="0" />
+      <res contId="1" chId="36" wrInd="0" prtId="0" vot="0" />
+      <res contId="8" chId="18" wrInd="0" prtId="0" vot="0" />
+      <res contId="3" chId="11" wrInd="0" prtId="0" vot="0" />
+      <res contId="7" chId="17" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="8" wrInd="0" prtId="0" vot="0" />
+      <res contId="9" chId="32" wrInd="0" prtId="0" vot="0" />
+      <res contId="8" chId="40" wrInd="0" prtId="0" vot="0" />
+      <res contId="19" chId="43" wrInd="0" prtId="0" vot="0" />
+      <res contId="10" chId="22" wrInd="0" prtId="0" vot="0" />
+      <res contId="21" chId="47" wrInd="0" prtId="0" vot="0" />
+      <res contId="6" chId="15" wrInd="0" prtId="0" vot="0" />
+      <res contId="2" chId="34" wrInd="1" prtId="0" vot="0" />
+      <res contId="2" chId="4" wrInd="0" prtId="0" vot="0" />
+   </results>
+   <pollprogress>
+      <area areaId="1" reported="0" total="255" />
+      <area areaId="2" reported="0" total="25" />
+      <area areaId="3" reported="0" total="24" />
+      <area areaId="4" reported="0" total="32" />
+      <area areaId="5" reported="0" total="32" />
+      <area areaId="6" reported="0" total="30" />
+      <area areaId="7" reported="0" total="36" />
+      <area areaId="8" reported="0" total="27" />
+      <area areaId="9" reported="0" total="22" />
+      <area areaId="10" reported="0" total="27" />
+      <area areaId="11" reported="0" total="133" />
+   </pollprogress>
+   <writeins />
+   <electorgroups>
+      <group groupId="1" isTop="1" name="Default" abbreviation="Def" />
+   </electorgroups>
+   <contestgroups>
+      <cg conId="1" egId="1" />
+      <cg conId="3" egId="1" />
+      <cg conId="4" egId="1" />
+      <cg conId="5" egId="1" />
+      <cg conId="6" egId="1" />
+      <cg conId="7" egId="1" />
+      <cg conId="8" egId="1" />
+      <cg conId="9" egId="1" />
+      <cg conId="10" egId="1" />
+      <cg conId="11" egId="1" />
+      <cg conId="16" egId="1" />
+      <cg conId="18" egId="1" />
+      <cg conId="17" egId="1" />
+      <cg conId="2" egId="1" />
+      <cg conId="12" egId="1" />
+      <cg conId="19" egId="1" />
+      <cg conId="20" egId="1" />
+      <cg conId="21" egId="1" />
+   </contestgroups>
+</ExportName>

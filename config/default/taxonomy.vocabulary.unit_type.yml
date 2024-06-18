@@ -1,0 +1,8 @@
+uuid: b6fca6d3-2715-46d0-a846-8e0bee9cdce0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Unit Type'
+vid: unit_type
+description: 'MetroList: Unit Type'
+weight: 0

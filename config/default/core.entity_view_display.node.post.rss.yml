@@ -1,0 +1,109 @@
+uuid: 3b43e3bd-494f-41b3-924e-888e1a1fc8ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.rss
+    - field.field.node.post.body
+    - field.field.node.post.field_components
+    - field.field.node.post.field_contact
+    - field.field.node.post.field_content_feeds
+    - field.field.node.post.field_intro_image
+    - field.field.node.post.field_intro_text
+    - field.field.node.post.field_manual_date
+    - field.field.node.post.field_metatags
+    - field.field.node.post.field_news_tags
+    - field.field.node.post.field_place_type
+    - field.field.node.post.field_published_date
+    - field.field.node.post.field_related
+    - field.field.node.post.field_sidebar_components
+    - field.field.node.post.field_thumbnail
+    - field.field.node.post.field_updated_date
+    - node.type.post
+  module:
+    - datetime
+    - fences
+    - text
+    - user
+_core:
+  default_config_hash: QHfqYtoXT6CMANU_cbrtljNJRToxWhWQJBLUU6klpvU
+id: node.post.rss
+targetEntityType: node
+bundle: post
+mode: rss
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: body
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_contact:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'intro-text supporting-text squiggle-border-bottom'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_normal_date
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  content_moderation_control: true
+  field_components: true
+  field_content_feeds: true
+  field_intro_image: true
+  field_manual_date: true
+  field_metatags: true
+  field_news_tags: true
+  field_place_type: true
+  field_related: true
+  field_sidebar_components: true
+  field_thumbnail: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

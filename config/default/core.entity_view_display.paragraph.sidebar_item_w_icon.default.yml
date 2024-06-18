@@ -1,0 +1,57 @@
+uuid: de801c6a-2e33-462c-a6b8-8ed3eb77d243
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_icon
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_text
+    - field.field.paragraph.sidebar_item_w_icon.field_title
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+  module:
+    - fences
+    - options
+    - text
+_core:
+  default_config_hash: FqRpi6BduPn5fz41bCoNN4wH6hUB1BNai83X1NnaA4w
+id: paragraph.sidebar_item_w_icon.default
+targetEntityType: paragraph
+bundle: sidebar_item_w_icon
+mode: default
+content:
+  field_sidebar_icon:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_sidebar_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden: {  }

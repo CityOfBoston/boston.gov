@@ -1,0 +1,22 @@
+uuid: 0403a0cc-24dc-4726-b96d-1274a5fdb13f
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: DxJHG6jWQxYDdnMgM8CXHBXfDPkmjcJPhLgZZDu_nEI
+id: taxonomy_term.field_previous_day
+field_name: field_previous_day
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 6
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

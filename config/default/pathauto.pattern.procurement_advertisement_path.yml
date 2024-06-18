@@ -1,0 +1,22 @@
+uuid: 71b52fa5-7a89-4195-8ca8-f1998f8896a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: procurement_advertisement_path
+label: 'Procurement Advertisement Path'
+type: 'canonical_entities:node'
+pattern: 'bid-listings/[node:field_event_project_number]'
+selection_criteria:
+  a3f270b4-863c-4a24-978e-39a8b8dd9a92:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: a3f270b4-863c-4a24-978e-39a8b8dd9a92
+    context_mapping:
+      node: node
+    bundles:
+      procurement_advertisement: procurement_advertisement
+selection_logic: and
+weight: -5
+relationships: {  }

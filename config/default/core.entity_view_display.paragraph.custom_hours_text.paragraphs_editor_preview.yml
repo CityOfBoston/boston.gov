@@ -1,0 +1,21 @@
+uuid: af27690b-60f4-4e27-b24b-b746d0ea867b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.custom_hours_text.field_custom_hours_text
+    - field.field.paragraph.custom_hours_text.field_hours_icon
+    - field.field.paragraph.custom_hours_text.field_title
+    - paragraphs.paragraphs_type.custom_hours_text
+_core:
+  default_config_hash: dPX677Cn1NfgLr_vj9zH4kHT27v5enMaMwoLI6u1I-8
+id: paragraph.custom_hours_text.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: custom_hours_text
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_custom_hours_text: true
+  field_hours_icon: true
+  field_title: true

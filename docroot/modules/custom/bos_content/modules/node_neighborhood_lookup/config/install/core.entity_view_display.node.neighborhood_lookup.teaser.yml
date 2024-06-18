@@ -1,0 +1,29 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.neighborhood_lookup.field_import_date
+    - field.field.node.neighborhood_lookup.field_sam_address
+    - field.field.node.neighborhood_lookup.field_sam_id
+    - field.field.node.neighborhood_lookup.field_sam_neighborhood_data
+    - node.type.neighborhood_lookup
+  module:
+    - user
+id: node.neighborhood_lookup.teaser
+targetEntityType: node
+bundle: neighborhood_lookup
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_import_date: true
+  field_sam_address: true
+  field_sam_id: true
+  field_sam_neighborhood_data: true
+  langcode: true
+  published_at: true

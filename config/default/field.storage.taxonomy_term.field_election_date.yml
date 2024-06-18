@@ -1,0 +1,20 @@
+uuid: 8bf86a7e-02f4-4938-9319-7b78682c37ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - taxonomy
+id: taxonomy_term.field_election_date
+field_name: field_election_date
+entity_type: taxonomy_term
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

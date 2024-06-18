@@ -1,0 +1,18 @@
+uuid: 2527ad0b-6a67-4c7e-9e7c-642638298886
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bos311
+id: paragraph.bos311.created
+field_name: created
+entity_type: paragraph
+bundle: bos311
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

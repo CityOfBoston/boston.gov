@@ -1,0 +1,15 @@
+uuid: 3d24832d-4bb8-4047-8606-ca18fa1fb27d
+langcode: en
+status: true
+dependencies: {  }
+name: topic_thumbnail
+label: 'Topic Thumbnail'
+effects:
+  97095cca-c868-4cfd-a7ae-7c6fe125311b:
+    uuid: 97095cca-c868-4cfd-a7ae-7c6fe125311b
+    id: image_crop
+    weight: 1
+    data:
+      width: 500
+      height: 500
+      anchor: center-center

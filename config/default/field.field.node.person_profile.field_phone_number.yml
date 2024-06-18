@@ -1,0 +1,21 @@
+uuid: f916450d-8f12-44cf-b91c-cc67b42f01bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.person_profile
+_core:
+  default_config_hash: vBt3oXjmgOdZkuUMWmXRMt5_5sb51-Qth1mZbRWqdX8
+id: node.person_profile.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: person_profile
+label: 'Phone Number'
+description: 'Please supply a contact phone number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

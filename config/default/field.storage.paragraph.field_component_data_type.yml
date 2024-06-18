@@ -1,0 +1,27 @@
+uuid: 05270d1d-26a8-4bd5-aa4b-67ec3918bb75
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_component_data_type
+field_name: field_component_data_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: url
+      label: url
+    -
+      value: json_values
+      label: json_values
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

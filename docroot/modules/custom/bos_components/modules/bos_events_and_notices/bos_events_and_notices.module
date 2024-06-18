@@ -1,0 +1,346 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_events_and_notices module.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\Sql;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_events_and_notices_theme() {
+  $theme['paragraph__events_and_notices'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['field__paragraph__field_link__events_and_notices'] = [
+    'base hook' => 'field',
+  ];
+  $theme['views_view_unformatted__events_and_notices'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices'] = [
+    'base hook' => 'view',
+  ];
+  $theme['viewfield__paragraph__events_and_notices'] = [
+    'base hook' => 'viewfield',
+  ];
+  $theme['views_view_fields__events_and_notices__upcoming_medium'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__upcoming_large'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__related_medium'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__related_large'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__upcoming_large_attachment'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__upcoming_medium_attachment'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__related_attachment_large'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__referenced_large_attachment'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__related_attachment_medium'] = [
+    'base hook' => 'view',
+  ];
+  $theme['views_view_fields__events_and_notices__referenced_medium_attachment'] = [
+    'base hook' => 'view',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK__bundle().
+ */
+function bos_events_and_notices_preprocess_paragraph__events_and_notices(&$variables) {
+  $variables["classes"] = "entity entity-paragraphs-item paragraphs-item-events-and-notices component-section fullwidth";
+
+
+  // Attach the Local Events by Zipcode JS if enabled and if the View Component is Upcoming Events
+  if ($variables["paragraph"]->field_enable_local_events->value) {
+    $variables['#attached']['library'][] = 'bos_events_and_notices/bos_events_and_notices_mnl_by_zipcode';
+  }
+  if ($variables["paragraph"]->bundle() == "events_and_notices" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+    $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function bos_events_and_notices_preprocess_views_view_fields__events_and_notices(&$variables) {
+  if ($node = $variables["row"]->_entity) {
+    $type = $node->getType();
+    $variables['type_class'] = 'news-item-' . $type;
+
+    $fields = $variables["fields"];
+
+    if ($node->hasField("field_thumbnail") && $node->get("field_thumbnail")->target_id) {
+      $variables["thumbnail"] = $fields["field_thumbnail"]->content;
+    }
+    elseif ($node->hasField("field_intro_image") && $node->get("field_intro_image")->target_id) {
+      $variables["thumbnail"] = $fields["field_intro_image"]->content;
+    }
+
+    if ($node->hasField("field_phone_number") && $node->get("field_phone_number")->value) {
+
+      if (!empty($fields["field_phone_number"])) {
+        $variables["phone"] = bos_core_format_telephone($node->get("field_phone_number")->value);
+      }
+    }
+
+    if ($node->hasField("field_cost") && $node->get("field_cost")->value) {
+
+      if (!empty($fields["field_cost"])) {
+        $variables["cost"] = $fields["field_cost"]->content;
+      }
+    }
+
+    if ($node->hasField("field_public_notice_date") && $node->get("field_public_notice_date")->value) {
+      $variables["date_recur"] = strip_tags(str_replace("\n", "", $fields["field_public_notice_date"]->content));
+    }
+    elseif ($node->hasField("field_event_date_recur") && $node->get("field_event_date_recur")->value) {
+      if (!empty($fields["field_event_date_recur_value"]) && $fields["field_event_date_recur_value"]->raw) {
+        $variables["date_recur"] = strip_tags(str_replace("\n", "", $fields["field_event_date_recur_value"]->content));
+      }
+      else {
+        $variables["date_recur"] = strip_tags(str_replace("\n", "", $fields["field_event_date_recur"]->content));
+      }
+    }
+
+    if (!empty($variables["date_recur"])) {
+      // Force into the boston featured date format.
+      $variables["date_recur"] = \Drupal::service('date.formatter')->format(strtotime($variables["date_recur"]), "date_format_boston_featured");
+    }
+
+    if ($node->hasField("field_public_notice_date") && $node->get("field_public_notice_date")->value) {
+      $start_date = "";
+      if (isset($node->get("field_public_notice_date")->value)) {
+        $start_date = $node->get("field_public_notice_date")->value;
+        if (is_string($start_date)) {
+          $start_date = new DateTime($start_date . "+0000");
+          $start_date->setTimezone(new DateTimeZone("America/new_york"));
+        }
+        $stdt = $start_date->format("F d, Y, g:iA");
+        $edt = "";
+      }
+      if (isset($node->get("field_public_notice_date")->end_value)) {
+        $end_date = $node->get("field_public_notice_date")->end_date;
+        $end_date->setTimezone(new DateTimeZone("America/new_york"));
+        if ($start_date->format("ymd") == $end_date->format("ymd")) {
+          if ($start_date->format("g:iA") != $end_date->format("g:iA")) {
+            $edt = $end_date->format(" - g:iA");
+          }
+        }
+        else {
+          $edt = " to " . $end_date->format("F d, Y, g:iA");
+        }
+      }
+      $variables["dates"] = $stdt . $edt;
+    }
+    elseif ($node->hasField("field_event_date_recur") && $node->get("field_event_date_recur")->value) {
+      if (!empty($fields["field_event_date_recur_value"]) && $fields["field_event_date_recur_value"]->raw) {
+        $start_date = "";
+        if (isset($node->get("field_event_date_recur")->value)) {
+          $start_date = $fields["field_event_date_recur_value"]->raw;
+          if (is_string($start_date)) {
+            $start_date = new DateTime($start_date . "+0000");
+            $start_date->setTimezone(new DateTimeZone("America/new_york"));
+          }
+          $stdt = $start_date->format("F d, Y, g:i A");
+          $edt = "";
+        }
+        if (isset($node->get("field_event_date_recur")->end_value)) {
+          $end_date = $node->get("field_event_date_recur")->end_date;
+          $end_date->setTimezone(new DateTimeZone("America/new_york"));
+          if ($start_date->format("ymd") == $end_date->format("ymd")) {
+            if ($start_date->format("g:i A") != $end_date->format("g:i A")) {
+              $edt = $end_date->format(" - g:i A");
+            }
+          }
+          else {
+            $edt = $end_date->format(" - g:i A");
+          }
+        }
+        $variables["dates"] = $stdt . $edt;
+      }
+    }
+
+    $variables["event_link"] = strip_tags(trim(str_replace("\n", "", $fields["view_node"]->content)));
+  }
+}
+
+/**
+ * Implements hook_views_pre_build().
+ */
+function bos_events_and_notices_views_pre_build(ViewExecutable $view) {
+  if ($view->id() == "events_and_notices") {
+    $view->setShowAdminLinks(FALSE);
+  }
+  return;
+}
+
+/**
+ * Implements hook_views_pre_render()
+ */
+function bos_events_and_notices_views_pre_render(ViewExecutable $view) {
+
+  if ($view->id() == 'events_and_notices' && ($view->getDisplay()->display['id'] == 'upcoming_auto')) {
+    $result_count = count($view->result);
+    //Show upcoming large cards
+    if ($result_count == 1){
+      unset($view->attachment_before[1]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    //show medium cards
+    elseif ($result_count > 1 && $result_count < 4) {
+      unset($view->attachment_before[0]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    else {
+      //show small cards
+      unset($view->attachment_before[0]);
+      unset($view->attachment_before[1]);
+    }
+  }
+
+  if ($view->id() == 'events_and_notices' && ($view->getDisplay()->display['id'] == 'related_auto')) {
+    $result_count = count($view->result);
+    //Show large cards
+    if ($result_count == 1){
+      unset($view->attachment_before[1]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    //show medium cards
+    elseif ($result_count > 1 && $result_count < 4) {
+      unset($view->attachment_before[0]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    else {
+      //show small cards
+      unset($view->attachment_before[1]);
+      unset($view->attachment_before[0]);
+    }
+  }
+
+  if ($view->id() == 'events_and_notices' && ($view->getDisplay()->display['id'] == 'referenced_auto')) {
+    $result_count = count($view->result);
+    //Show large cards
+    if ($result_count == 1){
+      unset($view->attachment_before[1]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    //show medium cards
+    elseif ($result_count > 1 && $result_count < 4) {
+      unset($view->attachment_before[0]);
+      $view->result = [];
+      $view->empty = [];
+    }
+    else {
+      //show small cards
+      unset($view->attachment_before[1]);
+      unset($view->attachment_before[0]);
+    }
+  }
+
+}
+
+/**
+ * Trying to push again
+ * Implements hook_views_query_alter().
+ */
+function bos_events_and_notices_views_query_alter(ViewExecutable $view, Sql $query) {
+  if ($view->id() == 'events_and_notices' && ($view->getDisplay()->display['id'] == 'related' || $view->getDisplay()->display['id'] == 'upcoming' || $view->getDisplay()->display['id'] == 'upcoming_medium' || $view->getDisplay()->display['id'] == 'upcoming_large' || $view->getDisplay()->display['id'] == 'related_medium' || $view->getDisplay()->display['id'] == 'related_large' || $view->getDisplay()->display['id'] == 'upcoming_auto' || $view->getDisplay()->display['id'] == 'related_auto' || $view->getDisplay()->display['id'] == 'referenced_auto')) {
+    $sql = "CASE
+        WHEN node__field_public_notice_date.field_public_notice_date_value IS NOT NULL THEN node__field_public_notice_date.field_public_notice_date_value
+        WHEN date_recur__node__field_event_date_recur_node_field_data.field_event_date_recur_value IS NOT NULL THEN date_recur__node__field_event_date_recur_node_field_data.field_event_date_recur_value
+        ELSE node__field_event_date_recur.field_event_date_recur_value
+    END";
+    $query->addOrderBy(NULL, $sql, 'ASC', 'pub_or_event_date');
+  }
+  if ($view->getTitle() == "Related" && $view->current_display == "related") {
+    $query->where[0]["type"] = "OR";
+    if (!empty($view->args)) {
+
+      // Add a condition to the query so that we can get a relationship which
+      // returns nodes which have a related_field value for the calling node
+      // or have a place_type in the related_place_type field.
+      // Basically, I can only see how to generate "ANDS" in the view interface
+      // for relationships, not "ORS", so we manually update the query here.
+      $calling_node = \Drupal::entityTypeManager()
+        ->getStorage("node")
+        ->load($view->args[0]);
+      if ($calling_node->hasField("field_place_type")) {
+        $tid = $calling_node->get("field_place_type")->target_id;
+        if (!empty($tid)) {
+          $key = array_key_first($query->where[0]["conditions"][1]["value"]);
+          $query->where[0]["conditions"][1]["value"][$key] = $tid;
+        }
+        else {
+          unset($query->where[0]["conditions"][1]);
+        }
+      }
+
+      // Because of duplicates, we need to get more records than we actually
+      // intend to display. Short of getting the query to work properly, the
+      // "best" solution is to get all records and then dedupe from there.
+      // So we remove any paging/limits on the query, but remember the value in
+      // the args array so that we can reapply it post execution.
+      if ($view->getItemsPerPage() != 0) {
+        $view->args["limit"] = $view->getItemsPerPage();
+        $view->setItemsPerPage(0);  // returns all records
+      }
+    }
+  }
+}
+
+function bos_events_and_notices_views_post_execute(ViewExecutable $view) {
+  if ($view->getTitle() == "Related" && $view->current_display == "related") {
+
+    // Check the args array to see if we retained a limit value to limit the
+    // number of rows returned by the view.
+    $items_per_page = 6;
+    if (!empty($view->args["limit"])) {
+      $items_per_page = $view->args["limit"];
+      unset($view->args["limit"]);
+    }
+
+    // Scan each result row and make sure it is for a unique node.
+    // I cannot see how to stop the query from returning the same node twice if
+    // its has 2 related_place_type fields checked, or three times if it has
+    // three ...etc. Again its easiest just to do a post-exec filter.
+    $newResults = [];
+    $cache = [];
+    foreach ($view->result as $idx => $result) {
+      if (!isset($cache[$result->nid])) {  // gets rid of dupes
+        $node = \Drupal::entityTypeManager()->getStorage("node")->load($result->nid);
+        if (!empty($node->getTitle())) {  // gets rid of blanks
+          $cache[$result->nid] = 0;
+          $newResults[$idx] = $result;  // important to retain the key (idx) order or the card is empty.
+          if (count($newResults) >= $items_per_page) {
+            break;
+          }
+        }
+      }
+    }
+    $view->result = $newResults;
+    $view->total_rows = count($newResults);
+  }
+}

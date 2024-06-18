@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.seamless_doc.field_document_id
+    - paragraphs.paragraphs_type.seamless_doc
+id: paragraph.seamless_doc.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: seamless_doc
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_document_id: true

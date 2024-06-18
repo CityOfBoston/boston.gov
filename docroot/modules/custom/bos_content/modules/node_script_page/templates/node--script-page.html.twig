@@ -1,0 +1,51 @@
+{#
+ * @file
+ * Returns the HTML for a script page.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https://drupal.org/node/1728164
+ #}
+
+<div class="breadcrumb" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+
+<article id="node-{{ node.id }}" {{ attributes }}>
+  <div class="department-info-wrapper g p-v700">
+    <div class="column g--8">
+      <h1 class="title">{{ title }}</h1>
+      {% if not node.field_intro_text.isempty %}
+        {{ content.field_intro_text }}
+      {% endif %}
+      {% if not node.field_embed_list.isempty %}
+        {{ content.field_embed_list }}
+      {% endif %}
+    </div>
+    <div class="column g--4">
+      <div class="sidebar script-page">
+        {% if not node.field_contact.isempty %}
+          <div class="contact-info">
+            <div>Still have questions? Contact:</div>
+            {{ content.field_contact }}
+          </div>
+        {% endif %}
+        {% if not node.field_link.isempty %}
+          <div class="pdf-link">
+            {{ content.field_link }}
+          </div>
+        {% endif %}
+        {% if not node.field_sidebar_components.isempty %}
+          <div class="list-item-wrapper">
+            {{ content.field_sidebar_components }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% if not node.field_components.isempty %}
+    <div{{ content_attributes }}>
+      {{ content.field_components }}
+    </div>
+  {% endif %}
+</article>

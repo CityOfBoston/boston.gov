@@ -1,0 +1,20 @@
+uuid: fa65f444-b938-4c0e-ad1a-81c0c7feacda
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: xONvyGDsjq0saE_RgXbXVhHvaI3Jq-xcPxvM1JG4CZE
+id: paragraph.internal_link
+target_entity_type_id: paragraph
+target_bundle: internal_link
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,69 @@
+/**
+  Adds a white line between multiple site alerts, but only if there are
+  multiple and not after the last.
+  If there is only one, then it is the last .... so it gets no line.
+ */
+#block-bos-theme-views-block-site-alerts-block-site-alerts [class*=js-view-dom] > div.bos-site-alert {
+  border-bottom: 1px solid #fff;
+}
+#block-bos-theme-views-block-site-alerts-block-site-alerts [class*=js-view-dom] > div.bos-site-alert:last-child {
+  border-bottom: none;
+}
+  /**
+    Locate contextual button out of the way of the main page button.
+   */
+#sa-a .contextual {
+  margin-right: 70px;
+  z-index: 1000;
+  display: block;
+}
+
+/**
+  Manage seal, if this css is loaded, then the seal is hidden.
+ */
+#page #main-menu #seal {
+  -webkit-transform: translateX(-50%) translateY(0%);
+  transform: translateX(-50%) translateY(0%);
+  box-shadow: none;
+  display: none;
+}
+
+/**
+  Manage Topic-pages hero image when have site alert.
+ */
+#page:not(.page--fp) .main-content {
+ top: 0;
+ position: relative;
+}
+#page .hero-image {
+  padding-top: 0;
+}
+#page .hero-image-wrapper:after {
+  top: 0;
+}
+
+/*body.toolbar-fixed #sa-a.node-site-alert {*/
+/*  top: auto;*/
+/*}*/
+
+/* Enable/disable site alerts using the sa class */
+/*.node-site-alert {*/
+/*  !* display: none; *!*/
+/*}*/
+/*.sa .node-site-alert {*/
+/*  display: block;*/
+/*}*/
+
+/**
+  Constrain and locate the icon, and remove for mobile.
+ */
+div.fyi-i {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media screen and (max-width: 480px) {
+  div.fyi-i {
+    display:none;
+  }
+}

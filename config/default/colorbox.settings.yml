@@ -1,0 +1,33 @@
+_core:
+  default_config_hash: GXgpFNb8H7n-27gImTB9s1A2lE-lmH43d6qf2KMYp_A
+custom:
+  style: default
+  activate: 0
+  transition_type: elastic
+  transition_speed: 350
+  opacity: 0.85
+  text_current: '{current} of {total}'
+  text_previous: '« Prev'
+  text_next: 'Next »'
+  text_close: Close
+  maxwidth: 98%
+  maxheight: 98%
+  initialwidth: '300'
+  initialheight: '250'
+  overlayclose: true
+  returnfocus: true
+  fixed: true
+  scrolling: true
+  slideshow:
+    slideshow: 0
+    auto: true
+    speed: 2500
+    text_start: 'start slideshow'
+    text_stop: 'stop slideshow'
+advanced:
+  unique_token: 1
+  mobile_detect: 1
+  mobile_device_width: 320px
+  caption_trim: 0
+  caption_trim_length: 75
+  compression_type: minified

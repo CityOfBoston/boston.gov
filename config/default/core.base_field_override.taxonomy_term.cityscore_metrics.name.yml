@@ -1,0 +1,18 @@
+uuid: 7108dc82-314a-4c2b-9f8e-7124b9aab0cd
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cityscore_metrics
+id: taxonomy_term.cityscore_metrics.name
+field_name: name
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

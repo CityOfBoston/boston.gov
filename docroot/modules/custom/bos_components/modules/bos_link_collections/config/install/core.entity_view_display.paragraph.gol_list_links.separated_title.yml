@@ -1,0 +1,14 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.gol_list_links.field_link
+    - paragraphs.paragraphs_type.gol_list_links
+id: paragraph.gol_list_links.separated_title
+targetEntityType: paragraph
+bundle: gol_list_links
+mode: separated_title
+content: {  }
+hidden:
+  field_link: true

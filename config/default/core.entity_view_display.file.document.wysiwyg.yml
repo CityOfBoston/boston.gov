@@ -1,0 +1,59 @@
+uuid: bbea4be1-dc4f-406d-9d5f-1e7f72a1ea1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.wysiwyg
+    - field.field.file.document.field_updated_date
+    - file_entity.type.document
+  module:
+    - file_entity
+id: file.document.wysiwyg
+targetEntityType: file
+bundle: document
+mode: wysiwyg
+content:
+  filemime:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  filename:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  filesize:
+    type: file_size
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  uid:
+    type: uri_link
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uri:
+    type: file_image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      title: field_image_title_text
+      alt: field_image_alt_text
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  field_updated_date: true
+  langcode: true

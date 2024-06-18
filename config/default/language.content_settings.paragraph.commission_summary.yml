@@ -1,0 +1,20 @@
+uuid: 8c059358-ff43-4c5d-aecc-a68e4b349983
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_summary
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 1rhzL-42a1i7zV0_lAMit2cs0rc1wDHfhPYZ7VCWR0s
+id: paragraph.commission_summary
+target_entity_type_id: paragraph
+target_bundle: commission_summary
+default_langcode: site_default
+language_alterable: false

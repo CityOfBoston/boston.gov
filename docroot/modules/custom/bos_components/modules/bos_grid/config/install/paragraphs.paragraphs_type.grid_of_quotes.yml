@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:14a1d644-6fc9-4c98-8626-56084cfcfabd'
+id: grid_of_quotes
+label: 'Grid of Quotes'
+icon_uuid: 14a1d644-6fc9-4c98-8626-56084cfcfabd
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Quotes'
+behavior_plugins: {  }

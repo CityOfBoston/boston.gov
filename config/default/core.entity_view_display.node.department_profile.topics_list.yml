@@ -1,0 +1,61 @@
+uuid: 2e4a6f94-852e-4c29-ae42-55292345449a
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.topics_list
+    - field.field.node.department_profile.body
+    - field.field.node.department_profile.field_address
+    - field.field.node.department_profile.field_components
+    - field.field.node.department_profile.field_department_type
+    - field.field.node.department_profile.field_email
+    - field.field.node.department_profile.field_hide_contact_form
+    - field.field.node.department_profile.field_icon
+    - field.field.node.department_profile.field_intro_text
+    - field.field.node.department_profile.field_link_url
+    - field.field.node.department_profile.field_manual_date
+    - field.field.node.department_profile.field_metatags
+    - field.field.node.department_profile.field_operation_hours
+    - field.field.node.department_profile.field_phone_number
+    - field.field.node.department_profile.field_published_date
+    - field.field.node.department_profile.field_select_contact_type
+    - field.field.node.department_profile.field_sidebar_components
+    - field.field.node.department_profile.field_updated_date
+    - node.type.department_profile
+  module:
+    - user
+_core:
+  default_config_hash: GFsELNrjl_BF9QfUUmuT5wYHqWdEFD2gdtmrYjha0Fw
+id: node.department_profile.topics_list
+targetEntityType: node
+bundle: department_profile
+mode: topics_list
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_address: true
+  field_components: true
+  field_department_type: true
+  field_email: true
+  field_hide_contact_form: true
+  field_icon: true
+  field_intro_text: true
+  field_link_url: true
+  field_manual_date: true
+  field_metatags: true
+  field_operation_hours: true
+  field_phone_number: true
+  field_published_date: true
+  field_select_contact_type: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

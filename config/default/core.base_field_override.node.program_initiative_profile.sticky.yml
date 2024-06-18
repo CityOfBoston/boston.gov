@@ -1,0 +1,24 @@
+uuid: 2e29b25e-7809-4b22-a0af-8f20d7dc7902
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+_core:
+  default_config_hash: XequvbszfkxAOQOB13N-gIni3UxzU9Zry17JriFByc8
+id: node.program_initiative_profile.sticky
+field_name: sticky
+entity_type: node
+bundle: program_initiative_profile
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

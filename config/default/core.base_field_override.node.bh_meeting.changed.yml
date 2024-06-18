@@ -1,0 +1,18 @@
+uuid: 6307e043-d6c7-4abd-a328-115d44809d65
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+id: node.bh_meeting.changed
+field_name: changed
+entity_type: node
+bundle: bh_meeting
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

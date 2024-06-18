@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_header
+    - paragraphs.paragraphs_type.hero_image
+id: paragraph.hero_image.field_header
+field_name: field_header
+entity_type: paragraph
+bundle: hero_image
+label: Header
+description: 'The large heading displayed on the image'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

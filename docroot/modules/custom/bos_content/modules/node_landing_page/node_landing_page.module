@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * Provides a landing page entity type.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function node_landing_page_theme() {
+  return [
+    'node__landing_page__full' => [
+      'base_hook' => 'node',
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for landing page templates.
+ *
+ * Default template: landing-page.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the landing page information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__landing_page__full(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_landing_page_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "landing_page") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        if ($variables["cob"]["header_image"] || $variables["is_front"]) {
+          $variables["attributes"]->addClass("page--fp");
+        }
+        else {
+          $variables["attributes"]->addClass("page");
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function node_landing_page_preprocess_breadcrumb(array &$variables) {
+  // Define variables for the breadcrumb-related theme settings. This is done
+  // here so that sub-themes can dynamically change the settings under
+  // particular conditions in a preprocess function of their own.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (isset($node)) {
+    if (is_numeric($node)) {
+      // $variables['node'] is the nid when a view_display version of the
+      // page is rendered.
+      return;
+    }
+    if ($node->getType() == "landing_page") {
+      $variables["cob"]["display_breadcrumb"] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function node_landing_page_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "landing_page", [
+    "field_contacts" => "Add another department",
+  ]);
+}

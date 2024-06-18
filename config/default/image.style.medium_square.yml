@@ -1,0 +1,15 @@
+uuid: 6238f593-e3c7-4f9a-b185-7c15fc546726
+langcode: en
+status: true
+dependencies: {  }
+name: medium_square
+label: 'Medium Square (220x220)'
+effects:
+  bd34c939-875e-40d9-8254-5b0ce21ddaa2:
+    uuid: bd34c939-875e-40d9-8254-5b0ce21ddaa2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 220
+      height: 220
+      anchor: center-center

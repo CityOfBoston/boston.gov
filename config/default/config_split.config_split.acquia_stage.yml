@@ -1,0 +1,50 @@
+uuid: 01879c06-8731-4f31-b037-840674cf95d1
+langcode: en
+status: true
+dependencies: {  }
+id: acquia_stage
+label: acquia_stage
+description: 'Configurations for Acquia STAGE environment'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/acquia_stage
+module:
+  stage_file_proxy: 0
+  acquia_connector: 0
+  acquia_purge: 0
+  autologout: 0
+  captcha: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
+  recaptcha_v3: 0
+  samlauth: 0
+  samlauth_user_roles: 0
+theme: {  }
+complete_list:
+  - bos_pdfmanager.settings
+  - bos_sql.settings
+  - bos_theme.settings
+  - config_ignore.settings
+  - key.key.iam_dir_sso_test_
+  - key.key.salesforce_sandbox_oauth_consumer_key
+  - key.key.salesforce_sandbox_oauth_consumer_secret
+  - mailsystem.settings
+  - mimemail.settings
+  - system.mail
+  - purge.logger_channels
+  - purge.plugins
+  - purge_queuer_coretags.settings
+  - samlauth.authentication
+  - samlauth_user_roles.mapping
+  - views.view.samlauth_map
+partial_list:
+  - environment_indicator.indicator
+  - metatag.metatag_defaults.global
+  - system.performance
+  - system.site

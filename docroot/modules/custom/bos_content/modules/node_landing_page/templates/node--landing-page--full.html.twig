@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a landing page entity.
+ *
+ * This template is used when viewing a registered landing page's page,
+ * e.g., /admin/content/landing-page)/123. 123 being the landing page's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_landing_page()
+ */
+#}
+<article{{ attributes }}>
+  {% if (title_prefix or title_suffix or display_submitted or unpublished or preview or (not page)) and title %}
+    <header>
+
+      {{ title_prefix  }}
+
+      {{ title_suffix  }}
+
+    </header>
+  {% endif %}
+
+  {# We hide the comments and links now so that we can render them later. #}
+  <div class="landing-page-components" {{ content_attributes }}>
+    {{ content|without("created","uid","title") }}
+  </div>
+</article>

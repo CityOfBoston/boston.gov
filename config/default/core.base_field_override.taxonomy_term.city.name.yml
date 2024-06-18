@@ -1,0 +1,18 @@
+uuid: bd503cd5-7513-42f4-8009-03b116d65194
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.city
+id: taxonomy_term.city.name
+field_name: name
+entity_type: taxonomy_term
+bundle: city
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: 012a425a-5df4-4137-97df-4f0b15f27911
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Render a featured-item thumbnail responsive image.'
+id: media.responsive_image_full_width
+label: 'Full Width (resp)'
+description: ''
+targetEntityType: media
+cache: true

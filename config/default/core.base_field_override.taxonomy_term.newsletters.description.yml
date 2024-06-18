@@ -1,0 +1,20 @@
+uuid: d9ac4a6c-e446-4ff7-8667-fed02622628d
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.newsletters
+  module:
+    - text
+id: taxonomy_term.newsletters.description
+field_name: description
+entity_type: taxonomy_term
+bundle: newsletters
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

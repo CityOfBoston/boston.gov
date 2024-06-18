@@ -1,0 +1,18 @@
+uuid: e71f69cc-135a-446b-8035-d208761a70fa
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: y12r5Nint6Sf3ZcIWocrdaYnC6VAE25_siFyIJYBFk8
+id: external_link
+label: 'External Link'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle External Link'
+behavior_plugins: {  }

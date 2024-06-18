@@ -1,0 +1,30 @@
+uuid: b0781d99-a954-4038-9ba6-1756c420d1c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ma_general_law
+    - node.type.procurement_advertisement
+    - taxonomy.vocabulary.massachusetts_general_law
+id: node.procurement_advertisement.field_ma_general_law
+field_name: field_ma_general_law
+entity_type: node
+bundle: procurement_advertisement
+label: 'Massachusetts General Law'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      massachusetts_general_law: massachusetts_general_law
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

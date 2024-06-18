@@ -1,0 +1,19 @@
+uuid: 37e1a738-77e2-4a24-b3d2-901f3da6e0e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_meeting_goal
+field_name: field_bh_meeting_goal
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

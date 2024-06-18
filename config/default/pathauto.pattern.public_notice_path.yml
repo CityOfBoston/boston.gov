@@ -1,0 +1,22 @@
+uuid: 610d71f0-a488-48ae-89a8-c8cb748fd1c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: public_notice_path
+label: 'Public Notice Path'
+type: 'canonical_entities:node'
+pattern: 'public-notices/[node:nid]'
+selection_criteria:
+  ae3b0331-22ac-412f-8a21-6c959c903101:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ae3b0331-22ac-412f-8a21-6c959c903101
+    context_mapping:
+      node: node
+    bundles:
+      public_notice: public_notice
+selection_logic: and
+weight: -5
+relationships: {  }

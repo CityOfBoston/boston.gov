@@ -1,0 +1,23 @@
+uuid: 4eda29fd-f089-46c6-bc1a-1a1d7e69b679
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.how_to_contact_step.field_address
+    - field.field.paragraph.how_to_contact_step.field_operation_hours
+    - field.field.paragraph.how_to_contact_step.field_step_details
+    - field.field.paragraph.how_to_contact_step.field_title
+    - paragraphs.paragraphs_type.how_to_contact_step
+_core:
+  default_config_hash: AvKCz_6KrOI-DM591IaPTU2PAK9U91VKUfDy_eZ7J88
+id: paragraph.how_to_contact_step.separated_title
+targetEntityType: paragraph
+bundle: how_to_contact_step
+mode: separated_title
+content: {  }
+hidden:
+  field_address: true
+  field_operation_hours: true
+  field_step_details: true
+  field_title: true

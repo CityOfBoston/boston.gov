@@ -1,0 +1,25 @@
+uuid: 74077f99-d26c-4ded-8c45-03ad8bcb0f4f
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.article
+    - field.field.taxonomy_term.features.field_icon
+    - taxonomy.vocabulary.features
+  module:
+    - text
+id: taxonomy_term.features.article
+targetEntityType: taxonomy_term
+bundle: features
+mode: article
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_icon: true
+  langcode: true

@@ -1,0 +1,22 @@
+uuid: 6b300930-dfc9-4004-b944-36ba21628b27
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.sticky
+field_name: sticky
+entity_type: node
+bundle: bh_contact
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

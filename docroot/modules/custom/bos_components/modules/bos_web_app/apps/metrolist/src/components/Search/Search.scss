@@ -1,0 +1,115 @@
+// <Search />
+@import '@globals';
+@import '@globals/typography/filters';
+
+  .ml-search {
+    width: 100%;
+    // margin: rem( 10px ) auto 0;
+    margin: 0 auto;
+    margin-top: $filters-panel-top-offset--half;
+    // border: 1px solid forestgreen;
+  }
+
+  @include media-breakpoint-up( large ) {
+    .ml-search {
+
+      width: ( $nominal-width-mobile-search__content / $nominal-width-mobile ) * 100%;
+      // border: 1px solid maroon;
+    }
+
+    .ml-search__content {
+      display: flex;
+    }
+
+    .ml-search__filters,
+    .ml-search__results {
+      // border: 1px solid black;
+      display: inline-block;
+    }
+
+    // $filters-width: 31%;
+    // .ml-search__filters {
+    //   width: $filters-width;
+    // }
+    // .ml-search__results .str-c {
+    //   width: ( 100% - $filters-width );
+    // }
+  }
+  .ml-search__results {
+    & .sr-only.b.b--fw {
+      position: relative !important;
+      width: auto !important;
+      height: auto !important;
+      left: 50%;
+    }
+  }
+  .ml-search__results .str-c {
+    background-color: #f2f2f2;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-search__results .str-c {
+      background-color: #f2f2f2;
+    }
+    .ml-search__results {
+      & .sr-only.b.b--fw {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        left: -10000px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up( xlarge ) {
+    .ml-search {
+      width: ( $nominal-width-desktop-search__content / $nominal-width-desktop ) * 100%;
+      // max-width: rem( $nominal-width-desktop * 1px );
+    }
+  }
+
+  .ml-search__pagination {
+    flex-wrap: wrap;
+    margin-bottom: ( $panel-spacing * -1 );
+  }
+
+  .ml-search__page-link-container {
+    margin-bottom: $panel-spacing;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .ml-search__page-link {
+    border: none;
+  }
+
+  .pg-li-i--a.ml-search__page-link {
+    background-color: $color-optimistic-blue--a11y;
+  }
+
+  .pg-li:first-of-type .pg-li-i--link.ml-search__page-link,
+  .pg-li:last-of-type .pg-li-i--link.ml-search__page-link {
+    display: block;
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+  @include media-breakpoint-up( large ) {
+    .ml-search__preferences {
+      margin: 0;
+      margin-bottom: $panel-spacing;
+    }
+  }
+
+// this will override the  first and last settings causing confusion with nave
+a.pg-li-i.pg-li-i--link.ml-search__page-link {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+a.pg-li-i.pg-li-i--link.pg-li-i--a.ml-search__page-link {
+  background-color: #1871bd !important;
+  color: #fff !important;
+}
+

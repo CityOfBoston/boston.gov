@@ -1,0 +1,21 @@
+name: bos_featured_topics
+type: module
+description: 'Provides theming and configuration for bos_featured_topics.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.featured_topics.created
+  - core.base_field_override.paragraph.featured_topics.status
+  - core.entity_form_display.paragraph.featured_topics.default
+  - core.entity_view_display.paragraph.featured_topics.default
+  - core.entity_view_display.paragraph.featured_topics.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.featured_topics.separated_title
+  - core.entity_view_mode.node.featured_topics
+  - field.field.paragraph.featured_topics.field_short_title
+  - field.field.paragraph.featured_topics.field_topics
+  - language.content_settings.paragraph.featured_topics
+  - paragraphs.paragraphs_type.featured_topics

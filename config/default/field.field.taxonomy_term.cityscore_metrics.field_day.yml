@@ -1,0 +1,21 @@
+uuid: 35d6a445-e87f-4abf-87cf-95eff4b13db4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_day
+    - taxonomy.vocabulary.cityscore_metrics
+_core:
+  default_config_hash: V4JI_NOE_MoVXbQXESunXafHYOKr8B8WjqGp5fEk67E
+id: taxonomy_term.cityscore_metrics.field_day
+field_name: field_day
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: Day
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

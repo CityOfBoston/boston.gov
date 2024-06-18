@@ -1,0 +1,13 @@
+uuid: e34a6d8c-7b98-46b2-b949-d5beccbdc888
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 5QqrBwR3q8RneZOQXLUWjJud54l3z5XMLgBVUdpwTQs
+id: node.featured_topics
+label: 'Featured Topics'
+description: ''
+targetEntityType: node
+cache: true

@@ -1,0 +1,13 @@
+uuid: 55dec340-ef5f-4eae-80b5-2a3862297501
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: Pydaxg8Yj_iYz2SkpyWki7MrnwbjmE-J3P9kktqOIRg
+id: list
+label: List
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle List'
+behavior_plugins: {  }

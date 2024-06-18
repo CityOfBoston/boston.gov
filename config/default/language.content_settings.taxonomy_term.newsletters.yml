@@ -1,0 +1,20 @@
+uuid: 6f695c23-1688-4149-baec-688837c0be8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.newsletters
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: R7kpUPlnJEezwHSkJS1nLv5b-QMnZvasJ1gJNE3SAhk
+id: taxonomy_term.newsletters
+target_entity_type_id: taxonomy_term
+target_bundle: newsletters
+default_langcode: site_default
+language_alterable: false

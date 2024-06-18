@@ -1,0 +1,24 @@
+uuid: aaa24174-6cd0-4290-a45a-79a0f1be6038
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_summary
+_core:
+  default_config_hash: QkhgiWSX_DJCvrsUPpw1Sm4rDcgz9vBJsVBPQJB4d-E
+id: paragraph.commission_summary.status
+field_name: status
+entity_type: paragraph
+bundle: commission_summary
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

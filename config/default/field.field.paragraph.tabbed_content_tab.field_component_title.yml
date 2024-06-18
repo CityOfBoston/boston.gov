@@ -1,0 +1,21 @@
+uuid: e6853f80-600e-4fb1-b5f2-2aeddacf19b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.tabbed_content_tab
+_core:
+  default_config_hash: 6NZZp7VFw-9LQvisc1VPV3ESdq-cMFdKPNFxmcpRq0I
+id: paragraph.tabbed_content_tab.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: tabbed_content_tab
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

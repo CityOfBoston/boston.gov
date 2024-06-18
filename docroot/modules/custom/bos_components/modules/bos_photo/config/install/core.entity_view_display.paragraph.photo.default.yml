@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.photo.field_component_title
+    - field.field.paragraph.photo.field_contacts
+    - field.field.paragraph.photo.field_image
+    - field.field.paragraph.photo.field_link
+    - field.field.paragraph.photo.field_photo_caption
+    - field.field.paragraph.photo.field_photo_credit
+    - field.field.paragraph.photo.field_short_title
+    - paragraphs.paragraphs_type.photo
+  module:
+    - entity_reference_revisions
+    - fences
+    - text
+id: paragraph.photo.default
+targetEntityType: paragraph
+bundle: photo
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_full_width
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_photo_caption:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_photo_credit:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden:
+  field_contacts: true
+  field_short_title: true

@@ -1,0 +1,66 @@
+// <Callout />
+@import '@globals';
+
+.ml-callout {
+  border: 2px solid #45789C;
+  // margin-top: rem( 31px );
+  background-color: $color-white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: inherit;
+  }
+}
+  .ml-callout.ml-callout--icon-visible {
+    padding-right: 1rem + rem( 11px );
+  }
+
+  @include media-breakpoint-up( large ) {
+    .ml-callout {
+      // border: 2px solid $color-filters-callout-border;
+      padding:
+        rem( 26px ) /* t */
+        // rem( 26px ) /* r */
+        // rem( 29px ) /* b */
+        // rem( 29px ) /* l */
+      ;
+    }
+
+    .ml-callout.ml-callout--icon-visible {
+      padding-right: rem( 26px ) + rem( 11px );
+    }
+  }
+  .ml-callout__heading {
+    // Adapted from Patterns’ Card component (.cd-t @ patterns/stylesheets/components/card/_card.styl)
+    color: $color-optimistic-blue--a11y;
+    font-style: italic;
+    font-size: responsive rem( 18px ) rem( 25px );
+    font-range: 480px 1440px; // TODO: make match $grid-breakpoints?
+    line-height: $line-height-200;
+    margin: 0;
+
+    &:hover,
+    &:focus,
+    &:active,
+    .ml-callout:hover &,
+    .ml-callout:focus &,
+    .ml-callout:active & {
+      color: inherit;
+    }
+  }
+  .ml-callout__text {
+    font-size: rem( 18px );
+    line-height: rem( 32px );
+    color: $color-metrolist-text-blue;
+  }
+  .ml-callout__cta {
+    flex: none;
+  }
+  .ml-callout.ml-callout--icon-visible .ml-callout__icon {
+    margin-right: rem( -11px );
+  }

@@ -1,0 +1,28 @@
+uuid: e2b1415e-9834-44e5-9748-b5cb4ed7de9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - taxonomy.vocabulary.bh_public_stage
+id: taxonomy_term.bh_public_stage.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: bh_public_stage
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

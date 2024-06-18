@@ -1,0 +1,81 @@
+uuid: 46bbcb28-ca9f-459c-b861-ae1cd7d25711
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+    - node.type.roll_call_dockets
+    - taxonomy.vocabulary.city_council_districts
+    - taxonomy.vocabulary.vocab_city_councillors
+    - workflows.workflow.city_of_boston_workflows
+    - workflows.workflow.managed_workflow
+  module:
+    - content_moderation
+    - lightning_core
+    - lightning_scheduler
+    - moderation_sidebar
+    - node
+    - paragraphs_type_permissions
+    - publication_date
+    - taxonomy
+    - toolbar
+    - workbench
+third_party_settings:
+  lightning_core:
+    description: 'Role for managing Roll Calls (and Public Notices).'
+id: city_clerk_editor
+label: 'City Clerk Editor'
+weight: 0
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'access workbench'
+  - 'bypass paragraphs type content access'
+  - 'create paragraph content roll_call_vote'
+  - 'create paragraph content text_one_column'
+  - 'create public_notice content'
+  - 'create roll_call_dockets content'
+  - 'create terms in city_council_districts'
+  - 'create terms in vocab_city_councillors'
+  - 'delete own public_notice content'
+  - 'delete own roll_call_dockets content'
+  - 'delete paragraph content roll_call_vote'
+  - 'delete paragraph content text_one_column'
+  - 'delete public_notice revisions'
+  - 'delete roll_call_dockets revisions'
+  - 'edit any public_notice content'
+  - 'edit any roll_call_dockets content'
+  - 'edit terms in city_council_districts'
+  - 'edit terms in vocab_city_councillors'
+  - 'revert public_notice revisions'
+  - 'revert roll_call_dockets revisions'
+  - 'schedule city_of_boston_workflows transition archived'
+  - 'schedule city_of_boston_workflows transition draft_from_archived'
+  - 'schedule city_of_boston_workflows transition draft_from_published'
+  - 'schedule city_of_boston_workflows transition publish'
+  - 'schedule city_of_boston_workflows transition publish_new_content'
+  - 'schedule city_of_boston_workflows transition reject'
+  - 'schedule city_of_boston_workflows transition submit_for_review'
+  - 'schedule city_of_boston_workflows transition update_draft'
+  - 'schedule city_of_boston_workflows transition update_published'
+  - 'schedule managed_workflow transition create_new_draft'
+  - 'schedule managed_workflow transition publish'
+  - 'set roll_call_dockets published on date'
+  - 'update paragraph content roll_call_vote'
+  - 'update paragraph content text_one_column'
+  - 'use city_of_boston_workflows transition archived'
+  - 'use city_of_boston_workflows transition draft_from_archived'
+  - 'use city_of_boston_workflows transition draft_from_published'
+  - 'use city_of_boston_workflows transition publish'
+  - 'use city_of_boston_workflows transition publish_new_content'
+  - 'use city_of_boston_workflows transition reject'
+  - 'use city_of_boston_workflows transition submit_for_review'
+  - 'use city_of_boston_workflows transition update_draft'
+  - 'use city_of_boston_workflows transition update_published'
+  - 'use managed_workflow transition create_new_draft'
+  - 'use managed_workflow transition publish'
+  - 'use moderation sidebar'
+  - 'view paragraph content roll_call_vote'
+  - 'view paragraph content text_one_column'
+  - 'view public_notice revisions'
+  - 'view roll_call_dockets revisions'

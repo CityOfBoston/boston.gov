@@ -1,0 +1,89 @@
+uuid: 82cc5da9-08a1-4c13-9a37-617b6b097aff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_of_links_mini_grid.field_component_theme
+    - field.field.paragraph.group_of_links_mini_grid.field_component_title
+    - field.field.paragraph.group_of_links_mini_grid.field_contact
+    - field.field.paragraph.group_of_links_mini_grid.field_hide_title_bar
+    - field.field.paragraph.group_of_links_mini_grid.field_links
+    - field.field.paragraph.group_of_links_mini_grid.field_short_title
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+  module:
+    - paragraphs
+_core:
+  default_config_hash: OnY_58YwDJ7H4g1SxuKPn0MysqjX2hvbP2MF_6zj4m4
+id: paragraph.group_of_links_mini_grid.default
+targetEntityType: paragraph
+bundle: group_of_links_mini_grid
+mode: default
+content:
+  field_component_theme:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_links:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,21 @@
+uuid: 33049dc8-7bb0-4e9d-aa4c-9596290ecc94
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.daily_hours.field_daily_hours
+    - field.field.paragraph.daily_hours.field_hours_icon
+    - field.field.paragraph.daily_hours.field_title
+    - paragraphs.paragraphs_type.daily_hours
+_core:
+  default_config_hash: zRHK2YPxYwnsTdvPaCC5bgvocSCP0TUQIguZCuIH-f8
+id: paragraph.daily_hours.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: daily_hours
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_daily_hours: true
+  field_hours_icon: true
+  field_title: true

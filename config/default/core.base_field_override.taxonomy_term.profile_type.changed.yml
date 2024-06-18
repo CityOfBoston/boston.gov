@@ -1,0 +1,18 @@
+uuid: bbcc162c-d894-4c12-a2bd-ed2a5dce2ffa
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.profile_type
+id: taxonomy_term.profile_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: profile_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

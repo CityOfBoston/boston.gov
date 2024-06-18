@@ -1,0 +1,190 @@
+<?php
+
+/**
+ * @file
+ * Provides a site alert entity type.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+
+/**
+ * Implements hook_theme().
+ */
+function node_site_alert_theme() {
+  return [
+    'html__api' => [
+      'base hook' => 'html',
+    ],
+    'node__site_alert' => [
+      'base hook' => 'node',
+    ],
+    'container__no_wrapper' => [
+      'base hook' => 'container',
+    ],
+    'region__no_wrapper' => [
+      'base hook' => 'region',
+    ],
+    'field__node__field_link__site_alert' => [
+      'base hook' => 'field',
+    ],
+    'block__views_block__site_alerts_block_site_alerts' => [
+      'base hook' => 'block',
+    ],
+
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function node_site_alert_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form["#form_id"] == "node_site_alert_edit_form") {
+    // The select options are set at the field storage level, and both the
+    // emergency and site alerts share the same field_theme storage entity.
+    // We want to rename the select options here.
+    $form["field_theme"]["widget"]["#options"] = [
+      'dark-blue' => "Dark Blue",
+      'red' => "Red",
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_site_alert_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "site_alert", [
+    "field_excluded_nodes" => "Exclude another page",
+    "field_included_nodes" => "Include another page",
+  ]);
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function node_site_alert_entity_presave(EntityInterface $entity) {
+  if ($entity->getEntityTypeId() == "node"
+    && $entity->getType() == "site_alert"
+    && isset($entity->title_field->value)) {
+    // Since we have created a separate custom title field, and the form
+    // display does not set the nodes native title field, we need to manually
+    // set the title field here or else we get an "SQL column cannot be null"
+    // exception on save.
+    $entity->setTitle($entity->title_field->value);
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function node_site_alert_preprocess(&$variables, $hook) {
+  if ($hook == "image_url_formatter") {
+    // Even though a full URL is requested in the view, a relative url is
+    // provided.  This manually extends to a full URL.
+    if ($variables["url_type"] == 0) {
+      $variables["url"] = \Drupal::service('file_url_generator')->generateAbsoluteString($variables["item"]->__get("entity")->get("uri")->value);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_site_alert_preprocess_node__site_alert(&$variables) {
+  if ($variables['node']->bundle() != "site_alert") {
+    return;
+  }
+
+  // Add-in a bit of css.
+  $variables['#attached']['library'][] = "node_site_alert/alert.call";
+
+  // Used in templates to set the background colors.
+  $variables['block_theme'] = $variables["content"]["field_theme"]["#items"]->value;
+  $variables['attributes']['class'][] = "b--" . $variables['block_theme'];
+}
+
+/**
+ * Implements hook_views_post_render().
+  */
+function node_site_alert_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+  if ($view->id() == "site_alerts") {
+
+    if ($view->current_display == "exclude_pages_autocomplete") {
+      // Rewrites the autocomplete list for excluded pages.
+      foreach ($output as &$line) {
+        $line["#row"]->_entity->setTitle($line['#row']->node_field_data_title . " (" . $line['#row']->_entity->getType() . ")");
+      }
+    }
+
+    if ($view->current_display == "block_site_alerts") {
+      // DIG-4391- May 2024
+      if (!empty($output["#rows"])) {
+        // The output is already filtered for display dates.
+        // We need to check if the current node is in the list of excluded/included nodes.
+        $nid = $view->args[0] ?? NULL;
+        if ($nid) {
+          foreach ($output["#rows"] as $sa => &$row) {
+
+            foreach($row["#rows"] as $key => $sa_node) {
+              $site_alert = $sa_node["#node"];
+              $included = $site_alert->field_included_nodes->getValue();
+              array_walk($included, function(&$value, $k) { $value = $value["target_id"]; });
+              if ($included == [] ||
+                ($included && in_array($nid, $included))) {
+                // Site Alert appears on all nodes, or
+                // Permitted to display on this node.
+              }
+              else {
+                unset($output["#rows"][$sa]["#rows"][$key]);
+              }
+
+              $excluded = $site_alert->field_excluded_nodes->getValue();
+              array_walk($excluded, function(&$value, $key) { $value = $value["target_id"]; });
+              if ($excluded == []) {
+                // No Exclusions applied, or
+                // Permitted to display on this node.
+              }
+              elseif ($excluded && in_array($nid, $excluded)) {
+                unset($output["#rows"][$sa]["#rows"][$key]);
+              }
+            }
+
+            if (empty($output["#rows"][$sa]["#rows"])) {
+              unset($output["#rows"][$sa]);
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * This is used to create a cut-down container when site_alert is called from
+ * the page display of a view.
+ */
+function node_site_alert_theme_suggestions_container(array $variables) {
+  if (isset($variables["element"]["#view"]) && $variables["element"]["#view"]->current_display == "site_alerts") {
+    return [
+      'container__no_wrapper',
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * This is used to create a cut-down container when site_alert is called from
+ * the page display of a view.
+ */
+function node_site_alert_theme_suggestions_region(array $variables) {
+  if ($variables["elements"]["#region"] == "site_alert") {
+    return ["region__no_wrapper"];
+  }
+}

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: charts
+label: Charts
+icon_uuid: null
+icon_default: null
+description: 'A component to display multiple charts on a page with a section title etc'
+behavior_plugins: {  }

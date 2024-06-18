@@ -1,0 +1,29 @@
+uuid: c2243487-3690-40f0-9894-3f11bed96c68
+langcode: en
+status: true
+dependencies:
+  module:
+    - office_hours
+    - paragraphs
+id: paragraph.field_daily_hours
+field_name: field_daily_hours
+entity_type: paragraph
+type: office_hours
+settings:
+  time_format: G
+  element_type: office_hours_datelist
+  increment: 30
+  required_start: false
+  limit_start: ''
+  required_end: false
+  limit_end: ''
+  comment: 1
+  valhrs: false
+  cardinality_per_day: 2
+module: office_hours
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

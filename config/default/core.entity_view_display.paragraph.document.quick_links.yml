@@ -1,0 +1,47 @@
+uuid: fc15691f-14b8-40b9-8807-b35b52c9e757
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.quick_links
+    - field.field.paragraph.document.field_document
+    - field.field.paragraph.document.field_title
+    - paragraphs.paragraphs_type.document
+  module:
+    - fences
+    - file
+id: paragraph.document.quick_links
+targetEntityType: paragraph
+bundle: document
+mode: quick_links
+content:
+  field_document:
+    type: file_url_plain
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

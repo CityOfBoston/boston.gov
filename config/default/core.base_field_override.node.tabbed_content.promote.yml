@@ -1,0 +1,22 @@
+uuid: ad071ddf-ffac-4cf0-a743-84156cf11823
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node.tabbed_content.promote
+field_name: promote
+entity_type: node
+bundle: tabbed_content
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

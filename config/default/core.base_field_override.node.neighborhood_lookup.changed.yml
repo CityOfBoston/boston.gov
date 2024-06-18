@@ -1,0 +1,18 @@
+uuid: 06e4d2ef-55e8-4f33-8b80-a7e486d00cbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.changed
+field_name: changed
+entity_type: node
+bundle: neighborhood_lookup
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

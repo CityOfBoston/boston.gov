@@ -1,0 +1,15 @@
+uuid: 72abc661-38cb-4fec-a7bf-7ade461fa790
+langcode: und
+status: true
+dependencies: {  }
+name: bos_text_responsive
+label: 'Embed Image'
+effects:
+  2e94d0a6-266c-43ce-9de0-739637ab607a:
+    uuid: 2e94d0a6-266c-43ce-9de0-739637ab607a
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: null
+      upscale: false

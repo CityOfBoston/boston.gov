@@ -1,0 +1,13 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.status_item
+id: node_type_status_item
+entity_type_id: null
+entity_id: null
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

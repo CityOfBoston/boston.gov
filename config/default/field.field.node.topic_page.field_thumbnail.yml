@@ -1,0 +1,31 @@
+uuid: 1fdab923-be8e-42c9-99a0-e42efd39653a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_thumbnail
+    - media.type.image
+    - node.type.topic_page
+_core:
+  default_config_hash: BMct9yFzlDQhQndExHo87fH2YSx7c0-VrERVPb9mBGc
+id: node.topic_page.field_thumbnail
+field_name: field_thumbnail
+entity_type: node
+bundle: topic_page
+label: Thumbnail
+description: 'This image will be used on guide listings.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

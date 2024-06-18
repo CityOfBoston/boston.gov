@@ -1,0 +1,25 @@
+uuid: cdf73efe-10a5-4921-8287-7da160b010b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.3_column_w_image.field_columns
+    - field.field.paragraph.3_column_w_image.field_component_theme
+    - field.field.paragraph.3_column_w_image.field_component_title
+    - field.field.paragraph.3_column_w_image.field_contact
+    - field.field.paragraph.3_column_w_image.field_hide_title_bar
+    - field.field.paragraph.3_column_w_image.field_short_title
+    - paragraphs.paragraphs_type.3_column_w_image
+id: paragraph.3_column_w_image.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: 3_column_w_image
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_columns: true
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true

@@ -1,0 +1,111 @@
+.paragraphs-item-embed-view {
+  padding-bottom: 0 !important;
+}
+
+
+
+.responsive-table {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  page-break-inside: avoid;
+}
+
+
+.responsive-table th,
+.responsive-table td {
+  text-align: center !important;
+}
+
+.responsive-table th {
+  background-position: right 50% bottom 100%;
+  background-size: 64px;
+  background-repeat: no-repeat;
+  height: 5rem;
+  vertical-align: bottom;
+  padding-bottom: 0.5rem !important;
+  white-space: nowrap;
+}
+
+.responsive-table tr.ami-100 td,
+.views-field-name {
+  font-weight: bold;
+}
+
+.responsive-table tbody tr td {
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: 1px solid #091f2f !important;
+  padding: 0.5rem !important;
+}
+
+.responsive-table tbody tr td:first-of-type {
+  /*border-left: none !important;*/
+}
+
+#view-total-house-income-data-hud-table-column,
+#view-total-house-income-data-bpda-table-column {
+  background-position: right 50% bottom 85%;
+  background-size: 58px;
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/person.svg");
+}
+
+#view-total-house-income-data-hud-1-table-column,
+#view-total-house-income-data-bpda-1-table-column {
+  background-size: 76px;
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/two_people.svg");
+}
+
+#view-total-house-income-data-hud-2-table-column,
+#view-total-house-income-data-bpda-2-table-column {
+  background-size: 76px;
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/family2.svg");
+}
+
+#view-total-house-income-data-hud-3-table-column,
+#view-total-house-income-data-bpda-3-table-column {
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/four_people.svg");
+}
+
+#view-total-house-income-data-hud-4-table-column,
+#view-total-house-income-data-bpda-4-table-column {
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/five_people.svg");
+}
+
+#view-total-house-income-data-hud-5-table-column,
+#view-total-house-income-data-bpda-5-table-column {
+  background-size: 58px;
+  background-image: url("https://assets.boston.gov/icons/experiential_icons/six_people.svg");
+}
+
+
+.table-title {
+  border-bottom: 1px dashed #e0e0e0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+
+  .responsive-table tbody tr td {
+    border-bottom: 1px dashed #e0e0e0 !important;
+  }
+
+  .responsive-table tbody tr td:first-of-type {
+    background-color: #091f2f;
+    font-family: Montserrat,Arial,sans-serif;
+    font-weight: inherit;
+    line-height: 1.32;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: left;
+    /*padding: 16px;*/
+    /*padding: 1rem;*/
+    border-bottom: none !important;
+  }
+
+  .responsive-table tbody tr td:last-of-type {
+    border-bottom: none !important;
+  }
+
+
+  }
+

@@ -1,0 +1,25 @@
+// <HomeInfo />
+@import '@globals';
+
+.ml-home-info {
+  // font-family: Lora-Regular;
+  font-size: rem( 14px );
+  color: $color-charles-blue;
+  letter-spacing: 0;
+  line-height: rem( 21px );
+  // margin: rem( 31px 0 7.75px );
+  margin: 0;
+}
+  @include media-breakpoint-up( home-info--two-column ) {
+    .ml-home-info {
+      font-size: rem( 15px );
+      line-height: rem( 24px );
+      // margin: rem( 44px 0 0 );
+    }
+  }
+  .ml-home-info__key {
+    @extend %dt-inline;
+  }
+  .ml-home-info__value {
+    @extend %dd-inline
+  }

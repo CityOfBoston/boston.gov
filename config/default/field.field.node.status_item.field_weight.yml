@@ -1,0 +1,23 @@
+uuid: b0380b74-0dc9-4f46-9d1f-8bade4f136a4
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.status_item
+  module:
+    - options
+id: node.status_item.field_weight
+field_name: field_weight
+entity_type: node
+bundle: status_item
+label: Weight
+description: "Order in which the status items will be selected.<br/>\r\nSmaller numbers have higher priority."
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

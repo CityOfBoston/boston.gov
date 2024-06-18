@@ -1,0 +1,20 @@
+uuid: e3292a41-ba2c-4596-9f18-76edede8e7a8
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+  module:
+    - path
+id: node.place_profile.path
+field_name: path
+entity_type: node
+bundle: place_profile
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

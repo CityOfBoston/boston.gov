@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: o53U_2I-21Es-9iqxeUMDRcRxN0spL1OiHuAVQhh2oI
+configuration:
+  cache:
+    override: false
+    settings:
+      enabled: true
+      expiration: 172800
+      disallowed_paths: {  }

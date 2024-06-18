@@ -1,0 +1,23 @@
+name: bos_map
+type: module
+description: 'Provides theming and configuration for bos_map.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - bos_photo
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.map.created
+  - core.base_field_override.paragraph.map.status
+  - core.entity_form_display.paragraph.map.default
+  - core.entity_view_display.paragraph.map.default
+  - core.entity_view_display.paragraph.map.paragraphs_editor_preview
+  - field.field.paragraph.map.field_component_title
+  - field.field.paragraph.map.field_extra_info
+  - field.field.paragraph.map.field_image
+  - field.field.paragraph.map.field_map_config_json
+  - field.field.paragraph.map.field_short_title
+  - language.content_settings.paragraph.map
+  - paragraphs.paragraphs_type.map

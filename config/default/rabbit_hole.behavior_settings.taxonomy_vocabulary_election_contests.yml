@@ -1,0 +1,14 @@
+uuid: e39e09f7-cab9-4473-90e3-d97bd180df95
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_vocabulary_election_contests
+entity_type_id: taxonomy_vocabulary
+entity_id: election_contests
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_day
+    - taxonomy.vocabulary.cityscore_metrics
+id: taxonomy_term.cityscore_metrics.field_day
+field_name: field_day
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: Day
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,11 @@
+uuid: 617248f0-7c24-4e0d-abee-a200b342975a
+langcode: en
+status: true
+dependencies:
+  content: {  }
+id: 3_column_w_image
+label: '3-Column w/ Image'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle 3-Column w/ Image'
+behavior_plugins: {  }

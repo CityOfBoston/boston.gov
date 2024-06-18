@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_banner_moderation_state
+    - taxonomy.vocabulary.project_banner_bh_
+  module:
+    - options
+id: taxonomy_term.project_banner_bh_.field_banner_moderation_state
+field_name: field_banner_moderation_state
+entity_type: taxonomy_term
+bundle: project_banner_bh_
+label: 'Moderation State'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: Published
+default_value_callback: ''
+settings: {  }
+field_type: list_string

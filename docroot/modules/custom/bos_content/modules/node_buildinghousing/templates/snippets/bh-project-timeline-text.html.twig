@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - title: The title value of the item.
+ * - label: The label value of the item.
+ * - body: The content value of the item.
+ * - icon: The icon value of the detail item.
+ * - date:
+ * - currentState:
+ *
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+<div class="bh-project-timeline-item g g--12 timeline-text timeline-text-{{ currentState }}">
+
+  <div class="g g--2">
+
+    <div typeof="foaf:Image" class="bh-project-timeline-icon p-t600">
+      {{ icon }}
+    </div>
+
+  </div>
+
+  <div class="g--10 m-b600 m-h100 p-a000  bh-project-timeline-content">
+
+    <h6 class="m-t000 m-b100 bh-timeline-season t--cb">{{ date }}</h6>
+
+    <div class="b b--w m-t600 p-a600">
+
+      <div>{{ body|raw }}</div>
+
+      <div class="m-v200 bc--r t--nowrap t--s100">
+
+        <span class="t--upper t--bold t--sans">{{ title }}</span>
+        {% if label is not empty %}
+          | <span class="t--italic">{{ label }}</span>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+

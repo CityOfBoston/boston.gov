@@ -1,0 +1,126 @@
+// <Home />
+@import '@globals';
+// @import '@globals/overrides/*';
+
+$padding-home-vertical: rem( 10px );
+$padding-home-horizontal: rem( 10px );
+
+$padding-home-vertical--large: rem( 18px );
+$padding-home-horizontal--large: rem( 26px );
+
+.ml-home {
+  // margin: $panel-spacing 0;
+  padding: $padding-home-vertical $padding-home-horizontal; // mockup
+  background-color: $color-white;
+  color: $color-metrolist-text-blue;
+  position: relative;
+
+  // &:first-child,
+  // &:first-of-type {
+  //   margin-top: 0;
+  // }
+}
+  @include media-breakpoint-up( large ) {
+    .ml-home {
+      // margin: $panel-spacing--large;
+      padding: $padding-home-vertical--large $padding-home-horizontal--large; // mockup
+      // padding: rem( 20px ); // average
+      // width: 889px
+    }
+  }
+  .ml-home__content {
+    width: 85.826771653543307%;
+    width: 100%;
+  }
+  .ml-home__header {
+    
+  }
+  .ml-home__title {
+    line-height: rem( 19px );
+    margin-top: -0.3rem;
+    margin-bottom: 0;
+    font-family: $font-family-heading;
+    font-size: rem( 16px );
+    font-weight: bold;
+    color: $color-metrolist-home-title;
+    letter-spacing: rem( 0.01px );
+    text-transform: uppercase;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-home__title {
+      // line-height: .8;
+      margin-top: -0.4rem;
+      line-height: rem( 35px );
+      font-size: rem( 30px );
+    }
+  }
+  .ml-home__byline {
+    font-size: rem( 14px );
+    color: $color-charles-blue;
+    letter-spacing: 0;
+    // line-height: rem( 24px );
+    line-height: .8;
+    // margin: rem( 10px 0 );
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-home__byline {
+      font-size: rem( 21px );
+      // margin: rem( 24px 0 );
+    }
+  }
+  .ml-home__footer {
+    padding-top: 1rem;
+  }
+  @include media-breakpoint-up( home-info--two-column ) {
+    .ml-home__footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+  .ml-home__just-listed {
+    text-align: right;
+    font-family: $font-family-montserrat;
+    font-size: rem( 14px );
+    letter-spacing: rem( 0.01px );
+    text-transform: uppercase;
+    color: $color-homes-just-listed;
+    // line-height: rem( 27px ); // mockup
+    line-height: 1;
+    // line-height: 1.125;
+    // position: absolute;
+    // top: $padding-home-vertical;
+    // right: $padding-home-horizontal;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-home__just-listed {
+      font-size: 1rem;
+      letter-spacing: rem( 1.5px );
+      // top: $padding-home-vertical--large;
+      // right: $padding-home-horizontal--large;
+    }
+  }
+  @include media-breakpoint-up( xlarge ) {
+    .ml-home__just-listed {
+      font-size: rem( 21px );
+    }
+  }
+  @include media-breakpoint-up( home-info--two-column ) {
+    .ml-home-footer__home-info {
+      flex: 1;
+    }
+
+    .ml-home-footer__more-info-link,
+    .btn[class*="btn--metrolist"].ml-home-footer__more-info-link {
+      width: auto;
+    }
+  }
+  .ml-home__rental-price-percentage-income-explanation {
+    font-size: rem( 15px );
+    line-height: 1.5;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-home__rental-price-percentage-income-explanation {
+      font-size: 1rem;
+    }
+  }

@@ -1,0 +1,18 @@
+uuid: 8bbb97ec-4d3f-4fb5-ad34-227e2719a7b3
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.events_and_notices
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.events_and_notices
+target_entity_type_id: paragraph
+target_bundle: events_and_notices
+default_langcode: site_default
+language_alterable: false

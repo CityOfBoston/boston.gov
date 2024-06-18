@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_unspsc
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_unspsc
+field_name: field_unspsc
+entity_type: node
+bundle: procurement_advertisement
+label: UNSPSC
+description: 'Minimum value is 10000000 and maximum value is 99999999 based on the categories you can find here: <a href="http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf">http://www.doa.la.gov/osp/vendorcenter/docs/unspsc_commoditycodes.pdf</a>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 10000000
+  max: 99999999
+  prefix: ''
+  suffix: ''
+field_type: integer

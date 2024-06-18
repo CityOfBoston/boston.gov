@@ -1,0 +1,13 @@
+uuid: 7da6823d-5adf-4470-a569-a4b97b436bd9
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: v3YlOIno30nfb5afJMSDIVWX2kr6ud6116iLE2MMMeg
+id: group_of_links_list
+label: 'Group of Links - List'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Group of Links - List'
+behavior_plugins: {  }

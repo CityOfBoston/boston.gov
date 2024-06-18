@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_address
+    - node.type.metrolist_development
+  module:
+    - address
+id: node.metrolist_development.field_ml_address
+field_name: field_ml_address
+entity_type: node
+bundle: metrolist_development
+label: Address
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    country_code: US
+    langcode: ''
+    given_name: ''
+    family_name: ''
+    organization: ''
+    address_line1: ''
+    address_line2: ''
+    locality: ''
+    administrative_area: MA
+    postal_code: ''
+    additional_name: null
+    sorting_code: null
+    dependent_locality: null
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine2:
+      override: hidden
+    sortingCode:
+      override: hidden
+  fields: {  }
+field_type: address

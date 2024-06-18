@@ -1,0 +1,25 @@
+uuid: 83275aeb-73cc-48d5-a069-70a04e2825cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.metrolist_unit
+  module:
+    - text
+_core:
+  default_config_hash: VVyvblxL5XAtwdDjdOdbSAHAxbnaOMenDVd_cGU8F0g
+id: node.metrolist_unit.body
+field_name: body
+entity_type: node
+bundle: metrolist_unit
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

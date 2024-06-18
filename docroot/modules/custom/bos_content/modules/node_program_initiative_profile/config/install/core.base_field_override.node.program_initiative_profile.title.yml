@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+id: node.program_initiative_profile.title
+field_name: title
+entity_type: node
+bundle: program_initiative_profile
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

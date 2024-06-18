@@ -1,0 +1,13 @@
+uuid: 8e26ceb5-28e5-4d81-9602-87bfd9996374
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 4fo6rtZBXQfJuyh9zEbkqKLysElKp8E6SU1IM4gX4OI
+id: commission_members
+label: 'Commission Members'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Members'
+behavior_plugins: {  }

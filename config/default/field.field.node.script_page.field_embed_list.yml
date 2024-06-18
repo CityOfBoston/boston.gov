@@ -1,0 +1,224 @@
+uuid: 13672d11-6c7e-4f3d-a3a5-955ddb447775
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_embed_list
+    - node.type.script_page
+    - paragraphs.paragraphs_type.seamless_doc
+    - paragraphs.paragraphs_type.text_one_column
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: KtxrW8UsGyHLBSaGkwhkc2aVjE9m9y-OKG2MuIPVr6g
+id: node.script_page.field_embed_list
+field_name: field_embed_list
+entity_type: node
+bundle: script_page
+label: 'Embed List'
+description: 'Select a script that you would like to embed on this page. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      seamless_doc: seamless_doc
+      text_one_column: text_one_column
+    negate: 0
+    target_bundles_drag_drop:
+      3_column_w_image:
+        weight: 2
+        enabled: false
+      bid:
+        weight: 51
+        enabled: false
+      bos311:
+        weight: 3
+        enabled: false
+      bos_signup_emergency_alerts:
+        weight: 52
+        enabled: false
+      cabinet:
+        weight: 4
+        enabled: false
+      card:
+        weight: 53
+        enabled: false
+      city_score_dashboard:
+        weight: 5
+        enabled: false
+      columns:
+        weight: 54
+        enabled: false
+      commission_contact_info:
+        weight: 55
+        enabled: false
+      commission_members:
+        weight: 57
+        enabled: false
+      commission_search:
+        weight: 75
+        enabled: false
+      commission_summary:
+        weight: 58
+        enabled: false
+      custom_hours_text:
+        weight: 6
+        enabled: false
+      daily_hours:
+        weight: 7
+        enabled: false
+      discussion_topic:
+        weight: 59
+        enabled: false
+      document:
+        weight: 8
+        enabled: false
+      drawer:
+        weight: 9
+        enabled: false
+      drawers:
+        weight: 10
+        enabled: false
+      election_results:
+        weight: 60
+        enabled: false
+      events_and_notices:
+        weight: 84
+        enabled: false
+      external_link:
+        weight: 11
+        enabled: false
+      featured_topics:
+        weight: 13
+        enabled: false
+      from_library:
+        weight: 87
+        enabled: false
+      fyi:
+        weight: 15
+        enabled: false
+      gol_list_links:
+        weight: 16
+        enabled: false
+      grid_links:
+        weight: 61
+        enabled: false
+      grid_of_cards:
+        weight: 62
+        enabled: false
+      grid_of_people:
+        weight: 17
+        enabled: false
+      grid_of_places:
+        weight: 18
+        enabled: false
+      grid_of_programs_initiatives:
+        weight: 19
+        enabled: false
+      grid_of_quotes:
+        weight: 20
+        enabled: false
+      grid_of_topics:
+        weight: 21
+        enabled: false
+      group_of_links_grid:
+        weight: 22
+        enabled: false
+      group_of_links_list:
+        weight: 23
+        enabled: false
+      group_of_links_mini_grid:
+        weight: 24
+        enabled: false
+      header_text:
+        weight: 25
+        enabled: false
+      hero_image:
+        weight: 26
+        enabled: false
+      how_to_contact_step:
+        weight: 27
+        enabled: false
+      how_to_tab:
+        weight: 28
+        enabled: false
+      how_to_text_step:
+        weight: 29
+        enabled: false
+      iframe:
+        weight: 30
+        enabled: false
+      internal_link:
+        weight: 31
+        enabled: false
+      lightbox_link:
+        weight: 63
+        enabled: false
+      list:
+        weight: 32
+        enabled: false
+      map:
+        weight: 64
+        enabled: false
+      message_for_the_day:
+        weight: 33
+        enabled: false
+      news_and_announcements:
+        weight: 111
+        enabled: false
+      newsletter:
+        weight: 68
+        enabled: false
+      photo:
+        weight: 35
+        enabled: false
+      quote:
+        weight: 36
+        enabled: false
+      seamless_doc:
+        weight: 38
+        enabled: true
+      sidebar_item:
+        weight: 39
+        enabled: false
+      sidebar_item_w_icon:
+        weight: 40
+        enabled: false
+      social_media_links:
+        weight: 41
+        enabled: false
+      social_networking:
+        weight: 42
+        enabled: false
+      status_overrides:
+        weight: 120
+        enabled: false
+      tabbed_content_tab:
+        weight: 70
+        enabled: false
+      text:
+        weight: 44
+        enabled: false
+      text_one_column:
+        weight: 45
+        enabled: true
+      text_three_column:
+        weight: 46
+        enabled: false
+      text_two_column:
+        weight: 47
+        enabled: false
+      transaction_grid:
+        weight: 48
+        enabled: false
+      transactions:
+        weight: 71
+        enabled: false
+      video:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

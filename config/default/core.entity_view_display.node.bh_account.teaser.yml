@@ -1,0 +1,32 @@
+uuid: f152de2b-13d6-42df-a098-a36a944bd3dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bh_account.body
+    - node.type.bh_account
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: U3A_vpbvPx2SHT6U0Cy9-k2y49p0mFKcjzbIgo0LGHw
+id: node.bh_account.teaser
+targetEntityType: node
+bundle: bh_account
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  published_at: true

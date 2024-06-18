@@ -1,0 +1,161 @@
+global-styling.always:
+  js:
+#    dist/ie/flexibility.js: { browsers: { IE: 'IE 9', '!IE': FALSE  } }
+#    dist/ie/classList.js: { browsers: { IE: 'IE 9', '!IE': FALSE  } }
+#    dist/ie/cors.js: { browsers: { IE: 'IE 9', '!IE': FALSE  } }
+    dist/js/all.js: {}
+  dependencies:
+  - core/jquery
+
+global-styling.default:
+  js:
+    /themes/custom/patterns/js/all.js: {  }
+  dependencies:
+    - core/jquery
+  css:
+    theme:
+      /themes/custom/patterns/css/public.css: { weight: -10 }
+      /themes/custom/patterns/css/patterns-cob-theme.css: { weight: -9 }
+      /themes/custom/patterns/css/ie.css: {  }
+  data:
+    name: '(not implemented) Local from bos_theme cache'
+
+global-styling.local:
+  remote: https://patterns.lndo.site
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns.lndo.site/scripts/all.js: {type: external, minified: true }
+  dependencies:
+  - core/jquery
+  css:
+    theme:
+      https://patterns.lndo.site/css/public.css: {type: external, preprocess: true, minified: true, weight: -10 }
+      https://patterns.lndo.site/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true, weight: -9 }
+#      https://patterns.lndo.site/css/public.css: {type: external, preprocess: true, minified: true, browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -10 }
+#      https://patterns.lndo.site/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true, browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -9 }
+#      https://patterns.lndo.site/css/ie.css: {type: external, minified: true, preprocess: true, browsers: { IE: 'lt IE 10', '!IE': FALSE  } }
+  data:
+    name: 'Patterns (local)'
+
+global-styling.patterns:
+  remote: https://patterns.boston.gov
+  version: 2.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns.boston.gov/scripts/all.js: {type: external, minified: true }
+  dependencies:
+  - core/jquery
+  css:
+    theme:
+      https://patterns.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true, weight: -10 }
+      https://patterns.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true, weight: -9 }
+#      https://patterns.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true, browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -10 }
+#      https://patterns.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true,  browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -9 }
+#      https://patterns.boston.gov/css/ie.css: {type: external, minified: true,  preprocess: true, browsers: { IE: 'lt IE 10', '!IE': FALSE  } }
+  data:
+    name: 'Patterns (production)'
+
+global-styling.patterns-staging:
+  remote: https://patterns-stg.boston.gov
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns-stg.boston.gov/scripts/all.js: {type: external, minified: true }
+  dependencies:
+  - core/jquery
+  css:
+    theme:
+      https://patterns-stg.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true,  weight: -10 }
+      https://patterns-stg.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true,  weight: -9 }
+#      https://patterns-stg.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true, browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -10 }
+#      https://patterns-stg.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true,  browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -9 }
+#      https://patterns-stg.boston.gov/css/ie.css: {type: external, minified: true,  preprocess: true, browsers: { IE: 'lt IE 10', '!IE': FALSE  } }
+  data:
+    name: 'Patterns (staging)'
+
+global-styling.patterns-uat:
+  remote: https://patterns-uat.boston.gov
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns-uat.boston.gov/scripts/all.js: {type: external, minified: true }
+  dependencies:
+  - core/jquery
+  css:
+    theme:
+      https://patterns-uat.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true, weight: -10 }
+      https://patterns-uat.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true, weight: -9 }
+#      https://patterns-uat.boston.gov/css/public.css?abc: {type: external, preprocess: true, minified: true, browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -10 }
+#      https://patterns-uat.boston.gov/css/patterns-cob-theme.css: {type: external, preprocess: true, minified: true,  browsers: { IE: 'lte IE 9', '!IE': TRUE }, weight: -9 }
+  data:
+    name: 'Patterns (uat)'
+
+fleet-components.local:
+  remote: https://patterns.lndo.site
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns.lndo.site/web-components/fleetcomponents.js: {type: external, minified: true }
+
+fleet-components.patterns:
+  remote: https://patterns.boston.gov
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns.boston.gov/web-components/fleetcomponents.js: {type: external, minified: true }
+
+fleet-components.patterns-staging:
+  remote: https://patterns-stg.boston.gov
+  version: 1.0
+  license:
+    name: 'CCO 1.0'
+    url: https://github.com/CityOfBoston/boston.gov-d8/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://patterns-stg.boston.gov/web-components/fleetcomponents.js: {type: external, minified: true }
+
+page.assets:
+  js:
+    js/cob_ckeditor.boston.js: {attributes: {id: "cob_ckeditor_script"}}
+  css:
+    theme:
+      css/bos_theme_overrides.css: {}
+
+page.tabbed_page:
+  js:
+    js/tabbed_page.boston.js: {attributes: {id: "tabbed_page_script"}}
+
+page.inpage_menu:
+  js:
+    js/inpage_menu.boston.js: {attributes: {id: "inpage_menu_script"}}
+
+context_link:
+  js:
+    js/bos_theme.context_menu_link.js: {attributes: {id: "bos_theme_context_menu_link"}}
+    js/bos_theme.contextual_toolbar_tab.js: {attributes: {id: "bos_core_contextual_toolbar_tab"}}
+  dependencies:
+    - core/jquery
+    - contextual/drupal.contextual-links
+
+moderation_sidebar:
+  js:
+    js/moderation_sidebar.boston.js: {attributes: {id: "moderation_sidebar_script"}}

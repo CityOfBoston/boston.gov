@@ -1,0 +1,35 @@
+bos_google_cloud.configForm:
+  path: 'admin/config/system/boston/googlecloud'
+  defaults:
+    _form: '\Drupal\bos_google_cloud\Form\ConfigForm'
+    _title: 'Configuration for Google Cloud Platform integration'
+  requirements:
+    _permission: 'administer google cloud platform'
+
+bos_google_cloud.PromptTesterForm:
+  path: 'admin/config/system/boston/googlecloud/prompttester'
+  defaults:
+    _form: '\Drupal\bos_google_cloud\Form\PromptTesterForm'
+    _title: 'Prompt Testing'
+  requirements:
+    _permission: 'administer google cloud platform'
+  options:
+    _admin_route: TRUE
+
+bos_google_cloud.open_PromptTesterForm:
+  path: 'admin/config/system/boston/googlecloud/prompttester_modal'
+  defaults:
+    _controller: '\Drupal\bos_google_cloud\Controller\PromptTesterFormController::openModalForm'
+    _title: 'Prompt Testing - modal'
+  requirements:
+    _permission: 'administer google cloud platform'
+  options:
+    _admin_route: TRUE
+
+bos_google_cloud.endpoint:
+  path: '/rest/bos_google_cloud/v1/{action}'
+  methods: [POST,GET]
+  defaults:
+    _controller: '\Drupal\bos_google_cloud\Controller\GcApiEndpoint::entry'
+  requirements:
+    _permission: access content

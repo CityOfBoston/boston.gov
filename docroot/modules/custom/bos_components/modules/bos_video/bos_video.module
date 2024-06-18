@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_video module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_video_theme() {
+  return [
+    'paragraph__video' => [
+      'base hook' => 'paragraph',
+      'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_video') . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_video_preprocess_paragraph__video(&$variables) {
+
+  if (!empty($variables['paragraph'])) {
+
+    $paragraph = $variables['paragraph'];
+
+    $variables['attributes']['id'] = Html::getUniqueId('vid');
+    $variables['attributes']['class'][] = 'vid';
+    $vid_id = $paragraph->get('field_extra_info')->getValue();
+    if ($vid_id && isset($vid_id['0'])) {
+      $variables['attributes']['data-vid-id'] = $vid_id['0']['value'];
+    }
+    $vid_channel = $paragraph->get('field_is_channel')->getValue();
+    if ($vid_channel && isset($vid_channel['0'])) {
+      $variables['attributes']['data-vid-channel'] = !empty($vid_channel['0']['value']) ? $vid_channel['0']['value'] : FALSE;
+    }
+    $lib = \Drupal::service('library.discovery')
+      ->getLibraryByName('bos_theme', 'global-styling.patterns');
+    if (isset($lib)) {
+      $variables['play_image_url'] = $lib['remote'] . '/images/global/icons/play.svg';
+    }
+    if (!$paragraph->get('field_contact')->isEmpty()) {
+      $contact = $paragraph->get('field_contact')->getValue();
+      $term = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->load($contact['0']['target_id']);
+      $contact = $term->get('name')->getValue();
+      $variables['contact'] = $contact['0']['value'];
+    }
+
+    // Create the photo display image.
+    if ($paragraph->hasField('field_image') && $paragraph->get('field_image')->count()) {
+      $nestedElement = [
+        ["div" => "vid ph-p " . $variables['photo_id']],
+      ];
+      $variables["content"]["display_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+    }
+  }
+}
+
+/**
+ * Prepares variables for post templates.
+ *
+ * Default template: post.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the post information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ *
+ * @throws \Exception
+ */
+function template_preprocess_paragraph__video(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // Assign a unique id to this photo for the page.
+  if (!empty($variables['paragraph'])) {
+    $photo_id = Html::getUniqueId('ph-p--1');
+    $variables['paragraph']->_photo_id = $photo_id;
+    $variables['photo_id'] = $photo_id;
+  }
+
+  // Handle field_image if present.
+  // Has to happen in this template_preprocess_hook or does not #attach(ed).
+  if ($variables['paragraph']->hasField('field_image')) {
+    $background_image = $variables["elements"]["field_image"];
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $background_image[0]["default_responsive_image_style_id"] = "photo_bleed_images";
+      $anchor_class = "." . $variables["photo_id"];
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, $anchor_class);
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'photo-image-css-' . $variables["photo_id"],
+      ];
+    }
+  }
+
+}

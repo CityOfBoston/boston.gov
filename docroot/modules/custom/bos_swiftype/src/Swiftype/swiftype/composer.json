@@ -1,0 +1,16 @@
+{
+    "name": "nevon/swiftype",
+    "description": "A PHP client for Swiftype, a search and autocomplete API for developers.",
+    "type": "library",
+    "version": "1.0.0",
+    "homepage": "https://github.com/Nevon/swiftype-php",
+    "license": "MIT",
+    "require": {
+        "php": "^5.3"
+    },
+    "autoload": {
+      "psr-4": {
+        "Swiftype\\": ["Swiftype"]
+      }
+    }
+}

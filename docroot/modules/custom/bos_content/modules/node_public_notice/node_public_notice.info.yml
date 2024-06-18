@@ -1,0 +1,39 @@
+name: Public Notice
+type: module
+description: 'Provides a public notice entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_content
+config_devel:
+  - core.base_field_override.node.public_notice.status
+  - core.entity_form_display.node.public_notice.default
+  - core.entity_view_display.node.public_notice.default
+  - core.entity_view_display.node.public_notice.featured_item
+  - core.entity_view_display.node.public_notice.teaser
+  - field.field.node.public_notice.body
+  - field.field.node.public_notice.field_address
+  - field.field.node.public_notice.field_cancelled
+  - field.field.node.public_notice.field_city_hall
+  - field.field.node.public_notice.field_components
+  - field.field.node.public_notice.field_contact
+  - field.field.node.public_notice.field_drawer
+  - field.field.node.public_notice.field_email
+  - field.field.node.public_notice.field_extra_info
+  - field.field.node.public_notice.field_featured
+  - field.field.node.public_notice.field_intro_text
+  - field.field.node.public_notice.field_is_there_public_testimony
+  - field.field.node.public_notice.field_links
+  - field.field.node.public_notice.field_manual_date
+  - field.field.node.public_notice.field_multiple_neighborhoods
+  - field.field.node.public_notice.field_phone_number
+  - field.field.node.public_notice.field_public_notice_date
+  - field.field.node.public_notice.field_related
+  - field.field.node.public_notice.field_time
+  - field.field.node.public_notice.field_updated_date
+  - language.content_settings.node.public_notice
+  - metatag.metatag_defaults.node__public_notice
+  - node.type.public_notice
+  - rabbit_hole.behavior_settings.node_type_public_notice
+  - views.view.public_notice
+  - xmlsitemap.settings.node.public_notice

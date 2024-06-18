@@ -1,0 +1,71 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+
+{% if cob.show_message %}
+
+  <div {{ attributes.addClass('cds g--24') }}>
+
+    {% if card_url %}
+
+      <a href="{{ card_url }}" class="cds-l d-b m-b500">
+
+    {% else %}
+
+      <div class="cds-l d-b m-b500">
+
+    {% endif %}
+
+      <div class="cds-ic m-b500--l">
+
+        {{ icon | raw }}
+
+        {% if alert %}
+          {{ alert | raw }}
+        {% endif %}
+
+      </div>
+
+      <div class="cds-c">
+
+        <div class="cds-t t--upper t--sans m-b300">
+          {{ title }}
+        </div>
+
+        <div class="cds-d t--subinfo">
+          {{ content.field_message }}
+        </div>
+
+      </div>
+
+    {% if card_url %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+
+  </div>
+
+{% endif %}

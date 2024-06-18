@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.text_three_column.field_left_column
+    - field.field.paragraph.text_three_column.field_middle_column
+    - field.field.paragraph.text_three_column.field_right_column
+    - field.field.paragraph.text_three_column.field_short_title
+    - paragraphs.paragraphs_type.text_three_column
+id: paragraph.text_three_column.separated_title
+targetEntityType: paragraph
+bundle: text_three_column
+mode: separated_title
+content: {  }
+hidden:
+  field_left_column: true
+  field_middle_column: true
+  field_right_column: true
+  field_short_title: true

@@ -1,0 +1,17 @@
+uuid: 85cb85c5-7935-4adf-b27b-3905c722b8a1
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.commission_contact_info.field_commission
+    - paragraphs.paragraphs_type.commission_contact_info
+_core:
+  default_config_hash: JP62W--N8c2a7Y-u6QiUA9D1x8s_11y2wizfLr_591s
+id: paragraph.commission_contact_info.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: commission_contact_info
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_commission: true

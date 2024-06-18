@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:80590cc9-3c4e-4e21-884c-0a5ac95e8c56'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'Standard layout text components for the site.'
+    image_path: sites/default/files/paragraphs_type_icon/text_icon.svg
+id: text
+label: 'Formatted Text'
+icon_uuid: 80590cc9-3c4e-4e21-884c-0a5ac95e8c56
+icon_default: null
+description: 'Standard layout text components for the site.'
+behavior_plugins: {  }

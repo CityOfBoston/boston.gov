@@ -1,0 +1,15 @@
+uuid: 594744fe-2e90-4291-b924-95145e512503
+langcode: und
+status: true
+dependencies: {  }
+name: photo_bleed_b_tablet_1x
+label: 'Photo bleed b-tablet 1x (768x420)'
+effects:
+  592ef9b6-1587-4f3e-bb34-489ce335070b:
+    uuid: 592ef9b6-1587-4f3e-bb34-489ce335070b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 420
+      anchor: center-center

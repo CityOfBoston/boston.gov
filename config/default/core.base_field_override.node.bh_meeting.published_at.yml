@@ -1,0 +1,20 @@
+uuid: 12f28b03-0cf0-4e36-b2cd-c24ec566d8cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+  module:
+    - publication_date
+id: node.bh_meeting.published_at
+field_name: published_at
+entity_type: node
+bundle: bh_meeting
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

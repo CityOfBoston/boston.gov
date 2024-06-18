@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * @file
+ * Provides a person profile entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function node_person_profile_theme() {
+  return [
+    'node__person_profile' => [
+      'render element' => 'elements',
+    ],
+    'node__person_profile__embed' => [
+      'base hook' => 'node',
+    ],
+    'node__person_profile__listing' => [
+      'base hook' => 'node',
+    ],
+    'field__field_email__mode__listing' => [
+      'base hook' => 'field',
+    ],
+    'field__field_phone_number__mode__listing' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_person_profile_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "person_profile") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_person_profile_preprocess_node__person_profile__embed(&$variables) {
+  _node_person_profile_prepare_card($variables);
+  $variables["attributes"]->removeClass("node-person-profile");
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_person_profile_preprocess_node__person_profile__listing(&$variables) {
+  $variables["person_link"] = "#";
+  if (!empty($variables["nid"])) {
+    $variables["person_link"] = \Drupal::service('path_alias.manager')
+      ->getAliasByPath('/node/' . $variables["nid"]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_person_profile_preprocess_node__person_profile(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->addClass("contextual-region");
+  $variables['attributes']->addClass("node-" . $variables["elements"]["#node"]->id());
+  $variables['attributes']->addClass("clearfix");
+
+  // Set some attributes for page elements to be used in the node template.
+  $variables["title_attributes"] = new Attribute(
+    ["class" => ["person-profile-display-name"]]
+  );
+
+  // This is when used in a person-profile-listing () in bos_grid.
+  if ($variables['elements']['#view_mode'] == 'listing') {
+    _node_person_profile_prepare_card($variables);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_person_profile_preprocess_responsive_image_formatter(&$variables) {
+  if ($variables["responsive_image_style_id"] == "person_photos") {
+    $variables["responsive_image"]["#attributes"]['class'][] = "cdp-i";
+  }
+}
+
+/**
+ * Prepare the contact method for this person.
+ *
+ * @param array $variables
+ *   The usual variables array.
+ */
+function _node_person_profile_prepare_card(array &$variables) {
+  $node = $variables['elements']['#node'];
+  $variables['title_raw'] = $node->getTitle();
+  $preferred_contact = $node->get('field_preferred_contact')->getValue();
+  if (!empty($preferred_contact)) {
+    if ($preferred_contact['0']['value'] == 'email' && !$node->get('field_email')->isEmpty()) {
+      $variables['preferred_contact'] = 'email';
+      $variables['content']['bos_contact'] = $variables['content']['field_email'];
+    }
+    elseif ($preferred_contact['0']['value'] == 'phone' && !$node->get('field_phone_number')->isEmpty()) {
+      $variables['preferred_contact'] = 'phone';
+      $variables['content']['bos_contact'] = $variables['content']['field_phone_number'];
+    }
+  }
+}
+
+/**
+ * Prepares variables for person profile templates.
+ *
+ * Default template: person-profile.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the person profile information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__person_profile(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

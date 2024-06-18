@@ -1,0 +1,24 @@
+uuid: c0b1fcc5-c5be-42c5-a82d-e6e3a08d0f86
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.how_to_text_step
+_core:
+  default_config_hash: PVgq0OXy2JANuSUIDL-8caNtAeXEKRoRtjwKfP5koZw
+id: paragraph.how_to_text_step.status
+field_name: status
+entity_type: paragraph
+bundle: how_to_text_step
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

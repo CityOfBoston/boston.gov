@@ -1,0 +1,22 @@
+uuid: fb9b6f75-c44a-4ab6-9173-68b6d680dab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.promote
+field_name: promote
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

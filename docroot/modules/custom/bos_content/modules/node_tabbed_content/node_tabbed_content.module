@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * @file
+ * Provides a tabbed content entity type.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_theme().
+ */
+function node_tabbed_content_theme() {
+  return [
+    'node__tabbed_content' => [
+      'render element' => 'elements',
+    ],
+    'paragraph__tabbed_content_tab' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_tabbed_content_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "tabbed_content") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--fp");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_tabbed_content_preprocess_node__tabbed_content(&$variables) {
+  // Create the tabs.
+  $node = $variables['elements']['#node'];
+  $tab_paragraphs = $node->get('field_tabbed_content');
+  $tab_paragraphs = $tab_paragraphs->referencedEntities();
+  $tabs = [];
+  foreach ($tab_paragraphs as $tab_paragraph) {
+    $tabs[] = [
+      'id' => strtolower(Html::cleanCssIdentifier($tab_paragraph->field_component_title->value)),
+      'title' => $tab_paragraph->field_component_title->value,
+    ];
+  }
+  $variables['tabs'] = $tabs;
+
+  // Handle intro_image if present.
+  $variables['image_class'] = "hro--b";
+  if (isset($variables['content']['field_intro_image'])) {
+    $background_image = $variables["elements"]["field_intro_image"];
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+      $photo_id = Html::getUniqueId('hro');
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'event-intro-image-css',
+      ];
+      // Add css for the field_intro_image (hero image).
+      $variables['image_class'] = "$photo_id hro--t";
+    }
+  }
+
+  // Add markup to locate the contextual editor button.
+  if (function_exists("_bos_core_fix_attributes")) {
+    _bos_core_fix_attributes($variables);
+    $variables["attributes"]->addClass("node");
+    $variables["attributes"]->addClass("node-tabbed-content");
+    $variables["attributes"]->addClass("tab-pc");
+    $variables["attributes"]->addClass("p-t500");
+    $variables["attributes"]->addClass("node-" . $node->id());
+    $variables["attributes"]->addClass("clearfix");
+    if (!$node->status->value) {
+      $variables["attributes"]->addClass("node-unpublished");
+    }
+  }
+
+  // Add the js to enable the tabs.
+  $variables['#attached']['library'][] = "bos_theme/page.tabbed_page";
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_tabbed_content_preprocess_paragraph__tabbed_content_tab(&$variables) {
+  _bos_core_fix_attributes($variables, "content_attributes");
+  $variables["content_attributes"]->addClass("tab-p");
+  $variables["content_attributes"]->addClass("tab-p-" . $variables["attributes"]["cob-data-index"]);
+  $id = strtolower(Html::cleanCssIdentifier($variables["elements"]["#paragraph"]->field_component_title->value));
+  $variables["content_attributes"]->setAttribute("id", $id . "_content");
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_tabbed_content_preprocess_field__field_tabbed_content(&$variables) {
+  foreach ($variables["items"] as $key => &$item) {
+    // Add the index item so that this can be used to set the correct tab index
+    // in the hook_preprocess_paragraph__tabbed_content_tab.
+    $item["content"]["#attributes"]["cob-data-index"] = $key;
+  }
+}
+
+/**
+ * Prepares variables for tabbed content templates.
+ *
+ * Default template: tabbed-content.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the tabbed content information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__tabbed_content(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

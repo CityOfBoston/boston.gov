@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'Use to display Councillor Voting inside a Drawer when searching Roll Calls.'
+id: paragraph.roll_call_search
+label: 'Roll Call Search'
+description: ''
+targetEntityType: paragraph
+cache: true

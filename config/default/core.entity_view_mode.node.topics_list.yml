@@ -1,0 +1,13 @@
+uuid: fd937655-87ea-4f18-a99e-972e6313b460
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 5VtVCpiTn6Et0w4Y_o7Pazw0UykR-27GjJ_qGfZpk1c
+id: node.topics_list
+label: 'Topics List'
+description: ''
+targetEntityType: node
+cache: true

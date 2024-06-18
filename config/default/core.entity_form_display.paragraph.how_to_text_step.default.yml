@@ -1,0 +1,43 @@
+uuid: 83141a1d-9bee-4cd2-bfe1-f39b8043410f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.how_to_text_step.field_step_details
+    - field.field.paragraph.how_to_text_step.field_title
+    - paragraphs.paragraphs_type.how_to_text_step
+  module:
+    - text
+_core:
+  default_config_hash: 4judYTWp-Z9hNE3Pd_vEkaKcVn_fHeOusXgS_8Yg2pg
+id: paragraph.how_to_text_step.default
+targetEntityType: paragraph
+bundle: how_to_text_step
+mode: default
+content:
+  field_step_details:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

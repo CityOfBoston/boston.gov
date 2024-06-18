@@ -1,0 +1,20 @@
+uuid: cb4d2f97-851a-4bce-a598-c0a5ac60ce3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.site_alert
+  module:
+    - path
+id: node.site_alert.path
+field_name: path
+entity_type: node
+bundle: site_alert
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

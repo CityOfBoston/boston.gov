@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:9a09b767-5acd-4244-94c4-eee62c42d27b'
+id: commission_summary
+label: 'Commission Summary'
+icon_uuid: 9a09b767-5acd-4244-94c4-eee62c42d27b
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Summary'
+behavior_plugins: {  }

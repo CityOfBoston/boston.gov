@@ -1,0 +1,23 @@
+uuid: 2dff905c-68d1-4df8-ba50-59987147c2af
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - paragraphs
+id: paragraph.field_document
+field_name: field_document
+entity_type: paragraph
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

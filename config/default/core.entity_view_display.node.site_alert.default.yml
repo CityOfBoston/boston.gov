@@ -1,0 +1,136 @@
+uuid: fcefacdd-00b8-4109-b5b3-966e28d3f6a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.site_alert.field_date_range
+    - field.field.node.site_alert.field_excluded_nodes
+    - field.field.node.site_alert.field_extra_info
+    - field.field.node.site_alert.field_icon
+    - field.field.node.site_alert.field_included_nodes
+    - field.field.node.site_alert.field_link
+    - field.field.node.site_alert.field_theme
+    - field.field.node.site_alert.title_field
+    - node.type.site_alert
+  module:
+    - datetime_range
+    - entity_reference_revisions
+    - fences
+    - media
+    - options
+    - user
+id: node.site_alert.default
+targetEntityType: node
+bundle: site_alert
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_date_range:
+    type: daterange_plain
+    label: hidden
+    settings:
+      timezone_override: ''
+      separator: '-'
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_excluded_nodes:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_extra_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_icon:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_included_nodes:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  title_field:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  links: true
+  published_at: true

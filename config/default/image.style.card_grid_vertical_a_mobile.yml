@@ -1,0 +1,15 @@
+uuid: e7950313-0547-4c9c-b990-53cba6dfac3e
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_vertical_a_mobile
+label: 'Card grid vertical a-mobile (335x117)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 335
+      height: 117
+      anchor: center-center

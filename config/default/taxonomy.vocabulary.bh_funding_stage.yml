@@ -1,0 +1,8 @@
+uuid: 93b1e543-7e1e-4e35-8dac-31aa6066ef63
+langcode: en
+status: true
+dependencies: {  }
+name: 'Funding Stage (BH)'
+vid: bh_funding_stage
+description: 'Building Housing: Funding Stage'
+weight: 0

@@ -1,0 +1,15 @@
+uuid: 177fbae2-3ec4-4501-b30a-4e942e440dc5
+langcode: und
+status: true
+dependencies: {  }
+name: topic_cards_large
+label: 'Topic Cards Large (390x165)'
+effects:
+  e4b29f37-bf0c-4347-a7ec-dacdd65ba5ce:
+    uuid: e4b29f37-bf0c-4347-a7ec-dacdd65ba5ce
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 390
+      height: 165
+      anchor: center-center

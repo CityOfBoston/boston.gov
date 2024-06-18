@@ -1,0 +1,18 @@
+uuid: 92696036-2757-4acb-8120-dedf66a800b2
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.massachusetts_general_law
+id: taxonomy_term.massachusetts_general_law.name
+field_name: name
+entity_type: taxonomy_term
+bundle: massachusetts_general_law
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

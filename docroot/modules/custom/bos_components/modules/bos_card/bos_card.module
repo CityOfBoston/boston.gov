@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_card module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_card_theme() {
+  $theme['paragraph__card'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_card/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_card_preprocess_paragraph__card(&$variables) {
+  if (!empty($variables['paragraph'])) {
+    $paragraph = $variables['paragraph'];
+    $thumb = $paragraph->get('field_thumbnail')->getValue();
+
+    // #2116 - We are not using this 'background_image' variable in any file and seems to be causing issues as we are
+    // giving the function a mid (mediaID) when it is expecting an fid (fileID).
+    // Looks to be part of added code that was never fully implemented or replaced bellow, should be safe to rm.
+    //if (!empty($thumb['0']['target_id'])) {
+      //$variables['background_image'] = _bos_core_get_file_link($thumb['0']['target_id']);
+    //}
+    $link = $paragraph->get('field_link')->getValue();
+    if (!empty($link['0']['target_id'])) {
+      if ($paragraph = Paragraph::load($link['0']['target_id'])) {
+        $link = _bos_core_paragraph_extract_link($paragraph);
+        if (isset($link['url'])) {
+          $variables['card_url'] = $link['url'];
+        }
+        if ($paragraph->bundle() == 'lightbox_link') {
+          $variables['attributes']['data-lity'] = '';
+          $variables['#attached']['library'][] = 'bos_lightbox/lity';
+        }
+      }
+    }
+
+    // Handle thumbnail if present.
+    if (isset($variables['content']['field_thumbnail'])) {
+      $background_image = $variables["elements"]["field_thumbnail"];
+      $photo_id = Html::getUniqueId('cd-ic-' . $variables["elements"]['#paragraph']->id());
+      $variables['photo_id'] = $photo_id;
+
+      if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+        $background_image[0]["default_responsive_image_style_id"] = "card_images_3w";
+        $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+        $variables['#attached']['html_head'][] = [
+          [
+            "#tag" => "style",
+            "#value" => $css,
+            "#weight" => 100,
+          ],
+          "pip-intro-image-css-" . $photo_id,
+        ];
+      }
+
+      $variables["new_image_class"] = "cd-ic " . $photo_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_card_paragraph_card_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_title")->value);
+  if ($para["entity"]->hasField("field_thumbnail")) {
+    $mid = $para["entity"]->get("field_thumbnail")[0]->target_id;
+    if ($media = Media::load($mid)) {
+      $markup[] = Markup::create("<span class='image-name'>" . $media->name->value . "</span>");
+    }
+    elseif ($file = File::load($mid)) {
+      $markup[] = Markup::create("<span class='image-name'>" . $file->get("filename")->value . "</span>");
+    }
+  }
+  if ($para["entity"]->hasField("field_link") && count($para["entity"]->get("field_link"))) {
+    $card = Paragraph::load($para["entity"]->get("field_link")->target_id);
+    if (isset($card)) {
+      $markup[] = Markup::create("<span class='info'>has " . $card->bundle() . " CTA.</span>");
+    }
+    else {
+      $markup[] = Markup::create("<span class='info'>has no CTA.</span>");
+    }
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no CTA.</span>");
+  }
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

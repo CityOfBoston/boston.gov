@@ -1,0 +1,19 @@
+uuid: 1b9c31c8-b0ef-495d-8bfa-1a4255ce9781
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.title_field
+    - node.type.site_alert
+id: node.site_alert.title_field
+field_name: title_field
+entity_type: node
+bundle: site_alert
+label: Title
+description: 'This is the heading which will appear in the left on the Site Alert.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

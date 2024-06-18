@@ -1,0 +1,21 @@
+uuid: 14fa5358-1212-4d04-b3a5-9520bd295d75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.grid_of_places
+_core:
+  default_config_hash: RPydeNl8aMo2yZk8XjvmFE9MHfRgyRXRbl7u4AHJlSo
+id: paragraph.grid_of_places.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: grid_of_places
+label: Title
+description: 'Please enter the title for this component here.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

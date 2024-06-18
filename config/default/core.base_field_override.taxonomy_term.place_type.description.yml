@@ -1,0 +1,20 @@
+uuid: 238e887d-6f57-4bfb-b612-0651ecb0ea18
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.place_type
+  module:
+    - text
+id: taxonomy_term.place_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: place_type
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

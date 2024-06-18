@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_chart_text_layout
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - options
+id: paragraph.bos_chart.field_chart_text_layout
+field_name: field_chart_text_layout
+entity_type: paragraph
+bundle: bos_chart
+label: 'Column Layout'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: single_column
+default_value_callback: ''
+settings: {  }
+field_type: list_string

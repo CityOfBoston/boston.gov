@@ -1,0 +1,7 @@
+node_elections.admin:
+  path: '/admin/content/election_results'
+  defaults:
+    _title: 'Election Results.'
+    _form: '\Drupal\node_elections\Form\ElectionUploaderForm'
+  requirements:
+    _role: 'site_administrator+election_editor'

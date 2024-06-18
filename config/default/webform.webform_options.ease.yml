@@ -1,0 +1,17 @@
+uuid: s3fb00cb-d0d5-4d23-a1f0-1b8ab3e22962
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+id: ease
+label: 'Likert: Ease'
+category: 'Feedback Form'
+likert: true
+options: |-
+  'very_easy': 'Very Easy'
+  'somewhat_easy': 'Somewhat Easy'
+  'neutral': 'Neutral'
+  'somewhat_difficult': 'Somewhat Difficult'
+  'very_difficult': 'Very Difficult'

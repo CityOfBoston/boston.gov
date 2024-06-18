@@ -1,0 +1,23 @@
+uuid: 0ea2203a-241f-4475-b65c-bd22c7fe27b8
+langcode: en
+status: false
+dependencies: {  }
+name: 'Script Source URL'
+format: script_source_url
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: ''
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: true
+    weight: -10
+    settings: {  }

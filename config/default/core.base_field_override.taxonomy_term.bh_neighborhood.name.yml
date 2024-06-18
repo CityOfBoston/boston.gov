@@ -1,0 +1,18 @@
+uuid: b4f0c2ed-f810-419a-8526-98e0061978ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_neighborhood
+id: taxonomy_term.bh_neighborhood.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bh_neighborhood
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

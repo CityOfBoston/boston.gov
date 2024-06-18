@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Program Type'
+vid: program_type
+description: 'A type for Programs and Initiatives to differentiate them.'
+weight: 0

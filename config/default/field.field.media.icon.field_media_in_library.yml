@@ -1,0 +1,23 @@
+uuid: b535e94e-1193-4e40-af30-b24d1ff935ef
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_in_library
+    - media.type.icon
+id: media.icon.field_media_in_library
+field_name: field_media_in_library
+entity_type: media
+bundle: icon
+label: 'Show in media library'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Shown in media library'
+  off_label: 'Hidden in media library'
+field_type: boolean

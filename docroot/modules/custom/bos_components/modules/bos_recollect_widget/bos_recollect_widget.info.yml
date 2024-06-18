@@ -1,0 +1,13 @@
+name: bos_recollect_widget
+type: module
+description: 'Provides theming and configuration for bos_recollect_widget.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - field.field.paragraph.recollect_widget.field_short_description
+  - language.content_settings.paragraph.recollect_widget
+  - paragraphs.paragraphs_type.recollect_widget

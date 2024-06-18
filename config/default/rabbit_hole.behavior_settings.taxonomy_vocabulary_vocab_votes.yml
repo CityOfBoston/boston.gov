@@ -1,0 +1,14 @@
+uuid: 17a8a6bd-d710-420f-af55-14303ef052f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.vocab_votes
+id: taxonomy_vocabulary_vocab_votes
+entity_type_id: taxonomy_vocabulary
+entity_id: vocab_votes
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,20 @@
+uuid: dd437c5c-096b-46db-8685-ee85f19fc521
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+  module:
+    - path
+id: node.neighborhood_lookup.path
+field_name: path
+entity_type: node
+bundle: neighborhood_lookup
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

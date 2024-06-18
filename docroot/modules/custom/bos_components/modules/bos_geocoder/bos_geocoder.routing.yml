@@ -1,0 +1,9 @@
+bos_geocoder.GeocoderConfigForm:
+  path: '/admin/config/system/boston/geocoder'
+  defaults:
+    _form: '\Drupal\bos_geocoder\Form\GeocoderConfigForm'
+    _title: 'Geocoder Configuration Form'
+  requirements:
+#    _permission: 'View Content' # [optional] TODO: Remove or set permission
+#    _role: 'content_editor'     # [optional] TODO: Remove or set roles
+    _access: 'TRUE'             # [optional] TODO: Remove if not public and use permission

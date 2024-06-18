@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.roll_call_dockets
+id: node.roll_call_dockets
+target_entity_type_id: node
+target_bundle: roll_call_dockets
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,14 @@
+bos_bibblio_js:
+  version: 1.x
+  js:
+    js/bibblio-custom.js: {}
+  dependencies:
+    - core/drupalSettings
+
+bos_bibblio_css:
+  version: 1.x
+  css:
+    layout:
+      css/bibblio-custom.css: {}
+  dependencies:
+    - core/drupalSettings

@@ -1,0 +1,24 @@
+uuid: 5f4c2cd0-0afa-4f34-8bd5-41cdbdd1e3d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_css
+    - filter.format.json_friendly
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - text
+id: paragraph.bos_chart.field_component_css
+field_name: field_component_css
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart CSS'
+description: "Add css which will be used to format the VegaLite chart. Use standard css rules, without <style> tag <br>e.g.  to center the chart in the column;<br>\r\n<code>.bos_theme .vega-embed {\r\n  width: 100%;\r\n  text-align: center;\r\n}</code>\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - json_friendly
+field_type: text_long

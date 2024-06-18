@@ -1,0 +1,22 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manual_date
+    - node.type.post
+id: node.post.field_manual_date
+field_name: field_manual_date
+entity_type: node
+bundle: post
+label: 'Manual Date'
+description: "By default, published and updated dates are automatically managed by Drupal using the rules outlined below.<br>\r\n- Selecting this checkbox will stop automatic management allow you to set the dates manually on this form.<br>\r\n  <i>If you later de-select this checkbox: the published date will remain fixed, but the updated date field will resume updating automatically.</i>"
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Manual
+  off_label: Automatic
+field_type: boolean

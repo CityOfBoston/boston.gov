@@ -1,0 +1,16 @@
+uuid: 06ac2d48-2207-46a1-92bc-5a6b18524400
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.med_small_square__200x200_
+id: columns
+label: Columns
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: med_small_square__200x200_
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: med_small_square__200x200_

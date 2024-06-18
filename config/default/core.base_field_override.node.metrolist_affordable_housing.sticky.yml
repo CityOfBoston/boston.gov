@@ -1,0 +1,22 @@
+uuid: 72d565a2-1773-4cec-8a91-6cd96690d1d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.sticky
+field_name: sticky
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

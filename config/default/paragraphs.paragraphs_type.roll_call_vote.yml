@@ -1,0 +1,11 @@
+uuid: f644ee79-31c9-4bf6-a80d-90e4ab47c186
+langcode: en
+status: true
+dependencies:
+  content: {  }
+id: roll_call_vote
+label: 'Roll Call Vote'
+icon_uuid: null
+icon_default: null
+description: 'Records a Councillors vote on a Docket during a Council Meeting.'
+behavior_plugins: {  }

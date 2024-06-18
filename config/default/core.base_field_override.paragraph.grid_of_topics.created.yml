@@ -1,0 +1,20 @@
+uuid: d6a41b79-7a5b-4814-a7f9-1417f7b90c62
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_topics
+_core:
+  default_config_hash: 0Aa6XwPKTzkkRoXekjjOLozxPUF8GTGoWCROXO2EHX8
+id: paragraph.grid_of_topics.created
+field_name: created
+entity_type: paragraph
+bundle: grid_of_topics
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,685 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_messages module.
+ */
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\editor\Entity\Editor;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_messages_theme($existing, $type, $theme, $path) {
+  return [
+    'bos_messages_mod_recur_widget' => [
+      'render element' => 'widget',
+    ],
+    'paragraph__message_for_the_day' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__message_for_the_day__listing' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__message_for_the_day__default' => [
+      'base hook' => 'paragraph',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_messages_form_node_status_item_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form["#attached"]["library"][] = "bos_messages/mod.assets";
+  _bos_admin_add_ckeditor_classes($form, [
+    "field_message" => [
+      "html" => "paragraphs-item-message-for-the-day g--24",
+      "body" => "cds-d t--subinfo",
+    ],
+  ]);
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function bos_messages_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (isset($element["#theme"]) && $element["#theme"] == "bos_messages_mod_recur_widget") {
+    $element["ends_date"]["ends_date"]["#description"] = new TranslatableMarkup("This message will not show after the end of this day.");
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ *
+ * This de-duplicates the paragraph instances (message_for_the_day) which are
+ * output from the view motd.  We only want the *first* instance of each para
+ * when sorted by the order they appear in the inout form.
+ * (it also validates dates)
+ */
+function bos_messages_preprocess_paragraph__message_for_the_day__listing(&$variables) {
+  // Array which holds the id's for status_items which already have a
+  // message showing.
+  static $motd_processed = [];
+
+  $motd = $variables['paragraph'];
+  $status_item = $motd->getParentEntity();
+
+  $variables["cob"]["show_message"] = FALSE;
+
+  // Only do this if the parent status_item hasn't already had a message
+  // processed.
+  if (isset($status_item) && !isset($motd_processed[$status_item->id()])) {
+    // If the arg is not the server date, then get the date here.
+    $today = new \DateTime("America/New_York");
+    if (\Drupal::state()->get("motd_arg")) {
+      // If we have manually set date, then make any token substitutions here.
+      $today = new \DateTime(\Drupal::state()->get("motd_arg"));
+      if (substr_count($variables["content"]["field_message"][0]["#text"], "[boston:week")) {
+        $tokens = [
+          "week-ordinal:text" => "[boston:week-ordinal:text]",
+          "week-ordinal:value" => "[boston:week-ordinal:value]",
+          "week-day" => "[boston:week-day]",
+        ];
+        $ret = bos_messages_tokens("boston", $tokens, ["date" => $today->format("Y-m-d")]);
+        foreach ($ret as $find => $replace) {
+          $variables["content"]["field_message"][0]["#text"] = str_replace($find, $replace, $variables["content"]["field_message"][0]["#text"]);
+        }
+      }
+    }
+
+    // Make sure the recurrences field has a value.
+    if (isset($variables["content"]["field_recurrence"][0])) {
+      $field_recurrence = $variables["content"]["field_recurrence"][0];
+      if (!$field_recurrence["#is_recurring"]) {
+        $start_date = new \DateTime($field_recurrence["#date"]["start_date"]["#text"]);
+        $end_date = new \DateTime($field_recurrence["#date"]["end_date"]["#text"]);
+        if ($start_date == $end_date) {
+          $end_date->modify("+24 hours");
+        }
+        if ($today >= $start_date && $today < $end_date) {
+          $variables["cob"]["show_message"] = TRUE;
+          $motd_processed[$status_item->id()] = $motd->id();
+        }
+      }
+      elseif (isset($field_recurrence['#occurrences']) && count($field_recurrence['#occurrences'])) {
+        $date = array_shift($field_recurrence['#occurrences']);
+        // If $today is in the occurence range then show.
+        if (!empty($date) && isset($date["start_date"]) && isset($date["end_date"])) {
+          $start_date = new \DateTime($date["start_date"]["#text"]);
+          $end_date = new \DateTime($date["end_date"]["#text"]);
+          if ($start_date == $end_date) {
+            $end_date->modify("+24 hours");
+          }
+          if ($today >= $start_date && $today < $end_date) {
+            $variables["cob"]["show_message"] = TRUE;
+            $motd_processed[$status_item->id()] = $motd->id();
+          }
+        }
+      }
+    }
+
+    if ($variables["cob"]["show_message"]) {
+      if (!empty($motd->field_link) && $motd->field_link->count()) {
+        $paragraph = Paragraph::load($motd->field_link->target_id);
+        if (NULL != $link = _bos_core_paragraph_extract_link($paragraph)) {
+          $variables['card_url'] = $link['url'];
+        }
+      }
+
+      if (!empty($motd->field_use_alert->value)) {
+        $alert = file_get_contents(\Drupal::service('extension.path.resolver')->getPath('module', 'bos_messages') . '/assets/alert.svg');
+        $variables['alert'] = Xss::filter($alert, explode(' ', BOS_CORE_SVG_ELEMENTS));
+      }
+
+      // Get the field_icon uri from the parent status_item.
+      if (NULL != ($fid = $status_item->field_icon->target_id)) {
+        $media = Media::load($fid);
+        if (!empty($media->image) && NULL != ($mid = $media->image->target_id)) {
+          if (NULL != ($file = File::load($mid))) {
+            $uri = $file->getFileUri();
+            if (\Drupal::service('file_system')->realpath($uri)) {
+              $uri = \Drupal::service('file_system')->realpath($uri);
+            }
+            // If the icon is in the format //domain/file then add scheme.
+            if (substr($uri, 0, 4) != "http") {
+              $uri = \Drupal::request()->getScheme() . ":" . $uri;
+            }
+
+            if ($icon = @file_get_contents($uri)) {
+              $variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
+            }
+            else {
+              $icon = @file_get_contents(\Drupal::service('file_url_generator')->generateAbsoluteString("public://custom/no-icon.svg"));
+              $variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
+            }
+
+          }
+        }
+      }
+
+      // Set the title to be the display_title.
+      $variables['title'] = $status_item->field_title->value;
+      $variables["attributes"]["class"][] = "motd-" . $variables['paragraph']->id();
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ *
+ * This de-duplicates the paragraph instances (message_for_the_day) which are
+ * output from the view motd.  We only want the *first* instance of each para
+ * when sorted by the order they appear in the inout form.
+ * (it also validates dates)
+ */
+function bos_messages_preprocess_paragraph__message_for_the_day__default(&$variables) {
+  // Array which holds the id's for status_items which already have a
+  // message showing.
+  static $motd_processed = [];
+
+  // These are the message (para) and status_item (node) entities.
+  $motd = $variables['paragraph'];
+  $status_item = $motd->getParentEntity();
+
+  // Check we have the correct revision of the status_item parent node.
+  if ($motd->isTranslatable() && $motd->isLatestTranslationAffectedRevision()) {
+    if (NULL != ($revision_id = \Drupal::entityTypeManager()->getStorage('node')->getLatestTranslationAffectedRevisionId($status_item->id(), $status_item->language()->getId()))) {
+      $status_item = \Drupal::entityTypeManager()->getStorage('node')->loadRevision($revision_id)->getTranslation($status_item->language()->getId());
+    }
+  }
+
+  $variables["cob"]["show_message"] = FALSE;
+
+  // Only do this if the parent status_item hasn't already had a message
+  // processed.
+  if (isset($status_item)) {
+    // If the arg is not the server date, then get the date here.
+    $today = new \DateTime("America/New_York");
+    if (\Drupal::state()->get("motd_arg")) {
+      // If we have manually set date, then make any token substitutions here.
+      $today = new \DateTime(\Drupal::state()->get("motd_arg"));
+      if (substr_count($variables["content"]["field_message"][0]["#text"], "[boston:week")) {
+        $tokens = [
+          "week-ordinal:text" => "[boston:week-ordinal:text]",
+          "week-ordinal:value" => "[boston:week-ordinal:value]",
+          "week-day" => "[boston:week-day]",
+        ];
+        $ret = bos_messages_tokens("boston", $tokens, ["date" => $today->format("Y-m-d")]);
+        foreach ($ret as $find => $replace) {
+          $variables["content"]["field_message"][0]["#text"] = str_replace($find, $replace, $variables["content"]["field_message"][0]["#text"]);
+        }
+      }
+    }
+
+    // Make sure the recurrences field has a value.
+    if (isset($variables["content"]["field_recurrence"][0])) {
+      $field_recurrence = $variables["content"]["field_recurrence"][0];
+      if (!$field_recurrence["#is_recurring"]) {
+        $start_date = new \DateTime($field_recurrence["#date"]["start_date"]["#text"]);
+        $end_date = new \DateTime($field_recurrence["#date"]["end_date"]["#text"]);
+        if ($start_date == $end_date) {
+          $end_date->modify("+24 hours");
+        }
+        if ($today >= $start_date && $today < $end_date) {
+          $variables["cob"]["show_message"] = TRUE;
+          $motd_processed[$status_item->id()] = $motd->id();
+        }
+      }
+      elseif (isset($field_recurrence['#occurrences']) && count($field_recurrence['#occurrences'])) {
+        $date = array_shift($field_recurrence['#occurrences']);
+        // If $today is in the occurence range then show.
+        if (!empty($date) && isset($date["start_date"]) && isset($date["end_date"])) {
+          $start_date = new \DateTime($date["start_date"]["#text"]);
+          $end_date = new \DateTime($date["end_date"]["#text"]);
+          if ($start_date == $end_date) {
+            $end_date->modify("+24 hours");
+          }
+          if ($today >= $start_date && $today < $end_date) {
+            $variables["cob"]["show_message"] = TRUE;
+            $motd_processed[$status_item->id()] = $motd->id();
+          }
+        }
+      }
+    }
+
+      if (!empty($motd->field_link) && $motd->field_link->count()) {
+        $paragraph = Paragraph::load($motd->field_link->target_id);
+        if (NULL != $link = _bos_core_paragraph_extract_link($paragraph)) {
+          $variables['card_url'] = $link['url'];
+        }
+      }
+
+      if (!empty($motd->field_use_alert->value)) {
+        $variables['alert'] = $motd->field_use_alert->value;
+      }
+
+      // Get the field_icon uri from the parent status_item.
+      if (NULL != ($fid = $status_item->field_icon->target_id)) {
+        $media = Media::load($fid);
+        if (!empty($media->image) && NULL != ($mid = $media->image->target_id)) {
+          if (NULL != ($file = File::load($mid))) {
+            $uri = $file->getFileUri();
+            if (\Drupal::service('file_system')->realpath($uri)) {
+              $uri = \Drupal::service('file_system')->realpath($uri);
+            }
+            // If the icon is in the format //domain/file then add scheme.
+            if (substr($uri, 0, 4) != "http") {
+              $uri = \Drupal::request()->getScheme() . ":" . $uri;
+            }
+
+            if ($icon = @file_get_contents($uri)) {
+              $variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
+            }
+            else {
+              $icon = @file_get_contents(\Drupal::service('file_url_generator')->generateAbsoluteString("public://custom/no-icon.svg"));
+              $variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
+            }
+
+          }
+        }
+      }
+
+      // Set the title to be the display_title.
+      $variables['title'] = $status_item->field_title->value;
+    }
+
+}
+
+/**
+ * Implements hook_contact_token_info().
+ */
+function bos_messages_token_info() {
+  $info = [];
+  // Define our new token.
+  $info['tokens']['boston']['week-ordinal:value'] = [
+    'name' => t('Current Week-ord (num)'),
+    'description' => t("The current date's week number in this month <i>(e.g. 2nd)</i>."),
+  ];
+  $info['tokens']['boston']['week-ordinal:text'] = [
+    'name' => t('Current Week-ord (txt)'),
+    'description' => t("The current date's week number in this month <i>(e.g. second)</i>."),
+  ];
+  $info['tokens']['boston']['week-day'] = [
+    'name' => t('Current Date - weekday'),
+    'description' => t('Today in the "l" format <i>(e.g Monday)</i>.'),
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function bos_messages_tokens($type, $tokens, array $data = [], array $options = []) {
+  $replacements = [];
+
+  if ($type == 'boston') {
+
+    if (isset($data["date"])) {
+      $now = new DateTime($data["date"]);
+    }
+    else {
+      $now = new DateTime();
+      $data["date"] = "today";
+    }
+    // Loop through the available tokens.
+    foreach ($tokens as $name => $original) {
+      // Find our custom tokens by name.
+      switch ($name) {
+        case 'week-ordinal:value':
+          // Give our token it's final value!
+          $weekday = $now->format("l");
+          $month = $now->format("F");
+          foreach (["1st", "2nd", "3rd", "4th", "5th"] as $ordinal) {
+            if (strtotime($data["date"]) == strtotime(sprintf("%s %s of %s", $ordinal, $weekday, $month))) {
+              break;
+            }
+          }
+          $replacements[$original] = $ordinal;
+          break;
+
+        case 'week-ordinal:text':
+          // Give our token it's final value!
+          $weekday = $now->format("l");
+          $month = $now->format("F");
+          foreach (["first", "second", "third", "fourth", "fifth"] as $ordinal) {
+            if (strtotime($data["date"]) == strtotime(sprintf("%s %s of %s", $ordinal, $weekday, $month))) {
+              break;
+            }
+          }
+          $replacements[$original] = $ordinal;
+          break;
+
+        case 'week-day':
+          // Give our token it's final value!
+          $replacements[$original] = $now->format("l");
+          break;
+
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_messages_paragraph_message_for_the_day_summary_alter(array $form_widget, array $para, array $attributes) {
+  static $found = FALSE;
+  $attributes["class"][] = $para["entity"]->field_enabled->value ? "cob-para-enabled" : "cob-para-disabled";
+  $at_settings = [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 30,
+  ];
+  $message = html_entity_decode(strip_tags($para["entity"]->get("field_message")->value));
+  $message = preg_replace("/\[[a-zA-Z\:\-_\.]*\]/", "{token}", $message) ?: "";
+  $message = advanced_text_formatter_trim_text($message, $at_settings);
+  $markup[] = Markup::create("<span class='body-text'>" . $message . "</span>");
+  $isToday = FALSE;
+  if (empty($para["entity"]->field_recurrence[0])) {
+    $pattern_msg = "No recurring rules set !";
+  }
+  else {
+    if (NULL == ($pattern = $para["entity"]->field_recurrence[0]->getHelper()
+      ->getRules())) {
+      // Simplified once-only run.
+      $pattern = $para["entity"]->get("field_recurrence");
+      $patt = explode(";", $pattern->rrule);
+      foreach ($patt as $key => $value) {
+        $parts = explode("=", $value);
+        if (isset($parts[0]) && isset($parts[1])) {
+          $pattern->{$parts[0]} = $parts[1];
+        }
+        $parts = NULL;
+      }
+      $nextrun = $end = "";
+      if (!empty($pattern->value)) {
+        $from = \Drupal::service('date.formatter')
+          ->format(strtotime($pattern->value), "custom", "M d Y");
+      }
+      if (strtotime($pattern->value) < strtotime("midnight")) {
+        $nextrun = " <span style='color:red;font-weight:bold'>expired</span>";
+      }
+      elseif (strtotime($pattern->value) == strtotime("midnight")) {
+        $isToday = !$found;
+        $found = TRUE;
+        $nextrun = " <span style='color:blue;font-weight:bold'>Showing Now</span>";
+      }
+      else {
+        $nextrun = " <span style='color:blue;font-weight:bold'>Next: $from</span>";
+      }
+      $pattern_msg = sprintf("<b><i>ONCE ONLY</i></b> on %s - %s", $from, $nextrun);
+
+    }
+    else {
+      $pattern = (object) $pattern[0]->getParts();
+      $exdates = explode("\n", $para["entity"]->get("field_recurrence")->rrule);
+      if (isset($exdates[1])) {
+        $exdates = TRUE;
+      }
+      else {
+        $exdates = FALSE;
+      }
+      // The Rule start date.
+      if (isset($pattern->DTSTART)) {
+        $from = $pattern->DTSTART->format("M d Y");
+      }
+      // The rule end date.
+      $end = "FOREVER";
+      if (isset($pattern->UNTIL)) {
+        $pattern->UNTIL->setTimezone(new DateTimeZone("America/New_York"));
+        $end = "until EOD " . $pattern->UNTIL->format("M d Y");
+      }
+      elseif (isset($pattern->COUNT) && $pattern->COUNT > 0) {
+        $end = "for $pattern->COUNT";
+      }
+      // Find the next day this Rule will run.
+      $nextrun = " <span style='color:red;font-weight:bold'>expired</span>";
+      if ($para["entity"]->get("field_enabled")->value == 1) {
+        foreach ($para["entity"]->field_recurrence[0]->getHelper()->generateOccurrences() as $occurrence) {
+          if (strtotime($occurrence->getStart()->format("M d Y")) == strtotime("midnight")) {
+            $isToday = !$found;
+            $found = TRUE;
+            $nextrun = "<span style='color:blue;font-weight:bold'>ENDS TODAY</span>";
+          }
+          if (strtotime($occurrence->getStart()->format("M d Y")) > strtotime("midnight")) {
+            $nextrun = "<span style='color:blue;font-weight:bold'>Next: " . $occurrence->getStart()->format("M d Y") . "</span>";
+            break;
+          }
+        }
+      }
+
+      // Build up the repetitions string.
+      $pos = "every";
+      switch ($pattern->FREQ) {
+        case "DAILY":
+          $freq = "every day";
+          if (isset($pattern->BYDAY)) {
+            if ($pattern->BYDAY == "MO,TU,WE,TH,FR") {
+              $freq = "every weekday";
+            }
+            elseif ($pattern->BYDAY == "SA,SU") {
+              $freq = "every weekend-day";
+            }
+          }
+
+          if (isset($pattern->COUNT)) {
+            $end .= " days";
+          }
+          break;
+
+        case "WEEKLY":
+          if ($pattern->BYDAY == "MO,TU,WE,TH,FR") {
+            $freq = "every weekday";
+          }
+          elseif ($pattern->BYDAY == "SA,SU") {
+            $freq = "every weekend-day";
+          }
+          else {
+            $freq = "every " . $pattern->BYDAY;
+          }
+
+          if (isset($pattern->COUNT)) {
+            $end .= " weeks";
+          }
+          break;
+
+        case "MONTHLY":
+          if ($pattern->BYDAY == "MO,TU,WE,TH,FR") {
+            $freq = "weekday";
+          }
+          elseif ($pattern->BYDAY == "SA,SU") {
+            $freq = "weekend-day";
+          }
+          else {
+            $freq = $pattern->BYDAY;
+          }
+
+          if (isset($pattern->BYSETPOS)) {
+            $pos = "";
+            if (!empty(array_intersect([
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos = "1st,";
+            }
+            if (!empty(array_intersect([
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "2nd,";
+            }
+            if (!empty(array_intersect([
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "3rd,";
+            }
+            if (!empty(array_intersect([
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "4th,";
+            }
+            if (!empty(array_intersect([
+              28,
+              29,
+              30,
+              31,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "5th,";
+            }
+          }
+          $freq = trim($pos, ",") . " " . $freq;
+
+          if (isset($pattern->COUNT)) {
+            $end .= " months";
+          }
+          break;
+
+        case "YEARLY":
+          if ($pattern->BYDAY == "MO,TU,WE,TH,FR") {
+            $freq = "weekday";
+          }
+          elseif ($pattern->BYDAY == "SA,SU") {
+            $freq = "weekend-day";
+          }
+          else {
+            $freq = $pattern->BYDAY;
+          }
+
+          if (isset($pattern->BYSETPOS)) {
+            $pos = "";
+            if (!empty(array_intersect([
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos = "1st,";
+            }
+            if (!empty(array_intersect([
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "2nd,";
+            }
+            if (!empty(array_intersect([
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "3rd,";
+            }
+            if (!empty(array_intersect([
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "4th,";
+            }
+            if (!empty(array_intersect([
+              28,
+              29,
+              30,
+              31,
+            ], explode(",", $pattern->BYSETPOS)))) {
+              $pos .= "5th,";
+            }
+          }
+
+          $mth = "";
+          if (isset($pattern->BYMONTH)) {
+            foreach (explode(",", $pattern->BYMONTH) as $month) {
+              $mth .= (new DateTime("2019-03-15"))->format("M,");
+            }
+          }
+
+          $freq = trim($pos, ",") . " " . $freq . " of " . trim($mth, ",");
+
+          if (isset($pattern->COUNT)) {
+            $end = " years!";
+          }
+          break;
+
+      }
+      // Put it all together.
+      $recur = t("@freq: <b><i>@until</i></b>@exclusions", [
+        "@freq" => $freq,
+        "@until" => $end,
+        "@exclusions" => ($exdates ? " (w/exclusions)" : ""),
+      ]);
+      $pattern_msg = sprintf("From: %s: %s - %s", $from, $recur, $nextrun);
+    }
+  }
+  $markup[] = Markup::create("<span class='info'>" . $pattern_msg . "</span>");
+
+  $out = [
+    'attributes' => $attributes,
+    'content' => $markup,
+    'id' => TRUE,
+  ];
+  if ($isToday && $para["all_collapsed"]) {
+    $out['icon'] = [
+      "today" => [
+        "#markup" => "",
+        "#prefix" => "<span class=\"paragraphs-icon paragraphs-icon-today\" title=\"Message is showing today.\">",
+        "#suffix" => "</span>",
+      ],
+    ];
+  }
+  return $out;
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function bos_messages_ckeditor_css_alter(array &$css, Editor $editor) {
+  if (NULL !== $editor->getThirdPartySetting("cob", "entity") && $editor->getThirdPartySetting("cob", "entity")["entityType"] == "status_item") {
+    $css[] =\Drupal::service('extension.path.resolver')->getPath("module", "bos_messages") . "/css/ckeditor.boston.messages.css";
+  }
+}

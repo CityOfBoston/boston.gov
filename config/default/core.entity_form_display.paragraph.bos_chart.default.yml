@@ -1,0 +1,241 @@
+uuid: 3fc9f37c-06f2-4f00-a816-e3f79bd694c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bos_chart.field_anchor_custom_attributes
+    - field.field.paragraph.bos_chart.field_anchor_custom_css
+    - field.field.paragraph.bos_chart.field_chart_text_layout
+    - field.field.paragraph.bos_chart.field_column_description
+    - field.field.paragraph.bos_chart.field_component_css
+    - field.field.paragraph.bos_chart.field_component_data
+    - field.field.paragraph.bos_chart.field_component_data_type
+    - field.field.paragraph.bos_chart.field_component_launch_script
+    - field.field.paragraph.bos_chart.field_left_column
+    - field.field.paragraph.bos_chart.field_link
+    - field.field.paragraph.bos_chart.field_middle_column
+    - field.field.paragraph.bos_chart.field_title
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_component_title:
+      children:
+        - field_link
+      label: 'Call to Action'
+      region: hidden
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_chart_configuration:
+      children:
+        - field_component_launch_script
+        - field_component_css
+        - field_component_data_type
+        - field_component_data
+      label: 'Chart Configuration'
+      region: content
+      parent_name: group_chart_object
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_chart_title:
+      children:
+        - field_title
+        - field_chart_text_layout
+        - group_chart_object
+        - group_chart_narrative
+      label: 'Chart Layout'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: false
+        element: div
+        show_label: '1'
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_chart_object:
+      children:
+        - field_column_description
+        - group_chart_anchor
+        - group_chart_configuration
+        - field_middle_column
+      label: 'Chart Column'
+      region: content
+      parent_name: group_chart_title
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_title:
+      children: {  }
+      label: title
+      region: hidden
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: g
+        show_empty_fields: true
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_chart_narrative:
+      children:
+        - field_left_column
+      label: 'Text Column'
+      region: content
+      parent_name: group_chart_title
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_chart_anchor:
+      children:
+        - field_anchor_custom_css
+        - field_anchor_custom_attributes
+      label: 'Chart Anchor'
+      region: content
+      parent_name: group_chart_object
+      weight: 7
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.bos_chart.default
+targetEntityType: paragraph
+bundle: bos_chart
+mode: default
+content:
+  field_anchor_custom_attributes:
+    type: string_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_anchor_custom_css:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_chart_text_layout:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_column_description:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_component_css:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_component_data:
+    type: text_textarea
+    weight: 24
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_component_data_type:
+    type: options_buttons
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_launch_script:
+    type: text_textarea
+    weight: 21
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_left_column:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_middle_column:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_link: true
+  status: true

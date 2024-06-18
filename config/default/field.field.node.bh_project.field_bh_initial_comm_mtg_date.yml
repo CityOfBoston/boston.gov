@@ -1,0 +1,25 @@
+uuid: 9b694f50-5291-4137-989b-ca878dbef9b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_initial_comm_mtg_date
+    - node.type.bh_project
+  module:
+    - datetime
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Initial Community Meeting Date'
+id: node.bh_project.field_bh_initial_comm_mtg_date
+field_name: field_bh_initial_comm_mtg_date
+entity_type: node
+bundle: bh_project
+label: 'Initial Community Mtg Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

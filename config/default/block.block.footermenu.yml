@@ -1,0 +1,32 @@
+uuid: 20beab5e-461d-4417-b745-f87da6865ed3
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.menu-footer-menu
+  module:
+    - menu_block
+  theme:
+    - bos_theme
+id: footermenu
+theme: bos_theme
+region: footer
+weight: 0
+provider: null
+plugin: 'menu_block:menu-footer-menu'
+settings:
+  id: 'menu_block:menu-footer-menu'
+  label: 'Footer menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'menu-footer-menu:'
+  suggestion: menu_footer_menu
+  expand: 0
+visibility: {  }

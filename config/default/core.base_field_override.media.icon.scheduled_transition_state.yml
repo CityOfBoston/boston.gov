@@ -1,0 +1,18 @@
+uuid: 807cf00d-09f6-4552-ab53-710e102a8adf
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.icon
+id: media.icon.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: media
+bundle: icon
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 59d6cd3b-465b-47c4-8be6-9540067efc71
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.status_item
+  module:
+    - publication_date
+id: node.status_item.published_at
+field_name: published_at
+entity_type: node
+bundle: status_item
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

@@ -1,0 +1,19 @@
+uuid: 6dd63980-5d4a-4a96-a6b9-b52f33242f66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_source_url
+    - paragraphs.paragraphs_type.election_results
+id: paragraph.election_results.field_source_url
+field_name: field_source_url
+entity_type: paragraph
+bundle: election_results
+label: 'Source URL'
+description: 'This is where the election results live. '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

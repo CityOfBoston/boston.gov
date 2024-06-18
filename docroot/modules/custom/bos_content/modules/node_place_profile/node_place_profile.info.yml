@@ -1,0 +1,34 @@
+name: Place Profile
+type: module
+description: 'Provides a place profile entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.entity_form_display.node.place_profile.default
+  - core.entity_view_display.node.place_profile.default
+  - core.entity_view_display.node.place_profile.listing
+  - core.entity_view_display.node.place_profile.teaser
+  - field.field.node.place_profile.field_additional_information
+  - field.field.node.place_profile.field_address
+  - field.field.node.place_profile.body
+  - field.field.node.place_profile.field_components
+  - field.field.node.place_profile.field_contact
+  - field.field.node.place_profile.field_did_you_know
+  - field.field.node.place_profile.field_features
+  - field.field.node.place_profile.field_intro_image
+  - field.field.node.place_profile.field_links
+  - field.field.node.place_profile.field_manual_date
+  - field.field.node.place_profile.field_operation_hours
+  - field.field.node.place_profile.field_phone_number
+  - field.field.node.place_profile.field_place_neighborhood
+  - field.field.node.place_profile.field_place_type
+  - field.field.node.place_profile.field_published_date
+  - field.field.node.place_profile.field_sidebar_components
+  - field.field.node.place_profile.field_single_neighborhood
+  - field.field.node.place_profile.field_updated_date
+  - language.content_settings.node.place_profile
+  - node.type.place_profile
+  - xmlsitemap.settings.node.place_profile

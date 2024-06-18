@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_political_party
+    - node.type.person_profile
+    - taxonomy.vocabulary.political_party
+id: node.person_profile.field_political_party
+field_name: field_political_party
+entity_type: node
+bundle: person_profile
+label: 'Party:'
+description: 'Please select the affiliated political party.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      political_party: political_party
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

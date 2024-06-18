@@ -1,0 +1,18 @@
+uuid: e9085426-659e-4d96-a50a-d3ba252579ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_neighborhood
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.ml_neighborhood
+target_entity_type_id: taxonomy_term
+target_bundle: ml_neighborhood
+default_langcode: site_default
+language_alterable: false

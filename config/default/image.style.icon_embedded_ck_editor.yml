@@ -1,0 +1,14 @@
+uuid: f3d9173d-0f4f-4ced-92a8-e52ca6dfd9f8
+langcode: und
+status: true
+dependencies: {  }
+name: icon_embedded_ck_editor
+label: 'Default Embedded Icon Style'
+effects:
+  e5442d09-1953-4e87-a2a7-4a6585832d3e:
+    uuid: e5442d09-1953-4e87-a2a7-4a6585832d3e
+    id: image_resize
+    weight: 1
+    data:
+      width: 150
+      height: 150

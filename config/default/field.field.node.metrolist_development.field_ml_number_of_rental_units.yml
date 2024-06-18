@@ -1,0 +1,23 @@
+uuid: 247e53eb-9450-458e-b2dd-dca11ff52cfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_number_of_rental_units
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_number_of_rental_units
+field_name: field_ml_number_of_rental_units
+entity_type: node
+bundle: metrolist_development
+label: 'Number of Rental Units'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

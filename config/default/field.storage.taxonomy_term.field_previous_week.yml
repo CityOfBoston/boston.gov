@@ -1,0 +1,22 @@
+uuid: 419a17ad-2d4a-47b8-9531-9437e28246ff
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: R1ZaBL8Hq_wVABk08jphf7wuKNfAKjxR5ia3tak7AzQ
+id: taxonomy_term.field_previous_week
+field_name: field_previous_week
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 6
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

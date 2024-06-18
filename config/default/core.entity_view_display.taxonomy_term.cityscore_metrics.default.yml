@@ -1,0 +1,109 @@
+uuid: 2e099377-5519-4317-a321-4be889ac3959
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.cityscore_metrics.field_calc_timestamp
+    - field.field.taxonomy_term.cityscore_metrics.field_day
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_day
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_month
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_quarter
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_week
+    - field.field.taxonomy_term.cityscore_metrics.field_table_timestamp
+    - taxonomy.vocabulary.cityscore_metrics
+  module:
+    - fences
+    - text
+_core:
+  default_config_hash: qIeU_xdKyaZBqJbALYARwutfaldQiIi3Ub-Y9r9v_7A
+id: taxonomy_term.cityscore_metrics.default
+targetEntityType: taxonomy_term
+bundle: cityscore_metrics
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_calc_timestamp:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_day:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_previous_day:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_previous_month:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_previous_quarter:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_previous_week:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_table_timestamp:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 9
+    region: content
+hidden:
+  langcode: true

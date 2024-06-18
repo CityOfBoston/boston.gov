@@ -1,0 +1,15 @@
+uuid: 9c532425-cad2-4a4d-a9be-534a9290b4f7
+langcode: und
+status: true
+dependencies: {  }
+name: pip_image_desktop
+label: 'PIP Image Desktop (377x132)'
+effects:
+  f69e2ec9-577e-41ec-90ca-0534e6e8bcb8:
+    uuid: f69e2ec9-577e-41ec-90ca-0534e6e8bcb8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 377
+      height: 132
+      anchor: center-center

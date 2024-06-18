@@ -1,0 +1,57 @@
+uuid: e94146da-dcce-49ea-aa33-036f4c5709fd
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.body
+    - field.field.node.article.field_components
+    - field.field.node.article.field_contact
+    - field.field.node.article.field_content_feeds
+    - field.field.node.article.field_hide_contact_form
+    - field.field.node.article.field_intro_text
+    - field.field.node.article.field_manual_date
+    - field.field.node.article.field_metatags
+    - field.field.node.article.field_published_date
+    - field.field.node.article.field_sidebar_components
+    - field.field.node.article.field_updated_date
+    - node.type.article
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 6NXAweCepxbNJ_2gsjDJbC4oMroCHDAgyK0k-_aPpKM
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_contact: true
+  field_content_feeds: true
+  field_hide_contact_form: true
+  field_intro_text: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

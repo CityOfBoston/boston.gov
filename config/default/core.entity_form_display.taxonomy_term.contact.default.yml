@@ -1,0 +1,74 @@
+uuid: 8068d767-b8ab-497b-a097-e1f55e9fb282
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.contact.field_department_legacy_id
+    - field.field.taxonomy_term.contact.field_department_profile
+    - taxonomy.vocabulary.contact
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: Es8rReFozG6b7KbXGEEAelYPKzUkbq9a7y_aDbX0fp4
+id: taxonomy_term.contact.default
+targetEntityType: taxonomy_term
+bundle: contact
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_department_legacy_id:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_department_profile:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

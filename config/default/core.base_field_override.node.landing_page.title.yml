@@ -1,0 +1,20 @@
+uuid: 273e5acb-ea50-4022-81d3-bd83ef687032
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.landing_page
+_core:
+  default_config_hash: kcFSsjunpgP7TvUYX47ZUv96PnIyeA6Y7qdsumODcYk
+id: node.landing_page.title
+field_name: title
+entity_type: node
+bundle: landing_page
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

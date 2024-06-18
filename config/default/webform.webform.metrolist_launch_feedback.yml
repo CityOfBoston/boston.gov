@@ -1,0 +1,297 @@
+uuid: 703cd31d-081e-4a41-9a33-7897ddbffafd
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: metrolist_launch_feedback
+title: 'MetroList: Launch Feedback'
+description: ''
+categories: {  }
+elements: |-
+  processed_text:
+    '#type': processed_text
+    '#wrapper_attributes':
+      style: 'margin: 3rem 0 0 0;'
+    '#admin_title': Title
+    '#text': |
+      <div class="sh">
+        <h2 class="sh-title">Tell us what you think!</h2>
+      </div>
+      
+    '#format': full_html
+  flexbox:
+    '#type': webform_flexbox
+    '#align_items': center
+    form:
+      '#type': container
+      '#flex': 2
+      customer_effort_score_radios:
+        '#type': radios
+        '#title': 'Customer Effort Score'
+        '#description': |
+          <p class="supporting-text">How do you feel about the following statement:<br />
+          &quot;Using Metrolist made my housing search easier.&quot;?</p>
+          
+        '#title_display': invisible
+        '#description_display': before
+        '#options': likert_comparison_metrolist_1_7
+        '#required': true
+      qual_short_answer:
+        '#type': textarea
+        '#title': 'Qual Short Answer'
+        '#title_display': invisible
+        '#size': 100
+        '#rows': 2
+        '#placeholder': 'Please tell us why you feel that way...'
+        '#required': true
+        '#required_error': 'Please tell us why you feel that way...'
+        '#format_items': comma
+      email:
+        '#type': email
+        '#title': 'Need a response? Leave your email address below'
+        '#format_items': comma
+      actions:
+        '#type': webform_actions
+        '#title': 'Submit button(s)'
+        '#submit__label': 'Send Feedback'
+        '#submit__attributes':
+          style: 'text-transform: uppercase; float:right;'
+css: |
+  .webform-submission-form #edit-customer-effort-score-radios--wrapper .description {
+    text-align: center;
+  }
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: form
+  ajax_progress_type: fullscreen
+  ajax_effect: fade
+  ajax_speed: 1000
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes:
+    class:
+      - print-none
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: |
+    <div class="m-v400 p-v300">
+    <div class="sh m-v300">
+    <h2 class="sh-title">Tell us what you think!</h2>
+    </div>
+
+    <div class="m-v400 p-v300">
+    <p class="supporting-text">Thank you for your feedback. Your opinion will help us continue to improve the site!</p>
+    </div>
+    </div>
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: 'dana.smith@boston.gov, kelsey.bruun@boston.gov, nolin.greene@boston.gov, carol.owens@boston.gov'
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: alex.dora@boston.gov
+      cc_options: {  }
+      from_mail: noreply@boston.gov
+      from_options: {  }
+      from_name: 'Boston MetroList'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Webform submission from: Metrolist Feedback on [webform_submission:source-title]'
+      body: "<p>Submitted on [webform_submission:created]</p>\r\n<p>Submitted by: [webform_submission:user]</p>\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]\r\n<p>Project:</p>\r\n[webform_submission:source-url]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

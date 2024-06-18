@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.newsletter
+  module:
+    - text
+id: paragraph.newsletter.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: newsletter
+label: Description
+description: 'Enter a description for this Newsletter.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

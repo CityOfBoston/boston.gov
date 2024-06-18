@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.custom_hours_text.field_custom_hours_text
+    - field.field.paragraph.custom_hours_text.field_hours_icon
+    - field.field.paragraph.custom_hours_text.field_title
+    - paragraphs.paragraphs_type.custom_hours_text
+id: paragraph.custom_hours_text.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: custom_hours_text
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_custom_hours_text: true
+  field_hours_icon: true
+  field_title: true

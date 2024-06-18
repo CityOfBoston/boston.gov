@@ -1,0 +1,12 @@
+uuid: f310a736-35bb-462a-b62e-aa9effc45cd8
+langcode: en
+status: true
+dependencies: {  }
+id: node_type_change
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

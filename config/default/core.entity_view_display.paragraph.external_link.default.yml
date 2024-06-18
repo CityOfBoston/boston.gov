@@ -1,0 +1,29 @@
+uuid: c87a8f77-0860-4c57-b88d-8901ff45c51c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - link
+_core:
+  default_config_hash: UsqHzuUch9B8RjnVw86GC6_87ZjgPW06c2rRxWT6AYg
+id: paragraph.external_link.default
+targetEntityType: paragraph
+bundle: external_link
+mode: default
+content:
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

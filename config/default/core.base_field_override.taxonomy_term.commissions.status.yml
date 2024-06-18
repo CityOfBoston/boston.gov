@@ -1,0 +1,22 @@
+uuid: fbd8271c-9ea1-4089-82db-529e17039c64
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.commissions
+id: taxonomy_term.commissions.status
+field_name: status
+entity_type: taxonomy_term
+bundle: commissions
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

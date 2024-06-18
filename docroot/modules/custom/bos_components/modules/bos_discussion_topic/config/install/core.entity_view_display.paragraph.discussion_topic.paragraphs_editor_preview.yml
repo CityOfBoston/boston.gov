@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.discussion_topic.field_description
+    - field.field.paragraph.discussion_topic.field_links
+    - field.field.paragraph.discussion_topic.field_title
+    - paragraphs.paragraphs_type.discussion_topic
+id: paragraph.discussion_topic.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: discussion_topic
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_description: true
+  field_links: true
+  field_title: true

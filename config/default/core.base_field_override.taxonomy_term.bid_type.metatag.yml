@@ -1,0 +1,18 @@
+uuid: 5e4d22ae-6f58-42f5-a644-ddaf771a6ff7
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_type
+id: taxonomy_term.bid_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: bid_type
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

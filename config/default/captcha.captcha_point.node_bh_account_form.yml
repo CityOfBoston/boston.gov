@@ -1,0 +1,7 @@
+uuid: b67d03c5-5b5f-4bbe-bf24-f8a6a21e1058
+langcode: en
+status: false
+dependencies: {  }
+formId: node_bh_account_form
+captchaType: default
+label: node_bh_account_form

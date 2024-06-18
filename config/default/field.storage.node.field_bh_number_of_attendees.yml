@@ -1,0 +1,20 @@
+uuid: b541354f-e8c4-46f9-97f5-9562822c8c35
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_number_of_attendees
+field_name: field_bh_number_of_attendees
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

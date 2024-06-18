@@ -1,0 +1,173 @@
+uuid: df58ef50-069d-4d4c-88d1-5b1f101fc2f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.election_contests.field_area
+    - field.field.taxonomy_term.election_contests.field_contest_eligible
+    - field.field.taxonomy_term.election_contests.field_contest_isacclaimed
+    - field.field.taxonomy_term.election_contests.field_contest_isdisabled
+    - field.field.taxonomy_term.election_contests.field_contest_ismajor
+    - field.field.taxonomy_term.election_contests.field_contest_pos
+    - field.field.taxonomy_term.election_contests.field_contest_sortorder
+    - field.field.taxonomy_term.election_contests.field_display_title
+    - field.field.taxonomy_term.election_contests.field_election
+    - field.field.taxonomy_term.election_contests.field_elector_group
+    - field.field.taxonomy_term.election_contests.field_has_writeins
+    - field.field.taxonomy_term.election_contests.field_original_id
+    - taxonomy.vocabulary.election_contests
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_election_:
+      children:
+        - field_display_title
+        - field_election
+        - field_elector_group
+        - field_area
+        - group_reference_data
+      label: 'Election Contest'
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: true
+    group_reference_data:
+      children:
+        - field_original_id
+        - field_contest_pos
+        - field_has_writeins
+        - field_contest_eligible
+        - field_contest_isacclaimed
+        - field_contest_isdisabled
+        - field_contest_ismajor
+        - field_contest_sortorder
+      label: Metadata
+      region: content
+      parent_name: group_election_
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: true
+id: taxonomy_term.election_contests.default
+targetEntityType: taxonomy_term
+bundle: election_contests
+mode: default
+content:
+  field_area:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_eligible:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_isacclaimed:
+    type: number
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_isdisabled:
+    type: number
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_ismajor:
+    type: number
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_pos:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest_sortorder:
+    type: number
+    weight: 14
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_display_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_election:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_elector_group:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_has_writeins:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_original_id:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

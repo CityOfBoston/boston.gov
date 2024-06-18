@@ -1,0 +1,35 @@
+{#
+ * @file
+ * Default implementation of field intro text on tabbed content nodes.
+ #}
+
+{% for item in items %}
+  {% set xlarge_image = item.content['#item'].entity.uri.value | image_style('rep_wide_2000x700custom_boston_desktop_2x') %}
+  {% set large_image = item.content['#item'].entity.uri.value | image_style('rep_wide_2000x700custom_boston_desktop_1x') %}
+  {% set medium_image = item.content['#item'].entity.uri.value | image_style('rep_wide_2000x700custom_boston_tablet_2x') %}
+  {% set small_image = item.content['#item'].entity.uri.value | image_style('rep_wide_2000x700custom_boston_mobile_2x') %}
+{% endfor %}
+
+<style>
+  .hro {
+    background-image: url({{ small_image }})
+  }
+
+  @media screen and (min-width: 768px) {
+    .hro {
+      background-image: url({{ medium_image }})
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .hro {
+      background-image: url({{ large_image }})
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .hro {
+      background-image: url({{ xlarge_image }})
+    }
+  }
+</style>

@@ -1,0 +1,290 @@
+@import './searchInput.css';
+
+#web-app {
+	padding: 25px 0 30px;
+	min-height: 500px;
+}
+
+/* #web-app label, #web-app ul, #web-app ul li {
+	margin: 0;
+	padding: 0;
+} */
+
+#web-app .instructions {
+	font-size: 1em;
+	font-family: 'Montserrat';
+	font-style: normal;
+}
+
+#web-app .instructions .how-to-search {
+	margin-bottom: 0.5em;
+	line-height: normal;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-size: 1em;
+}
+
+#web-app .instructions .filter-by-desc {
+	font-style: italic;
+}
+
+#web-app .instructions .filter-by-desc ul {
+	margin-top: 0.3em;
+}
+
+#web-app .instructions .filter-by-desc ul li.no-list-style {
+	list-style: none;
+}
+
+#web-app .mnl .load-more, #web-app .shown-label {
+	display: flex;
+  justify-content: center;
+	margin-bottom: 1em;
+}
+
+/* #web-app .mnl-mod {
+	margin-bottom: 1em;
+} */
+
+#web-app .mnl-search button,
+#web-app .g button {
+	margin-top: 50px;
+	padding: 10px 15px;
+	color:#fff;
+}
+#web-app ul button {
+	width: 100%;
+	text-align: left;
+}
+#web-app ul button:focus {
+	background-color: #288be4;
+}
+
+#web-app .filter-by-desc {
+	padding: 0 0 0.5em;
+	font-family: 'Lora', serif;
+	font-size: 1em;
+	line-height: 1.4em;
+}
+
+/* START: Search Filters */
+
+#web-app .search-filters {
+	display: flex;
+	margin-bottom: 1.25em;
+}
+
+#web-app .search-filters label {
+	padding: 0;
+	margin: 0;
+}
+
+#web-app .search-filters label.filters-label {
+	text-transform: uppercase;
+  padding: .8em 0 0 0;
+	font-weight: bold;
+  font-size: 1.05em;
+}
+
+#web-app .search-filters label.ra {
+	margin-left: 1em;
+}
+
+#web-app .search-filters label.ra:first-child {
+	margin-left: 0;
+}
+
+/* END */
+
+
+/* START: Results table HEADERs  */
+#web-app .results-list ul {
+	padding-left: 0;
+}
+
+#web-app .results-list li {
+	border-top: 1px solid #e0e0e0;
+  padding: .75rem 0;
+}
+
+#web-app .results-list .header .header-label {
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	color: #091f2f;
+}
+/* END */
+
+/* START: Search Results */
+#web-app .results-list .rows .mobile {
+	display: none;
+}
+/* END */
+
+/** styles for new input search box and search button **/
+#web-app .sf-i-f.search {
+	border: 4px solid #000;
+	padding: 10px 75px 10px 20px;
+	height: auto !important;
+}
+#web-app .sf-i-f.search::placeholder {
+	padding-bottom: 10px;
+}
+#web-app .sf-i-b{
+	margin-top: -2px !important;
+}
+/* END */
+
+#web-app .search-result {
+	display: flex;
+}
+
+#web-app .search-result .address-item .desktop {
+	display: flex;
+}
+
+#web-app .search-result .address-item .mobile {
+	display: none;
+}
+
+#web-app .search-result li {
+	display: flex;
+	color: #091f2f;
+}
+
+/* START: Results List */
+#web-app .results-list .header, #web-app .results-list .rows {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	line-height: 1.25em;
+}
+
+#web-app .results-list .header {
+	border-top: 0;
+	margin-top: 1.5em;
+}
+
+#web-app .results-list .header .header-mobile {
+	display: none;
+	justify-content: stretch;
+  width: 100%;
+}
+
+#web-app .results-list .header .header-desktop {
+	display: flex;
+	width: 100%;
+}
+
+#web-app .results-list .header .header-label, 
+#web-app .results-list .rows .prop-value {
+	flex: 1;
+	text-align: left;
+	padding-right: 1em;
+  line-height: 1.75em;
+}
+
+#web-app .results-list .header .header-label {
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #091f2f;
+}
+
+#web-app .results-list .rows .column-property  {
+	color: #288BE4;
+}
+/* END */
+
+#web-app .results-list .rows .mobile {
+	display: none;
+  width: 100%;
+	justify-content: space-between;
+}
+
+#web-app .results-list .rows .desktop {
+	display: flex;
+  width: 100%;
+}
+
+#web-app .supporting-text {
+	font-size: 1em;
+}
+
+#web-app .supporting-text .not-found {
+	font-family: 'Montserrat';
+	font-weight: bold;
+	font-style: normal;
+}
+
+#web-app .supporting-text label {
+	font-size: 1em;
+	line-height: 1em;
+	margin-bottom: 0.70em;
+}
+
+#web-app .supporting-text ul, #web-app .results-list {
+	padding-left: 1em;
+}
+
+#web-app .supporting-text ul li {
+	line-height: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 767px) {
+	#web-app .sf-i-b {
+    margin: 0px 5px 0 0 !important;
+	}
+
+	#web-app .sf-i-f.search {
+		font-size: 1em;
+    padding: 10px 55px 10px 15px;
+	}
+
+	#web-app .filter-by-desc {
+		font-size: 80%;
+		line-height: 2em;
+	}
+
+	#web-app .search-filters {
+		font-size: 70%;
+		flex-direction: column;
+	}
+
+	#web-app .search-filters label:first-child {
+		margin-bottom: 1em;
+	}
+
+	#web-app .search-filters label.ra {
+		margin: 0 0 0.3em 0;
+	}
+
+	#web-app .results-list .header .header-mobile {
+		display: flex;
+	}
+
+	#web-app .results-list .header .header-desktop {
+		display: none;
+	}
+
+	#web-app .search-result .address-item .desktop {
+		display: none;
+	}
+	
+	#web-app .search-result .address-item .mobile {
+		display: flex;
+		font-size: 90%;
+	}
+
+	#web-app .results-list .header .header-mobile .header-label {
+		text-align: right;
+	}
+
+	#web-app .results-list .header .header-mobile .header-label:first-child {
+		text-align: left;
+	}
+
+	#web-app .results-list {
+		font-weight: 60%;
+	}
+}

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:9026389b-00f1-40cf-a7bf-394741e382ac'
+id: recollect_widget
+label: 'Recollect Widget'
+icon_uuid: 9026389b-00f1-40cf-a7bf-394741e382ac
+description: 'Migrated from paragraph bundle Recollect Widget'
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: 29fc26c6-1404-41da-8143-7d25fd8b0ce4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_parcel_name
+    - node.type.bh_parcel
+id: node.bh_parcel.field_bh_parcel_name
+field_name: field_bh_parcel_name
+entity_type: node
+bundle: bh_parcel
+label: 'Parcel Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

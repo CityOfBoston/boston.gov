@@ -1,0 +1,15 @@
+uuid: 60154c49-df3d-418c-8f18-d9a1fcb70acb
+langcode: und
+status: true
+dependencies: {  }
+name: logo_square_d_full_1x
+label: 'logo square d-full 1x (360x360)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 360
+      anchor: center-center

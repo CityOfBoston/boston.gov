@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:34920401-cc67-43f5-8121-55ddd7c5fee5'
+id: group_of_links_mini_grid
+label: 'Group of Links - Mini Grid'
+icon_uuid: 34920401-cc67-43f5-8121-55ddd7c5fee5
+icon_default: null
+description: 'Migrated from paragraph bundle Group of Links - Mini Grid'
+behavior_plugins: {  }

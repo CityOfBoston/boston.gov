@@ -1,0 +1,41 @@
+{#
+ * @file
+ * Returns the HTML for a Topic node displayed via Featured Guides view mode.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https://drupal.org/node/1728164
+ #}
+
+ {% set guide_themes = [
+   'ob',
+   'cb',
+   'r',
+   'cb',
+   'cb',
+   'r',
+   'cb',
+   'ob',
+   'ob',
+   'cb',
+   'r',
+   'cb',
+   'cb',
+   'r',
+   'cb',
+   'ob',
+ ] %}
+<a href="{{ url }}"
+   class="cdfg cdfg--{{ guide_themes[topics_counter -1] }}"
+   style="background-image: url({{ file_url(fileurl) }})"
+>
+  <div class="cdfg-c">
+    <div class="cdfg-i">
+      <span>{{ topics_counter }}</span>
+    </div>
+    <div class="cdfg-ic">
+      <div class="cdfg-d">Guide:</div>
+      <div class="cdfg-t">{{ guide_title }}</div>
+    </div>
+  </div>
+</a>

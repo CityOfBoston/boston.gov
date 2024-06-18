@@ -1,0 +1,20 @@
+uuid: 9e391d1b-5438-4d36-be7b-f63b0e1f2e3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+  module:
+    - path
+id: node.metrolist_development.path
+field_name: path
+entity_type: node
+bundle: metrolist_development
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,22 @@
+uuid: 152b31b7-d206-4924-9f6b-717598b21743
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_neighborhood
+id: taxonomy_term.ml_neighborhood.status
+field_name: status
+entity_type: taxonomy_term
+bundle: ml_neighborhood
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

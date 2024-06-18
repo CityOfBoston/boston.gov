@@ -1,0 +1,15 @@
+uuid: 5200dba1-9055-4221-ab43-fb358c6276bb
+langcode: und
+status: true
+dependencies: {  }
+name: photo_bleed_d_large_1x
+label: 'Photo bleed d-large 1x (1920x800)'
+effects:
+  592ef9b6-1587-4f3e-bb34-489ce335070b:
+    uuid: 592ef9b6-1587-4f3e-bb34-489ce335070b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 800
+      anchor: center-center

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_extra_info
+    - paragraphs.paragraphs_type.city_score_dashboard
+id: paragraph.city_score_dashboard.field_extra_info
+field_name: field_extra_info
+entity_type: paragraph
+bundle: city_score_dashboard
+label: 'Text for Less Than'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Scores below 1 indicate that performance is below the target.'
+default_value_callback: ''
+settings: {  }
+field_type: string

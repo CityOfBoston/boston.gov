@@ -1,0 +1,83 @@
+uuid: 397172f8-d387-4dd0-b02e-e80760c7e0a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.election_card
+    - field.field.taxonomy_term.elections.field_display_title
+    - field.field.taxonomy_term.elections.field_election_date
+    - field.field.taxonomy_term.elections.field_election_subtitle
+    - field.field.taxonomy_term.elections.field_election_type
+    - taxonomy.vocabulary.elections
+  module:
+    - datetime
+    - fences
+    - text
+id: taxonomy_term.elections.election_card
+targetEntityType: taxonomy_term
+bundle: elections
+mode: election_card
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 't--ob t--s500'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_election_date:
+    type: datetime_custom
+    label: inline
+    settings:
+      timezone_override: ''
+      date_format: Y-m-d
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_election_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: t--intro
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  field_election_type: true
+  langcode: true

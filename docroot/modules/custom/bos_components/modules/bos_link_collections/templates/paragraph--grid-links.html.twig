@@ -1,0 +1,41 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+{% if content.field_grid_link['#items'].getValue() %}
+  <a href="{{ url }}" {{ attributes.addClass('field-grid-links lcd m-t500') }} title="{{ title }}">
+    <div class="lcd-c {{ icon_class }}">
+      {% if title %}
+        <div class="lcd-im"></div>
+        <div class="lcd-t">{{ title }}</div>
+      {% endif %}
+      {% if content.field_short_description['#items'].getValue() %}
+        <div class="lcd-st t--subinfo t--g300">{{ content.field_short_description }}</div>
+      {% endif %}
+      {% if content.field_extra_info['#items'].getValue() %}
+        <div class="lcd-d bottom"> {{ content.field_extra_info }}</div>
+      {% endif %}
+    </div>
+  </a>
+{% endif %}

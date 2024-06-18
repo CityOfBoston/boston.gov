@@ -1,0 +1,375 @@
+<?php
+
+/**
+ * @file
+ * Provides a public notice entity type.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_theme().
+ */
+function node_public_notice_theme() {
+  return [
+    'node__public_notice' => [
+      'render element' => 'elements',
+    ],
+    'node__public_notice__featured_item' => [
+      'base hook' => 'node',
+    ],
+    'node__public_notice__listing' => [
+      'base hook' => 'node',
+    ],
+    'field__field_address__public_notice__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_content/modules/node_public_notice/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_public_notice_form_node_public_notice_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Validate the cancellation message on save.
+  $form["#validate"][] = "_node_public_notice_form_validate";
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_public_notice_preprocess_node__public_notice(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->addClass("b b--fw");
+  $variables['attributes']->addClass("clearfix");
+  $variables['attributes']->setAttribute("id", "node-" . $variables['elements']["#node"]->id());
+
+  // Handle cancelled notices.
+  _node_public_notice_is_cancelled($variables);
+
+  // @var Drupal\node\Entity\Node $node.
+  $node = $variables['elements']['#node'];
+  if ($node->hasField("field_is_there_public_testimony")) {
+    $variables["has_testimony"] = ($node->field_is_there_public_testimony->value == "1");
+  }
+
+  // Theme the notice time-range.
+  _bos_public_notice_date_range($variables);
+  $posted_date = $node->getCreatedTime();
+  $variables['notice_date_short'] = \Drupal::service('date.formatter')->format($posted_date, 'custom', 'm/d/Y - g:iA');
+
+  // Create the in-page-menu.
+  _bos_public_notice_make_nav($variables);
+
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_public_notice_preprocess_node__public_notice__featured_item(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->addClass("contextual-region");
+  $variables['attributes']->addClass("event-featured-item-wrapper");
+  $variables['attributes']->setAttribute("id", "node-" . $variables['elements']["#node"]->id());
+  $variables["content"];
+
+  // Render the event cost into a details_item.
+  if (isset($variables["content"]["field_cost"])) {
+    $variables["cost"] = $variables["content"]["field_cost"][0];
+  }
+  else {
+    $variables["cost"] = "FREE";
+  }
+  // Render the event contact into a details_item.
+  if (isset($variables["elements"]["field_event_contact"])) {
+    $variables["contact"] = $variables["elements"]["field_event_contact"][0];
+  }
+  else {
+    unset($variables["elements"]["field_event_contact"]);
+  }
+  // Render the event contact email into a details_item.
+  if (isset($variables["elements"]["field_email"])) {
+    $variables["email"] = $variables["elements"]["field_email"][0];
+  }
+  else {
+    unset($variables["elements"]["field_email"]);
+  }
+  // Render the event contact phone number into a details_item.
+  if (isset($variables["elements"]["field_phone_number"])) {
+    $variables["phone"] = $variables["elements"]["field_phone_number"][0];
+    $variables["phone"]["#context"]["value"] = bos_core_format_telephone($variables["phone"]["#context"]["value"]);
+  }
+  else {
+    unset($variables["elements"]["field_phone_number"]);
+  }
+  // Render the event address into a details_item.
+  if (isset($variables["elements"]["field_address"])) {
+    $variables["address"] = $variables["elements"]["field_address"][0];
+  }
+  else {
+    unset($variables["elements"]["field_address"]);
+  }
+
+  if (isset($variables["content"]["field_public_notice_date"]["#items"]->value)) {
+    // Force into the boston featured date format.
+    $variables["date_recur"] = \Drupal::service('date.formatter')->format(strtotime($variables["content"]["field_public_notice_date"]["#items"]->value), "date_format_boston_featured");
+  }
+
+  if ($term = $variables['elements']['field_contact'][0]['#taxonomy_term']) {
+    $variables['dept_name'] = $term->getName();
+  }
+
+  if (isset($term) && $term->hasField('field_department_profile')) {
+    $dept_profile = $term->get('field_department_profile')->getValue();
+    if (isset($dept_profile[0]['target_id'])) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($dept_profile[0]['target_id']);
+      $dept_url = '/node/' . $node->id();
+      $variables['dept_url'] = $dept_url;
+      $dept_icon = $node->field_icon->target_id;
+      $variables['dept_icon_uri'] = \Drupal::service('file_url_generator')->generateAbsoluteString("public://custom/no-icon.svg");
+      if ($file = File::load($dept_icon)) {
+        $dept_icon_uri = $file->getFileUri();
+        if (substr($dept_icon_uri, 0, 4) != "http") {
+          $dept_icon_uri = \Drupal::request()
+              ->getScheme() . ":" . $dept_icon_uri;
+        }
+        if (@file_get_contents($dept_icon_uri)) {
+          $variables['dept_icon_uri'] = $dept_icon_uri;
+        }
+      }
+
+    }
+  }
+  // Render the event start and end value or dates into a details_item.
+  //if (NULL != ($node = $variables["elements"] ?? NULL)) {
+    if (!empty($variables["content"]["field_public_notice_date"])) {
+      $start_date = "";
+      if (isset($variables["content"]["field_public_notice_date"]["#items"]->value)) {
+        $start_date = $variables["content"]["field_public_notice_date"]["#items"]->value;
+        if (is_string($start_date)) {
+          $start_date = new DateTime($start_date . "+0000");
+          $start_date->setTimezone(new DateTimeZone("America/new_york"));
+        }
+        $stdt = $start_date->format("F d, Y g:iA");
+        $edt = "";
+      }
+      if (isset($variables["content"]["field_public_notice_date"]["#items"]->end_date)) {
+        $end_date = $variables["content"]["field_public_notice_date"]["#items"]->end_date;
+        $end_date->setTimezone(new DateTimeZone("America/new_york"));
+        if ($start_date->format("ymd") == $end_date->format("ymd")) {
+          if ($start_date->format("g:iA") != $end_date->format("g:iA")) {
+            $edt = $end_date->format(" - g:iA");
+          }
+        }
+        else {
+          $edt = " to " . $end_date->format("F d, Y g:iA");
+        }
+      }
+      $variables["public_notice_date"] = $stdt . $edt;
+
+    }
+  //}
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_public_notice_preprocess_node__public_notice__listing(&$variables) {
+
+  if (isset($variables['elements']['field_contact'][0]['#taxonomy_term'])) {
+    $term = $variables['elements']['field_contact'][0]['#taxonomy_term'];
+    $variables['dept_name'] = $term->getName();
+
+    if ($term->hasField('field_department_profile')) {
+      $dept_profile = $term->get('field_department_profile')->getValue();
+      if (isset($dept_profile[0]['target_id'])) {
+        $node = \Drupal::entityTypeManager()
+          ->getStorage('node')
+          ->load($dept_profile[0]['target_id']);
+        $dept_url = '/node/' . $node->id();
+        $variables['dept_url'] = $dept_url;
+        $dept_icon = $node->field_icon->target_id;
+        $variables['dept_icon_uri'] = \Drupal::service('file_url_generator')
+          ->generateAbsoluteString("public://custom/no-icon.svg");
+        if ($file = File::load($dept_icon)) {
+          $dept_icon_uri = $file->getFileUri();
+          if (substr($dept_icon_uri, 0, 4) != "http") {
+            $dept_icon_uri = \Drupal::request()
+                ->getScheme() . ":" . $dept_icon_uri;
+          }
+          if (@file_get_contents($dept_icon_uri)) {
+            $variables['dept_icon_uri'] = $dept_icon_uri;
+          }
+        }
+
+      }
+    }
+  }
+  if (isset($variables["content"]["field_time"]["#items"])) {
+    $variables["short_time"] = $variables["content"]["field_time"][0]["#text"];
+  }
+  if (!empty($variables["content"]["field_public_notice_date"])) {
+    $start_date = "";
+    if (isset($variables["content"]["field_public_notice_date"]["#items"]->value)) {
+      $start_date = $variables["content"]["field_public_notice_date"]["#items"]->value;
+      if (is_string($start_date)) {
+        $start_date = new DateTime($start_date . "+0000");
+        $start_date->setTimezone(new DateTimeZone("America/new_york"));
+      }
+      $stdt = $start_date->format("F d, Y g:iA");
+      $edt = "";
+    }
+    if (isset($variables["content"]["field_public_notice_date"]["#items"]->end_date)) {
+      $end_date = $variables["content"]["field_public_notice_date"]["#items"]->end_date;
+      $end_date->setTimezone(new DateTimeZone("America/new_york"));
+      if ($start_date->format("ymd") == $end_date->format("ymd")) {
+        if ($start_date->format("g:iA") != $end_date->format("g:iA")) {
+          $edt = $end_date->format(" - g:iA");
+        }
+      }
+      else {
+        $edt = " to " . $end_date->format("F d, Y g:iA");
+      }
+    }
+    $variables["public_notice_date"] = $stdt . $edt;
+
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_public_notice_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "public_notice", [
+    "field_related" => "Add more related content",
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_public_notice_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "public_notice") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page");
+      }
+    }
+  }
+}
+
+/**
+ * Prepares variables for public notice templates.
+ *
+ * Default template: public-notice.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the public notice information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_public_notice(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Handles validation during input of public notice content.
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormState $form_state
+ *   The form_state.
+ */
+function _node_public_notice_form_validate(array &$form, FormState &$form_state) {
+  // Ensures that an explanation is provided when the node is marked cancelled.
+  if ($form_state->getValue("field_cancelled")["value"] == 1) {
+    if (empty($form_state->getValue("field_extra_info")[0]["value"])) {
+      $form_state->setValue("field_extra_info", [["value" => "Please contact organizer."]]);
+    }
+  }
+  else {
+    // Make sure the field_extra_info is empty if the event is not cancelled.
+    $form_state->setValue("field_extra_info", [["value" => NULL]]);
+  }
+}
+
+/**
+ * Helper: To set variables for themeing of cancelled notices.
+ *
+ * @param array $variables
+ *   The usual hook preprocess variables array.
+ */
+function _node_public_notice_is_cancelled(array &$variables) {
+  // Check for cancelled state.
+  $node = $variables['elements']['#node'];
+  if ($node->hasField("field_cancelled")) {
+    $variables["is_cancelled"] = ($node->field_cancelled->value == "1");
+    if ($variables["is_cancelled"]) {
+      $variables["elements"]["field_extra_info"]["#title"] .= ":";
+    }
+  }
+}
+
+/**
+ * Helper: To format the meeting time in RHS sidebar.
+ *
+ * @param array $variables
+ *   The usual preprocess hook variables.
+ */
+function _bos_public_notice_date_range(array &$variables) {
+  $date_vars = [
+    'classes' => [
+      'icon' => 'icon-time',
+      'detail' => 'detail-item--middle',
+      'body' => 'detail-item__label',
+    ],
+  ];
+  $date_vars['body'] = $variables["elements"]["#node"]->field_public_notice_date->start_date->format("h:iA") ?: "";
+  if (!empty($variables["elements"]["#node"]->field_public_notice_date->end_date)) {
+    $date_vars['body'] .= $variables["elements"]["#node"]->field_public_notice_date->end_date->format(" - h:iA");
+  }
+  $variables['field_date'] = \Drupal::theme()->render('detail_item', $date_vars);
+}
+
+/**
+ * Helper: To create the in-page navigation menu for Public Notices (new D8).
+ *
+ * @param array $variables
+ *   The usual hook preprocess variables.
+ */
+function _bos_public_notice_make_nav(array &$variables) {
+  if (isset($variables["elements"]["field_components"])) {
+    _bos_theme_make_nav($variables, $variables["elements"]["field_components"], 1);
+  }
+  // If we have any components, prepend the discussion topics as well
+  // because we will want discussion topic to appear in the menu ...
+  if (isset($variables["elements"]["field_components"]["#items"])) {
+    $url = Url::fromUserInput("#" . Html::cleanCssIdentifier("topics"), ["attributes" => ["class" => ["scroll-link-js"]]]);
+    $anchor = \Drupal::service('link_generator')->generate("topics", $url);
+    // Add the topic title to the start.
+    array_unshift($variables['navOutput']["#items"], $anchor);
+  }
+}

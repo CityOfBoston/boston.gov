@@ -1,0 +1,10 @@
+uuid: 2ae04608-c40c-4fc8-9015-baea887a4193
+langcode: en
+status: true
+dependencies: {  }
+id: election_candidate_results
+label: 'Election Candidate Results'
+icon_uuid: null
+icon_default: null
+description: 'The voting results for Candidates in an Election Contest'
+behavior_plugins: {  }

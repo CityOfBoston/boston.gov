@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * @file
+ * Main file for the sidebar.module module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_sidebar_theme() {
+  $theme['input__submit__paragraph_action'] = [
+    'base hook' => 'field',
+  ];
+  $theme['field__field_sidebar_components'] = [
+    'base hook' => 'field',
+  ];
+  $theme['field__field_social_media_link'] = [
+    'base hook' => 'field',
+  ];
+  $theme['paragraph__sidebar_item'] = [
+    'base hook' => 'field',
+  ];
+  $theme['paragraph__sidebar_item_w_icon'] = [
+    'base hook' => 'field',
+  ];
+  $theme['paragraph__social_media_links'] = [
+    'base hook' => 'field',
+  ];
+  $theme['paragraph__social_networking'] = [
+    'base hook' => 'field',
+  ];
+
+  // Now create mappings from theme suggestions for various node elements back
+  // to the default sidebar-left and side-bar right templates.
+  // PLACE_PROFILE.
+  $theme += [
+    'field__field_single_neighborhood__place_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_contact__place_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_features__place_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_links__place_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_links__place_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+  ];
+  // PERSON PROFILE.
+  $theme += [
+    'field__field_year_elected__person_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-left',
+    ],
+    'field__field_political_party__person_profile__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-left',
+    ],
+  ];
+  // PUBLIC NOTICES.
+  $theme += [
+    'field__field_event_contact__public_notice__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_multiple_neighborhoods__public_notice__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+    'field__field_links__public_notice__mode__full' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_sidebar/templates',
+      'template' => 'field--sidebar-right',
+    ],
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_sidebar_preprocess_paragraph(&$variables) {
+
+  /*
+   * Add paragraph names (to be processed by this function) to this array.
+   */
+  $eligible = [
+    "sidebar_item",
+    "sidebar_item_w_icon",
+    "social_media_links",
+    "social_networking",
+  ];
+  if (isset($variables["paragraph"]) && !in_array($variables["paragraph"]->getType(), $eligible)) {
+    return;
+  }
+
+  $variables["use_left"] = FALSE;
+  $variables["left_content"] = NULL;
+
+  /*
+   * This array can be overwritten by various paragraph types in the switch
+   * below in order to pass specific class vars to the twig.
+   */
+  $variables["classes"] = [
+    'detail' => [],
+    'icon' => [],
+    'label' => [],
+    'body' => [],
+  ];
+
+  // This switch is used mainly to set custom classes.
+  switch ($variables["paragraph"]->getType()) {
+    case "sidebar_item":
+      break;
+
+    case "sidebar_item_w_icon":
+      break;
+
+    case "social_media_links":
+      break;
+
+    case "social_networking":
+      $variables['icon'] = $variables["content"]["field_social_icon"]["#items"]->getString();
+      if (isset($variables["content"]["field_external_link"]["#items"])) {
+        $variables['link'] = $variables["content"]["field_external_link"]["#items"]->getString();
+
+        $variables['link_options'] = [
+          'target' => "_blank",
+        ];
+        if (!empty($variables["content"]["field_external_link"]["#items"]->getValue()[0]['options'])) {
+          $variables['link_options'] += $variables["content"]["field_external_link"]["#items"]->getValue()[0]['options'];
+        }
+        $variables['attributes']['target'] = "_blank";
+      }
+      break;
+
+    default:
+  }
+
+  /*
+   * Now set the left gutter value dependent on the content of the paragraph.
+   */
+  if (!empty($variables["content"]["field_sidebar_icon"])) {
+    $variables["left_content"] = '<img src="https://patterns.boston.gov/images/global/icons/' . $variables["paragraph"]->get('field_sidebar_icon')->value . '.svg" class="icon ' . $variables["paragraph"]->get('field_sidebar_icon')->value . ' sb-ic">';
+  }
+  elseif (in_array('detail-item--secondary', $variables["classes"]["detail"])) {
+    $variables["left_content"] = '<div>' . $variables["classes"]["icon"] . '</div>';
+  }
+  elseif (isset($variables["image"])) {
+    $variables["left_content"] = '<div>' . $variables["image"] . '</div>';
+  }
+}

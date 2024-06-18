@@ -1,0 +1,113 @@
+uuid: 3d724bcf-c935-40ac-9e13-e92af026878b
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+    - editor_file
+third_party_settings:
+  editor_file:
+    status: true
+    scheme: public
+    directory: inline-files
+    extensions: 'txt pdf doc xls ppt'
+    max_size: ''
+_core:
+  default_config_hash: 967ijj7p6i7rwrYl7r08WQFeCY_c23YAh0h8u-w_CXM
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - '-'
+            - Italic
+            - '-'
+            - '-'
+            - Underline
+            - '-'
+            - Strike
+            - '-'
+            - '-'
+            - Blockquote
+            - '-'
+        -
+          name: Alignment
+          items:
+            - JustifyLeft
+            - '-'
+            - JustifyCenter
+            - '-'
+            - JustifyRight
+            - '-'
+            - JustifyBlock
+            - '-'
+            - Outdent
+            - '-'
+            - Indent
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - '-'
+            - NumberedList
+        -
+          name: 'Text Editing'
+          items:
+            - Undo
+            - '-'
+            - Redo
+            - '-'
+            - '-'
+            - '-'
+            - '-'
+            - PasteText
+            - '-'
+            - PasteFromWord
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - '-'
+            - DrupalUnlink
+        -
+          name: Media
+          items:
+            - '-'
+            - media_entity_embed
+        -
+          name: Styles
+          items:
+            - '-'
+            - '-'
+            - '-'
+            - Styles
+            - '-'
+        -
+          name: Misc
+          items:
+            - HorizontalRule
+            - '-'
+            - Table
+            - RemoveFormat
+            - Source
+  plugins:
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: bos_settings_linkit_editor
+    stylescombo:
+      styles: "p|Reset\r\np.supporting-text|Intro Text\r\nspan.red|Red Text\r\naddress|Address\r\ndiv|Normal (div)\r\npre|Formatted\r\nh2|Heading 2\r\nh3|Heading 3\r\nh4|Heading 4\r\nh5|Heading 5"
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

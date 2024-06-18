@@ -1,0 +1,105 @@
+{% if not is_expired %}
+
+<div class="b b--g b--fw events-notices-featured-item public-notices-featured-item news-item-public_notice">
+  <div class="b-c b-c--ntp m-t500">
+    <div class="g">
+      <div class="g--6 b--w" style="margin-right: 0;">
+        <div class="p-a800" style="padding-top: 0;">
+          <ul class="dl">
+            <li class="dl-i evt-dl-i">
+              {% if content.field_details_link["#items"] %}
+                <a href="{{ content.field_details_link.0['#url'] }}" class="featured-item-details--relative evt" title="{{ content.field_details_link.0['#url'] }}" aria-label="{{ content.title.0['#context'].value }}">
+                  <div class="evt-c">
+                    <div class="evt-t">
+                      {{ content.title.0['#context'].value }}
+                    </div>
+                  </div>
+                  {% if public_notice_date %}
+                    <svg class="svg-date-flag" style="width:90px;" title="Event Date" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.08 44.31"><path d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z" fill="#288be4" stroke="#000" stroke-miterlimit="10"/></svg>
+                    <p class="svg-date-flag date-flag-text iftag">
+                      {{ date_recur }}
+                    </p>
+                  {% endif %}
+                </a>
+                {% else %}
+                <a href="{{ node_url }}" class="featured-item-details--relative evt" title="{{ content.field_details_link.0['#url'] }}" aria-label="{{ content.title.0['#context'].value }}">
+                  <div class="evt-c">
+                    <div class="evt-t">
+                      {{ content.title.0['#context'].value }}
+                    </div>
+                  </div>
+                  {% if public_notice_date %}
+                    <svg class="svg-date-flag" style="width:90px;" title="Event Date" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.08 44.31"><path d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z" fill="#288be4" stroke="#000" stroke-miterlimit="10"/></svg>
+                    <p class="svg-date-flag date-flag-text elseTag">
+                      {{ date_recur }}
+                    </p>
+                  {% endif %}
+                </a>
+              {% endif %}
+            </li>
+            <li class="dl-i evt-dl-i">
+              <span class="dl-t">When</span>
+              <span class="dl-d">{{ public_notice_date }}</span>
+            </li>
+            {% if address %}
+            <li class="dl-i evt-dl-i">
+              <span class="dl-t">Where</span>
+              <span class="dl-d">{{ address }}</span>
+            </li>
+            {% endif %}
+            {% if contact %}
+            <li class="dl-i evt-dl-i">
+              <span class="dl-t">Contact</span>
+              <span class="dl-d">{{ contact }}</span>
+            </li>
+            {% endif %}
+            {% if email %}
+              <li class="dl-i evt-dl-i">
+                <span class="dl-t">Email</span>
+                <span class="dl-d">{{ email }}</span>
+              </li>
+            {% endif %}
+            {% if phone %}
+              <li class="dl-i evt-dl-i">
+                <span class="dl-t">Phone</span>
+                <span class="dl-d">{{ phone }}</span>
+              </li>
+            {% endif %}
+            {% if cost %}
+              <li class="dl-i evt-dl-i">
+                <span class="dl-t">Price</span>
+                <span class="dl-d">{{ cost }}</span>
+              </li>
+            {% endif %}
+          </ul>
+          <div class="m-t600">
+            {% if content.field_details_link["#items"] %}
+              <div class="external-link external-link--inline">
+                <a class="button inter" href="{{ content.field_details_link.0['#url'] }}" title="{{ content.field_details_link.0['#url'] }}" aria-label="{{ fields.title.content.value }}">Event website<span class="a11y--hidden"> for {{ content.title.0['#context'].value }}</span></a>
+              </div>
+            {% else %}
+              <a class="button inter" href="{{ node_url }}" title="{{ content.field_details_link.0['#url'] }}" aria-label="{{ fields.title.content.value }}">Event details<span class="a11y--hidden"> for {{ content.title.0['#context'].value }}</span></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="g--6 evt-thumbnail{{ type_class }}" style="width: 100%;">
+        {% if content.field_thumbnail['#items'] %}
+          {{ content.field_thumbnail }}
+        {% elseif dept_icon_uri %}
+          <div class="dept_icon_uri">
+            <a href="{{ dept_url }}" title="{{ dept_name }}" class="di-tt">
+              <img typeof="foaf:Image" src="{{ dept_icon_uri }}" alt="{{ dept_name }}" title="{{ dept_name }}">
+            </a>
+          </div>
+        {% else %}
+        <div class="news-item-default-image">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}

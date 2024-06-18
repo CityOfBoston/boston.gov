@@ -1,0 +1,13 @@
+uuid: fd0322d8-b143-4518-acbd-364c1ac8b8e6
+langcode: und
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 2oP63E7iErK_gOZ2lu2h23RVEJMPjY2tLXi0ld5r3gs
+id: events_and_notices
+label: 'Events and Notices'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

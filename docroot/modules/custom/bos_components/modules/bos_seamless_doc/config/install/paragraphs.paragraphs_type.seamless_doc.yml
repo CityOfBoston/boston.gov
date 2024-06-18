@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:ae0f34db-db7a-40d4-a6a2-13d3d7d8e2e0'
+id: seamless_doc
+label: 'Seamless Doc'
+icon_uuid: ae0f34db-db7a-40d4-a6a2-13d3d7d8e2e0
+icon_default: null
+description: 'Migrated from paragraph bundle Seamless Doc'
+behavior_plugins: {  }

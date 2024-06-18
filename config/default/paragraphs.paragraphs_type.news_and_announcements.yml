@@ -1,0 +1,13 @@
+uuid: b8f9f6f0-0ac2-4b41-b028-37ade2e5bf03
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: _LgD3m_taSG_zPddW74kZjivuPn42ZEoGWWsC08bcUo
+id: news_and_announcements
+label: 'News & Announcements'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle News & Announcements'
+behavior_plugins: {  }

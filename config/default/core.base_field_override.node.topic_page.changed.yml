@@ -1,0 +1,18 @@
+uuid: 089a57a3-0016-4092-8282-c281e69d1607
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.topic_page
+id: node.topic_page.changed
+field_name: changed
+entity_type: node
+bundle: topic_page
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

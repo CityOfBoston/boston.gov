@@ -1,0 +1,10 @@
+uuid: 0b839099-dc49-483c-926a-dc6d5fe16e82
+langcode: en
+status: true
+dependencies: {  }
+id: bos_node_search
+label: Search
+icon_uuid: null
+icon_default: null
+description: 'A component to embed views blocks configured to search content-type data. (see RollCall Search example)'
+behavior_plugins: {  }

@@ -1,0 +1,24 @@
+name: Boston Core
+type: module
+description: 'Provides core features and functions for the boston.gov website.'
+core_version_requirement: ^8 || ^9 || ^10
+package: City of Boston
+configure: bos_core.admin
+dependencies:
+  - user
+  - workflows
+  - moderation_sidebar
+  - content_moderation
+  - advanced_text_formatter
+  - samlauth
+  - realname
+  - moderation_sidebar
+  - token
+config_devel:
+  - workflows.workflow.city_of_boston_workflows
+  - user.role.anonymous
+  - user.role.authenticated
+  - user.role.content_author.
+  - user.role.content_editor
+  - user.role.developer
+  - user.role.site_administrator

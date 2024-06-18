@@ -1,0 +1,23 @@
+uuid: 3addca58-7c36-42f0-b3d7-87c287cd88c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.commission_members
+id: paragraph.commission_members.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: commission_members
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains bos_text_editor.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bos_text_editor_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bos_text_editor module.
+    case 'help.page.bos_text_editor':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Customizations to Text Editors for BOS') . '</p>';
+      return $output;
+
+    default:
+  }
+}

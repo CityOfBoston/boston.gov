@@ -1,0 +1,21 @@
+uuid: f3772c2b-9bc5-4791-b69f-5ce0f0dc2775
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.department_profile
+_core:
+  default_config_hash: EISauW2mhrBiKbLtgwS4A2KWjoPbgODA2L8HhydUzOE
+id: node.department_profile.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: department_profile
+label: 'Phone Number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

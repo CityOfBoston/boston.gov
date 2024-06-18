@@ -1,0 +1,22 @@
+uuid: 550d2b8e-dffe-4383-a863-ba15bd3be18d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_funding_stage
+id: taxonomy_term.bh_funding_stage.status
+field_name: status
+entity_type: taxonomy_term
+bundle: bh_funding_stage
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

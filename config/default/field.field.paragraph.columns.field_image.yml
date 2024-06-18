@@ -1,0 +1,29 @@
+uuid: 61e17348-8ebb-4897-9458-2f8c229d9537
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.columns
+id: paragraph.columns.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: columns
+label: 'Column Image'
+description: 'Add an image which will appear in a 200px diameter circle centered on the top of the column.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

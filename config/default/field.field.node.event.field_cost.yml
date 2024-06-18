@@ -1,0 +1,23 @@
+uuid: 25d10fbe-83a0-47c1-9a11-469719526d1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cost
+    - node.type.event
+_core:
+  default_config_hash: c4Cpe7OykAbCONOgetXY2pWNWaXiflE4P8FXSwCpSkM
+id: node.event.field_cost
+field_name: field_cost
+entity_type: node
+bundle: event
+label: Price
+description: 'Enter the cost, with a $ or FREE'
+required: false
+translatable: false
+default_value:
+  -
+    value: FREE
+default_value_callback: ''
+settings: {  }
+field_type: string

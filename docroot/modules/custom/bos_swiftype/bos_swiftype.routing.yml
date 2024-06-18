@@ -1,0 +1,22 @@
+bos_swiftype.admin:
+  path: '/admin/config/services/swiftype'
+  defaults:
+    _title: 'Swiftype Search'
+    _form: '\Drupal\bos_swiftype\Form\SwiftypeSettingsForm'
+  requirements:
+    _permission: 'administer boston'
+
+bos_swiftype.search:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\bos_swiftype\Controller\SwiftypeController::searchPage'
+    _title: "Search Results"
+  requirements:
+    _permission: 'access content'
+
+bos_swiftype.search.click:
+  path: '/search/click'
+  defaults:
+    _controller: '\Drupal\bos_swiftype\Controller\SwiftypeController::searchClick'
+  requirements:
+    _permission: 'access content'

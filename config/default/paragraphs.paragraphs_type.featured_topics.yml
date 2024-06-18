@@ -1,0 +1,13 @@
+uuid: f3d4ba68-0ca3-45c8-9d7b-a59ad4050fde
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: nAkTk0urGRIqrkNVX-DhnMD4Z7wqxsZw3smXdH91OcU
+id: featured_topics
+label: 'Featured Guides'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Featured Guides'
+behavior_plugins: {  }

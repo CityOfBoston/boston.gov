@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.city_score_dashboard
+id: paragraph.city_score_dashboard.status
+field_name: status
+entity_type: paragraph
+bundle: city_score_dashboard
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

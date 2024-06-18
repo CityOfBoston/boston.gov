@@ -1,0 +1,18 @@
+uuid: fb2fcc19-3ab7-4b02-b30b-d39677fb5fda
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.metatag
+field_name: metatag
+entity_type: node
+bundle: emergency_alert
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

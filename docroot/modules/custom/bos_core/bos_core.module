@@ -1,0 +1,1003 @@
+<?php
+
+/**
+ * @file
+ * Main file for the bos_core module.
+ */
+
+use Drupal\bos_core\BosCoreEntityEventType;
+use Drupal\bos_core\Event\BosCoreEntityEvent;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\WidgetInterface;
+use Drupal\Core\Link;
+use Drupal\editor\Entity\Editor;
+use Drupal\Core\Url;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\bos_core\BosCoreHelp;
+use Drupal\Views\ViewExecutable;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\core\Template\Attribute;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Cache\Cache;
+
+const BOS_CORE_SVG_ELEMENTS = 'a altGlyph altGlyphDef altGlyphItem animate animateColor animateMotion animateTransform circle clipPath colo cursor defs desc ellipse feBlend feColorMatrix feComponentTransfer feComposite feConvolveMatrix feDiffuseLighting feDisplacementMap feDistantLight feFlood feFuncA feFuncB feFuncG feFuncR feGaussianBlur feImage feMerge feMergeNode feMorphology feOffset fePointLight feSpecularLighting feSpotLight feTile feTurbulence filter font fon fon fon fon fon foreignObject g glyph glyphRef hkern image line linearGradient marker mask metadata missin mpath path pattern polygon polyline radialGradient rect script set stop style svg switch symbol text textPath title tref tspan use view vkern';
+
+// Adds customizations to modules.
+require_once 'includes/samlauth.extensions.inc';
+require_once 'includes/realname.extensions.inc';
+require_once 'includes/moderation_sidebar.extensions.inc';
+require_once 'includes/token.extensions.inc';
+require_once 'includes/entity_events.inc';
+require_once 'includes/icon_manifest.inc';
+
+/**
+ * Display the help page.
+ *
+ * @param string $route_name
+ *   As.
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   As.
+ *
+ * @return array
+ *   As.
+ */
+function bos_core_help(string $route_name, RouteMatchInterface $route_match): array {
+  return match ($route_name) {
+    "help.page.bos_core" => BosCoreHelp::helpPage(),
+    default => [],
+  };
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_core_form_alter(array &$form, FormStateInterface $form_state):void {
+  $form['#attributes']['novalidate'] = 'novalidate';
+
+  // #1356 - Removed preview button for all roles except administrators
+  if (isset($form['actions']['preview']['#access'])
+    && !in_array('administrator', Drupal::currentUser()->getRoles())) {
+    $form['actions']['preview']['#access'] = false;
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_core_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  realname_extensions_form_user_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function bos_core_inline_entity_form_entity_form_alter(&$entity_form, FormStateInterface $form_state) {
+  $entity_form['revision_log_message']['#access'] = FALSE;
+}
+
+/**
+ * Check view and records a GA pageview if this is a REST call.
+ *
+ * @param \Drupal\Views\ViewExecutable $view
+ *   The view object.
+ * @param array $output
+ *   The output array.
+ * @param Drupal\views\Plugin\views\cache\CachePluginBase $cache
+ *   The cache.
+ */
+function bos_core_views_post_render(ViewExecutable $view, array $output, CachePluginBase $cache) {
+  $pageTitle = NULL;
+  $view_display = $view->display_handler->display;
+
+  if (!empty($output)) {
+    // If the view display type is rest-export, or else if the admin comment
+    // contains the string gapost.
+    if ($view_display["display_plugin"] == "rest_export"
+      || (isset($view_display["display_options"]["display_comment"])
+        && stripos($view_display["display_options"]["display_comment"], "gapost"))) {
+
+      $pageTitle = _bos_core_make_gapost_title($view_display, "CoB REST | ");
+      if (isset($view_display["display_options"]["style"]["options"]["formats"])) {
+        $pageTitle .= " (" . reset($view_display["display_options"]["style"]["options"]["formats"]) . ")";
+      }
+    }
+
+    // Otherwise if the display type is a page, and there is a path which has
+    // the string "rest" in it, or the admin title has string gapost in it.
+    elseif ($view_display["display_plugin"] == "page"
+      && isset($view_display["display_options"]["path"])) {
+
+      if (stripos($view_display["display_options"]["path"], "rest") !== FALSE
+        || (isset($view_display["display_options"]["display_comment"])
+            && stripos($view_display["display_options"]["display_comment"], "gapost"))) {
+        $pageTitle = _bos_core_make_gapost_title($view_display, "CoB REST | ");
+      }
+    }
+
+    elseif ($view_display["display_plugin"] == "feed"
+      && isset($view_display["display_options"]["path"])) {
+
+      $pageTitle = _bos_core_make_gapost_title($view_display, "CoB | ");
+    }
+  }
+
+  if (isset($pageTitle)) {
+    Drupal::service("bos_core.gapost")->pageview(Drupal::request()
+      ->getRequestUri(), $pageTitle);
+  }
+}
+
+/**
+ * Implements hook_preprocess_toolbar()
+ */
+function bos_core_preprocess_toolbar($variables) {
+  moderation_sidebar_extensions_preprocess_toolbar($variables);
+}
+
+/**
+ * Implements hook_field_widget_third_party_settings_form().
+ */
+function bos_core_field_widget_third_party_settings_form(WidgetInterface $plugin, FieldDefinitionInterface $field_definition, $form_mode, $form, FormStateInterface $form_state) {
+  $element = [];
+  if (Drupal::moduleHandler()->moduleExists('token')) {
+    $element = token_extensions_field_widget_third_party_settings_form($plugin, $field_definition, $form_mode, $form, $form_state);
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_settings_summary_alter().
+ */
+function bos_core_field_widget_settings_summary_alter(&$summary, $context) {
+  if (Drupal::moduleHandler()->moduleExists('token')) {
+    token_extensions_field_widget_settings_summary_alter($summary, $context);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_core_preprocess_image_style(&$variables) {
+  // This renders the images which have these styles as background elements.
+  // We do this to allow better dynamic image resizing with the page width.
+  switch ($variables["style_name"]) {
+    case "150_embedded_ckeditor":
+      $variables["image"]["#height"] = "150";
+    case "200_embedded_ckeditor":
+    case "300_embedded_ckeditor":
+    case "400_embedded_ckeditor_default":
+    case "800_embedded_ckeditor":
+      $variables["ckeditor_background"] = TRUE;
+      $variables["ckeditor_background"] = FALSE;
+      $variables["attributes"]["class"][] = $variables["style_name"] . "_wrapper";
+      $variables["content_attributes"]["data-cob-ckeditor"][] = $variables["image"]["#height"];
+      $variables["content_attributes"]["class"][] = $variables["style_name"];
+      $variables["attributes"]["class"][] = "cob-ckeditor";
+      $variables["content_attributes"]["class"][] = "cob-ckeditor-bg";
+      $variables["content_attributes"]["id"][] = $variables["style_name"];
+      $style = [
+        "min-height: " . $variables["image"]["#height"] . "px",
+        "height: " . $variables["image"]["#height"] . "px",
+        "background-image: url(" . $variables["image"]["#uri"] . ")",
+      ];
+
+      $variables['image']['#attributes']['style'] = ['height: auto;', 'width: 100%;'];
+      $variables["content_attributes"]["style"][] = implode(";", $style);
+      break;
+  }
+}
+
+/**
+ * Implements hook_media_embed_alter().
+ */
+function bos_core_media_embed_alter(&$build, $entity, $context) {
+  if (!empty($context['data-style'])) {
+    $build['#attributes']['style'][] = $context['data-style'];
+  }
+}
+
+/**
+ * Implements hook_entity_embed_context_alter().
+ */
+function bos_core_entity_embed_context_alter(array &$context, EntityInterface $entity) {
+  // Make the image style a css safe class.
+  if (!empty($context["data-entity-embed-display-settings"]["image_style"])) {
+    $newClass = Html::cleanCssIdentifier("cob-" . $context["data-entity-embed-display-settings"]["image_style"] . "-img");
+    if (isset($context["class"])) {
+      $context["class"] .= " " . $newClass;
+    }
+    else {
+      $context["class"] = $newClass;
+    }
+
+    switch ($newClass) {
+      case "cob-150-embedded-ckeditor-img":
+        $context["class"] .= " g g--hc g--2";
+        break;
+      case "cob-200-embedded-ckeditor-img":
+        $context["class"] .= " g g--hc g--3";
+        break;
+      case "cob-300-embedded-ckeditor-img":
+        $context["class"] .= " g g--hc g--4";
+        break;
+      case "cob-400-embedded-ckeditor-default-img":
+        $context["class"] .= " g g--hc g--6";
+        break;
+      case "cob-800-embedded-ckeditor-img":
+        $context["class"] .= " g g--hc g--12";
+        break;
+    }
+
+    if (str_contains($context["class"], 'align-center')) {
+      $context["class"] .= " b--fw";
+    }
+
+  }
+  unset($context["data-entity-embed-display-settings"]["svg_attributes"]);
+}
+
+/**
+ * Implements hook_rebuild().
+ */
+function bos_core_rebuild() {
+  // Install icons and images from the images/custom folder.
+  $path = Drupal::root() . "/sites/default/files/custom";
+  if (!file_exists($path)) {
+    mkdir($path, 0777, TRUE);
+  }
+
+  $modName = basename(__FILE__, ".module");
+  $modulePath = Drupal::root() . '/' . Drupal::service('extension.path.resolver')->getPath("module", $modName);
+  $fromPath = $modulePath . "/images/custom";
+  $dir = dir($fromPath);
+  $icons = [];
+  while (FALSE !== ($file = $dir->read())) {
+    if (strpos($file, ".svg") > 0 || strpos($file, ".png") > 0) {
+      $icons[] = $file;
+    }
+  }
+
+  foreach ($icons as $icon) {
+    $destIcon = $path . "/" . $icon;
+    if (file_exists($destIcon)) {
+      unlink($destIcon);
+    }
+    copy($fromPath . "/" . $icon, $destIcon);
+
+    // Check if the file exists that is listed in para.para_type.module.yml.
+    $filesystem = Drupal::service('file_system');
+    if (!empty($filesystem)) {
+      $destination = "public://custom/" . $icon;
+      $image = Drupal::entityTypeManager()
+        ->getStorage("file")
+        ->loadByProperties(["uri" => $destination]);
+      if (count($image) == 0) {
+        $image = File::create();
+        $image->setFileUri($destination);
+        $image->setOwnerId(Drupal::currentUser()->id());
+        $image->setMimeType('image/' . pathinfo($destination, PATHINFO_EXTENSION));
+        $image->setFileName($filesystem->basename($destination));
+        $image->setPermanent();
+        $image->save();
+      }
+      if ($icon == "embed_button_image.png") {
+        if ($mod = Drupal::entityTypeManager()
+          ->getStorage("embed_button")
+          ->load("media_entity_embed")) {
+          if (!empty($image) && is_array($image)) {
+            $image = array_pop($image);
+          }
+          $file_uuid = $image->get("uuid")->value;
+          $mod->set("icon_uuid", $file_uuid)->save();
+        }
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function bos_core_ckeditor_css_alter(array &$css, Editor $editor) {
+  $css[] = "https://patterns.boston.gov/css/public.css";
+  $css[] = "https://patterns.boston.gov/css/patterns-cob-theme.css";
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_load().
+ */
+function bos_core_editor_load(array $entities) {
+  foreach ($entities as $filter => $editor) {
+    if (Drupal::routeMatch()->getParameters()->has("node")) {
+      $node = Drupal::routeMatch()->getParameters()->get("node");
+      $entity_array = [
+        "entityType" => $node->getType(),
+        "id" => $node->id(),
+      ];
+      foreach ($node->getFields() as $child => $item) {
+        if (str_contains($child, "field_")) {
+          if ($item->getFieldDefinition()->get("field_type") == "entity_reference_revisions") {
+            $entity_array[$child] = $item->getValue();
+          }
+          if ($item->getFieldDefinition()->get("field_type") == "textarea") {
+            $entity_array[$child] = $item;
+          }
+        }
+      }
+      $editor->setThirdPartySetting("cob", "entity", $entity_array);
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function bos_core_cron(): void {
+  icon_manifest_cron();
+}
+
+/**
+ * Helper to make a page title (to pass to Google Analytics).
+ *
+ * @param array $view_display
+ *   The current view_display array.
+ * @param string $pageTitle
+ *   The current pageTitle.
+ *
+ * @return string
+ *   The page title to be recorded in GA.
+ */
+function _bos_core_make_gapost_title(array $view_display, string $pageTitle = "") {
+  $found = FALSE;
+
+  if (isset($view_display["display_options"])) {
+    if (!empty($view_display["display_options"]["title"])) {
+      $pageTitle .= $view_display["display_options"]["title"];
+      $found = TRUE;
+    }
+    else {
+      if (!empty($view_display["display_title"])) {
+        $pageTitle .= $view_display["display_title"] . " | ";
+        $found = TRUE;
+      }
+      if (!empty($view_display["display_options"]["path"])) {
+        $pageTitle .= $view_display["display_options"]["path"];
+        $found = TRUE;
+      }
+    }
+  }
+  if (!$found) {
+    $pageTitle .= $view_display["display_title"];
+  }
+  return rtrim($pageTitle, "\t\n\r\0\x0B |");
+}
+
+/**
+ * Helper to uninstall original configs when not in config/default folder.
+ *
+ * @param string $module
+ *   The module name.
+ */
+function _bos_core_uninstall_boston($module) {
+
+  Drupal::logger("City of Boston")->notice("Removing config for: @module.", ["@module" => $module]);
+
+  $configs = [];
+  $path = Drupal::service('extension.path.resolver')
+    ->getPath("module", $module);
+
+  // Get a full list of .yml files defined by this module.
+  foreach (["install"] as $sub) {
+    $fullpath = DRUPAL_ROOT . "/" . $path . "/config/" . $sub;
+    if (is_dir($fullpath)) {
+      $_configs = array_diff(scandir($fullpath), ['.', '..']);
+      foreach ($_configs as $key => &$_configr) {
+        if (stripos($_configr, ".yml") === FALSE && $_configs[$key]) {
+          unset($_configs[$key]);
+        }
+        else {
+          $_configr = str_replace(".yml", "", $_configr);
+        }
+      }
+      if (!empty($_configs)) {
+        $configs = array_merge($configs, $_configs);
+      }
+    }
+  }
+
+  // Now uninstall those configs.
+  foreach ($configs as $config) {
+    try {
+      if (is_string($config)) {
+        $_config = Drupal::configFactory()->get($config);
+        if (!empty($_config)) {
+          Drupal::configFactory()->getEditable($config)->delete();
+        }
+      }
+    }
+    catch (Exception $e) {
+      Drupal::logger("City of Boston")->notice("Could not find @elem.", ["@elem" => $config]);
+      Drupal::messenger()->addWarning(t("Could not find @elem to uninstall.", ["@elem" => $config]));
+    }
+  }
+
+}
+
+/**
+ * Helper to copy module-related icons into expected location.
+ *
+ * @param string $module
+ *   The module name.
+ */
+function _bos_core_install_icons($module) {
+  $path = Drupal::root() . "/sites/default/files/paragraphs_type_icon/";
+  if (!file_exists($path)) {
+    mkdir($path, 0777);
+  }
+  $modulePath = Drupal::root() . '/' . Drupal::service('extension.path.resolver')->getPath("module", $module);
+  $dir = dir($modulePath);
+  $icons = [];
+  while (FALSE !== ($file = $dir->read())) {
+    if (strpos($file, "icon.svg") > 0) {
+      $icons[] = $file;
+    }
+  }
+  $filesystem = Drupal::service('file_system');
+  foreach ($icons as $icon) {
+    // Copy rather than move, so we don't get git issues.
+    $destfile = $path . "/" . $icon;
+    if (!file_exists($destfile)) {
+      copy($modulePath . "/" . $icon, $destfile);
+    }
+      // Check if the file exists that is listed in para.para_type.module.yml.
+    $entity = str_replace("_icon.svg", "", $filesystem->basename($destfile));
+    $mod = Drupal::entityTypeManager()
+      ->getStorage("paragraphs_type")->load($entity);
+    if (isset($mod) && !$mod->getIconFile()) {
+      $destination = "public://paragraphs_type_icon/" . $icon;
+      $image = File::create();
+      $image->setFileUri($destination);
+      $image->setOwnerId(Drupal::currentUser()->id());
+      $image->setMimeType('image/' . pathinfo($destination, PATHINFO_EXTENSION));
+      $image->setFileName($filesystem->basename($destination));
+      $image->setPermanent();
+      $image->save();
+      $file_uuid = $image->get("uuid")->value;
+      $mod->set("icon_uuid", $file_uuid)->save();
+    }
+  }
+}
+
+/**
+ * Take a link paragraph and return the URL and title.
+ */
+function _bos_core_paragraph_extract_link($paragraph, $attributes = []) {
+  $results = [];
+
+  if (is_array($paragraph) && !empty($paragraph['0']['target_id'])) {
+    $paragraph = Paragraph::load($paragraph['0']['target_id']);
+  }
+
+  if (is_a($paragraph, 'Drupal\paragraphs\Entity\Paragraph')) {
+    switch ($paragraph->bundle()) {
+      case 'lightbox_link':
+        $link = $paragraph->get('field_lightbox_link')->getValue();
+        $results['url'] = $link['0']['uri'];
+        break;
+
+      case 'document':
+        $link = $paragraph->get('field_document')->getValue();
+        if (isset($link['0']['target_id'])) {
+          $results['title'] = $paragraph->get("field_title")->value;
+          $results['link'] = _bos_core_get_file_link($link['0']['target_id'], $results['title']??'', ["attributes" => $attributes]);
+          $results['url'] = _bos_core_get_file_url($link['0']['target_id'], $results['title']??'', ["attributes" => $attributes]);
+          $results['icon_class'] = 'download';
+        }
+        break;
+
+      case 'external_link':
+        $link = $paragraph->get('field_external_link')->getValue();
+        $results['url'] = $link['0']['uri'];
+        $results['title'] = $link['0']['title'];
+        $url = Url::fromUri($link['0']['uri'], ['attributes' => $attributes]);
+        $results['link'] = Link::fromTextAndUrl($link['0']['title'], $url)->toString();
+        $results['icon_class'] = 'external';
+        break;
+
+      case 'internal_link':
+        $link = $paragraph->get('field_internal_link')->getValue();
+        $results = [
+          'url' => "",
+          'link' => "",
+          'title' => $link['0']['title'] ?: "Unknown",
+        ];
+        if (!empty($link)) {
+          preg_match('~^(http(s)?:)?//(.*\.)?boston\.(gov|lndo\.site)~', $link['0']['uri'], $match);
+          if (!empty($match) && $match[0] == $link['0']['uri']) {
+            $results['url'] = $link['0']['uri'];
+            $results['title'] = $link['0']['title'] ?: "Homepage";
+          }
+          else {
+            $uri_type = explode(":", $link['0']['uri']);
+            switch ($uri_type[0]) {
+              case "internal":
+                if (!empty($url = Url::fromUri( $link['0']['uri']))) {
+                  try {
+                    $results['url'] = $url->toString();
+                  }
+                  catch (Exception $e) {
+                    if (!Drupal::currentUser()->isAnonymous()) {
+                      $badlink = $url->getOption("attributes")["title"];
+                      Drupal::messenger()
+                        ->addError("Internal Link Error for \"$badlink\"");
+                    }
+                  }
+
+                  if ($results['title'] == "Unknown") {
+                    $uri = str_replace("base", "entity", $url->toUriString());
+                    $params  = Url::fromUri($uri)->getRouteParameters();
+                    if (!empty($params)
+                      && key($params) == "node"
+                      && NULL != ($node = Node::load($params["node"]))) {
+                      $results['title'] = $node->get("title")->value;
+                    }
+                  }
+
+                }
+                break;
+
+              case "entity":
+                preg_match('~/(.*)~', $link['0']['uri'], $match);
+                if (!empty($url = Url::fromRoute('entity.node.canonical', ['node' => $match['1']], ['attributes' => $attributes]))) {
+                  try {
+                    $results['url'] = $url->toString();
+                  }
+                  catch (Exception $e) {
+                    if (!Drupal::currentUser()->isAnonymous()) {
+                      $badlink = $url->getOption("attributes")["title"];
+                      Drupal::messenger()
+                        ->addError("Internal Link Error for \"$badlink\"");
+                    }
+                  }
+
+                  if ($results['title'] == "Unknown") {
+                    $param = $url->getRouteParameters();
+                    if (!empty($param)
+                      && isset($param["node"])
+                      && NULL != ($node = Node::load($param["node"]))) {
+                      $results['title'] = $node->get("title")->value;
+                    }
+                  }
+                }
+                break;
+
+              default:
+
+            }
+
+            // validate the url
+            if (!Drupal::currentUser()->isAnonymous()) {
+              try {
+                if (isset($url) && !Drupal::service('path.validator')
+                  ->isValid($url->toString())) {
+                  $badlink = $url->toString();
+                  if ($url->getOption("attributes")) {
+                    $badlink = $url->getOption("attributes")["title"] ?: $badlink;
+                  }
+                  if (!empty($paragraph->getParentEntity())) {
+                    $parent = "";
+                    $mapping = [
+                      "branded_links" => "field_component_title",
+                      "card" => "field_component_title",
+                      "columns" => "field_column_title",
+                      "discussion_topic" => "field_title",
+                      "events_and_notices" => "field_component_title",
+                      "fyi" => "field_title",
+                      "gol_list_links" => "field_description",
+                      "grid_links" => "field_extra_info",
+                      "group_of_links_grid" => "field_component_title",
+                      "group_of_links_list" => "field_component_title",
+                      "group_of_links_mini_grid" => "field_component_title",
+                      "group_of_links_quick_links" => "field_component_title",
+                      "message_for_the_day" => "field_short_description",
+                      "news_and_announcements" => "field_component_title",
+                      "photo" => "field_component_title",
+                      "transactions" => "",
+                    ];
+                    if ("" !== $title_field = $mapping[$paragraph->getParentEntity()
+                        ->getType()]) {
+                      $item = $paragraph->getParentEntity()->get($title_field)->getValue();
+                      if (isset($item[0])) {
+                        $parent = " (in \"$item[0]\")";
+                      }
+                      else {
+                        throw new Exception();
+                      }
+                    }
+                  }
+                  Drupal::messenger()
+                    ->addError("Internal Link \"$badlink\" does not resolve$parent");
+                }
+              }
+              catch (Exception $e) {
+                if (!Drupal::currentUser()->isAnonymous()) {
+                  $badlink = "";
+                  if (!empty($url->toString())) {
+                    $badlink = $url->toString();
+                  }
+                  if (!empty($url->getOption("attributes")["title"])) {
+                    $badlink = $url->getOption("attributes")["title"];
+                  }
+
+                  Drupal::messenger()
+                    ->addError("Internal Link Error for \"$badlink\"");
+                }
+              }
+            }
+
+            if (isset($url)) {
+              try {
+                $results['link'] = Link::fromTextAndUrl($results['title'], $url)
+                  ->toString();
+              }
+              catch (Exception $e){
+                //do nothing
+              }
+            }
+          }
+        }
+        break;
+    }
+  }
+  return $results;
+}
+
+/**
+ * Creates URL to file managed by Drupal.
+ *
+ * @param mixed $fid
+ *   File ID.
+ * @param string $link_text
+ *   Link Text.
+ * @param array $attributes
+ *   Link attributes.
+ *
+ * @return \Drupal\Core\Url
+ *   URL in a string.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _bos_core_get_file_url($fid, string $link_text = '', array $attributes = []): Url {
+  if (is_array($fid) && !empty($fid['0']['target_id'])) {
+    $fid = $fid['0']['target_id'];
+  }
+  try {
+    $uri = Drupal::entityTypeManager()->getStorage("file")->load($fid)->getFileUri();
+  }
+  catch (Error $e) {
+    // Hmmm, problem, log it and then substitute uri.
+    Drupal::messenger()->addWarning("File id (" . $fid . ") is missing. (" . $link_text . ")");
+    $uri = "#";
+  }
+  return Url::fromUri(Drupal::service('file_url_generator')->generateAbsoluteString($uri));
+}
+
+/**
+ * Creates link to file managed by Drupal.
+ *
+ * @param mixed $fid
+ *   File ID.
+ * @param string $link_text
+ *   Link Text.
+ * @param array $attributes
+ *   Link attributes.
+ *
+ * @return \Drupal\Core\GeneratedLink|\Drupal\Core\GeneratedUrl|string
+ *   URL in a string.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _bos_core_get_file_link($fid, string $link_text = '', array $attributes = []) {
+  if (is_array($fid) && !empty($fid['0']['target_id'])) {
+    $fid = $fid['0']['target_id'];
+  }
+
+  try {
+    $uri = Drupal::entityTypeManager()->getStorage("file")->load($fid)->getFileUri();
+  }
+  catch (Error $e) {
+    // Hmmm, problem, log it and then substitute uri.
+    Drupal::messenger()->addWarning("File id (" . $fid . ") is missing. (" . $link_text . ")");
+    $uri = "#";
+  }
+  if (empty($link_text)) {
+    return Url::fromUri(Drupal::service('file_url_generator')->generateAbsoluteString($uri, $attributes))->toString();
+  }
+  else {
+    return Link::fromTextAndUrl($link_text, Url::fromUri(Drupal::service('file_url_generator')->generateAbsoluteString($uri), $attributes))->toString();
+  }
+}
+
+/**
+ * Get filename.
+ *
+ * @param string $fid
+ *   File ID.
+ *
+ * @return bool|string
+ *   The filename or false if $fid not found.
+ */
+function _bos_core_get_file_name(string $fid) {
+  $out = FALSE;
+  if ($file = File::load($fid)) {
+    $name = $file->get('filename')->getValue();
+    $out = $name['0']['value'];
+  }
+  return $out;
+}
+
+/**
+ * Returns the moderation state for the node and/or revision.
+ *
+ * @param array $node_info
+ *   Node and Revision information.
+ *
+ * @return array|mixed
+ *   Array with moderation values for formatting
+ */
+function _bos_core_moderation_decode(array $node_info) {
+  $output = [
+    "title" => "UNKNOWN",
+    "class" => "title--unknown",
+    "moderation_state" => "unknown",
+  ];
+  try {
+    if (isset($node_info["node_revision"])) {
+      $vid = $node_info["node_revision"];
+      $node = Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->loadRevision($vid);
+    }
+    else {
+      $nid = $node_info["node"];
+      $node = Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    }
+  }
+  catch (Exception $e) {
+    return $output;
+  }
+
+  if ($node) {
+    $moderation_text = [
+      "archive" => ["title" => "ARCHIVE", "class" => "title--archive"],
+      "draft" => ["title" => "DRAFT", "class" => "title--draft"],
+      "published" => ["title" => "PUBLISHED", "class" => "title--published"],
+      "needs_review" => ["title" => "REVIEW", "class" => "title--review"],
+    ];
+    $mod_state = $node->get('moderation_state')->getString();
+    $mod = $moderation_text[$mod_state];
+    if ($node->isLatestRevision()) {
+      $mod["title"] = "LATEST REVISION (" . $mod["title"] . ")";
+    }
+    $output = $mod + ["moderation_state" => $mod_state];
+  }
+
+  return $output;
+}
+
+/**
+ * Ensures the attributes element of a preprocess_hook is an attributes object.
+ *
+ * @param array $variables
+ *   The variables object from a preprocess hook.
+ * @param string $check_field
+ *   The attribute field.
+ */
+function _bos_core_fix_attributes(array &$variables, string $check_field = "attributes") {
+  if (isset($variables[$check_field]) && is_object(($variables[$check_field]))) {
+    return;
+  }
+  if (isset($variables[$check_field]) && is_array($variables[$check_field]) && class_exists(Attribute::class)) {
+    $attribute = new Attribute();
+    if (!empty($variables[$check_field])) {
+      foreach ($variables[$check_field] as $key => $element) {
+        $attribute->setAttribute($key, $element);
+      }
+    }
+    if (!empty($attribute)) {
+      $variables[$check_field] = $attribute;
+    }
+  }
+}
+
+/**
+ * Formats free text-string number into approved format. Strips non-numerics.
+ *
+ * @param string|null $phone
+ *   A 10-digit phone number in a range of formats.
+ * @param string $output
+ *   A format guide for output - uses $1=first 3 numbers, $2=second 3 numbers,
+ *   and $3=last 4 numbers.
+ *
+ * @return string
+ *   Output (default in a standard XXX-XXX-XXXX format).
+ */
+function bos_core_format_telephone(?string $phone, string $output = "$1-$2-$3"): string {
+  return preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', $output, $phone);
+}
+
+/**
+ * Runs an iteration over all custom modules and exports configs (drush cde).
+ */
+function _bos_core_update_all_configs() {
+  require_once "/app/docroot/modules/contrib/config_devel/drush/config_devel.drush.inc";
+  drush_config_devel_export("bos_core");
+}
+
+/**
+ * Runs an iteration over all custom modules and exports configs (drush cde).
+ */
+function _bos_core_global_update_configs() {
+  _bos_content_update_all_configs();
+  _bos_components_update_all_configs();
+  _bos_vocab_update_all_configs();
+  _bos_core_update_all_configs();
+
+}
+
+/**
+ * Renames the add_more button text for fields on a given entity.
+ *
+ * @param array $variables
+ *   Usual variables array.
+ * @param string $type
+ *   The bundle/type for the entity.
+ * @param array $button_text
+ *   Array of fieldname:button_text pairs to replace btn text on specified fld.
+ */
+function _bos_core_rename_multiple_button(array &$variables, string $type, array $button_text) {
+  if (!empty(Drupal::request()->attributes->get("node"))) {
+    $node = Drupal::request()->attributes->get("node")->getType();
+    if (isset($node) && $node != $type) {
+      return;
+    }
+  }
+  elseif (!empty(Drupal::request()->attributes->get("paragraph"))) {
+    $para = Drupal::request()->attributes->get("paragraph")->getType();
+    if (isset($para) && $para != $type) {
+      return;
+    }
+  }
+  else {
+    return;
+  }
+
+  foreach ($button_text as $field_name => $new_button_text) {
+    if (!empty($variables["element"]["#field_name"])
+      && $variables["element"]["#field_name"] == $field_name
+      && !empty($variables["element"]["add_more"])) {
+      $variables["button"]["#value"] = new TranslatableMarkup($new_button_text);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function bos_core_entity_presave(EntityInterface $entity) {
+
+  if (function_exists("_bos_core_entity_presave")) {
+    _bos_core_entity_presave($entity);
+  }
+
+  // Manage the custom Published and Updated date fields on nodes.
+  if ($entity->getEntityTypeId() == "node"
+    && ($entity->hasField("field_updated_date") || $entity->hasField("field_published_date"))) {
+
+    // Get current revision, so we can check whether its pub date is set.
+    $revId = $entity->getLoadedRevisionId();
+    if (isset($revId)) {
+      $current_entity = Drupal::entityTypeManager()
+        ->getStorage("node")
+        ->loadRevision($revId);
+    }
+    else {
+      $current_entity = Drupal::entityTypeManager()->getStorage("node")->info;
+    }
+
+    // Check the state of this revsision being saved.
+    switch ($entity->get('moderation_state')->getString()) {
+
+      case "published":
+        // Check if publish dates are being automatically maintained.
+        if ($entity->hasField("field_manual_date") && $entity->get("field_manual_date")->value == 0) {
+
+          // Update field_updated_date if changing (or keeping) published.
+          $date = new DrupalDateTime("now", "UTC");
+          $entity->set("field_updated_date", $date->format("Y-m-d\TH:i:s"));
+
+          // Set published_date if this is the first time published.
+          if (isset($current_entity)
+            && $current_entity->hasField("field_published_date")
+            && empty($current_entity->get("field_published_date")->value)) {
+            $entity->set("field_published_date", $date->format("Y-m-d\TH:i:s"));
+          }
+
+        }
+        break;
+
+      case "archive":
+      case "archived":
+      case "draft":
+      case "needs_review":
+      default:
+        break;
+
+    }
+
+    // Preserve updated and published dates between revisions.
+    // Not sure why the field_xxx_date fields are coming across blank when the
+    // form is saved.  If we can stop that, then this block is not required.
+    if (isset($current_entity)) {
+      if ($current_entity->hasField("field_updated_date")
+        && !empty($current_entity->get("field_updated_date")->value)
+        && empty($entity->get("field_updated_date")->value)) {
+        $entity->set("field_updated_date", $current_entity->get("field_updated_date")->value);
+      }
+      if ($current_entity->hasField("field_published_date")
+        && !empty($current_entity->get("field_published_date")->value)
+        && empty($entity->get("field_published_date")->value)) {
+        $entity->set("field_published_date", $current_entity->get("field_published_date")->value);
+      }
+    }
+
+    // Invalidate some nodes caches.
+    switch ($entity->get('moderation_state')->getString()) {
+      case "published":
+        if ($entity->getType() == "emergency_alert") {
+          Cache::invalidateTags(["config:views.view.emergency_alerts"]);
+        }
+        elseif ($entity->getType() == "site_alert") {
+          Cache::invalidateTags(["config:views.view.site_alerts"]);
+        }
+        break;
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function bos_core_node_presave(EntityInterface $entity): void {
+
+  // Create a custom event for entity_presave, and dispatch.
+  // NOTE: this is an extension of the contributed entity_events module.
+  $event_type = BosCoreEntityEventType::PRESAVE;
+  $event = new BosCoreEntityEvent($event_type, $entity);
+  Drupal::service('event_dispatcher')
+    ->dispatch($event, $event_type);
+
+}
+
+/**
+ * Preprocess hook for the username themed object.
+ */
+function bos_core_preprocess_username(&$variables) {
+  realname_extension_preprocess_username($variables);
+}

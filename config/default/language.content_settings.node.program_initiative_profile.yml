@@ -1,0 +1,20 @@
+uuid: e9e6bb7d-627e-4ada-b687-ae2adf3a798e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: W2yRVxBui7iIIuwMv-fpWGY6jwcGxD4GSWWjphZ6T08
+id: node.program_initiative_profile
+target_entity_type_id: node
+target_bundle: program_initiative_profile
+default_langcode: site_default
+language_alterable: false

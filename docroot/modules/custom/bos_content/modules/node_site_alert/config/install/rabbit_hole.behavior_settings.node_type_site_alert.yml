@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.site_alert
+id: node_type_site_alert
+entity_type_id: null
+entity_id: null
+action: page_redirect
+allow_override: 0
+redirect: /
+redirect_code: 301
+redirect_fallback_action: null

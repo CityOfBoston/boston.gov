@@ -1,0 +1,23 @@
+uuid: 9c838780-fa7f-4bb4-a993-283339a42288
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.script_page
+  module:
+    - text
+_core:
+  default_config_hash: S_OWIBNNx3zr6ZGf8xEZu12gIrDDWgb8nEOvd8W_NwU
+id: node.script_page.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: script_page
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

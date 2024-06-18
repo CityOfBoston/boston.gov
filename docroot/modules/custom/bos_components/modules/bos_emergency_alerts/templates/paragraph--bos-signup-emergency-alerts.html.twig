@@ -1,0 +1,220 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ #}
+{%
+  set classes = [
+    "b",
+    "b--" ~ component_theme,
+  ]
+  %}
+{% if component_theme == 'b' %}
+{%   set classes = classes|merge(["b--wt"]) %}
+{% endif %}
+{% set classes = classes|merge(["b--fw"])%}
+
+<div{{ attributes.addClass(classes) }} tabindex="0">
+  <div class="b-c">
+    {% if content.field_component_title and not hideTitle %}
+    {{ title_prefix }}
+    {{ title_suffix }}
+    <div class="sh {{ section_header_theme }}">
+      {% if content.field_component_title %}
+        {{ content.field_component_title }}
+      {% endif %}
+      {% if content.field_contact %}
+        <div class="sh-contact">{{ content.field_contact }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="g m-t500">
+      <div class="g--7">
+        <div class="p-r500">
+          <div id="alert_content" class="m-b500">
+            <div class="t--intro m-b300">{{ content.field_intro_text }}</div>
+            <div>{{ content.field_description }}</div>
+          </div>
+          <div id="alert_success" class="m-b500 p-t400 di-a">
+            {{ content.field_icon }}
+            <div id="bos_alert_message" class="t--intro m-t300" style="display: none">
+              You have been subscribed to the City of Boston's emergency alerts.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="g--5">
+        <form id="bosAlertForm" action="{{ emergency_alerts_url }}" method="post">
+          <div class="fs">
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="email" class="txt-l txt-l--mt000">Your email address</label>
+                <input id="email" name="email" type="text" value="" placeholder="email@address.com" class="txt-f">
+              </div>
+              <div class="txt">
+                <label for="phone_number" class="txt-l txt-l--w txt-l--mt000">Your phone number</label>
+                <input id="phone_number" name="phone_number" type="text" value="" placeholder="Phone number" class="txt-f">
+              </div>
+            </div>
+            <div class="fs-c fs-c--i" >
+              <label class="cb">
+                <input id="checkbox-text" name="text" type="checkbox" value="1" class="cb-f" checked>
+                <span class="cb-l cb-l--sans">Text me</span>
+              </label>
+              <label class="cb">
+                <input id="checkbox-call" name="call" type="checkbox" value="1" class="cb-f">
+                <span class="cb-l cb-l--sans">Call me</span>
+              </label>
+            </div>
+            <div class="t--subinfo{% if component_theme == 'b' %} t--w{% endif %} m-t100">Message &amp data rates may apply</div>
+            <div>
+              <div id="text_or_call" class="txt-l"></div>
+            </div>
+            <hr class="hr hr--sq" />
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="first_name" class="txt-l txt-l--mt000">First name</label>
+                <input id="first_name" name="first_name" type="text" value="" placeholder="First name" class="txt-f">
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="last_name" class="txt-l txt-l--mt000">Last name</label>
+                <input id="last_name" name="last_name" type="text" value="" placeholder="Last name" class="txt-f">
+              </div>
+            </div>
+            <div class="fs-c m-b300 hidden">
+              <label for="contact-suffix" class="txt-l txt-l--mt000">Suffix</label>
+              <input id="contact-suffix" name="email2[suffix]" type="text" class="txt-f bos-contact-suffix" size="10">
+            </div>
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="address" class="txt-l txt-l--w txt-l--mt000">Address</label>
+                <input id="address" name="address" type="text" value="" placeholder="Address" class="txt-f">
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="city" class="txt-l txt-l--w txt-l--mt000">City</label>
+                <input id="city" name="city" type="text" value="" placeholder="City" class="txt-f">
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="sel">
+                <label for="state" class="txt-l txt-l--w txt-l--mt000">State</label>
+                <div class="sel-c sel-c--fw">
+                  <select class="sel-f sel-f--fw" name="state" id="state">
+                    <option selected value="">Select</option>
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="District of Columbia">District of Columbia</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="txt">
+                <label for="zip_code" class="txt-l txt-l--w txt-l--mt000">Zip code</label>
+                <input id="zip_code" name="zip_code" type="text" value="" placeholder="Zip code" class="txt-f" size="10">
+              </div>
+            </div>
+            <div class="fs-c m-b300">
+              <div class="sel">
+                <label for="emergency-alerts-language" class="txt-l txt-l--w txt-l--mt000">Language</label>
+                <div class="sel-c sel-c--fw">
+                  <select class="sel-f sel-f--fw" name="language" id="emergency-alerts-language">
+                    <option value="English" selected>English</option>
+                    <option value="Spanish">Español</option>
+                    <option value="Haitian Creole">Kreyòl ayisyen</option>
+                    <option value="Chinese">中文</option>
+                    <option value="Vietnamese">Tiếng Việt</option>
+                    <option value="Cryol">Kriolu</option>
+                    <option value="Russian">Русский</option>
+                    <option value="Arabic">العربية</option>
+                    <option value="French">Français</option>
+                    <option value="Portuguese">Português</option>
+                    <option value="Somali">Af Soomaali</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="message" class="m-b300" style="display: none"></div>
+            <div id="button" class="fs-c fs-c--i fs-c--c">
+              <div class="m-lAAA m-t400 m-t300--mo">
+                <button id="alert_submit" type="submit" class="btn btn--700">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

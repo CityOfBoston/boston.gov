@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_of_links_mini_grid.field_component_title
+    - field.field.paragraph.group_of_links_mini_grid.field_contact
+    - field.field.paragraph.group_of_links_mini_grid.field_links
+    - field.field.paragraph.group_of_links_mini_grid.field_short_title
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+  module:
+    - entity_reference_revisions
+    - fences
+id: paragraph.group_of_links_mini_grid.default
+targetEntityType: paragraph
+bundle: group_of_links_mini_grid
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_contact:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_links:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: separated_title
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

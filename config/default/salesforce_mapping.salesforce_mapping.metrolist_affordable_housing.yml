@@ -1,0 +1,126 @@
+langcode: und
+id: metrolist_affordable_housing
+label: 'Metrolist Affordable Housing'
+weight: 0
+type: salesforce_mapping
+key: Name
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: ''
+sync_triggers:
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: Affordable_Housing__c
+drupal_entity_type: node
+drupal_bundle: metrolist_affordable_housing
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 0
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_address
+    direction: sf_drupal
+    salesforce_field: Street_Address__c
+    id: 1
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_zipcode
+    direction: sf_drupal
+    salesforce_field: ZIP_Code__c
+    id: 2
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_contact
+    direction: sf_drupal
+    salesforce_field: Property_Manager_Contact_Account__c
+    id: 3
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_phone
+    direction: sf_drupal
+    salesforce_field: Property_Manager_Contact_Phone__c
+    id: 4
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_email
+    direction: sf_drupal
+    salesforce_field: Property_Manager_Contact_Email__c
+    id: 5
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_publish_to_metrolist
+    direction: sf_drupal
+    salesforce_field: Publish_to_Metrolist__c
+    id: 6
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_lottery_deadline
+    direction: sf_drupal
+    salesforce_field: Lottery_Application_Deadline__c
+    id: 7
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_outer_location
+    direction: sf_drupal
+    salesforce_field: Outside_Boston_Location__c
+    id: 8
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_lottery_url
+    direction: sf_drupal
+    salesforce_field: Lottery_Advertisement_Flyer__c
+    id: 9
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_lottery_type
+    direction: sf_drupal
+    salesforce_field: Lottery_Type__c
+    id: 10
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_lottery_indicator
+    direction: sf_drupal
+    salesforce_field: Lottery__c
+    id: 11
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_not_active
+    direction: sf_drupal
+    salesforce_field: Not_Active__c
+    id: 12
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_household_income_limit
+    direction: sf_drupal
+    salesforce_field: Household_Income_Limits_AMI__c
+    id: 13
+  -
+    drupal_field_type: RelatedProperties
+    drupal_field_value: 'field_mah_neighborhood:name'
+    direction: sf_drupal
+    salesforce_field: Neighborhood__c
+    id: 14
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_mah_resale
+    direction: sf_drupal
+    salesforce_field: Resale__c
+    id: 15
+status: true
+dependencies:
+  module:
+    - salesforce_pull
+    - typed_data
+uuid: f8fc4ead-628f-4865-8c65-3e11f1b3765f

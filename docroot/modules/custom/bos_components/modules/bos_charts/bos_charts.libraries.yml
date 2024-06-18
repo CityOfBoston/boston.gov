@@ -1,0 +1,14 @@
+chart.vega_lite:
+  version: 1.x
+  css:
+    theme:
+      css/bos_charts_vega.css: { }
+  js:
+    js/bos_charts_vega.js: { preprocess: false}
+    https://cdn.jsdelivr.net/npm/vega@5: { preprocess: false}
+    https://cdn.jsdelivr.net/npm/vega-lite@5: {preprocess: false}
+    https://cdn.jsdelivr.net/npm/vega-embed@6: {preprocess: false}
+    https://cdn.jsdelivr.net/npm/vega-tooltip: {preprocess: false}
+  dependencies:
+    - core/jQuery
+    - core/drupalSettings

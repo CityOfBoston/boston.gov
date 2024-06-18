@@ -1,0 +1,29 @@
+uuid: 3430ff1b-0af0-4020-a19d-71a030d39e97
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.newsletter.field_component_theme
+    - field.field.paragraph.newsletter.field_component_title
+    - field.field.paragraph.newsletter.field_contact
+    - field.field.paragraph.newsletter.field_description
+    - field.field.paragraph.newsletter.field_hide_title_bar
+    - field.field.paragraph.newsletter.field_newsletter
+    - field.field.paragraph.newsletter.field_short_title
+    - paragraphs.paragraphs_type.newsletter
+_core:
+  default_config_hash: vUjfvvIVILSbDuR0SKCK8uEiUyuTl3sVX7F2Ffs24cY
+id: paragraph.newsletter.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: newsletter
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_description: true
+  field_hide_title_bar: true
+  field_newsletter: true
+  field_short_title: true

@@ -1,0 +1,25 @@
+uuid: 4aa9a7ea-b7c3-45f3-b0f2-001533b1270a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_election_isofficial
+    - node.type.election_report
+id: node.election_report.field_election_isofficial
+field_name: field_election_isofficial
+entity_type: node
+bundle: election_report
+label: 'Official Results'
+description: '0 if these are unofficial results.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: 1
+  prefix: ''
+  suffix: ''
+field_type: integer

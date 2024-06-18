@@ -1,0 +1,22 @@
+uuid: 4d169a6a-8ec8-4b3c-8e90-8f8f5b7b3e1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_status
+id: taxonomy_term.bh_project_status.status
+field_name: status
+entity_type: taxonomy_term
+bundle: bh_project_status
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

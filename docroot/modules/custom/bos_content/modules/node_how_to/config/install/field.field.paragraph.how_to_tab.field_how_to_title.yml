@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_how_to_title
+    - paragraphs.paragraphs_type.how_to_tab
+id: paragraph.how_to_tab.field_how_to_title
+field_name: field_how_to_title
+entity_type: paragraph
+bundle: how_to_tab
+label: 'Tab Title'
+description: 'Set the title of the tab.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

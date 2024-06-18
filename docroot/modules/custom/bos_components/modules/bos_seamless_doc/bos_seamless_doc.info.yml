@@ -1,0 +1,17 @@
+name: bos_seamless_doc
+type: module
+description: 'Provides theming and configuration for bos_seamless_doc.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.seamless_doc.created
+  - core.base_field_override.paragraph.seamless_doc.status
+  - core.entity_form_display.paragraph.seamless_doc.default
+  - core.entity_view_display.paragraph.seamless_doc.paragraphs_editor_preview
+  - field.field.paragraph.seamless_doc.field_document_id
+  - language.content_settings.paragraph.seamless_doc
+  - paragraphs.paragraphs_type.seamless_doc

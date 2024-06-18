@@ -1,0 +1,28 @@
+uuid: b8510f8d-9b4d-4efc-beb8-e920b918a881
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_event_ref
+    - node.type.bh_meeting
+    - node.type.event
+id: node.bh_meeting.field_bh_event_ref
+field_name: field_bh_event_ref
+entity_type: node
+bundle: bh_meeting
+label: Event
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: e958ac0d-62c4-4154-ac46-28f81fe10566
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+  module:
+    - publication_date
+id: node.person_profile.published_at
+field_name: published_at
+entity_type: node
+bundle: person_profile
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

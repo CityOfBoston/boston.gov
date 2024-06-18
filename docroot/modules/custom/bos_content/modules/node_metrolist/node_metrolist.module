@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Provides a metrolist affordable housing entity type.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function node_metrolist_theme() {
+  return [
+    'node__metrolist_affordable_housing' => [
+      'render element' => 'elements',
+    ],
+    'views_view_table__metrolist_affordable_housing__page' => [
+      'base hook' => 'views',
+      'path' => 'modules/custom/bos_content/modules/node_metrolist/templates',
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_metrolist_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "metrolist") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_metrolist_preprocess_node__metrolist_affordable_housing(&$variables) {
+  _bos_content_fix_attributes($variables);
+  $variables['attributes']->addClass("contextual-region");
+  $variables['attributes']->addClass("node-" . $variables["elements"]["#node"]->id());
+  $variables['attributes']->addClass("clearfix");
+}
+
+/**
+ * Prepares variables for metrolist affordable housing templates.
+ *
+ * Default template: metrolist-affordable-housing.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the metrolist affordable
+ *     housing information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node_metrolist(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

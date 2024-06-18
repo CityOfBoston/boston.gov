@@ -1,0 +1,18 @@
+uuid: 4fa3d724-9d7e-4973-86a3-0580f77dcb2d
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.title
+field_name: title
+entity_type: node
+bundle: emergency_alert
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

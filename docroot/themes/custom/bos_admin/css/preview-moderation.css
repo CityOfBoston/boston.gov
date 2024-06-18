@@ -1,0 +1,29 @@
+/** Overrides theme for content moderation notes */
+.node-preview a.moderation-note-tooltip,
+.node-preview a.moderation-note-tooltip:visited,
+.node-preview a.moderation-note-tooltip:link {
+  color: #fff;
+}
+
+/** Preview management text */
+.node-preview .node-preview-form-select {
+  margin-left: 100px;
+  border: 1px solid #333;
+  width: fit-content;
+  padding: 0 20px;
+  background-color: #1979cc;
+  z-index: 100;
+}
+
+.node-preview a.node-preview-backlink {
+  font-size: 80%;
+  padding-right: 10px;
+}
+.node-preview a.node-preview-backlink:visited,
+.node-preview a.node-preview-backlink:link {
+  color: #fff;
+}
+
+.node-preview a.node-preview-backlink:before {
+  content: "<- ";
+}

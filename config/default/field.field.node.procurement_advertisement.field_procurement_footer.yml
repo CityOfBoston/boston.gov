@@ -1,0 +1,29 @@
+uuid: 0d1ad107-3ee8-49f7-8901-bf4337aa45ec
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_procurement_footer
+    - node.type.procurement_advertisement
+    - taxonomy.vocabulary.procurement_footer
+id: node.procurement_advertisement.field_procurement_footer
+field_name: field_procurement_footer
+entity_type: node
+bundle: procurement_advertisement
+label: 'Procurement Footer'
+description: 'This will add a pre-defined footer to the bottom of the ad. To get a new pre-defined value added, contact <a href="mailto:feedback@boston.gov">feedback@boston.gov</a>.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      procurement_footer: procurement_footer
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

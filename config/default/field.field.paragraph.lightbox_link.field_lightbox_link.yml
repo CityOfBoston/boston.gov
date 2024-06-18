@@ -1,0 +1,25 @@
+uuid: 2acbb688-75ec-4234-b163-3067f47aaa10
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lightbox_link
+    - paragraphs.paragraphs_type.lightbox_link
+  module:
+    - link
+_core:
+  default_config_hash: dOSuPxN8axLR-NlvS7ylP5fJ2wNZJNeZ25ak9spTylg
+id: paragraph.lightbox_link.field_lightbox_link
+field_name: field_lightbox_link
+entity_type: paragraph
+bundle: lightbox_link
+label: 'Lightbox Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,21 @@
+uuid: 04181342-e263-404d-81f9-f6dd1bc58b39
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.how_to_tab.field_how_to_steps
+    - field.field.paragraph.how_to_tab.field_how_to_title
+    - field.field.paragraph.how_to_tab.field_keep_in_mind
+    - paragraphs.paragraphs_type.how_to_tab
+_core:
+  default_config_hash: izq5qWKYMt6MHKFEx9VkY_kYY95pAsj10TeXdrHk7l8
+id: paragraph.how_to_tab.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: how_to_tab
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_how_to_steps: true
+  field_how_to_title: true
+  field_keep_in_mind: true

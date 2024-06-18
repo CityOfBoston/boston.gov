@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_people
+    - node.type.person_profile
+    - paragraphs.paragraphs_type.grid_of_people
+id: paragraph.grid_of_people.field_people
+field_name: field_people
+entity_type: paragraph
+bundle: grid_of_people
+label: People
+description: 'Enter the People for this Grid of People.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person_profile: person_profile
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

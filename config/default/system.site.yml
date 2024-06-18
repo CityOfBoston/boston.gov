@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+langcode: und
+uuid: 452fac34-8a25-4346-b005-f85d26dd3cf9
+name: Boston.gov
+mail: admin@example.com
+slogan: ''
+page:
+  403: /node/1326
+  404: /node/1321
+  front: /node/21
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

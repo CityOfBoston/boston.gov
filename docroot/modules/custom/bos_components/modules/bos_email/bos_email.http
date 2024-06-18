@@ -1,0 +1,1009 @@
+###
+# group: bos_email / session token
+# @name Request a client-side token
+# This is **step 1** of a 2 step process to submit the contact form to Postmark for relay to a CoB email recipient.
+# This step posts an empty payload to the endpoint and receives back a token which is saved on the form and then used for submit form action (step 2).
+
+POST {{url}}/rest/email_token/create
+Authorization: Token {{bos_email_bearer_token}}
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status == 200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Response contains 'token_session'", function () {
+    client.assert(typeof response.body.token_session !== "undefined", "Response body is not 'token_session'");
+  });
+  client.global.set("email_session_token", response.body.token_session);
+%}
+
+###
+# group: bos_email / session token
+# @name Use client-side token for Contact Form
+#   NOTE: email[contact] is the honeypot and must be present but empty.
+POST {{url}}/rest/email_session/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/x-www-form-urlencoded
+Force-Service: {{ force_email_service }}
+
+email[token_session] = {{email_session_token}} &
+email[to_address] = {{email_test_recipient}} &
+email[name] = Boston Resident &
+email[from_address] = boston_resident_1921@gmail.com &
+email[subject] = Test Contact Form Submission &
+email[message] = Manual test contact form submission from Postman. &
+email[url] = https://www.boston.gov/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] =
+
+> {%
+  client.global.clear("email_session_token");
+  client.test("Status code is 200", function () {
+    client.assert(response.status == 200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Response status reports 'Success'", function () {
+    client.assert(response.body.status == "success", "Response body.status is not 'success'");
+  });
+  client.test("Response message is 'Message Sent'", function () {
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / sanitation
+# @name Sanitation on-demand confirmation: Bearer Token
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+#Force-Service: {{ force_email_service }}
+
+{
+    "to_address": "{{email_test_recipient}}",
+    "from_address": "Sanitation <someone@boston.gov>",
+    "subject": "Sanitation Confirmation",
+    "message": "<p>We are <b>pleased</b> to confirm your pickup</p>",
+    "type": "confirmation"
+}
+
+> {%
+  client.test("Status code is 200", function () {
+      client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent." || response.body.response == "Message queued.", "Response message is not expected");
+  });
+%}
+
+###
+# group: bos_email / sanitation
+# @name Sanitation scheduled reminder: Bearer Token
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+    "to_address": "{{email_test_recipient}}",
+    "from_address": "Sanitation <someone@boston.gov>",
+    "subject": "Sanitation Confirmation",
+    "message": "We are pleased to confirm your pickup",
+    "type": "reminder1",
+    "senddatetime": "+5 minutes"
+}
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message scheduled", "Response message is not 'Message scheduled'");
+  });
+  client.test("Response contains email id", function () {
+    client.assert(typeof response.body.id !== "undefined" && response.body.id != "", "Response does not contain an ID field");
+    client.global.set("sanitation_email_id", response.body.id);
+  });
+%}
+
+###
+# group: bos_email / contact form
+# @name Contact Form - Plain Text: Bearer Token
+POST {{url}}/rest/email/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="email[name]"
+
+Boston Resident
+--WebAppBoundary
+Content-Disposition: form-data; name="email[from_address]"
+
+boston_resident_1921@gmail.com
+--WebAppBoundary
+Content-Disposition: form-data; name="email[url]"
+
+https://www.boston.gov/somepage
+--WebAppBoundary
+Content-Disposition: form-data; name="email[to_address]"
+
+{{email_test_recipient}}
+--WebAppBoundary
+Content-Disposition: form-data; name="email[message]"
+
+Why are the road ways in the city a boring grey?
+We should embrace our heritage and make them all green. If we can't get agreement from everyone to do this, maybe we could just do it for St Patricks day.
+Thanks
+Paddy McTavish
+--WebAppBoundary
+Content-Disposition: form-data; name="email[subject]"
+
+Question about roadways.
+--WebAppBoundary
+Content-Disposition: form-data; name="email[useHtml]"
+
+0
+--WebAppBoundary
+Content-Disposition: form-data; name="email[contact]"
+
+
+--WebAppBoundary
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / contact form
+# @name Contact Form - HTML: Bearer Token
+
+POST {{url}}/rest/email/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/x-www-form-urlencoded
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+email[useHtml] = 1 &
+email[to_address] = {{email_test_recipient}} &
+email[name] = Boston Resident &
+email[from_address] = boston_resident_1921@gmail.com &
+email[subject] = I have a great idea. &
+email[message] = Why <b>are</b> the road ways in the city a boring grey?
+We should embrace our heritage and make them all green. If we can't get agreement from everyone to do this, maybe we could just do it for St Patricks day.
+Thanks
+Paddy McTavish &
+email[url] = https://www.boston.gov/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] =
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / registry
+# @name Registry: Bearer Token
+POST {{url}}/rest/email/registry
+Content-Type: application/x-www-form-urlencoded
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+email[to_address] = {{email_test_recipient}} &
+email[from_address] = marriage@boston.gov &
+email[subject] = TEST Marriage Intention Application &
+email[message] = Thank you for submitting your marriage intention application. Have questions? Contact us at 0617-635-4175 or marriage@boston.gov &
+email[sender] = City of Boston Registry &
+email[template_id] = {{registry_template_id}} &
+email[name] = Boston Resident
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / metrolist
+# @name Metrolist Initiation (form-data): Bearer Token
+POST {{url}}/rest/email/MetrolistInitiationForm
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="email[to_address]"
+
+{{email_test_recipient}}
+--WebAppBoundary
+Content-Disposition: form-data; name="email[name]"
+
+David Upton
+--WebAppBoundary
+Content-Disposition: form-data; name="email[from_address]"
+
+digital-dev@boston.gov
+--WebAppBoundary
+Content-Disposition: form-data; name="email[url]"
+
+boston.gov/here
+--WebAppBoundary
+Content-Disposition: form-data; name="email[message]"
+
+{{url}}/form/metrolist-listing?token=abctesttoken
+--WebAppBoundary
+Content-Disposition: form-data; name="email[subject]"
+
+TEST Metrolist Initiation Email
+--WebAppBoundary
+Content-Disposition: form-data; name="email[useHtml]"
+
+1
+--WebAppBoundary
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / metrolist
+# @name Metrolist Initiation (json): Bearer Token
+POST {{url}}/rest/email/MetrolistInitiationForm
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+  "name": "MetroList Listing",
+  "url": "https:\/\/boston.lndo.site\/metrolist\/listing-request",
+  "from_address": "noreply@boston.gov",
+  "sender": "Metrolist Listing",
+  "to_address": "david.upton@boston.gov",
+  "message": "https:\/\/boston.lndo.site\/form\/metrolist-listing?token=ZeNCdhEQXryMmZXNzqKCrVpcXdKWsmaC4gNMF1tZzVo",
+  "useHtml": "1",
+  "subject": "Your requested MetroList Listing link",
+  "hidden_name": "MetroList Listing",
+  "hidden_subject": "Your requested MetroList Listing link",
+  "hidden_message": "https:\/\/boston.lndo.site\/form\/metrolist-listing?token=ZeNCdhEQXryMmZXNzqKCrVpcXdKWsmaC4gNMF1tZzVo",
+  "token": "qDfBKuYCJud_msnfiQHDC1yx0h0gqMeyyT5AzOjg0_w"
+}
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / metrolist
+# @name Metrolist Confirmation (form-data): Bearer Token
+POST {{url}}/rest/email/MetrolistListingConfirmation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="email[to_address]"
+
+{{email_test_recipient}}
+--WebAppBoundary
+Content-Disposition: form-data; name="email[name]"
+
+David Upton
+--WebAppBoundary
+Content-Disposition: form-data; name="email[from_address]"
+
+digital-dev@boston.gov
+--WebAppBoundary
+Content-Disposition: form-data; name="email[url]"
+
+boston.gov/here
+--WebAppBoundary
+Content-Disposition: form-data; name="email[message]"
+
+https://boston.lndo.site/form/metrolist-listing?token=abctesttoken
+--WebAppBoundary
+Content-Disposition: form-data; name="email[subject]"
+
+TEST Metrolist Confirmation Email
+--WebAppBoundary
+Content-Disposition: form-data; name="email[useHtml]"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="property_name"
+
+Davids Property
+--WebAppBoundary
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / metrolist
+# @name Metrolist Notification (form-data): Bearer Token
+POST {{url}}/rest/email/MetrolistListingNotification
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="email[name]"
+
+David Upton
+--WebAppBoundary
+Content-Disposition: form-data; name="email[url]"
+
+boston.gov/here
+--WebAppBoundary
+Content-Disposition: form-data; name="email[sender]"
+
+Metrolist Listing
+--WebAppBoundary
+Content-Disposition: form-data; name="email[to_address]"
+
+{{email_test_recipient}}
+--WebAppBoundary
+Content-Disposition: form-data; name="email[message]"
+
+https://boston.lndo.site/form/metrolist-listing?token=abctesttoken
+--WebAppBoundary
+Content-Disposition: form-data; name="email[useHtml]"
+
+1
+--WebAppBoundary
+Content-Disposition: form-data; name="email[from_address]"
+
+digital-dev@boston.gov
+--WebAppBoundary
+Content-Disposition: form-data; name="email[subject]"
+
+TEST Metrolist Notification Email
+--WebAppBoundary
+Content-Disposition: form-data; name="property_name"
+
+Davids Property
+--WebAppBoundary
+Content-Disposition: form-data; name="new"
+
+1
+--WebAppBoundary
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / inbound
+# @name Incoming Webhook (POSTMARK)
+POST {{url}}/rest/email/postmark/Contactform/inbound
+Content-Type: application/json
+Force-Service: PostmarkService
+
+{
+  "FromName": "Info",
+  "MessageStream": "inbound",
+  "From": "Info@bphc.org",
+  "FromFull": {
+    "Email": "Info@bphc.org",
+    "Name": "Info",
+    "MailboxHash": ""
+  },
+  "To": "\"Boston.gov Contact Form\" <ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov>",
+  "ToFull": [
+    {
+      "Email": "ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov",
+      "Name": "Boston.gov Contact Form",
+      "MailboxHash": ""
+    }
+  ],
+  "Cc": "",
+  "CcFull": [],
+  "Bcc": "",
+  "BccFull": [],
+  "OriginalRecipient": "ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov",
+  "Subject": "Automatic reply: Proper disposal of pathological liquids",
+  "MessageID": "86d5de3d-1672-414b-8d58-291d7edb735f",
+  "ReplyTo": "",
+  "MailboxHash": "",
+  "Date": "Thu, 11 May 2023 20:35:35 +0000",
+  "TextBody": "Thank you for contacting the Boston Public Health Commission (BPHC). We received your email and BPHC staff will respond to your message within three business days. If your email requires a faster response, Boston residents can call:\n\n· BPHC Main Line: (617) 534-5395 (Monday through Friday, 9am to 5pm)\n· Mayor's Hotline: (617) 635-4500 (after 5pm, during the weekends)\n\nDuring the current COVID-19 public health crisis, BPHC continues to protect, preserve, and promote the health and well-being of all Boston residents, particularly the most vulnerable. If you are a Boston resident with questions about COVID-19, you can find the most current information about COVID-19, testing, vaccines and boosters, and best health practices at our website, www.boston.gov/covid19\n\nTo find information about COVID-19 testing sites in Boston, please visit our COVID-19 Testing Site Page: www.boston.gov/covid19-testing\n\nTo find information about COVID-19 vaccine and booster sites in Boston, please visit our COVID-19 Vaccine Page: www.boston.gov/covid19-vaccines\n\nIf you are seeking a replacement COVID-19 vaccine card, you will need to reach out to the vaccine administer directly for a copy of your records. CIC Health administered vaccines at the Reggie Lewis Center Vaccine Site. You may contact them directly with vaccine questions at (888) 623-3830 or by emailing vaccine-support@cic-health.com\n\nFor those living outside Boston please contact the Massachusetts Department of Public Health at (617) 624-6000 or visit their website, www.mass.gov/covid19.\n\nPlease use the following additional resources for assistance:\n\n\n1) Boston residents call Mayor's Health Line: 617-534-5050/ Toll free: 1-800-847-0710 for information about finding a primary care provider; applying for health insurance; food pantries; Boston Public Health School lunch sites; COVID symptoms; COVID19 cleaning practices; when to call your doctor v. emergency room; donating medical supplies; and other related information.\n\n2) Boston residents call \"311\" for information about parking rules and tickets; needle/litter clean up; street cleaning; getting rid of a big item; report a broken street sign; and non-emergency COVID-related issues.\n\n3) Massachusetts residents call \"211\" for information about testing sites; COVID19 symptoms; Latest state-wide orders; benefit programs (SNAP, unemployment), Call2Talk - over the phone behavioral health services/support; and other related information.\n",
+  "HtmlBody": "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n</head>\n<body>\nThank you for contacting the Boston Public Health Commission (BPHC). We received your email and BPHC staff will respond to your message within three business days. If your email requires a faster response, Boston residents can call:<br>\n<br>\n· BPHC Main Line: (617) 534-5395 (Monday through Friday, 9am to 5pm)<br>\n· Mayor's Hotline: (617) 635-4500 (after 5pm, during the weekends)<br>\n<br>\nDuring the current COVID-19 public health crisis, BPHC continues to protect, preserve, and promote the health and well-being of all Boston residents, particularly the most vulnerable. If you are a Boston resident with questions about COVID-19, you can find\n the most current information about COVID-19, testing, vaccines and boosters, and best health practices at our website, www.boston.gov/covid19 &nbsp;<br>\n<br>\nTo find information about COVID-19 testing sites in Boston, please visit our COVID-19 Testing Site Page: www.boston.gov/covid19-testing<br>\n<br>\nTo find information about COVID-19 vaccine and booster sites in Boston, please visit our COVID-19 Vaccine Page: www.boston.gov/covid19-vaccines<br>\n<br>\nIf you are seeking a replacement COVID-19 vaccine card, you will need to reach out to the vaccine administer directly for a copy of your records. CIC Health administered vaccines at the Reggie Lewis Center Vaccine Site. You may contact them directly with vaccine\n questions at (888) 623-3830 or by emailing vaccine-support@cic-health.com<br>\n<br>\nFor those living outside Boston please contact the Massachusetts Department of Public Health at (617) 624-6000 or visit their website, www.mass.gov/covid19.<br>\n<br>\nPlease use the following additional resources for assistance:<br>\n<br>\n<br>\n1) Boston residents call Mayor's Health Line: 617-534-5050/ Toll free: 1-800-847-0710 for information about finding a primary care provider; applying for health insurance; food pantries; Boston Public Health School lunch sites; COVID symptoms; COVID19 cleaning\n practices; when to call your doctor v. emergency room; donating medical supplies; and other related information.<br>\n<br>\n2) Boston residents call &quot;311&quot; for information about parking rules and tickets; needle/litter clean up; street cleaning; getting rid of a big item; report a broken street sign; and non-emergency COVID-related issues.<br>\n<br>\n3) Massachusetts residents call &quot;211&quot; for information about testing sites; COVID19 symptoms; Latest state-wide orders; benefit programs (SNAP, unemployment), Call2Talk - over the phone behavioral health services/support; and other related information.\n</body>\n</html>\n",
+  "StrippedTextReply": "",
+  "RawEmail": "Received: by p-pm-inboundg02c-aws-useast1c.inbound.postmarkapp.com (Postfix, from userid 996)\n\tid 9B88B453CA3; Thu, 11 May 2023 20:35:38 +0000 (UTC)\nX-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on\n\tp-pm-inboundg02c-aws-useast1c\nX-Spam-Status: No\nX-Spam-Score: 1.9\nX-Spam-Tests: DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,FORGED_SPF_HELO,\n\tHTML_MESSAGE,PDS_BAD_THREAD_QP_64,RCVD_IN_DNSWL_NONE,\n\tRCVD_IN_ZEN_BLOCKED_OPENDNS,SPF_HELO_PASS,T_SCC_BODY_TEXT_LINE,\n\tURIBL_DBL_BLOCKED_OPENDNS,URIBL_ZEN_BLOCKED_OPENDNS\nReceived-SPF: pass (gcc02-bl0-obe.outbound.protection.outlook.com: Sender is authorized to use 'GCC02-BL0-obe.outbound.protection.outlook.com' in 'helo' identity (mechanism 'include:spf.protection.outlook.com' matched)) receiver=p-pm-inboundg02c-aws-useast1c; identity=helo; helo=GCC02-BL0-obe.outbound.protection.outlook.com; client-ip=52.100.153.248\nReceived: from GCC02-BL0-obe.outbound.protection.outlook.com (mail-bl0gcc02hn2248.outbound.protection.outlook.com [52.100.153.248])\n\t(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))\n\t(No client certificate requested)\n\tby p-pm-inboundg02c-aws-useast1c.inbound.postmarkapp.com (Postfix) with ESMTPS id 18A04453CA2\n\tfor <ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov>; Thu, 11 May 2023 20:35:38 +0000 (UTC)\nARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;\n b=jj6N9vbdzMkbk8C9u65DF2AFH42m50PODQZzrTWWtjRlzLcxXbYHC8Kp3nBHn5EG9/zxEgNRvRQyY4bbs6ClL0cJ205BwlUVi5asrB/mClpfAryWjcYx63xKL6/lleHujD1lv1AP+v8uZTJjxLun16JrQpQn/0duv9s/MORtiTHVYWBXeRWjfvIz185ady0SySOq/+OOJNTUxAkxsa3Mc7dEB6eN5HuPyHfJ+OKp1ZKkMrsIIs4gsnw51XaRkjSaMPmSOwQQJTNTzupt6JwLG9rLSOEBmq9jIJx+BcyVW9zYDzhcfsbanUN+eNizkNz+Z/CBwTT7SS7O9wc2eOBJJQ==\nARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;\n s=arcselector9901;\n h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;\n bh=KA6k2PkR+L1ueLPEaPoMLGed3YXFrrljNLt+SeQ68gI=;\n b=bTV/qXKJCSV7D8HmtUX2UcxVdAKsJWkyzN3BdwwJQ2S7PgZSlZr3K0Bz0/ELP3P0CUvjXhpjN30I5Td1dhh1QnK9zKtSg7ZDjtEdRoOVBfwutnnM0WdTGl/e1P93WNiUfHfQoLgeUGlwm7fBRPxD005vF3LeV6BgMOxpxy2Bb8PhEeXExw6Xj/jqHgPRsTOBK3QokgzsMT3skT4hed019xME3jqz0Sb9a/n1yGkpOCgijDbAqiaVTpg39z3GlD3iBzWrziT4kEsy0BjrQXclbqJmJkPZJZRuKnLykhY8Qerdq3NbbyVK4swi0euIQO1lDV+bDdwVHNvoB5PQyp2aqQ==\nARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=pass\n action=none header.from=bphc.org; dkim=pass header.d=bphc.org; arc=none\nDKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bphc.org; s=selector2;\n h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;\n bh=KA6k2PkR+L1ueLPEaPoMLGed3YXFrrljNLt+SeQ68gI=;\n b=pY2DTo39+ER8bre34Y2S0lgE++js3gxKb8OBIHjFx2paOwkhJveEBJHJkxkWsrE6A8Uz5FH+ozHZFufhqtpNQwBLZ+mUK5l+YFg+dYlsA8MAM3ZRlbE0Om+hC+WgLYDBwekDBdMJwsJHGzCwyqiHj9qewp9IeqL1AuB586B/L7w=\nReceived: from DM8PR09MB7205.namprd09.prod.outlook.com (2603:10b6:5:2ea::17)\n by SA1PR09MB8987.namprd09.prod.outlook.com (2603:10b6:806:28d::16) with\n Microsoft SMTP Server (version=TLS1_2,\n cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.22; Thu, 11 May\n 2023 20:35:35 +0000\nReceived: from DM8PR09MB7205.namprd09.prod.outlook.com ([::1]) by\n DM8PR09MB7205.namprd09.prod.outlook.com ([fe80::4c61:f919:1a19:e21a%4]) with\n Microsoft SMTP Server id 15.20.6387.020; Thu, 11 May 2023 20:35:35 +0000\nFrom: Info <Info@bphc.org>\nTo: Boston.gov Contact Form <ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov>\nSubject: Automatic reply: Proper disposal of pathological liquids\nThread-Topic: Proper disposal of pathological liquids\nThread-Index: AQHZhEgj+jgKWSu0QUGFLyYcmlnYGa9Vh7ci\nDate: Thu, 11 May 2023 20:35:35 +0000\nMessage-ID:\n <2dca75707c624d9e9fa2ca731155aa34@DM8PR09MB7205.namprd09.prod.outlook.com>\nReferences: <b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>\nIn-Reply-To: <b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>\nX-MS-Has-Attach:\nX-Auto-Response-Suppress: All\nX-MS-Exchange-Inbox-Rules-Loop: info@bphc.org\nX-MS-TNEF-Correlator:\nauthentication-results: dkim=none (message not signed)\n header.d=none;dmarc=none action=none header.from=bphc.org;\nx-ms-exchange-parent-message-id:\n <b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>\nauto-submitted: auto-generated\nx-ms-exchange-generated-message-source: Mailbox Rules Agent\nx-ms-publictraffictype: Email\nx-ms-traffictypediagnostic: DM8PR09MB7205:EE_|SA1PR09MB8987:EE_\nx-ms-office365-filtering-correlation-id: febdd29a-c5c3-4f17-c55a-08db525f4636\nx-ms-exchange-senderadcheck: 1\nx-ms-exchange-antispam-relay: 0\nx-microsoft-antispam: BCL:0;\nx-microsoft-antispam-message-info:\n xAGG2I7C6b/RY4hW+qwrkIoXgwl1ofcFIeVK2ehyn/jQXkJHANV4/yhBBe7T5zX7lYfL5eknK0zN+tzvzVBxqibPBCvxaNsj+CLFNOp097SO3RaePW4Yt88AQM1/O9OSQFOEhEB7qSN35Zqy6VC7/ijKH8aCENL4u6KNayclw/6g31jgAIrHxpiGZZA/mvLy6NNpdsQOUjR85mEvsP1+BirOALWzsmSgSU1peSo0P9vWU3rUWkjMjqtlDzr7Tr2knzTXgq5mR+gDUQ87OHlZms/i4qC5A6Y1BlW5937NGi9Lh4N3wh+I94ak63BT8CwCfIO/XVpMy2AEJaJkholv3D4DzAMFn7y8rkaZi3i3xauUMAuJuFRx5mFjGTFSdCkd8YypUotYToXFGgRpxPjwJFN7swABHgr1t2xhO4JR1LSIE9apqheptYzUZZhv8P77D9WTBozD1aohHZN2S4GY3iwHSPuVrX1pXeXU7Oe+9pb3iHBbfUCQYzn64Hi0gzfK+SMWCPHrJTL6+TCNiR6FkcfwZV0v7TKZDaqrnMUJm1x7yiCWwHHI7umVuE3MUSj9G4dd5har2NP2qhmFWVXYFn242ca0t5adA16jatn71fQ=\nx-forefront-antispam-report:\n CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM8PR09MB7205.namprd09.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(50650200015)(396003)(39830400003)(136003)(366004)(451199021)(42882007)(41300700001)(108616005)(83380400001)(9686003)(6506007)(71200400001)(24736004)(7696005)(508600001)(88996005)(66556008)(64756008)(66476007)(6916009)(66446008)(41320700001)(55016003)(66946007)(78352004)(122000001)(5660300002)(2906002)(15974865002)(40140700001)(8936002)(8676002)(111220200008)(80100003);DIR:OUT;SFP:1501;\nx-ms-exchange-antispam-messagedata-chunkcount: 1\nx-ms-exchange-antispam-messagedata-0:\n +yQivJt1LYRQ9uHQpvCyqgLrQU5JX17Wrv4326Wc8ljS1ti5FFVKUzOxvbecQfyhsr5RePRN+ZaidXzttA2AGq9LHpczP3y51IbuS0l1MInLDAM1d7uyuLsOe6XkB94BUm1UjUFwd0dxrxEcGGwbmhrp1KCIzDgqjVIxOSoeGuIi5EJpX6xL5GJfkrD0ZsF8hat8E6EOrVt/8vBrORb4TMF1qlAHtM8hODwfNF+fzZOMm85CPau9mfe0aT2mbSUYNHIYIBrho12HlcjRu9dSs2PQPGKXmfiLn/3dyZZwC1+fz/DGX6+0y13R6YPwhDJU\nContent-Type: multipart/alternative;\n\tboundary=\"_000_2dca75707c624d9e9fa2ca731155aa34DM8PR09MB7205namprd09pr_\"\nMIME-Version: 1.0\nX-OriginatorOrg: bphc.org\nX-MS-Exchange-CrossTenant-AuthAs: Internal\nX-MS-Exchange-CrossTenant-AuthSource: DM8PR09MB7205.namprd09.prod.outlook.com\nX-MS-Exchange-CrossTenant-Network-Message-Id: febdd29a-c5c3-4f17-c55a-08db525f4636\nX-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2023 20:35:35.5953\n (UTC)\nX-MS-Exchange-CrossTenant-fromentityheader: Hosted\nX-MS-Exchange-CrossTenant-id: ff5b5bc8-925b-471f-942a-eb176c03ab36\nX-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR09MB8987\n\n--_000_2dca75707c624d9e9fa2ca731155aa34DM8PR09MB7205namprd09pr_\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: quoted-printable\n\nThank you for contacting the Boston Public Health Commission (BPHC). We rec=\neived your email and BPHC staff will respond to your message within three b=\nusiness days. If your email requires a faster response, Boston residents ca=\nn call:\n\n=B7 BPHC Main Line: (617) 534-5395 (Monday through Friday, 9am to 5pm)\n=B7 Mayor's Hotline: (617) 635-4500 (after 5pm, during the weekends)\n\nDuring the current COVID-19 public health crisis, BPHC continues to protect=\n, preserve, and promote the health and well-being of all Boston residents, =\nparticularly the most vulnerable. If you are a Boston resident with questio=\nns about COVID-19, you can find the most current information about COVID-19=\n, testing, vaccines and boosters, and best health practices at our website,=\n www.boston.gov/covid19\n\nTo find information about COVID-19 testing sites in Boston, please visit ou=\nr COVID-19 Testing Site Page: www.boston.gov/covid19-testing\n\nTo find information about COVID-19 vaccine and booster sites in Boston, ple=\nase visit our COVID-19 Vaccine Page: www.boston.gov/covid19-vaccines\n\nIf you are seeking a replacement COVID-19 vaccine card, you will need to re=\nach out to the vaccine administer directly for a copy of your records. CIC =\nHealth administered vaccines at the Reggie Lewis Center Vaccine Site. You m=\nay contact them directly with vaccine questions at (888) 623-3830 or by ema=\niling vaccine-support@cic-health.com\n\nFor those living outside Boston please contact the Massachusetts Department=\n of Public Health at (617) 624-6000 or visit their website, www.mass.gov/co=\nvid19.\n\nPlease use the following additional resources for assistance:\n\n\n1) Boston residents call Mayor's Health Line: 617-534-5050/ Toll free: 1-80=\n0-847-0710 for information about finding a primary care provider; applying =\nfor health insurance; food pantries; Boston Public Health School lunch site=\ns; COVID symptoms; COVID19 cleaning practices; when to call your doctor v. =\nemergency room; donating medical supplies; and other related information.\n\n2) Boston residents call \"311\" for information about parking rules and tick=\nets; needle/litter clean up; street cleaning; getting rid of a big item; re=\nport a broken street sign; and non-emergency COVID-related issues.\n\n3) Massachusetts residents call \"211\" for information about testing sites; =\nCOVID19 symptoms; Latest state-wide orders; benefit programs (SNAP, unemplo=\nyment), Call2Talk - over the phone behavioral health services/support; and =\nother related information.\n\n--_000_2dca75707c624d9e9fa2ca731155aa34DM8PR09MB7205namprd09pr_\nContent-Type: text/html; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: quoted-printable\n\n<html>\n<head>\n<meta http-equiv=3D\"Content-Type\" content=3D\"text/html; charset=3Diso-8859-=\n1\">\n</head>\n<body>\nThank you for contacting the Boston Public Health Commission (BPHC). We rec=\neived your email and BPHC staff will respond to your message within three b=\nusiness days. If your email requires a faster response, Boston residents ca=\nn call:<br>\n<br>\n=B7 BPHC Main Line: (617) 534-5395 (Monday through Friday, 9am to 5pm)<br>\n=B7 Mayor's Hotline: (617) 635-4500 (after 5pm, during the weekends)<br>\n<br>\nDuring the current COVID-19 public health crisis, BPHC continues to protect=\n, preserve, and promote the health and well-being of all Boston residents, =\nparticularly the most vulnerable. If you are a Boston resident with questio=\nns about COVID-19, you can find\n the most current information about COVID-19, testing, vaccines and booster=\ns, and best health practices at our website, www.boston.gov/covid19 &nbsp;<=\nbr>\n<br>\nTo find information about COVID-19 testing sites in Boston, please visit ou=\nr COVID-19 Testing Site Page: www.boston.gov/covid19-testing<br>\n<br>\nTo find information about COVID-19 vaccine and booster sites in Boston, ple=\nase visit our COVID-19 Vaccine Page: www.boston.gov/covid19-vaccines<br>\n<br>\nIf you are seeking a replacement COVID-19 vaccine card, you will need to re=\nach out to the vaccine administer directly for a copy of your records. CIC =\nHealth administered vaccines at the Reggie Lewis Center Vaccine Site. You m=\nay contact them directly with vaccine\n questions at (888) 623-3830 or by emailing vaccine-support@cic-health.com<=\nbr>\n<br>\nFor those living outside Boston please contact the Massachusetts Department=\n of Public Health at (617) 624-6000 or visit their website, www.mass.gov/co=\nvid19.<br>\n<br>\nPlease use the following additional resources for assistance:<br>\n<br>\n<br>\n1) Boston residents call Mayor's Health Line: 617-534-5050/ Toll free: 1-80=\n0-847-0710 for information about finding a primary care provider; applying =\nfor health insurance; food pantries; Boston Public Health School lunch site=\ns; COVID symptoms; COVID19 cleaning\n practices; when to call your doctor v. emergency room; donating medical su=\npplies; and other related information.<br>\n<br>\n2) Boston residents call &quot;311&quot; for information about parking rule=\ns and tickets; needle/litter clean up; street cleaning; getting rid of a bi=\ng item; report a broken street sign; and non-emergency COVID-related issues=\n.<br>\n<br>\n3) Massachusetts residents call &quot;211&quot; for information about testi=\nng sites; COVID19 symptoms; Latest state-wide orders; benefit programs (SNA=\nP, unemployment), Call2Talk - over the phone behavioral health services/sup=\nport; and other related information.\n</body>\n</html>\n\n--_000_2dca75707c624d9e9fa2ca731155aa34DM8PR09MB7205namprd09pr_--\n",
+  "Tag": "",
+  "Headers": [
+    {
+      "Name": "Return-Path",
+      "Value": "<MAILER-DAEMON>"
+    },
+    {
+      "Name": "Received",
+      "Value": "by p-pm-inboundg02c-aws-useast1c.inbound.postmarkapp.com (Postfix, from userid 996)\tid 9B88B453CA3; Thu, 11 May 2023 20:35:38 +0000 (UTC)"
+    },
+    {
+      "Name": "X-Spam-Checker-Version",
+      "Value": "SpamAssassin 3.4.0 (2014-02-07) on\tp-pm-inboundg02c-aws-useast1c"
+    },
+    {
+      "Name": "X-Spam-Status",
+      "Value": "No"
+    },
+    {
+      "Name": "X-Spam-Score",
+      "Value": "1.9"
+    },
+    {
+      "Name": "X-Spam-Tests",
+      "Value": "DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,FORGED_SPF_HELO,\tHTML_MESSAGE,PDS_BAD_THREAD_QP_64,RCVD_IN_DNSWL_NONE,\tRCVD_IN_ZEN_BLOCKED_OPENDNS,SPF_HELO_PASS,T_SCC_BODY_TEXT_LINE,\tURIBL_DBL_BLOCKED_OPENDNS,URIBL_ZEN_BLOCKED_OPENDNS"
+    },
+    {
+      "Name": "Received-SPF",
+      "Value": "pass (gcc02-bl0-obe.outbound.protection.outlook.com: Sender is authorized to use 'GCC02-BL0-obe.outbound.protection.outlook.com' in 'helo' identity (mechanism 'include:spf.protection.outlook.com' matched)) receiver=p-pm-inboundg02c-aws-useast1c; identity=helo; helo=GCC02-BL0-obe.outbound.protection.outlook.com; client-ip=52.100.153.248"
+    },
+    {
+      "Name": "Received",
+      "Value": "from GCC02-BL0-obe.outbound.protection.outlook.com (mail-bl0gcc02hn2248.outbound.protection.outlook.com [52.100.153.248])\t(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))\t(No client certificate requested)\tby p-pm-inboundg02c-aws-useast1c.inbound.postmarkapp.com (Postfix) with ESMTPS id 18A04453CA2\tfor <ZGF2aWQudXB0b25AYm9zdG9uLmdvdg==@web-inbound.boston.gov>; Thu, 11 May 2023 20:35:38 +0000 (UTC)"
+    },
+    {
+      "Name": "ARC-Seal",
+      "Value": "i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; b=jj6N9vbdzMkbk8C9u65DF2AFH42m50PODQZzrTWWtjRlzLcxXbYHC8Kp3nBHn5EG9/zxEgNRvRQyY4bbs6ClL0cJ205BwlUVi5asrB/mClpfAryWjcYx63xKL6/lleHujD1lv1AP+v8uZTJjxLun16JrQpQn/0duv9s/MORtiTHVYWBXeRWjfvIz185ady0SySOq/+OOJNTUxAkxsa3Mc7dEB6eN5HuPyHfJ+OKp1ZKkMrsIIs4gsnw51XaRkjSaMPmSOwQQJTNTzupt6JwLG9rLSOEBmq9jIJx+BcyVW9zYDzhcfsbanUN+eNizkNz+Z/CBwTT7SS7O9wc2eOBJJQ=="
+    },
+    {
+      "Name": "ARC-Message-Signature",
+      "Value": "i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; s=arcselector9901; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1; bh=KA6k2PkR+L1ueLPEaPoMLGed3YXFrrljNLt+SeQ68gI=; b=bTV/qXKJCSV7D8HmtUX2UcxVdAKsJWkyzN3BdwwJQ2S7PgZSlZr3K0Bz0/ELP3P0CUvjXhpjN30I5Td1dhh1QnK9zKtSg7ZDjtEdRoOVBfwutnnM0WdTGl/e1P93WNiUfHfQoLgeUGlwm7fBRPxD005vF3LeV6BgMOxpxy2Bb8PhEeXExw6Xj/jqHgPRsTOBK3QokgzsMT3skT4hed019xME3jqz0Sb9a/n1yGkpOCgijDbAqiaVTpg39z3GlD3iBzWrziT4kEsy0BjrQXclbqJmJkPZJZRuKnLykhY8Qerdq3NbbyVK4swi0euIQO1lDV+bDdwVHNvoB5PQyp2aqQ=="
+    },
+    {
+      "Name": "ARC-Authentication-Results",
+      "Value": "i=1; mx.microsoft.com 1; spf=none; dmarc=pass action=none header.from=bphc.org; dkim=pass header.d=bphc.org; arc=none"
+    },
+    {
+      "Name": "DKIM-Signature",
+      "Value": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=bphc.org; s=selector2; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck; bh=KA6k2PkR+L1ueLPEaPoMLGed3YXFrrljNLt+SeQ68gI=; b=pY2DTo39+ER8bre34Y2S0lgE++js3gxKb8OBIHjFx2paOwkhJveEBJHJkxkWsrE6A8Uz5FH+ozHZFufhqtpNQwBLZ+mUK5l+YFg+dYlsA8MAM3ZRlbE0Om+hC+WgLYDBwekDBdMJwsJHGzCwyqiHj9qewp9IeqL1AuB586B/L7w="
+    },
+    {
+      "Name": "Received",
+      "Value": "from DM8PR09MB7205.namprd09.prod.outlook.com (2603:10b6:5:2ea::17) by SA1PR09MB8987.namprd09.prod.outlook.com (2603:10b6:806:28d::16) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.22; Thu, 11 May 2023 20:35:35 +0000"
+    },
+    {
+      "Name": "Received",
+      "Value": "from DM8PR09MB7205.namprd09.prod.outlook.com ([::1]) by DM8PR09MB7205.namprd09.prod.outlook.com ([fe80::4c61:f919:1a19:e21a%4]) with Microsoft SMTP Server id 15.20.6387.020; Thu, 11 May 2023 20:35:35 +0000"
+    },
+    {
+      "Name": "Thread-Topic",
+      "Value": "Proper disposal of pathological liquids"
+    },
+    {
+      "Name": "Thread-Index",
+      "Value": "AQHZhEgj+jgKWSu0QUGFLyYcmlnYGa9Vh7ci"
+    },
+    {
+      "Name": "Message-ID",
+      "Value": "<2dca75707c624d9e9fa2ca731155aa34@DM8PR09MB7205.namprd09.prod.outlook.com>"
+    },
+    {
+      "Name": "References",
+      "Value": "<b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>"
+    },
+    {
+      "Name": "In-Reply-To",
+      "Value": "<b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>"
+    },
+    {
+      "Name": "X-MS-Has-Attach",
+      "Value": ""
+    },
+    {
+      "Name": "X-Auto-Response-Suppress",
+      "Value": "All"
+    },
+    {
+      "Name": "X-MS-Exchange-Inbox-Rules-Loop",
+      "Value": "info@bphc.org"
+    },
+    {
+      "Name": "X-MS-TNEF-Correlator",
+      "Value": ""
+    },
+    {
+      "Name": "authentication-results",
+      "Value": "dkim=none (message not signed) header.d=none;dmarc=none action=none header.from=bphc.org;"
+    },
+    {
+      "Name": "x-ms-exchange-parent-message-id",
+      "Value": "<b6c6e2f3-b1bb-4784-b27f-c3772103eecf@mtasv.net>"
+    },
+    {
+      "Name": "auto-submitted",
+      "Value": "auto-generated"
+    },
+    {
+      "Name": "x-ms-exchange-generated-message-source",
+      "Value": "Mailbox Rules Agent"
+    },
+    {
+      "Name": "x-ms-publictraffictype",
+      "Value": "Email"
+    },
+    {
+      "Name": "x-ms-traffictypediagnostic",
+      "Value": "DM8PR09MB7205:EE_|SA1PR09MB8987:EE_"
+    },
+    {
+      "Name": "x-ms-office365-filtering-correlation-id",
+      "Value": "febdd29a-c5c3-4f17-c55a-08db525f4636"
+    },
+    {
+      "Name": "x-ms-exchange-senderadcheck",
+      "Value": "1"
+    },
+    {
+      "Name": "x-ms-exchange-antispam-relay",
+      "Value": "0"
+    },
+    {
+      "Name": "x-microsoft-antispam",
+      "Value": "BCL:0;"
+    },
+    {
+      "Name": "x-microsoft-antispam-message-info",
+      "Value": "xAGG2I7C6b/RY4hW+qwrkIoXgwl1ofcFIeVK2ehyn/jQXkJHANV4/yhBBe7T5zX7lYfL5eknK0zN+tzvzVBxqibPBCvxaNsj+CLFNOp097SO3RaePW4Yt88AQM1/O9OSQFOEhEB7qSN35Zqy6VC7/ijKH8aCENL4u6KNayclw/6g31jgAIrHxpiGZZA/mvLy6NNpdsQOUjR85mEvsP1+BirOALWzsmSgSU1peSo0P9vWU3rUWkjMjqtlDzr7Tr2knzTXgq5mR+gDUQ87OHlZms/i4qC5A6Y1BlW5937NGi9Lh4N3wh+I94ak63BT8CwCfIO/XVpMy2AEJaJkholv3D4DzAMFn7y8rkaZi3i3xauUMAuJuFRx5mFjGTFSdCkd8YypUotYToXFGgRpxPjwJFN7swABHgr1t2xhO4JR1LSIE9apqheptYzUZZhv8P77D9WTBozD1aohHZN2S4GY3iwHSPuVrX1pXeXU7Oe+9pb3iHBbfUCQYzn64Hi0gzfK+SMWCPHrJTL6+TCNiR6FkcfwZV0v7TKZDaqrnMUJm1x7yiCWwHHI7umVuE3MUSj9G4dd5har2NP2qhmFWVXYFn242ca0t5adA16jatn71fQ="
+    },
+    {
+      "Name": "x-forefront-antispam-report",
+      "Value": "CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM8PR09MB7205.namprd09.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(50650200015)(396003)(39830400003)(136003)(366004)(451199021)(42882007)(41300700001)(108616005)(83380400001)(9686003)(6506007)(71200400001)(24736004)(7696005)(508600001)(88996005)(66556008)(64756008)(66476007)(6916009)(66446008)(41320700001)(55016003)(66946007)(78352004)(122000001)(5660300002)(2906002)(15974865002)(40140700001)(8936002)(8676002)(111220200008)(80100003);DIR:OUT;SFP:1501;"
+    },
+    {
+      "Name": "x-ms-exchange-antispam-messagedata-chunkcount",
+      "Value": "1"
+    },
+    {
+      "Name": "x-ms-exchange-antispam-messagedata-0",
+      "Value": "+yQivJt1LYRQ9uHQpvCyqgLrQU5JX17Wrv4326Wc8ljS1ti5FFVKUzOxvbecQfyhsr5RePRN+ZaidXzttA2AGq9LHpczP3y51IbuS0l1MInLDAM1d7uyuLsOe6XkB94BUm1UjUFwd0dxrxEcGGwbmhrp1KCIzDgqjVIxOSoeGuIi5EJpX6xL5GJfkrD0ZsF8hat8E6EOrVt/8vBrORb4TMF1qlAHtM8hODwfNF+fzZOMm85CPau9mfe0aT2mbSUYNHIYIBrho12HlcjRu9dSs2PQPGKXmfiLn/3dyZZwC1+fz/DGX6+0y13R6YPwhDJU"
+    },
+    {
+      "Name": "MIME-Version",
+      "Value": "1.0"
+    },
+    {
+      "Name": "X-OriginatorOrg",
+      "Value": "bphc.org"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-AuthAs",
+      "Value": "Internal"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-AuthSource",
+      "Value": "DM8PR09MB7205.namprd09.prod.outlook.com"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-Network-Message-Id",
+      "Value": "febdd29a-c5c3-4f17-c55a-08db525f4636"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-originalarrivaltime",
+      "Value": "11 May 2023 20:35:35.5953 (UTC)"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-fromentityheader",
+      "Value": "Hosted"
+    },
+    {
+      "Name": "X-MS-Exchange-CrossTenant-id",
+      "Value": "ff5b5bc8-925b-471f-942a-eb176c03ab36"
+    },
+    {
+      "Name": "X-MS-Exchange-Transport-CrossTenantHeadersStamped",
+      "Value": "SA1PR09MB8987"
+    }
+  ],
+  "Attachments": []
+}
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent.", "Response message is not 'Message sent.'");
+  });
+%}
+
+###
+# group: bos_email / Cancel
+# @name Cancel Scheduled Email: Bearer Token
+POST {{url}}/rest/email_cancel/sanitation
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+    "id": "{{sanitation_email_id}}"
+}
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status == 200, "Response HTTP Code is not 200");
+  });
+  client.global.clear("sanitation_email_id");
+  %}
+
+###
+# group: bos_email / fail-test
+# @name Bad Session Token
+POST {{url}}/rest/email_session/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/x-www-form-urlencoded
+Force-Service: {{ force_email_service }}
+
+email[token_session] = bad-session-token &
+email[to_address] = {{email_test_recipient}} &
+email[name] = Valid Email Recipient &
+email[from_address] = digital-dev@boston.gov &
+email[subject] = SHOULD NOT APPEAR IN POSTMARK &
+email[message] = This message is sent with a bad session token. &
+email[url] = https://www.boston.goc/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] =
+
+> {%
+  // TODO: migrate to HTTP Client Response handler API
+  // pm.test("Status code is 401", function () {
+  //     pm.response.to.have.status(403);
+  // });
+  // pm.test("Status is 'error'", function () {
+  //     pm.expect(pm.response.text()).to.include("error");
+  // });
+  // pm.test("Response is 'could not authenticate'", function () {
+  //     pm.expect(pm.response.text()).to.include("invalid token");
+  // });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Bad/No token in sanitation
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token asdfghjklqwertyui
+Force-Service: {{ force_email_service }}
+
+{
+  "to_address": "{{email_test_recipient}}",
+  "from_address": "Sanitation <someone@boston.gov>",
+  "subject": "Sanitation Confirmation",
+  "message": "We are pleased to confirm your pickup",
+  "type": "confirmation"
+}
+
+> {%
+  client.test("Status code is 401", function () {
+    client.assert(response.status == 401, "Response HTTP Code is not 401");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response - could not authenticate", function () {
+    client.assert(response.body.response == "could not authenticate", "Response status field is not 'could not authenticate'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Bad Scheduled Date: Bearer Token
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+    "to_address": "{{email_test_recipient}}",
+    "from_address": "Sanitation <someone@boston.gov>",
+    "subject": "Sanitation Confirmation",
+    "message": "We are pleased to confirm your pickup",
+    "type": "reminder1",
+    "senddatetime": "not a date"
+}
+
+> {%
+  client.test("Status code is 400", function () {
+    client.assert(response.status == 400, "Response HTTP Code is not 400");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "error", "Response status field is not 'error'");
+    client.assert(response.body.response == "Could not evaluate scheduled date.", "Response message is not 'Could not evaluate scheduled date.'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Past Scheduled Date: Bearer Token
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+    "to_address": "{{email_test_recipient}}",
+    "from_address": "Sanitation <someone@boston.gov>",
+    "subject": "Sanitation Confirmation",
+    "message": "We are pleased to confirm your pickup",
+    "type": "reminder1",
+    "senddatetime": "-1 week"
+}
+
+> {%
+  client.test("Status code is 400", function () {
+    client.assert(response.status == 400, "Response HTTP Code is not 400");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "error", "Response status field is not 'error'");
+    client.assert(response.body.response == "Scheduled date is in the past.", "Response message is not 'Scheduled date is in the past.'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name >400 day Scheduled Date: Bearer Token
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+    "to_address": "{{email_test_recipient}}",
+    "from_address": "Sanitation <someone@boston.gov>",
+    "subject": "Sanitation Confirmation",
+    "message": "We are pleased to confirm your pickup",
+    "type": "reminder1",
+    "senddatetime": "+401 days"
+}
+
+> {%
+  client.test("Status code is 400", function () {
+    client.assert(response.status == 400, "Response HTTP Code is not 400");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "error", "Response status field is not 'error'");
+    client.assert(response.body.response == "Emails can only be scheduled up to 400 days in advance.", "Response message is not 'Emails can only be scheduled up to 400 days in advance.'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Missing Bearer Token
+POST {{url}}/rest/email/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/x-www-form-urlencoded
+Force-Service: {{ force_email_service }}
+
+email[to_address] = {{email_test_recipient}} &
+email[name] = Valid Email Recipient &
+email[from_address] = digital-dev@boston.gov &
+email[subject] = SHOULD NOT APPEAR IN POSTMARK &
+email[message] = This message is sent with a bad token. &
+email[url] = https://www.boston.gov/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] =
+
+> {%
+  client.test("Status code is 401", function () {
+    client.assert(response.status == 401, "Response HTTP Code is not 401");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response - could not authenticate", function () {
+    client.assert(response.body.response == "could not authenticate", "Response status field is not 'could not authenticate'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Blocked User: ONLY POSTMARK
+POST {{url}}/rest/email/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+#X-PM-Bounce-Type: hardbounce
+Content-Type: application/x-www-form-urlencoded
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: PostmarkService
+
+email[to_address] = blocked@boston.gov &
+email[name] = Blocked Email Recipient &
+email[from_address] = HardBounce@bounce-testing.postmarkapp.com &
+email[subject] = SHOULD NOT APPEAR IN POSTMARK &
+email[message] = This message is sent to a blocked user. &
+email[url] = https://www.boston.gov/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] =
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message queued.", "Response message is not 'Message queued.'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Honeypot Fail
+POST {{url}}/rest/email/contactform
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/x-www-form-urlencoded
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+email[to_address] = {{email_test_recipient}} &
+email[name] = Test Person &
+email[from_address] = digital-dev@boston.gov &
+email[subject] = SHOULD NOT APPEAR IN POSTMARK &
+email[message] = This email has a value in the honeypot &
+email[url] = https://www.boston.gov/somepage &
+email[browser] = PostmanRuntime/7.29.2 &
+email[contact] = should be empty
+
+> {%
+  client.test("Status code is 200", function () {
+    client.assert(response.status ==200, "Response HTTP Code is not 200");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "success", "Response status field is not 'success'");
+    client.assert(response.body.response == "Message sent!", "Response message is not 'Message sent!'");
+  });
+%}
+
+###
+# group: bos_email / fail-test
+# @name Bad email
+POST {{url}}/rest/email/sanitation
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+Authorization: Token {{bos_email_bearer_token}}
+Force-Service: {{ force_email_service }}
+
+{
+  "to_address": "bademail.com",
+  "from_address": "Sanitation <someone@boston.gov>",
+  "subject": "Sanitation Confirmation",
+  "message": "We are pleased to confirm your pickup",
+  "type": "confirmation"
+}
+
+> {%
+  client.test("Status code is 400", function () {
+    client.assert(response.status == 400, "Response HTTP Code is not 400");
+  });
+  client.test("Response is json", function () {
+    var type = response.contentType.mimeType;
+    client.assert(type === "application/json", "Expected 'application/json' but received '" + type + "'");
+  });
+  client.test("Expected Response format", function () {
+    client.assert(response.body.status == "error", "Response status field is not 'error'");
+    client.assert(response.body.response.indexOf("email is not valid") != false, "Response does not report a bad email address");
+  });
+%}

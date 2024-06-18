@@ -1,0 +1,21 @@
+uuid: 1caf81ac-56cf-4ae7-a074-aeebe946c8fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote
+    - paragraphs.paragraphs_type.quote
+_core:
+  default_config_hash: BzItQ4E8v50acOMxdMsYTXE4fV37lKuJexlfyQ8KGXE
+id: paragraph.quote.field_quote
+field_name: field_quote
+entity_type: paragraph
+bundle: quote
+label: Quote
+description: 'Enter the quotation. Note the max length is 101 characters. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 6dcfb208-0f1b-41cd-a151-c1255f1af37c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_meeting_end_time
+    - node.type.bh_meeting
+  module:
+    - datetime
+id: node.bh_meeting.field_bh_meeting_end_time
+field_name: field_bh_meeting_end_time
+entity_type: node
+bundle: bh_meeting
+label: 'Meeting End Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

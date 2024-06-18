@@ -1,0 +1,15 @@
+uuid: 96fe8d3c-2add-463d-9aa4-088692f209df
+langcode: en
+status: true
+dependencies: {  }
+name: intro_image_large_1x
+label: 'Intro image d-large 1x (1920x528)'
+effects:
+  8a791aa7-f52a-416b-852e-58d6d57637b0:
+    uuid: 8a791aa7-f52a-416b-852e-58d6d57637b0
+    id: image_scale_and_crop
+    weight: 4
+    data:
+      width: 1920
+      height: 528
+      anchor: center-bottom

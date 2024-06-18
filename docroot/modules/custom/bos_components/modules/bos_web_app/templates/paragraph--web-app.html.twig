@@ -1,0 +1,70 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $webapp_anchor: array of attributes to place in the web_apps actual anchor.
+ * - $autorun: a javascript string to be inserted onmto the page, and which will
+ *            fire when the DOMContent is loaded. This is useful to call a
+ *            function needed to initialize the webapp, or to pass/set a variable
+ *            in the webapp.
+ *
+#}
+
+{% if not webapp_anchor %}
+  {% set webapp_anchor = {'id': 'web-app'} %}
+{% endif %}
+{% set webapp_attributes = create_attribute(webapp_anchor) %}
+
+{% if autorun %}
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",
+      function () { {{ autorun|raw }} }
+    );
+  </script>
+{% endif %}
+
+{#  Adds an anchor to the immediate top of the web-app anchor which apps can use for scrolling etc #}
+<a href="javascript:void(0)" id="web-app-top-anchor" class="subnav-anchor"></a>
+
+<div {{ attributes }} >
+  {% if content.field_component_title and (content.field_hide_title_bar["#items"] and content.field_hide_title_bar["#items"][0].value == 0) %}
+    <div class="b-c">
+      <div {{ create_attribute({'class': ['sh', section_header_theme]}) }}>
+
+        {{ title_prefix }}
+
+        {{ content.field_component_title }}
+
+        {{ title_suffix }}
+
+        {% if content.field_contact %}
+          <div class="sh-contact">
+            {{ content.field_contact }}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  {% else %}
+    <div class="m-t300"></div>
+  {% endif %}
+  <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
+	  <div{{ webapp_attributes }}>
+		  <div class="supporting-text"><img src="/{{ module_path }}/images/spinner.gif" style="margin-top: 10px;padding-right: 5px;height: 28px;float:left"/> Loading ...</div>
+   </div>
+	</div>
+</div>

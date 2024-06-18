@@ -1,0 +1,20 @@
+uuid: a227fa4f-a81c-4030-aa47-786ef530929b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_summary
+_core:
+  default_config_hash: 7ZdmEzk8VgMv5V_DT9fwBh_u0F1zIK5pAjedRu4_FK8
+id: paragraph.commission_summary.created
+field_name: created
+entity_type: paragraph
+bundle: commission_summary
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

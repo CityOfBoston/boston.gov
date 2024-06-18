@@ -1,0 +1,6 @@
+name: Boston.gov
+type: profile
+description: 'Profile for boston.gov public site.'
+core_version_requirement: ^8 || ^9 || ^10
+package: boston
+# do not add dependencies or themes in here, use configuration files.

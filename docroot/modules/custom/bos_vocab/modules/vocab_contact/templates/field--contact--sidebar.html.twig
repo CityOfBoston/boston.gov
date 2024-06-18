@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ *   Template for contact info in the sidebar area of a content type.
+ *
+ * This template is selected by suggestion in the content type calling this:
+ * e.g. department_profile_theme_suggestions_field_alter()
+ * Variable detail is set in vocab preprocess for vocab_contact:
+ * i.e. vocab_contact_preprocess_field()
+ */
+#}
+<div class="detail-item detail-item--middle detail-item__{{ field_name }}">
+  <img src="https://patterns.boston.gov/images/global/icons/{{ detail.icon }}.svg" class="icon {{ detail.icon }} sb-ic" alt="{{ detail.icon }}" />
+  <div class="detail-item__body--secondary">
+    <span class="sb-d"> <a href="tel:{{ detail.text }}">{{ detail.text }}</a></span>
+  </div>
+</div>

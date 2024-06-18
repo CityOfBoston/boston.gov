@@ -1,0 +1,7 @@
+name: 'Google Cloud API'
+type: module
+description: 'Internal API for implementations of the Google Cloud Platform'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies: { }
+config_devel: { }

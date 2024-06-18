@@ -1,0 +1,87 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+
+{% set photo_container_classes = ['ph'] %}
+{% set credit_classes = ['t--info'] %}
+
+{% if
+  content.field_component_title['#items'].getValue()
+  or content.field_photo_caption['#items'].getValue()
+  or content.field_photo_credit['#items'].getValue()
+  or cta
+%}
+  {% set has_caption = TRUE %}
+  {% set photo_container_classes = photo_container_classes|merge(['ph--wc']) %}
+{% endif %}
+
+{% if content.field_link['#items'].getValue() %}
+  {% set credit_classes = credit_classes|merge(['m-b200']) %}
+{% endif %}
+
+<div {{ attributes.addClass('b b--fw') }}>
+
+  <div {{ create_attribute({'class': photo_container_classes}) }}>
+
+    {{ content.display_image }}
+
+    {% if title_prefix or title_suffix %}
+        {{ title_prefix }}
+        {{ title_suffix }}
+    {% endif %}
+
+    {% if has_caption %}
+
+      <div class="ph-c p-a600">
+
+        {% if content.field_component_title['#items'].getValue() %}
+          <div class="h2 tt-u m-b200">
+            {{ content.field_component_title }}
+          </div>
+        {% endif %}
+
+        {% if content.field_photo_caption['#items'].getValue() %}
+          <div class="t--info m-b200">
+            {{ content.field_photo_caption }}
+          </div>
+        {% endif %}
+
+        {% if content.field_photo_credit['#items'].getValue() %}
+          <div {{ create_attribute({'class': credit_classes}) }}>
+            {{ content.field_photo_credit }}
+          </div>
+        {% endif %}
+
+        {% if cta %}
+          {{ cta }}
+        {% endif %}
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>

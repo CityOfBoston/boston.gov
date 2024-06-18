@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Theme override of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+ #}
+
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+{{ q }}
+{% endif %}
+
+<div class="co views-exposed-topbar">
+  <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden=true>
+  <label for="collapsible" class="co-t">Filter</label>
+  <div class="co-b p-t200 p-a000--s view-filters">
+    {% for i,filter in form['#info'] %}
+      {% set filter_name = filter.value %}
+      <div class="dr dr--sm">
+        <button type="button" aria-expanded="true/false" aria-controls="drawer-<?php print $i; ?>" class="drawer-trigger dr-h">
+          <div class="drawer-trigger-chevron xdr-ic"></div>
+          Filter by {{ filter.label }}
+        </button>
+        <div id="drawer-{{ i }}" class="dr-c drawer">
+          <div id="{{ form[filter_name]['#id'] }}-wrapper" class="views-exposed-widget views-widget-{{ form[filter_name]['#id'] }}">
+            <div class="views-widget">
+              {{ form[filter_name] }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% if sort_by %}
+      <div class="views-exposed-widget views-widget-sort-by">
+        {{ sort_by }}
+      </div>
+      <div class="views-exposed-widget views-widget-sort-order">
+        {{ sort_order }}
+      </div>
+    {% endif %}
+    {% if items_per_page %}
+      <div class="views-exposed-widget views-widget-per-page">
+        {{ items_per_page }}
+      </div>
+    {% endif %}
+    {% if offset %}
+      <div class="views-exposed-widget views-widget-offset">
+        {{ offset }}
+      </div>
+    {% endif %}
+    {% if form.actions.submit %}
+      <div class="views-exposed-widget views-submit-button">
+        {{ form.actions.submit }}
+      </div>
+    {% endif %}
+    {% if form.actions.reset %}
+      <div class="views-exposed-widget views-reset-button">
+        {{ form.actions.reset }}
+      </div>
+    {% endif %}
+  </div>
+</div>

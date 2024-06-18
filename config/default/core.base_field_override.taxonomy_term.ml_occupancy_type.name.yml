@@ -1,0 +1,18 @@
+uuid: 912ed5b8-06cf-4514-bbe9-62145a8d3fd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+id: taxonomy_term.ml_occupancy_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: ml_occupancy_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,52 @@
+uuid: 31dd5b6f-8ad0-4ce8-98b3-3c091b82bc87
+langcode: en
+status: true
+dependencies: {  }
+id: local
+label: Local
+description: 'Configurations for local-docker development'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/local
+module:
+  admin_toolbar_search: 0
+  automated_cron: 0
+  config_devel: 0
+  dblog: 0
+  devel: 0
+  environment_indicator_ui: 0
+  geolocation_demo: 0
+  maillog: 0
+  masquerade: 0
+  migrate: 0
+  salesforce_logger: 0
+  samlauth: 0
+  samlauth_user_roles: 0
+  stage_file_proxy: 0
+  syslog: 0
+  twig_xdebug: 0
+  upgrade_status: 0
+theme: {  }
+complete_list:
+  - bos_pdfmanager.settings
+  - bos_sql.settings
+  - bos_theme.settings
+  - config_ignore.settings
+  - mailsystem.settings
+  - mimemail.settings
+  - salesforce_logger.settings
+  - samlauth.authentication
+  - system.mail
+  - views.view.samlauth_map
+  - samlauth_user_roles.mapping
+partial_list:
+  - ape.settings
+  - environment_indicator.indicator
+  - key.key.salesforce_sandbox_oauth_consumer_key
+  - key.key.salesforce_sandbox_oauth_consumer_secret
+  - metatag.metatag_defaults.global
+  - system.performance
+  - system.site
+  - 'paragraphs.paragraphs_type.*'

@@ -1,0 +1,25 @@
+uuid: f994df75-1abd-4cb7-99ef-66c1d433585c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_neighborhood
+    - node.type.place_profile
+_core:
+  default_config_hash: bnhvMkuLxYBeVVXsO40vpT-miM2Fr97Z2fW9I01Op70
+id: node.place_profile.field_place_neighborhood
+field_name: field_place_neighborhood
+entity_type: node
+bundle: place_profile
+label: Neighborhood
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

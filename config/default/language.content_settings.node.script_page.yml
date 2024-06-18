@@ -1,0 +1,20 @@
+uuid: 8f73005a-cdb6-4656-9955-9c2c7da3c636
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: z_TKTtJEW8mdlvqQbE5_CJLf1Pz8K7ImsC9A3HdxTxs
+id: node.script_page
+target_entity_type_id: node
+target_bundle: script_page
+default_langcode: site_default
+language_alterable: false

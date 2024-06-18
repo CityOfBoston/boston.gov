@@ -1,0 +1,20 @@
+uuid: 4a1d26ea-fe45-49f6-8587-7046a1e929f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: vmxOLJi-he2gMvteqqgTl4A6WK87C4nPQC5NH2uCDWY
+id: node.place_profile
+target_entity_type_id: node
+target_bundle: place_profile
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,17 @@
+uuid: 2a2138cf-c48e-41e9-8ee3-9e69e690a90e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Site Alert'
+type: site_alert
+description: 'Creates a site alert which can be shown across the boston.gov site.'
+help: 'The site alert is used to inform constituents of something important on every page of the site. It displays below the header in either blue or red.'
+new_revision: true
+preview_mode: 1
+display_submitted: false

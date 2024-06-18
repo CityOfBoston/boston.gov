@@ -1,0 +1,8 @@
+uuid: b0551e7b-db53-44c1-a375-8c87b6f5be99
+langcode: en
+status: true
+dependencies: {  }
+id: date_format_medium
+label: 'Medium Date'
+locked: false
+pattern: 'D, m/d/Y - g:ia'

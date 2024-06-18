@@ -1,0 +1,21 @@
+uuid: 56f0bb93-d9e5-4e33-9d25-730d7ba792a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_construct_complete_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_construct_complete_date
+field_name: field_bh_construct_complete_date
+entity_type: node
+bundle: bh_project
+label: 'Construction Complete Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

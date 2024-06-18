@@ -1,0 +1,20 @@
+uuid: 11414b1b-6583-436c-8316-353361c0efc8
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+  module:
+    - text
+id: taxonomy_term.political_party.description
+field_name: description
+entity_type: taxonomy_term
+bundle: political_party
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

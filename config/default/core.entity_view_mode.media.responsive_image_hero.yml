@@ -1,0 +1,15 @@
+uuid: 123a56b2-4d27-4eb9-be13-b44cdbd0c999
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'For the hero paragraph.'
+id: media.responsive_image_hero
+label: 'Hero (resp)'
+description: ''
+targetEntityType: media
+cache: true

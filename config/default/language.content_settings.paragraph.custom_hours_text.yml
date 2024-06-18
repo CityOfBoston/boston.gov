@@ -1,0 +1,20 @@
+uuid: 977378f7-e448-4ad1-93e9-d6f412a35788
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.custom_hours_text
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: ByW4oRco7Kr99ym4fM_iOrmE4h0rPhkoupTjFW3y51M
+id: paragraph.custom_hours_text
+target_entity_type_id: paragraph
+target_bundle: custom_hours_text
+default_langcode: site_default
+language_alterable: false

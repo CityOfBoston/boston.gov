@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:0170a898-a4b1-4bf1-b635-4e6a9b63f372'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: sites/default/files/paragraphs_type_icon/custom_hours_icon.svg
+id: custom_hours_text
+label: 'Custom Hours Text'
+icon_uuid: 0170a898-a4b1-4bf1-b635-4e6a9b63f372
+icon_default: null
+description: 'Migrated from paragraph bundle Custom Hours Text'
+behavior_plugins: {  }

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:482c71f5-91bc-40d2-8192-39f8a95736fe'
+id: drawers
+label: Drawers
+icon_uuid: 482c71f5-91bc-40d2-8192-39f8a95736fe
+icon_default: null
+description: 'Migrated from paragraph bundle Drawers'
+behavior_plugins: {  }

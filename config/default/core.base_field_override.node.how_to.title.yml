@@ -1,0 +1,18 @@
+uuid: 8d2e9c31-32b2-4cac-aaac-b441927864bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.how_to
+id: node.how_to.title
+field_name: title
+entity_type: node
+bundle: how_to
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

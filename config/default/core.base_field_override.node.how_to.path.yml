@@ -1,0 +1,20 @@
+uuid: f60f37b9-cfe4-477d-8532-4032c6c177b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.how_to
+  module:
+    - path
+id: node.how_to.path
+field_name: path
+entity_type: node
+bundle: how_to
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

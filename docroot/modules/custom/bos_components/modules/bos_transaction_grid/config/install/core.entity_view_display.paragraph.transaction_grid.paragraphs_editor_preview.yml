@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.transaction_grid.field_component_title
+    - field.field.paragraph.transaction_grid.field_contact
+    - field.field.paragraph.transaction_grid.field_short_title
+    - field.field.paragraph.transaction_grid.field_transactions
+    - paragraphs.paragraphs_type.transaction_grid
+id: paragraph.transaction_grid.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: transaction_grid
+mode: paragraphs_editor_preview
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_contact: true
+  field_short_title: true
+  field_transactions: true

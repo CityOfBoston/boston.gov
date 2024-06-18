@@ -1,0 +1,21 @@
+uuid: 7e40afae-98b5-469e-a7a0-fc10b9cb7a18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_photo_credit
+    - paragraphs.paragraphs_type.photo
+_core:
+  default_config_hash: lDbprU1aj8USrfZqBPxEyu1O7619CWAZNIBq1h0IgE0
+id: paragraph.photo.field_photo_credit
+field_name: field_photo_credit
+entity_type: paragraph
+bundle: photo
+label: 'Photo Credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

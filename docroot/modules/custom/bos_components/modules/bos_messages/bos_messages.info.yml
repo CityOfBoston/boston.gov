@@ -1,0 +1,28 @@
+name: bos_messages
+type: module
+description: 'Provides theming and configuration for bos_messages.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - date_recur
+  - paragraphs
+'interface translation project': bos_messages
+'interface translation server pattern': modules/custom/bos_components/modules/bos_messages/translations/bos_messages.%language.po
+config_devel:
+  - core.base_field_override.paragraph.message_for_the_day.created
+  - core.base_field_override.paragraph.message_for_the_day.status
+  - core.entity_form_display.paragraph.message_for_the_day.default
+  - core.entity_view_display.paragraph.message_for_the_day.default
+  - core.entity_view_display.paragraph.message_for_the_day.listing
+  - core.entity_view_display.paragraph.message_for_the_day.paragraphs_editor_preview
+  - date_recur.interpreter.default_interpreter
+  - field.field.paragraph.message_for_the_day.field_enabled
+  - field.field.paragraph.message_for_the_day.field_link
+  - field.field.paragraph.message_for_the_day.field_message
+  - field.field.paragraph.message_for_the_day.field_recurrence
+  - field.field.paragraph.message_for_the_day.field_use_alert
+  - field.field.paragraph.message_for_the_day.field_short_description
+  - language.content_settings.paragraph.message_for_the_day
+  - paragraphs.paragraphs_type.message_for_the_day

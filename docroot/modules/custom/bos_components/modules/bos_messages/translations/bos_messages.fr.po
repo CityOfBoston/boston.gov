@@ -1,0 +1,6 @@
+msgid "None"
+msgstr "----"
+msgid "More Information"
+msgstr "Plus d'information"
+msgid "Status Information"
+msgstr "Informations sur l'état"

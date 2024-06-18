@@ -1,0 +1,152 @@
+langcode: en
+id: bh_community_meeting_event
+label: 'BH Community Meeting Event'
+weight: -7
+type: salesforce_mapping
+key: ''
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: ''
+pull_record_type_filter: {  }
+sync_triggers:
+  push_create: false
+  push_update: false
+  push_delete: false
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: Community_Meeting_Event__c
+drupal_entity_type: node
+drupal_bundle: bh_meeting
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Title__c
+    id: 0
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_meeting_start_time.value
+    direction: sf_drupal
+    salesforce_field: Meeting_Date_Time_Start__c
+    id: 1
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_meeting_end_time.value
+    direction: sf_drupal
+    salesforce_field: Meeting_Date_Time_End__c
+    id: 2
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_languages_supported
+    direction: sf_drupal
+    salesforce_field: Languages_supported__c
+    id: 3
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: body.value
+    direction: sf_drupal
+    salesforce_field: Meeting_Description__c
+    id: 4
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_contact_person_sfid
+    direction: sf_drupal
+    salesforce_field: Contact_person__c
+    id: 5
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_meeting_goal
+    direction: sf_drupal
+    salesforce_field: Meeting_Goal__c
+    id: 6
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_meeting_recording_pass
+    direction: sf_drupal
+    salesforce_field: Meeting_Recording_Password__c
+    id: 7
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_number_of_attendees
+    direction: sf_drupal
+    salesforce_field: Number_of_attendees__c
+    id: 8
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_post_meeting_notes
+    direction: sf_drupal
+    salesforce_field: Post_meeting_Notes__c
+    id: 9
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_post_meeting_recording
+    direction: sf_drupal
+    salesforce_field: Post_meeting_recording__c
+    id: 10
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_virt_meeting_web_addr
+    direction: sf_drupal
+    salesforce_field: Virtual_meeting_web_address__c
+    id: 11
+    description: ''
+  -
+    drupal_field_type: RelatedIDs
+    drupal_field_value: field_bh_update_ref
+    direction: sf_drupal
+    salesforce_field: Website_Update__c
+    id: 12
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_host_organization
+    direction: sf_drupal
+    salesforce_field: Host_Organization2__c
+    id: 13
+    description: ''
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_address.address_line1
+    direction: sf_drupal
+    salesforce_field: Address__c
+    id: 14
+    description: 'DU Aug 2022. Insert SF text address into first line of drupal address component.'
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_meeting.field_bh_contact_person_sfid
+    - field.field.node.bh_meeting.field_bh_host_organization
+    - field.field.node.bh_meeting.field_bh_languages_supported
+    - field.field.node.bh_meeting.field_bh_meeting_goal
+    - field.field.node.bh_meeting.field_bh_meeting_recording_pass
+    - field.field.node.bh_meeting.field_bh_number_of_attendees
+    - field.field.node.bh_meeting.field_bh_post_meeting_notes
+    - field.field.node.bh_meeting.field_bh_post_meeting_recording
+    - field.field.node.bh_meeting.field_bh_update_ref
+    - field.field.node.bh_meeting.field_bh_virt_meeting_web_addr
+    - field.storage.node.field_bh_update_ref
+    - node.type.bh_meeting
+    - node.type.bh_update
+  module:
+    - salesforce_pull
+uuid: 0824ce34-dfbe-4900-a3ac-75846121785f

@@ -1,0 +1,1315 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.date_format.date_format_boston_featured
+    - core.date_format.date_format_normal_date
+    - core.entity_view_mode.node.calendar_listing
+    - field.storage.node.field_date_range
+    - field.storage.node.field_event_date_recur
+    - node.type.event
+    - taxonomy.vocabulary.contact
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.neighborhoods
+  module:
+    - better_exposed_filters
+    - date_recur
+    - datetime
+    - datetime_range
+    - node
+    - taxonomy
+    - user
+id: calendar
+label: Calendar
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Calendar
+      fields:
+        rendered_entity:
+          id: rendered_entity
+          table: node
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: rendered_entity
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: calendar_listing
+        field_date_range:
+          id: field_date_range
+          table: node__field_date_range
+          field: field_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<h2 class="listing-group-title">{{ field_date_range__value|date(''F j, Y'') }}</h2>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: '0'
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: date_format_normal_date
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_event_date_recur:
+          id: field_event_date_recur
+          table: node__field_event_date_recur
+          field: field_event_date_recur
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<h2 class="listing-group-title">{{ field_event_date_recur__value|date(''F j, Y'', false) }}</h2>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: date_recur_basic_formatter
+          settings:
+            timezone_override: ''
+            format_type: date_format_normal_date
+            separator: '-'
+            show_next: 5
+            count_per_item: true
+            occurrence_format_type: date_format_boston_featured
+            same_end_date_format_type: date_format_boston_featured
+            interpreter: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 30
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: filtered_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_event_type_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_multiple_neighborhoods_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: none
+        options: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: |-
+              <h2 class="m-t000">No Events Found</h2>
+              <div class="intro-text supporting-text">Thomas Paine noted "These are the times that try men's souls." Well this is a time to try another search</div>
+              <form accept-charset="UTF-8" action="/search" method="get" class="sf sf--md">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input name="facet[]" type="hidden" value="event">
+                  <div class="sf-i">
+                      <input type="text" name="query" id="q" placeholder="Search…" class="sf-i-f" autocomplete="off">
+                      <button class="sf-i-b">Search</button>
+                  </div>
+              </form>
+            format: full_html
+          tokenize: false
+      sorts:
+        field_event_date_recur_value_1:
+          id: field_event_date_recur_value_1
+          table: date_recur__node__field_event_date_recur
+          field: field_event_date_recur_value
+          relationship: field_event_date_recur_occurrences
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_event_date_recur_value_1
+          exposed: false
+          granularity: second
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            event: event
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_event_date_recur_value_2:
+          id: field_event_date_recur_value_2
+          table: date_recur__node__field_event_date_recur
+          field: field_event_date_recur_value
+          relationship: field_event_date_recur_occurrences
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_date_recur_value_2_op
+            label: 'Start Date'
+            description: ''
+            use_operator: false
+            operator: field_event_date_recur_value_2_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_date_recur_value_2
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+              metrolist_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_event_date_recur_end_value_1:
+          id: field_event_date_recur_end_value_1
+          table: date_recur__node__field_event_date_recur
+          field: field_event_date_recur_end_value
+          relationship: field_event_date_recur_occurrences
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_date_recur_end_value_1_op
+            label: 'End Date'
+            description: ''
+            use_operator: false
+            operator: field_event_date_recur_end_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_date_recur_end_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+              metrolist_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              content_editor: '0'
+              content_author: '0'
+              events_editor: '0'
+              press_release_editor: '0'
+              status_alert_editor: '0'
+              developer: '0'
+              guide_author: '0'
+              landing_author: '0'
+              procurement_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_event_type_target_id:
+          id: field_event_type_target_id
+          table: node__field_event_type
+          field: field_event_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_event_type_target_id_op
+            label: 'Event Type'
+            description: ''
+            use_operator: false
+            operator: field_event_type_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_event_type_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: event_type
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_contacts_target_id:
+          id: field_contacts_target_id
+          table: node__field_contacts
+          field: field_contacts_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_contacts_target_id_op
+            label: 'City Department'
+            description: ''
+            use_operator: false
+            operator: field_contacts_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_departments_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+              metrolist_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: contact
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_multiple_neighborhoods_target_id:
+          id: field_multiple_neighborhoods_target_id
+          table: node__field_multiple_neighborhoods
+          field: field_multiple_neighborhoods_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_multiple_neighborhoods_target_id_op
+            label: Neighborhood
+            description: ''
+            use_operator: false
+            operator: field_multiple_neighborhoods_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_multiple_neighborhoods_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: neighborhoods
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_city_sponsored_value:
+          id: field_city_sponsored_value
+          table: node__field_city_sponsored
+          field: field_city_sponsored_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '!='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_event_date_recur_value:
+          id: field_event_date_recur_value
+          table: date_recur__node__field_event_date_recur
+          field: field_event_date_recur_value
+          relationship: field_event_date_recur_occurrences
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: field_event_date_recur_value
+              rendered: true
+              rendered_strip: false
+          row_class: node-type-listing-page
+          default_row_class: true
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      relationships:
+        field_event_date_recur_occurrences:
+          id: field_event_date_recur_occurrences
+          table: node_field_data
+          field: field_event_date_recur_occurrences
+          relationship: none
+          group_type: group
+          admin_label: 'Occurrences of Event Date'
+          entity_type: node
+          plugin_id: standard
+          required: true
+      use_ajax: false
+      group_by: false
+      show_admin_links: false
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.article.article'
+        - 'config:core.entity_view_display.node.article.calendar_listing'
+        - 'config:core.entity_view_display.node.article.contact'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.department_listing'
+        - 'config:core.entity_view_display.node.article.featured_item'
+        - 'config:core.entity_view_display.node.article.featured_topics'
+        - 'config:core.entity_view_display.node.article.listing_long'
+        - 'config:core.entity_view_display.node.article.poll_stub'
+        - 'config:core.entity_view_display.node.article.popup_icon'
+        - 'config:core.entity_view_display.node.article.published_by'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.article.topics_list'
+        - 'config:core.entity_view_display.node.bh_account.default'
+        - 'config:core.entity_view_display.node.bh_account.teaser'
+        - 'config:core.entity_view_display.node.bh_contact.default'
+        - 'config:core.entity_view_display.node.bh_contact.teaser'
+        - 'config:core.entity_view_display.node.bh_meeting.default'
+        - 'config:core.entity_view_display.node.bh_meeting.teaser'
+        - 'config:core.entity_view_display.node.bh_parcel.default'
+        - 'config:core.entity_view_display.node.bh_parcel.teaser'
+        - 'config:core.entity_view_display.node.bh_parcel_project_assoc.default'
+        - 'config:core.entity_view_display.node.bh_parcel_project_assoc.teaser'
+        - 'config:core.entity_view_display.node.bh_project.card'
+        - 'config:core.entity_view_display.node.bh_project.default'
+        - 'config:core.entity_view_display.node.bh_project.teaser'
+        - 'config:core.entity_view_display.node.bh_update.default'
+        - 'config:core.entity_view_display.node.bh_update.teaser'
+        - 'config:core.entity_view_display.node.change.default'
+        - 'config:core.entity_view_display.node.change.teaser'
+        - 'config:core.entity_view_display.node.department_profile.article'
+        - 'config:core.entity_view_display.node.department_profile.calendar_listing'
+        - 'config:core.entity_view_display.node.department_profile.card'
+        - 'config:core.entity_view_display.node.department_profile.contact'
+        - 'config:core.entity_view_display.node.department_profile.default'
+        - 'config:core.entity_view_display.node.department_profile.department_listing'
+        - 'config:core.entity_view_display.node.department_profile.featured_item'
+        - 'config:core.entity_view_display.node.department_profile.featured_topics'
+        - 'config:core.entity_view_display.node.department_profile.icon_popup'
+        - 'config:core.entity_view_display.node.department_profile.listing'
+        - 'config:core.entity_view_display.node.department_profile.listing_long'
+        - 'config:core.entity_view_display.node.department_profile.poll_stub'
+        - 'config:core.entity_view_display.node.department_profile.popup_icon'
+        - 'config:core.entity_view_display.node.department_profile.published_by'
+        - 'config:core.entity_view_display.node.department_profile.teaser'
+        - 'config:core.entity_view_display.node.department_profile.topics_list'
+        - 'config:core.entity_view_display.node.emergency_alert.default'
+        - 'config:core.entity_view_display.node.emergency_alert.teaser'
+        - 'config:core.entity_view_display.node.event.add_to_calendar'
+        - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.featured_item'
+        - 'config:core.entity_view_display.node.how_to.article'
+        - 'config:core.entity_view_display.node.how_to.calendar_listing'
+        - 'config:core.entity_view_display.node.how_to.contact'
+        - 'config:core.entity_view_display.node.how_to.default'
+        - 'config:core.entity_view_display.node.how_to.department_listing'
+        - 'config:core.entity_view_display.node.how_to.featured_item'
+        - 'config:core.entity_view_display.node.how_to.featured_topics'
+        - 'config:core.entity_view_display.node.how_to.listing'
+        - 'config:core.entity_view_display.node.how_to.listing_long'
+        - 'config:core.entity_view_display.node.how_to.poll_stub'
+        - 'config:core.entity_view_display.node.how_to.popup_icon'
+        - 'config:core.entity_view_display.node.how_to.published_by'
+        - 'config:core.entity_view_display.node.how_to.teaser'
+        - 'config:core.entity_view_display.node.landing_page.article'
+        - 'config:core.entity_view_display.node.landing_page.calendar_listing'
+        - 'config:core.entity_view_display.node.landing_page.contact'
+        - 'config:core.entity_view_display.node.landing_page.default'
+        - 'config:core.entity_view_display.node.landing_page.department_listing'
+        - 'config:core.entity_view_display.node.landing_page.featured_item'
+        - 'config:core.entity_view_display.node.landing_page.featured_topics'
+        - 'config:core.entity_view_display.node.landing_page.listing_long'
+        - 'config:core.entity_view_display.node.landing_page.poll_stub'
+        - 'config:core.entity_view_display.node.landing_page.popup_icon'
+        - 'config:core.entity_view_display.node.landing_page.published_by'
+        - 'config:core.entity_view_display.node.landing_page.teaser'
+        - 'config:core.entity_view_display.node.landing_page.topics_list'
+        - 'config:core.entity_view_display.node.listing_page.article'
+        - 'config:core.entity_view_display.node.listing_page.calendar_listing'
+        - 'config:core.entity_view_display.node.listing_page.contact'
+        - 'config:core.entity_view_display.node.listing_page.default'
+        - 'config:core.entity_view_display.node.listing_page.department_listing'
+        - 'config:core.entity_view_display.node.listing_page.featured_item'
+        - 'config:core.entity_view_display.node.listing_page.featured_topics'
+        - 'config:core.entity_view_display.node.listing_page.listing_long'
+        - 'config:core.entity_view_display.node.listing_page.poll_stub'
+        - 'config:core.entity_view_display.node.listing_page.popup_icon'
+        - 'config:core.entity_view_display.node.listing_page.published_by'
+        - 'config:core.entity_view_display.node.listing_page.teaser'
+        - 'config:core.entity_view_display.node.listing_page.topics_list'
+        - 'config:core.entity_view_display.node.metrolist_affordable_housing.default'
+        - 'config:core.entity_view_display.node.metrolist_affordable_housing.teaser'
+        - 'config:core.entity_view_display.node.metrolist_development.contact'
+        - 'config:core.entity_view_display.node.metrolist_development.default'
+        - 'config:core.entity_view_display.node.metrolist_development.map'
+        - 'config:core.entity_view_display.node.metrolist_development.teaser'
+        - 'config:core.entity_view_display.node.metrolist_unit.default'
+        - 'config:core.entity_view_display.node.metrolist_unit.teaser'
+        - 'config:core.entity_view_display.node.neighborhood_lookup.default'
+        - 'config:core.entity_view_display.node.neighborhood_lookup.teaser'
+        - 'config:core.entity_view_display.node.person_profile.article'
+        - 'config:core.entity_view_display.node.person_profile.calendar_listing'
+        - 'config:core.entity_view_display.node.person_profile.contact'
+        - 'config:core.entity_view_display.node.person_profile.default'
+        - 'config:core.entity_view_display.node.person_profile.department_listing'
+        - 'config:core.entity_view_display.node.person_profile.embed'
+        - 'config:core.entity_view_display.node.person_profile.featured_item'
+        - 'config:core.entity_view_display.node.person_profile.featured_topics'
+        - 'config:core.entity_view_display.node.person_profile.listing'
+        - 'config:core.entity_view_display.node.person_profile.listing_long'
+        - 'config:core.entity_view_display.node.person_profile.poll_stub'
+        - 'config:core.entity_view_display.node.person_profile.popup_icon'
+        - 'config:core.entity_view_display.node.person_profile.published_by'
+        - 'config:core.entity_view_display.node.person_profile.teaser'
+        - 'config:core.entity_view_display.node.person_profile.topics_list'
+        - 'config:core.entity_view_display.node.place_profile.default'
+        - 'config:core.entity_view_display.node.place_profile.listing'
+        - 'config:core.entity_view_display.node.place_profile.teaser'
+        - 'config:core.entity_view_display.node.post.default'
+        - 'config:core.entity_view_display.node.post.featured_item'
+        - 'config:core.entity_view_display.node.post.listing'
+        - 'config:core.entity_view_display.node.post.listing_short'
+        - 'config:core.entity_view_display.node.post.rss'
+        - 'config:core.entity_view_display.node.post.teaser'
+        - 'config:core.entity_view_display.node.procurement_advertisement.default'
+        - 'config:core.entity_view_display.node.procurement_advertisement.featured_item'
+        - 'config:core.entity_view_display.node.procurement_advertisement.listing'
+        - 'config:core.entity_view_display.node.procurement_advertisement.teaser'
+        - 'config:core.entity_view_display.node.program_initiative_profile.default'
+        - 'config:core.entity_view_display.node.program_initiative_profile.listing'
+        - 'config:core.entity_view_display.node.public_notice.default'
+        - 'config:core.entity_view_display.node.public_notice.featured_item'
+        - 'config:core.entity_view_display.node.public_notice.listing'
+        - 'config:core.entity_view_display.node.public_notice.teaser'
+        - 'config:core.entity_view_display.node.script_page.default'
+        - 'config:core.entity_view_display.node.script_page.listing'
+        - 'config:core.entity_view_display.node.site_alert.default'
+        - 'config:core.entity_view_display.node.site_alert.embed'
+        - 'config:core.entity_view_display.node.site_alert.teaser'
+        - 'config:core.entity_view_display.node.status_item.default'
+        - 'config:core.entity_view_display.node.status_item.listing'
+        - 'config:core.entity_view_display.node.status_item.listing_long'
+        - 'config:core.entity_view_display.node.status_item.teaser'
+        - 'config:core.entity_view_display.node.tabbed_content.default'
+        - 'config:core.entity_view_display.node.topic_page.default'
+        - 'config:core.entity_view_display.node.topic_page.featured_topics'
+        - 'config:core.entity_view_display.node.topic_page.listing'
+        - 'config:core.entity_view_display.node.topic_page.listing_long'
+        - 'config:core.entity_view_display.node.transaction.default'
+        - 'config:core.entity_view_display.node.transaction.listing'
+        - 'config:field.storage.node.field_date_range'
+        - 'config:field.storage.node.field_event_date_recur'
+  listing:
+    id: listing
+    display_title: Listing
+    display_plugin: page
+    position: 1
+    display_options:
+      fields:
+        rendered_entity:
+          id: rendered_entity
+          table: node
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: rendered_entity
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: calendar_listing
+        field_date_range:
+          id: field_date_range
+          table: node__field_date_range
+          field: field_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<h2 class="listing-group-title">{{ field_date_range__value|date(''F j, Y'') }}</h2>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: '0'
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: date_format_normal_date
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_event_date_recur_value:
+          id: field_event_date_recur_value
+          table: date_recur__node__field_event_date_recur
+          field: field_event_date_recur_value
+          relationship: field_event_date_recur_occurrences
+          group_type: group
+          admin_label: ''
+          plugin_id: date_recur_date
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<h2 class="listing-group-title">{{ field_event_date_recur_value|date(''F j, Y'', false) }}</h2>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: date_format_normal_date
+          custom_date_format: ''
+          timezone: ''
+      defaults:
+        css_class: false
+        fields: false
+        header: false
+      css_class: ''
+      display_description: 'Uses as the main events listing page.'
+      header: {  }
+      display_extenders: {  }
+      path: view-page/calendar
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.article.article'
+        - 'config:core.entity_view_display.node.article.calendar_listing'
+        - 'config:core.entity_view_display.node.article.contact'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.department_listing'
+        - 'config:core.entity_view_display.node.article.featured_item'
+        - 'config:core.entity_view_display.node.article.featured_topics'
+        - 'config:core.entity_view_display.node.article.listing_long'
+        - 'config:core.entity_view_display.node.article.poll_stub'
+        - 'config:core.entity_view_display.node.article.popup_icon'
+        - 'config:core.entity_view_display.node.article.published_by'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.article.topics_list'
+        - 'config:core.entity_view_display.node.bh_account.default'
+        - 'config:core.entity_view_display.node.bh_account.teaser'
+        - 'config:core.entity_view_display.node.bh_contact.default'
+        - 'config:core.entity_view_display.node.bh_contact.teaser'
+        - 'config:core.entity_view_display.node.bh_meeting.default'
+        - 'config:core.entity_view_display.node.bh_meeting.teaser'
+        - 'config:core.entity_view_display.node.bh_parcel.default'
+        - 'config:core.entity_view_display.node.bh_parcel.teaser'
+        - 'config:core.entity_view_display.node.bh_parcel_project_assoc.default'
+        - 'config:core.entity_view_display.node.bh_parcel_project_assoc.teaser'
+        - 'config:core.entity_view_display.node.bh_project.card'
+        - 'config:core.entity_view_display.node.bh_project.default'
+        - 'config:core.entity_view_display.node.bh_project.teaser'
+        - 'config:core.entity_view_display.node.bh_update.default'
+        - 'config:core.entity_view_display.node.bh_update.teaser'
+        - 'config:core.entity_view_display.node.change.default'
+        - 'config:core.entity_view_display.node.change.teaser'
+        - 'config:core.entity_view_display.node.department_profile.article'
+        - 'config:core.entity_view_display.node.department_profile.calendar_listing'
+        - 'config:core.entity_view_display.node.department_profile.card'
+        - 'config:core.entity_view_display.node.department_profile.contact'
+        - 'config:core.entity_view_display.node.department_profile.default'
+        - 'config:core.entity_view_display.node.department_profile.department_listing'
+        - 'config:core.entity_view_display.node.department_profile.featured_item'
+        - 'config:core.entity_view_display.node.department_profile.featured_topics'
+        - 'config:core.entity_view_display.node.department_profile.icon_popup'
+        - 'config:core.entity_view_display.node.department_profile.listing'
+        - 'config:core.entity_view_display.node.department_profile.listing_long'
+        - 'config:core.entity_view_display.node.department_profile.poll_stub'
+        - 'config:core.entity_view_display.node.department_profile.popup_icon'
+        - 'config:core.entity_view_display.node.department_profile.published_by'
+        - 'config:core.entity_view_display.node.department_profile.teaser'
+        - 'config:core.entity_view_display.node.department_profile.topics_list'
+        - 'config:core.entity_view_display.node.emergency_alert.default'
+        - 'config:core.entity_view_display.node.emergency_alert.teaser'
+        - 'config:core.entity_view_display.node.event.add_to_calendar'
+        - 'config:core.entity_view_display.node.event.default'
+        - 'config:core.entity_view_display.node.event.featured_item'
+        - 'config:core.entity_view_display.node.how_to.article'
+        - 'config:core.entity_view_display.node.how_to.calendar_listing'
+        - 'config:core.entity_view_display.node.how_to.contact'
+        - 'config:core.entity_view_display.node.how_to.default'
+        - 'config:core.entity_view_display.node.how_to.department_listing'
+        - 'config:core.entity_view_display.node.how_to.featured_item'
+        - 'config:core.entity_view_display.node.how_to.featured_topics'
+        - 'config:core.entity_view_display.node.how_to.listing'
+        - 'config:core.entity_view_display.node.how_to.listing_long'
+        - 'config:core.entity_view_display.node.how_to.poll_stub'
+        - 'config:core.entity_view_display.node.how_to.popup_icon'
+        - 'config:core.entity_view_display.node.how_to.published_by'
+        - 'config:core.entity_view_display.node.how_to.teaser'
+        - 'config:core.entity_view_display.node.landing_page.article'
+        - 'config:core.entity_view_display.node.landing_page.calendar_listing'
+        - 'config:core.entity_view_display.node.landing_page.contact'
+        - 'config:core.entity_view_display.node.landing_page.default'
+        - 'config:core.entity_view_display.node.landing_page.department_listing'
+        - 'config:core.entity_view_display.node.landing_page.featured_item'
+        - 'config:core.entity_view_display.node.landing_page.featured_topics'
+        - 'config:core.entity_view_display.node.landing_page.listing_long'
+        - 'config:core.entity_view_display.node.landing_page.poll_stub'
+        - 'config:core.entity_view_display.node.landing_page.popup_icon'
+        - 'config:core.entity_view_display.node.landing_page.published_by'
+        - 'config:core.entity_view_display.node.landing_page.teaser'
+        - 'config:core.entity_view_display.node.landing_page.topics_list'
+        - 'config:core.entity_view_display.node.listing_page.article'
+        - 'config:core.entity_view_display.node.listing_page.calendar_listing'
+        - 'config:core.entity_view_display.node.listing_page.contact'
+        - 'config:core.entity_view_display.node.listing_page.default'
+        - 'config:core.entity_view_display.node.listing_page.department_listing'
+        - 'config:core.entity_view_display.node.listing_page.featured_item'
+        - 'config:core.entity_view_display.node.listing_page.featured_topics'
+        - 'config:core.entity_view_display.node.listing_page.listing_long'
+        - 'config:core.entity_view_display.node.listing_page.poll_stub'
+        - 'config:core.entity_view_display.node.listing_page.popup_icon'
+        - 'config:core.entity_view_display.node.listing_page.published_by'
+        - 'config:core.entity_view_display.node.listing_page.teaser'
+        - 'config:core.entity_view_display.node.listing_page.topics_list'
+        - 'config:core.entity_view_display.node.metrolist_affordable_housing.default'
+        - 'config:core.entity_view_display.node.metrolist_affordable_housing.teaser'
+        - 'config:core.entity_view_display.node.metrolist_development.contact'
+        - 'config:core.entity_view_display.node.metrolist_development.default'
+        - 'config:core.entity_view_display.node.metrolist_development.map'
+        - 'config:core.entity_view_display.node.metrolist_development.teaser'
+        - 'config:core.entity_view_display.node.metrolist_unit.default'
+        - 'config:core.entity_view_display.node.metrolist_unit.teaser'
+        - 'config:core.entity_view_display.node.neighborhood_lookup.default'
+        - 'config:core.entity_view_display.node.neighborhood_lookup.teaser'
+        - 'config:core.entity_view_display.node.person_profile.article'
+        - 'config:core.entity_view_display.node.person_profile.calendar_listing'
+        - 'config:core.entity_view_display.node.person_profile.contact'
+        - 'config:core.entity_view_display.node.person_profile.default'
+        - 'config:core.entity_view_display.node.person_profile.department_listing'
+        - 'config:core.entity_view_display.node.person_profile.embed'
+        - 'config:core.entity_view_display.node.person_profile.featured_item'
+        - 'config:core.entity_view_display.node.person_profile.featured_topics'
+        - 'config:core.entity_view_display.node.person_profile.listing'
+        - 'config:core.entity_view_display.node.person_profile.listing_long'
+        - 'config:core.entity_view_display.node.person_profile.poll_stub'
+        - 'config:core.entity_view_display.node.person_profile.popup_icon'
+        - 'config:core.entity_view_display.node.person_profile.published_by'
+        - 'config:core.entity_view_display.node.person_profile.teaser'
+        - 'config:core.entity_view_display.node.person_profile.topics_list'
+        - 'config:core.entity_view_display.node.place_profile.default'
+        - 'config:core.entity_view_display.node.place_profile.listing'
+        - 'config:core.entity_view_display.node.place_profile.teaser'
+        - 'config:core.entity_view_display.node.post.default'
+        - 'config:core.entity_view_display.node.post.featured_item'
+        - 'config:core.entity_view_display.node.post.listing'
+        - 'config:core.entity_view_display.node.post.listing_short'
+        - 'config:core.entity_view_display.node.post.rss'
+        - 'config:core.entity_view_display.node.post.teaser'
+        - 'config:core.entity_view_display.node.procurement_advertisement.default'
+        - 'config:core.entity_view_display.node.procurement_advertisement.featured_item'
+        - 'config:core.entity_view_display.node.procurement_advertisement.listing'
+        - 'config:core.entity_view_display.node.procurement_advertisement.teaser'
+        - 'config:core.entity_view_display.node.program_initiative_profile.default'
+        - 'config:core.entity_view_display.node.program_initiative_profile.listing'
+        - 'config:core.entity_view_display.node.public_notice.default'
+        - 'config:core.entity_view_display.node.public_notice.featured_item'
+        - 'config:core.entity_view_display.node.public_notice.listing'
+        - 'config:core.entity_view_display.node.public_notice.teaser'
+        - 'config:core.entity_view_display.node.script_page.default'
+        - 'config:core.entity_view_display.node.script_page.listing'
+        - 'config:core.entity_view_display.node.site_alert.default'
+        - 'config:core.entity_view_display.node.site_alert.embed'
+        - 'config:core.entity_view_display.node.site_alert.teaser'
+        - 'config:core.entity_view_display.node.status_item.default'
+        - 'config:core.entity_view_display.node.status_item.listing'
+        - 'config:core.entity_view_display.node.status_item.listing_long'
+        - 'config:core.entity_view_display.node.status_item.teaser'
+        - 'config:core.entity_view_display.node.tabbed_content.default'
+        - 'config:core.entity_view_display.node.topic_page.default'
+        - 'config:core.entity_view_display.node.topic_page.featured_topics'
+        - 'config:core.entity_view_display.node.topic_page.listing'
+        - 'config:core.entity_view_display.node.topic_page.listing_long'
+        - 'config:core.entity_view_display.node.transaction.default'
+        - 'config:core.entity_view_display.node.transaction.listing'
+        - 'config:field.storage.node.field_date_range'

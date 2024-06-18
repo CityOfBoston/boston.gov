@@ -1,0 +1,34 @@
+uuid: d44e3b4e-3045-4a65-abdf-9fa014d6add2
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.topic_listing_large
+    - image.style.topic_listing_small
+  theme:
+    - bos_theme
+id: topic_listing
+label: 'Topic Listing'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_listing_small
+    breakpoint_id: boston.480-768-980.0
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_listing_small
+    breakpoint_id: boston.480-768-980.480
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_listing_large
+    breakpoint_id: boston.480-768-980.768
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_listing_large
+    breakpoint_id: boston.480-768-980.980
+    multiplier: 1x
+breakpoint_group: 480-768-980
+fallback_image_style: topic_listing_small

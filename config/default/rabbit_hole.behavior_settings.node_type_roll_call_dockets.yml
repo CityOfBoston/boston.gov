@@ -1,0 +1,14 @@
+uuid: e8cb8ecf-f2de-4bc2-b48d-6da5d9c31439
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.roll_call_dockets
+id: node_type_roll_call_dockets
+entity_type_id: node_type
+entity_id: roll_call_dockets
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

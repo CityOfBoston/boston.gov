@@ -1,0 +1,14 @@
+uuid: add22bf2-e9fd-423a-8074-8a15dd5dab18
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.post
+id: node_type_post
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

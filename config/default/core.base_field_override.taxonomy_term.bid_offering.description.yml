@@ -1,0 +1,20 @@
+uuid: 73db08ad-9585-4a6d-a49b-17b24a94fd8e
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_offering
+  module:
+    - text
+id: taxonomy_term.bid_offering.description
+field_name: description
+entity_type: taxonomy_term
+bundle: bid_offering
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

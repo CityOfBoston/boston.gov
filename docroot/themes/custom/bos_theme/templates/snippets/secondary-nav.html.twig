@@ -1,0 +1,58 @@
+<nav class="nv-h">
+    <ul class="nv-h-l">
+        {% if logged_in and asset_name == 'hub' %}
+            <li class="nv-h-l-i nv-dd">
+                <input type="checkbox" name="nv-dd-tr" id="nv-tr[0]" class="nv-dd-tr">
+                <label class="nv-h-l-a nv-h-l-a--k nv-dd-l"
+                       for="nv-tr[0]"> {% if first_name %}Hello, {{ first_name }}{% else %}My Account{% endif %}</label>
+                <ul class="nv-dd-c">
+                    <li><a href="{{ profile_path }}" title="Visit my profile" class="nv-dd-c-link">Profile</a></li>
+                    <li><a href="{{ change_password_path }}" title="Change password" class="nv-dd-c-link">Change
+                            password</a></li>
+                    <li><a href="{{ security_questions_path }}" title="Security questions" class="nv-dd-c-link">Security
+                            questions</a></li>
+                    <li><a href="{{ logout_path }}" title="log out" class="nv-dd-c-link">Log Out</a></li>
+                </ul>
+            </li>
+        {% endif %}
+
+        {#{% include 'themes/custom/bos_theme/templates/snippets/secondary-nav-menu.html.twig' %}#}
+
+        {% for item in secondary_menu['#items'] %}
+            <li class="nv-h-l-i">
+                {% if item.title == "Feedback" %}
+                  <a href="{{ item.url }}" class="webform-dialog webform-dialog-narrow nv-h-l-a ">{{ item.title }}</a>
+                {% else %}
+                  {{ link(item.title, item.url, create_attribute({ 'class':['nv-h-l-a']})) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+      {#
+      Stella:
+      Where: Secondary Menu.
+      What: New Google Translate.
+      Note: Dropdown of languages #}
+        <li id="targetLanguage" class="nv-h-l-i translate">
+          <a id="cob_translate" href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k translate-link">
+            <span>English</span>
+            <span>Español</span>
+            <span>Soomaali</span>
+            <span>Português</span>
+            <span>français</span>
+            <span>简体中文</span>
+          </a>
+          <div id="overlay" class="translate-overlay"></div>
+          <div id="overlay-background" class="translate-overlay-background"></div>
+        </li>
+      {% if search %}
+        <li class="nv-h-l-i">
+            <label for="s-tr" title="Search" class="nv-h-l-a nv-h-l-a--k nv-h-l-a-ic" id="searchIcon" tabindex="0">
+                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 41"><title>Search</title>
+                    <path class="nv-h-l-a-i"
+                          d="M24.2.6C15.8.6 9 7.4 9 15.8c0 3.7 1.4 7.2 3.6 9.8L1.2 37c-.8.8-.8 2 0 2.8.4.4.9.6 1.4.6s1-.2 1.4-.6l11.5-11.5C18 30 21 31 24.2 31c8.4 0 15.2-6.8 15.2-15.2C39.4 7.4 32.6.6 24.2.6zm0 26.5c-6.2 0-11.2-5-11.2-11.2S18 4.6 24.2 4.6s11.2 5 11.2 11.2-5 11.3-11.2 11.3z" />
+                </svg>
+            </label>
+        </li>
+      {% endif %}
+    </ul>
+</nav>

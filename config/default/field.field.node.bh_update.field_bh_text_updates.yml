@@ -1,0 +1,19 @@
+uuid: f0bc932f-c583-4432-8ad4-bec1d12a285b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_text_updates
+    - node.type.bh_update
+id: node.bh_update.field_bh_text_updates
+field_name: field_bh_text_updates
+entity_type: node
+bundle: bh_update
+label: 'Text Updates'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

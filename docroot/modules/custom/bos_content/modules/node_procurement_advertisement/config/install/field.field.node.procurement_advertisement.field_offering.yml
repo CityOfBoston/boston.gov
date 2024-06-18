@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_offering
+    - node.type.procurement_advertisement
+    - taxonomy.vocabulary.bid_offering
+id: node.procurement_advertisement.field_offering
+field_name: field_offering
+entity_type: node
+bundle: procurement_advertisement
+label: Offering
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bid_offering: bid_offering
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

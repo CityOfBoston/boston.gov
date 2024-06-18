@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.published_by
+label: 'Published By'
+targetEntityType: taxonomy_term
+cache: true

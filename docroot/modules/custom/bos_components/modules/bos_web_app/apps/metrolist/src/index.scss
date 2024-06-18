@@ -1,0 +1,70 @@
+// For the most part this file should be avoided in favor of individual component CSS files,
+// but it is occasionally necessary to set global styles, such as in the case of public.css overrides.
+@import '@globals/colors';
+
+@namespace svg url(http://www.w3.org/2000/svg);
+
+p {
+  margin: 0;
+}
+
+svg,
+svg|svg,
+h3 {
+  line-height: inherit;
+}
+
+.ml-app input[type="checkbox"],
+.ml-app input[type="radio"] {
+  display: inherit; // public.css sets to display: none which eliminates tab order even with tabindex set.
+}
+
+.ml-app ::-ms-check {
+  display: none;
+}
+
+.ml-app :-ms-input-placeholder {
+  font-style: normal;
+}
+
+ .ml-app.b--fx {
+   left: 50%;
+   position: relative;
+   -webkit-transform: translate(-50%);
+   transform: translate(-50%);
+   width: 100vw;
+ }
+
+.ml-app.b--g {
+   background-color: #f2f2f2;
+}
+
+// .page {
+//   padding-top: 65px; // public.css sets .mn { padding-top: 65px; } but then adds .page { padding-top: 6.6em } creating extra white space.
+// }
+
+.ml-block {
+  display: block;
+}
+
+.ml-inline-block {
+  display: inline-block;
+}
+
+// Overrides /sites/default/files/linked/css/css_6oJnxXTl5t9fkw3C8uMRtGxwbWXLDmLm2glpmOsBgVY.css
+.ml-shorthand,
+.ml-shorthand[title] {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+// this will override the  first and last settings causing confusion with nave
+a.pg-li-i.pg-li-i--link.ml-search__page-link {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+a.pg-li-i.pg-li-i--link.pg-li-i--a.ml-search__page-link {
+background-color: #1871bd !important;
+color: #fff !important;
+}

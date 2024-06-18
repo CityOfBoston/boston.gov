@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_excluded_nodes
+    - node.type.site_alert
+id: node.site_alert.field_excluded_nodes
+field_name: field_excluded_nodes
+entity_type: node
+bundle: site_alert
+label: 'Pages to exclude'
+description: 'If you don''t want this alert to show on a specific page, add them here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: site_alerts
+      display_name: exclude_pages_autocomplete
+      arguments: {  }
+field_type: entity_reference

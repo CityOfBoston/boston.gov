@@ -1,0 +1,15 @@
+uuid: 2a84363e-d4a2-4ba6-bebd-384e439ba98a
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'Standard style for a CTA button made from the document / internal & external links paragraphs.'
+id: paragraph.cta_button
+label: 'CTA Button'
+description: ''
+targetEntityType: paragraph
+cache: true

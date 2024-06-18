@@ -1,0 +1,16 @@
+uuid: d1db5560-668b-4a4b-b6a9-876f068fd8d7
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: commission_search
+label: 'Commission Search'
+icon_uuid: null
+icon_default: null
+description: 'Adds a search component for commissions.'
+behavior_plugins: {  }

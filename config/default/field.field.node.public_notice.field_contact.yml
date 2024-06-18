@@ -1,0 +1,32 @@
+uuid: ce403e22-2542-4ed5-bca9-64821ca146f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.public_notice
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: ykwOVvyrSh46xOiwVXKeO5GmPRszHAGu7992HSiCO2M
+id: node.public_notice.field_contact
+field_name: field_contact
+entity_type: node
+bundle: public_notice
+label: Department
+description: 'The Department that is primarily responsible for this notice.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

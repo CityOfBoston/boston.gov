@@ -1,0 +1,23 @@
+uuid: bef8dcfa-57bc-4817-b324-f6b9acef0b64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sf_web_update
+    - node.type.bh_update
+id: node.bh_update.field_sf_web_update
+field_name: field_sf_web_update
+entity_type: node
+bundle: bh_update
+label: 'SF Web Update'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

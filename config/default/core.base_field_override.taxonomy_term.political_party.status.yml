@@ -1,0 +1,22 @@
+uuid: 3d8aaeb3-7cc3-4340-b45d-9e8e870874a8
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+id: taxonomy_term.political_party.status
+field_name: status
+entity_type: taxonomy_term
+bundle: political_party
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

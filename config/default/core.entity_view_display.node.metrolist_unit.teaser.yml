@@ -1,0 +1,480 @@
+uuid: 658721d4-b180-4203-820e-c4c17015549c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.metrolist_unit.body
+    - field.field.node.metrolist_unit.field_ml_development
+    - field.field.node.metrolist_unit.field_ml_incm_elgblty_ami_thold
+    - field.field.node.metrolist_unit.field_ml_publish_date
+    - field.field.node.metrolist_unit.field_ml_unit_ada_h
+    - field.field.node.metrolist_unit.field_ml_unit_ada_m
+    - field.field.node.metrolist_unit.field_ml_unit_ada_v
+    - field.field.node.metrolist_unit.field_ml_unit_income_restricted
+    - field.field.node.metrolist_unit.field_ml_unit_lottery_app_due
+    - field.field.node.metrolist_unit.field_ml_unit_lottery_app_link
+    - field.field.node.metrolist_unit.field_ml_unit_min_income_thold
+    - field.field.node.metrolist_unit.field_ml_unit_num_of_bathrooms
+    - field.field.node.metrolist_unit.field_ml_unit_num_of_bedrooms
+    - field.field.node.metrolist_unit.field_ml_unit_occupancy_type
+    - field.field.node.metrolist_unit.field_ml_unit_rent_or_sale_price
+    - field.field.node.metrolist_unit.field_ml_unit_rent_type
+    - field.field.node.metrolist_unit.field_ml_unit_type
+    - field.field.node.metrolist_unit.field_ml_unit_user_guide_type
+    - field.field.node.metrolist_unit.field_ml_unit_waitlist_open
+    - field.field.node.metrolist_unit.field_ml_unit_wheelchair_access
+    - field.field.node.metrolist_unit.field_ml_unitavailability_status
+    - node.type.metrolist_unit
+  module:
+    - bos_metrolist
+    - fences
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_accessibility:
+      children:
+        - group_detail_list_data_d
+      label: Accessibility
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: dl-i
+        id: ''
+        element: div
+        show_label: true
+        label_element: span
+        label_element_classes: dl-t
+        attributes: ''
+        effect: none
+        speed: fast
+    group_eligibility:
+      children:
+        - group_detail_list_data_f
+      label: Eligibility
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: dl-i
+        id: ''
+        element: div
+        show_label: true
+        label_element: span
+        label_element_classes: dl-t
+        attributes: ''
+        effect: none
+        speed: fast
+    group_detail_list_data_d:
+      children:
+        - field_ml_unit_wheelchair_access
+        - field_ml_unit_ada_v
+        - field_ml_unit_ada_m
+        - field_ml_unit_ada_h
+      label: 'Detail List Data'
+      parent_name: group_accessibility
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: dl-d
+        id: ''
+        element: span
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_detail_list_data_f:
+      children:
+        - field_ml_incm_elgblty_ami_thold
+        - field_ml_unit_min_income_thold
+      label: 'Detail List Data'
+      parent_name: group_eligibility
+      region: content
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: dl-d
+        id: ''
+        element: span
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+_core:
+  default_config_hash: uxZgr-Q4uUhOTa1E9gNbLs1x2RsqX7JYYgHiAUaBqqM
+id: node.metrolist_unit.teaser
+targetEntityType: node
+bundle: metrolist_unit
+mode: teaser
+content:
+  field_ml_incm_elgblty_ami_thold:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_ml_unit_ada_h:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_ml_unit_ada_m:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_ml_unit_ada_v:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_ml_unit_air_conditioning:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 24
+    region: content
+  field_ml_unit_broker_s_fee:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 24
+    region: content
+  field_ml_unit_cable:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 26
+    region: content
+  field_ml_unit_dishwasher:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 35
+    region: content
+  field_ml_unit_dogs_allowed:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 32
+    region: content
+  field_ml_unit_electric:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 24
+    region: content
+  field_ml_unit_first_month_s_rent:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_ml_unit_garbage_disposal:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 25
+    region: content
+  field_ml_unit_gas:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_ml_unit_gym_fitness_area:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 22
+    region: content
+  field_ml_unit_heat_hot_water:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 22
+    region: content
+  field_ml_unit_internet:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 25
+    region: content
+  field_ml_unit_last_month_s_rent:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 23
+    region: content
+  field_ml_unit_laundry_in_unit:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 31
+    region: content
+  field_ml_unit_min_income_thold:
+    type: number_decimal
+    label: hidden
+    settings:
+      thousand_separator: ','
+      decimal_separator: .
+      scale: 0
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 22
+    region: content
+  field_ml_unit_off_street_parking:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 27
+    region: content
+  field_ml_unit_refrigerator:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_ml_unit_smoke_free:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 23
+    region: content
+  field_ml_unit_stove:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 28
+    region: content
+  field_ml_unit_water_sewer:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 23
+    region: content
+  field_ml_unit_wheelchair_access:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_ml_unit_wide_doorways:
+    type: metrolist_boolean_field_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: span
+        fences_field_classes: ml-field-unit-bool
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 21
+    region: content
+hidden:
+  body: true
+  field_ml_city: true
+  field_ml_development: true
+  field_ml_neighborhood: true
+  field_ml_publish_date: true
+  field_ml_unit_income_restricted: true
+  field_ml_unit_lottery_app_due: true
+  field_ml_unit_lottery_app_link: true
+  field_ml_unit_num_of_bathrooms: true
+  field_ml_unit_num_of_bedrooms: true
+  field_ml_unit_occupancy_type: true
+  field_ml_unit_rent_or_sale_price: true
+  field_ml_unit_rent_type: true
+  field_ml_unit_type: true
+  field_ml_unit_user_guide_type: true
+  field_ml_unit_waitlist_open: true
+  field_ml_unitavailability_status: true
+  langcode: true
+  links: true
+  published_at: true

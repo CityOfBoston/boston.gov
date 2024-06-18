@@ -1,0 +1,40 @@
+uuid: d7e92425-329f-40d7-a9b8-293d7a1d3c56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_address
+    - paragraphs.paragraphs_type.how_to_contact_step
+  module:
+    - address
+id: paragraph.how_to_contact_step.field_address
+field_name: field_address
+entity_type: paragraph
+bundle: how_to_contact_step
+label: Location
+description: 'A step providing contact information for a How-To Tab.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine2:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+  fields: {  }
+field_type: address

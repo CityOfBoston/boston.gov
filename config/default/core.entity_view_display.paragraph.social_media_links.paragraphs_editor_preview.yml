@@ -1,0 +1,17 @@
+uuid: 49db35ac-d58c-4231-834f-1824e222afc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.social_media_links.field_social_media_link
+    - paragraphs.paragraphs_type.social_media_links
+_core:
+  default_config_hash: YKeYGMRKINW2n8DuKv7GLRHhQzDO2g_CwL9c4ZkX7-k
+id: paragraph.social_media_links.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: social_media_links
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_social_media_link: true

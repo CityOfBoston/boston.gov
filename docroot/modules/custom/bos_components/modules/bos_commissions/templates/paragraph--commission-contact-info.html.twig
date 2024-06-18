@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ */
+#}
+<div class="article-contact">
+  {{ content.contextual_links }}
+  <address>
+    <h5 class="contact-title">
+      Contact Information
+    </h5>
+    <div class="t--subinfo m-b300" style="text-transform: none; letter-spacing: 0;">
+      If you have questions, please email or call:
+    </div>
+    {% if commission_info.contact_email_text %}
+      <div class="detail-item">
+        {% include '@bos_theme/snippets/detail-item.html.twig' with {
+          'body': commission_info.contact_email_text,
+          'classes': {
+            'detail': 'detail-item--middle',
+            'icon': 'icon-email',
+            'body': 'detail-item__body--secondary'
+          }
+        } %}
+      </div>
+    {% endif %}
+    {% if commission_info.contact_phone_text %}
+      <div class="detail-item">
+        {% include '@bos_theme/snippets/detail-item.html.twig' with {
+          'body': commission_info.contact_phone_text,
+          'classes': {
+            'detail': 'detail-item--middle',
+            'icon': 'icon-phone',
+            'body': 'detail-item__body--secondary'
+          }
+        } %}
+      </div>
+    {% endif %}
+  </address>
+</div>

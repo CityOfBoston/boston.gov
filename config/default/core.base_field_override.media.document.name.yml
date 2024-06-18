@@ -1,0 +1,20 @@
+uuid: 0df01000-c6bf-4517-bacf-a8f45721f5cb
+langcode: und
+status: true
+dependencies:
+  config:
+    - media.type.document
+id: media.document.name
+field_name: name
+entity_type: media
+bundle: document
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

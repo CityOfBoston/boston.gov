@@ -1,0 +1,14 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+id: paragraph.internal_link.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: internal_link
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_internal_link: true

@@ -1,0 +1,5 @@
+name: 'BOS Text Editor'
+type: module
+description: 'Customizations to Text Editors for BOS'
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Custom'

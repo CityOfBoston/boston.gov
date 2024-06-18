@@ -1,0 +1,20 @@
+.panel-2col .panel-col-first {
+  width: 65%;
+}
+
+.panel-2col .panel-col-last {
+  width: 30%;
+  margin-left: 2%;
+  padding-left: 2%;
+  border-left: 2px solid #091F2F;
+}
+
+.panel-2col .pane-title {
+  font-weight: bold;
+  color: #091F2F;
+  font-size: 1.5rem;
+}
+
+.panel-2col .panel-col-last .views-row:not(:first-child) {
+  margin-top: 2rem;
+}

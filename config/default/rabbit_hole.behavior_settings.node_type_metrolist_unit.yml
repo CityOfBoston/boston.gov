@@ -1,0 +1,14 @@
+uuid: fe98d761-969b-4afb-a64d-c31adb02ffc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+id: node_type_metrolist_unit
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

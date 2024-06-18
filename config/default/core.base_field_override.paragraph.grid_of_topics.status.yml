@@ -1,0 +1,24 @@
+uuid: 49cf92b4-2e62-471e-93ea-dd6d8213e5b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_topics
+_core:
+  default_config_hash: Dtyssy_Ko8KUJdQXFOccHFHJzp1PYJ694j3X6LpsrIc
+id: paragraph.grid_of_topics.status
+field_name: status
+entity_type: paragraph
+bundle: grid_of_topics
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

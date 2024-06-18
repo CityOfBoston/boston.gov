@@ -1,0 +1,60 @@
+uuid: 1915d3ab-0a12-4096-87e2-152e29ade2fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gol_list_links.field_description
+    - field.field.paragraph.gol_list_links.field_link
+    - paragraphs.paragraphs_type.gol_list_links
+  module:
+    - entity_reference_revisions
+    - fences
+    - smart_trim
+id: paragraph.gol_list_links.default
+targetEntityType: paragraph
+bundle: gol_list_links
+mode: default
+content:
+  field_description:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 125
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: ribbon_link
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

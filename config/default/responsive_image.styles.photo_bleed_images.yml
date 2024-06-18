@@ -1,0 +1,62 @@
+uuid: f2e3e300-26ba-4755-adbc-3471ecf6756f
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.photo_bleed_a_mobile_1x
+    - image.style.photo_bleed_b_tablet_1x
+    - image.style.photo_bleed_c_desktop_1x
+    - image.style.photo_bleed_d_large_1x
+    - image.style.photo_bleed_e_oversize_1x
+  theme:
+    - bos_theme
+id: photo_bleed_images
+label: 'Photo bleed images'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_a_mobile_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_b_tablet_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 1.5x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_c_desktop_1x
+    breakpoint_id: boston.hero.mobile
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_b_tablet_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_c_desktop_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 1.5x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_d_large_1x
+    breakpoint_id: boston.hero.tablet
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_c_desktop_1x
+    breakpoint_id: boston.hero.desktop
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_d_large_1x
+    breakpoint_id: boston.hero.large
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: photo_bleed_e_oversize_1x
+    breakpoint_id: boston.hero.oversize
+    multiplier: 1x
+breakpoint_group: hero
+fallback_image_style: photo_bleed_a_mobile_1x

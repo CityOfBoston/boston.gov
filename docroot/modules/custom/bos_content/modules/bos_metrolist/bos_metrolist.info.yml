@@ -1,0 +1,5 @@
+name: 'City of Boston: MetroList'
+type: module
+description: 'MetroList features for the City of Boston.'
+core_version_requirement: ^8 || ^9 || ^10
+package: 'MetroList'

@@ -1,0 +1,19 @@
+uuid: 9e68317e-3115-47a0-8db0-9053ad2ada7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_first_name
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors.field_first_name
+field_name: field_first_name
+entity_type: taxonomy_term
+bundle: vocab_city_councillors
+label: 'First Name'
+description: 'Councillors First Name '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

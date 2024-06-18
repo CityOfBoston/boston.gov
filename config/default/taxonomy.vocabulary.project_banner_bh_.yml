@@ -1,0 +1,8 @@
+uuid: a8d20aba-ed51-4fdc-aafa-ea820d56bf15
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Banner (BH)'
+vid: project_banner_bh_
+description: "Controls the Property's visibility and banner on boston.gov."
+weight: 0

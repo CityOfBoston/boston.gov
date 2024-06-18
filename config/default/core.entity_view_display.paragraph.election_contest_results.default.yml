@@ -1,0 +1,189 @@
+uuid: 2faeb46a-5ef9-4b8d-9b60-58ed590be433
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_contest_results.field_calc_total_votes
+    - field.field.paragraph.election_contest_results.field_candidate_results
+    - field.field.paragraph.election_contest_results.field_contest_ballots
+    - field.field.paragraph.election_contest_results.field_contest_numvoters
+    - field.field.paragraph.election_contest_results.field_contest_overvotes
+    - field.field.paragraph.election_contest_results.field_contest_undervotes
+    - field.field.paragraph.election_contest_results.field_election_contest
+    - field.field.paragraph.election_contest_results.field_precinct_reported
+    - field.field.paragraph.election_contest_results.field_precinct_total
+    - field.field.paragraph.election_contest_results.field_pushcontests
+    - paragraphs.paragraphs_type.election_contest_results
+  module:
+    - entity_reference_revisions
+    - fences
+    - field_group
+third_party_settings:
+  field_group:
+    group_contest_results:
+      children:
+        - field_contest_ballots
+        - field_contest_overvotes
+        - field_contest_undervotes
+        - field_contest_numvoters
+        - field_pushcontests
+      label: 'Contest Results'
+      parent_name: ''
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: flex
+        show_empty_fields: false
+        id: ''
+        element: section
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: paragraph.election_contest_results.default
+targetEntityType: paragraph
+bundle: election_contest_results
+mode: default
+content:
+  field_calc_total_votes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_candidate_results:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_contest_ballots:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_contest_numvoters:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_contest_overvotes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_contest_undervotes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_election_contest:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_precinct_reported:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_precinct_total:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_pushcontests:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 7
+    region: content
+hidden: {  }

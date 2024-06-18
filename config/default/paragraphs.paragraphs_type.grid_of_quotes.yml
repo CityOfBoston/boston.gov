@@ -1,0 +1,11 @@
+uuid: 179648aa-ca53-43f3-b53b-368ee0a46971
+langcode: en
+status: true
+dependencies:
+  content: {  }
+id: grid_of_quotes
+label: 'Grid of Quotes'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Quotes'
+behavior_plugins: {  }

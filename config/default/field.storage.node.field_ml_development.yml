@@ -1,0 +1,21 @@
+uuid: 58a02fa3-bed8-4f6c-a904-3b296780bbd8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: QPwKUU2AAfqRj0BSv_sa-MECCTspR4YDIjjiFd8stAg
+id: node.field_ml_development
+field_name: field_ml_development
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

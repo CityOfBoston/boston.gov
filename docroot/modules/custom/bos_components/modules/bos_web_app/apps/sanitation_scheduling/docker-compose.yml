@@ -1,0 +1,37 @@
+version: '3.6'
+
+networks:
+  cob_docker_network:
+    driver: bridge
+    name: cob_docker_network
+
+services:
+  sanitation:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: cob-sanitation
+    image: 'node:18-bullseye'
+    networks:
+      - cob_docker_network
+    expose:
+      - 5173
+    entrypoint: "/docker-entrypoint.sh"
+#    command: "run"
+    command: "build"
+    environment:
+      GIT_REPO: "CityOfBoston/sanitation-scheduling.git"
+      GIT_SSH_CERT_FILE: "/hostuser/.ssh/id_rsa"
+      GIT_BRANCH: "main"
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./:/sanitation-scheduler
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh
+      - ~/.ssh/known_hosts:/root/.ssh/known_hosts
+      - ~:/hostuser
+    labels:
+      traefik.enable: true
+      traefik.http.routers.digitalapps.rule: "Host(`sanitation.docker.localhost`)"
+      traefik.http.routers.digitalapps.entrypoints: "http"
+      traefik.http.services.digitalapps.loadbalancer.server.port: "5173"

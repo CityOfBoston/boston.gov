@@ -1,0 +1,120 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ */
+#}
+
+{% set detail_item_classes = {'detail': 'detail-item--secondary', 'body': 'detail-item__body--secondary'} %}
+
+<div class="b b--w b--fw">
+  {{ content.contextual_links }}
+  <div class="b-c">
+    {% if content.field_component_title and not hideTitle %}
+    <div class="sh">
+      {{ content.field_component_title }}
+    </div>
+    {% endif %}
+    <div class="g m-t500">
+      <div class="g--8">
+        <ul class="dl">
+        {% if commission_info.department_content %}
+          <li class="dl-i">
+            {% include '@bos_theme/snippets/detail-item.html.twig' with {
+              'label': 'Department:',
+              'body': commission_info.department_content,
+              'classes': detail_item_classes,
+            } %}
+          </li>
+        {% endif %}
+        {% if commission_info.authority %}
+          <li class="dl-i">
+            {% include '@bos_theme/snippets/detail-item.html.twig' with {
+              'label': 'Authority:',
+              'body': commission_info.authority,
+              'classes': detail_item_classes,
+            } %}
+          </li>
+        {% endif %}
+        {% if commission_info.authority %}
+          <li class="dl-i">
+            {% include '@bos_theme/snippets/detail-item.html.twig' with {
+              'label': 'Term:',
+              'body': commission_info.term,
+              'classes': detail_item_classes,
+            } %}
+          </li>
+        {% endif %}
+        {% if commission_info.stipend %}
+          <li class="dl-i">
+            {% include '@bos_theme/snippets/detail-item.html.twig' with {
+              'label': 'Stipend:',
+              'body': commission_info.stipend,
+              'classes': detail_item_classes,
+            } %}
+          </li>
+        {% endif %}
+        {% if commission_info.seats %}
+          <li class="dl-i">
+            {% include '@bos_theme/snippets/detail-item.html.twig' with {
+              'label': 'Total Seats:',
+              'body': commission_info.seats,
+              'classes': detail_item_classes,
+            } %}
+          </li>
+        {% endif %}
+        </ul>
+      </div>
+      <div class="g--4">
+        <div class="detail-item">
+          <i>Resources:</i>
+          {% if commission_info.enabling_legislation_url %}
+            <div class="detail-item__body--secondary">
+              <div class="link-wrapper external-link">
+                <a href="{{ commission_info.enabling_legislation_url }}" target="_blank">
+                  Enabling legislation
+                </a>
+              </div>
+            </div>
+          {% endif %}
+          <div class="detail-item__body--secondary">
+            <div class="link-wrapper external-link">
+              <a href="https://www.cityofboston.gov/boardsandcommissions/Default.aspx" target="_blank">
+                Boards and commissions information
+              </a>
+            </div>
+          </div>
+        </div>
+        {% if commission_info.apply_url %}
+          <div class="detail-item" style="border-bottom: none">
+            <i>We have openings:</i>
+            <div class="m-v200">
+              <a class="btn" href="{{ commission_info.apply_url }}">Apply online</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

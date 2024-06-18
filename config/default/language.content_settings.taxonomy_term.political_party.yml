@@ -1,0 +1,20 @@
+uuid: 15d77e92-7e70-40f6-849d-b4bac2c04fe2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 4ZhQS_L5ykt0RPV4lgNkqGiYrfn61h_XPBzXWZrf9EU
+id: taxonomy_term.political_party
+target_entity_type_id: taxonomy_term
+target_bundle: political_party
+default_langcode: site_default
+language_alterable: false

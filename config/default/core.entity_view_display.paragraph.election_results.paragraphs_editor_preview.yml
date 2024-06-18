@@ -1,0 +1,15 @@
+uuid: 6d098984-5213-4e4d-92f9-fbf35ebd18ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.election_results.field_source_url
+    - paragraphs.paragraphs_type.election_results
+id: paragraph.election_results.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: election_results
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_source_url: true

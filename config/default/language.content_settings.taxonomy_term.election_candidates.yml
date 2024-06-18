@@ -1,0 +1,11 @@
+uuid: 06b88303-6264-4452-8411-a95063ce9272
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_term.election_candidates
+target_entity_type_id: taxonomy_term
+target_bundle: election_candidates
+default_langcode: site_default
+language_alterable: false

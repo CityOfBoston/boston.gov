@@ -1,0 +1,20 @@
+uuid: 99a9d795-c909-4194-98df-c846193e6788
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_disposition_type
+  module:
+    - text
+id: taxonomy_term.bh_disposition_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: bh_disposition_type
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

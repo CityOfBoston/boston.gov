@@ -1,0 +1,23 @@
+uuid: 00e0b473-f943-4d60-a922-e87737efcac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_property_size
+    - node.type.bh_project
+id: node.bh_project.field_bh_property_size
+field_name: field_bh_property_size
+entity_type: node
+bundle: bh_project
+label: 'Property Size'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ' sq/ft'
+field_type: integer

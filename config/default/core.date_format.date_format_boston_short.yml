@@ -1,0 +1,8 @@
+uuid: 104aaaac-2274-4775-9942-3f8817452961
+langcode: en
+status: true
+dependencies: {  }
+id: date_format_boston_short
+label: 'Boston Short'
+locked: false
+pattern: n/j/y

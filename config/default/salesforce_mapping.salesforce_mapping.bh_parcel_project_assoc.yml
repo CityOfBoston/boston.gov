@@ -1,0 +1,60 @@
+langcode: en
+id: bh_parcel_project_assoc
+label: 'Building Housing - Parcels-Project Assoc'
+weight: -5
+type: salesforce_mapping
+key: ''
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: ''
+pull_record_type_filter:
+  Master: 0
+sync_triggers:
+  push_create: false
+  push_update: false
+  push_delete: false
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: ParcelProject_Association__c
+drupal_entity_type: node
+drupal_bundle: bh_parcel_project_assoc
+field_mappings:
+  -
+    drupal_field_type: RelatedIDs
+    drupal_field_value: field_bh_parcel_ref
+    direction: sf_drupal
+    salesforce_field: Parcel__c
+    id: 0
+  -
+    drupal_field_type: RelatedIDs
+    drupal_field_value: field_bh_project_ref
+    direction: sf_drupal
+    salesforce_field: Project__c
+    id: 1
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 2
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_parcel_project_assoc.field_bh_parcel_ref
+    - field.field.node.bh_parcel_project_assoc.field_bh_project_ref
+    - field.storage.node.field_bh_parcel_ref
+    - field.storage.node.field_bh_project_ref
+    - node.type.bh_parcel
+    - node.type.bh_parcel_project_assoc
+    - node.type.bh_project
+  module:
+    - salesforce_pull
+uuid: 1fd21bbe-bbdc-4c71-ba5a-a5a3a0735fea

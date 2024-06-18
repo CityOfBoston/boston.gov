@@ -1,0 +1,107 @@
+// <FilterGroup />
+@import '@globals';
+@import '@globals/typography/filters';
+
+.ml-filter-group {
+  // border: 1px solid rgba( 40, 180, 40, 0.5 );
+  // font-family: $font-family-montserrat;
+  border: 0;
+  background-color: $color-white;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  padding: rem( $filter-group-padding );
+  position: relative;
+
+  // Collapsing:
+  transition: padding-top .125s linear, padding-bottom .125s linear;
+  margin: 0 15px;
+  border-bottom: 2px solid #ffffff;
+
+  &:first-child {
+    margin: 0;
+  }
+}
+
+.ml-filter-group:not(.ml-filter-group--expanded) {
+  padding-top: 2.2rem;
+  padding-bottom: 0 !important;
+}
+
+@include media-breakpoint-up( large ) {
+  .ml-filter-group {
+    padding: rem( $filter-group-padding--desktop );
+    margin: 0;
+    // & + & {
+    //   margin-top: $panel-spacing;
+    // }
+  }
+}
+  .ml-filter-group__label {
+    font-family: $font-family-montserrat;
+    cursor: pointer;
+    height: $filter-group-label-height;
+    padding: 0 $filter-group-padding-left-right;
+    width: 100%;
+    background-color: $color-metrolist-text-blue;
+    font-weight: 500;
+    font-size: rem( 16px );
+    color: $color-white;
+    letter-spacing: rem( 0.86px );
+    line-height: .85;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // margin-left: rem( $filter-group-padding-left-right * -1 );
+    // margin-right: rem( $filter-group-padding-left-right * -1 );
+    margin: 0;
+  }
+  /* Fix for Safari bug where <legend>s can’t be flex containers */
+  .ml-filter-group__label-ui-fix {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .ml-filter-group__label-text {
+    flex: 1;
+    // border:1px solid white;
+  }
+  .ml-filter-group__icon {
+    // border: 1px solid white;
+    // height: 100%;
+    transform: rotate( 0deg );
+    transition: transform .125s ease;
+    font-size: 0.7rem;
+    text-transform: none;
+
+    //.ml-filter-group.ml-filter-group--expanded & {
+      //transform: rotate( 0deg );
+    //}
+  }
+
+  .ml-filter-group__filters {
+    $grid-gap: .75rem;
+
+    transition: height .125s ease;
+    // overflow: hidden;
+    flex-wrap: wrap;
+    margin-bottom: ( $grid-gap * -1 );
+
+    & > * {
+      margin-bottom: $grid-gap;
+      flex-shrink: 0;
+      flex-grow: 1;
+      flex-basis: 0%;
+
+      @include media-breakpoint-up( large ) {
+        & {
+          flex-basis: 25%;
+        }
+      }
+    }
+  }
+  .ml-filter-group__filters:not(.ml-filter-group__filters--expanded) {
+    height: 0 !important;
+    display: none;
+  }

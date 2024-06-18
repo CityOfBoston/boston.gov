@@ -1,0 +1,15 @@
+uuid: 2d179d87-e8ab-488a-9635-e5dd1e972fa4
+langcode: und
+status: true
+dependencies: {  }
+name: logo_square_c_desktop_1x
+label: 'logo square c-desktop 1x (360x360)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 360
+      anchor: center-center

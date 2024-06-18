@@ -1,0 +1,29 @@
+uuid: 80646704-4737-4f46-a56e-d3d23330ae32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_image
+    - media.type.image
+    - node.type.post
+id: node.post.field_intro_image
+field_name: field_intro_image
+entity_type: node
+bundle: post
+label: 'Intro Image'
+description: 'Add an intro image to the page. It will display at the very top of the page, slightly above the content. It will also be used as the thumbnail if no thumbnail is entered.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

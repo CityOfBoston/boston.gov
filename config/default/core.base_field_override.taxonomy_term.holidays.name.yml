@@ -1,0 +1,18 @@
+uuid: 489b6399-32f1-43fd-ab78-2593f4a60bca
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.holidays
+id: taxonomy_term.holidays.name
+field_name: name
+entity_type: taxonomy_term
+bundle: holidays
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

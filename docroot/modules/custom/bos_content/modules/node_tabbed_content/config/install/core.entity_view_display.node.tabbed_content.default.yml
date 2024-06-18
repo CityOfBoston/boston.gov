@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tabbed_content.field_intro_image
+    - field.field.node.tabbed_content.field_intro_text
+    - field.field.node.tabbed_content.field_manual_date
+    - field.field.node.tabbed_content.field_published_date
+    - field.field.node.tabbed_content.field_tabbed_content
+    - field.field.node.tabbed_content.field_updated_date
+    - node.type.tabbed_content
+  module:
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - text
+    - user
+id: node.tabbed_content.default
+targetEntityType: node
+bundle: tabbed_content
+mode: default
+content:
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_intro_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_tabbed_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_short
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  content_moderation_control: true
+  field_manual_date: true
+  field_published_date: true
+  langcode: true
+  links: true
+  published_at: true

@@ -1,0 +1,43 @@
+/* Selectors that have display: flex go here */
+.paragraphs-item-featured-topics .content,
+.paragraphs-item-grid-of-quotes .quote,
+.form__fieldset--inline .fieldset-wrapper,
+.component__content--flex,
+.form--inline {
+  -js-display: flex;
+}
+
+.landing-hero-content .container {
+  padding-top: 50px;
+  margin-top: 0;
+}
+
+.dr__header {
+  position: relative;
+}
+
+.dr__header svg {
+  position: absolute;
+  right: 1.5em;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.hb {
+  padding-top: 8px;
+}
+
+.hb--active {
+  padding-top: 0;
+  background: url('/sites/all/themes/custom/boston/dist/img/x-dark.png') no-repeat center;
+}
+
+.hb--active .hb__inner {
+  display: none;
+}
+
+.brg-tr:checked ~ #page,
+.brg-tr:checked ~ #page > .header,
+.brg-tr:checked ~ #page .topic-nav.sticky {
+  left: 285px;
+}

@@ -1,0 +1,18 @@
+uuid: 65c05dfc-dc4b-4879-b7cf-10b74c6d450a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.roll_call_dockets
+id: node.roll_call_dockets.title
+field_name: title
+entity_type: node
+bundle: roll_call_dockets
+label: 'Docket Number'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

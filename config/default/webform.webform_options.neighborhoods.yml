@@ -1,0 +1,31 @@
+uuid: c0907d3e-4c6d-4d34-90c9-493a46bc0706
+langcode: en
+status: true
+dependencies: {  }
+id: neighborhoods
+label: Neighborhoods
+category: MetroList
+likert: false
+options: |
+  Allston: Allston
+  'Back Bay': 'Back Bay'
+  'Beacon Hill': 'Beacon Hill'
+  Brighton: Brighton
+  Charlestown: Charlestown
+  Chinatown: Chinatown
+  Dorchester: Dorchester
+  Downtown: Downtown
+  'East Boston': 'East Boston'
+  Fenway: Fenway
+  'Hyde Park': 'Hyde Park'
+  'Jamaica Plain': 'Jamaica Plain'
+  Mattapan: Mattapan
+  'Mission Hill': 'Mission Hill'
+  'North End': 'North End'
+  Roslindale: Roslindale
+  Roxbury: Roxbury
+  Seaport: Seaport
+  'South Boston': 'South Boston'
+  'South End': 'South End'
+  'West End': 'West End'
+  'West Roxbury': 'West Roxbury'

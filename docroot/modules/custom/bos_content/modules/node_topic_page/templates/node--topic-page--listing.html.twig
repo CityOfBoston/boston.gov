@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+#}
+
+  <div class="{{ classes }} view-mode-listing_long clearfix node-{{ node.id }} m-t500 g--4 g--4--sl" {{ attributes.addClass([ node.id ]) }}>
+    <a href="{{ url }}" class="item-link gcd" title="Go to {{ title_raw }}">
+      <div class="gcd-ic" style="background-image: url({{ image_url }})"></div>
+      <div class="gcd-c">
+        <div class="gcd-st">Guide:</div>
+        <div class="gcd-t">{{ title_raw }}</div>
+      </div>
+    </a>
+  </div>

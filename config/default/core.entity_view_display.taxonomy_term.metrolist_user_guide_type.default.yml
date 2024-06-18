@@ -1,0 +1,34 @@
+uuid: 4a3695d1-49be-4664-9583-9442d545fdd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.metrolist_user_guide_type.field_ml_learn_content
+    - taxonomy.vocabulary.metrolist_user_guide_type
+  module:
+    - entity_reference_revisions
+    - fences
+id: taxonomy_term.metrolist_user_guide_type.default
+targetEntityType: taxonomy_term
+bundle: metrolist_user_guide_type
+mode: default
+content:
+  field_ml_learn_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ' b b--g b--fw'
+        fences_field_item_tag: div
+        fences_field_item_classes: b-c
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  langcode: true

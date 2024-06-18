@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Theme override for status messages.
+ *
+ * Displays status, error, and warning messages, grouped by type.
+ *
+ * An invisible heading identifies the messages for assistive technology.
+ * Sighted users see a colored box. See http://www.w3.org/TR/WCAG-TECHS/H69.html
+ * for info.
+ *
+ * Add an ARIA label to the contentinfo area so that assistive technology
+ * user agents will better describe this landmark.
+ *
+ * Available variables:
+ * - message_list: List of messages to be displayed, grouped by type.
+ * - status_headings: List of all status types.
+ * - attributes: HTML attributes for the element, including:
+ *   - class: HTML classes.
+ */
+#}
+<div class="b b--p300">
+
+  {% for type, messages in message_list %}
+
+    {% if type == 'error' %}
+      {% set clsRole = "g b--p300 b--r" %}
+      {% set clsColor = "bc-dr fc-dr" %}
+    {% elseif type == 'warning' %}
+      {% set clsRole = "g b--p300 b--g" %}
+      {% set clsColor = "bc-y fc-y" %}
+    {% else %}
+      {% set clsRole = "g b--p300 b--ob" %}
+      {% set clsColor = "bc-w fc-w" %}
+    {% endif  %}
+
+    <div id="system-messages" class="{{ clsRole }}" role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
+
+      {% if status_headings[type] %}
+        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+      {% endif %}
+
+      <div class="g--1 messages__icon cdfg-i {{ clsColor }}">
+        {{ status_icon[type]|raw }}
+      </div>
+
+      <div class="g--10">
+        {% if messages|length > 1 %}
+          <ul class="messages_list">
+            {% for message in messages %}
+              <li class="messages_item">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <span class="messages_item">
+            {{ messages|first }}
+          </span>
+        {% endif %}
+      </div>
+
+      <div class="g--1 {{ clsColor }}" onClick="javascript: jQuery(jQuery(this).parent().hide());"><span class="message--button">X</span></div>
+
+    </div>
+
+  {% endfor %}
+
+</div>

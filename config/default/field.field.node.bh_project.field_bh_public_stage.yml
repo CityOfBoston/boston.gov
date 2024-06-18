@@ -1,0 +1,34 @@
+uuid: a67c66a3-2082-46ab-97e1-15419e6f2b65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_public_stage
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_public_stage
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: Timeline
+id: node.bh_project.field_bh_public_stage
+field_name: field_bh_public_stage
+entity_type: node
+bundle: bh_project
+label: 'Public Stage'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_public_stage: bh_public_stage
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

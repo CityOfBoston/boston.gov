@@ -1,0 +1,29 @@
+uuid: 6ba42eb7-b74f-4d77-9019-8aa3d70746c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_election
+    - taxonomy.vocabulary.elections
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.elector_groups.field_election
+field_name: field_election
+entity_type: taxonomy_term
+bundle: elector_groups
+label: Election
+description: 'Select the election for which this group is valid. An elector group is typically a political party or affiliation that a Candidate belongs to.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      elections: elections
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

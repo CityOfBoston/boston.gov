@@ -1,0 +1,20 @@
+uuid: 5af87c38-fac3-4767-bf04-298b71cdeec9
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_election_candidate
+field_name: field_election_candidate
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

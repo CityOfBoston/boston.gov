@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_summary.field_commission
+    - field.field.paragraph.commission_summary.field_component_title
+    - field.field.paragraph.commission_summary.field_short_title
+    - paragraphs.paragraphs_type.commission_summary
+id: paragraph.commission_summary.default
+targetEntityType: paragraph
+bundle: commission_summary
+mode: default
+content:
+  field_commission:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

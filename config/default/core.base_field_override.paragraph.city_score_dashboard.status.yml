@@ -1,0 +1,24 @@
+uuid: 263ed2a0-29bf-4f8c-ad34-1a7fbabb41fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.city_score_dashboard
+_core:
+  default_config_hash: c1aom6LsVFW01IbZuRjbI0L24cw8HGSNaA81y5A7ivg
+id: paragraph.city_score_dashboard.status
+field_name: status
+entity_type: paragraph
+bundle: city_score_dashboard
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,36 @@
+<?php
+
+/*
+  Main Drupal module for sanitation_scheduling
+
+  david 04 2024
+  @file docroot/modules/custom/bos_components/modules/bos_web_app/apps/sanitation_scheduling/sanitation_scheduling.module
+
+*/
+
+/**
+ * Implements module preprocess_paragraph__web_app()
+ *
+ * In this function we embed the css and js required by the webapp component,
+ * (using a library).
+ *
+ * @param array $vars
+ *
+ * @return void
+ */
+function sanitation_scheduling_preprocess_paragraph__web_app(array &$vars) {
+
+  if ($vars["paragraph"]->hasField('field_webapp_name')
+    && $vars["paragraph"]->get('field_webapp_name')->value == "sanitation_scheduling") {
+
+    // Attach the sanitation scheduling library.
+    if (getenv('AH_SITE_ENVIRONMENT') == "prod") {
+      $vars['#attached']['library'][] = 'sanitation_scheduling/sanitation_scheduling';
+    }
+    else {
+      $vars['#attached']['library'][] = 'sanitation_scheduling/sanitation_scheduling-dev';
+    }
+
+  }
+
+}

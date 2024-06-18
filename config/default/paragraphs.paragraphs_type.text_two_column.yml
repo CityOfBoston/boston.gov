@@ -1,0 +1,18 @@
+uuid: 57a78da0-0185-48de-b7e9-bf463d84cb5e
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: sites/default/files/paragraphs_type_icon/text_two_column_icon.svg
+_core:
+  default_config_hash: TG88J80mvy4KkHNC9TFfIsTGRuNmnmZIzjkgFUSdpCc
+id: text_two_column
+label: 'Two Column'
+icon_uuid: null
+icon_default: null
+description: 'Defines various two column layouts for <b>Formatted Text</b> (text) paragraph.'
+behavior_plugins: {  }

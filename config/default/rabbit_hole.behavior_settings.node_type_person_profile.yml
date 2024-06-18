@@ -1,0 +1,14 @@
+uuid: 9c7b9fa1-8473-4a85-8220-68650613b9c1
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+id: node_type_person_profile
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

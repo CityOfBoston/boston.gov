@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Default template for a grid card.
+ *
+ * Available variables are:
+ * - $image: An optional image to include in the card.
+ * - $title: Title of card as link to content.
+ * - $description: Description of card content.
+ */
+#}
+<div class="cd g--4 g--4--sl m-t500">
+
+  {% if link %}
+    <a href="{{ link }}">
+  {% endif %}
+
+  {% if new_image_class %}
+    <div class="{{ new_image_class }}"></div>
+  {% elseif image %}
+    <div class="cd-ic" style="background-image: url({{ image }})"></div>
+  {% else %}
+    <div class="cd-ic hro--d"></div>
+  {% endif %}
+
+  <div class="cd-c">
+    <h3 class="cd-t">{{ title}}</h3>
+
+    {% if subtitle %}
+      <div class="cd-st t--upper t--subtitle">{{ subtitle}}</div>
+    {% endif %}
+
+    {% if description %}
+      <div class="cd-d">{{ description}}</div>
+    {% endif %}
+
+  </div>
+
+  {% if link %}
+    </a>
+  {% endif %}
+
+</div>

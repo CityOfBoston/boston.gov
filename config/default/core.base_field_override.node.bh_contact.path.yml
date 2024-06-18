@@ -1,0 +1,20 @@
+uuid: f0f8fb4a-a167-48ca-afe1-c91883a6bca5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+  module:
+    - path
+id: node.bh_contact.path
+field_name: path
+entity_type: node
+bundle: bh_contact
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

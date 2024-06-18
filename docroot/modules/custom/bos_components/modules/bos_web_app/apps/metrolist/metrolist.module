@@ -1,0 +1,12 @@
+<?php
+function metrolist_preprocess_paragraph__web_app(array &$vars) {
+
+  if ($vars["paragraph"]->hasField('field_webapp_name')
+    && $vars["paragraph"]->get('field_webapp_name')->value == "metrolist") {
+
+    // Attach the sanitation scheduling library.
+    $vars['#attached']['library'][] = 'metrolist/metrolist';
+
+  }
+
+}

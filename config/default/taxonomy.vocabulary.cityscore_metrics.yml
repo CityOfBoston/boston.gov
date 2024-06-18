@@ -1,0 +1,10 @@
+uuid: 1275ed99-3b1c-45d8-8319-e7d4a6a41b40
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: fzvzT9lmBySG_zAn9GSFQ5LoJ1fH5j1-oWk8twyL3Bs
+name: 'Cityscore Metrics'
+vid: cityscore_metrics
+description: 'Database for City Score Metrics'
+weight: 0

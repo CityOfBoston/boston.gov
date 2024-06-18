@@ -1,0 +1,31 @@
+uuid: 213999c9-ebc0-4bcc-b82e-619546987c4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.bos_signup_emergency_alerts.field_component_theme
+    - field.field.paragraph.bos_signup_emergency_alerts.field_component_title
+    - field.field.paragraph.bos_signup_emergency_alerts.field_contact
+    - field.field.paragraph.bos_signup_emergency_alerts.field_description
+    - field.field.paragraph.bos_signup_emergency_alerts.field_hide_title_bar
+    - field.field.paragraph.bos_signup_emergency_alerts.field_icon
+    - field.field.paragraph.bos_signup_emergency_alerts.field_intro_text
+    - field.field.paragraph.bos_signup_emergency_alerts.field_short_title
+    - paragraphs.paragraphs_type.bos_signup_emergency_alerts
+_core:
+  default_config_hash: bDtNBiiIZeLfpx6ipEZGjxEXL1U5lmtYa6T-VvNxuME
+id: paragraph.bos_signup_emergency_alerts.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: bos_signup_emergency_alerts
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_description: true
+  field_hide_title_bar: true
+  field_icon: true
+  field_intro_text: true
+  field_short_title: true

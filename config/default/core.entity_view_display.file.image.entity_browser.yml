@@ -1,0 +1,104 @@
+uuid: 624fb08b-70f8-409b-86a5-c56009163737
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.entity_browser
+    - field.field.file.image.field_file_image_alt_text
+    - field.field.file.image.field_file_image_title_text
+    - field.field.file.image.field_icon_category
+    - field.field.file.image.field_image_caption
+    - file_entity.type.image
+    - image.style.media_fixed_width_250px
+  module:
+    - fences
+    - file_entity
+    - smart_trim
+    - user
+_core:
+  default_config_hash: _Bf428kqU4oErwcNNTL2Wj4HQfES94Bs4usKnK3iL2Q
+id: file.image.entity_browser
+targetEntityType: file
+bundle: image
+mode: entity_browser
+content:
+  filemime:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  filename:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 30
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  uri:
+    type: file_image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: media_fixed_width_250px
+      title: field_file_image_title_text
+      alt: field_file_image_alt_text
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  field_file_image_alt_text: true
+  field_file_image_title_text: true
+  field_icon_category: true
+  field_image_caption: true
+  filesize: true
+  langcode: true

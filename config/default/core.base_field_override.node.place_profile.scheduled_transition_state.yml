@@ -1,0 +1,18 @@
+uuid: 8e35c288-802f-4c72-8b68-16b55f808b36
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: place_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:0bf500b6-7250-4f26-8e6c-ee2a4e70eeb9'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: internal_link
+label: 'Internal Link'
+icon_uuid: 0bf500b6-7250-4f26-8e6c-ee2a4e70eeb9
+icon_default: null
+description: 'Migrated from paragraph bundle Internal Link'
+behavior_plugins: {  }

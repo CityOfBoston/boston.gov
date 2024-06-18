@@ -1,0 +1,20 @@
+uuid: 18147d50-08a8-4191-b0c3-1f2210ff506b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: '-02Oi_8SAol5RUHOWzltek3wK3fyxLCcpjknJxwYYxE'
+id: paragraph.grid_of_programs_initiatives
+target_entity_type_id: paragraph
+target_bundle: grid_of_programs_initiatives
+default_langcode: site_default
+language_alterable: false

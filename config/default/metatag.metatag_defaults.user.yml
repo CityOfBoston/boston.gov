@@ -1,0 +1,17 @@
+uuid: 15c5dfab-048f-40c5-83a2-c3aba91a2c1e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: e3453dXHFW5TM24d8Odhumgwd8hIZVPvQv98wnGM7Ro
+id: user
+label: User
+tags:
+  title: '[user:name] | [site:name]'
+  description: '[site:name]'
+  image_src: '[user:picture_url]'
+  og_type: profile
+  og_image: '[user:picture_url]'
+  og_title: '[user:name]'
+  twitter_cards_image: '[user:picture_url]'
+  twitter_cards_title: '[user:name]'

@@ -1,0 +1,15 @@
+uuid: bf1157fa-161e-4cfb-a959-03e8da0d507a
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_horizontal_e_oversize
+label: 'Card grid 3w Horizontal (382x134)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 382
+      height: 134
+      anchor: center-center

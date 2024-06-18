@@ -1,0 +1,267 @@
+uuid: b312f05e-74e8-4d14-ad56-28eb396c0863
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.filtered_html
+    - filter.format.full_html
+    - node.type.article
+    - node.type.bh_project
+    - node.type.department_profile
+    - node.type.emergency_alert
+    - node.type.event
+    - node.type.how_to
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.metrolist_affordable_housing
+    - node.type.person_profile
+    - node.type.place_profile
+    - node.type.post
+    - node.type.procurement_advertisement
+    - node.type.program_initiative_profile
+    - node.type.public_notice
+    - node.type.script_page
+    - node.type.site_alert
+    - node.type.status_item
+    - node.type.tabbed_content
+    - node.type.topic_page
+    - node.type.transaction
+    - taxonomy.vocabulary.311_request
+    - taxonomy.vocabulary.bid_offering
+    - taxonomy.vocabulary.bid_type
+    - taxonomy.vocabulary.city_council_districts
+    - taxonomy.vocabulary.cityscore_metrics
+    - taxonomy.vocabulary.commissions
+    - taxonomy.vocabulary.contact
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.features
+    - taxonomy.vocabulary.holidays
+    - taxonomy.vocabulary.icons
+    - taxonomy.vocabulary.massachusetts_general_law
+    - taxonomy.vocabulary.neighborhoods
+    - taxonomy.vocabulary.news_tags
+    - taxonomy.vocabulary.newsletters
+    - taxonomy.vocabulary.place_type
+    - taxonomy.vocabulary.political_party
+    - taxonomy.vocabulary.procurement_footer
+    - taxonomy.vocabulary.procurement_type
+    - taxonomy.vocabulary.profile_type
+    - taxonomy.vocabulary.program_type
+    - taxonomy.vocabulary.project_banner_bh_
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.topic_category
+    - taxonomy.vocabulary.vocab_city_councillors
+    - taxonomy.vocabulary.vocab_votes
+    - workflows.workflow.city_of_boston_workflows
+    - workflows.workflow.unmanaged_workflow
+  module:
+    - content_moderation
+    - date_recur_modular
+    - draggableviews
+    - entity_browser
+    - environment_indicator
+    - file_entity
+    - filter
+    - honeypot
+    - lightning_core
+    - lightning_scheduler
+    - media
+    - metatag
+    - moderation_sidebar
+    - node
+    - paragraphs
+    - paragraphs_library
+    - paragraphs_type_permissions
+    - path
+    - publication_date
+    - rabbit_hole
+    - redirect
+    - system
+    - taxonomy
+    - toolbar
+    - workbench
+third_party_settings:
+  lightning_core:
+    description: 'City of Boston user who can create and edit all content and publish or archive content.'
+id: content_editor
+label: 'Content Editor'
+weight: -5
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access document_entity_browser entity browser pages'
+  - 'access draggableviews'
+  - 'access environment indicator'
+  - 'access icon_entity_browser entity browser pages'
+  - 'access image_entity_browser entity browser pages'
+  - 'access media overview'
+  - 'access media_entity_browser entity browser pages'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access workbench'
+  - 'administer honeypot'
+  - 'administer meta tags'
+  - 'administer nodes'
+  - 'administer redirects'
+  - 'create emergency_alert content'
+  - 'create paragraph content bos_chart'
+  - 'create paragraph content charts'
+  - 'create paragraph content group_of_links_quick_links'
+  - 'create paragraph content web_app'
+  - 'create paragraph library item'
+  - 'create site_alert content'
+  - 'create status_item content'
+  - 'create terms in 311_request'
+  - 'create terms in bid_offering'
+  - 'create terms in bid_type'
+  - 'create terms in cityscore_metrics'
+  - 'create terms in commissions'
+  - 'create terms in contact'
+  - 'create terms in event_type'
+  - 'create terms in features'
+  - 'create terms in holidays'
+  - 'create terms in icons'
+  - 'create terms in massachusetts_general_law'
+  - 'create terms in neighborhoods'
+  - 'create terms in news_tags'
+  - 'create terms in newsletters'
+  - 'create terms in place_type'
+  - 'create terms in political_party'
+  - 'create terms in procurement_footer'
+  - 'create terms in procurement_type'
+  - 'create terms in profile_type'
+  - 'create terms in program_type'
+  - 'create terms in project_banner_bh_'
+  - 'create terms in tags'
+  - 'create terms in topic_category'
+  - 'create terms in vocab_city_councillors'
+  - 'create url aliases'
+  - 'date_recur_modular use sierra form'
+  - 'delete any audio files'
+  - 'delete any document files'
+  - 'delete any image files'
+  - 'delete any media'
+  - 'delete any video files'
+  - 'delete own audio files'
+  - 'delete own document files'
+  - 'delete own image files'
+  - 'delete own video files'
+  - 'delete paragraph content bos_chart'
+  - 'delete paragraph content charts'
+  - 'delete paragraph content group_of_links_quick_links'
+  - 'edit any article content'
+  - 'edit any bh_project content'
+  - 'edit any department_profile content'
+  - 'edit any emergency_alert content'
+  - 'edit any event content'
+  - 'edit any how_to content'
+  - 'edit any landing_page content'
+  - 'edit any listing_page content'
+  - 'edit any metrolist_affordable_housing content'
+  - 'edit any person_profile content'
+  - 'edit any place_profile content'
+  - 'edit any post content'
+  - 'edit any procurement_advertisement content'
+  - 'edit any program_initiative_profile content'
+  - 'edit any public_notice content'
+  - 'edit any script_page content'
+  - 'edit any site_alert content'
+  - 'edit any status_item content'
+  - 'edit any tabbed_content content'
+  - 'edit any topic_page content'
+  - 'edit any transaction content'
+  - 'edit paragraph library item'
+  - 'edit terms in 311_request'
+  - 'edit terms in bid_offering'
+  - 'edit terms in bid_type'
+  - 'edit terms in city_council_districts'
+  - 'edit terms in cityscore_metrics'
+  - 'edit terms in commissions'
+  - 'edit terms in contact'
+  - 'edit terms in event_type'
+  - 'edit terms in features'
+  - 'edit terms in holidays'
+  - 'edit terms in icons'
+  - 'edit terms in massachusetts_general_law'
+  - 'edit terms in neighborhoods'
+  - 'edit terms in news_tags'
+  - 'edit terms in newsletters'
+  - 'edit terms in place_type'
+  - 'edit terms in political_party'
+  - 'edit terms in procurement_footer'
+  - 'edit terms in procurement_type'
+  - 'edit terms in profile_type'
+  - 'edit terms in program_type'
+  - 'edit terms in project_banner_bh_'
+  - 'edit terms in tags'
+  - 'edit terms in topic_category'
+  - 'edit terms in vocab_city_councillors'
+  - 'edit terms in vocab_votes'
+  - 'rabbit hole bypass node'
+  - 'revert all revisions'
+  - 'revert article revisions'
+  - 'revert department_profile revisions'
+  - 'revert emergency_alert revisions'
+  - 'revert event revisions'
+  - 'revert how_to revisions'
+  - 'revert landing_page revisions'
+  - 'revert listing_page revisions'
+  - 'revert metrolist_affordable_housing revisions'
+  - 'revert person_profile revisions'
+  - 'revert place_profile revisions'
+  - 'revert post revisions'
+  - 'revert procurement_advertisement revisions'
+  - 'revert program_initiative_profile revisions'
+  - 'revert public_notice revisions'
+  - 'revert script_page revisions'
+  - 'revert site_alert revisions'
+  - 'revert status_item revisions'
+  - 'revert tabbed_content revisions'
+  - 'revert topic_page revisions'
+  - 'revert transaction revisions'
+  - 'schedule city_of_boston_workflows transition archived'
+  - 'schedule city_of_boston_workflows transition draft_from_archived'
+  - 'schedule city_of_boston_workflows transition draft_from_published'
+  - 'schedule city_of_boston_workflows transition publish'
+  - 'schedule city_of_boston_workflows transition publish_new_content'
+  - 'schedule city_of_boston_workflows transition reject'
+  - 'schedule city_of_boston_workflows transition submit_for_review'
+  - 'schedule city_of_boston_workflows transition update_draft'
+  - 'schedule city_of_boston_workflows transition update_published'
+  - 'schedule unmanaged_workflow transition create_new_draft'
+  - 'schedule unmanaged_workflow transition publish'
+  - 'set article published on date'
+  - 'set department_profile published on date'
+  - 'set event published on date'
+  - 'set how_to published on date'
+  - 'set landing_page published on date'
+  - 'set listing_page published on date'
+  - 'set person_profile published on date'
+  - 'set place_profile published on date'
+  - 'set post published on date'
+  - 'set procurement_advertisement published on date'
+  - 'set program_initiative_profile published on date'
+  - 'set public_notice published on date'
+  - 'set topic_page published on date'
+  - 'set transaction published on date'
+  - 'update paragraph content group_of_links_quick_links'
+  - 'use city_of_boston_workflows transition archived'
+  - 'use city_of_boston_workflows transition publish'
+  - 'use city_of_boston_workflows transition publish_new_content'
+  - 'use city_of_boston_workflows transition reject'
+  - 'use city_of_boston_workflows transition submit_for_review'
+  - 'use city_of_boston_workflows transition update_draft'
+  - 'use moderation sidebar'
+  - 'use text format filtered_html'
+  - 'use text format full_html'
+  - 'use unmanaged_workflow transition publish'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view emergency_alert revisions'
+  - 'view latest version'
+  - 'view own private files'
+  - 'view own unpublished content'
+  - 'view site_alert revisions'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

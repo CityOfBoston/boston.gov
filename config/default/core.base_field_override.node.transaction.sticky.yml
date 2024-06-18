@@ -1,0 +1,22 @@
+uuid: 15208371-4204-4a60-9f14-37519437baa6
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.sticky
+field_name: sticky
+entity_type: node
+bundle: transaction
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 697bf519-4a7f-40bb-a349-3b924a487617
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.title
+field_name: title
+entity_type: node
+bundle: procurement_advertisement
+label: 'Project name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

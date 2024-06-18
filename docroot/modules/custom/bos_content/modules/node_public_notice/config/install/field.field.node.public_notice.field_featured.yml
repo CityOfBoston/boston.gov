@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured
+    - node.type.public_notice
+  module:
+    - options
+id: node.public_notice.field_featured
+field_name: field_featured
+entity_type: node
+bundle: public_notice
+label: Featured
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

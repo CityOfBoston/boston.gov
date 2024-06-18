@@ -1,0 +1,21 @@
+uuid: 65693967-a9e7-4a38-9720-c375a5e65f33
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.program_initiative_profile
+  module:
+    - metatag
+id: node.program_initiative_profile.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: program_initiative_profile
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

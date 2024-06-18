@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.charts
+  module:
+    - options
+id: paragraph.charts.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: charts
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: w
+default_value_callback: ''
+settings: {  }
+field_type: list_string

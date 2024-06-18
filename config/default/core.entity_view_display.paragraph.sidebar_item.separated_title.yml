@@ -1,0 +1,19 @@
+uuid: 64a04bd5-2fd7-4ebc-8ac9-21366f69d431
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.sidebar_item.field_sidebar_text
+    - field.field.paragraph.sidebar_item.field_title
+    - paragraphs.paragraphs_type.sidebar_item
+_core:
+  default_config_hash: XUGc4JhW0PyVxMREbNYrsEg26gP3CiaDop7r8Wb9zWc
+id: paragraph.sidebar_item.separated_title
+targetEntityType: paragraph
+bundle: sidebar_item
+mode: separated_title
+content: {  }
+hidden:
+  field_sidebar_text: true
+  field_title: true

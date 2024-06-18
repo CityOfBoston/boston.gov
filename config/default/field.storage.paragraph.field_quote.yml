@@ -1,0 +1,23 @@
+uuid: 0c24e05d-0b93-40d7-a7ed-ee4503587711
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: iTa-1EcoljhUmqh2B8H3h7SIUXG4W84UF5PN23ZOh6w
+id: paragraph.field_quote
+field_name: field_quote
+entity_type: paragraph
+type: string
+settings:
+  max_length: 101
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

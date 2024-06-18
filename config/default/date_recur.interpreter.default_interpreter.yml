@@ -1,0 +1,16 @@
+uuid: 3fa8d150-b1e3-40b3-a7f3-f20bc99a7c3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.date_format.date_format_normal_date
+_core:
+  default_config_hash: zx_IJn4SosQt8RbdEHFJSrxMvuMTTGiSgVioy1porhY
+id: default_interpreter
+label: 'Default Interpreter'
+plugin: rl
+settings:
+  show_start_date: true
+  show_until: true
+  date_format: date_format_normal_date
+  show_infinite: true

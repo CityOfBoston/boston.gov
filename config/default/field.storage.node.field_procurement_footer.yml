@@ -1,0 +1,20 @@
+uuid: 8fbd3f99-f755-4c0f-8edb-8f33e1462477
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_procurement_footer
+field_name: field_procurement_footer
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

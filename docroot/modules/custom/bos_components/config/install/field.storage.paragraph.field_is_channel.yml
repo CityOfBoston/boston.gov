@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_is_channel
+field_name: field_is_channel
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'false'
+      label: 'No'
+    -
+      value: 'true'
+      label: 'Yes'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

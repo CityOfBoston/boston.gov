@@ -1,0 +1,34 @@
+uuid: b5e0c929-5bcb-429d-8fe7-368f34d41be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_election
+    - taxonomy.vocabulary.election_contests
+    - taxonomy.vocabulary.elections
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: Election
+id: taxonomy_term.election_contests.field_election
+field_name: field_election
+entity_type: taxonomy_term
+bundle: election_contests
+label: Election
+description: 'Select the election event for which this contest is valid.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      elections: elections
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

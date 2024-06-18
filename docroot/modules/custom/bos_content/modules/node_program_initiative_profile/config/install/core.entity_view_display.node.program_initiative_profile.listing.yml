@@ -1,0 +1,86 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.program_initiative_profile.body
+    - field.field.node.program_initiative_profile.field_components
+    - field.field.node.program_initiative_profile.field_contacts
+    - field.field.node.program_initiative_profile.field_content_feeds
+    - field.field.node.program_initiative_profile.field_intro_image
+    - field.field.node.program_initiative_profile.field_intro_text
+    - field.field.node.program_initiative_profile.field_manual_date
+    - field.field.node.program_initiative_profile.field_metatags
+    - field.field.node.program_initiative_profile.field_program_logo
+    - field.field.node.program_initiative_profile.field_program_type
+    - field.field.node.program_initiative_profile.field_published_date
+    - field.field.node.program_initiative_profile.field_sidebar_components
+    - field.field.node.program_initiative_profile.field_updated_date
+    - node.type.program_initiative_profile
+  module:
+    - fences
+    - smart_trim
+    - user
+id: node.program_initiative_profile.listing
+targetEntityType: node
+bundle: program_initiative_profile
+mode: listing
+content:
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_pip_listing
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_intro_text:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 120
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_components: true
+  field_contacts: true
+  field_content_feeds: true
+  field_manual_date: true
+  field_metatags: true
+  field_program_logo: true
+  field_program_type: true
+  field_published_date: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

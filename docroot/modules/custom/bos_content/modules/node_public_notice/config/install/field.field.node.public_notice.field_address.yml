@@ -1,0 +1,61 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.public_notice
+  module:
+    - address
+id: node.public_notice.field_address
+field_name: field_address
+entity_type: node
+bundle: public_notice
+label: Location
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    langcode: ''
+    country_code: US
+    administrative_area: ''
+    locality: ''
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: ''
+    organization: null
+    given_name: null
+    additional_name: null
+    family_name: null
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: required
+    addressLine2:
+      override: optional
+    postalCode:
+      override: required
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: optional
+    locality:
+      override: required
+    administrativeArea:
+      override: optional
+  fields: {  }
+field_type: address

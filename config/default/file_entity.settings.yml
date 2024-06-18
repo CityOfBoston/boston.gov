@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: Dsqx6iwF885-9ptwCi5WMbiBmINrxsKPhl0NuCABrco
+max_filesize: 0
+default_allowed_extensions: 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov mp4 m4a m4v mpeg avi ogg oga ogv weba webp webm svg'
+alt: '[file:field-file-image-alt-text:value]'
+title: '[file:field-file-image-title-text:value]'
+wizard_skip_file_type: false
+wizard_skip_scheme: false
+wizard_skip_fields: false
+allow_insecure_download: false

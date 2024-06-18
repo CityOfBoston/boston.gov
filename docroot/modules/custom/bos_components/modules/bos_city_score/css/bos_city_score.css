@@ -1,0 +1,298 @@
+.cs--block {
+  min-width: 250px;
+  font-family: 'Fenway', arial, sans-serif;
+  background-color: #46695D;
+  color: #ffffff;
+  margin-bottom: 50px;
+  padding: 20px
+}
+.cs__low {
+  color: #FEF163
+}
+@media (min-width: 480px) {
+  .cs--block {
+    padding: 35px
+  }
+}
+@media (min-width: 768px) {
+  .cs--block {
+    padding: 50px
+  }
+}
+.cs--chart {
+  position: relative;
+  height: 400px
+}
+.cs__block--chart {
+  padding: 65px 35px
+}
+.cs--chart:after {
+  content: " ";
+  position: absolute;
+  width: 4px;
+  left: 13px;
+  margin-left: -2px;
+  top: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  z-index: 0
+}
+.cs--chart,
+.cs--chartPoint,
+.cs--chartAmount {
+  list-style: none;
+  background-image: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1
+}
+.cs--chartPoint {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 26px;
+  width: 26px;
+  border-radius: 100%;
+  background-color: #ffffff;
+  color: #46695D;
+  font-size: 80%
+}
+.cs--chartPoint span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%)
+}
+.cs--chartPoint:nth-of-type(1) {
+  top: 0
+}
+.cs--chartPoint:nth-of-type(3) {
+  top: 100%
+}
+.cs--chartPoint p {
+  margin: 0;
+  position: absolute;
+  font-family: 'Lora', Georgia, serif;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 18px;
+  font-style: italic;
+  width: 180px;
+  left: 36px;
+  text-align: left;
+  margin-top: -5px;
+  top: 50%;
+  -ms-transform: translateY(-40%);
+  transform: translateY(-40%)
+}
+.cs--less,
+.cs--greater {
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  margin-right: -2px;
+  font-size: 130%
+}
+.cs--less {
+  color: red
+}
+.cs--chartAmount {
+  background-color: #ffffff;
+  position: absolute;
+  left: 37px;
+  right: 10px;
+  text-align: center;
+  padding: 10px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  max-width: 180px
+}
+.cs--chartAmount:after {
+  position: absolute;
+  content: ' ';
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #ffffff;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+.cs--chartAmount--label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #091f2f;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1;
+  margin-bottom: 10px
+}
+.cs--chartAmount--value {
+  font-size: 24px;
+  color: #46695D;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  display: block
+}
+@media (min-width: 768px) {
+  .cs--chart {
+    -ms-flex-direction: row;
+    flex-direction: row;
+    height: auto
+  }
+  .cs--chart:after {
+    height: 4px;
+    top: 50%;
+    margin-top: -2px;
+    left: 0;
+    right: 0;
+    width: auto;
+    margin-left: 0
+  }
+  .cs__block--chart {
+    padding: 175px 135px 150px
+  }
+  .cs--chartPoint {
+    height: 60px;
+    width: 60px;
+    font-size: 120%
+  }
+  .cs--chartPoint p {
+    top: 80px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    text-align: center
+  }
+  .cs--chartPoint:nth-of-type(1) {
+    left: 0
+  }
+  .cs--chartPoint:nth-of-type(2) {
+    left: 50%
+  }
+  .cs--chartPoint:nth-of-type(3) {
+    left: 100%
+  }
+  .cs--chartAmount {
+    bottom: 60px;
+    padding: 10px;
+    top: auto;
+    left: 20%;
+    right: auto;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+  }
+  .cs--chartAmount:after {
+    position: absolute;
+    content: ' ';
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: 42px solid #ffffff;
+    border-left: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid transparent;
+    top: 100%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+  }
+  .cs--less,
+  .cs--greater {
+    -ms-transform: none;
+    transform: none;
+    font-size: 180%
+  }
+}
+.cs__table {
+  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  font-size: 1rem;
+  line-height: 1rem
+}
+.cs__table-header th {
+  font-size: 100%;
+  text-align: left;
+  border-bottom: 3px solid #ffffff;
+  display: none
+}
+.cs__table-row {
+  display: block;
+  margin-bottom: 1em
+}
+.cs__table-row td {
+  display: block
+}
+.cs__table-row td:nth-of-type(1) {
+  margin-bottom: 5px
+}
+.cs__table-row td.cs__table--centered {
+  font-size: 77.778%;
+  text-align: right;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5)
+}
+.cs__table-row td.cs__table--centered:last-child {
+  border-bottom: none
+}
+.cs__table-row td.cs__table--centered:before {
+  color: #ffffff;
+  float: left;
+  text-align: left
+}
+.cs__table-row td.cs__table--centered:nth-of-type(2):before {
+  content: 'Day '
+}
+.cs__table-row td.cs__table--centered:nth-of-type(3):before {
+  content: 'Week '
+}
+.cs__table-row td.cs__table--centered:nth-of-type(4):before {
+  content: 'Month '
+}
+.cs__table-row td.cs__table--centered:nth-of-type(5):before {
+  content: 'Quarter '
+}
+@media (min-width: 840px) {
+  .cs__table {
+    display: table
+  }
+  .cs__table-header th {
+    padding-bottom: 0.25em;
+    font-size: 120%
+  }
+  .cs__table-row {
+    display: table-row
+  }
+  .cs__table-row:first-child td {
+    padding-top: 1em
+  }
+  .cs__table-row td {
+    padding: 0.5em 0
+  }
+  .cs__table-header th,
+  .cs__table-row td {
+    display: table-cell
+  }
+  .cs__table-row td.cs__table--centered {
+    font-size: 100%;
+    border-bottom: none;
+    text-align: left
+  }
+  .cs__table-row td.cs__table--centered:before {
+    content: '';
+    display: none
+  }
+}

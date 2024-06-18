@@ -1,0 +1,28 @@
+uuid: 9d6fda0b-6462-4ed5-a6cd-319a833771f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - bos_feedback_form
+    - system
+  theme:
+    - bos_theme
+id: bos_theme_feedbackform
+theme: bos_theme
+region: content
+weight: 0
+provider: null
+plugin: feedback_form
+settings:
+  id: feedback_form
+  label: 'Feedback Form'
+  label_display: '0'
+  provider: bos_feedback_form
+  feedback_button_title: 'Provide Your Feedback'
+  feedback_wrapper_css: ta--c
+  feedback_button_css: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/buildinghousing/*\r\n/buildinghousing-map\r\n/metrolist*\r\n/metrolist/*\r\n/departments/mayors-office/green-new-deal-dashboard\r\n/admin*\r\n/user*\r\n/departments/registry-birth-death-and-marriage"

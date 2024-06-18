@@ -1,0 +1,18 @@
+uuid: 9cc9b7c6-4671-404b-9165-e26088a421da
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.311_request
+id: taxonomy_term.311_request.name
+field_name: name
+entity_type: taxonomy_term
+bundle: 311_request
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

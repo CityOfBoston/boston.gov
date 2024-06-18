@@ -1,0 +1,22 @@
+uuid: a0029366-71d4-4541-b0e9-8e79520561af
+langcode: en
+status: true
+dependencies:
+  module:
+    - date_recur
+    - paragraphs
+id: paragraph.field_recurrence
+field_name: field_recurrence
+entity_type: paragraph
+type: date_recur
+settings:
+  datetime_type: datetime
+  optional_end_date: true
+  rrule_max_length: 512
+module: date_recur
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

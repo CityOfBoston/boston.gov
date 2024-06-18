@@ -1,0 +1,8 @@
+name: 'City of Boston: Metrolist - Unit'
+type: module
+description: 'MetroList Unit features'
+core_version_requirement: ^8 || ^9 || ^10
+package: MetroList
+dependencies:
+  - node
+  - menu_ui

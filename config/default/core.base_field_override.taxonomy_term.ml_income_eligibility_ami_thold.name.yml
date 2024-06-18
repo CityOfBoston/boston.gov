@@ -1,0 +1,18 @@
+uuid: 90c6e1cf-1573-4e3b-a4b2-dba894fd9048
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.name
+field_name: name
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_icon
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_text
+    - field.field.paragraph.sidebar_item_w_icon.field_title
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+id: paragraph.sidebar_item_w_icon.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: sidebar_item_w_icon
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_sidebar_icon: true
+  field_sidebar_text: true
+  field_title: true

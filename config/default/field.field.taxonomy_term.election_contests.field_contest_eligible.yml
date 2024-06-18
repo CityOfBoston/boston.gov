@@ -1,0 +1,23 @@
+uuid: 523c2259-f62c-4ef0-9a0a-792c54fc4012
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_contest_eligible
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests.field_contest_eligible
+field_name: field_contest_eligible
+entity_type: taxonomy_term
+bundle: election_contests
+label: Eligible
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

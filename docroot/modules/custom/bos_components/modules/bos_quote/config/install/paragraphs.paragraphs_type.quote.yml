@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:a441150f-1e9b-4b43-8794-1fc29628d7c9'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: quote
+label: Quote
+icon_uuid: a441150f-1e9b-4b43-8794-1fc29628d7c9
+icon_default: null
+description: 'Migrated from paragraph bundle Quote'
+behavior_plugins: {  }

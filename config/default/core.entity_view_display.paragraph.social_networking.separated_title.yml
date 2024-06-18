@@ -1,0 +1,19 @@
+uuid: 1c2405b1-13f8-4d47-945d-c3c1a9fe2e8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.social_networking.field_external_link
+    - field.field.paragraph.social_networking.field_social_icon
+    - paragraphs.paragraphs_type.social_networking
+_core:
+  default_config_hash: 9SjePfCqx9Vm81YSFpkj72lxhtP2zdEA3Lp-zvdEx4Y
+id: paragraph.social_networking.separated_title
+targetEntityType: paragraph
+bundle: social_networking
+mode: separated_title
+content: {  }
+hidden:
+  field_external_link: true
+  field_social_icon: true

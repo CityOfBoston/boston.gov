@@ -1,0 +1,15 @@
+uuid: 49649ba3-dedc-480b-93d6-63858a66afde
+langcode: und
+status: true
+dependencies: {  }
+name: hero_fixed_a_mobile_1x
+label: 'Hero fixed a-mobile 1x (420x270)'
+effects:
+  4bc95871-fea9-4373-9b94-250c4b44fa98:
+    uuid: 4bc95871-fea9-4373-9b94-250c4b44fa98
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 420
+      height: 270
+      anchor: center-bottom

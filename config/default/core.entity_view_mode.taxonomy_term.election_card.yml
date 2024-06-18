@@ -1,0 +1,15 @@
+uuid: f04d958b-193d-45f1-9e71-3cd70c66aa33
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: 'When the taxonomy is shown in an election card.'
+id: taxonomy_term.election_card
+label: 'Election Card'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

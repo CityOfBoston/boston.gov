@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Status Item'
+type: status_item
+description: 'Create a status item to be displayed dynamically through status views. Status views can be selected through a List component and placed on a page.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

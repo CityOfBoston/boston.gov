@@ -1,0 +1,42 @@
+{% if  element["#third_party_settings"].fences %}
+
+  {% set field_tag = "div" %}
+  {% if element["#third_party_settings"].fences.fences_field_tag %}
+    {% set field_tag = element["#third_party_settings"].fences.fences_field_tag %}
+  {% endif %}
+  {% if element["#third_party_settings"].fences.fences_field_classes %}
+    {% set field_classes = element["#third_party_settings"].fences.fences_field_classes %}
+  {% endif %}
+
+  {% set field_item_tag = "div" %}
+  {% if  element["#third_party_settings"].fences.fences_field_item_tag %}
+    {% set field_item_tag = element["#third_party_settings"].fences.fences_field_item_tag %}
+  {% endif %}
+  {% if element["#third_party_settings"].fences.fences_field_item_classes %}
+    {% set field_item_classes = element["#third_party_settings"].fences.fences_field_item_classes %}
+  {% endif %}
+
+  {% set label_tag = "div" %}
+  {% if  element["#third_party_settings"].fences.fences_label_tag %}
+    {% set label_tag = element["#third_party_settings"].fences.fences_label_tag %}
+  {% endif %}
+  {% if element["#third_party_settings"].fences.fences_label_classes %}
+    {% set label_classes = element["#third_party_settings"].fences.fences_label_classes %}
+  {% endif %}
+
+{% endif %}
+
+<{{ field_tag }} class="{{ field_classes }}">
+  <{{ label_tag }} class="{{ label_classes }} dl-t">
+    <div>{{ element["#title"] }}:</div>
+  </{{ label_tag }}>
+  <div class="detail-item__content dl-d">
+    <{{ field_item_tag }} class="{{ field_item_classes }}">
+      {% for item in content %}
+       <div class="lnk lnk--">
+         {{ item }}
+       </div>
+      {% endfor %}
+    </{{ field_item_tag }}>
+  </div>
+</{{ field_tag }}>

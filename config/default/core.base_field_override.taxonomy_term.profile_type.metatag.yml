@@ -1,0 +1,18 @@
+uuid: 3a86f351-ca80-474d-a547-051993c27ef3
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.profile_type
+id: taxonomy_term.profile_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: profile_type
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

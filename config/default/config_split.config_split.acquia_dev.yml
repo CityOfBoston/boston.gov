@@ -1,0 +1,57 @@
+uuid: 16b34272-b184-4726-a179-938f98a777e5
+langcode: en
+status: true
+dependencies: {  }
+id: acquia_dev
+label: acquia_dev
+description: 'Configurations for Acquia DEV environment.purge'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/acquia_dev
+module:
+  admin_toolbar_search: 0
+  dblog: 0
+  devel: 0
+  maillog: 0
+  masquerade: 0
+  salesforce_logger: 0
+  samlauth: 0
+  samlauth_user_roles: 0
+  stage_file_proxy: 0
+  syslog: 0
+  twig_xdebug: 0
+  acquia_connector: 0
+  acquia_purge: 0
+  captcha: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
+  recaptcha_v3: 0
+theme: {  }
+complete_list:
+  - bos_pdfmanager.settings
+  - bos_sql.settings
+  - bos_theme.settings
+  - config_ignore.settings
+  - key.key.iam_dir_sso_test_
+  - key.key.salesforce_sandbox_oauth_consumer_key
+  - key.key.salesforce_sandbox_oauth_consumer_secret
+  - mailsystem.settings
+  - mimemail.settings
+  - system.mail
+  - purge.logger_channels
+  - purge.plugins
+  - purge_queuer_coretags.settings
+  - salesforce_logger.settings
+  - samlauth.authentication
+  - samlauth_user_roles.mapping
+  - views.view.samlauth_map
+partial_list:
+  - environment_indicator.indicator
+  - metatag.metatag_defaults.global
+  - system.site

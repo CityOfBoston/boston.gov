@@ -1,0 +1,101 @@
+/*
+  This stylesheet is used to contain style rules for media displays embedded in editor forms of nodes and paragraphs,
+  and in entity browser media displays (modal windows).
+ */
+html {
+  font-size: 18px !important;
+  line-height: 2.16667em;
+  font-family: Montserrat,sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  min-height: 100%;
+  background-color: #f7f7f7;
+}
+html.desktop-100 {
+
+}
+body {
+  font-family: Lora,serif;
+  font-size: 112%;
+  color: #58585b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  margin: 0 auto;
+  padding: 1px;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  max-width: 1200px;
+}
+p {
+  margin: .49833rem 0 2.16667rem;
+}
+/*********************************/
+/** Styles from the CKEditor Styles dropdown. */
+span.red {
+  color: red;
+}
+
+
+/*********************************/
+/** Style anchors in the main page style. */
+.cke_editable a,
+.cke_editable a:visited {
+  color: #1871bd;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cke_editable a.button,
+.cke_editable a.button:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+body.cke_editable.body {
+  font-size: 18px;
+}
+
+/*********************************/
+/** Force icons to be 150px square. */
+.cke_widget_element .cob-icon-embedded-ck-editor img,
+.cke_widget_element .cob-icon-embedded-ck-editor svg {
+  height: 100px;
+  width: auto;
+}
+/*********************************/
+
+/*********************************/
+/** CKeditor user-applied style: supporting-text */
+/*.cke_editable p.supporting-text {*/
+/*  font-weight: 400;*/
+/*  font-style: italic;*/
+/*  color: #091f2f;*/
+/*  padding-bottom: 1em;*/
+/*  font-size: 1rem;*/
+/*  line-height: 1.6667rem;*/
+/*}*/
+/*@media (min-width: 980px) {*/
+/*  .cke_editable p.supporting-text {*/
+/*    font-size: 1.66667rem;*/
+/*    line-height: 2.88889rem;*/
+/*  }*/
+/*}*/
+/*!* Adds squiggle bottom which will appear in actual page *!*/
+/*.cke_editable p.supporting-text {*/
+/*  background: url(https://patterns.boston.gov/images/squiggle.svg) repeat-x bottom transparent;*/
+/*  background-size: 383px 9px;*/
+/*  margin-bottom: 25px;*/
+/*}*/
+/*********************************/
+
+drupal-entity {
+  display: block;
+}
+
+/**********************************
+  ARTICLE
+ **********************************/
+node.article.field_intro_text {
+  width: 756px;
+}
+

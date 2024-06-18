@@ -1,0 +1,39 @@
+{
+    "name": "cob-webapp/sanitation_scheduling",
+    "description": "React app hosted on Boston.gov allowing residents to schedule Mattress and Bulk item collection.",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Speedlane",
+            "role": "Frontend Development Consultancy",
+            "email": "maroun.melhem@boston.gov"
+        },
+        {
+            "name": "David Upton",
+            "role": "Drupal Developer.",
+            "email": "david.upton@boston.gov"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "bos_web_app/sanitation_scheduling",
+                "version": "1.02",
+                "dist": {
+                    "url": "https://github.com/CityOfBoston/sanitation-scheduling/archive/1.0.zip",
+                    "type": "zip"
+                },
+                "type": "drupal-custom-module",
+                "source": {
+                    "url": "git@github.com:CityOfBoston/sanitation-scheduling.git",
+                    "type": "git",
+                    "reference": "1053dc5"
+                }
+            }
+        }
+    ]
+
+}

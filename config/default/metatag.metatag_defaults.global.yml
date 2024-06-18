@@ -1,0 +1,22 @@
+uuid: 65063e5e-161a-4254-8785-c26e73e9006c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ByYmHEEhxBfzGDTXLFHNjSEBQVzshnC6C76V2seETh0
+id: global
+label: Global
+tags:
+  generator: 'Drupal 9 (http://drupal.org)'
+  canonical_url: '[current-page:url:absolute]'
+  title: '[current-page:title] | [current-page:pager][site:name]'
+  shortlink: '[current-page:url:unaliased]'
+  apple_touch_icon_180x180: /themes/custom/bos_theme/images/apple-touch-icon.png
+  apple_touch_icon_precomposed_180x180: /themes/custom/bos_theme/images/apple-touch-icon-precomposed.png
+  og_url: '[current-page:url:absolute]'
+  og_site_name: '[site:name]'
+  og_title: '[current-page:title] '
+  twitter_cards_type: summary
+  schema_image_object_url: '[custom:schema_image]'
+  schema_image_object_type: ImageObject
+  google-site-verification: Do93qJZE2c5ibJnBWowjyjeIzVD6he_ZSCJU2J6eHn8

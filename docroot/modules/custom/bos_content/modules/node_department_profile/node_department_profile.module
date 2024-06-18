@@ -1,0 +1,258 @@
+<?php
+
+/**
+ * @file
+ * Provides a department_profile entity type.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\editor\Entity\Editor;
+
+/**
+ * Implements hook_theme().
+ */
+function node_department_profile_theme($existing, $type, $theme, $path) {
+  return [
+    'node__department_profile' => [
+      'base hook' => 'node',
+      'render element' => 'elements',
+    ],
+    'node__department_profile__published_by' => [
+      'base hook' => 'node',
+      'render element' => 'elements',
+    ],
+    'node__department_profile__popup_icon' => [
+      'base hook' => 'node',
+      'render element' => 'elements',
+    ],
+    'node__department_profile_contact' => [
+      'render element' => 'elements',
+      'base hook' => 'node',
+    ],
+    'node__department_profile__card' => [
+      'base hook' => 'node',
+      'render element' => 'elements',
+    ],
+    'node__department_profile__department_listing' => [
+      'render element' => 'elements',
+      'base hook' => 'node',
+    ],
+    'fieldset_field_select_contact_type' => [
+      'base hook' => 'fieldset',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for department-profile template.
+ *
+ * Default template: node--department-profile.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the test component page
+ *     information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__node_department_profile(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+  // Replace underscores with dashes to maintain compatability with css library.
+  foreach ($variables['attributes']['class'] as &$class) {
+    $class = str_ireplace('_', '-', $class);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_department_profile_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "department_profile") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_department_profile_form_node_department_profile_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add styles for the CKEditor boxes on the admin forms.
+  _bos_admin_add_ckeditor_classes($form, [
+    "field_intro_text" => [
+      "html" => "department-info-wrapper",
+      "body" => "intro-text supporting-text squiggle-border-bottom column g--8",
+    ],
+    "body" => [
+      "html" => "department-info-wrapper g",
+      "body" => "body g--8",
+    ],
+  ]);
+
+  if ($form_id == "node_department_profile_form" || $form_id == "node_department_profile_edit_form") {
+
+    // Create the preferred contact Ajax callback, and prepare the form by hiding
+    // the email and url input areas.
+
+    $form["field_select_contact_type"]["widget"]['#ajax'] = array(
+      'callback' => '_department_profile_ajax_callback',
+      'event' => 'change',
+      'wrapper' => 'edit-contact-information-wrapper',
+      'progress' => [
+        'type' => 'throbber',
+      ],
+    );
+    $form['#validate'][] = "node_department_form_validate";
+
+    unset($form["field_select_contact_type"]["widget"]["#title"]);
+    unset($form["field_select_contact_type"]["widget"]["#description"]);
+    $form["field_select_contact_type"]['#required'] = TRUE;
+
+    if ($form["field_select_contact_type"]["widget"]["#default_value"] == "email") {
+      $form['field_link_url']['#attributes']['class'][]='hidden';
+    }
+    else {
+      $form['field_email']['#attributes']['class'][]='hidden';
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ */
+function node_department_profile_field_widget_single_element_form_alter(array &$element, \Drupal\Core\Form\FormStateInterface $form_state, array $context) {
+  return;
+}
+
+/**
+ * Implements hook_field_widget_complete_WIDGET_TYPE_form_alter().
+ */
+function node_department_profile_field_widget_complete_WIDGET_TYPE_form_alter(&$field_widget_complete_form, FormStateInterface $form_state, $context) {
+}
+
+function _department_profile_ajax_callback(array &$form, FormStateInterface $form_state): array {
+
+  // Do the toggle based on the value of the set preferred contact method.
+  if ($form_state->getValue('field_select_contact_type')[0]["value"] == 'email') {
+
+    $_form = $form_state->getFormObject()->buildForm(
+      ['#type' => 'form', '#form_id' => 'node_department_profile_edit_form'],
+      $form_state);
+
+    $_form['field_email']['widget']['#attributes'] = [];
+    $_form['field_email']['widget'][0]['value'] = $form['field_email']['widget'][0]['value'];
+
+    foreach($_form['field_email']['#attributes']['class'] as $key => $class) {
+      if ($class == "hidden") {
+        unset($_form['field_email']['#attributes']['class'][$key]);
+      }
+    }
+
+    return [
+      '#type' => 'field_group_html_element',
+      '#attributes' => ["id" => 'edit-contact-information-wrapper'],
+      '#wrapper_element' => "div",
+      'field_email' => $_form['field_email'],
+    ];
+
+  }
+  else {
+
+    $_form = $form_state->getFormObject()->buildForm(
+      ['#type' => 'form', '#form_id' => 'node_department_profile_edit_form'],
+      $form_state);
+
+    $_form['field_link_url']['widget']['#attributes'] = [];
+    $_form['field_link_url']['widget'][0] = $form['field_link_url']['widget'][0];
+
+    foreach($_form['field_link_url']['#attributes']['class'] as $key => $class) {
+      if ($class == "hidden") {
+        unset($_form['field_link_url']['#attributes']['class'][$key]);
+      }
+    }
+    return [
+      '#type' => 'field_group_html_element',
+      '#attributes' => ["id" => 'edit-contact-information-wrapper'],
+      '#wrapper_element' => "div",
+      'field_link_url' => $_form['field_link_url'],
+    ];
+
+  }
+
+}
+
+function node_department_form_validate(array $form, FormStateInterface $form_state): void {
+
+  // In order to validate the form correctly, both the field_link_url and the
+  // field_email are set as required in the form designer.
+  // This means the form won't validate unless both fields have a value, so in
+  // this function we sink validation errors for the unselected field.
+  if ($errs = $form_state->getErrors()) {
+
+    // Find errors related/unrelated to preferred contact toggle.
+    $values = $form_state->getValues();
+
+    if ($values["field_select_contact_type"][0]["value"] == 'email') {
+      // The field_link_url has two sub-fields, uri and title, so check for
+      // both.
+      if ($form_state->getError($form["field_link_url"]['widget'][0]['uri'])) {
+        unset($errs['field_link_url][0][uri']);
+      }
+      if ($form_state->getError($form["field_link_url"]['widget'][0]['title'])) {
+        unset($errs['field_link_url][0][title']);
+      }
+    }
+    else {
+
+      if ($form_state->getError($form["field_email"]['widget'][0]['value'])) {
+        unset($errs['field_email][0][value']);
+      }
+
+    }
+
+    // Now reset the error object.
+    $form_state->clearErrors();
+    foreach($errs as $name => $err_message) {
+      $form_state->setErrorByName($name, $err_message);
+    }
+
+  }
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function node_department_profile_ckeditor_css_alter(array &$css, Editor $editor) {
+  if (\Drupal::routeMatch()->getParameters()->has("node")
+    && \Drupal::routeMatch()->getParameters()->get("node")->getType() == "department_profile") {
+    $css[] =\Drupal::service('extension.path.resolver')->getPath("module", "node_department_profile") . "/css/ckeditor.boston.department_profile.css";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_department_profile_preprocess_node__department_profile__card(array &$variables) {
+  // Clean out any linefeed chars at the end of the string.
+  if (isset($variables["content"]["field_intro_text"][0]["#text"])) {
+    $variables["content"]["field_intro_text"][0]["#text"] = trim($variables["content"]["field_intro_text"][0]["#text"], "&#13;\n");
+  }
+}

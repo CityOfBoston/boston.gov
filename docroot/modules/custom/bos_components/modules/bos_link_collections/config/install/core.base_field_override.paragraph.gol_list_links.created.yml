@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.gol_list_links
+id: paragraph.gol_list_links.created
+field_name: created
+entity_type: paragraph
+bundle: gol_list_links
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

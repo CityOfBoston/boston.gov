@@ -1,0 +1,23 @@
+uuid: c621eaa5-1892-46b3-99aa-9516f41696ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_configuration
+    - paragraphs.paragraphs_type.text_two_column
+  module:
+    - options
+_core:
+  default_config_hash: I8sEOcZIL6qpI4zhexpuErS1fRDKfcTgQsHPuBrMe-g
+id: paragraph.text_two_column.field_column_configuration
+field_name: field_column_configuration
+entity_type: paragraph
+bundle: text_two_column
+label: 'Column Configuration'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

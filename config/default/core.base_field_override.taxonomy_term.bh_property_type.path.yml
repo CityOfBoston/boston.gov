@@ -1,0 +1,20 @@
+uuid: f8ef00a5-7a23-45eb-a8e6-bb2071203b86
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_property_type
+  module:
+    - path
+id: taxonomy_term.bh_property_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_property_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

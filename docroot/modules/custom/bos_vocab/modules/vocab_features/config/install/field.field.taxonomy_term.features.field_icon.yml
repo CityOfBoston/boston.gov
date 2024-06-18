@@ -1,0 +1,28 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - media.type.icon
+    - taxonomy.vocabulary.features
+id: taxonomy_term.features.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: features
+label: Icon
+description: 'Specify an appropriate SVG icon for the profile feature.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

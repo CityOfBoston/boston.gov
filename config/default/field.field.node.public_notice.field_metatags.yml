@@ -1,0 +1,23 @@
+uuid: 4e97404e-9460-44d6-a01d-6fb7a13a81b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.public_notice
+  module:
+    - metatag
+id: node.public_notice.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: public_notice
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:1:{s:21:"schema_event_location";s:333:"a:2:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_address:address_line1]";s:15:"addressLocality";s:29:"[node:field_address:locality]";s:13:"addressRegion";s:40:"[node:field_address:administrative_area]";s:10:"postalCode";s:32:"[node:field_address:postal_code]";}}";}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

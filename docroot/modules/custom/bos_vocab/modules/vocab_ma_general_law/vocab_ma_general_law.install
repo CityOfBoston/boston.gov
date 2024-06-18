@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * The install file for vocab_ma_general_law module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function vocab_ma_general_law_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}

@@ -1,0 +1,19 @@
+uuid: e9446a8e-c8e6-499b-aae4-221f4897f301
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_developer_name
+    - node.type.bh_update
+id: node.bh_update.field_bh_developer_name
+field_name: field_bh_developer_name
+entity_type: node
+bundle: bh_update
+label: 'Developer Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

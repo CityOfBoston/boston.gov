@@ -1,0 +1,20 @@
+uuid: 2c089f92-76dd-4d16-815f-d7820a02f9c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ma_general_law
+field_name: field_ma_general_law
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

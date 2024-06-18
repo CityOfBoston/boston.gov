@@ -1,0 +1,17 @@
+uuid: 7912887f-4205-4a04-8cb2-ee659ba9962f
+langcode: und
+status: true
+dependencies:
+  module:
+    - content_moderation
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: 'Role which ONLY adds view rights to the "needs review" summary column in Workbench.'
+id: content_reviewer
+label: 'Content Reviewer'
+weight: -4
+is_admin: null
+permissions:
+  - 'view any unpublished content'
+  - 'view latest version'

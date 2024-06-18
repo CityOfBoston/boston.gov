@@ -1,0 +1,25 @@
+uuid: a85f14b8-ba37-4dd2-8767-88c1fe2cb54a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.list
+  module:
+    - options
+_core:
+  default_config_hash: FWiKhtqLZGwcA7sdpYsVueVPco5PhUPGTl2OKCeDEL4
+id: paragraph.list.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: list
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: w
+default_value_callback: ''
+settings: {  }
+field_type: list_string

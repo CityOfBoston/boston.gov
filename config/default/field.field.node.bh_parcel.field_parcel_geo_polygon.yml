@@ -1,0 +1,21 @@
+uuid: a1d03bfc-f584-4ad8-8fdf-9fdd2e466e46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parcel_geo_polygon
+    - node.type.bh_parcel
+  module:
+    - geolocation_geometry
+id: node.bh_parcel.field_parcel_geo_polygon
+field_name: field_parcel_geo_polygon
+entity_type: node
+bundle: bh_parcel
+label: 'Parcel Geo Polygon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation_geometry_polygon

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_document
+    - paragraphs.paragraphs_type.document
+  module:
+    - file
+id: paragraph.document.field_document
+field_name: field_document
+entity_type: paragraph
+bundle: document
+label: Document
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'file/[current-date:html_year]/[current-date:html_month_bare]'
+  file_extensions: 'txt pdf xls xlsx docx doc pptx pptm ppt rtf xlsm'
+  max_filesize: ''
+  description_field: false
+field_type: file

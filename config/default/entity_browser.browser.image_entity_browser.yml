@@ -1,0 +1,43 @@
+uuid: 40d863bc-2a5c-4db6-94ef-38765fde103a
+langcode: und
+status: true
+dependencies:
+  config:
+    - views.view.wysiwyg_entity_browser
+  module:
+    - lightning_media
+    - views
+name: image_entity_browser
+label: 'Image Entity Browser'
+display: modal
+display_configuration:
+  width: '1150'
+  height: '840'
+  link_text: 'Choose/Upload Image'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  efcda828-a262-402a-a9ff-3dbd877d7cad:
+    id: file_upload
+    uuid: efcda828-a262-402a-a9ff-3dbd877d7cad
+    label: 'Add Image'
+    weight: -9
+    settings:
+      target_bundles: {  }
+      upload_validators: {  }
+      submit_text: 'Upload and Select'
+      form_mode: media_browser
+      return_file: false
+  ea90b405-b820-4018-9437-107152596698:
+    id: view
+    uuid: ea90b405-b820-4018-9437-107152596698
+    label: 'Choose Image'
+    weight: -10
+    settings:
+      submit_text: 'Select Image'
+      auto_select: false
+      view: wysiwyg_entity_browser
+      view_display: image_library

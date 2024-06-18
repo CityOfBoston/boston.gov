@@ -1,0 +1,23 @@
+uuid: 91468fe7-7c0d-4a4a-9694-0ee98b063cfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_enable_local_events
+    - paragraphs.paragraphs_type.events_and_notices
+id: paragraph.events_and_notices.field_enable_local_events
+field_name: field_enable_local_events
+entity_type: paragraph
+bundle: events_and_notices
+label: 'Enable local Events'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Enabled
+  off_label: Disabled
+field_type: boolean

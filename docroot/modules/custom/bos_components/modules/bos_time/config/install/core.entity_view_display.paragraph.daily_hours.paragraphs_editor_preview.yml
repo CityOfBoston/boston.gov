@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.daily_hours.field_daily_hours
+    - field.field.paragraph.daily_hours.field_hours_icon
+    - field.field.paragraph.daily_hours.field_title
+    - paragraphs.paragraphs_type.daily_hours
+id: paragraph.daily_hours.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: daily_hours
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_daily_hours: true
+  field_hours_icon: true
+  field_title: true

@@ -1,0 +1,20 @@
+uuid: 45e55880-5d3b-4ff9-a74e-80e93b86b507
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_ml_unit_lottery_app_due
+field_name: field_ml_unit_lottery_app_due
+entity_type: node
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

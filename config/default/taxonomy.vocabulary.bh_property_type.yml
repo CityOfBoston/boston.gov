@@ -1,0 +1,8 @@
+uuid: 9362b882-70ed-4c5d-a5ab-352c8cad55c6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Property Type (BH)'
+vid: bh_property_type
+description: 'Building Housing: Property Type'
+weight: 0

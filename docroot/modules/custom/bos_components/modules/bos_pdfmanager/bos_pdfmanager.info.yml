@@ -1,0 +1,10 @@
+name: PDF Manager
+type: module
+description: Manipulates PDFs for use on site.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - bos_core
+

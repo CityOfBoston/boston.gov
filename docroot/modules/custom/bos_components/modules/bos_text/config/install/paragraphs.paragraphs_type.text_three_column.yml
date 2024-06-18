@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:97f9e7d5-7d6f-40b8-8cf8-2a10e53e4553'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: sites/default/files/paragraphs_type_icon/text_three_column_icon.svg
+id: text_three_column
+label: 'Three Column'
+icon_uuid: 97f9e7d5-7d6f-40b8-8cf8-2a10e53e4553
+icon_default: null
+description: 'Defines a three column layout for the <b>Formatted Text</b> (text) paragraph.'
+behavior_plugins: {  }

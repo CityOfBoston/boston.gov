@@ -1,0 +1,62 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+<div{{ attributes }}>
+  <div class="b b--fw">
+
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div class="{{ photo_id }} hro hro--t">
+      <div class="hro-c">
+
+        {% if content.field_intro_text['#items'].getValue() %}
+          {{ content.field_intro_text }}
+        {% endif %}
+
+        {% if content.field_subheader['#items'] %}
+          {% if cob.is_front_page %}
+            <div class="hro-i">
+          {% else %}
+            <div class="hro-st hro-st--l hro-st--w">
+          {% endif %}
+            {{ content.field_subheader }}
+          </div>
+        {% endif %}
+
+        <h1 class="hro-t hro-t--l m-t000">
+          {{ content.field_header }}
+        </h1>
+
+        {% if content.field_grid_link['#items'].getValue() %}
+          <div class="hro-lnk">
+            {{ content.field_grid_link }}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

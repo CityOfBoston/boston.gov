@@ -1,0 +1,27 @@
+uuid: 72455091-d0cd-4ee9-b8e0-45dced5153e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.iframe.field_component_title
+    - field.field.paragraph.iframe.field_contact
+    - field.field.paragraph.iframe.field_hide_title_bar
+    - field.field.paragraph.iframe.field_iframe_size
+    - field.field.paragraph.iframe.field_short_title
+    - field.field.paragraph.iframe.field_source_url
+    - paragraphs.paragraphs_type.iframe
+_core:
+  default_config_hash: qnnQiAcFUIAz61nUvsh5jMIgX2oJke14vZ7oIgdiqvg
+id: paragraph.iframe.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: iframe
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_iframe_size: true
+  field_short_title: true
+  field_source_url: true

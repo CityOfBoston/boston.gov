@@ -1,0 +1,17 @@
+uuid: 858b8d16-c267-49be-9f0f-20a18401c56d
+langcode: en
+status: false
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    internal: true
+_core:
+  default_config_hash: vzunS29cgB5G-fWq-HmOgw316Kn7Vb1pZnYWhbdDy2Y
+id: node.search_index
+label: 'Search index'
+description: ''
+targetEntityType: node
+cache: true

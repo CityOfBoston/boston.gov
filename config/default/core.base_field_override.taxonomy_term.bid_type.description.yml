@@ -1,0 +1,20 @@
+uuid: 3fda0931-72f2-4538-b7b9-e81dae3b0477
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_type
+  module:
+    - text
+id: taxonomy_term.bid_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: bid_type
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

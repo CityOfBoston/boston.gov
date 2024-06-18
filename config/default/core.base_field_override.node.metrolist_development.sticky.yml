@@ -1,0 +1,22 @@
+uuid: 3466b3da-4f26-44fb-9ca0-73d8942bf98f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.sticky
+field_name: sticky
+entity_type: node
+bundle: metrolist_development
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

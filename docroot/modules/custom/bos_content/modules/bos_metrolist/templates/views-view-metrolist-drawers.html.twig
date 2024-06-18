@@ -1,0 +1,230 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+
+
+{% set all_units_button %}
+
+
+  <div class="b print-none">
+    <div class="m-t200">
+
+      <button class="btn btn--100"
+              id="show-all-units-btn"
+              style="padding: 0.55rem 1rem;white-space: nowrap;"
+              onclick="
+                  location.href = '#ml-more-units';
+                  this.hidden = true;
+                  document.getElementById('hide-all-units-btn').hidden = false;
+                  document.getElementById('dr-tr1').checked = true;"
+      >
+        <div style="float: right;padding: 5px 15px 0 10px;">{{ show_all_units_button_text }}</div>
+      </button>
+
+      <button class="btn btn--100"
+              id="hide-all-units-btn"
+              style="width: 13.5rem;"
+              onclick="
+                  this.hidden = true;
+                  document.getElementById('show-all-units-btn').hidden = false;
+                  document.getElementById('dr-tr1').checked = false;"
+              hidden
+      >
+        <div style="float: right;padding: 5px 15px 0 10px;">{{ hide_all_units_button_text }}</div>
+      </button>
+
+    </div>
+  </div>
+
+{% endset %}
+
+{% set icon_caret %}
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+    <path class="dr-i"
+          d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+  </svg>
+{% endset %}
+
+{#{% set ami_calc_button %}#}
+{#  <div class="ml-units-to-ami-calc print-none">#}
+{#    <a href="/metrolist/ami-estimator" class="lnk lnk--">Calculate your eligibility</a>#}
+{#  </div>#}
+{#{% endset %}#}
+
+
+{% if email_button or print_button or show_all_units_button %}
+  <div class="m-v200 print-none ml-action-btn-flex">
+    <div class="ml-action-btn-flex">
+      {{ email_button }}
+      {{ print_button }}
+      {{ share_button_facebook }}
+      {{ share_button_twitter }}
+{#      {{ share_button_instagram }}#}
+{#      {{ report_unavailable_button }}#}
+    </div>
+{#    {% if show_all_units_button and outOfBoundsRows %} {{ all_units_button }} {% endif %}#}
+  </div>
+{% endif %}
+
+
+<div style="clear: both;">
+{#  {% for key, row in inBoundsRows %}#}
+  {% for key, row in rows %}
+    {% set row_classes = [
+      default_row_class ? 'views-row',
+      'dr',
+      'dr--sm'
+    ] %}
+
+    {% set drAlwaysOpen = true %}
+    {% set drAlwaysOpenValues = 'checked disabled' %}
+    {% set drOpen = true %}
+    {% set drOpenValues = '' %}
+
+    {% if loop.index0 == 0 and rows|length == 1 %}
+      {% set drOpenValues = 'checked' %}
+    {% endif %}
+
+    <div{{ row.attributes.addClass(row_classes) }}>
+
+      <input type="checkbox" id="dr--{{ row.content["#row"].index }}" class="dr-tr a11y--h" {{ drOpenValues }}>
+
+      <label for="dr--{{ row.content["#row"].index }}" class="dr-h">
+        <div class="dr-ic">
+          {{ icon_caret }}
+        </div>
+        <div class="dr-t" style="display: flex; justify-content: space-between;">
+          {{ view.style_plugin.getField(row.content["#row"].index, 'nothing') }}
+          <div class="ml-section-title-unit-info">Unit Information</div>
+        </div>
+      </label>
+
+      <div class="dr-c">
+        <div>
+          {#          {{ view.style_plugin.getField(row.content["#row"].index, 'rendered_entity') }}#}
+          {{ view.style_plugin.renderFields(row.content["#row"].index) }}
+          {{ view.style_plugin.rendered_fields }}
+
+          {{- row.content -}}
+          {#          {{- view.result[0] -}}#}
+{#          <div class="dl-i" style="padding-top: 0;">#}
+{#            <span class="dl-t">&nbsp;</span>#}
+{#            <span class="dl-d">#}
+{#              <div class="ml-units-to-ami-calc print-none">#}
+{#                <a href="/metrolist/ami-estimator" class="lnk lnk--">Calculate your eligibility</a>#}
+{#               </div>#}
+{#            </span>#}
+{#          </div>#}
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+
+</div>
+
+
+{#{% if outOfBoundsRows %}#}
+
+
+
+{#  <div class="dr">#}
+{#    <div id="ml-more-units" style="visibility: hidden; position: absolute; margin-top: -2.5rem;">#</div>#}
+{#    <input type="checkbox" id="dr-tr1" class="dr-tr a11y--h">#}
+{#    <div class="dr-c" style="padding: 0;">#}
+
+
+{#      <div style="clear: both;">#}
+
+{#        <div style="height: 8rem; display: flex;" class="b">#}
+
+{#          <div class="sep">#}
+{#            <div class="sep-l"></div>#}
+{#            <div class="sep-c">more</div>#}
+{#            <div class="sep-l"></div>#}
+{#          </div>#}
+{#        </div>#}
+
+
+{#        {% for key, row in outOfBoundsRows %}#}
+{#          {% set row_classes = [#}
+{#            default_row_class ? 'views-row',#}
+{#            'dr',#}
+{#            'dr--sm'#}
+{#          ] %}#}
+
+{#          {% set drAlwaysOpen = true %}#}
+{#          {% set drAlwaysOpenValues = 'checked disabled' %}#}
+{#          {% set drOpen = true %}#}
+{#          {% set drOpenValues = '' %}#}
+
+
+{#          <div{{ row.attributes.addClass(row_classes) }}>#}
+
+{#            <input type="checkbox" id="dr--{{ row.content["#row"].index }}" class="dr-tr a11y--h" {{ drOpenValues }}>#}
+
+{#            <label for="dr--{{ row.content["#row"].index }}" class="dr-h">#}
+{#              <div class="dr-ic">#}
+{#                {{ icon_caret }}#}
+{#              </div>#}
+{#              <div class="dr-t" style="display: flex; justify-content: space-between;">#}
+{#                {{ view.style_plugin.getField(row.content["#row"].index, 'nothing') }}#}
+{#                <div class="ml-section-title-unit-info">Unit Information</div>#}
+{#              </div>#}
+{#            </label>#}
+
+{#            <div class="dr-c">#}
+{#              <div>#}
+{#                {{ view.style_plugin.renderFields(row.content["#row"].index) }}#}
+{#                {{ view.style_plugin.rendered_fields }}#}
+
+{#                {{- row.content -}}#}
+{#                <div class="dl-i" style="padding-top: 0;">#}
+{#                  <span class="dl-t">&nbsp;</span>#}
+{#                  <span class="dl-d">#}
+{#                    {{ ami_calc_button }}#}
+{#                  </span>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+
+{#          </div>#}
+{#        {% endfor %}#}
+{#      </div>#}
+
+
+{#    </div>#}
+{#  </div>#}
+
+
+
+
+
+
+
+
+{#{% endif %}#}
+
+
+
+
+

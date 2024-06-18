@@ -1,0 +1,18 @@
+uuid: b518f31a-eb67-4e1b-aee2-fb35a17f04b6
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_type
+id: taxonomy_term.procurement_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: procurement_type
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

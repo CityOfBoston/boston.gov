@@ -1,0 +1,15 @@
+uuid: 80a54a1e-9310-4baf-9de6-3b2669352864
+langcode: und
+status: true
+dependencies: {  }
+name: 800_embedded_ckeditor
+label: 'Full column wide (embedded)'
+effects:
+  ae556fe7-5f2f-4aac-9a0b-565bd8057a56:
+    uuid: ae556fe7-5f2f-4aac-9a0b-565bd8057a56
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: true

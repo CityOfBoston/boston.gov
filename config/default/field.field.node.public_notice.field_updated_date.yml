@@ -1,0 +1,23 @@
+uuid: c6de9a4a-a67c-47f4-8efa-f0ca73c32d28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.public_notice
+  module:
+    - datetime
+_core:
+  default_config_hash: ZWM3yik9kzLGkaQCOfdkVs-sip1kyFUHf1528FQDOa8
+id: node.public_notice.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: public_notice
+label: 'Updated Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

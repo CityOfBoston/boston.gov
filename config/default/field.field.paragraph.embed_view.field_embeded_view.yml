@@ -1,0 +1,85 @@
+uuid: 61f4d8af-54e8-47f4-a83f-6c7fb930d545
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_embeded_view
+    - paragraphs.paragraphs_type.embed_view
+  module:
+    - viewfield
+id: paragraph.embed_view.field_embeded_view
+field_name: field_embeded_view
+entity_type: paragraph
+bundle: embed_view
+label: 'Embedded View'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    metrolist: metrolist
+    metrolist_ami: metrolist_ami
+    bids_rfps: '0'
+    calendar: '0'
+    change: '0'
+    cityscore: '0'
+    content: '0'
+    block_content: '0'
+    departments_listing: '0'
+    document_entity_browser_file_: '0'
+    emergency_alerts: '0'
+    entity_reference_filters: '0'
+    events_and_notices: '0'
+    file_entity_files: '0'
+    frontpage: '0'
+    poll_list: '0'
+    media_cob: '0'
+    media_entity_browser: '0'
+    media_library: '0'
+    message_for_the_day: '0'
+    metrolist_affordable_housing: '0'
+    news_and_announcements: '0'
+    news_landing: '0'
+    paragraphs_library: '0'
+    paragraphs_library_browser: '0'
+    user_admin_people: '0'
+    places: '0'
+    poll_admin: '0'
+    profiles: '0'
+    public_notice: '0'
+    content_recent: '0'
+    redirect: '0'
+    rss_feeds: '0'
+    salesforce_mapped_objects: '0'
+    site_alerts: '0'
+    status_items: '0'
+    taxonomy_term: '0'
+    topic_landing_page: '0'
+    transactions: '0'
+    watchdog: '0'
+    webform_submissions: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+    workbench_current_user: '0'
+    workbench_edited: '0'
+    workbench_my_edits: '0'
+    workbench_needs_review_cob: '0'
+    workbench_recent_content: '0'
+    wysiwyg_entity_browser: '0'
+  allowed_display_types:
+    block: block
+    attachment: '0'
+    embed: '0'
+    entity_browser: '0'
+    entity_reference: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+    rest_export: '0'
+    rest_export_nested: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

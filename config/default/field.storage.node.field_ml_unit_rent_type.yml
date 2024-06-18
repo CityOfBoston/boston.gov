@@ -1,0 +1,20 @@
+uuid: 5d7b5eeb-4516-466c-9482-dfabd64c7355
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_unit_rent_type
+field_name: field_ml_unit_rent_type
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

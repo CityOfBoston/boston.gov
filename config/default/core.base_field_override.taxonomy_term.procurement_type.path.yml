@@ -1,0 +1,20 @@
+uuid: 5d242508-ac23-4c4a-92d3-0f220d74d5f0
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_type
+  module:
+    - path
+id: taxonomy_term.procurement_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: procurement_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,113 @@
+uuid: 9c217387-c87b-4a62-ac9b-f16c401520c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.election_areas.field_display_title
+    - field.field.taxonomy_term.election_areas.field_election
+    - field.field.taxonomy_term.election_areas.field_geometry_data_geometry
+    - field.field.taxonomy_term.election_areas.field_original_id
+    - taxonomy.vocabulary.election_areas
+  module:
+    - fences
+    - field_group
+    - geolocation_geometry
+third_party_settings:
+  field_group:
+    group_election_area:
+      children:
+        - field_display_title
+        - field_election
+        - group_metadata
+      label: 'Election Area'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: m-b300
+        show_empty_fields: false
+        id: ''
+        description: ''
+    group_metadata:
+      children:
+        - field_original_id
+        - field_geometry_data_geometry
+      label: Metadata
+      parent_name: group_election_area
+      region: content
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+id: taxonomy_term.election_areas.default
+targetEntityType: taxonomy_term
+bundle: election_areas
+mode: default
+content:
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 't--ob t--s500'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_election:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_geometry_data_geometry:
+    type: geolocation_geometry_wkt
+    label: above
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_original_id:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 4
+    region: content
+hidden:
+  description: true
+  langcode: true

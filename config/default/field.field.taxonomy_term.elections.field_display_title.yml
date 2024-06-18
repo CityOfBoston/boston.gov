@@ -1,0 +1,24 @@
+uuid: 62791a7e-253f-45fd-9f07-911650a715c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.elections
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Election Display Title'
+id: taxonomy_term.elections.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: elections
+label: 'Election Display Title'
+description: 'A descriptive title for this election.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: d7044019-76d0-4d30-9c8c-23a9b71aa77d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_meeting_recording_pass
+field_name: field_bh_meeting_recording_pass
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

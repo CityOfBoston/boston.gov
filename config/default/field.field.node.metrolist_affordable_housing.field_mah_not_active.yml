@@ -1,0 +1,25 @@
+uuid: 7c635875-5476-4412-9b06-895a9bd799f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_not_active
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: X_SIit17DCPjPSnsCXZrWPxUmQ-JmylzoeTnk_srHfQ
+id: node.metrolist_affordable_housing.field_mah_not_active
+field_name: field_mah_not_active
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Not Active'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

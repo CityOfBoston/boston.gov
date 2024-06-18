@@ -1,0 +1,20 @@
+uuid: f3b1ef07-587c-42ff-8c62-c9f6d2196cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: 7HM9k8mqaMbKtd4b1GvxKDTvKssubEVErMqi4yD1NFs
+id: node.emergency_alert
+target_entity_type_id: node
+target_bundle: emergency_alert
+default_langcode: site_default
+language_alterable: false

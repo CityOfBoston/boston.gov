@@ -1,0 +1,15 @@
+uuid: 11498ae6-07db-4cb5-a4db-767cff5d8f2c
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_2w_vertical_1x_desktop
+label: 'Card grid 2w Vertical 1x desktop (608x230)'
+effects:
+  a539ddee-1431-4156-bd02-2da10af29c52:
+    uuid: a539ddee-1431-4156-bd02-2da10af29c52
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 608
+      height: 230
+      anchor: center-center

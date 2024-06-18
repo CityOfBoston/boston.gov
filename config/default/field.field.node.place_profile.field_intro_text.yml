@@ -1,0 +1,21 @@
+uuid: 8c0d6d51-73d2-47b6-a21f-6b79c8a83ff9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.place_profile
+  module:
+    - text
+id: node.place_profile.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: place_profile
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

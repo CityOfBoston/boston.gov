@@ -1,0 +1,18 @@
+uuid: 160506cc-5f5f-4e70-8695-52a24080b96e
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_footer
+id: taxonomy_term.procurement_footer.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: procurement_footer
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

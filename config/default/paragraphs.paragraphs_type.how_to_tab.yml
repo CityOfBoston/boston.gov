@@ -1,0 +1,13 @@
+uuid: e9d315bc-4fdb-4022-a5f9-592772d3a554
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: LhFcaH_60vKhEal3-NqBDY_dsLvHTd0vsYBqP5a2pnI
+id: how_to_tab
+label: 'How-To Tab'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle How-To Tab'
+behavior_plugins: {  }

@@ -1,0 +1,11 @@
+uuid: 206ad886-b188-403d-84a4-d50a7792e69c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.city_council_districts
+id: taxonomy_term.city_council_districts
+target_entity_type_id: taxonomy_term
+target_bundle: city_council_districts
+default_langcode: site_default
+language_alterable: false

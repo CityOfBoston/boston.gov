@@ -1,0 +1,61 @@
+uuid: a072ee56-0dfb-4141-829c-569da6407af8
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.thumbnail
+    - field.field.media.icon.field_media_in_library
+    - field.field.media.icon.image
+    - image.style.thumbnail
+    - media.type.icon
+  module:
+    - fences
+    - svg_image
+id: media.icon.thumbnail
+targetEntityType: media
+bundle: icon
+mode: thumbnail
+content:
+  image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+      svg_attributes:
+        width: 100
+        height: 100
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: media-library-cob
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  thumbnail: true
+  uid: true

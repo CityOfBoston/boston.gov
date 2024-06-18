@@ -1,0 +1,22 @@
+uuid: dba4ddf4-7bf5-478c-8786-c02e01b81c01
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+id: node.person_profile.status
+field_name: status
+entity_type: node
+bundle: person_profile
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

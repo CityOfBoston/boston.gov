@@ -1,0 +1,15 @@
+uuid: 6454e93a-0dc8-4d3f-a5c1-9cf76acf6d9d
+langcode: und
+status: true
+dependencies: {  }
+name: 400_embedded_ckeditor_default
+label: '1/2 column wide (embedded)'
+effects:
+  ae556fe7-5f2f-4aac-9a0b-565bd8057a56:
+    uuid: ae556fe7-5f2f-4aac-9a0b-565bd8057a56
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: true

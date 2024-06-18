@@ -1,0 +1,19 @@
+uuid: f5309461-a228-4bea-8c32-95a5dd280ebe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.message_for_the_day
+id: paragraph.message_for_the_day.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: message_for_the_day
+label: Purpose
+description: 'Purpose and description for this message.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

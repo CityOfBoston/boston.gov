@@ -1,0 +1,66 @@
+name: How To
+type: module
+description: 'Provides theming and configuration for how_to.'
+package: 'City of Boston (content)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - node.type.how_to
+  - language.content_settings.node.how_to
+  - field.field.node.how_to.field_updated_date
+  - field.field.node.how_to.field_published_date
+  - field.field.node.how_to.field_manual_date
+  - field.field.node.how_to.field_intro_image
+  - paragraphs.paragraphs_type.how_to_contact_step
+  - language.content_settings.paragraph.how_to_contact_step
+  - field.field.paragraph.how_to_contact_step.field_title
+  - field.field.paragraph.how_to_contact_step.field_operation_hours
+  - paragraphs.paragraphs_type.how_to_tab
+  - language.content_settings.paragraph.how_to_tab
+  - field.field.paragraph.how_to_tab.field_how_to_title
+  - field.field.node.how_to.field_how_to_tabs
+  - paragraphs.paragraphs_type.how_to_text_step
+  - language.content_settings.paragraph.how_to_text_step
+  - field.field.paragraph.how_to_text_step.field_title
+  - field.field.paragraph.how_to_tab.field_how_to_steps
+  - field.field.node.how_to.field_sidebar_components
+  - field.field.node.how_to.field_links
+  - field.field.node.how_to.field_components
+  - field.field.node.how_to.field_contact
+  - field.field.paragraph.how_to_text_step.field_step_details
+  - core.entity_view_display.paragraph.how_to_text_step.separated_title
+  - core.entity_view_display.paragraph.how_to_text_step.paragraphs_editor_preview
+  - field.field.paragraph.how_to_tab.field_keep_in_mind
+  - core.entity_view_display.paragraph.how_to_tab.separated_title
+  - core.entity_view_display.paragraph.how_to_tab.paragraphs_editor_preview
+  - field.field.paragraph.how_to_contact_step.field_step_details
+  - core.entity_view_display.paragraph.how_to_contact_step.separated_title
+  - core.entity_view_display.paragraph.how_to_contact_step.paragraphs_editor_preview
+  - field.field.node.how_to.field_payment_info
+  - field.field.node.how_to.field_need_to_know
+  - field.field.node.how_to.body
+  - core.entity_view_display.paragraph.how_to_text_step.default
+  - core.entity_view_display.paragraph.how_to_tab.default
+  - core.entity_view_display.paragraph.how_to_contact_step.default
+  - core.entity_form_display.paragraph.how_to_text_step.default
+  - core.entity_form_display.paragraph.how_to_tab.default
+  - core.entity_form_display.paragraph.how_to_contact_step.default
+  - core.entity_view_display.node.how_to.teaser
+  - core.entity_view_display.node.how_to.published_by
+  - core.entity_view_display.node.how_to.popup_icon
+  - core.entity_view_display.node.how_to.poll_stub
+  - core.entity_view_display.node.how_to.listing_long
+  - core.entity_view_display.node.how_to.listing
+  - core.entity_view_display.node.how_to.featured_topics
+  - core.entity_view_display.node.how_to.featured_item
+  - core.entity_view_display.node.how_to.department_listing
+  - core.entity_view_display.node.how_to.default
+  - core.entity_view_display.node.how_to.contact
+  - core.entity_view_display.node.how_to.calendar_listing
+  - core.entity_view_display.node.how_to.article
+  - core.entity_form_display.node.how_to.default
+  - xmlsitemap.settings.node.how_to
+

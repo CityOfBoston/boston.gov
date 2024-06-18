@@ -1,0 +1,13 @@
+uuid: 4f6e50a1-4c42-4f8d-99d8-3069ac82bea4
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: n0tUEXt6CWG_eggnm1x_rLkKO3kni5IymRHE2qctTsc
+id: taxonomy_term.published_by
+label: 'Published By'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

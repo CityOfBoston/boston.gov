@@ -1,0 +1,8 @@
+uuid: e7eb5879-f420-4467-8baf-869a93c72dba
+langcode: en
+status: true
+dependencies: {  }
+name: 'Due at signing'
+vid: due_at_signing
+description: 'MetroList: Due at signing'
+weight: 0

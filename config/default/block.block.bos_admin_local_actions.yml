@@ -1,0 +1,18 @@
+uuid: e29722c4-ab6b-40c5-9d6b-932d48f1c137
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bos_admin
+id: bos_admin_local_actions
+theme: bos_admin
+region: content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

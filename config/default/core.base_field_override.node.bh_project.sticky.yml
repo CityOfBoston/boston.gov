@@ -1,0 +1,22 @@
+uuid: 08216069-cce1-43e3-8911-4512182f8f43
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_project
+id: node.bh_project.sticky
+field_name: sticky
+entity_type: node
+bundle: bh_project
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

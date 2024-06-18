@@ -1,0 +1,11 @@
+// Inline Definition/Description Lists
+// via http://lea.verou.me/2012/02/flexible-multiline-definition-lists-with-2-lines-of-css/
+%dt-inline,
+%dd-inline {
+  display: inline;
+  margin: 0;
+}
+%dd-inline:after {
+  content: '\A';
+  white-space: pre;
+}

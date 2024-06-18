@@ -1,0 +1,57 @@
+uuid: 96c02158-1c21-46ee-ae9e-758c6db7c42e
+langcode: en
+status: true
+dependencies: {  }
+id: acquia_prod
+label: acquia_prod
+description: 'Configurations for Acquia PROD environment'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/acquia_prod
+module:
+  acquia_connector: 0
+  acquia_purge: 0
+  autologout: 0
+  captcha: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
+  recaptcha_v3: 0
+  redirect_domain: 0
+  samlauth: 0
+  samlauth_user_roles: 0
+theme: {  }
+complete_list:
+  - bos_pdfmanager.settings
+  - bos_sql.settings
+  - bos_theme.settings
+  - config_ignore.settings
+  - google_tag.container.default_gtm
+  - key.config_override.sf_oauth_consumer_key
+  - key.config_override.sf_oauth_consumer_secret
+  - key.key.iam_dir_sso_prod_
+  - key.key.salesforce_oauth_consumer_key
+  - key.key.salesforce_oauth_consumer_secret
+  - mailsystem.settings
+  - mimemail.settings
+  - purge.logger_channels
+  - purge.plugins
+  - purge_queuer_coretags.settings
+  - salesforce.salesforce_auth.dnd_prod
+  - samlauth.authentication
+  - samlauth_user_roles.mapping
+  - system.mail
+  - xmlsitemap.settings
+  - xmlsitemap_engines.settings
+  - xmlsitemap.xmlsitemap.NXhscRe0440PFpI5dSznEVgmauL25KojD7u4e9aZwOM
+partial_list:
+  - environment_indicator.indicator
+  - metatag.metatag_defaults.global
+  - salesforce_settings
+  - system.performance
+  - system.site

@@ -1,0 +1,31 @@
+uuid: 8b87c015-d79a-4661-956d-0f062e4a1301
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contacts
+    - node.type.program_initiative_profile
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: MjaPW8MZQTiqSuWiEyavgS7c-iIIuhRUPBow0QxBWAA
+id: node.program_initiative_profile.field_contacts
+field_name: field_contacts
+entity_type: node
+bundle: program_initiative_profile
+label: Contacts
+description: 'Please select the Contacts who own this content.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

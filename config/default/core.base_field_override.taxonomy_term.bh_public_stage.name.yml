@@ -1,0 +1,18 @@
+uuid: cb733523-f306-48e2-8ea7-f50382dd7c5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_public_stage
+id: taxonomy_term.bh_public_stage.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bh_public_stage
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

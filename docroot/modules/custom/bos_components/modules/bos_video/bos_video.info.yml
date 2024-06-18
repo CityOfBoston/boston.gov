@@ -1,0 +1,23 @@
+name: Video Component
+type: module
+description: Provides theming for video component.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.video.created
+  - core.base_field_override.paragraph.video.status
+  - core.entity_form_display.paragraph.video.default
+  - core.entity_view_display.paragraph.video.default
+  - core.entity_view_display.paragraph.video.paragraphs_editor_preview
+  - field.field.paragraph.video.field_component_title
+  - field.field.paragraph.video.field_contact
+  - field.field.paragraph.video.field_extra_info
+  - field.field.paragraph.video.field_image
+  - field.field.paragraph.video.field_is_channel
+  - field.field.paragraph.video.field_short_title
+  - language.content_settings.paragraph.video
+  - paragraphs.paragraphs_type.video

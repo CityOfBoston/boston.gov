@@ -1,0 +1,20 @@
+uuid: 4cefc916-c8fa-415c-ae53-ccdd69bd4d1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: FWMogQR9fn5-tU25lN3ySQmFNeXKIAt96AwhTEFG51Q
+name: 'Public Notice'
+type: public_notice
+description: 'A content type for displaying public notices.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

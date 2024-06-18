@@ -1,0 +1,21 @@
+uuid: 26ae07b1-957a-400a-8ebe-26d9a3d3d15e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.drawer
+_core:
+  default_config_hash: 863R5RSN6vAqeI2r0uZVXdT232ISJ4Y7Yt576-qECAM
+id: paragraph.drawer.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: drawer
+label: 'Short Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

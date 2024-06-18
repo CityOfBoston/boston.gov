@@ -1,0 +1,43 @@
+uuid: c34300b3-5a42-4682-8596-b07f6fb900b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.transaction.field_description
+    - field.field.node.transaction.field_link
+    - field.field.node.transaction.field_sticky
+    - node.type.transaction
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+_core:
+  default_config_hash: kB8coMkwcelnQBDbL5lA3AwHJO4IgkleCoYphK0Om_Q
+id: node.transaction.listing
+targetEntityType: node
+bundle: transaction
+mode: listing
+content:
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: ribbon_link
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  content_moderation_control: true
+  field_sticky: true
+  langcode: true
+  links: true
+  published_at: true

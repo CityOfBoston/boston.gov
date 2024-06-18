@@ -1,0 +1,56 @@
+_core:
+  default_config_hash: yBklcYJqiyzlSPHHHKvoxew3sJTI62kS9lchdu1aa7E
+quality: 75
+binaries: imagemagick
+path_to_binaries: ''
+prepend: ''
+log_warnings: true
+debug: false
+locale: en_US.UTF-8
+image_formats:
+  PNG:
+    mime_type: image/png
+  JPEG:
+    mime_type: image/jpeg
+  JPG:
+    mime_type: image/jpeg
+    weight: 10
+    enabled: true
+  GIF:
+    mime_type: image/gif
+  GIF87:
+    mime_type: image/gif
+    weight: 10
+    enabled: false
+  SVG:
+    mime_type: image/svg+xml
+    enabled: false
+  WEBP:
+    mime_type: image/webp
+    enabled: false
+  TIFF:
+    mime_type: image/tiff
+    enabled: false
+  PDF:
+    mime_type: application/pdf
+    enabled: true
+  BMP:
+    mime_type: image/x-ms-bmp
+    enabled: false
+  PSD:
+    mime_type: image/x-photoshop
+    enabled: false
+  WBMP:
+    mime_type: image/vnd.wap.wbmp
+    enabled: false
+  XBM:
+    mime_type: image/x-xbitmap
+    enabled: false
+  ICO:
+    mime_type: image/vnd.microsoft.icon
+    enabled: false
+advanced:
+  density: 72
+  colorspace: '0'
+  profile: ''
+  coalesce: false

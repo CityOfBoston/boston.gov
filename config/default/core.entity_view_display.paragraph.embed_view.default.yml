@@ -1,0 +1,33 @@
+uuid: 12025820-1aa0-4131-8f16-49bca890966f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embed_view.field_embeded_view
+    - paragraphs.paragraphs_type.embed_view
+  module:
+    - fences
+    - viewfield
+id: paragraph.embed_view.default
+targetEntityType: paragraph
+bundle: embed_view
+mode: default
+content:
+  field_embeded_view:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,8 @@
+name: 'Feedback Form'
+type: module
+description: 'Manages the standard website Feedback form'
+core_version_requirement: ^10
+package: 'City of Boston (components)'
+dependencies:
+  - drupal:webform
+config_devel: { }

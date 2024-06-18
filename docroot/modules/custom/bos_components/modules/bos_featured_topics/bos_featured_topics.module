@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_featured_topics module.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_featured_topics_theme() {
+  $theme['paragraph__featured_topics'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['field__component__field_title'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['field__component__field_topics'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_featured_topics_preprocess_paragraph__featured_topics(&$variables, $hook, $info) {
+  // Add a numeric which indicates the sequence number in the array.
+  foreach (Element::getVisibleChildren($variables["content"]["field_topics"]) as $seq) {
+    $variables["content"]["field_topics"][$seq]["#seq"] = $seq;
+    $variables["content"]["field_topics"][$seq]["#weight"] = $seq;
+  }
+  // @var $paragraph Drupal\paragraphs\Entity\Paragraph.
+  $paragraph = $variables['paragraph'];
+  // @var $field_topics Drupal\Core\Field\EntityReferenceFieldItemList.
+  $field_topics = $paragraph->get('field_topics');
+
+  // @var $imageStyle \Drupal\image\Entity\ImageStyle.
+  $imageStyle = ImageStyle::load('bos_text_responsive'); //scales 800px wide
+  // @var $guide \Drupal\node\Entity\Node.
+  foreach ($field_topics->referencedEntities() as $guide) {
+    $image = $guide->get('field_intro_image')->entity->get('image')->entity;
+    $variables['guide_url'][] = $imageStyle->buildUrl($image->getFileUri());
+  }
+}

@@ -1,0 +1,18 @@
+uuid: 81a3f73d-fc49-45ea-9db1-f49644fc3c0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

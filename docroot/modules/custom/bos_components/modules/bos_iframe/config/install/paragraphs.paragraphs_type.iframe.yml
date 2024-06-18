@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:7d43550a-f09a-4a1a-87a2-ee3c7fe45d7c'
+id: iframe
+label: Iframe
+icon_uuid: 7d43550a-f09a-4a1a-87a2-ee3c7fe45d7c
+icon_default: null
+description: 'Migrated from paragraph bundle Iframe'
+behavior_plugins: {  }

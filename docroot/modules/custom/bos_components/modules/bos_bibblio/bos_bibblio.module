@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_bibblio module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_bibblio_theme() {
+  $theme['paragraph__bibblio'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_bibblio') . '/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_bibblio_preprocess_page(&$variables) {
+  if (isset($variables['node']) && Drupal::currentUser()->isAnonymous()) {
+    $getContentType = $variables['node']->getType();
+    $contentTypes = [
+      "how_to",
+      "place_profile",
+      "program_initiative_profile",
+      "article",
+      "department_profile",
+    ];
+
+    if (in_array($getContentType, $contentTypes)) :
+
+      $node = \Drupal::routeMatch()->getParameter('node');
+      if ($node instanceof \Drupal\node\NodeInterface) {
+        $nid = $node->id();
+      } else {
+        $nid = NULL;
+      }
+
+      $variables['#attached']['library'][] = 'bos_bibblio/bos_bibblio_js';
+      $variables['#attached']['drupalSettings']['bos_bibblio']['bos_bibblio_js']['node_id'] = $nid;
+
+    endif;
+  }
+  $variables['#attached']['library'][] = 'bos_bibblio/bos_bibblio_css';
+}

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:96cdb469-9999-4556-9bd8-13dc136c4d9f'
+id: roll_call_vote
+label: 'Roll Call Vote'
+icon_uuid: 96cdb469-9999-4556-9bd8-13dc136c4d9f
+icon_default: null
+description: 'Records a Councillors vote on a Docket during a Council Meeting.'
+behavior_plugins: {  }

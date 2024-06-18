@@ -1,0 +1,20 @@
+uuid: 583bb58a-f795-46dd-a281-763a88ee08e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cityscore_metrics
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: PYqoRtGbBQO2GlfO74Ga0ky0zjXLkDJySvMMDB85drA
+id: taxonomy_term.cityscore_metrics
+target_entity_type_id: taxonomy_term
+target_bundle: cityscore_metrics
+default_langcode: site_default
+language_alterable: false

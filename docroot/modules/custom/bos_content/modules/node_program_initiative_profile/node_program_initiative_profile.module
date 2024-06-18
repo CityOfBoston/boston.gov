@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * @file
+ * Provides a program initiative profile entity type.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function node_program_initiative_profile_theme() {
+  return [
+    'node__program_initiative_profile' => [
+      'render element' => 'elements',
+      'base hook' => 'node',
+    ],
+    'node__program_initiative_profile__listing' => [
+      'base hook' => 'node',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_program_initiative_profile_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "program_initiative_profile") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        if ($variables["cob"]["header_image"]) {
+          $variables["attributes"]->addClass("page--fp");
+        }
+        else {
+          $variables["attributes"]->addClass("page");
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_program_initiative_profile_preprocess_node__program_initiative_profile(&$variables) {
+  _bos_theme_fix_attributes($variables);
+  $variables['attributes']->addClass('relative-free-article');
+  $variables['attributes']->addClass('clearfix');
+  $variables['attributes']->setAttribute('id', 'node-' . $variables['elements']['#node']->id());
+
+  // Handle intro_image if present.
+  // Has to happen in this template_preprocess_hook or does not #attach(ed).
+  if (isset($variables['content']['field_intro_image'])) {
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $photo_id = Html::getUniqueId('cd-ic-' . $variables["elements"]['#node']->id());
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        "pip-intro-image-css-" . $photo_id,
+      ];
+
+      $nestedElement = [
+        ["div" => "b b--fw b--fw--480"],
+        ["div" => "hro $photo_id hro--pt hro--pb"],
+      ];
+      $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+
+    }
+  }
+  $variables["hasSidebar"] = TRUE;
+  $variables["primeColumnAttributes"] = new Attribute();
+  $variables["primeColumnAttributes"]->addClass(["column"]);
+  $variables["primeColumnAttributes"]->addClass(["g--8"]);
+  if (!count($variables['node']->field_sidebar_components)) {
+    $variables["hasSidebar"] = FALSE;
+    $variables["primeColumnAttributes"]->removeClass("g--8");
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_program_initiative_profile_preprocess_node__program_initiative_profile__listing(&$variables) {
+  if (!empty($variables['elements']['#node'])) {
+    $node = $variables['elements']['#node'];
+    $variables['title_raw'] = $node->getTitle();
+
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "thumbnail_event";
+
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $photo_id = Html::getUniqueId('cd-ic-' . $variables["elements"]['#node']->id());
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        "pip-intro-image-css-" . $photo_id,
+      ];
+      $variables['new_image_class'] = "cd-ic $photo_id";
+    }
+    else {
+      // Sets a hatched blue background in place of image.
+      $variables['new_image_class'] = "cd-ic hro--d";
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_program_initiative_profile_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "program_initiative_profile", [
+    "field_contacts" => "Add another department",
+  ]);
+}
+
+/**
+ * Prepares variables for program initiative profile templates.
+ *
+ * Default template: program-initiative-profile.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the program initiative profile
+ *     information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__program_initiative_profile(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

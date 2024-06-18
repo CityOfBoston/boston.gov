@@ -1,0 +1,18 @@
+uuid: c486c0b6-7690-4119-8075-c8f8b38fb52c
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.title
+field_name: title
+entity_type: node
+bundle: place_profile
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

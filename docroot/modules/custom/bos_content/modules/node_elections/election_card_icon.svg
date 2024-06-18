@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" data-name="Layer 1" viewBox="0 0 144 144" version="1.1" sodipodi:docname="election_card_icon.svg" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata id="metadata25">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs23" />
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="702" inkscape:window-height="480" id="namedview21" showgrid="false" inkscape:zoom="1.6388889" inkscape:cx="72" inkscape:cy="72" inkscape:window-x="378" inkscape:window-y="152" inkscape:window-maximized="0" inkscape:current-layer="Layer_1" />
+  <rect x="22.52" y="28.91" width="98.96" height="65.93" fill="#fff" stroke="#111f2d" stroke-miterlimit="10" stroke-width="3" id="rect2" />
+  <rect x="28.62" y="34" width="86.76" height="55.8" fill="#fff" stroke="#111f2d" stroke-miterlimit="10" stroke-width="3" id="rect4" />
+  <rect x="59.12" y="94.84" width="25.76" height="15.73" fill="#fff" stroke="#111f2d" stroke-miterlimit="10" stroke-width="3" id="rect6" />
+  <rect x="51.34" y="110.57" width="41.32" height="4.52" fill="#fff" stroke="#111f2d" stroke-miterlimit="10" stroke-width="3" id="rect8" />
+  <g id="g31" transform="matrix(0.8564307,0,0,1,19.10333,0)">
+    <line id="line12" stroke-miterlimit="10" y2="46.18" x2="103.31" y1="46.18" x1="69.309998" style="fill:#ffffff;stroke:#111f2d;stroke-width:3;stroke-miterlimit:10" />
+    <line id="line14" stroke-miterlimit="10" y2="56.18" x2="103.31" y1="56.18" x1="69.309998" style="fill:#ffffff;stroke:#111f2d;stroke-width:3;stroke-miterlimit:10" />
+    <line id="line16" stroke-miterlimit="10" y2="66.18" x2="103.31" y1="66.18" x1="69.309998" style="fill:#ffffff;stroke:#111f2d;stroke-width:3;stroke-miterlimit:10" />
+    <line id="line18" stroke-miterlimit="10" y2="76.18" x2="103.31" y1="76.18" x1="69.309998" style="fill:#ffffff;stroke:#111f2d;stroke-width:3;stroke-miterlimit:10" />
+  </g>
+  <g id="g64" transform="matrix(0.39858864,0,0,0.34193784,-9.607044,29.576581)">
+    <rect id="rect2-3" stroke-miterlimit="10" transform="rotate(-36.51)" height="24.66" width="43.830002" y="133.49623" x="76.262497" style="fill:#ffffff;stroke:#0d202e;stroke-width:3;stroke-miterlimit:10" />
+    <line id="line4" stroke-miterlimit="10" y2="46.278137" x2="174.9689" y1="53.708138" x1="164.9389" style="fill:#ffffff;stroke:#0d202e;stroke-width:3;stroke-miterlimit:10" />
+    <line id="line6" stroke-miterlimit="10" y2="53.308136" x2="180.1689" y1="60.728138" x1="170.1389" style="fill:#ffffff;stroke:#0d202e;stroke-width:3;stroke-miterlimit:10" />
+    <rect id="rect8-6" stroke-miterlimit="10" height="56.810001" width="89.949997" y="78.788132" x="113.0589" style="fill:#ffffff;stroke:#0d202e;stroke-width:3;stroke-miterlimit:10" />
+    <rect id="rect10" stroke-miterlimit="10" height="8.1599998" width="89.949997" y="70.628136" x="113.0589" style="fill:#ffffff;stroke:#0d202e;stroke-width:3;stroke-miterlimit:10" />
+    <path id="path12" d="m 135.2489,114.47814 -5.61,-14.45 h 3.92 l 3.7,10.63 3.69,-10.63 h 3.78 l -5.67,14.45 z" style="fill:#0f1f2d" inkscape:connector-curvature="0" />
+    <path id="path14" d="m 160.7989,107.27814 c 0,4.21 -3.35,7.41 -7.83,7.41 -4.48,0 -7.8,-3.18 -7.8,-7.41 0,-4.23 3.34,-7.330003 7.8,-7.330003 4.46,0 7.83,3.090003 7.83,7.330003 z m -11.87,0 a 4.21,4.21 0 0 0 4.13,4.29 4.13,4.13 0 0 0 4,-4.29 4.08,4.08 0 0 0 -4,-4.27 4.14,4.14 0 0 0 -4.13,4.27 z" style="fill:#0f1f2d" inkscape:connector-curvature="0" />
+    <path id="path16" d="m 168.9589,102.97814 v 11.5 h -3.67 v -11.5 h -4.32 v -3.000003 h 12.35 v 3.000003 z" style="fill:#0f1f2d" inkscape:connector-curvature="0" />
+    <path id="path18" d="m 178.5689,102.91814 v 2.87 h 6.89 v 2.89 h -6.89 v 2.91 h 7.86 v 2.89 h -11.54 v -14.45 h 11.32 v 2.89 z" style="fill:#0f1f2d" inkscape:connector-curvature="0" />
+  </g>
+</svg>

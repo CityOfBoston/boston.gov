@@ -1,0 +1,23 @@
+uuid: e4acfe68-0c88-4fb4-a905-1fa3d942a57e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_assessing_lot_size
+    - node.type.bh_parcel
+id: node.bh_parcel.field_bh_assessing_lot_size
+field_name: field_bh_assessing_lot_size
+entity_type: node
+bundle: bh_parcel
+label: 'Assessing Lot Size'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: sqft
+field_type: integer

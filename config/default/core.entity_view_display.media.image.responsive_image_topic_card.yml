@@ -1,0 +1,45 @@
+uuid: 8769af99-be97-48ae-88cb-508e998c4305
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.responsive_image_topic_card
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - media.type.image
+    - responsive_image.styles.topic_cards
+  module:
+    - fences
+    - responsive_image
+_core:
+  default_config_hash: VLDxfMVPTkd2xvOjFMCh3kWmaOYnd03zggFXuUXQVEY
+id: media.image.responsive_image_topic_card
+targetEntityType: media
+bundle: image
+mode: responsive_image_topic_card
+content:
+  image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: topic_cards
+      image_link: ''
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

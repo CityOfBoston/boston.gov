@@ -1,0 +1,4 @@
+mod.assets:
+  css:
+    theme:
+      css/mod-recur-widget.css: {weight: 500}

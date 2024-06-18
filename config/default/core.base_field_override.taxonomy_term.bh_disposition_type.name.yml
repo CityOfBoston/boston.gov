@@ -1,0 +1,18 @@
+uuid: 3a75412e-f609-494b-92a8-b325793cfc1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_disposition_type
+id: taxonomy_term.bh_disposition_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bh_disposition_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

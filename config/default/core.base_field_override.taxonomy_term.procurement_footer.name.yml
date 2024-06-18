@@ -1,0 +1,18 @@
+uuid: 31be12d1-4e22-4879-be15-64defa82ea0f
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_footer
+id: taxonomy_term.procurement_footer.name
+field_name: name
+entity_type: taxonomy_term
+bundle: procurement_footer
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

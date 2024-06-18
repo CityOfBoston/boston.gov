@@ -1,0 +1,23 @@
+uuid: 0a5290b7-756b-4dc9-b384-81ec6b9d7d82
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sam_id
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.field_sam_id
+field_name: field_sam_id
+entity_type: node
+bundle: neighborhood_lookup
+label: 'SAM ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,20 @@
+uuid: 4652cbc8-2bda-46cc-ad3c-61aebc1d3065
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+  module:
+    - path
+id: node.emergency_alert.path
+field_name: path
+entity_type: node
+bundle: emergency_alert
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

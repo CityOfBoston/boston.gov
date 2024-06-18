@@ -1,0 +1,29 @@
+uuid: d099e53f-606e-4ca4-a89d-3c05bcb8324e
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contacts
+    - node.type.event
+    - taxonomy.vocabulary.contact
+id: node.event.field_contacts
+field_name: field_contacts
+entity_type: node
+bundle: event
+label: Department
+description: 'Department that this event relates to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 8c02d2d9-49df-4a22-9708-865af30fa3b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.events_and_notices
+  module:
+    - options
+id: paragraph.events_and_notices.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: events_and_notices
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

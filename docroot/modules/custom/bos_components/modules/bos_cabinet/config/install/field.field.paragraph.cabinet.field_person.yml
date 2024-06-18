@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_person
+    - node.type.person_profile
+    - paragraphs.paragraphs_type.cabinet
+id: paragraph.cabinet.field_person
+field_name: field_person
+entity_type: paragraph
+bundle: cabinet
+label: 'Cabinet Chief'
+description: 'Enter the name of this Cabinet''s chief.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person_profile: person_profile
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

@@ -1,0 +1,24 @@
+uuid: c87de07f-95c3-45af-ae9d-119b900c9d42
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cabinet
+_core:
+  default_config_hash: T7-j8qaW58EgzjPkqFKnghzBg_35CxDiHPhYPWjJ3bU
+id: paragraph.cabinet.status
+field_name: status
+entity_type: paragraph
+bundle: cabinet
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

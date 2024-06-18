@@ -1,0 +1,85 @@
+uuid: 8604743c-cd47-41d5-8988-12baa5aa254b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.election_card
+    - field.field.taxonomy_term.election_contests.field_area
+    - field.field.taxonomy_term.election_contests.field_contest_eligible
+    - field.field.taxonomy_term.election_contests.field_contest_isacclaimed
+    - field.field.taxonomy_term.election_contests.field_contest_isdisabled
+    - field.field.taxonomy_term.election_contests.field_contest_ismajor
+    - field.field.taxonomy_term.election_contests.field_contest_pos
+    - field.field.taxonomy_term.election_contests.field_contest_sortorder
+    - field.field.taxonomy_term.election_contests.field_display_title
+    - field.field.taxonomy_term.election_contests.field_election
+    - field.field.taxonomy_term.election_contests.field_elector_group
+    - field.field.taxonomy_term.election_contests.field_has_writeins
+    - field.field.taxonomy_term.election_contests.field_original_id
+    - taxonomy.vocabulary.election_contests
+  module:
+    - fences
+id: taxonomy_term.election_contests.election_card
+targetEntityType: taxonomy_term
+bundle: election_contests
+mode: election_card
+content:
+  field_contest_pos:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_contest_sortorder:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_area: true
+  field_contest_eligible: true
+  field_contest_isacclaimed: true
+  field_contest_isdisabled: true
+  field_contest_ismajor: true
+  field_election: true
+  field_elector_group: true
+  field_has_writeins: true
+  field_original_id: true
+  langcode: true

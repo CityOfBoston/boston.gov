@@ -1,0 +1,13 @@
+uuid: d49616ae-1163-4a42-aadc-bc042e8e74c3
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: HRfKoPW9gluoKYm9aV26rM6sj3i0UbzqPua_SJ8679k
+id: drawers
+label: Drawers
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Drawers'
+behavior_plugins: {  }

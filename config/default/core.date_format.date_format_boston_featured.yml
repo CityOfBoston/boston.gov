@@ -1,0 +1,8 @@
+uuid: 33a93008-70c8-48b2-be74-d9ae123398df
+langcode: en
+status: true
+dependencies: {  }
+id: date_format_boston_featured
+label: 'Boston Featured'
+locked: false
+pattern: 'M j'

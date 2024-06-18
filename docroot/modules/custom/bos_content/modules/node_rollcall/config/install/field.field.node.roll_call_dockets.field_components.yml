@@ -1,0 +1,248 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.roll_call_dockets
+    - paragraphs.paragraphs_type.roll_call_vote
+    - paragraphs.paragraphs_type.text_one_column
+  module:
+    - entity_reference_revisions
+id: node.roll_call_dockets.field_components
+field_name: field_components
+entity_type: node
+bundle: roll_call_dockets
+label: Components
+description: 'Add components to this Docket.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text_one_column: text_one_column
+      roll_call_vote: roll_call_vote
+    negate: 0
+    target_bundles_drag_drop:
+      3_column_w_image:
+        weight: -96
+        enabled: false
+      bid:
+        weight: -36
+        enabled: false
+      bos311:
+        weight: -95
+        enabled: false
+      bos_signup_emergency_alerts:
+        weight: -47
+        enabled: false
+      branded_links:
+        weight: 73
+        enabled: false
+      cabinet:
+        weight: -95
+        enabled: false
+      card:
+        weight: -39
+        enabled: false
+      city_score_dashboard:
+        weight: -68
+        enabled: false
+      columns:
+        weight: -31
+        enabled: false
+      commission_contact_info:
+        weight: -35
+        enabled: false
+      commission_members:
+        weight: -94
+        enabled: false
+      commission_search:
+        weight: 75
+        enabled: false
+      commission_summary:
+        weight: -93
+        enabled: false
+      custom_hours_text:
+        weight: -80
+        enabled: false
+      daily_hours:
+        weight: -79
+        enabled: false
+      discussion_topic:
+        weight: -38
+        enabled: false
+      document:
+        weight: -88
+        enabled: false
+      drawer:
+        weight: -73
+        enabled: false
+      drawers:
+        weight: -85
+        enabled: false
+      election_area_results:
+        weight: 92
+        enabled: false
+      election_candidate_results:
+        weight: 93
+        enabled: false
+      election_card:
+        weight: 94
+        enabled: false
+      election_contest_results:
+        weight: 95
+        enabled: false
+      election_results:
+        weight: -87
+        enabled: false
+      embed_view:
+        weight: 87
+        enabled: false
+      events_and_notices:
+        weight: 125
+        enabled: false
+      external_link:
+        weight: -86
+        enabled: false
+      featured_topics:
+        weight: -84
+        enabled: false
+      from_library:
+        weight: 87
+        enabled: false
+      fyi:
+        weight: -78
+        enabled: false
+      gol_list_links:
+        weight: -77
+        enabled: false
+      grid_links:
+        weight: -29
+        enabled: false
+      grid_of_cards:
+        weight: -62
+        enabled: false
+      grid_of_people:
+        weight: -69
+        enabled: false
+      grid_of_places:
+        weight: -64
+        enabled: false
+      grid_of_programs_initiatives:
+        weight: -60
+        enabled: false
+      grid_of_quotes:
+        weight: -58
+        enabled: false
+      grid_of_topics:
+        weight: -61
+        enabled: false
+      group_of_links_grid:
+        weight: -59
+        enabled: false
+      group_of_links_list:
+        weight: -57
+        enabled: false
+      group_of_links_mini_grid:
+        weight: -56
+        enabled: false
+      group_of_links_quick_links:
+        weight: 104
+        enabled: false
+      header_text:
+        weight: -81
+        enabled: false
+      hero_image:
+        weight: -55
+        enabled: false
+      how_to_contact_step:
+        weight: -76
+        enabled: false
+      how_to_tab:
+        weight: -75
+        enabled: false
+      how_to_text_step:
+        weight: -74
+        enabled: false
+      iframe:
+        weight: -54
+        enabled: false
+      internal_link:
+        weight: -53
+        enabled: false
+      lightbox_link:
+        weight: -28
+        enabled: false
+      list:
+        weight: -52
+        enabled: false
+      map:
+        weight: -51
+        enabled: false
+      message_for_the_day:
+        weight: -72
+        enabled: false
+      news_and_announcements:
+        weight: 111
+        enabled: false
+      newsletter:
+        weight: -49
+        enabled: false
+      photo:
+        weight: -48
+        enabled: false
+      quote:
+        weight: -70
+        enabled: false
+      roll_call_vote:
+        weight: 131
+        enabled: true
+      seamless_doc:
+        weight: -65
+        enabled: false
+      sidebar_item:
+        weight: -90
+        enabled: false
+      sidebar_item_w_icon:
+        weight: -89
+        enabled: false
+      social_media_links:
+        weight: -91
+        enabled: false
+      social_networking:
+        weight: -92
+        enabled: false
+      status_overrides:
+        weight: 123
+        enabled: false
+      tabbed_content_tab:
+        weight: 124
+        enabled: false
+      text:
+        weight: -46
+        enabled: false
+      text_one_column:
+        weight: -45
+        enabled: true
+      text_three_column:
+        weight: -43
+        enabled: false
+      text_two_column:
+        weight: -44
+        enabled: false
+      transaction_grid:
+        weight: -42
+        enabled: false
+      transactions:
+        weight: -27
+        enabled: false
+      video:
+        weight: -40
+        enabled: false
+      web_app:
+        weight: 134
+        enabled: false
+field_type: entity_reference_revisions

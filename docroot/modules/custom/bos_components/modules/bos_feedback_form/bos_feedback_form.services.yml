@@ -1,0 +1,4 @@
+services:
+  bos_feedback_form.callbacks:
+    class: Drupal\bos_feedback_form\FeedbackFormCallbacks
+    arguments: ['@entity_type.manager']

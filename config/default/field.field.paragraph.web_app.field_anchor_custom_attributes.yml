@@ -1,0 +1,19 @@
+uuid: 1a5cd4c9-f427-45af-a579-f544cd31905d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_custom_attributes
+    - paragraphs.paragraphs_type.web_app
+id: paragraph.web_app.field_anchor_custom_attributes
+field_name: field_anchor_custom_attributes
+entity_type: paragraph
+bundle: web_app
+label: 'Anchor Custom Attributes'
+description: 'Add additional attribute key:value pairs to the webapp component anchor.<br>Place one attribute per line e.g. data-type:sanitation'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

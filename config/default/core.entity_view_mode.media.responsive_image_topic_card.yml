@@ -1,0 +1,15 @@
+uuid: 4a3542a3-406a-4a96-a169-7b24c77b1d71
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Used for topic intro-mage in topic-page listing-long display.'
+id: media.responsive_image_topic_card
+label: 'Topic Card (resp)'
+description: ''
+targetEntityType: media
+cache: true

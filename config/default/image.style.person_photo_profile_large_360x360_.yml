@@ -1,0 +1,15 @@
+uuid: 2a5357b1-ba23-4844-8155-2f1ecb0ae765
+langcode: und
+status: true
+dependencies: {  }
+name: person_photo_profile_large_360x360_
+label: 'Person photo profile large (360x360)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 360
+      anchor: center-center

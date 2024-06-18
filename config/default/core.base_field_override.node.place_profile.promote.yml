@@ -1,0 +1,22 @@
+uuid: 68636437-95f3-4cf5-9934-ebae22d03491
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.promote
+field_name: promote
+entity_type: node
+bundle: place_profile
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the Moderation Sidebar's information area.
+ *
+ * This is what appears at the top of the sidebar when moderation an entity.
+ *
+ * Available variables:
+ * - title: The title of the entity.
+ * - state: The label of the moderation state.
+ * - revision_time: The timestamp of the revision.
+ * - revision_time_pretty: The revision time, formatted to be human-readable.
+ * - revision_author: The display name of the revision author.
+ * - revision_author_link: A link to the revision author.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="moderation-sidebar-info">
+  <p>{{ 'Currently viewing' | t }} <strong>{{ state }}</strong> {{ 'state'|t }}</p>
+  {% if revision_author_link %}
+    <p>{{ 'Authored by' | t }} {{ revision_author_link }}</p>
+    <p>{{ 'Saved' | t }} {{ revision_time_pretty }}</p>
+  {% endif %}
+</div>

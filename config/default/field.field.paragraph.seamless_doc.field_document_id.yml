@@ -1,0 +1,21 @@
+uuid: 5802782e-8c2b-4414-9bcc-b8a884911381
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_document_id
+    - paragraphs.paragraphs_type.seamless_doc
+_core:
+  default_config_hash: D3AyhIWNp0EacNn0ZJLXscVO-SVoYAAweFphpL9zJ8o
+id: paragraph.seamless_doc.field_document_id
+field_name: field_document_id
+entity_type: paragraph
+bundle: seamless_doc
+label: 'Document ID'
+description: "Enter the seamless document ID for this page. Example: http://example.com/s/da3e1eb84d96dad57400afecea6ececa/embed/iframe, the id is the random string of letters & numbers.\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

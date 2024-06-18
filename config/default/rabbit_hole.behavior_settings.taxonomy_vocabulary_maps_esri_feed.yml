@@ -1,0 +1,12 @@
+uuid: dc6f5315-4353-4b69-94f2-d7db4b834b1c
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_maps_esri_feed
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

@@ -1,0 +1,62 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.transactions.field_grid_link
+    - field.field.paragraph.transactions.field_icon
+    - paragraphs.paragraphs_type.transactions
+  module:
+    - bg_image_formatter
+    - entity_reference_revisions
+    - fences
+id: paragraph.transactions.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: transactions
+mode: paragraphs_editor_preview
+content:
+  field_grid_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_icon:
+    type: bg_image_formatter
+    label: hidden
+    settings:
+      image_style: ''
+      css_settings:
+        bg_image_selector: background-image-formatter
+        bg_image_z_index: auto
+        bg_image_color: '#FFFFFF'
+        bg_image_x: left
+        bg_image_y: top
+        bg_image_attachment: scroll
+        bg_image_repeat: no-repeat
+        bg_image_background_size: ''
+        bg_image_media_query: all
+        bg_image_important: 1
+        bg_image_background_size_ie8: 0
+        bg_image_path_format: absolute
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

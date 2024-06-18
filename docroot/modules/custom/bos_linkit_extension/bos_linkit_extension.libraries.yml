@@ -1,0 +1,9 @@
+linkit-dialog:
+  version: VERSION
+  css:
+    theme:
+      css/linkit-dialog.css: {weight: 300}
+  js:
+    js/linkit-dialog.js: {attributes: {id: "linkit_dialog_script"}}
+  dependencies:
+    - core/jquery

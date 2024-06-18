@@ -1,0 +1,9 @@
+uuid: d5bb50b4-ff51-40a1-b7ae-7bb7fe44d4fd
+langcode: en
+status: true
+dependencies: {  }
+id: sf_developments
+label: 'SF Developments'
+category: MetroList
+likert: false
+options: "new: 'New Building'"

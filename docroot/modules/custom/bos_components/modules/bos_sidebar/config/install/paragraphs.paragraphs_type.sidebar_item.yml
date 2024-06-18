@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:b4626aa4-2573-4230-8a02-6819883bfb3a'
+  module:
+    - paragraphs_browser
+    - paragraphs_library
+third_party_settings:
+  paragraphs_browser:
+    description: 'Defines a basic sidebar text item.'
+    image_path: sites/default/files/paragraphs_type_icon/sidebar_item_icon.svg
+  paragraphs_library:
+    allow_library_conversion: true
+id: sidebar_item
+label: 'Sidebar Item'
+icon_uuid: b4626aa4-2573-4230-8a02-6819883bfb3a
+icon_default: null
+description: 'Defines a basic sidebar text item.'
+behavior_plugins: {  }

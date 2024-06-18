@@ -1,0 +1,24 @@
+{#
+ * @file
+ * Returns the HTML for a single Drupal page.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https://drupal.org/node/1728148 */
+#}
+<header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    {{ logo }}
+    {{ seal }}
+</header>
+<div class="page">
+  <div class="main err err--403">
+    <div class="container">
+      <section class="main-content err-content" id="content" role="main">
+        <div class="denied-text error-text column desktop-66-left">
+          <h1>{{ title }}</h1>
+          <p><em>{{ error_text|raw }}</em></p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{#
+ * @file
+ * Default implementation of field intro text.
+ #}
+
+{% if short_title %}
+  <a id="{{ short_title_link }}"
+     data-text="{{ short_title }}" class="subnav-anchor"></a>
+{% endif %}
+<div class="hro-i">{{ items }}</div>

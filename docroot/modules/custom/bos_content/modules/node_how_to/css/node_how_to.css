@@ -1,0 +1,113 @@
+.padora-css-test {
+  display: none;
+}
+
+.dr-c .paragraphs-item-how-to-text-step.entity-paragraphs-item:not(:last-child) {
+  background: unset;
+  background-size: unset;
+  margin-bottom: unset;
+  overflow: initial;
+  padding: unset;
+}
+
+.component-section.paragraphs-item-how-to-tab.dr {
+  padding: 0 0 10px;
+}
+
+.dr .dr-h {
+  background-color: #f3f3f3;
+  padding-right: 6rem;
+}
+
+
+
+.expanded .dr-ic .dr-opened {
+  display: flex;
+}
+
+.expanded .dr-opened,
+.dr-h:focus .dr-closed,
+.dr-h:hover .dr-closed {
+  fill: #FFF;
+}
+
+
+.dr-h:hover .t--subinfo,
+.dr-h:focus .t--subinfo,
+.expanded .dr-opened .t--subinfo{
+  color: #FFF;
+}
+
+.dr-h .t--subinfo {
+  color: #1871bd;
+}
+
+.dr-h .dr-closed {
+  fill: #1871bd;
+}
+
+.dr-ic .dr-opened,
+.expanded .dr-closed {
+  display: none;
+}
+
+.dr .dr-ic {
+  width: 80px;
+  right: 1rem;
+}
+
+.dr .dr-c {
+  padding: 5px;
+  padding: 0.25rem;
+}
+
+.dr-ic svg {
+  -webkit-transform: unset !important;
+  transform: unset !important;
+}
+
+.dr-h .dr-ic .g--4 {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: calc(99.9% * 4/12 - 1rem);
+  flex-basis: calc(99.9% * 4/12 - 1rem);
+  max-width: calc(99.9% * 4/12 - 1rem);
+  width: calc(99.9% * 4/12 - 1rem);
+  margin-right: .5rem;
+}
+
+.dr-h .dr-ic .g--8 {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: calc(99.9% * 8/12 - 0.5rem);
+  flex-basis: calc(99.9% * 8/12 - 0.5rem);
+  max-width: calc(99.9% * 8/12 - 0.5rem);
+  width: calc(99.9% * 8/12 - 0.5rem);
+}
+
+.node-type-how-to .paragraphs-item-drawers {
+  width: auto;
+  background-color: #FFFFFF;
+}
+
+.node-type-how-to .component-section.paragraphs-item-drawer.dr {
+  padding: unset;
+}
+
+@media screen and (max-width: 980px) {
+  .step-label-wrapper {
+    margin: 2rem auto 1rem auto;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .node-type-how-to .b--fw .how-to-components .b--fw  .b--fw {
+    left: 50%
+  }
+}

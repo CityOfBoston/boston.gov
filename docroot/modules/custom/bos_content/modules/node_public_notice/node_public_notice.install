@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * The install file for the node_public_notice module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function node_public_notice_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function node_public_notice_install() {
+  // Using content_access module to hide this page from all but authenticated
+  // users.
+  if (function_exists("content_access_set_settings")) {
+    $settings = [
+      'view' => ["anonymous", "authenticated"],
+      'view own' => ["authenticated"],
+    ];
+    try {
+      content_access_set_settings($settings, basename(__FILE__, ".install"));
+    }
+    catch (ErrorException $e) {
+      \Drupal::logger('public_notice')
+        ->warning("Could not update content_access settings during module installation.");
+    }
+  }
+}

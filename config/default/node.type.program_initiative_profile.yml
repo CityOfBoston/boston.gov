@@ -1,0 +1,19 @@
+uuid: ca6ae5e0-5034-4aa3-bef1-5b855ad4232a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: CwNAzO76C5tlrhyZzq0P1MdfwkGFC7YmrK7kq-ukMtY
+name: 'Program Initiative Profile'
+type: program_initiative_profile
+description: 'A content type for creating programs and/or initiatives.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

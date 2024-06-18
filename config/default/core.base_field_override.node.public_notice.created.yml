@@ -1,0 +1,18 @@
+uuid: 659f2b5f-8a26-45fe-9f68-b9b962511324
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+id: node.public_notice.created
+field_name: created
+entity_type: node
+bundle: public_notice
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,26 @@
+{#
+   @file
+     Template for site breadcrumbs. System Breadcrumb
+#}
+{% if cob.display_breadcrumb and not breadcrumb.isEmpty %}
+   <div id="breadcrumb" data-swiftype-index="false">
+      <nav class="brc" role="navigation" aria-labelledby="system-breadcrumb">
+         <div class="a11y--h"><span class="brc-t">{{ title }}</span></div>
+         <ul class="brc-l">
+            {% for item in breadcrumb %}
+               <li class="brc-l-i">
+                  {% if item.url %}
+                     <a href="{{ item.url }}">{{ item.text }}</a>
+                  {% else %}
+                     {{ item.text }}
+                  {% endif %}
+                  <span class="brc-s"> {{ cob.breadcrumb_separator }} </span>
+               </li>
+            {% endfor %}
+            <li class="brc-l-i">
+               {{ breadcrumb_title }}
+            </li>
+         </ul>
+      </nav>
+   </div>
+{% endif %}

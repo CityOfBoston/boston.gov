@@ -1,0 +1,22 @@
+uuid: 0cd99dc8-c3bb-4c3c-9cfb-d11617afaf9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+id: node.metrolist_unit.status
+field_name: status
+entity_type: node
+bundle: metrolist_unit
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

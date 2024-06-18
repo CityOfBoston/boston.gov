@@ -1,0 +1,9 @@
+/**
+  Adjust map styling when admin toolbar is open.
+**/
+.toolbar-vertical .paragraphs-item-map .md {
+  margin-top: 39px;
+}
+.toolbar-horizontal .paragraphs-item-map .md {
+  margin-top: 78px;
+}

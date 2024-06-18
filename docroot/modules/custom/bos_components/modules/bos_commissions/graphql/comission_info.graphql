@@ -1,0 +1,20 @@
+{
+  commission(id:$commission_id) {
+    id
+    name
+    authority
+    contactEmail
+    contactName
+    contactPhone
+    department {
+      name
+      homepageUrl
+    }
+    enablingLegislation
+    seats
+    stipend
+    term
+    openSeats
+    applyUrl
+  }
+}

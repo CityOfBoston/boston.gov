@@ -1,0 +1,23 @@
+uuid: b955d506-10e7-4870-8b98-44632e3bc65c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map_inline
+    - paragraphs.paragraphs_type.map
+id: paragraph.map.field_map_inline
+field_name: field_map_inline
+entity_type: paragraph
+bundle: map
+label: Inline
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

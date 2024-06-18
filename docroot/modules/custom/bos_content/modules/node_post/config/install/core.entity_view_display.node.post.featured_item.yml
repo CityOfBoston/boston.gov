@@ -1,0 +1,119 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_item
+    - field.field.node.post.body
+    - field.field.node.post.field_components
+    - field.field.node.post.field_contact
+    - field.field.node.post.field_content_feeds
+    - field.field.node.post.field_intro_image
+    - field.field.node.post.field_intro_text
+    - field.field.node.post.field_manual_date
+    - field.field.node.post.field_metatags
+    - field.field.node.post.field_news_tags
+    - field.field.node.post.field_published_date
+    - field.field.node.post.field_related
+    - field.field.node.post.field_sidebar_components
+    - field.field.node.post.field_thumbnail
+    - field.field.node.post.field_updated_date
+    - node.type.post
+  module:
+    - datetime
+    - fences
+    - smart_trim
+    - user
+id: node.post.featured_item
+targetEntityType: node
+bundle: post
+mode: featured_item
+content:
+  field_contact:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: popup_icon
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_intro_text:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 200
+      trim_type: chars
+      trim_suffix: ...
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_featured
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_thumbnail:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_components: true
+  field_content_feeds: true
+  field_intro_image: true
+  field_manual_date: true
+  field_metatags: true
+  field_news_tags: true
+  field_related: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

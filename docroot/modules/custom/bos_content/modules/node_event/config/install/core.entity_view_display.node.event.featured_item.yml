@@ -1,0 +1,214 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.date_format.date_format_boston_featured
+    - core.entity_view_mode.node.featured_item
+    - field.field.node.event.body
+    - field.field.node.event.field_address
+    - field.field.node.event.field_cancel_event
+    - field.field.node.event.field_city_hall
+    - field.field.node.event.field_city_sponsored
+    - field.field.node.event.field_components
+    - field.field.node.event.field_contacts
+    - field.field.node.event.field_content_feeds
+    - field.field.node.event.field_cost
+    - field.field.node.event.field_details_link
+    - field.field.node.event.field_email
+    - field.field.node.event.field_event_contact
+    - field.field.node.event.field_event_date_recur
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_extra_info_event
+    - field.field.node.event.field_featured
+    - field.field.node.event.field_intro_image
+    - field.field.node.event.field_intro_text
+    - field.field.node.event.field_links
+    - field.field.node.event.field_manual_date
+    - field.field.node.event.field_metatags
+    - field.field.node.event.field_multiple_neighborhoods
+    - field.field.node.event.field_phone_number
+    - field.field.node.event.field_published_date
+    - field.field.node.event.field_related
+    - field.field.node.event.field_sidebar_components
+    - field.field.node.event.field_thumbnail
+    - field.field.node.event.field_updated_date
+    - node.type.event
+  module:
+    - address
+    - advanced_text_formatter
+    - date_recur
+    - fences
+    - link
+    - smart_trim
+    - taxonomy
+    - user
+id: node.event.featured_item
+targetEntityType: node
+bundle: event
+mode: featured_item
+content:
+  field_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_cost:
+    type: smart_trim
+    label: above
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_details_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_email:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_event_contact:
+    type: smart_trim
+    label: above
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_event_date_recur:
+    type: date_recur_basic_formatter
+    label: hidden
+    settings:
+      timezone_override: America/New_York
+      format_type: date_format_boston_featured
+      separator: '-'
+      show_next: 5
+      count_per_item: true
+      occurrence_format_type: date_format_boston_featured
+      same_end_date_format_type: date_format_boston_featured
+      interpreter: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: 'n'
+    weight: 2
+    region: content
+  field_intro_text:
+    type: advanced_text
+    label: hidden
+    settings:
+      trim_length: '200'
+      ellipsis: '1'
+      word_boundary: '1'
+      filter: limit_html
+      format: plain_text
+      allowed_html:
+        - b
+        - em
+        - i
+        - strong
+        - u
+      use_summary: 0
+      token_replace: 0
+      autop: 0
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_multiple_neighborhoods:
+    type: entity_reference_rss_category
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_phone_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_thumbnail:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_cancel_event: true
+  field_city_hall: true
+  field_city_sponsored: true
+  field_components: true
+  field_contacts: true
+  field_content_feeds: true
+  field_event_type: true
+  field_extra_info_event: true
+  field_featured: true
+  field_intro_image: true
+  field_links: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_related: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

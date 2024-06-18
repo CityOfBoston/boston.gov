@@ -1,0 +1,22 @@
+uuid: 553968c3-01da-4aa1-9158-ec2fe88a2aed
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel
+id: node.bh_parcel.promote
+field_name: promote
+entity_type: node
+bundle: bh_parcel
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

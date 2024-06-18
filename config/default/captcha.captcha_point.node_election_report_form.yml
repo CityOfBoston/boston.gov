@@ -1,0 +1,7 @@
+uuid: e65e3347-f05a-4aea-9f98-a9ebfe20f0f2
+langcode: en
+status: false
+dependencies: {  }
+formId: node_election_report_form
+captchaType: default
+label: node_election_report_form

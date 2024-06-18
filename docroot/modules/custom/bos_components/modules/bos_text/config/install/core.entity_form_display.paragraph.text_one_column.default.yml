@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_one_column.field_middle_column
+    - paragraphs.paragraphs_type.text_one_column
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_column_info:
+      children:
+        - field_middle_column
+      label: 'Column Info'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.text_one_column.default
+targetEntityType: paragraph
+bundle: text_one_column
+mode: default
+content:
+  field_middle_column:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

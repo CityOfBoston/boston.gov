@@ -1,0 +1,21 @@
+// <ResultsPanel />
+@import '@globals';
+
+.ml-results-panel {}
+
+.ml-results-panel__home-status {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.ml-results-panel__home-status-text {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #0d202e;
+  padding-left: 2rem;
+}

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_contact_info.field_commission
+    - paragraphs.paragraphs_type.commission_contact_info
+  module:
+    - fences
+id: paragraph.commission_contact_info.default
+targetEntityType: paragraph
+bundle: commission_contact_info
+mode: default
+content:
+  field_commission:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

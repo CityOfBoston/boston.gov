@@ -1,0 +1,32 @@
+uuid: 82f157ea-eb77-46f9-ac70-484ac384f4af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_department_profile
+    - node.type.department_profile
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: QlXbxLcg4AE9jPVQceoBu0QPywCLtE_oC98l9rhi6eM
+id: taxonomy_term.contact.field_department_profile
+field_name: field_department_profile
+entity_type: taxonomy_term
+bundle: contact
+label: 'Department Profile'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      department_profile: department_profile
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

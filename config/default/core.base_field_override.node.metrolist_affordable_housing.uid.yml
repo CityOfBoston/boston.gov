@@ -1,0 +1,20 @@
+uuid: 5f78b25c-bf5d-4821-906c-ff422139728c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.uid
+field_name: uid
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

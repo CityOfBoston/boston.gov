@@ -1,0 +1,28 @@
+uuid: 1fa16f51-9bea-460b-a5c7-e3d62a0bc4c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.thumbnail
+    - file_entity.type.video
+_core:
+  default_config_hash: _Q1l94kLWLkX17ofAFFAQL9emt-VMNP8Sk3_KdgkvdU
+id: file.video.thumbnail
+targetEntityType: file
+bundle: video
+mode: thumbnail
+content:
+  filename:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  filemime: true
+  filesize: true
+  langcode: true
+  uid: true
+  uri: true

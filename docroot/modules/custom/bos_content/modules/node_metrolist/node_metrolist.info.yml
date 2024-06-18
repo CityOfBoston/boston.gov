@@ -1,0 +1,28 @@
+name: Metrolist Affordable Housing
+type: module
+description: 'Provides a metrolist affordable housing entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_content
+config_devel:
+  - core.entity_form_display.node.metrolist_affordable_housing.default
+  - core.entity_view_display.node.metrolist_affordable_housing.default
+  - core.entity_view_display.node.metrolist_affordable_housing.teaser
+  - field.field.node.metrolist_affordable_housing.body
+  - field.field.node.metrolist_affordable_housing.field_mah_address
+  - field.field.node.metrolist_affordable_housing.field_mah_contact
+  - field.field.node.metrolist_affordable_housing.field_mah_email
+  - field.field.node.metrolist_affordable_housing.field_mah_household_income_limit
+  - field.field.node.metrolist_affordable_housing.field_mah_lottery_deadline
+  - field.field.node.metrolist_affordable_housing.field_mah_lottery_indicator
+  - field.field.node.metrolist_affordable_housing.field_mah_lottery_type
+  - field.field.node.metrolist_affordable_housing.field_mah_lottery_url
+  - field.field.node.metrolist_affordable_housing.field_mah_neighborhood
+  - field.field.node.metrolist_affordable_housing.field_mah_not_active
+  - field.field.node.metrolist_affordable_housing.field_mah_outer_location
+  - field.field.node.metrolist_affordable_housing.field_mah_phone
+  - field.field.node.metrolist_affordable_housing.field_mah_publish_to_metrolist
+  - field.field.node.metrolist_affordable_housing.field_mah_zipcode
+  - language.content_settings.node.metrolist_affordable_housing
+  - node.type.metrolist_affordable_housing

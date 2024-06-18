@@ -1,0 +1,550 @@
+<?xml version="1.0" standalone="yes"?>
+<ExportName>
+   <Terminology Subdivision="District" Subdivisions="Districts" PollingSubdivision="Precinct" PollingSubdivisions="Precincts" ParentSubdivision="Parent District" MultiPollingSubdivisionCollection="Multi-Precinct Collection" />
+   <Report_Info name="BOSTON STATE PRIMARY SEPTEMBER 2022" Report="Contest Overview Data" Create="2022-09-07 03:26:37" unofficial="Unofficial">
+      <Information Description="Election Project Name">BOSTON STATE PRIMARY SEPTEMBER 2022</Information>
+      <Information Description="Report Name">Contest Overview Data</Information>
+      <Information Description="Creation Date">2022-09-07 03:26:37</Information>
+      <Information Description="Note">Results are unofficial</Information>
+   </Report_Info>
+   <settings>
+      <ch ignoreSplits="1" officialResults="0" useCustomTitle="0" showFilters="1" />
+   </settings>
+   <contests>
+      <contest contestId="1" name="GOVERNOR (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4931" />
+      <contest contestId="2" name="GOVERNOR (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4932" />
+      <contest contestId="3" name="LT. GOVERNOR (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4933" />
+      <contest contestId="4" name="LT. GOVERNOR (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4934" />
+      <contest contestId="5" name="ATTORNEY GENERAL (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4935" />
+      <contest contestId="6" name="ATTORNEY GENERAL (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4936" />
+      <contest contestId="7" name="SECRETARY OF STATE (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4937" />
+      <contest contestId="8" name="SECRETARY OF STATE (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4938" />
+      <contest contestId="9" name="TREASURER (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4939" />
+      <contest contestId="10" name="TREASURER (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4940" />
+      <contest contestId="11" name="AUDITOR (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4941" />
+      <contest contestId="12" name="AUDITOR (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="1" areaName="STATEWIDE" isMajor="0" sortOrder="4942" />
+      <contest contestId="13" name="REPRESENTATIVE IN CONGRESS &#xD;&#xA;SEVENTH DISTRICT (DEM)" pos="1" writeins="1" eligible="306392" isAcclaimed="0" isDisabled="0" areaId="3" areaName="SEVENTH DISTRICT" isMajor="0" sortOrder="4943" />
+      <contest contestId="14" name="REPRESENTATIVE IN CONGRESS &#xD;&#xA;SEVENTH DISTRICT (REP)" pos="1" writeins="1" eligible="306392" isAcclaimed="0" isDisabled="0" areaId="3" areaName="SEVENTH DISTRICT" isMajor="0" sortOrder="4944" />
+      <contest contestId="15" name="REPRESENTATIVE IN CONGRESS &#xD;&#xA;EIGHTH DISTRICT (DEM)" pos="1" writeins="1" eligible="138101" isAcclaimed="0" isDisabled="0" areaId="4" areaName="EIGHTH DISTRICT" isMajor="0" sortOrder="4945" />
+      <contest contestId="16" name="REPRESENTATIVE IN CONGRESS &#xD;&#xA;EIGHTH DISTRICT (REP)" pos="1" writeins="1" eligible="138101" isAcclaimed="0" isDisabled="0" areaId="4" areaName="EIGHTH DISTRICT" isMajor="0" sortOrder="4946" />
+      <contest contestId="17" name="COUNCILLOR &#xD;&#xA;THIRD DISTRICT (DEM)" pos="1" writeins="1" eligible="54950" isAcclaimed="0" isDisabled="0" areaId="5" areaName="THIRD DISTRICT" isMajor="0" sortOrder="4947" />
+      <contest contestId="18" name="COUNCILLOR &#xD;&#xA;THIRD DISTRICT (REP)" pos="1" writeins="1" eligible="54950" isAcclaimed="0" isDisabled="0" areaId="5" areaName="THIRD DISTRICT" isMajor="0" sortOrder="4948" />
+      <contest contestId="19" name="COUNCILLOR &#xD;&#xA;FOURTH DISTRICT (DEM)" pos="1" writeins="1" eligible="310515" isAcclaimed="0" isDisabled="0" areaId="6" areaName="FOURTH DISTRICT" isMajor="0" sortOrder="4949" />
+      <contest contestId="20" name="COUNCILLOR &#xD;&#xA;FOURTH DISTRICT (REP)" pos="1" writeins="1" eligible="310515" isAcclaimed="0" isDisabled="0" areaId="6" areaName="FOURTH DISTRICT" isMajor="0" sortOrder="4950" />
+      <contest contestId="21" name="COUNCILLOR &#xD;&#xA;SIXTH DISTRICT (DEM)" pos="1" writeins="1" eligible="79028" isAcclaimed="0" isDisabled="0" areaId="7" areaName="SIXTH DISTRICT" isMajor="0" sortOrder="4951" />
+      <contest contestId="22" name="COUNCILLOR &#xD;&#xA;SIXTH DISTRICT (REP)" pos="1" writeins="1" eligible="79028" isAcclaimed="0" isDisabled="0" areaId="7" areaName="SIXTH DISTRICT" isMajor="0" sortOrder="4952" />
+      <contest contestId="23" name="SENATOR IN GENERAL COURT &#xD;&#xA;FIRST SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="132966" isAcclaimed="0" isDisabled="0" areaId="8" areaName="FIRST SUFFOLK DISTRICT" isMajor="0" sortOrder="4953" />
+      <contest contestId="24" name="SENATOR IN GENERAL COURT &#xD;&#xA;FIRST SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="132966" isAcclaimed="0" isDisabled="0" areaId="8" areaName="FIRST SUFFOLK DISTRICT" isMajor="0" sortOrder="4954" />
+      <contest contestId="25" name="SENATOR IN GENERAL COURT &#xD;&#xA;SUFFOLK &amp; MIDDLESEX DISTRICT (DEM)" pos="1" writeins="1" eligible="54950" isAcclaimed="0" isDisabled="0" areaId="13" areaName="SUFFOLK &amp; MIDDLESEX DISTRICT" isMajor="0" sortOrder="4955" />
+      <contest contestId="26" name="SENATOR IN GENERAL COURT &#xD;&#xA;SUFFOLK &amp; MIDDLESEX DISTRICT (REP)" pos="1" writeins="1" eligible="54950" isAcclaimed="0" isDisabled="0" areaId="13" areaName="SUFFOLK &amp; MIDDLESEX DISTRICT" isMajor="0" sortOrder="4956" />
+      <contest contestId="27" name="SENATOR IN GENERAL COURT &#xD;&#xA;MIDDLESEX &amp; SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="15282" isAcclaimed="0" isDisabled="0" areaId="11" areaName="MIDDLESEX &amp; SUFFOLK DISTRICT" isMajor="0" sortOrder="4957" />
+      <contest contestId="28" name="SENATOR IN GENERAL COURT &#xD;&#xA;MIDDLESEX &amp; SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="15282" isAcclaimed="0" isDisabled="0" areaId="11" areaName="MIDDLESEX &amp; SUFFOLK DISTRICT" isMajor="0" sortOrder="4958" />
+      <contest contestId="29" name="SENATOR IN GENERAL COURT &#xD;&#xA;NORFOLK &amp; SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="60657" isAcclaimed="0" isDisabled="0" areaId="12" areaName="NORFOLK &amp; SUFFOLK DISTRICT" isMajor="0" sortOrder="4959" />
+      <contest contestId="30" name="SENATOR IN GENERAL COURT &#xD;&#xA;NORFOLK &amp; SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="60657" isAcclaimed="0" isDisabled="0" areaId="12" areaName="NORFOLK &amp; SUFFOLK DISTRICT" isMajor="0" sortOrder="4960" />
+      <contest contestId="31" name="SENATOR IN GENERAL COURT &#xD;&#xA;SECOND SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="116892" isAcclaimed="0" isDisabled="0" areaId="9" areaName="SECOND SUFFOLK DISTRICT" isMajor="0" sortOrder="4961" />
+      <contest contestId="32" name="SENATOR IN GENERAL COURT &#xD;&#xA;SECOND SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="116892" isAcclaimed="0" isDisabled="0" areaId="9" areaName="SECOND SUFFOLK DISTRICT" isMajor="0" sortOrder="4962" />
+      <contest contestId="33" name="SENATOR IN GENERAL COURT &#xD;&#xA;THIRD SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="63746" isAcclaimed="0" isDisabled="0" areaId="10" areaName="THIRD SUFFOLK DISTRICT" isMajor="0" sortOrder="4963" />
+      <contest contestId="34" name="SENATOR IN GENERAL COURT &#xD;&#xA;THIRD SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="63746" isAcclaimed="0" isDisabled="0" areaId="10" areaName="THIRD SUFFOLK DISTRICT" isMajor="0" sortOrder="4964" />
+      <contest contestId="35" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIRST SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="23550" isAcclaimed="0" isDisabled="0" areaId="14" areaName="FIRST SUFFOLK DISTRICT" isMajor="0" sortOrder="4965" />
+      <contest contestId="36" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIRST SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="23550" isAcclaimed="0" isDisabled="0" areaId="14" areaName="FIRST SUFFOLK DISTRICT" isMajor="0" sortOrder="4966" />
+      <contest contestId="37" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SECOND SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="20101" isAcclaimed="0" isDisabled="0" areaId="15" areaName="SECOND SUFFOLK DISTRICT" isMajor="0" sortOrder="4967" />
+      <contest contestId="38" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SECOND SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="20101" isAcclaimed="0" isDisabled="0" areaId="15" areaName="SECOND SUFFOLK DISTRICT" isMajor="0" sortOrder="4968" />
+      <contest contestId="39" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;THIRD SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="28132" isAcclaimed="0" isDisabled="0" areaId="16" areaName="THIRD SUFFOLK DISTRICT" isMajor="0" sortOrder="4969" />
+      <contest contestId="40" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;THIRD SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="28132" isAcclaimed="0" isDisabled="0" areaId="16" areaName="THIRD SUFFOLK DISTRICT" isMajor="0" sortOrder="4970" />
+      <contest contestId="41" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FOURTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="36736" isAcclaimed="0" isDisabled="0" areaId="17" areaName="FOURTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4971" />
+      <contest contestId="42" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FOURTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="36736" isAcclaimed="0" isDisabled="0" areaId="17" areaName="FOURTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4972" />
+      <contest contestId="43" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIFTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="28308" isAcclaimed="0" isDisabled="0" areaId="18" areaName="FIFTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4973" />
+      <contest contestId="44" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIFTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="28308" isAcclaimed="0" isDisabled="0" areaId="18" areaName="FIFTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4974" />
+      <contest contestId="45" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SIXTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="28948" isAcclaimed="0" isDisabled="0" areaId="19" areaName="SIXTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4975" />
+      <contest contestId="46" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SIXTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="28948" isAcclaimed="0" isDisabled="0" areaId="19" areaName="SIXTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4976" />
+      <contest contestId="47" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SEVENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="21197" isAcclaimed="0" isDisabled="0" areaId="20" areaName="SEVENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4977" />
+      <contest contestId="48" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SEVENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="21197" isAcclaimed="0" isDisabled="0" areaId="20" areaName="SEVENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4978" />
+      <contest contestId="49" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;EIGHTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="27990" isAcclaimed="0" isDisabled="0" areaId="21" areaName="EIGHTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4979" />
+      <contest contestId="50" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;EIGHTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="27990" isAcclaimed="0" isDisabled="0" areaId="21" areaName="EIGHTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4980" />
+      <contest contestId="51" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;NINTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="31274" isAcclaimed="0" isDisabled="0" areaId="22" areaName="NINTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4981" />
+      <contest contestId="52" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;NINTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="31274" isAcclaimed="0" isDisabled="0" areaId="22" areaName="NINTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4982" />
+      <contest contestId="53" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;TENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="32062" isAcclaimed="0" isDisabled="0" areaId="23" areaName="TENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4983" />
+      <contest contestId="54" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;TENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="32062" isAcclaimed="0" isDisabled="0" areaId="23" areaName="TENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4984" />
+      <contest contestId="55" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;TWELFTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="25616" isAcclaimed="0" isDisabled="0" areaId="24" areaName="TWELFTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4985" />
+      <contest contestId="56" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;TWELFTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="25616" isAcclaimed="0" isDisabled="0" areaId="24" areaName="TWELFTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4986" />
+      <contest contestId="57" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;THIRTEENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="29026" isAcclaimed="0" isDisabled="0" areaId="25" areaName="THIRTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4987" />
+      <contest contestId="58" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;THIRTEENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="29026" isAcclaimed="0" isDisabled="0" areaId="25" areaName="THIRTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4988" />
+      <contest contestId="59" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FOURTEENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="32198" isAcclaimed="0" isDisabled="0" areaId="26" areaName="FOURTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4989" />
+      <contest contestId="60" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FOURTEENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="32198" isAcclaimed="0" isDisabled="0" areaId="26" areaName="FOURTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4990" />
+      <contest contestId="61" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIFTEENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="33450" isAcclaimed="0" isDisabled="0" areaId="27" areaName="FIFTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4991" />
+      <contest contestId="62" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;FIFTEENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="33450" isAcclaimed="0" isDisabled="0" areaId="27" areaName="FIFTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4992" />
+      <contest contestId="63" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SEVENTEENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="26549" isAcclaimed="0" isDisabled="0" areaId="28" areaName="SEVENTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4993" />
+      <contest contestId="64" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;SEVENTEENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="26549" isAcclaimed="0" isDisabled="0" areaId="28" areaName="SEVENTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4994" />
+      <contest contestId="65" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;EIGHTEENTH SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="19356" isAcclaimed="0" isDisabled="0" areaId="29" areaName="EIGHTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4995" />
+      <contest contestId="66" name="REPRESENTATIVE IN GENERAL COURT &#xD;&#xA;EIGHTEENTH SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="19356" isAcclaimed="0" isDisabled="0" areaId="29" areaName="EIGHTEENTH SUFFOLK DISTRICT" isMajor="0" sortOrder="4996" />
+      <contest contestId="67" name="DISTRICT ATTORNEY &#xD;&#xA;SUFFOLK DISTRICT (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="31" areaName="SUFFOLK DISTRICT" isMajor="0" sortOrder="4997" />
+      <contest contestId="68" name="DISTRICT ATTORNEY &#xD;&#xA;SUFFOLK DISTRICT (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="31" areaName="SUFFOLK DISTRICT" isMajor="0" sortOrder="4998" />
+      <contest contestId="69" name="SHERIFF &#xD;&#xA;SUFFOLK COUNTY (DEM)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="32" areaName="SUFFOLK COUNTY" isMajor="0" sortOrder="4999" />
+      <contest contestId="70" name="SHERIFF &#xD;&#xA;SUFFOLK COUNTY (REP)" pos="1" writeins="1" eligible="444493" isAcclaimed="0" isDisabled="0" areaId="32" areaName="SUFFOLK COUNTY" isMajor="0" sortOrder="5000" />
+   </contests>
+   <choices>
+      <ch conId="1" chId="1" name="SONIA ROSA CHANG-DÍAZ" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="1" chId="2" name="MAURA HEALEY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="1" chId="96" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="14" name="GEOFF DIEHL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="15" name="CHRIS DOUGHTY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="2" chId="81" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="3" name="KIMBERLEY DRISCOLL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="4" name="TAMI GOUVEIA" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="5" name="ERIC P. LESSER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="3" chId="89" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="4" chId="16" name="LEAH V. ALLEN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="4" chId="17" name="KATE CAMPANALE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="4" chId="131" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="6" name="ANDREA JOY CAMPBELL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="7" name="SHANNON ERIKA LISS-RIORDAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="8" name="QUENTIN PALFREY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="5" chId="82" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="6" chId="18" name="JAMES R. McMAHON, III" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="6" chId="113" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="9" name="WILLIAM FRANCIS GALVIN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="10" name="TANISHA M. SULLIVAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="7" chId="104" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="8" chId="19" name="RAYLA CAMPBELL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="8" chId="95" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="9" chId="11" name="DEBORAH B. GOLDBERG" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="9" chId="132" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="10" chId="78" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="12" name="CHRISTOPHER S. DEMPSEY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="13" name="DIANA DiZOGLIO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="11" chId="87" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="12" chId="20" name="ANTHONY AMORE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="12" chId="83" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="13" chId="21" name="AYANNA S. PRESSLEY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="13" chId="72" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="14" chId="22" name="DONNIE DIONICIO PALMER, JR." dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="14" chId="90" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="15" chId="23" name="STEPHEN F. LYNCH" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="15" chId="101" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="16" chId="24" name="ROBERT G. BURKE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="16" chId="25" name="HAMILTON SOARES RODRIGUES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="16" chId="118" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="17" chId="26" name="MARILYN M. PETITTO DEVANEY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="17" chId="27" name="MARA DOLAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="17" chId="115" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="18" chId="121" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="19" chId="28" name="CHRISTOPHER A. IANNELLA, JR." dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="19" chId="110" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="20" chId="30" name="HELENE &quot;TEDDY&quot; MacNEAL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="20" chId="128" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="21" chId="29" name="TERRENCE W. KENNEDY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="21" chId="94" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="22" chId="98" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="23" chId="31" name="NICHOLAS P. COLLINS" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="23" chId="117" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="24" chId="129" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="25" chId="32" name="WILLIAM N. BROWNSBERGER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="25" chId="108" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="26" chId="97" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="27" chId="33" name="SAL N. DiDOMENICO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="27" chId="119" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="28" chId="79" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="29" chId="34" name="MICHAEL F. RUSH" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="29" chId="100" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="30" chId="123" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="35" name="MINIARD CULPEPPER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="36" name="NIKA ELUGARDO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="37" name="JAMES E. GRANT" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="38" name="LIZ MIRANDA" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="39" name="DIANNE WILKERSON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="31" chId="85" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="32" chId="73" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="33" chId="40" name="LYDIA MARIE EDWARDS" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="33" chId="71" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="34" chId="91" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="35" chId="41" name="ADRIAN C. MADARO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="35" chId="127" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="36" chId="103" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="37" chId="42" name="DANIEL JOSEPH RYAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="37" chId="133" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="38" chId="112" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="39" chId="43" name="AARON M. MICHLEWITZ" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="39" chId="116" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="40" chId="111" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="41" chId="44" name="DAVID M. BIELE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="41" chId="99" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="42" chId="67" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="43" chId="45" name="ALTHEA GARRISON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="43" chId="46" name="DANIELSON TAVARES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="43" chId="47" name="CHRISTOPHER J. WORRELL" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="43" chId="130" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="44" chId="136" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="45" chId="48" name="RUSSELL E. HOLMES" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="45" chId="49" name="HARIS HASSAN HARDAWAY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="45" chId="68" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="46" chId="125" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="47" chId="50" name="CHYNAH T. TYLER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="47" chId="69" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="48" chId="135" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="49" chId="51" name="JAY D. LIVINGSTONE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="49" chId="107" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="50" chId="114" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="51" chId="52" name="JON SANTIAGO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="51" chId="70" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="52" chId="84" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="53" chId="53" name="EDWARD FRANCIS COPPINGER" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="53" chId="93" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="54" chId="77" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="55" chId="54" name="BRANDY FLUKER OAKLEY" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="55" chId="74" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="56" chId="86" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="57" chId="55" name="DANIEL J. HUNT" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="57" chId="126" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="58" chId="109" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="59" chId="56" name="ROB CONSALVO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="59" chId="120" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="60" chId="88" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="61" chId="57" name="RICHARD ANTHONY FIERRO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="61" chId="58" name="ROXANNE LONGORIA" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="61" chId="59" name="SAMANTHA MONTAÑO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="61" chId="60" name="MARY ANN NELSON" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="61" chId="92" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="62" chId="134" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="63" chId="61" name="KEVIN G. HONAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="63" chId="105" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="64" chId="76" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="65" chId="62" name="MICHAEL J. MORAN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="65" chId="122" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="66" chId="80" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="67" chId="63" name="KEVIN R. HAYDEN" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="67" chId="64" name="RICARDO ARROYO" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="67" chId="124" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="68" chId="106" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="69" chId="65" name="STEVEN W. TOMPKINS" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="69" chId="66" name="SANDY ZAMOR-CALIXTE" dis="0" wri="0" wrInd="0" showVotes="1" />
+      <ch conId="69" chId="75" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+      <ch conId="70" chId="102" name="Write-in" dis="0" wri="1" wrInd="0" showVotes="1" />
+   </choices>
+   <parties>
+      <party partyId="1" name="DEMOCRATIC" abbreviation="DEM" />
+      <party partyId="2" name="REPUBLICAN" abbreviation="REP" />
+   </parties>
+   <affiliations />
+   <conteststats>
+      <contest contestId="23" ballots="20647" overvotes="1" undervotes="5081" numVoters="15566" pushContests="0" />
+      <contest contestId="46" ballots="171" overvotes="0" undervotes="129" numVoters="42" pushContests="0" />
+      <contest contestId="69" ballots="76956" overvotes="7" undervotes="11206" numVoters="65536" pushContests="0" />
+      <contest contestId="29" ballots="15843" overvotes="1" undervotes="4364" numVoters="11479" pushContests="0" />
+      <contest contestId="9" ballots="76956" overvotes="5" undervotes="18708" numVoters="58034" pushContests="0" />
+      <contest contestId="15" ballots="27326" overvotes="0" undervotes="6565" numVoters="20761" pushContests="0" />
+      <contest contestId="3" ballots="76956" overvotes="16" undervotes="9742" numVoters="67000" pushContests="0" />
+      <contest contestId="52" ballots="334" overvotes="0" undervotes="283" numVoters="40" pushContests="0" />
+      <contest contestId="66" ballots="350" overvotes="0" undervotes="302" numVoters="48" pushContests="0" />
+      <contest contestId="32" ballots="634" overvotes="0" undervotes="464" numVoters="159" pushContests="0" />
+      <contest contestId="26" ballots="765" overvotes="0" undervotes="657" numVoters="108" pushContests="0" />
+      <contest contestId="12" ballots="7478" overvotes="1" undervotes="2410" numVoters="5057" pushContests="0" />
+      <contest contestId="35" ballots="2796" overvotes="0" undervotes="405" numVoters="2391" pushContests="0" />
+      <contest contestId="63" ballots="3477" overvotes="0" undervotes="508" numVoters="2969" pushContests="0" />
+      <contest contestId="6" ballots="7478" overvotes="2" undervotes="1864" numVoters="5603" pushContests="0" />
+      <contest contestId="43" ballots="3987" overvotes="8" undervotes="177" numVoters="3810" pushContests="0" />
+      <contest contestId="55" ballots="5575" overvotes="0" undervotes="1116" numVoters="4459" pushContests="0" />
+      <contest contestId="49" ballots="4315" overvotes="0" undervotes="831" numVoters="3484" pushContests="0" />
+      <contest contestId="67" ballots="76956" overvotes="29" undervotes="7307" numVoters="69435" pushContests="0" />
+      <contest contestId="21" ballots="11741" overvotes="0" undervotes="3410" numVoters="8331" pushContests="0" />
+      <contest contestId="27" ballots="2650" overvotes="0" undervotes="548" numVoters="2102" pushContests="0" />
+      <contest contestId="58" ballots="656" overvotes="0" undervotes="545" numVoters="111" pushContests="0" />
+      <contest contestId="64" ballots="327" overvotes="0" undervotes="281" numVoters="46" pushContests="0" />
+      <contest contestId="38" ballots="440" overvotes="0" undervotes="412" numVoters="28" pushContests="0" />
+      <contest contestId="7" ballots="76956" overvotes="12" undervotes="3502" numVoters="73240" pushContests="0" />
+      <contest contestId="44" ballots="155" overvotes="0" undervotes="101" numVoters="54" pushContests="0" />
+      <contest contestId="1" ballots="76956" overvotes="43" undervotes="3320" numVoters="73429" pushContests="0" />
+      <contest contestId="50" ballots="601" overvotes="0" undervotes="533" numVoters="68" pushContests="0" />
+      <contest contestId="24" ballots="2349" overvotes="0" undervotes="1995" numVoters="354" pushContests="0" />
+      <contest contestId="47" ballots="3337" overvotes="2" undervotes="589" numVoters="2748" pushContests="0" />
+      <contest contestId="70" ballots="7478" overvotes="0" undervotes="6225" numVoters="1242" pushContests="0" />
+      <contest contestId="18" ballots="765" overvotes="0" undervotes="668" numVoters="97" pushContests="0" />
+      <contest contestId="30" ballots="1945" overvotes="0" undervotes="1639" numVoters="306" pushContests="0" />
+      <contest contestId="10" ballots="7478" overvotes="0" undervotes="6341" numVoters="1126" pushContests="0" />
+      <contest contestId="61" ballots="7991" overvotes="1" undervotes="1188" numVoters="6803" pushContests="0" />
+      <contest contestId="41" ballots="4430" overvotes="0" undervotes="962" numVoters="3468" pushContests="0" />
+      <contest contestId="4" ballots="7478" overvotes="2" undervotes="889" numVoters="6578" pushContests="0" />
+      <contest contestId="65" ballots="2711" overvotes="0" undervotes="633" numVoters="2078" pushContests="0" />
+      <contest contestId="19" ballots="58016" overvotes="1" undervotes="15794" numVoters="42008" pushContests="0" />
+      <contest contestId="25" ballots="7199" overvotes="2" undervotes="1445" numVoters="5754" pushContests="0" />
+      <contest contestId="36" ballots="413" overvotes="0" undervotes="353" numVoters="60" pushContests="0" />
+      <contest contestId="13" ballots="49630" overvotes="5" undervotes="6649" numVoters="42767" pushContests="0" />
+      <contest contestId="62" ballots="230" overvotes="0" undervotes="190" numVoters="40" pushContests="0" />
+      <contest contestId="42" ballots="934" overvotes="0" undervotes="833" numVoters="101" pushContests="0" />
+      <contest contestId="5" ballots="76956" overvotes="24" undervotes="4128" numVoters="72614" pushContests="0" />
+      <contest contestId="56" ballots="193" overvotes="0" undervotes="152" numVoters="41" pushContests="0" />
+      <contest contestId="22" ballots="1785" overvotes="0" undervotes="1596" numVoters="189" pushContests="0" />
+      <contest contestId="59" ballots="6651" overvotes="0" undervotes="1212" numVoters="5439" pushContests="0" />
+      <contest contestId="33" ballots="9091" overvotes="1" undervotes="1885" numVoters="7206" pushContests="0" />
+      <contest contestId="39" ballots="4354" overvotes="0" undervotes="1098" numVoters="3256" pushContests="0" />
+      <contest contestId="16" ballots="3895" overvotes="0" undervotes="932" numVoters="2963" pushContests="0" />
+      <contest contestId="53" ballots="9541" overvotes="0" undervotes="2705" numVoters="6836" pushContests="0" />
+      <contest contestId="45" ballots="4777" overvotes="0" undervotes="493" numVoters="4284" pushContests="0" />
+      <contest contestId="2" ballots="7478" overvotes="3" undervotes="88" numVoters="7379" pushContests="0" />
+      <contest contestId="48" ballots="93" overvotes="0" undervotes="72" numVoters="21" pushContests="0" />
+      <contest contestId="17" ballots="7199" overvotes="0" undervotes="1358" numVoters="5841" pushContests="0" />
+      <contest contestId="31" ballots="21526" overvotes="33" undervotes="1107" numVoters="20205" pushContests="0" />
+      <contest contestId="60" ballots="627" overvotes="0" undervotes="519" numVoters="108" pushContests="0" />
+      <contest contestId="34" ballots="1395" overvotes="0" undervotes="1220" numVoters="175" pushContests="0" />
+      <contest contestId="40" ballots="586" overvotes="0" undervotes="534" numVoters="52" pushContests="0" />
+      <contest contestId="11" ballots="76956" overvotes="9" undervotes="11230" numVoters="65512" pushContests="0" />
+      <contest contestId="54" ballots="1368" overvotes="0" undervotes="1183" numVoters="185" pushContests="0" />
+      <contest contestId="20" ballots="4928" overvotes="0" undervotes="1788" numVoters="3129" pushContests="0" />
+      <contest contestId="68" ballots="7478" overvotes="0" undervotes="6243" numVoters="1224" pushContests="0" />
+      <contest contestId="28" ballots="390" overvotes="0" undervotes="358" numVoters="32" pushContests="0" />
+      <contest contestId="57" ballots="4961" overvotes="0" undervotes="1229" numVoters="3732" pushContests="0" />
+      <contest contestId="14" ballots="3583" overvotes="3" undervotes="1084" numVoters="2488" pushContests="0" />
+      <contest contestId="37" ballots="3168" overvotes="0" undervotes="674" numVoters="2494" pushContests="0" />
+      <contest contestId="8" ballots="7478" overvotes="2" undervotes="2133" numVoters="5334" pushContests="0" />
+      <contest contestId="51" ballots="4885" overvotes="0" undervotes="1056" numVoters="3615" pushContests="0" />
+   </conteststats>
+   <results>
+      <res contId="61" chId="58" wrInd="0" prtId="0" vot="1751" />
+      <res contId="63" chId="61" wrInd="0" prtId="0" vot="2923" />
+      <res contId="43" chId="130" wrInd="0" prtId="0" vot="12" />
+      <res contId="48" chId="135" wrInd="0" prtId="0" vot="21" />
+      <res contId="15" chId="101" wrInd="0" prtId="0" vot="386" />
+      <res contId="30" chId="123" wrInd="0" prtId="0" vot="306" />
+      <res contId="6" chId="113" wrInd="0" prtId="0" vot="122" />
+      <res contId="16" chId="25" wrInd="0" prtId="0" vot="706" />
+      <res contId="65" chId="62" wrInd="0" prtId="0" vot="2043" />
+      <res contId="38" chId="112" wrInd="0" prtId="0" vot="28" />
+      <res contId="31" chId="36" wrInd="0" prtId="0" vot="5569" />
+      <res contId="40" chId="111" wrInd="0" prtId="0" vot="52" />
+      <res contId="9" chId="132" wrInd="0" prtId="0" vot="611" />
+      <res contId="37" chId="133" wrInd="0" prtId="0" vot="31" />
+      <res contId="27" chId="119" wrInd="0" prtId="0" vot="12" />
+      <res contId="57" chId="126" wrInd="0" prtId="0" vot="55" />
+      <res contId="43" chId="45" wrInd="0" prtId="0" vot="866" />
+      <res contId="35" chId="41" wrInd="0" prtId="0" vot="2368" />
+      <res contId="20" chId="30" wrInd="0" prtId="0" vot="3077" />
+      <res contId="3" chId="3" wrInd="0" prtId="0" vot="33507" />
+      <res contId="47" chId="50" wrInd="0" prtId="0" vot="2703" />
+      <res contId="18" chId="121" wrInd="0" prtId="0" vot="97" />
+      <res contId="12" chId="20" wrInd="0" prtId="0" vot="4968" />
+      <res contId="3" chId="89" wrInd="0" prtId="0" vot="261" />
+      <res contId="19" chId="28" wrInd="0" prtId="0" vot="41670" />
+      <res contId="1" chId="96" wrInd="0" prtId="0" vot="373" />
+      <res contId="22" chId="98" wrInd="0" prtId="0" vot="189" />
+      <res contId="7" chId="9" wrInd="0" prtId="0" vot="40684" />
+      <res contId="14" chId="22" wrInd="0" prtId="0" vot="2425" />
+      <res contId="31" chId="39" wrInd="0" prtId="0" vot="4352" />
+      <res contId="16" chId="118" wrInd="0" prtId="0" vot="19" />
+      <res contId="4" chId="16" wrInd="0" prtId="0" vot="3383" />
+      <res contId="61" chId="57" wrInd="0" prtId="0" vot="679" />
+      <res contId="12" chId="83" wrInd="0" prtId="0" vot="97" />
+      <res contId="67" chId="64" wrInd="0" prtId="0" vot="32004" />
+      <res contId="5" chId="6" wrInd="0" prtId="0" vot="50019" />
+      <res contId="41" chId="44" wrInd="0" prtId="0" vot="3433" />
+      <res contId="15" chId="23" wrInd="0" prtId="0" vot="20375" />
+      <res contId="3" chId="5" wrInd="0" prtId="0" vot="16444" />
+      <res contId="16" chId="24" wrInd="0" prtId="0" vot="2238" />
+      <res contId="28" chId="79" wrInd="0" prtId="0" vot="32" />
+      <res contId="64" chId="76" wrInd="0" prtId="0" vot="46" />
+      <res contId="8" chId="95" wrInd="0" prtId="0" vot="134" />
+      <res contId="39" chId="43" wrInd="0" prtId="0" vot="3221" />
+      <res contId="34" chId="91" wrInd="0" prtId="0" vot="175" />
+      <res contId="27" chId="33" wrInd="0" prtId="0" vot="2090" />
+      <res contId="55" chId="54" wrInd="0" prtId="0" vot="4432" />
+      <res contId="2" chId="81" wrInd="0" prtId="0" vot="44" />
+      <res contId="31" chId="35" wrInd="0" prtId="0" vot="3119" />
+      <res contId="17" chId="27" wrInd="0" prtId="0" vot="2582" />
+      <res contId="58" chId="109" wrInd="0" prtId="0" vot="111" />
+      <res contId="11" chId="13" wrInd="0" prtId="0" vot="27893" />
+      <res contId="10" chId="78" wrInd="0" prtId="0" vot="1130" />
+      <res contId="1" chId="2" wrInd="0" prtId="0" vot="58749" />
+      <res contId="4" chId="131" wrInd="0" prtId="0" vot="57" />
+      <res contId="69" chId="75" wrInd="0" prtId="0" vot="263" />
+      <res contId="57" chId="55" wrInd="0" prtId="0" vot="3677" />
+      <res contId="45" chId="68" wrInd="0" prtId="0" vot="17" />
+      <res contId="49" chId="51" wrInd="0" prtId="0" vot="3468" />
+      <res contId="2" chId="14" wrInd="0" prtId="0" vot="4123" />
+      <res contId="19" chId="110" wrInd="0" prtId="0" vot="507" />
+      <res contId="44" chId="136" wrInd="0" prtId="0" vot="54" />
+      <res contId="23" chId="117" wrInd="0" prtId="0" vot="227" />
+      <res contId="45" chId="49" wrInd="0" prtId="0" vot="1041" />
+      <res contId="13" chId="21" wrInd="0" prtId="0" vot="42383" />
+      <res contId="36" chId="103" wrInd="0" prtId="0" vot="60" />
+      <res contId="61" chId="92" wrInd="0" prtId="0" vot="8" />
+      <res contId="26" chId="97" wrInd="0" prtId="0" vot="108" />
+      <res contId="5" chId="7" wrInd="0" prtId="0" vot="16540" />
+      <res contId="43" chId="46" wrInd="0" prtId="0" vot="1266" />
+      <res contId="14" chId="90" wrInd="0" prtId="0" vot="69" />
+      <res contId="3" chId="4" wrInd="0" prtId="0" vot="16958" />
+      <res contId="5" chId="8" wrInd="0" prtId="0" vot="6093" />
+      <res contId="21" chId="29" wrInd="0" prtId="0" vot="8249" />
+      <res contId="13" chId="72" wrInd="0" prtId="0" vot="574" />
+      <res contId="50" chId="114" wrInd="0" prtId="0" vot="68" />
+      <res contId="32" chId="73" wrInd="0" prtId="0" vot="163" />
+      <res contId="6" chId="18" wrInd="0" prtId="0" vot="5490" />
+      <res contId="55" chId="74" wrInd="0" prtId="0" vot="27" />
+      <res contId="69" chId="66" wrInd="0" prtId="0" vot="26940" />
+      <res contId="8" chId="19" wrInd="0" prtId="0" vot="5209" />
+      <res contId="23" chId="31" wrInd="0" prtId="0" vot="15338" />
+      <res contId="31" chId="85" wrInd="0" prtId="0" vot="32" />
+      <res contId="67" chId="63" wrInd="0" prtId="0" vot="36948" />
+      <res contId="11" chId="12" wrInd="0" prtId="0" vot="37545" />
+      <res contId="65" chId="122" wrInd="0" prtId="0" vot="35" />
+      <res contId="61" chId="60" wrInd="0" prtId="0" vot="440" />
+      <res contId="35" chId="127" wrInd="0" prtId="0" vot="23" />
+      <res contId="33" chId="40" wrInd="0" prtId="0" vot="7110" />
+      <res contId="1" chId="1" wrInd="0" prtId="0" vot="14471" />
+      <res contId="7" chId="104" wrInd="0" prtId="0" vot="105" />
+      <res contId="51" chId="70" wrInd="0" prtId="0" vot="34" />
+      <res contId="33" chId="71" wrInd="0" prtId="0" vot="95" />
+      <res contId="60" chId="88" wrInd="0" prtId="0" vot="108" />
+      <res contId="59" chId="56" wrInd="0" prtId="0" vot="5379" />
+      <res contId="25" chId="32" wrInd="0" prtId="0" vot="5710" />
+      <res contId="29" chId="100" wrInd="0" prtId="0" vot="154" />
+      <res contId="53" chId="53" wrInd="0" prtId="0" vot="6765" />
+      <res contId="17" chId="26" wrInd="0" prtId="0" vot="3237" />
+      <res contId="2" chId="15" wrInd="0" prtId="0" vot="3220" />
+      <res contId="5" chId="82" wrInd="0" prtId="0" vot="136" />
+      <res contId="53" chId="93" wrInd="0" prtId="0" vot="71" />
+      <res contId="63" chId="105" wrInd="0" prtId="0" vot="46" />
+      <res contId="24" chId="129" wrInd="0" prtId="0" vot="354" />
+      <res contId="54" chId="77" wrInd="0" prtId="0" vot="185" />
+      <res contId="46" chId="125" wrInd="0" prtId="0" vot="42" />
+      <res contId="52" chId="84" wrInd="0" prtId="0" vot="44" />
+      <res contId="45" chId="48" wrInd="0" prtId="0" vot="3226" />
+      <res contId="43" chId="47" wrInd="0" prtId="0" vot="1658" />
+      <res contId="56" chId="86" wrInd="0" prtId="0" vot="41" />
+      <res contId="21" chId="94" wrInd="0" prtId="0" vot="82" />
+      <res contId="11" chId="87" wrInd="0" prtId="0" vot="236" />
+      <res contId="37" chId="42" wrInd="0" prtId="0" vot="2463" />
+      <res contId="41" chId="99" wrInd="0" prtId="0" vot="35" />
+      <res contId="9" chId="11" wrInd="0" prtId="0" vot="57583" />
+      <res contId="39" chId="116" wrInd="0" prtId="0" vot="35" />
+      <res contId="31" chId="37" wrInd="0" prtId="0" vot="547" />
+      <res contId="51" chId="52" wrInd="0" prtId="0" vot="3757" />
+      <res contId="47" chId="69" wrInd="0" prtId="0" vot="43" />
+      <res contId="4" chId="17" wrInd="0" prtId="0" vot="3146" />
+      <res contId="69" chId="65" wrInd="0" prtId="0" vot="38513" />
+      <res contId="29" chId="34" wrInd="0" prtId="0" vot="11324" />
+      <res contId="42" chId="67" wrInd="0" prtId="0" vot="101" />
+      <res contId="49" chId="107" wrInd="0" prtId="0" vot="16" />
+      <res contId="68" chId="106" wrInd="0" prtId="0" vot="1229" />
+      <res contId="70" chId="102" wrInd="0" prtId="0" vot="1247" />
+      <res contId="61" chId="59" wrInd="0" prtId="0" vot="3924" />
+      <res contId="62" chId="134" wrInd="0" prtId="0" vot="40" />
+      <res contId="66" chId="80" wrInd="0" prtId="0" vot="48" />
+      <res contId="59" chId="120" wrInd="0" prtId="0" vot="60" />
+      <res contId="17" chId="115" wrInd="0" prtId="0" vot="22" />
+      <res contId="67" chId="124" wrInd="0" prtId="0" vot="644" />
+      <res contId="25" chId="108" wrInd="0" prtId="0" vot="42" />
+      <res contId="31" chId="38" wrInd="0" prtId="0" vot="6750" />
+      <res contId="7" chId="10" wrInd="0" prtId="0" vot="32643" />
+      <res contId="20" chId="128" wrInd="0" prtId="0" vot="62" />
+   </results>
+   <pollprogress>
+      <area areaId="1" reported="274" total="275" />
+      <area areaId="2" reported="274" total="275" />
+      <area areaId="3" reported="189" total="189" />
+      <area areaId="4" reported="85" total="86" />
+      <area areaId="5" reported="35" total="35" />
+      <area areaId="6" reported="194" total="195" />
+      <area areaId="7" reported="45" total="45" />
+      <area areaId="8" reported="82" total="83" />
+      <area areaId="9" reported="73" total="73" />
+      <area areaId="10" reported="37" total="37" />
+      <area areaId="11" reported="8" total="8" />
+      <area areaId="12" reported="39" total="39" />
+      <area areaId="13" reported="35" total="35" />
+      <area areaId="14" reported="14" total="14" />
+      <area areaId="15" reported="11" total="11" />
+      <area areaId="16" reported="16" total="16" />
+      <area areaId="17" reported="19" total="20" />
+      <area areaId="18" reported="19" total="19" />
+      <area areaId="19" reported="20" total="20" />
+      <area areaId="20" reported="17" total="17" />
+      <area areaId="21" reported="18" total="18" />
+      <area areaId="22" reported="17" total="17" />
+      <area areaId="23" reported="22" total="22" />
+      <area areaId="24" reported="16" total="16" />
+      <area areaId="25" reported="19" total="19" />
+      <area areaId="26" reported="19" total="19" />
+      <area areaId="27" reported="19" total="19" />
+      <area areaId="28" reported="15" total="15" />
+      <area areaId="29" reported="13" total="13" />
+      <area areaId="30" reported="274" total="275" />
+      <area areaId="31" reported="274" total="275" />
+      <area areaId="32" reported="274" total="275" />
+   </pollprogress>
+   <writeins />
+   <electorgroups>
+      <group groupId="1" isTop="1" name="Default" abbreviation="Def" />
+      <group groupId="2" isTop="0" name="DEMOCRATIC" abbreviation="DEM" />
+      <group groupId="3" isTop="0" name="REPUBLICAN" abbreviation="REP" />
+   </electorgroups>
+   <contestgroups>
+      <cg conId="1" egId="2" />
+      <cg conId="2" egId="3" />
+      <cg conId="3" egId="2" />
+      <cg conId="4" egId="3" />
+      <cg conId="5" egId="2" />
+      <cg conId="6" egId="3" />
+      <cg conId="7" egId="2" />
+      <cg conId="8" egId="3" />
+      <cg conId="9" egId="2" />
+      <cg conId="10" egId="3" />
+      <cg conId="11" egId="2" />
+      <cg conId="12" egId="3" />
+      <cg conId="13" egId="2" />
+      <cg conId="14" egId="3" />
+      <cg conId="15" egId="2" />
+      <cg conId="16" egId="3" />
+      <cg conId="17" egId="2" />
+      <cg conId="18" egId="3" />
+      <cg conId="19" egId="2" />
+      <cg conId="20" egId="3" />
+      <cg conId="21" egId="2" />
+      <cg conId="22" egId="3" />
+      <cg conId="23" egId="2" />
+      <cg conId="24" egId="3" />
+      <cg conId="25" egId="2" />
+      <cg conId="26" egId="3" />
+      <cg conId="27" egId="2" />
+      <cg conId="28" egId="3" />
+      <cg conId="29" egId="2" />
+      <cg conId="30" egId="3" />
+      <cg conId="31" egId="2" />
+      <cg conId="32" egId="3" />
+      <cg conId="33" egId="2" />
+      <cg conId="34" egId="3" />
+      <cg conId="35" egId="2" />
+      <cg conId="36" egId="3" />
+      <cg conId="37" egId="2" />
+      <cg conId="38" egId="3" />
+      <cg conId="39" egId="2" />
+      <cg conId="40" egId="3" />
+      <cg conId="41" egId="2" />
+      <cg conId="42" egId="3" />
+      <cg conId="43" egId="2" />
+      <cg conId="44" egId="3" />
+      <cg conId="45" egId="2" />
+      <cg conId="46" egId="3" />
+      <cg conId="47" egId="2" />
+      <cg conId="48" egId="3" />
+      <cg conId="49" egId="2" />
+      <cg conId="50" egId="3" />
+      <cg conId="51" egId="2" />
+      <cg conId="52" egId="3" />
+      <cg conId="53" egId="2" />
+      <cg conId="54" egId="3" />
+      <cg conId="55" egId="2" />
+      <cg conId="56" egId="3" />
+      <cg conId="57" egId="2" />
+      <cg conId="58" egId="3" />
+      <cg conId="59" egId="2" />
+      <cg conId="60" egId="3" />
+      <cg conId="61" egId="2" />
+      <cg conId="62" egId="3" />
+      <cg conId="63" egId="2" />
+      <cg conId="64" egId="3" />
+      <cg conId="65" egId="2" />
+      <cg conId="66" egId="3" />
+      <cg conId="67" egId="2" />
+      <cg conId="68" egId="3" />
+      <cg conId="69" egId="2" />
+      <cg conId="70" egId="3" />
+   </contestgroups>
+</ExportName>

@@ -1,0 +1,59 @@
+{#
+ * @file
+ * This template handles the layout of the views exposed filter form.
+ *
+ * Variables available:
+ * - $widgets: An array of exposed form widgets. Each widget contains:
+ * - $widget->label: The visible label to print. May be optional.
+ * - $widget->operator: The operator for the widget. May be optional.
+ * - $widget->widget: The widget itself.
+ * - $sort_by: The select box to sort the view using an exposed form.
+ * - $sort_order: The select box with the ASC, DESC options to define order. May
+ *                be optional.
+ * - $items_per_page: The select box with the available items per page. May be
+ *                    optional.
+ * - $offset: A textfield to define the offset of the view. May be optional.
+ * - $reset_button: A button to reset the exposed filter applied. May be
+ *                  optional.
+ * - $button: The submit button for the form.
+ *
+ * @ingroup views_templates
+ #}
+
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+  {{ q }}
+{% endif %}
+
+<div class="drawer-trigger mobile-only ">
+  <div class="drawer-trigger-chevron"></div>
+  Filter
+</div>
+<div class="views-exposed-form drawer mobile-only">
+  <div class="views-exposed-widgets clearfix">
+    {% for i,filter in form['#info'] %}
+      {% set filter_name = filter.value %}
+      <button type="button" aria-expanded="true/false" aria-controls="drawer-<?php print $counter; ?>" class="drawer-trigger">
+        <div class="drawer-trigger-chevron"></div>
+        <span>Filter by {{ filter.label }}</span>
+      </button>
+      <div id="drawer-{{ i }}" class="clearfix drawer">
+        <div id="{{ form[filter_name]['#id'] }}-wrapper" class="views-exposed-widget views-widget-{{ form[filter_name]['#id'] }} views-widget-filter-{{ filter.value }}">
+          <div class="views-widget">
+            {{ form[filter_name] }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="views-exposed-widget views-submit-button">
+      {{ form.actions.submit }}
+    </div>
+    <div class="views-exposed-widget views-reset-button">
+      {{ form.actions.reset }}
+    </div>
+  </div>
+</div>

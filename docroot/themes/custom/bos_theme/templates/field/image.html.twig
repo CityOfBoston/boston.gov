@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override of an image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the img tag.
+ * - style_name: (optional) The name of the image style applied.
+ *
+ * @see template_preprocess_image()
+ */
+#}
+{% if icon %}
+  <div {{ attributes }}>
+    {{ icon | raw }}
+  </div>
+{% else %}
+  {% if is_picture %}
+
+    <picture>
+
+      {%  if sources %}
+
+        {% for attrib in sources %}
+          <source srcset="{{ attrib.srcset }}" media="{{ attrib.media }}" type="{{ attrib.type }}">
+        {% endfor %}
+
+      {% endif %}
+
+  {% endif %}
+
+      <img{{ attributes }} />
+
+  {% if is_picture %}
+    </picture>
+  {% endif %}
+{% endif %}

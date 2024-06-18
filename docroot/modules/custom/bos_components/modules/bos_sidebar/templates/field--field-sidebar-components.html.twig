@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default implementation for field_sidebar_components field render.
+ */
+#}
+
+{% for item in items %}
+  {# Hack to keep from wrapping the commission info in an extra
+     "list-item", since it’s made up of several list items.
+  #}
+  {% set paragraph = item.content['#paragraph'] %}
+  {% if paragraph %}
+    <li class="si-list-item sb-i">
+      {{ item.content }}
+    </li>
+  {% else %}
+    <li class="si-list-item sb-i"{{ attributes }}>
+      {{ item }}
+    </li>
+  {% endif %}
+
+{% endfor %}

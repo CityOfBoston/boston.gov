@@ -1,0 +1,331 @@
+uuid: 1a2c3610-8d64-43ef-934d-8943b33252d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.metrolist_unit.body
+    - field.field.node.metrolist_unit.field_ml_development
+    - field.field.node.metrolist_unit.field_ml_incm_elgblty_ami_thold
+    - field.field.node.metrolist_unit.field_ml_publish_date
+    - field.field.node.metrolist_unit.field_ml_unit_ada_h
+    - field.field.node.metrolist_unit.field_ml_unit_ada_m
+    - field.field.node.metrolist_unit.field_ml_unit_ada_v
+    - field.field.node.metrolist_unit.field_ml_unit_income_restricted
+    - field.field.node.metrolist_unit.field_ml_unit_lottery_app_due
+    - field.field.node.metrolist_unit.field_ml_unit_lottery_app_link
+    - field.field.node.metrolist_unit.field_ml_unit_min_income_thold
+    - field.field.node.metrolist_unit.field_ml_unit_num_of_bathrooms
+    - field.field.node.metrolist_unit.field_ml_unit_num_of_bedrooms
+    - field.field.node.metrolist_unit.field_ml_unit_occupancy_type
+    - field.field.node.metrolist_unit.field_ml_unit_rent_or_sale_price
+    - field.field.node.metrolist_unit.field_ml_unit_rent_type
+    - field.field.node.metrolist_unit.field_ml_unit_type
+    - field.field.node.metrolist_unit.field_ml_unit_user_guide_type
+    - field.field.node.metrolist_unit.field_ml_unit_waitlist_open
+    - field.field.node.metrolist_unit.field_ml_unit_wheelchair_access
+    - field.field.node.metrolist_unit.field_ml_unitavailability_status
+    - node.type.metrolist_unit
+  module:
+    - content_moderation
+    - datetime
+    - path
+    - publication_date
+    - text
+_core:
+  default_config_hash: J4ER1D8jTZzZyfyFTsDzpvV55npWLfNtizLIFqH42q8
+id: node.metrolist_unit.default
+targetEntityType: node
+bundle: metrolist_unit
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 8
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_city:
+    type: entity_reference_autocomplete
+    weight: 42
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_development:
+    type: entity_reference_autocomplete
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_incm_elgblty_ami_thold:
+    type: entity_reference_autocomplete
+    weight: 32
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_neighborhood:
+    type: entity_reference_autocomplete
+    weight: 43
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_publish_date:
+    type: datetime_default
+    weight: 51
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_unit_ada_h:
+    type: boolean_checkbox
+    weight: 46
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unit_ada_m:
+    type: boolean_checkbox
+    weight: 45
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unit_ada_v:
+    type: boolean_checkbox
+    weight: 44
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unit_air_conditioning:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unit_income_restricted:
+    type: options_select
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_unit_lottery_app_due:
+    type: datetime_default
+    weight: 36
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_unit_lottery_app_link:
+    type: string_textfield
+    weight: 49
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_min_income_thold:
+    type: number
+    weight: 29
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_num_of_bathrooms:
+    type: number
+    weight: 26
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_num_of_bedrooms:
+    type: number
+    weight: 27
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_occupancy_type:
+    type: entity_reference_autocomplete
+    weight: 33
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_rent_or_sale_price:
+    type: number
+    weight: 30
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_rent_type:
+    type: entity_reference_autocomplete
+    weight: 48
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_type:
+    type: entity_reference_autocomplete
+    weight: 34
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_user_guide_type:
+    type: entity_reference_autocomplete
+    weight: 41
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_unit_waitlist_open:
+    type: boolean_checkbox
+    weight: 39
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unit_wheelchair_access:
+    type: boolean_checkbox
+    weight: 40
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_ml_unitavailability_status:
+    type: entity_reference_autocomplete
+    weight: 47
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_ml_unit_broker_s_fee: true
+  field_ml_unit_cable: true
+  field_ml_unit_dishwasher: true
+  field_ml_unit_dogs_allowed: true
+  field_ml_unit_electric: true
+  field_ml_unit_first_month_s_rent: true
+  field_ml_unit_garbage_disposal: true
+  field_ml_unit_gas: true
+  field_ml_unit_gym_fitness_area: true
+  field_ml_unit_heat_hot_water: true
+  field_ml_unit_internet: true
+  field_ml_unit_last_month_s_rent: true
+  field_ml_unit_laundry_in_unit: true
+  field_ml_unit_off_street_parking: true
+  field_ml_unit_refrigerator: true
+  field_ml_unit_smoke_free: true
+  field_ml_unit_stove: true
+  field_ml_unit_water_sewer: true
+  field_ml_unit_wide_doorways: true

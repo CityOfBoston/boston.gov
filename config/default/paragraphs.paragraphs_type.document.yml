@@ -1,0 +1,16 @@
+uuid: 7c0a7d70-3ed7-4275-ad44-096bb5ac0952
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: document
+label: Document
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Document'
+behavior_plugins: {  }

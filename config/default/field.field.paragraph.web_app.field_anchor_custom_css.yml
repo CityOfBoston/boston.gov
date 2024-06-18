@@ -1,0 +1,19 @@
+uuid: 6ee16fdc-ca67-42d3-936d-e0b6eae1f9fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_custom_css
+    - paragraphs.paragraphs_type.web_app
+id: paragraph.web_app.field_anchor_custom_css
+field_name: field_anchor_custom_css
+entity_type: paragraph
+bundle: web_app
+label: 'Anchor Custom CSS'
+description: 'You can add custom css classes to the wrapper for this webapp component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

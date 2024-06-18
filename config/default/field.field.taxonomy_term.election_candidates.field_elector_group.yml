@@ -1,0 +1,29 @@
+uuid: 1ffc0cdf-7b16-44a5-ac7f-60b5ed796c5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_elector_group
+    - taxonomy.vocabulary.election_candidates
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.election_candidates.field_elector_group
+field_name: field_elector_group
+entity_type: taxonomy_term
+bundle: election_candidates
+label: 'Elector Group'
+description: 'The Elector Group this candidate is affiliated with. (optional)'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      elector_groups: elector_groups
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

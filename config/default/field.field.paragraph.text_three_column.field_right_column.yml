@@ -1,0 +1,23 @@
+uuid: a2b6beb4-a9ca-42aa-9adc-34093ad21ac6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_right_column
+    - paragraphs.paragraphs_type.text_three_column
+  module:
+    - text
+_core:
+  default_config_hash: 7aU51ClmcUssNgIzo8YdXjVN9-0gDxFNL6wLdenAvSs
+id: paragraph.text_three_column.field_right_column
+field_name: field_right_column
+entity_type: paragraph
+bundle: text_three_column
+label: 'Right Column'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

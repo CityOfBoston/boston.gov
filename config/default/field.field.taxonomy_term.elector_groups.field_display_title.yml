@@ -1,0 +1,19 @@
+uuid: 48822918-03d3-4b0d-9d30-32b930ed51f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.elector_groups.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: elector_groups
+label: 'Elector Group Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

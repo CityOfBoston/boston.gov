@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>flikr</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="22" cy="22" r="22"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="44" height="44" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Social-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-420.000000, -240.000000)" id="flikr">
+            <g transform="translate(420.000000, 240.000000)">
+                <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
+                <use id="Oval" stroke="#091F2F" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+                <path d="M33,21.9993327 C33,24.7605765 30.832079,27 28.155809,27 C25.474365,27 23.3077375,24.7605765 23.3077375,21.9993327 C23.3077375,19.2394235 25.474365,17 28.155809,17 C30.832079,17 33,19.2394235 33,21.9993327 M20.690969,21.9993327 C20.690969,24.7605765 18.523048,27 15.8428975,27 C13.167921,27 11,24.7605765 11,21.9993327 C11,19.2394235 13.167921,17 15.8428975,17 C18.523048,17 20.690969,19.2394235 20.690969,21.9993327" id="Shape" fill="#091F2F"></path>
+            </g>
+        </g>
+    </g>
+</svg>

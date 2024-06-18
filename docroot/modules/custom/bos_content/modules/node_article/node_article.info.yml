@@ -1,0 +1,59 @@
+name: Article
+type: module
+description: 'Provides a text-heavy page for long-form, evergreen content.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - bos_components
+config_devel:
+  - core.base_field_override.node.article.changed
+  - core.base_field_override.node.article.created
+  - core.base_field_override.node.article.menu_link
+  - core.base_field_override.node.article.metatag
+  - core.base_field_override.node.article.path
+  - core.base_field_override.node.article.promote
+  - core.base_field_override.node.article.published_at
+  - core.base_field_override.node.article.scheduled_transition_date
+  - core.base_field_override.node.article.scheduled_transition_state
+  - core.base_field_override.node.article.status
+  - core.base_field_override.node.article.sticky
+  - core.base_field_override.node.article.title
+  - core.base_field_override.node.article.uid
+  - core.entity_form_display.node.article.default
+  - core.entity_view_display.node.article.article
+  - core.entity_view_display.node.article.contact
+  - core.entity_view_display.node.article.calendar_listing
+  - core.entity_view_display.node.article.default
+  - core.entity_view_display.node.article.department_listing
+  - core.entity_view_display.node.article.featured_item
+  - core.entity_view_display.node.article.featured_topics
+  - core.entity_view_display.node.article.listing_long
+  - core.entity_view_display.node.article.poll_stub
+  - core.entity_view_display.node.article.popup_icon
+  - core.entity_view_display.node.article.published_by
+  - core.entity_view_display.node.article.rss
+  - core.entity_view_display.node.article.teaser
+  - core.entity_view_display.node.article.topics_list
+  - core.entity_view_display.node.department_profile.article
+  - core.entity_view_display.node.how_to.article
+  - core.entity_view_display.node.landing_page.article
+  - core.entity_view_display.node.listing_page.article
+  - core.entity_view_display.node.person_profile.article
+  - core.entity_view_display.taxonomy_term.contact.article
+  - core.entity_view_display.taxonomy_term.features.article
+  - core.entity_view_mode.taxonomy_term.article
+  - core.entity_view_mode.node.article
+  - field.field.node.article.body
+  - field.field.node.article.field_contact
+  - field.field.node.article.field_components
+  - field.field.node.article.field_intro_text
+  - field.field.node.article.field_manual_date
+  - field.field.node.article.field_published_date
+  - field.field.node.article.field_sidebar_components
+  - field.field.node.article.field_updated_date
+  - language.content_settings.node.article
+  - node.type.article
+  - rabbit_hole.behavior_settings.node_type_article
+  - rdf.mapping.node.article

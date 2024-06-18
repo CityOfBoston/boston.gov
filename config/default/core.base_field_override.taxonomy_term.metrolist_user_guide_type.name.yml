@@ -1,0 +1,18 @@
+uuid: f58ccabd-67e5-4294-b635-90a590c15c83
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.metrolist_user_guide_type
+id: taxonomy_term.metrolist_user_guide_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: metrolist_user_guide_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

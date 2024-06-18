@@ -1,0 +1,18 @@
+uuid: e19aded9-51fd-4b15-b699-7fba61e52003
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: v1o6AdVaza0S_BWq96KYB-ctsBmbla9Y1LWoh--Vwcg
+id: lightbox_link
+label: 'Lightbox Link'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Lightbox Link'
+behavior_plugins: {  }

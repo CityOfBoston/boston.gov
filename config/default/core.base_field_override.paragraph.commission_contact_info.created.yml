@@ -1,0 +1,20 @@
+uuid: 6018559c-fa01-4630-8b49-0b1fd5d789b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_contact_info
+_core:
+  default_config_hash: HIPSg0kWfbfsTv58GGOpGbLCH7ihbbBlxC1YBKfxbMw
+id: paragraph.commission_contact_info.created
+field_name: created
+entity_type: paragraph
+bundle: commission_contact_info
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

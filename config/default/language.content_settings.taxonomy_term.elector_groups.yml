@@ -1,0 +1,11 @@
+uuid: 9a22a552-2fbf-49cd-b101-8772c6337e8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.elector_groups
+target_entity_type_id: taxonomy_term
+target_bundle: elector_groups
+default_langcode: site_default
+language_alterable: false

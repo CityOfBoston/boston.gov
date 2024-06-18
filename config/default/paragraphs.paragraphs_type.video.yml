@@ -1,0 +1,16 @@
+uuid: 9bef0863-6179-4bf2-ac54-3905f141a20a
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: video
+label: Video
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Video'
+behavior_plugins: {  }

@@ -1,0 +1,15 @@
+uuid: 96623ec3-4142-47a0-9cf2-8c9c265a50ae
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: 'Used in sidebar on RHS of nodes.'
+id: taxonomy_term.sidebar_right
+label: 'Sidebar Right'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

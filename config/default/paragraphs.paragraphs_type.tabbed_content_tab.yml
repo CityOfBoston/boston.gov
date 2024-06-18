@@ -1,0 +1,13 @@
+uuid: 90e1f701-2557-436b-9d80-973bdd5a0938
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: ydX0E587q9eFjkSVUvBnhJGv2cKnB019_AodWfvOzlE
+id: tabbed_content_tab
+label: 'Tabbed Content Tab'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Tabbed Content Tab'
+behavior_plugins: {  }

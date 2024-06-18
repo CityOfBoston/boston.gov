@@ -1,0 +1,17 @@
+uuid: 05347b4e-059f-4327-a108-05dd3fbe3aa5
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.listing
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+_core:
+  default_config_hash: 0-jSXOCrS3Gr9e3wa0rkcjWG19K8uQdGEQYo2xnjqMA
+id: paragraph.internal_link.listing
+targetEntityType: paragraph
+bundle: internal_link
+mode: listing
+content: {  }
+hidden:
+  field_internal_link: true

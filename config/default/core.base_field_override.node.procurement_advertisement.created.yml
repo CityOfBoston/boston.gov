@@ -1,0 +1,18 @@
+uuid: 0b4083e9-cfac-47a2-874d-c9543e4a6abc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.created
+field_name: created
+entity_type: node
+bundle: procurement_advertisement
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

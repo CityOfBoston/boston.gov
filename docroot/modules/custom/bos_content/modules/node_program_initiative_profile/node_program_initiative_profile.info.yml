@@ -1,0 +1,32 @@
+name: Program Initiative Profile
+type: module
+description: 'Provides a program initiative profile entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.base_field_override.node.program_initiative_profile.promote
+  - core.base_field_override.node.program_initiative_profile.published_at
+  - core.base_field_override.node.program_initiative_profile.status
+  - core.base_field_override.node.program_initiative_profile.sticky
+  - core.base_field_override.node.program_initiative_profile.title
+  - core.base_field_override.node.program_initiative_profile.uid
+  - core.entity_form_display.node.program_initiative_profile.default
+  - core.entity_view_display.node.program_initiative_profile.default
+  - core.entity_view_display.node.program_initiative_profile.listing
+  - field.field.node.program_initiative_profile.body
+  - field.field.node.program_initiative_profile.field_components
+  - field.field.node.program_initiative_profile.field_contacts
+  - field.field.node.program_initiative_profile.field_intro_image
+  - field.field.node.program_initiative_profile.field_manual_date
+  - field.field.node.program_initiative_profile.field_metatags
+  - field.field.node.program_initiative_profile.field_program_logo
+  - field.field.node.program_initiative_profile.field_program_type
+  - field.field.node.program_initiative_profile.field_published_date
+  - field.field.node.program_initiative_profile.field_sidebar_components
+  - field.field.node.program_initiative_profile.field_updated_date
+  - language.content_settings.node.program_initiative_profile
+  - node.type.program_initiative_profile
+  - rabbit_hole.behavior_settings.node_type_program_initiative_profile

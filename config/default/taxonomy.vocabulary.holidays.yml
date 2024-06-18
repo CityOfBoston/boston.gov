@@ -1,0 +1,8 @@
+uuid: 76dc12f2-1c4c-4833-8179-2bb5603c56f5
+langcode: en
+status: true
+dependencies: {  }
+name: Holidays
+vid: holidays
+description: 'A collection of string/date pairs indicating city holidays or special events.'
+weight: 0

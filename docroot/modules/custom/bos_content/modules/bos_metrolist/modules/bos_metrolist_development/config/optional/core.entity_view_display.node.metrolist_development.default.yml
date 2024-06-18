@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.metrolist_development.body
+    - field.field.node.metrolist_development.field_ml_address
+    - node.type.metrolist_development
+  module:
+    - address
+    - text
+    - user
+id: node.metrolist_development.default
+targetEntityType: node
+bundle: metrolist_development
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_ml_address:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  published_at: true

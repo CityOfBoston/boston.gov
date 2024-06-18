@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.grid_of_topics.field_component_title
+    - field.field.paragraph.grid_of_topics.field_contact
+    - field.field.paragraph.grid_of_topics.field_short_title
+    - field.field.paragraph.grid_of_topics.field_topics
+    - paragraphs.paragraphs_type.grid_of_topics
+id: paragraph.grid_of_topics.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: grid_of_topics
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_title: true
+  field_contact: true
+  field_short_title: true
+  field_topics: true

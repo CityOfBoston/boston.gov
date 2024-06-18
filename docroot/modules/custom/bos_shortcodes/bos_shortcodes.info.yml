@@ -1,0 +1,9 @@
+name: Boston Shortcodes
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+package: City of Boston
+description: 'Defines custom Form and Poll Shortcodes for the Boston.gov site.'
+
+dependencies:
+  - shortcode

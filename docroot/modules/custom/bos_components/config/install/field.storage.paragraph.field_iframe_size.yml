@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_iframe_size
+field_name: field_iframe_size
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 300
+      label: 300px
+    -
+      value: 480
+      label: 480px
+    -
+      value: 600
+      label: 600px
+    -
+      value: 0
+      label: Auto
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: bced2003-ef9b-47c8-a5fa-716560fe4495
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.news_and_announcements
+_core:
+  default_config_hash: JR3fvJFvopUFfzTy2QELaeXizfV0biVTQ0ojzwPbNQw
+id: paragraph.news_and_announcements.created
+field_name: created
+entity_type: paragraph
+bundle: news_and_announcements
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

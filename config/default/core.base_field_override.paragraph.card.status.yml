@@ -1,0 +1,24 @@
+uuid: 0278f6dc-a410-4602-a90e-23ea0ff312d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: t8exrjcd88qfVzTh2PZ972LvIrT605ouPF31xCSClJQ
+id: paragraph.card.status
+field_name: status
+entity_type: paragraph
+bundle: card
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

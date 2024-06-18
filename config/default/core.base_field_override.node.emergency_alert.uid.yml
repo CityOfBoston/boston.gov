@@ -1,0 +1,20 @@
+uuid: e65672c4-6bab-49fb-9e2c-75e3ca1269e4
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.uid
+field_name: uid
+entity_type: node
+bundle: emergency_alert
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

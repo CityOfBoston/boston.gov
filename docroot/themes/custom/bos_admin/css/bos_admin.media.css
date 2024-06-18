@@ -1,0 +1,171 @@
+/*
+  This stylesheet is used to contain style rules for media displays embedded in editor forms of nodes and paragraphs,
+  and in entity browser media displays (modal windows).
+ */
+
+/* Cross media-type styles in editor forms */
+.media-icon-wrapper .field--name-name,
+.media-icon-wrapper .field--name-filename,
+.media-image-wrapper .field--name-name,
+.media-image-wrapper .field--name-filename {
+  margin-top: 23px;
+  padding-bottom: 10px;
+  color: #0c97ed;
+  background: #e5e5e5;
+  border-bottom: 1px solid #999999;
+}
+
+/** Style the icon media type thumbnail display for use on entity editor forms */
+.media--type-image.media--view-mode-thumbnail,
+.media--type-icon.media--view-mode-thumbnail {
+  text-align: left;
+  margin-left: 14px;
+  margin-bottom: 15px;
+}
+.media--type-image.media--view-mode-thumbnail .content,
+.media--type-icon.media--view-mode-thumbnail .content {
+  width: fit-content;
+  max-width: 200px;
+}
+.media--type-image.media--view-mode-thumbnail .field,
+.media--type-icon.media--view-mode-thumbnail .field {
+  text-align: center;
+}
+.media--type-image.media--view-mode-thumbnail .field--name-name,
+.media--type-icon.media--view-mode-thumbnail .field--name-name {
+  margin-top: 0;
+  padding-top: 10px;
+  border-top: 1px solid #999999;
+}
+.media-image-wrapper .field--name-uri,
+.media--type-image.media--view-mode-thumbnail .field--name-image {
+  background: #e5e5e5;
+  line-height: 0;
+}
+.media-image-wrapper .field--name-uid,
+.media--type-image.media--view-mode-thumbnail .field--name-uid {
+  font-weight: bold;
+  background: #e5e5e5;
+  border-top: 1px solid #999999;
+  padding-top: 5px;
+}
+.media--type-image.media--view-mode-thumbnail .field--name-created {
+  background: #e5e5e5;
+  border-bottom: 1px solid #999999;
+  padding-bottom: 5px;
+}
+.media-image-wrapper .field--name-filemime {
+  background: #e5e5e5;
+  padding-bottom: 5px;
+}
+.media-icon-wrapper .field--name-image,
+.media-icon-wrapper .field--name-uri {
+  background: #eee;
+  text-align: center;
+  border: 1px solid #999999;
+}
+.media-icon-wrapper .field--name-image {
+  padding: 10px 0;
+}
+
+.media-image-wrapper .views-field-created {
+  background: #e5e5e5;
+  text-align: center;
+  border-bottom: 1px solid #999999;
+}
+/* Helper to ensure preview formats nicely when editing view */
+.view-display-id-icon_library .preview-section,
+.view-display-id-icon_library .view-content,
+.view-display-id-image_library .preview-section,
+.view-display-id-image_library .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: wrap;
+  flex-direction: row;
+}
+
+/* Style the entity browser (modal form) for the icon media type */
+.media-image-wrapper,
+.media-icon-wrapper {
+  max-width: 200px;
+  min-width: 200px;
+  margin: 0 5px 20px 5px;
+}
+.media-image-wrapper .field-content,
+.media-icon-wrapper .field-content {
+  text-align: center;
+}
+.media-image-wrapper .views-field-entity-browser-select,
+.media-icon-wrapper .views-field-entity-browser-select {
+  float: right;
+  background: #e5e5e5;
+  border-top: 1px solid #999999;
+  width: 100%;
+}
+.media-image-wrapper .views-field-entity-browser-select .form-type-checkbox,
+.media-icon-wrapper .views-field-entity-browser-select .form-type-checkbox {
+  text-align: right;
+  padding-right: 4px;
+  margin: 0;
+  background: #0c97ed;
+  padding-bottom: 10px;
+}
+
+/** Build document library entity browser view. */
+.view-display-id-document_library .view-content {
+  overflow-y: scroll;
+  max-height: calc(65vh);
+  border: 1px solid #cecece;
+}
+.file-document-wrapper,
+.media-document-wrapper {
+  display: block;
+  padding: 5px 0 5px 10px;
+}
+.file-document-wrapper .views-field-entity-browser-select .form-type-checkbox,
+.media-document-wrapper .views-field-entity-browser-select .form-type-checkbox {
+  margin: 0;
+}
+.file-document-wrapper .views-field:first-child,
+.media-document-wrapper .views-field:first-child {
+  float: left;
+}
+.file-document-wrapper .views-field:nth-child(n+2),
+.media-document-wrapper .views-field:nth-child(n+2) {
+  padding-left: 30px;
+}
+
+.file--type-document .content .field:nth-child(2),
+.file--type-document .content .field:nth-child(3) {
+  float: left;
+  margin-top: 0;
+  margin-right: 10px;
+  line-height: 1.3em;
+}
+.file--type-document .content .field:nth-child(4) {
+  clear: left;
+}
+
+/* Remove scrollbars from modal iframe */
+.ui-dialog-content[id*=document-entity],
+iframe.entity-browser-modal-iframe[name*=document_entity] html {
+  overflow: hidden !important;
+}
+html.no-scroll {
+  overflow: hidden;
+}
+/* Style the exposed form in WYSIWYG entity browsers */
+.html-entity-browser .views-exposed-form .form--inline {
+  display: flex;
+}
+.html-entity-browser .form--inline .form-submit {
+  margin-top: 19px;
+}
+
+/* Move the filter apply button in-line with textbxox */
+#views-exposed-form-wysiwyg-entity-browser-image-library .form--inline {
+  display: flex;
+}
+#views-exposed-form-wysiwyg-entity-browser-image-library .form--inline #edit-actions{
+  margin-top: 29px;
+}

@@ -1,0 +1,142 @@
+uuid: 5adca22a-9b19-4c74-bbc0-4841a362a3a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.message_for_the_day.field_enabled
+    - field.field.paragraph.message_for_the_day.field_link
+    - field.field.paragraph.message_for_the_day.field_message
+    - field.field.paragraph.message_for_the_day.field_message_link
+    - field.field.paragraph.message_for_the_day.field_message_link_url
+    - field.field.paragraph.message_for_the_day.field_recurrence
+    - field.field.paragraph.message_for_the_day.field_short_description
+    - field.field.paragraph.message_for_the_day.field_use_alert
+    - paragraphs.paragraphs_type.message_for_the_day
+  module:
+    - advanced_text_formatter
+    - bos_messages
+    - field_group
+    - link
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_horizontal:
+      children:
+        - field_enabled
+        - field_use_alert
+      label: Horizontal
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: 'cob-group-grid center'
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+    group_bos311_clickable_message_l:
+      children:
+        - field_message_link
+        - field_message_link_url
+      label: 'BOS311 Clickable Message Link'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: "Used to append a clickable link to the message body in the BOS311 API  feed.\r\nSelect the link text and the URL you would like to redirect to.\r\nLeave link text as \"none\" to prevent the link from being generated and appended.\r\n<b>Note:</b> Only applies to THE BOS API Feed (a view display)"
+        required_fields: true
+id: paragraph.message_for_the_day.default
+targetEntityType: paragraph
+bundle: message_for_the_day
+mode: default
+content:
+  field_enabled:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_link:
+    type: paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_message:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_message_link:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_message_link_url:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: 'Internal or external URL'
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_recurrence:
+    type: bos_messages_mod_recur
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_short_description:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 100
+      placeholder: ''
+    third_party_settings:
+      advanced_text_formatter:
+        show_token_tree: 0
+  field_use_alert:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ */
+#}
+{#
+  Note: this template overrides the template provided by fences at
+  modules/contrib/fences/field.html.twig because hook_theme_registry_alter in
+  bos_theme re-assigns this template after the fences modules theme_registry_alter()
+  assigns its custom template.
+  (Because the registry->build() function processes hook_theme_registry_alter()
+  functions in themes run *after* any functions defined in modules).
+  @see notes in bos_theme_theme_registry_alter().
+  This template is customized from the template lifted out of fences v8.x.2.0-alpha1.
+#}
+<div class="g">
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>

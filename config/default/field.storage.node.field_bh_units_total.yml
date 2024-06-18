@@ -1,0 +1,20 @@
+uuid: 1a77bcd3-319e-429f-a73b-7b249c3d945d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_units_total
+field_name: field_bh_units_total
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

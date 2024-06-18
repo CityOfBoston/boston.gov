@@ -1,0 +1,18 @@
+uuid: 1a46ca65-c3ae-4dd1-b073-9de1f764af89
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.holidays
+id: taxonomy_term.holidays.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: holidays
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

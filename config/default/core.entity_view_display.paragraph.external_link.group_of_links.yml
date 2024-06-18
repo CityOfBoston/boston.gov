@@ -1,0 +1,30 @@
+uuid: cd570e24-cf9c-4df2-a29b-a5eeb2137ef7
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.group_of_links
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - link
+_core:
+  default_config_hash: 8jsfUX8n3VMoKtdi5yI4nycH7XBTnB7ag82DEhNZzNI
+id: paragraph.external_link.group_of_links
+targetEntityType: paragraph
+bundle: external_link
+mode: group_of_links
+content:
+  field_external_link:
+    type: link_separate
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

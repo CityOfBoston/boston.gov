@@ -1,0 +1,20 @@
+uuid: d62bb20b-5e5d-4b39-8af7-c77af5f2f46c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: g35WBrOD3Deq6QsaZFgCzEFlFwyLxAveUyDMxgEEISg
+id: node.person_profile
+target_entity_type_id: node
+target_bundle: person_profile
+default_langcode: site_default
+language_alterable: false

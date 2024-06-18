@@ -1,0 +1,20 @@
+uuid: 212790d2-e11e-4087-b30f-e5ec82d3a695
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lightbox_link
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: Dn-A34bWI2nEkKLEsD9O_KSMBHGBwoO8O21DAC1Lorw
+id: paragraph.lightbox_link
+target_entity_type_id: paragraph
+target_bundle: lightbox_link
+default_langcode: site_default
+language_alterable: false

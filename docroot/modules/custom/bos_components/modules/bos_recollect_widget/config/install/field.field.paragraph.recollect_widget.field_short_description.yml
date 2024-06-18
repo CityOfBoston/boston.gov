@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.recollect_widget
+id: paragraph.recollect_widget.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: recollect_widget
+label: 'Short Description'
+description: "Optional description text for the Recollect widget."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

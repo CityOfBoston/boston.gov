@@ -1,0 +1,20 @@
+uuid: 124e8a94-a755-4bb1-88df-ff70e574a008
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+  module:
+    - datetime
+id: node.department_profile.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: department_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

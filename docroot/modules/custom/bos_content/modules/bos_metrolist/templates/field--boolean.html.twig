@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ */
+#}
+{#
+  Note: this template overrides the template provided by fences at
+  modules/contrib/fences/field.html.twig because hook_theme_registry_alter in
+  bos_theme re-assigns this template after the fences modules theme_registry_alter()
+  assigns its custom template.
+  (Because the registry->build() function processes hook_theme_registry_alter()
+  functions in themes run *after* any functions defined in modules).
+  @see notes in bos_theme_theme_registry_alter().
+  This template is customized from the template lifted out of fences v8.x.2.0-alpha1.
+#}
+{%
+  set classes = [
+  'field',
+  'field-name-' ~ field_name|clean_class,
+  'field-type-' ~ field_type|clean_class,
+  'field-label-' ~ label_display,
+]
+%}
+{%
+  set title_classes = [
+  'field-label',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+]
+%}
+{% if display_field_tag %}
+  <{{ field_tag|default('div') }}{{ attributes.addClass(classes, 'field-items') }}>
+{% endif %}
+  {% if not label_hidden and display_label_tag %}
+    <{{ label_tag|default('div') }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ label_tag|default('div') }}>
+  {% endif %}
+  {% for item in items %}
+    {% if display_item_tag %}
+      <{{ field_item_tag|default('div') }}{{ item.attributes.addClass('field-item') }}>
+    {% endif %}
+    {{ item.content }}
+    {% if display_item_tag %}
+      </{{ field_item_tag|default('div') }}>
+    {% endif %}
+  {% endfor %}
+{% if display_field_tag %}
+  </{{ field_tag|default('div') }}>
+{% endif %}

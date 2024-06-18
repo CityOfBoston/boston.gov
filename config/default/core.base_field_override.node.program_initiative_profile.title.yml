@@ -1,0 +1,20 @@
+uuid: 0448347a-2875-4389-89ec-4e697f3be3be
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+_core:
+  default_config_hash: snC5czJETNews1y_8hRG9KdV1Y46hf9YZq3tCne1uE0
+id: node.program_initiative_profile.title
+field_name: title
+entity_type: node
+bundle: program_initiative_profile
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

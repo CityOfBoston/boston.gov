@@ -1,0 +1,20 @@
+uuid: 5e75453c-db74-41e8-93a1-07349c9a6088
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_public_stage
+  module:
+    - path
+id: taxonomy_term.bh_public_stage.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_public_stage
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

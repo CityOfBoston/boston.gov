@@ -1,0 +1,18 @@
+uuid: 3bed61f2-57ce-4e40-b215-b799a54c36fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.changed
+field_name: changed
+entity_type: node
+bundle: emergency_alert
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

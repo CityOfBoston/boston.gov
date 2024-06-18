@@ -1,0 +1,26 @@
+name: 'Building Housing Boston'
+type: module
+description: 'Building Housing Entities and Features'
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Custom'
+dependencies:
+  - salesforce
+config_devel:
+  - field.field.taxonomy_term.project_banner_bh_.field_banner_text
+  - field.storage.taxonomy_term.field_banner_text
+  - field.storage.taxonomy_term.field_banner_moderation_state
+  - field.storage.taxonomy_term.field_banner_title
+  - field.storage.taxonomy_term.field_show_banner
+  - field.field.taxonomy_term.project_banner_bh_.field_banner_moderation_state
+  - field.field.taxonomy_term.project_banner_bh_.field_banner_title
+  - field.field.taxonomy_term.project_banner_bh_.field_show_banner
+  - core.entity_form_display.taxonomy_term.project_banner_bh_.default
+  - core.entity_view_display.taxonomy_term.project_banner_bh_.default
+  - language.content_settings.taxonomy_term.project_banner_bh_
+  - rabbit_hole.behavior_settings.taxonomy_vocabulary_project_banner_bh_
+  - taxonomy.vocabulary.project_banner_bh_
+  - field.storage.node.field_bh_banner_status
+  - core.entity_form_display.node.bh_update.default
+  - core.entity_view_display.node.bh_update.teaser
+  - field.field.node.bh_update.field_bh_banner_status
+  - core.entity_view_display.node.bh_update.default

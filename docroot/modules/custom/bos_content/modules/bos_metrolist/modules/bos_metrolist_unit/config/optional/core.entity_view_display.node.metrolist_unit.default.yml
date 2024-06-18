@@ -1,0 +1,555 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.metrolist_unit.body
+    - field.field.node.metrolist_unit.field_ml_development
+    - field.field.node.metrolist_unit.field_ml_unit_air_conditioning
+    - field.field.node.metrolist_unit.field_ml_unit_bicycle_storage
+    - field.field.node.metrolist_unit.field_ml_unit_broker_s_fee
+    - field.field.node.metrolist_unit.field_ml_unit_cable
+    - field.field.node.metrolist_unit.field_ml_unit_cats_allowed
+    - field.field.node.metrolist_unit.field_ml_unit_dishwasher
+    - field.field.node.metrolist_unit.field_ml_unit_dogs_allowed
+    - field.field.node.metrolist_unit.field_ml_unit_electric
+    - field.field.node.metrolist_unit.field_ml_unit_elevator
+    - field.field.node.metrolist_unit.field_ml_unit_first_month_s_rent
+    - field.field.node.metrolist_unit.field_ml_unit_garbage_disposal
+    - field.field.node.metrolist_unit.field_ml_unit_gas
+    - field.field.node.metrolist_unit.field_ml_unit_grab_bar_handrails
+    - field.field.node.metrolist_unit.field_ml_unit_gym_fitness_area
+    - field.field.node.metrolist_unit.field_ml_unit_heat_hot_water
+    - field.field.node.metrolist_unit.field_ml_unit_internet
+    - field.field.node.metrolist_unit.field_ml_unit_last_month_s_rent
+    - field.field.node.metrolist_unit.field_ml_unit_laundry_building
+    - field.field.node.metrolist_unit.field_ml_unit_laundry_in_unit
+    - field.field.node.metrolist_unit.field_ml_unit_off_street_parking
+    - field.field.node.metrolist_unit.field_ml_unit_refrigerator
+    - field.field.node.metrolist_unit.field_ml_unit_security_deposit
+    - field.field.node.metrolist_unit.field_ml_unit_smoke_free
+    - field.field.node.metrolist_unit.field_ml_unit_stove
+    - field.field.node.metrolist_unit.field_ml_unit_street_parking
+    - field.field.node.metrolist_unit.field_ml_unit_water_sewer
+    - field.field.node.metrolist_unit.field_ml_unit_wide_doorways
+    - field.field.node.metrolist_unit.field_ml_unit_wide_hallways
+    - node.type.metrolist_unit
+  module:
+    - fences
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_features:
+      children:
+        - field_ml_unit_air_conditioning
+        - field_ml_unit_dishwasher
+        - field_ml_unit_stove
+        - field_ml_unit_street_parking
+        - field_ml_unit_smoke_free
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+      label: Features
+id: node.metrolist_unit.default
+targetEntityType: node
+bundle: metrolist_unit
+mode: default
+content:
+  field_ml_development:
+    weight: 29
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_ml_unit_air_conditioning:
+    type: boolean
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_bicycle_storage:
+    type: boolean
+    weight: 25
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_broker_s_fee:
+    type: boolean
+    weight: 24
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_cable:
+    type: boolean
+    weight: 23
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_cats_allowed:
+    type: boolean
+    weight: 22
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_dishwasher:
+    type: boolean
+    weight: 3
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_dogs_allowed:
+    type: boolean
+    weight: 21
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_electric:
+    type: boolean
+    weight: 20
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_elevator:
+    type: boolean
+    weight: 19
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_first_month_s_rent:
+    type: boolean
+    weight: 18
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_garbage_disposal:
+    type: boolean
+    weight: 17
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_gas:
+    type: boolean
+    weight: 16
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_grab_bar_handrails:
+    type: boolean
+    weight: 15
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_gym_fitness_area:
+    type: boolean
+    weight: 13
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_heat_hot_water:
+    type: boolean
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_internet:
+    type: boolean
+    weight: 12
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_last_month_s_rent:
+    type: boolean
+    weight: 11
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_laundry_building:
+    type: boolean
+    weight: 10
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_laundry_in_unit:
+    type: boolean
+    weight: 9
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_off_street_parking:
+    type: boolean
+    weight: 8
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_refrigerator:
+    type: boolean
+    weight: 7
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_security_deposit:
+    type: boolean
+    weight: 6
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_smoke_free:
+    type: boolean
+    weight: 6
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_stove:
+    type: boolean
+    weight: 4
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_street_parking:
+    type: boolean
+    weight: 5
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_water_sewer:
+    type: boolean
+    weight: 3
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_wide_doorways:
+    type: boolean
+    weight: 26
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  field_ml_unit_wide_hallways:
+    type: boolean
+    weight: 14
+    region: content
+    label: inline
+    settings:
+      format: unicode-yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+  links:
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  langcode: true
+  published_at: true

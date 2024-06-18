@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a viewfield
+ *
+ * To override output, copy the "viewfield.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - viewfield--node--field-foo--article.html.twig
+ * - viewfield--node--field-foo.html.twig
+ * - viewfield--node--article.html.twig
+ * - viewfield--field-foo.html.twig
+ * - viewfield--text-with-summary.html.twig
+ * - viewfield.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the viewfield items.
+ * - entity: The entity to which the field belongs.
+ * - entity_type: The entity type to which the field belongs.
+ * - bundle: The entity bundle to which the field belongs.
+ * - field_name: The name of the field.
+ * - label_display: The display settings for the label.
+ *
+ *
+ * @see template_preprocess_viewfield()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if not label_hidden and label %}
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  {% endif %}
+  {{ title_suffix }}
+  {% if multiple %}
+    <div class="field__items">
+  {% endif %}
+  {% for item in items %}
+    {{ item }}
+  {% endfor %}
+  {% if multiple %}
+    </div>
+  {% endif %}
+</div>

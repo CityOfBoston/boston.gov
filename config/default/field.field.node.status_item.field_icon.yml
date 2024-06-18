@@ -1,0 +1,29 @@
+uuid: c272e990-4963-4fcc-8fb1-e82a48e3afd1
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_icon
+    - media.type.icon
+    - node.type.status_item
+id: node.status_item.field_icon
+field_name: field_icon
+entity_type: node
+bundle: status_item
+label: 'Status Icon'
+description: 'Add an SVG icon representing this status.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

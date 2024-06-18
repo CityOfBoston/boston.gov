@@ -1,0 +1,259 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_commissions module.
+ */
+
+use Drupal\Core\Render\Markup;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Core\Site\Settings;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_commissions_theme() {
+  $theme['paragraph__commission_contact_info'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_commissions') . '/templates',
+  ];
+  $theme['paragraph__commission_summary'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_commissions') . '/templates',
+  ];
+  $theme['paragraph__commission_members'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_commissions') . '/templates',
+  ];
+  $theme['paragraph__commission_search'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_commissions') . '/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_commissions_preprocess_paragraph(&$variables) {
+  if (!empty($variables['paragraph'])) {
+    $paragraph = $variables['paragraph'];
+    switch ($paragraph->bundle()) {
+      case 'commission_members':
+        bos_commissions_add_members($variables);
+        break;
+
+      case 'commission_contact_info':
+      case 'commission_summary':
+        bos_commissions_add_info($variables);
+        break;
+
+      case 'commission_search':
+        $variables['#attached']['library'][] = 'bos_commissions/bos_commissions_search';
+        $variables['#attached']['drupalSettings']['bos_commissions_search']['graphql_api_key'] = Settings::get('graphql_api_key');
+        $variables['#attached']['drupalSettings']['bos_commissions_search']['graphql_endpoint'] = Settings::get('graphql_endpoint');
+        break;
+    }
+    if ($variables["paragraph"]->bundle() == "commission_summary" || $variables["paragraph"]->bundle() == "commission_members" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+      if (!isset($variables["content"]["field_hide_title_bar"]["#items"])) {
+        $variables['hideTitle'] = FALSE;
+      }
+      else {
+        $variables["hideTitle"] = $variables["content"]["field_hide_title_bar"]["#items"][0]->value == 1;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_commissions_paragraph_commission_search_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create("<i>Standard search component</i>");
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Extracts the string commission ID from "field_commission".
+ */
+function bos_commissions_id(&$variables) {
+  if (($term = Term::load($variables['paragraph']->get('field_commission')->getValue()['0']['target_id']))
+    && $term->hasField("field_commission_id")) {
+    return $term->get('field_commission_id')->value;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Checks environment and supplies appropriate creds / values.
+ *
+ * Returns array of values.
+ */
+function bos_commissions_check_env_creds() {
+  if (!isset($_SERVER["AH_SITE_NAME"])) {
+    // Local env.
+    $graphqlUrl = \Drupal::config('bos_commissions.settings')->get('graphql_endpoint');
+    $graphqlKey = \Drupal::config('bos_commissions.settings')->get('graphql_api_key');
+  }
+  elseif (strtolower($_SERVER["AH_SITE_NAME"]) == 'dev2') {
+    // Acquia env dev2.
+    $graphqlUrl = $_ENV['graphql_endpoint'];
+    $graphqlKey = $_ENV['graphql_api_key'];
+  }
+  else {
+    // Acquia env dev,stg,prd.
+    $graphqlUrl = Settings::get('graphql_endpoint');
+    $graphqlKey = Settings::get('graphql_api_key');
+  }
+  $graphqlCreds = [
+    "graphqlUrl" => $graphqlUrl,
+    "graphqlKey" => $graphqlKey
+  ];
+  return $graphqlCreds;
+}
+
+/**
+ * Makes a GraphQL query to the commissions GraphQL backend.
+ *
+ * Returns the parsed JSON response.
+ */
+function bos_commissions_query($graphql) {
+  $client = \Drupal::httpClient();
+  $getGraphqlCreds = bos_commissions_check_env_creds();
+  $url = $getGraphqlCreds['graphqlUrl'];
+  $request_body = json_encode([
+    'query' => $graphql,
+    'variables' => NULL,
+  ]);
+
+  $options = [
+    'headers' => [
+      'Content-Type' => 'application/json',
+      'Content-Length' => mb_strlen($request_body),
+      'X-API-KEY' => $getGraphqlCreds['graphqlKey'],
+    ],
+    'body' => $request_body,
+    'timeout' => 60,
+  ];
+
+  try {
+    $response = $client->request('POST', $url, $options);
+    $code = $response->getStatusCode();
+    if ($code == 200) {
+      $body = $response->getBody()->getContents();
+      return json_decode($body);
+    }
+  }
+  catch (RequestException $e) {
+    watchdog_exception('bos_commissions', $e);
+  }
+}
+
+/**
+ * Adds commission membership from the GraphQL endpoint.
+ */
+function bos_commissions_add_members(&$variables) {
+  if ($commission_id = bos_commissions_id($variables)) {
+    $query = bos_commissions_get_query('comission_members.graphql');
+    $result = bos_commissions_query(str_replace('$commission_id', $commission_id, $query));
+    if (empty($result->errors)) {
+      $members = $result->data->commission->members;
+      $date_input_format = 'Y-m-d\TH:i:s.u\Z';
+      $date_output_format = 'n/j/Y';
+
+      foreach ($members as &$member) {
+        if ($member->appointed) {
+          $datetime = DateTime::createFromFormat($date_input_format, $member->appointed);
+          $member->appointed =  \Drupal::service('date.formatter')->format(
+            date_timestamp_get($datetime),
+            'custom',
+            $date_output_format
+          );
+        }
+        if ($member->expires) {
+          $datetime = DateTime::createFromFormat($date_input_format, $member->expires);
+          $member->expires = \Drupal::service('date.formatter')->format(
+            date_timestamp_get($datetime),
+            'custom',
+            $date_output_format
+          );
+        }
+      }
+
+      $variables['members'] = $members;
+    }
+  }
+}
+
+/**
+ * Adds commission info from the GraphQL endpoint.
+ */
+function bos_commissions_add_info(&$variables) {
+  $commission_id = bos_commissions_id($variables);
+  $query = bos_commissions_get_query('comission_info.graphql');
+  $result = bos_commissions_query(str_replace('$commission_id', $commission_id, $query));
+  $info = $result->data->commission;
+  $variables['commission_info'] = [
+    'department_name' => Html::escape($info->department->name),
+    'department_url' => Html::escape($info->department->homepageUrl),
+    'authority' => Html::escape($info->authority),
+    'contact_email' => Html::escape($info->contactEmail),
+    'contact_name' => Html::escape($info->contactName),
+    'contact_phone' => Html::escape($info->contactPhone),
+    'seats' => Html::escape($info->seats),
+    'stipend' => Html::escape($info->stipend),
+    'term' => Html::escape($info->term),
+    'enabling_legislation_url' => Html::escape($info->enablingLegislation),
+  ];
+
+  if (!empty($info->openSeats) && $info->openSeats > 0) {
+    $variables['commission_info']['open_seats'] = Html::escape($info->openSeats);
+    $variables['commission_info']['apply_url'] = Html::escape($info->applyUrl);
+  }
+
+  if (!empty($variables['commission_info']['department_url'])) {
+    $variables['commission_info']['department_content'] = Link::fromTextAndUrl($variables['commission_info']['department_name'], Url::fromUri($variables['commission_info']['department_url']));
+  }
+  else {
+    $variables['commission_info']['department_content'] = $variables['commission_info']['department_name'];
+  }
+
+  if (!empty($variables['commission_info']['contact_email'])) {
+    $variables['commission_info']['contact_email_text'] = [
+      '#markup' => "{$variables['commission_info']['contact_name']}<br/><a href='mailto:{$variables['commission_info']['contact_email']}' title='Have a question, or just need help? You can send an email to {$variables['commission_info']['contact_email']} through the form below.'>{$variables['commission_info']['contact_email']}</a>",
+    ];
+  }
+
+  if (!empty($variables['commission_info']['contact_phone'])) {
+    $variables['commission_info']['contact_phone_text'] = [
+      '#markup' => "<a href='tel:{$variables['commission_info']['contact_phone']}'>{$variables['commission_info']['contact_phone']}</a>",
+    ];
+  }
+
+  if ($variables['commission_info']['stipend'] == 0) {
+    $variables['commission_info']['stipend'] = "No";
+  }
+  else {
+    $variables['commission_info']['stipend'] = "Yes";
+  }
+}
+
+/**
+ * Retreive graphql query from file.
+ *
+ * @param string $filename
+ *   The file name.
+ */
+function bos_commissions_get_query(string $filename) {
+  $path =\Drupal::service('extension.path.resolver')->getPath('module', 'bos_commissions') . "/graphql/{$filename}";
+  $query = file_get_contents($path);
+  return trim($query);
+}

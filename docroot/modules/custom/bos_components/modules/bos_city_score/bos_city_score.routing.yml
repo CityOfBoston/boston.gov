@@ -1,0 +1,15 @@
+cityscore.endpoint:
+  path: '/rest/cityscore/{action}'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\bos_city_score\Controller\CityscoreRest::api'
+  requirements:
+    _permission: 'access content'
+
+cityscore.admin:
+  path: '/admin/config/services/cityscore'
+  defaults:
+    _title: 'Cityscore RESTful API endpoint.'
+    _form: '\Drupal\bos_city_score\Form\CityscoreSettingsForm'
+  requirements:
+    _permission: 'administer boston'

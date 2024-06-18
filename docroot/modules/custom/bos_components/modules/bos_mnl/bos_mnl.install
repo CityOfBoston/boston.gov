@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * The install file for bos_mnl module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function bos_mnl_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}
+
+/**
+ * Creates a checksum for all existing Neighborhood Lookup records.
+ */
+function bos_mnl_update_9001(&$sandbox) {
+  // Add the checksum if it does not exist.
+  $query = \Drupal::database()
+    ->select('node__field_sam_neighborhood_data', 'data');
+  $query->leftJoin("node__field_checksum", "checksum", "data.entity_id = checksum.entity_id");
+  $query->addExpression("md5(data.field_sam_neighborhood_data_value)", 'field_checksum_value');
+  $query->fields('data', ['bundle', 'deleted', 'entity_id', 'revision_id', 'langcode', 'delta']);
+  $query->condition("checksum.entity_id", NULL, "IS");
+  \Drupal::database()->insert('node__field_checksum')
+    ->from($query)
+    ->execute();
+
+  // Add the last updated value if it does not exist
+  $query = \Drupal::database()
+    ->select('node__field_sam_neighborhood_data', 'data');
+  $query->leftJoin("node__field_updated_date", "dt", "data.entity_id = dt.entity_id");
+  $query->addExpression("unix_timestamp()", 'field_updated_date_value');
+  $query->fields('data', ['bundle', 'deleted', 'entity_id', 'revision_id', 'langcode', 'delta']);
+  $query->condition("dt.entity_id", NULL, "IS");
+  \Drupal::database()->insert('node__field_updated_date')
+    ->from($query)
+    ->execute();
+}

@@ -1,0 +1,18 @@
+uuid: afbdd7b0-a2d7-449f-a5f9-881f982d6378
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.title
+field_name: title
+entity_type: node
+bundle: bh_account
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

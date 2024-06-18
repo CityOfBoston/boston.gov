@@ -1,0 +1,24 @@
+uuid: b3b3f449-7ed2-4999-ae46-d2479de18935
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_launch_script
+    - filter.format.json_friendly
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - text
+id: paragraph.bos_chart.field_component_launch_script
+field_name: field_component_launch_script
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart Configuration'
+description: 'The configuration to define the chart'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - json_friendly
+field_type: text_long

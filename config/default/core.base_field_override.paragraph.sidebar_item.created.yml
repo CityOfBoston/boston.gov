@@ -1,0 +1,18 @@
+uuid: 64b1b22a-b046-4d5e-9187-7455b00c8bf6
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.sidebar_item
+id: paragraph.sidebar_item.created
+field_name: created
+entity_type: paragraph
+bundle: sidebar_item
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

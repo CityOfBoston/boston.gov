@@ -1,0 +1,26 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.ribbon_link
+    - field.field.paragraph.group_of_links_grid.field_component_title
+    - field.field.paragraph.group_of_links_grid.field_contact
+    - field.field.paragraph.group_of_links_grid.field_description
+    - field.field.paragraph.group_of_links_grid.field_grid_links
+    - field.field.paragraph.group_of_links_grid.field_link
+    - field.field.paragraph.group_of_links_grid.field_short_title
+    - field.field.paragraph.group_of_links_grid.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_grid
+id: paragraph.group_of_links_grid.ribbon_link
+targetEntityType: paragraph
+bundle: group_of_links_grid
+mode: ribbon_link
+content: {  }
+hidden:
+  field_component_title: true
+  field_contact: true
+  field_description: true
+  field_grid_links: true
+  field_link: true
+  field_short_title: true
+  field_subheader: true

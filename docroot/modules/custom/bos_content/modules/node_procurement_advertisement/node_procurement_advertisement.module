@@ -1,0 +1,299 @@
+<?php
+
+/**
+ * @file
+ * Provides an script_page entity type.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Form\FormState;
+
+/**
+ * Implements hook_theme().
+ */
+function node_procurement_advertisement_theme() {
+  $theme['node__procurement_advertisement'] = [
+    'base hook' => 'node',
+    'render element' => 'elements',
+  ];
+  /*
+   * $theme['field__field_intro_text__mode__full'] = [
+   * 'base hook' => 'field',
+   * 'path' => 'modules/custom/bos_content/modules/node_procurement_advertisement/templates',
+   * ];*/
+  $theme['field__taxonomy_term__name__massachusetts_general_law'] = [
+    'base hook' => 'field',
+  ];
+  $theme['taxonomy_term__massachusetts_general_law'] = [
+    'base hook' => 'taxonomy_term',
+  ];
+  $theme['node__person_profile__department_listing'] = [
+    'base hook' => 'node',
+  ];
+  $theme['node__procurement_advertisement__listing'] = [
+    'base hook' => 'node',
+    'render element' => 'elements',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_procurement_advertisement_preprocess_node__procurement_advertisement(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "procurement_advertisement") {
+      $variables["start_date"] = "";
+      if (!empty($variables["content"]["field_date_range"][0])) {
+        if (!empty($variables["content"]["field_date_range"][0]["start_date"])) {
+          $variables["start_date"] = $variables["content"]["field_date_range"][0]["start_date"]["#text"];
+        }
+        else {
+          $variables["start_date"] = $variables["content"]["field_date_range"][0]["#text"];
+        }
+      }
+      if (!empty($variables["content"]["field_date_range"][0]["end_date"])) {
+        $variables['end_date'] = $variables["content"]["field_date_range"][0]["end_date"]["#text"];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_procurement_advertisement_preprocess_node__procurement_advertisement__listing(&$variables) {
+  // Get the department icon by targeting the ID of the dept.
+  $term = $variables['elements']['field_contact'][0]['#taxonomy_term'];
+  $variables['dept_name'] = $term->getName();
+
+  if (isset($term) && $term->hasField('field_department_profile')) {
+    $dept_profile = $term->get('field_department_profile')->getValue();
+    if (isset($dept_profile[0]['target_id'])) {
+      $node = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->load($dept_profile[0]['target_id']);
+      $dept_url = '/node/' . $node->id();
+      $variables['dept_url'] = $dept_url;
+      $dept_icon = $node->field_icon->target_id;
+
+      $variables['dept_icon_uri'] = \Drupal::service('file_url_generator')->generateAbsoluteString("public://custom/no-icon.svg");
+      if ($file = File::load($dept_icon)) {
+        $dept_icon_uri = $file->getFileUri();
+        if (substr($dept_icon_uri, 0, 4) != "http") {
+          $dept_icon_uri = \Drupal::request()
+            ->getScheme() . ":" . $dept_icon_uri;
+        }
+        if (@file_get_contents($dept_icon_uri)) {
+          $variables['dept_icon_uri'] = $dept_icon_uri;
+        }
+      }
+    }
+  }
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "procurement_advertisement") {
+      $variables['field_department'] = $variables["content"]["field_department"][0]["#context"]["value"];
+      $variables['field_email'] = $variables["content"]["field_email"][0];
+      $variables['field_phone_number'] = isset($variables["content"]["field_phone_number"][0])
+        ? bos_core_format_telephone($variables["content"]["field_phone_number"][0]["#context"]["value"]) : NULL;
+      $variables['field_not_awarded'] = $variables["content"]["field_not_awarded"][0];
+      $variables['field_bid_type'] = $variables["content"]['field_bid_type'][0]['#title'];
+      $variables["start_date"] = "";
+      if (!empty($variables["content"]["field_date_range"][0])) {
+        if (!empty($variables["content"]["field_date_range"][0]["start_date"])) {
+          $variables["start_date"] = $variables["content"]["field_date_range"][0]["start_date"]["#text"];
+        }
+        else {
+          $variables["start_date"] = $variables["content"]["field_date_range"][0]["#text"];
+        }
+      }
+      if (!empty($variables["content"]["field_date_range"][0]["end_date"])) {
+        $variables['end_date'] = $variables["content"]["field_date_range"][0]["end_date"]["#text"];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_procurement_advertisement_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "procurement_advertisement") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_default_field_instances_alter().
+ */
+function node_procurement_advertisement_field_default_field_instances_alter(&$instances) {
+  // Check for and get the Term ID of the 'default' term in procurement_footer.
+  if ($default_terms = taxonomy_get_term_by_name('default', 'procurement_footer')) {
+    // Grab first array item of unknown key.
+    $default_term = current($default_terms);
+    // Get the Term ID.
+    $default_tid = $default_term->tid ?: NULL;
+    // Set the 'default' Term ID as default value on entity reference field.
+    $instances['node-procurement_advertisement-field_procurement_footer']['default_value'][0]['target_id'] = $default_tid;
+  }
+}
+
+/**
+ * Prepares variables for procurement_advertisement templates.
+ *
+ * Default template: procurement-advertisement.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the public notice information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_procurement_advertisement(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function node_procurement_advertisement_form_node_procurement_advertisement_edit_form_alter(&$form, &$form_state, $form_id) {
+
+  // Remove text field auto-complete for this form
+  $form['#attributes']['autocomplete'] = 'off';
+
+  // Add custom validation since above required states are client-side only.
+  $form['#validate'][] = 'node_procurement_advertisement_form_validate';
+  $form['actions']['submit']['#submit'][] = 'node_procurement_advertisement_form_submit';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_procurement_advertisement_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "procurement_advertisement", [
+    "field_related_links" => "Add another link",
+  ]);
+}
+
+/**
+ * Form validate callback.
+ */
+function node_procurement_advertisement_form_validate(array &$form, FormState &$form_state) {
+  // Entity query.
+  // Ensures that the date awarded is EMPTY node is checked.
+
+  $field_Date_Awarded = $form_state->getValue('field_award_date')[0]["value"];
+  if ($form_state->getValue("field_not_awarded")["value"]) {
+    if (!empty($field_Date_Awarded)) {
+      $form_state->setErrorByName('field_award_date', t('Cannot select the Not Awarded field and set Award Date as well.'));
+    }
+  }
+
+  foreach ($form_state->getValue("field_bid") as $key => $a) {
+    if (is_numeric($key)) {
+      if (empty($a["subform"]["field_awarded"]["value"])) {
+        $a["subform"]["field_awarded"]["value"] = 0;
+      }
+      $field_bid_awarded = $a["subform"]["field_awarded"]["value"];
+      if ($field_bid_awarded == 1 && empty($field_Date_Awarded)) {
+        $form_state->setErrorByName('field_award_date', t('Bids cannot be awarded if there is no Award Date.'));
+      }
+      if ($field_bid_awarded == 1 && !empty($form_state->getValue("field_not_awarded")["value"])) {
+        $form_state->setErrorByName('field_not_awarded', t('Cannot have a bid awarded when the procurement is not awarded.'));
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function node_procurement_advertisement_form_submit($variables, $form_state) {
+  // This does run after the node is saved, so the procurement ID can be
+  // set to the nid.
+  if (NULL != ($node = Node::load($form_state->get("nid")))) {
+    if (empty($node->get("field_event_project_number")->value)) {
+      $node->field_event_project_number = $node->nid->value;
+      $variables['nid'] = $node->nid->value;
+      $node->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function node_procurement_advertisement_element_info_alter(array &$info)
+{
+  $info['datetime']['#value_callback'] = 'node_procurement_advertisement_datetime_value';
+  $info['datetime']['#process'][] = 'node_procurement_advertisement_datetime_set_format';
+}
+
+/**
+ *  Set a default value for the time sub-field on field_award_date edit forms on Procurement Advertisement nodes.
+ *
+ * @param $element
+ * @param $input
+ * @param FormStateInterface $form_state
+ * @return array|mixed
+ */
+function node_procurement_advertisement_datetime_value(&$element, $input, FormStateInterface $form_state) {
+  if ($input !== FALSE) {
+    try {
+      if ($form_state->getBuildInfo()['form_id'] == 'node_procurement_advertisement_edit_form'
+            && $element['#name'] == 'field_award_date[0][value]'
+            && $input['date']
+            && empty($input['time'])) {
+        $input['time'] = '12:01:01';
+      }
+    }
+    catch (\Exception $e) {
+      // nothing to do.
+    }
+  }
+  return \Drupal\Core\Datetime\Element\Datetime::valueCallback($element, $input, $form_state);
+}
+
+/**
+ * Hide the time sub-field on field_award_date edit forms on Procurement Advertisement nodes.
+ *
+ * @param $element
+ * @return mixed
+ */
+function node_procurement_advertisement_datetime_set_format($element) {
+
+  if (isset($element['#name']) && $element['#name'] == 'field_award_date[0][value]') {
+    $element['time']['#attributes']['style'][] = 'display:none';
+  }
+
+  return $element;
+}

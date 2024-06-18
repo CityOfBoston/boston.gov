@@ -1,0 +1,19 @@
+uuid: c9f138c1-60de-43b7-bc9a-b1c1706d9e3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_file_image_alt_text
+    - file_entity.type.image
+id: file.image.field_file_image_alt_text
+field_name: field_file_image_alt_text
+entity_type: file
+bundle: image
+label: 'Alt Text'
+description: 'Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

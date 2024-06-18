@@ -1,0 +1,70 @@
+uuid: 96886a4b-8d09-4b7f-9f68-5abb1d06adac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.daily_hours.field_daily_hours
+    - field.field.paragraph.daily_hours.field_hours_icon
+    - field.field.paragraph.daily_hours.field_title
+    - paragraphs.paragraphs_type.daily_hours
+  module:
+    - fences
+    - office_hours
+    - options
+_core:
+  default_config_hash: oFrCCP-q-KsmNXh5DREQgPsZ25fkNe6kzGBevWTbdd4
+id: paragraph.daily_hours.default
+targetEntityType: paragraph
+bundle: daily_hours
+mode: default
+content:
+  field_daily_hours:
+    type: office_hours
+    label: hidden
+    settings:
+      day_format: long
+      time_format: g
+      compress: false
+      grouped: false
+      show_closed: open
+      closed_format: Closed
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      timezone_field: ''
+      office_hours_first_day: '0'
+      schema:
+        enabled: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_hours_icon:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

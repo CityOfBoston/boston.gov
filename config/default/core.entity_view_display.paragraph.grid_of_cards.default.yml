@@ -1,0 +1,116 @@
+uuid: 8f38355d-69d8-4e0a-b42c-3ff70099af56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grid_of_cards.field_component_theme
+    - field.field.paragraph.grid_of_cards.field_component_title
+    - field.field.paragraph.grid_of_cards.field_contact
+    - field.field.paragraph.grid_of_cards.field_drawer
+    - field.field.paragraph.grid_of_cards.field_hide_title_bar
+    - field.field.paragraph.grid_of_cards.field_short_title
+    - paragraphs.paragraphs_type.grid_of_cards
+  module:
+    - entity_reference_revisions
+    - fences
+    - options
+_core:
+  default_config_hash: ykpJeOXUzsIVy4dL3XQHEQueHxzEcGJUSDo4Kxt5QbY
+id: paragraph.grid_of_cards.default
+targetEntityType: paragraph
+bundle: grid_of_cards
+mode: default
+content:
+  field_component_theme:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: h2
+        fences_field_classes: sh-title
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_contact:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_drawer:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_hide_title_bar:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

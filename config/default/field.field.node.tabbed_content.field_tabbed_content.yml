@@ -1,0 +1,243 @@
+uuid: 13489529-4d98-4229-9da2-947d619646c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tabbed_content
+    - node.type.tabbed_content
+    - paragraphs.paragraphs_type.tabbed_content_tab
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: jYStrjaadcdk4VPOARFFj0XiuZIPHWYHmNSvoBYUzNw
+id: node.tabbed_content.field_tabbed_content
+field_name: field_tabbed_content
+entity_type: node
+bundle: tabbed_content
+label: 'Tabbed Content'
+description: 'Add tabbed content tab components to populate tabbed content pages.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tabbed_content_tab: tabbed_content_tab
+    negate: 0
+    target_bundles_drag_drop:
+      3_column_w_image:
+        weight: 2
+        enabled: false
+      bid:
+        weight: 59
+        enabled: false
+      bos311:
+        weight: 60
+        enabled: false
+      bos_signup_emergency_alerts:
+        weight: 61
+        enabled: false
+      cabinet:
+        weight: 3
+        enabled: false
+      card:
+        weight: 62
+        enabled: false
+      city_score_dashboard:
+        weight: 63
+        enabled: false
+      columns:
+        weight: 64
+        enabled: false
+      commission_contact_info:
+        weight: 65
+        enabled: false
+      commission_info:
+        weight: 66
+        enabled: false
+      commission_members:
+        weight: 67
+        enabled: false
+      commission_summary:
+        weight: 68
+        enabled: false
+      custom_hours_text:
+        weight: 69
+        enabled: false
+      daily_hours:
+        weight: 70
+        enabled: false
+      discussion_topic:
+        weight: 71
+        enabled: false
+      document:
+        weight: 4
+        enabled: false
+      drawer:
+        weight: 5
+        enabled: false
+      drawers:
+        weight: 6
+        enabled: false
+      election_results:
+        weight: 72
+        enabled: false
+      events_and_notices:
+        weight: 99
+        enabled: false
+      external_link:
+        weight: 7
+        enabled: false
+      featured_item:
+        weight: 8
+        enabled: false
+      featured_topics:
+        weight: 9
+        enabled: false
+      feedback:
+        weight: 73
+        enabled: false
+      fyi:
+        weight: 10
+        enabled: false
+      gol_list_links:
+        weight: 11
+        enabled: false
+      grid_links:
+        weight: 74
+        enabled: false
+      grid_of_cards:
+        weight: 75
+        enabled: false
+      grid_of_people:
+        weight: 76
+        enabled: false
+      grid_of_places:
+        weight: 12
+        enabled: false
+      grid_of_programs_initiatives:
+        weight: 77
+        enabled: false
+      grid_of_quotes:
+        weight: 78
+        enabled: false
+      grid_of_topics:
+        weight: 13
+        enabled: false
+      group_of_links_grid:
+        weight: 14
+        enabled: false
+      group_of_links_list:
+        weight: 15
+        enabled: false
+      group_of_links_mini_grid:
+        weight: 79
+        enabled: false
+      header_text:
+        weight: 16
+        enabled: false
+      hero_image:
+        weight: 17
+        enabled: false
+      how_to_contact_step:
+        weight: 80
+        enabled: false
+      how_to_tab:
+        weight: 81
+        enabled: false
+      how_to_text_step:
+        weight: 82
+        enabled: false
+      iframe:
+        weight: 18
+        enabled: false
+      internal_link:
+        weight: 19
+        enabled: false
+      lightbox_link:
+        weight: 83
+        enabled: false
+      list:
+        weight: 20
+        enabled: false
+      map:
+        weight: 84
+        enabled: false
+      map_coordinates:
+        weight: 85
+        enabled: false
+      map_esri_feed:
+        weight: 86
+        enabled: false
+      map_pin:
+        weight: 87
+        enabled: false
+      message_for_the_day:
+        weight: 88
+        enabled: false
+      news_and_announcements:
+        weight: 21
+        enabled: false
+      newsletter:
+        weight: 89
+        enabled: false
+      photo:
+        weight: 22
+        enabled: false
+      quote:
+        weight: 90
+        enabled: false
+      recollect_widget:
+        weight: 91
+        enabled: false
+      script_embed:
+        weight: 92
+        enabled: false
+      seamless_doc:
+        weight: 93
+        enabled: false
+      sidebar_item:
+        weight: 23
+        enabled: false
+      sidebar_item_w_icon:
+        weight: 24
+        enabled: false
+      social_media_links:
+        weight: 25
+        enabled: false
+      social_networking:
+        weight: 26
+        enabled: false
+      status_override:
+        weight: 94
+        enabled: false
+      tabbed_content_tab:
+        weight: 58
+        enabled: true
+      text:
+        weight: 27
+        enabled: false
+      text_one_column:
+        weight: 28
+        enabled: false
+      text_three_column:
+        weight: 29
+        enabled: false
+      text_two_column:
+        weight: 30
+        enabled: false
+      transaction_grid:
+        weight: 31
+        enabled: false
+      transactions:
+        weight: 95
+        enabled: false
+      user_action:
+        weight: 97
+        enabled: false
+      video:
+        weight: 98
+        enabled: false
+field_type: entity_reference_revisions

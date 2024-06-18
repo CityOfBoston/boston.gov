@@ -1,0 +1,25 @@
+uuid: f4e3b6eb-a0b7-42b5-b6f9-c8ed511ffc34
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.quote.field_first_name
+    - field.field.paragraph.quote.field_last_name
+    - field.field.paragraph.quote.field_person_photo
+    - field.field.paragraph.quote.field_quote
+    - field.field.paragraph.quote.field_single_neighborhood
+    - paragraphs.paragraphs_type.quote
+_core:
+  default_config_hash: HSq-YWkTNR8hNOBEI1E4SmgYz3IJM20J29MExwZpmY4
+id: paragraph.quote.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: quote
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_first_name: true
+  field_last_name: true
+  field_person_photo: true
+  field_quote: true
+  field_single_neighborhood: true

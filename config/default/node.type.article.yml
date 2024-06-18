@@ -1,0 +1,19 @@
+uuid: c309467a-4f30-46d6-a48c-dcd061ce64a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: nPQP1_TFpsgPKh2eW7zQ-fcqoko0ps0OvypO6YafbHo
+name: Article
+type: article
+description: 'A text-heavy page for long-form, evergreen content.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

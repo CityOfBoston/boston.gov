@@ -1,0 +1,42 @@
+uuid: a19e7d1a-611e-4df0-8eb2-5030277ad02b
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_chart_text_layout
+field_name: field_chart_text_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: single_column
+      label: 'Single Column'
+    -
+      value: CT-1-2
+      label: 'Chart 1/3 : Text 2/3'
+    -
+      value: CT-1-1
+      label: 'Chart 1/2: Text 1/2'
+    -
+      value: CT-2-1
+      label: 'Chart 2/3 : Text 1/3'
+    -
+      value: TC-1-2
+      label: 'Text 1/3 : Chart 2/3'
+    -
+      value: TC-1-1
+      label: 'Text 1/2 : Chart 1/2'
+    -
+      value: TC-2-1
+      label: 'Text 2/3 : Chart 1/3'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

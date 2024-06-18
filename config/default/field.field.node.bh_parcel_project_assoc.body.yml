@@ -1,0 +1,23 @@
+uuid: a1a3ca75-8258-4e51-ad07-aeaa43ed9d66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.bh_parcel_project_assoc
+  module:
+    - text
+id: node.bh_parcel_project_assoc.body
+field_name: body
+entity_type: node
+bundle: bh_parcel_project_assoc
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

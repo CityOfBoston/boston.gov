@@ -1,0 +1,25 @@
+uuid: c8ee0019-df1f-4f1e-aa02-2a159b79d87e
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.group_of_links_quick_links.field_component_theme
+    - field.field.paragraph.group_of_links_quick_links.field_component_title
+    - field.field.paragraph.group_of_links_quick_links.field_contact
+    - field.field.paragraph.group_of_links_quick_links.field_links
+    - field.field.paragraph.group_of_links_quick_links.field_short_title
+    - paragraphs.paragraphs_type.group_of_links_quick_links
+_core:
+  default_config_hash: 9ZliB5mrK3bkK14oMfp5rYWUr7WDwP0mg6D-C3wEY1E
+id: paragraph.group_of_links_quick_links.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: group_of_links_quick_links
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_links: true
+  field_short_title: true

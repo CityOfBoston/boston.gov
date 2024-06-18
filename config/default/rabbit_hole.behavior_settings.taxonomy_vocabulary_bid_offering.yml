@@ -1,0 +1,12 @@
+uuid: 392ebaac-27fa-4fbf-9a31-2bc0180caa5a
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_bid_offering
+entity_type_id: null
+entity_id: null
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

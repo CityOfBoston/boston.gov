@@ -1,0 +1,21 @@
+uuid: 7be2e1bb-f01f-49e1-8ea0-ba5ae2eeebcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_company_name
+    - paragraphs.paragraphs_type.bid
+_core:
+  default_config_hash: RAJUC8q4Tf2GBd_Hcwvj2r1pHckhPRweOMf0Dze_61E
+id: paragraph.bid.field_company_name
+field_name: field_company_name
+entity_type: paragraph
+bundle: bid
+label: 'Company Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

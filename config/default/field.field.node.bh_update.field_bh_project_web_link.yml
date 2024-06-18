@@ -1,0 +1,19 @@
+uuid: 42902d3b-db66-41a4-8e00-d6b1a1bf1876
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_project_web_link
+    - node.type.bh_update
+id: node.bh_update.field_bh_project_web_link
+field_name: field_bh_project_web_link
+entity_type: node
+bundle: bh_update
+label: 'Project Web Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

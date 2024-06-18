@@ -1,0 +1,155 @@
+<?php
+
+/**
+ * @file
+ * Main file for the paragraph_summary module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+
+/**
+ * Implements hook_form_alter().
+ */
+function paragraph_summary_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Seek out paragraph widgets and sub-widgets.
+  $form_fields = $children = Element::getVisibleChildren($form);
+  foreach ($form_fields as $form_field) {
+    if (substr($form_field, 0, 6) == "field_"
+      && !empty($form[$form_field]["widget"]["#paragraphs_widget"])) {
+      // This is a paragraph component.
+      $form["#attached"]["library"][] = "paragraph_summary/summary_style";
+      $widget = &$form[$form_field]["widget"];
+      $fsFields = $form_state->getStorage()['field_storage']["#parents"]["#fields"];
+      if (!empty($fsFields[$form_field]["paragraphs"])) {
+        $elements = $fsFields[$form_field]["paragraphs"];
+        $elements['cob']['all_collapsed'] = TRUE;
+        foreach (Element::getVisibleChildren($widget) as $field_key => $field) {
+          if (is_numeric($field)) {
+            if (!empty($para_field = &$widget[$field_key])) {
+              if ($elements[$field_key]['mode'] == 'edit') {
+                $elements['cob']['all_collapsed'] = FALSE;
+                break;
+              }
+            }
+          }
+        }
+        foreach (Element::getVisibleChildren($widget) as $field_key => $field) {
+          if (is_numeric($field)) {
+            if (!empty($para_field = &$widget[$field_key])) {
+              paragraph_summary_widget_summary($para_field, $elements, $field_key);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper.
+ */
+function paragraph_summary_widget_summary(array &$para_field, array $elements, string $key) {
+  $element = $elements[$key];
+  if (isset($elements['cob']['all_collapsed'])) {
+    $element["all_collapsed"] = $elements['cob']['all_collapsed'];
+  }
+  if (isset($element["entity"]) && $paragraph = $element["entity"]) {
+
+    if ($element['mode'] == 'closed') {
+      $para_type = $paragraph->getParagraphType()->id();
+      // Execute hook_paragraph_summary_alter hooks.
+      $implementors = [];
+      $hook = 'paragraph_summary_alter';
+      \Drupal::moduleHandler()->invokeAllWith($hook, function (callable $hook, string $module) use (&$implementors) {
+        // There is minimal overhead since the hook is not invoked.
+        $implementors[] = $module;
+      });
+      foreach ($implementors as $module) {
+        $function = $module . '_paragraph_summary_alter';
+
+        $para_field["top"]["summary"]["#attributes"]["class"][] = "cob-para";
+
+        $result = $function($para_field, $element, $para_field["top"]["summary"]["#attributes"], $para_type);
+
+        if (isset($result["content"])) {
+          $para_field["top"]["summary"]["fields_info"]["#summary"]["content"] = $result['content'];
+        }
+
+        if (isset($result["attributes"])) {
+          $para_field["top"]["summary"]["#attributes"] = $result['attributes'];
+        }
+
+      }
+
+      // Execute hook_paragraph_HOOK_summary_alter hooks.
+      $implementors = [];
+      $hook = 'paragraph_' . $para_type . '_summary_alter';
+      \Drupal::moduleHandler()->invokeAllWith($hook, function (callable $hook, string $module) use (&$implementors) {
+        // There is minimal overhead since the hook is not invoked.
+        $implementors[] = $module;
+      });
+      foreach ($implementors as $module) {
+
+        $para_field["top"]["summary"]["#attributes"]["class"][] = "cob-para";
+
+        $function = $module . '_paragraph_' . $para_type . '_summary_alter';
+
+        $result = $function($para_field, $element, $para_field["top"]["summary"]["#attributes"]);
+
+        if (isset($result["content"])) {
+          $para_field["top"]["summary"]["fields_info"]["#summary"]["content"] = $result['content'];
+        }
+
+        if (isset($result["attributes"])) {
+          $para_field["top"]["summary"]["#attributes"] = $result['attributes'];
+        }
+
+        if (!empty($result["id"])) {
+          $para_field["top"]["type"]["label"]["#markup"] .= " (" . $element["entity"]->id() . ")";
+        }
+
+        if (isset($result["icon"])) {
+          foreach ($result["icon"] as $key => $value) {
+            $para_field["top"]["icons"]["items"]["today"] = $value;
+          }
+        }
+
+      }
+    }
+    else {
+      // There could be some subforms.
+      if (isset($para_field["subform"])) {
+        $subform = &$para_field["subform"];
+        $subform_fields = Element::getVisibleChildren($subform);
+        foreach ($subform_fields as $subform_field) {
+          if (substr($subform_field, 0, 6) == "field_"
+            && !empty($subform[$subform_field]["widget"]["#paragraphs_widget"])) {
+            // This is a paragraph component.
+            $widget = &$subform[$subform_field]["widget"];
+            foreach ($element["entity"]->{$subform_field} as $element_key => $element_para) {
+              if (isset($widget[$element_key])) {
+                $type = $widget[$element_key]["#paragraph_type"];
+                $subelements[$element_key]["display"] = EntityFormDisplay::load("paragraph.$type.default");
+                if (!empty($element_para->target_id)) {
+                  $subelements[$element_key]["entity"] = Paragraph::load($element_para->target_id);
+                }
+                $subelements[$element_key]["mode"] = (isset($widget[$element_key]["top"]["actions"]["actions"]["edit_button"]) ? "closed" : "edit");
+              }
+            }
+            if (!empty($subelements)) {
+              foreach (Element::getVisibleChildren($widget) as $subform_field_key => $subform_field) {
+                if (is_numeric($subform_field) && isset($widget[$subform_field_key])) {
+                  $para_field = &$widget[$subform_field_key];
+                  paragraph_summary_widget_summary($para_field, $subelements, $subform_field_key);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+uuid: 1db27142-063f-4cf8-84b9-5b2703771f6b
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_footer
+id: taxonomy_term.procurement_footer.status
+field_name: status
+entity_type: taxonomy_term
+bundle: procurement_footer
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

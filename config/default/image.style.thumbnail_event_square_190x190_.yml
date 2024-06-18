@@ -1,0 +1,15 @@
+uuid: 2b63dd65-ac00-47a7-b30c-1716638f58b6
+langcode: und
+status: true
+dependencies: {  }
+name: thumbnail_event_square_190x190_
+label: 'Thumbnail event square (190x190)'
+effects:
+  4e02e431-5ba2-4c5e-a262-8614405085c0:
+    uuid: 4e02e431-5ba2-4c5e-a262-8614405085c0
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 190
+      height: 190
+      anchor: center-center

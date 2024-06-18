@@ -1,0 +1,72 @@
+@import "~sass-rem";
+// Dimensions
+
+// Mockup Measurements
+$nominal-width-desktop: 1440;
+$nominal-width-desktop__content: 1200;
+$nominal-width-mobile: 480;
+$nominal-width-mobile__content: 395;
+
+$nominal-width-desktop-search__content: 1212;
+$nominal-width-mobile-search__content: 460;
+
+$nominal-width-home: 460;
+$nominal-width-home-desktop: 889;
+
+$nominal-width-ami-estimator-desktop: 773;
+// $nominal-height-ami-estimator-desktop: 930;
+
+// Logo
+$logo-width-large: 130px;
+$logo-width-extra-large: 160px;
+
+// --- Responsive Breakpoints --- //
+
+// Using Bootstrap v4’s mixins:
+// https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints
+
+// Copy-pasted from Bootstrap. Don’t want to import all variables.
+// via: https://github.com/twbs/bootstrap/blob/64a5987cc0927f4d1efecb7e1407d3bc3d6c23af/scss/_variables.scss#L274-L280
+$bs-grid-breakpoints: (
+  xsmall: 0,
+  // sm-incl: 575px,
+  small: rem( 576px ),
+  // md-incl: 767px,
+  medium: rem( 768px ),
+  // lg-incl: 991px,
+  large: rem( 992px ),
+  // xl-incl: 1199px,
+  xlarge: rem( 1200px ),
+);
+
+$ml-grid-breakpoints: (
+  home-info--two-column: map-get( $bs-grid-breakpoints, 'small' ),
+  xxlarge: rem( 1920px ),
+);
+
+$grid-breakpoints: map-merge( $bs-grid-breakpoints, $ml-grid-breakpoints );
+
+// html {
+//   font-range: map-get( $grid-breakpoints, 'small' ) map-get( $grid-breakpoints, 'large' );
+// }
+
+// To match other Boston.gov specs:
+
+// From Docs: https://docs.boston.gov/digital/getting-started/life-on-the-digital-team/software-engineering-working-agreement#browsers-we-support
+$breakpoint-testing-1: 320;
+$breakpoint-testing-2: 840;
+$breakpoint-testing-3: 1280;
+
+// From Patterns:
+$media-small: 'screen and (min-width: 480px)';
+$media-small-max: 'screen and (max-width: 479px)';
+$media-medium: 'screen and (min-width: 768px)';
+$media-medium-max: 'screen and (max-width: 767px)';
+$media-large: 'screen and (min-width: 840px)';
+$media-large-max: 'screen and (max-width: 839px)';
+$media-xlarge: 'screen and (min-width: 980px)';
+$media-xlarge-max: 'screen and (max-width: 979px)';
+$media-xxlarge: 'screen and (min-width: 1280px)';
+$media-xxlarge-max: 'screen and (max-width: 1279px)';
+
+// --- End Responsive Breakpoints --- //

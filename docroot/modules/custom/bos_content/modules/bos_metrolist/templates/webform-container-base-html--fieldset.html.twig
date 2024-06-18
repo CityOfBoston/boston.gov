@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a webform base container as html.
+ *
+ * Available variables:
+ * - element: The webform element.
+ * - title: The label for the container.
+ * - value: The content for the container.
+ * - options Associative array of options for element.
+ *   - email: Flag to determine if element is for an email.
+ */
+#}
+{#  {{ breakpoint() }}#}
+  {{ value|without("#title") }}

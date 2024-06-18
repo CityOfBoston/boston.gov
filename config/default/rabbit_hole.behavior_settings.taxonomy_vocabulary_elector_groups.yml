@@ -1,0 +1,14 @@
+uuid: 8c2c2458-4716-487a-b244-b44627bb18ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_vocabulary_elector_groups
+entity_type_id: taxonomy_vocabulary
+entity_id: elector_groups
+action: page_redirect
+allow_override: 0
+redirect: /departments/elections/unofficial-election-results
+redirect_code: 301
+redirect_fallback_action: page_not_found

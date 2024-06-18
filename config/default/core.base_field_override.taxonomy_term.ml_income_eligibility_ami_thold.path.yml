@@ -1,0 +1,20 @@
+uuid: 6921890e-7c93-4673-bd99-bca1d1876bdf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+  module:
+    - path
+id: taxonomy_term.ml_income_eligibility_ami_thold.path
+field_name: path
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

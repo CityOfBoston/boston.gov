@@ -1,0 +1,96 @@
+uuid: 59140a00-c678-423e-8ccc-128c6c66763d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.election_areas.field_display_title
+    - field.field.taxonomy_term.election_areas.field_election
+    - field.field.taxonomy_term.election_areas.field_geometry_data_geometry
+    - field.field.taxonomy_term.election_areas.field_original_id
+    - taxonomy.vocabulary.election_areas
+  module:
+    - field_group
+    - geolocation_geometry
+third_party_settings:
+  field_group:
+    group_area:
+      children:
+        - name
+        - field_display_title
+        - field_election
+        - group_reference
+      label: 'Election Area'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: 'This is a geographic area in which election contests are held - for example a District.'
+        required_fields: true
+    group_reference:
+      children:
+        - field_original_id
+        - field_geometry_data_geometry
+      label: Metdata
+      region: content
+      parent_name: group_area
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: 'This information comes from the imported file - do not update'
+        required_fields: true
+id: taxonomy_term.election_areas.default
+targetEntityType: taxonomy_term
+bundle: election_areas
+mode: default
+content:
+  field_display_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_election:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_geometry_data_geometry:
+    type: geolocation_geometry_wkt
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_original_id:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

@@ -1,0 +1,23 @@
+uuid: ed49776f-18ee-409d-a73c-fe96978edb7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_active
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors.field_active
+field_name: field_active
+entity_type: taxonomy_term
+bundle: vocab_city_councillors
+label: Active
+description: 'Is this Councillor currently elected ? This field is used to determine voting Councillors when creating new RollCall Dockets.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Active
+  off_label: Inactive
+field_type: boolean

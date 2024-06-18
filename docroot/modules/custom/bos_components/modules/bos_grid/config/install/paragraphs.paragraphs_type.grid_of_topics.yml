@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:168e0fc5-04c5-4de4-be6f-0cc09ea1f1f8'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: grid_of_topics
+label: 'Grid of Guides'
+icon_uuid: 168e0fc5-04c5-4de4-be6f-0cc09ea1f1f8
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Guides'
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: d15f117a-f5a7-4353-b42c-e6c87ee28eee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_quotes
+  module:
+    - options
+id: paragraph.grid_of_quotes.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_quotes
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

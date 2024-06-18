@@ -1,0 +1,20 @@
+uuid: f5b0b936-b57c-4c58-9d6c-68d138935fb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.quote
+_core:
+  default_config_hash: GNwnGVcoD8v-1U495lMNAzldkkkBEHAwamxOk5l6Eys
+id: paragraph.quote.created
+field_name: created
+entity_type: paragraph
+bundle: quote
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

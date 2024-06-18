@@ -1,0 +1,20 @@
+uuid: ac064145-04f7-4861-aa13-5f6871555f89
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bos_admin
+id: bos_admin_primary_local_tasks
+theme: bos_admin
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

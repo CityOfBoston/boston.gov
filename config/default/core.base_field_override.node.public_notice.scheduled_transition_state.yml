@@ -1,0 +1,18 @@
+uuid: 6dbb0d2c-4335-4f19-a6ca-16b9fc822611
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+id: node.public_notice.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: public_notice
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

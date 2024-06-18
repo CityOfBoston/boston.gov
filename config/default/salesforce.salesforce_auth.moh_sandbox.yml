@@ -1,0 +1,13 @@
+uuid: 47a1f8b9-3ec7-4d86-9756-2e3049e3738b
+langcode: en
+status: true
+dependencies:
+  module:
+    - salesforce_oauth
+id: moh_sandbox
+label: 'MOH Sandbox'
+provider: oauth
+provider_settings:
+  consumer_key: ''
+  consumer_secret: ''
+  login_url: 'https://test.salesforce.com'

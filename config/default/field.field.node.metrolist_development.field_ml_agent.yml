@@ -1,0 +1,19 @@
+uuid: 2dd19d26-a785-4286-8b5b-e78df1a82439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_agent
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_agent
+field_name: field_ml_agent
+entity_type: node
+bundle: metrolist_development
+label: Agent
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

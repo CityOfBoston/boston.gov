@@ -1,0 +1,19 @@
+uuid: 84842ff1-5c39-49b1-a2c8-a3d716a2a622
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_project_name
+    - node.type.bh_project
+id: node.bh_project.field_bh_project_name
+field_name: field_bh_project_name
+entity_type: node
+bundle: bh_project
+label: 'Project Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

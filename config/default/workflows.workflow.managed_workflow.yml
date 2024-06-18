@@ -1,0 +1,62 @@
+uuid: 3ef84337-4473-4c47-815b-824891b749d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_project
+    - node.type.roll_call_dockets
+  module:
+    - content_moderation
+id: managed_workflow
+label: 'Basic Managed Workflow'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 2
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+  transitions:
+    archived_to_draft:
+      label: 'Archived to Draft'
+      from:
+        - archived
+      to: draft
+      weight: 3
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+    published_to_archived:
+      label: 'Published to Archived'
+      from:
+        - draft
+        - published
+      to: archived
+      weight: 2
+  entity_types:
+    node:
+      - bh_project
+      - roll_call_dockets
+  default_moderation_state: draft

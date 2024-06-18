@@ -1,0 +1,230 @@
+<?php
+
+/**
+ * @file
+ * Provides a guide entity type.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_theme().
+ */
+function node_topic_page_theme() {
+  return [
+    'guide' => [
+      'render element' => 'elements',
+    ],
+    'node__topic_page' => [
+      'base hook' => 'node',
+    ],
+    'node__topic_page__listing' => [
+      'base hook' => 'node',
+    ],
+    'node__topic_page__listing_long' => [
+      'base hook' => 'node',
+    ],
+    'node__topic_page__featured_topics' => [
+      'base hook' => 'node',
+    ],
+    'field__node__field_intro_text__topic_page' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_page(&$variables) {
+  _bos_content_fix_attributes($variables);
+  if (isset($variables['node']) && is_object($variables['node'])
+    && $variables['node']->bundle() == "topic_page"
+    && !$variables["attributes"]->hasClass("ea")) {
+    $variables["attributes"]->addClass("page");
+  }
+
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "topic_page") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_node__topic_page(&$variables) {
+  _bos_theme_fix_attributes($variables);
+  $node = $variables['elements']['#node'];
+
+  $variables['attributes']->addClass('node-' . $node->id());
+
+  // Handle intro_image if present.
+  if (!empty($variables["elements"]["field_intro_image"]["#items"]) && $variables["elements"]["field_intro_image"]["#view_mode"] != "listing") {
+
+    // @var $imageStyle \Drupal\image\Entity\ImageStyle.
+    $imageStyle = ImageStyle::load('topic_cards_large'); //scales 400px wide
+    $imageStyleHero = ImageStyle::load('bos_text_responsive'); //scales 800px wide
+
+    // @var $guide \Drupal\node\Entity\Node.
+    $image = $variables["elements"]["field_intro_image"][0]["#media"]->get('image')->entity;
+    $variables['image_url'] = $imageStyle->buildUrl($image->getFileUri());
+    $variables['hero_image_url'] = $imageStyleHero->buildUrl($image->getFileUri());
+
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $photo_id = Html::getUniqueId('hro');
+      $options["base-css"] = "height: 100% !important; max-height: none !important;";
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id", $options);
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'topic-page-intro-image-css',
+      ];
+
+      // Now make and render the Intro_image block.
+      $nestedElement = [
+        ["div" => "hero-image-wrapper $photo_id"],
+      ];
+      $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_node__topic_page__listing(&$variables) {
+  if (!empty($variables['elements']['#node'])) {
+    $node = $variables['elements']['#node'];
+    $variables['title_raw'] = $node->getTitle();
+
+    // @var $imageStyle \Drupal\image\Entity\ImageStyle.
+    $imageStyle = ImageStyle::load('topic_cards_large'); //scales 400px wide
+    $imageStyleHero = ImageStyle::load('bos_text_responsive'); //scales 800px wide
+
+    // @var $guide \Drupal\node\Entity\Node.
+    $image = $variables["elements"]["field_intro_image"][0]["#media"]->get('image')->entity;
+    $variables['image_url'] = $imageStyle->buildUrl($image->getFileUri());
+    $variables['hero_image_url'] = $imageStyleHero->buildUrl($image->getFileUri());
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_node__topic_page__listing_long(&$variables) {
+  $node = $variables["elements"]["#node"];
+  $components_field = $node->get('field_components')->getValue();
+  $num_components = count($components_field);
+  $variables['num_components'] = 0;
+  // We show three nav links, then want to denote
+  // the remainder of the links for the See More link.
+  if ($num_components > 3) {
+    $variables['num_components'] = $num_components - 3;
+  }
+
+  $comp_entity_id_array = [];
+  foreach ($components_field as $comp) {
+    $comp_entity_id_array[] = $comp['target_id'];
+  }
+  // Here we need to load all the components because
+  // the not all components have a short title
+  // required so we do not create nav link for it.
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $components = $paragraph_storage->loadMultiple($comp_entity_id_array);
+  if (!empty($components)) {
+    $nav_links = [];
+    $num_nav_links = 0;
+    foreach ($components as $comp) {
+      $short_title_array = $comp->get('field_short_title')->getValue();
+      if (!empty($short_title_array)) {
+        $short_title = $short_title_array[0]['value'];
+        $short_title = strtoupper($short_title);
+        $jump_link = strtolower(trim($short_title));
+        $jump_link = str_replace(" ", "-", $jump_link);
+        $jump_link = str_replace("&amp;", "n", $jump_link);
+        $short_title = str_replace("&AMP;", "&", $short_title);
+        $nav_links[] = Link::createFromRoute(
+          $short_title,
+          'entity.node.canonical',
+          ['node' => $node->id()],
+          [
+            'fragment' => $jump_link,
+            'attributes' => ['class' => 'scroll-link-js'],
+          ]
+        );
+        $num_nav_links++;
+        // Show only the first three links.
+        // After we've computed three links, break.
+        if ($num_nav_links == 3) {
+          break;
+        }
+      }
+    }
+    $variables['nav_links'] = $nav_links;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_node__topic_page__featured_topics(&$variables) {
+  if ($node = $variables['node']) {
+    $variables['topics_counter'] = $variables["elements"]["#seq"] + 1;
+    $variables['guide_title'] = strip_tags(html_entity_decode($node->getTitle()));
+    if ($file = File::load($node->field_thumbnail->target_id)) {
+      $variables["fileurl"] = $file->getFileUri();
+    }
+  }
+
+}
+
+/**
+ * Prepares variables for guide templates.
+ *
+ * Default template: guide.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the guide information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__topic_page(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_topic_page_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "topic_page", [
+    "field_contacts" => "Add another department",
+  ]);
+}

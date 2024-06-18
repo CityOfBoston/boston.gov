@@ -1,0 +1,23 @@
+uuid: 2f77d301-5be0-4589-b096-765debd2f81f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.newsletter
+_core:
+  default_config_hash: lXtmYqqNgyizEvaGSm0H8jWN0xWicIoVT8HvpT9Mfac
+id: paragraph.newsletter.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: newsletter
+label: Title
+description: 'This is a short (20 character) description of the signup widget. Use it for a brief call to action.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Stay Connected'
+default_value_callback: ''
+settings: {  }
+field_type: string

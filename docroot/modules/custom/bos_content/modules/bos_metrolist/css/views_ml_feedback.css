@@ -1,0 +1,126 @@
+.webform-submission-metrolist-launch-feedback-form input[type=radio] {
+  /*display: unset !important;*/
+  line-height: 1.5rem;
+}
+
+.webform-submission-metrolist-launch-feedback-form .js-form-type-radio {
+  margin: 0 !important;
+  /*padding: 0 30%;*/
+  flex-direction: column;
+  flex: 1;
+}
+
+.js-form-type-radio:after {
+  content: '';
+  /*border-bottom: 3px solid #1871bd;*/
+  width: 6.0rem;
+  height: 1px;
+  position: absolute;
+  /* top: 13.25rem; */
+  /* left: 38%; */
+  transform: translate(0, -100%);
+  z-index: -1;
+  margin-top: 1.1rem;
+  margin-left: 3.2rem;
+}
+
+.js-form-type-radio:last-child:after {
+  display: none;
+}
+.js-form-type-radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items:center
+}
+
+
+.js-form-type-radio:not(:last-child) {
+  margin-bottom: 8px;
+  margin-bottom:.5rem
+}
+
+
+
+.js-form-type-radio .form-radio {
+  margin: 0;
+  padding: 0;
+  /*width:35px;*/
+  /*height: 35px;*/
+}
+
+.js-form-type-radio label.option{
+  line-height: normal;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.js-form-type-radio .form-radio:before {
+  content: "";
+  display: block;
+  height: 35px;
+  width: 35px;
+  background-color: #fff;
+  border: 3px solid #091f2f;
+  box-sizing: border-box;
+  border-radius: 100%;
+}
+
+
+
+.js-form-type-radio .form-radio:checked:before {
+  background: #1871bd;
+  box-shadow:inset 0 0 0 7px #fff
+}
+
+.js-form-type-radio .form-radio:focus {
+  outline:none
+}
+
+.js-form-type-radio .form-radio:focus:before {
+  box-shadow:inset 0 0 0 7px #fff, 0 0 0 3px #288be4
+}
+
+.js-form-type-radio .form-radio[type=radio] {
+  display: block;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  height: 2.5rem;
+}
+
+
+
+@media screen and (max-width: 1340px) {
+
+  .webform-submission-metrolist-launch-feedback-form .js-form-type-radio {
+    flex-direction: row;
+  }
+
+  .js-form-type-radio .form-radio {
+    margin: 0 1rem;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .js-form-type-radio .form-radio[type=radio] {
+    height: unset;
+  }
+
+  .js-form-type-radio:after {
+    content: '';
+    border-left: 3px solid #1871bd;
+    width: 1px;
+    height: 3rem;
+    position: absolute;
+    /* top: 76%; */
+    /* left: 38.5%; */
+    margin-left: 2.4rem;
+    transform: translate(0, -100%);
+    z-index: -1;
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,23 @@
+uuid: 0f02daff-4d54-460b-895b-38a72a58e241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_units_total
+    - node.type.bh_project
+id: node.bh_project.field_bh_units_total
+field_name: field_bh_units_total
+entity_type: node
+bundle: bh_project
+label: 'Units Total'
+description: 'Finalized during the City Planning stage.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

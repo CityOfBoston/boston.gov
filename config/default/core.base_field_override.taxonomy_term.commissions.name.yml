@@ -1,0 +1,20 @@
+uuid: 9cdc960e-2850-4334-b0ad-63846d199019
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.commissions
+_core:
+  default_config_hash: 3VKkoTkishF8QnsiebzphfxA539SAwAqPGDnt_2BLXk
+id: taxonomy_term.commissions.name
+field_name: name
+entity_type: taxonomy_term
+bundle: commissions
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,14 @@
+uuid: 4e537e04-a896-48a6-9cdd-de45c6e1580f
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: pathauto_user_pattern
+label: 'Default User Path'
+type: 'canonical_entities:user'
+pattern: 'users/[user:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: -9
+relationships: {  }

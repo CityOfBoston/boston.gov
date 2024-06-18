@@ -1,0 +1,67 @@
+<article{{ attributes }}>
+
+    <div class="g news-card featured-news m-t500">
+
+      <div class="g--6">
+        <div class="thumb-and-title">
+
+          <svg
+            class="svg-date-flag n--a-date-flag"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 34.08 44.31"
+          >
+            <title>{{ elements.field_published_date.0['#text'] }}</title>
+            <path
+              d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z"
+              fill="#ffffff"
+              stroke="#ECECEC"
+              stroke-miterlimit="10"
+            />
+          </svg>
+
+          <p
+            class="svg-date-flag n--a-date-flag-text date-flag-text"
+          >
+            {{ elements.field_published_date.0['#text'] }}
+          </p>
+
+          <div class="news-card--thumb-wrapper">
+            {% if content.field_thumbnail %}
+
+              {{ content.field_thumbnail }}
+
+            {% else %}
+
+              <img
+                src="{{ asset_url }}/images/{{ asset_name }}/icons/news.svg"
+                alt="{{ title.0['#context'].value }}"
+                typeof="foaf:Image"
+              />
+
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+      <div class="g--6 news-column--right">
+        <div class="g">
+          <div class="g--12 optional-news-layout">
+            <div class="intro-text">
+              <h3 class="title">
+                <a href="{{ node_url }}">{{ title.0['#context'].value }}</a>
+              </h3>
+              <p class="">{{ elements.field_intro_text.0['#text'] }}</p>
+            </div>
+
+            <div class="icon-wrapper">
+              {{ elements.field_contact }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</article>

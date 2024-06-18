@@ -1,0 +1,18 @@
+uuid: 1b5e4cd5-0bb6-49a6-b6fa-3e345195a93e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_rent_type
+id: taxonomy_term.ml_rent_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: ml_rent_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

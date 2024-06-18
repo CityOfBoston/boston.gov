@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sidebar_icon
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+  module:
+    - options
+id: paragraph.sidebar_item_w_icon.field_sidebar_icon
+field_name: field_sidebar_icon
+entity_type: paragraph
+bundle: sidebar_item_w_icon
+label: 'Sidebar Icon'
+description: 'Select from the list an icon for the sidebar item.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

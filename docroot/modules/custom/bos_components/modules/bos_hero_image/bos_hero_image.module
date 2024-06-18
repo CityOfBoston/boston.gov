@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_hero_image module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Markup;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_hero_image_theme() {
+  $theme['paragraph__hero_image'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Prepares variables for post templates.
+ *
+ * Default template: post.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the post information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_paragraph__hero_image(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // Assign a unique id to this photo for the page.
+  if (!empty($variables['paragraph'])) {
+    $photo_id = Html::getUniqueId('hro-1');
+    $variables['paragraph']->_photo_id = $photo_id;
+    $variables['photo_id'] = $photo_id;
+  }
+
+  // Handle field_image if present.
+  // Has to happen in this template_preprocess_hook or does not #attach(ed).
+  if ($variables['paragraph']->hasField('field_image')) {
+    $background_image = $variables["elements"]["field_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "hero_fixed_image_fields";
+
+    if (isset($background_image) && $background_image["#items"]->count()) {
+      $anchor_class = "." . $variables["photo_id"];
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, $anchor_class);
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'hero-image-css-' . $variables["photo_id"],
+      ];
+    }
+  }
+
+
+  if ($variables['paragraph']->hasField('field_grid_link')) {
+    $variables['content']['field_grid_link']['#attributes']['class'][] = 'btn';
+  }
+
+  // Add-in a bit of css.
+  $variables['#attached']['library'][] = "bos_hero_image/hero_image.call";
+
+}
+
+/**
+ * Implements hook_paragraph_hook_summary_alter().
+ */
+function bos_hero_image_paragraph_hero_image_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  if ($media = Media::load($para["entity"]->get("field_image")->target_id)) {
+    $markup[] = Markup::create($media->get("name")->value);
+  }
+  $markup[] = Markup::create($para["entity"]->get("field_header")->value);
+  if ($para["entity"]->hasField("field_sub_header")) {
+    $markup[] = Markup::create($para["entity"]->get("field_subheader")->value);
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

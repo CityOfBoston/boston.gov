@@ -1,0 +1,18 @@
+uuid: 555954eb-640a-40ba-b344-b03698b16460
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.branded_links
+id: paragraph.branded_links.created
+field_name: created
+entity_type: paragraph
+bundle: branded_links
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

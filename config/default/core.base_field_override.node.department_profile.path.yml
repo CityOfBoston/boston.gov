@@ -1,0 +1,20 @@
+uuid: 35eb2497-0762-4a41-906f-927fbac41eef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+  module:
+    - path
+id: node.department_profile.path
+field_name: path
+entity_type: node
+bundle: department_profile
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

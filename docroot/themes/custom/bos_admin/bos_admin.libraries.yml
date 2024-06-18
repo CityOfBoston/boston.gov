@@ -1,0 +1,58 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/bos_admin.css: {weight: 300}
+      css/bos_admin.media.css: {weight: 301}
+
+workbench:
+  version: VERSION
+  css:
+    theme:
+      css/bos_admin.workbench.css: {weight: 500}
+
+preview-styling:
+  version: VERSION
+  css:
+    theme:
+      css/preview-moderation.css: {weight: 300}
+
+linkit-dialog:
+  version: VERSION
+  css:
+    theme:
+      css/linkit-dialog.css: {weight: 300}
+  js:
+    js/linkit-dialog.js: {attributes: {id: "linkit_dialog_script"}}
+  dependencies:
+    - core/jquery
+manual_date:
+  js:
+    js/bos_admin.manual_date.js: {attributes: {id: "manual_date_script"}}
+  dependencies:
+    - core/jquery
+
+actions:
+  js:
+    js/bos_admin.actions.js: {attributes: {id: "actions_script"}}
+  dependencies:
+    - core/jquery
+
+revisions:
+  js:
+    js/bos_admin.revisions.js: {attributes: {id: "revision_script"}}
+  dependencies:
+    - core/jquery
+
+ckeditor:
+  js:
+    js/bos_admin.ckeditor_context.js: {attributes: {id: "ckeditor_context_script"}}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+autocomplete:
+  js:
+    js/bos_admin.autocomplete_view_content.js: {attributes: {id: "autocomplete_view_content_script"}}
+  dependencies:
+    - core/jquery

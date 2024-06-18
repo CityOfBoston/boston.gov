@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meeting_date
+    - node.type.roll_call_dockets
+  module:
+    - datetime
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Meeting Date'
+id: node.roll_call_dockets.field_meeting_date
+field_name: field_meeting_date
+entity_type: node
+bundle: roll_call_dockets
+label: 'Meeting Date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,25 @@
+uuid: 317c293d-5d32-48a3-9bea-672ca330c40d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.teaser
+    - field.field.taxonomy_term.metrolist_user_guide_type.field_ml_learn_content
+    - taxonomy.vocabulary.metrolist_user_guide_type
+  module:
+    - text
+id: taxonomy_term.metrolist_user_guide_type.teaser
+targetEntityType: taxonomy_term
+bundle: metrolist_user_guide_type
+mode: teaser
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_ml_learn_content: true
+  langcode: true

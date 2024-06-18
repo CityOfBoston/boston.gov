@@ -1,0 +1,40 @@
+<div{{ attributes }}>
+
+  <table class="field-multiple-table responsive-enabled">
+  <thead>
+    <tr>
+      <th colspan="2" class="field-label"><h4 class="label">Message Scheduling</h4></th>
+    </tr>
+    </thead>
+  </table>
+
+  <div class="motd-wrapper">
+    <div class="dates">
+      <div class="date">{{ widget.start }}</div>
+      <div class="date">{{ widget.end }}</div>
+      <div class="date">{{ widget.time_zone }}</div>
+    </div>
+
+    <div class="cob-group-grid">
+      {{ widget.mode }}
+      <div class="cob-group-grid-vert no-border">
+        {{ widget.day_of_month }}
+        {{ widget.daily_frequency }}
+        {{ widget.weekdays }}
+        {{ widget.ordinals }}
+        {{ widget.month_of_year }}
+      </div>
+    </div>
+
+    <div class="end cob-group-grid-vert">
+      <div>
+        {{ widget.ends_mode }}
+      </div>
+      <div>
+        {{ widget.ends_count }}
+        {{ widget.ends_date }}
+      </div>
+    </div>
+    {{ widget.exceptions }}
+  </div>
+</div>

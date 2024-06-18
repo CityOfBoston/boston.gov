@@ -1,0 +1,20 @@
+uuid: 2762ea7a-966b-41c6-a926-dffc1eb544c9
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+  module:
+    - datetime
+id: node.person_profile.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: person_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

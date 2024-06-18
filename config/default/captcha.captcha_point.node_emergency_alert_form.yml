@@ -1,0 +1,7 @@
+uuid: b47879fb-7b1d-4893-9911-699d0fa7ca16
+langcode: en
+status: false
+dependencies: {  }
+formId: node_emergency_alert_form
+captchaType: default
+label: node_emergency_alert_form

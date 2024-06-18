@@ -1,0 +1,21 @@
+{% if navOutput %}
+  <div class="sub-nav-trigger ssm-trigger drawer-trigger">
+    <div class="ssm-chevron">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 18" style="enable-background:new 0 0 26 18;" xml:space="preserve">
+        <title>Toggle</title>
+        <path class="st0 icon-stroke" d="M13,17.7L0.5,2.7C0,2.1,0.1,1.2,0.7,0.6c0.6-0.5,1.6-0.4,2.1,0.2L13,13L23.2,0.8c0.5-0.6,1.5-0.7,2.1-0.2
+              c0.6,0.5,0.7,1.5,0.2,2.1L13,17.7z"></path>
+      </svg>
+    </div>
+    Page Sections
+  </div>
+  <nav class="topic-nav ssm ssm__left">
+    <a id="section-nav" title="Section Nav" class="sr-only sr-only-focusable">Section Nav</a>
+    {{ navOutput }}
+    <ul id="contact-sidebar">
+      <li>
+        <a href="#mobile-sidebar" title="Sidebar" tabindex="-1">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+{% endif %}

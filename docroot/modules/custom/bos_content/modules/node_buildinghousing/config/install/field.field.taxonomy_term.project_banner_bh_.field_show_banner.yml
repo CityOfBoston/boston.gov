@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_banner
+    - taxonomy.vocabulary.project_banner_bh_
+id: taxonomy_term.project_banner_bh_.field_show_banner
+field_name: field_show_banner
+entity_type: taxonomy_term
+bundle: project_banner_bh_
+label: 'Show Banner'
+description: 'When selected, a banner will be shown on the Project homepage'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Show
+  off_label: Hide
+field_type: boolean

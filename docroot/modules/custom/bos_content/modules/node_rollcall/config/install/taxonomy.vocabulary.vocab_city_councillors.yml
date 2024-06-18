@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'City Councillors'
+vid: vocab_city_councillors
+description: 'Roll Call: List of Current and Past City Councillors'
+weight: 0

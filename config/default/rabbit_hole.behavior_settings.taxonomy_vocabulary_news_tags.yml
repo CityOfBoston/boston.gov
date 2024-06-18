@@ -1,0 +1,12 @@
+uuid: 3d49e05a-ab42-45b2-bfc0-5bb0c6a48fe1
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_news_tags
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

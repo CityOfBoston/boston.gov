@@ -1,0 +1,22 @@
+uuid: 5b100b93-5b1c-4ddc-b15d-ac57dd51079e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: my_neighborhood_lookup_so_can_disable_cache_in_ape_
+label: 'My Neighborhood Lookup (so can disable cache in APE)'
+type: 'canonical_entities:node'
+pattern: 'mnl/[node:title]'
+selection_criteria:
+  221752ea-77fe-4162-9c3a-00bebf856cfd:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 221752ea-77fe-4162-9c3a-00bebf856cfd
+    context_mapping:
+      node: node
+    bundles:
+      neighborhood_lookup: neighborhood_lookup
+selection_logic: and
+weight: -5
+relationships: {  }

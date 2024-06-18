@@ -1,0 +1,30 @@
+uuid: bda4218b-d1d5-415d-86b9-468dc4999849
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - node.type.topic_page
+    - paragraphs.paragraphs_type.grid_of_topics
+_core:
+  default_config_hash: J8i_sTBuU1xDgi8fwcI7NsP2gz_Q17hfYpn4AdWmljw
+id: paragraph.grid_of_topics.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: grid_of_topics
+label: Guides
+description: 'Select the guides that should be displayed on this page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      topic_page: topic_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

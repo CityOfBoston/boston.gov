@@ -1,0 +1,8 @@
+uuid: ba15b414-5238-48c9-8492-d6c22327e64e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Election Contests'
+vid: election_contests
+description: 'Contests between Candidates within an Area for an Election'
+weight: 0

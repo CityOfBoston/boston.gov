@@ -1,0 +1,15 @@
+uuid: 55e1df07-81a3-4e1c-a74a-3e48575d37bf
+langcode: und
+status: true
+dependencies: {  }
+name: topic_listing_small
+label: 'Topic Listing Small (125x125)'
+effects:
+  e3e4e07a-f772-43fe-a873-9f4b0867d11d:
+    uuid: e3e4e07a-f772-43fe-a873-9f4b0867d11d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 125
+      height: 125
+      anchor: center-center

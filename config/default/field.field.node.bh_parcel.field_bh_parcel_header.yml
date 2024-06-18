@@ -1,0 +1,19 @@
+uuid: d4f85303-001c-454d-a1d8-eff498672205
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_parcel_header
+    - node.type.bh_parcel
+id: node.bh_parcel.field_bh_parcel_header
+field_name: field_bh_parcel_header
+entity_type: node
+bundle: bh_parcel
+label: 'Parcel Header'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

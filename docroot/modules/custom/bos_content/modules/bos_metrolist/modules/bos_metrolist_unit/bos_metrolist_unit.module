@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains bos_metrolist_unit.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ *
+ * @param string $route_name
+ *   Name of the route.
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   Iterface for matching routes.
+ *
+ * @return string
+ *   Help HTML text.
+ */
+function bos_metrolist_unit_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bos_metrolist_unit module.
+    case 'help.page.bos_metrolist_unit':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('MetroList Unit features') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bos_metrolist_unit_theme() {
+  return [
+    'bos_metrolist_unit' => [
+      'render element' => 'children',
+    ],
+  ];
+}

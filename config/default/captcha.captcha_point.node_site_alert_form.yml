@@ -1,0 +1,7 @@
+uuid: 5b9aede6-b85d-4faf-b748-8704210e6a7c
+langcode: en
+status: false
+dependencies: {  }
+formId: node_site_alert_form
+captchaType: default
+label: node_site_alert_form

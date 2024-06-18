@@ -1,0 +1,29 @@
+uuid: 60aa58c6-093d-4674-83f1-4a949c84cbae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_unoffical_election_results
+    - node.type.election_report
+    - paragraphs.paragraphs_type.election_card
+id: paragraph.election_card.field_unoffical_election_results
+field_name: field_unoffical_election_results
+entity_type: paragraph
+bundle: election_card
+label: 'Unoffical Election Results'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      election_report: election_report
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

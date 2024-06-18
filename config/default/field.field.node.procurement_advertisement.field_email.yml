@@ -1,0 +1,19 @@
+uuid: dd61d740-0c25-42a8-86c6-b2fe897d9ac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_email
+field_name: field_email
+entity_type: node
+bundle: procurement_advertisement
+label: 'Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

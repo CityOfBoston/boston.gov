@@ -1,0 +1,15 @@
+uuid: cea0b479-441b-45fe-b7bf-a085efe030a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'View display for links when used in the quick links paragraph.'
+id: paragraph.quick_links
+label: quick_links
+description: ''
+targetEntityType: paragraph
+cache: true

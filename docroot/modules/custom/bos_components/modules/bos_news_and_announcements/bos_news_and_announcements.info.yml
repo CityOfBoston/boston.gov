@@ -1,0 +1,23 @@
+name: bos_news_and_announcements
+type: module
+description: 'Provides theming and configuration for bos_news_announcements.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.news_and_announcements.created
+  - core.base_field_override.paragraph.news_and_announcements.status
+  - core.entity_form_display.paragraph.news_and_announcements.default
+  - core.entity_view_display.paragraph.news_and_announcements.default
+  - core.entity_view_display.paragraph.news_and_announcements.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.news_and_announcements.separated_title
+  - field.field.paragraph.news_and_announcements.field_component_title
+  - field.field.paragraph.news_and_announcements.field_featured_post
+  - field.field.paragraph.news_and_announcements.field_link
+  - field.field.paragraph.news_and_announcements.field_list
+  - field.field.paragraph.news_and_announcements.field_short_title
+  - language.content_settings.paragraph.news_and_announcements
+  - paragraphs.paragraphs_type.news_and_announcements
+  - views.view.news_and_announcements

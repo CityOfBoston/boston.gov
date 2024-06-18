@@ -1,0 +1,29 @@
+uuid: e3713ea8-6cd1-4c9a-9813-adc1fce1bc86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_region
+    - node.type.metrolist_development
+    - taxonomy.vocabulary.region
+id: node.metrolist_development.field_ml_region
+field_name: field_ml_region
+entity_type: node
+bundle: metrolist_development
+label: Region
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      region: region
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

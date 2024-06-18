@@ -1,0 +1,18 @@
+uuid: bf50339b-0e62-436f-aa9c-d0c19bad4cc7
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cityscore_metrics
+id: taxonomy_term.cityscore_metrics.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,18 @@
+uuid: fabab73c-687d-4ff8-9a68-b1ccdf0c6243
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'City score metrics for the city.'
+_core:
+  default_config_hash: os_AXWihaZ_EYnVH4yiceimjeVHgHD1HEMJ8sM6z6hg
+id: city_score_dashboard
+label: 'City Score Dashboard'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle City Score Dashboard'
+behavior_plugins: {  }

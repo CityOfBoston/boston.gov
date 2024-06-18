@@ -1,0 +1,14 @@
+uuid: 6d3f61b4-4780-42eb-a37e-60b285ec0a95
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.city_clerk_editor
+  module:
+    - user
+id: user_remove_role_action.city_clerk_editor
+label: 'Remove the City Clerk Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: city_clerk_editor

@@ -1,0 +1,20 @@
+uuid: a6a29cca-6165-4c01-9519-eede4a63d78e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_places
+_core:
+  default_config_hash: 5Xymm44od_Cz9HTTEe5Hi9K4OfBq_xg2Y09iXrOCQEI
+id: paragraph.grid_of_places.created
+field_name: created
+entity_type: paragraph
+bundle: grid_of_places
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

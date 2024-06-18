@@ -1,0 +1,59 @@
+uuid: 67a2a810-665d-4c8e-8824-0150f460a050
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.popup_icon
+    - field.field.node.person_profile.field_address
+    - field.field.node.person_profile.field_components
+    - field.field.node.person_profile.field_contact
+    - field.field.node.person_profile.field_description
+    - field.field.node.person_profile.field_email
+    - field.field.node.person_profile.field_first_name
+    - field.field.node.person_profile.field_last_name
+    - field.field.node.person_profile.field_metatags
+    - field.field.node.person_profile.field_person_photo
+    - field.field.node.person_profile.field_phone_number
+    - field.field.node.person_profile.field_political_party
+    - field.field.node.person_profile.field_position_title
+    - field.field.node.person_profile.field_preferred_contact
+    - field.field.node.person_profile.field_profile_type
+    - field.field.node.person_profile.field_sidebar_components
+    - field.field.node.person_profile.field_year_elected
+    - node.type.person_profile
+  module:
+    - user
+_core:
+  default_config_hash: AUs0QBrwehr3kJylE6dDd2lKh0d7ZJ70BiYLbmbLwEU
+id: node.person_profile.popup_icon
+targetEntityType: node
+bundle: person_profile
+mode: popup_icon
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_address: true
+  field_components: true
+  field_contact: true
+  field_description: true
+  field_email: true
+  field_first_name: true
+  field_last_name: true
+  field_metatags: true
+  field_person_photo: true
+  field_phone_number: true
+  field_political_party: true
+  field_position_title: true
+  field_preferred_contact: true
+  field_profile_type: true
+  field_sidebar_components: true
+  field_year_elected: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,13 @@
+uuid: c921c89c-fd18-4040-a34c-9e1c6ef0c22e
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: iYF5QTDMK7jkf1IHsUakch9dEhsfhKAupIDlE07fV5Y
+id: taxonomy_term.contact
+label: Contact
+description: ''
+targetEntityType: taxonomy_term
+cache: true

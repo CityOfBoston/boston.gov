@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @implements  hook_cron().
+ */
+function bos_pdfmanager_cron() {
+  // Cleanup the tmp folder from pdf processes.
+  // The PDFManager cleans up pretty well, but files which are required for
+  // download via a Response object must remain after the php code terminates.
+  // This cron process rmoves old files after the user has had a chance to
+  // download them.
+  $tmpfolder = \Drupal::service('file_system')->realpath("public://tmp");
+  foreach(scandir($tmpfolder) as $file) {
+    // If the file has not been editted in the last 12 hours, then remove.
+    if (is_file($file) && (time() - filemtime($file)) > (12 * 60 * 60)) {
+      unlink($file);
+    }
+  }
+}

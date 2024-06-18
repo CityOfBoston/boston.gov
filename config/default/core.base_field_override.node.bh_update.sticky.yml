@@ -1,0 +1,22 @@
+uuid: e60c9ceb-1933-4aad-8e1b-1b9e5200dca2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.sticky
+field_name: sticky
+entity_type: node
+bundle: bh_update
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

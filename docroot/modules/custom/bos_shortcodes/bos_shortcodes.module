@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Defines Shortcodes to allow forms to be embedded through tokens.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ *
+ * Defines theme functions for shortcodes.
+ */
+function bos_shortcodes_theme() {
+  return [
+    'shortcode_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function bos_shortcodes_form_bos_towing_lookup_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Can be used for further customizations.
+}

@@ -1,0 +1,18 @@
+uuid: cb0bbd18-dd6a-40af-95c9-18ed1415a0c8
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+id: taxonomy_term.political_party.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: political_party
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,37 @@
+bos_web_app:
+  version: 1.x
+  dependencies:
+    - core/drupalSettings
+
+my_neighborhood:
+  version: my_neighborhood.1704913367566.09.06
+  js:
+    #MNL REACT application and config
+    apps/my_neighborhood/dist/index.js: {attributes: {type: text/javascript}}
+    #Jquery plugin for search bar auto text scaling
+    https://jquery-textfill.github.io/js/textfill/jquery.textfill.js: {attributes: {type: text/javascript,minified: true}}
+  css:
+    layout:
+      apps/my_neighborhood/dist/mnl_styles.css: {attributes: {media: screen, type: text/css}}
+  dependencies:
+    - core/drupalSettings
+
+assessing:
+  version: assessing.163943297149816394329666151
+  js:
+    apps/assessing/dist/index.js: {attributes: {type: text/javascript}}
+  css:
+    layout:
+      apps/assessing/dist/styles.css: {attributes: {media: screen, type: text/css}}
+  dependencies:
+    - core/drupalSettings
+
+abutters:
+  version: abutters.1.0.1
+  js:
+    apps/abutters/dist/index.js: {attributes: {type: text/javascript}}
+  css:
+    layout:
+      apps/abutters/dist/styles.css: {attributes: {media: screen, type: text/css}}
+  dependencies:
+    - core/drupalSettings

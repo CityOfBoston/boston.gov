@@ -1,0 +1,5 @@
+signup.alerts:
+  js:
+    js/bos_signup_emergency_alerts.js: {}
+  dependencies:
+  - core/jquery

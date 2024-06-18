@@ -1,0 +1,21 @@
+uuid: 921ea97e-9fc2-4c18-89c7-7f7664a10d00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.public_notice
+_core:
+  default_config_hash: qE1cUfW6Yyz6389lSOOD0JgS-NAUc8mK5--minzw0nQ
+id: node.public_notice.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: public_notice
+label: 'Contact Phone Number'
+description: 'The phone number that should be used to inquire about this notice.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

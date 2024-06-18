@@ -1,0 +1,15 @@
+uuid: 4230d14e-5a59-4c0d-8f37-fd70ab744ce4
+langcode: und
+status: true
+dependencies: {  }
+name: person_photo_a_mobile_1x
+label: 'Person photo a-mobile 1x (110x110)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 110
+      height: 110
+      anchor: center-center

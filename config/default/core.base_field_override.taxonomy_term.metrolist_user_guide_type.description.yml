@@ -1,0 +1,20 @@
+uuid: 234b8c48-da52-4fcc-9a6d-b701267fd27c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.metrolist_user_guide_type
+  module:
+    - text
+id: taxonomy_term.metrolist_user_guide_type.description
+field_name: description
+entity_type: taxonomy_term
+bundle: metrolist_user_guide_type
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

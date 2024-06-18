@@ -1,0 +1,42 @@
+uuid: fd6a35a2-7ea1-4f5d-8231-bd6d1a94b6b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_election_type
+field_name: field_election_type
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'state primary'
+      label: 'State Primary'
+    -
+      value: 'state general'
+      label: 'State General'
+    -
+      value: 'municipal primary'
+      label: 'Municipal Primary'
+    -
+      value: 'municipal general'
+      label: 'Municipal General'
+    -
+      value: 'special primary'
+      label: 'Special Primary'
+    -
+      value: special
+      label: Special
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,27 @@
+uuid: b5799db9-6224-49f1-8dd7-c94fb368efed
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.grid_of_programs_initiatives.field_component_theme
+    - field.field.paragraph.grid_of_programs_initiatives.field_component_title
+    - field.field.paragraph.grid_of_programs_initiatives.field_contact
+    - field.field.paragraph.grid_of_programs_initiatives.field_hide_title_bar
+    - field.field.paragraph.grid_of_programs_initiatives.field_program_initiative
+    - field.field.paragraph.grid_of_programs_initiatives.field_short_title
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+_core:
+  default_config_hash: DSS01mLLCO2BYJQ3guU8k07XdKuLPqr1vtXQaTm2p7U
+id: paragraph.grid_of_programs_initiatives.separated_title
+targetEntityType: paragraph
+bundle: grid_of_programs_initiatives
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_program_initiative: true
+  field_short_title: true

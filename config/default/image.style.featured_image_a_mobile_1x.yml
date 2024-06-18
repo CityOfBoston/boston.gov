@@ -1,0 +1,15 @@
+uuid: 29991074-c45f-4dc3-abb3-027b7c29862d
+langcode: und
+status: true
+dependencies: {  }
+name: featured_image_a_mobile_1x
+label: 'Featured image a-mobile 1x (335x350)'
+effects:
+  171e4161-393a-4cda-b837-dabec4b65e80:
+    uuid: 171e4161-393a-4cda-b837-dabec4b65e80
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 335
+      height: 350
+      anchor: center-center

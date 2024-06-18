@@ -1,0 +1,21 @@
+uuid: 18bc720f-51ab-4097-8946-3b2bcfdc7409
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_wysiwyg_photo_a
+    - node.type.bh_project
+  module:
+    - text
+id: node.bh_project.field_bh_wysiwyg_photo_a
+field_name: field_bh_wysiwyg_photo_a
+entity_type: node
+bundle: bh_project
+label: 'WYSIWYG Photo A'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

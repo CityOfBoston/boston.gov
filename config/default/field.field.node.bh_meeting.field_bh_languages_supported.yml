@@ -1,0 +1,19 @@
+uuid: e51f7153-99ce-4b1d-8120-bb564ac3121c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_languages_supported
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_languages_supported
+field_name: field_bh_languages_supported
+entity_type: node
+bundle: bh_meeting
+label: 'Languages supported'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

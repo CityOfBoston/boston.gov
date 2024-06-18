@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - salesforce_oauth
+id: oauth_1_0
+label: 'OAuth 1.0'
+provider: oauth
+provider_settings:
+  consumer_key: 3MVG9JamK_x9K2XKK99OwezxYd7ppI_ltWuoFi9Spel19z.BfYBJfl2yBl6gr0A0rooQy4s1EDoEt0PwnHy5y
+  consumer_secret: 5631E5174C875230F4930EF7C1B997F1CCB4A47029BE1B1E0DF0E595D573BE5C
+  login_url: 'https://boston-dnd--metro.cs92.my.salesforce.com'

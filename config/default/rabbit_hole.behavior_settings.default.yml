@@ -1,0 +1,14 @@
+uuid: be57e9af-6f3d-4dc3-89fa-0e69d4ae5a0a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: V4kEJzI6kqZ9qVXKGyhOCUkL5K6ab7CL73QbvExeBkU
+id: default
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 0
+redirect_fallback_action: null

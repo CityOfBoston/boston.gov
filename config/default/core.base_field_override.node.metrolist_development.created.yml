@@ -1,0 +1,18 @@
+uuid: 218cf91e-ef51-40cc-9845-840f24027d93
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.created
+field_name: created
+entity_type: node
+bundle: metrolist_development
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

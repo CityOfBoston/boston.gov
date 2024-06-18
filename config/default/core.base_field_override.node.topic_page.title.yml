@@ -1,0 +1,20 @@
+uuid: 91176f28-c866-4765-aec1-abb6ee8a2211
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.topic_page
+_core:
+  default_config_hash: 9fngHTiJqSN9IaGjw74g7awKdaeGOUYieFn303eR7xY
+id: node.topic_page.title
+field_name: title
+entity_type: node
+bundle: topic_page
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

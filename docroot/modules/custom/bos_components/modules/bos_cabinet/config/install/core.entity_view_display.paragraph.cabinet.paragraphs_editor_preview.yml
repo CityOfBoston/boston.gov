@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.cabinet.field_contacts
+    - field.field.paragraph.cabinet.field_description
+    - field.field.paragraph.cabinet.field_person
+    - field.field.paragraph.cabinet.field_short_title
+    - field.field.paragraph.cabinet.field_title
+    - paragraphs.paragraphs_type.cabinet
+id: paragraph.cabinet.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: cabinet
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_contacts: true
+  field_description: true
+  field_person: true
+  field_short_title: true
+  field_title: true

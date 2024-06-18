@@ -1,0 +1,24 @@
+uuid: 5e4365b4-63aa-47cb-b499-c52ac9b8d869
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bos_signup_emergency_alerts
+_core:
+  default_config_hash: QnT7GS1ryKLexO52FE6Ruw8kaQWHoI7_BBrNwtdj8pU
+id: paragraph.bos_signup_emergency_alerts.status
+field_name: status
+entity_type: paragraph
+bundle: bos_signup_emergency_alerts
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

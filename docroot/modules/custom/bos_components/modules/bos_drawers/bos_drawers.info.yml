@@ -1,0 +1,31 @@
+name: bos_drawers
+type: module
+description: 'Provides theming and configuration for bos_drawers.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.drawer.created
+  - core.base_field_override.paragraph.drawer.status
+  - core.base_field_override.paragraph.drawers.created
+  - core.base_field_override.paragraph.drawers.status
+  - core.entity_form_display.paragraph.drawer.default
+  - core.entity_form_display.paragraph.drawers.default
+  - core.entity_view_display.paragraph.drawer.default
+  - core.entity_view_display.paragraph.drawer.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.drawers.default
+  - core.entity_view_display.paragraph.drawers.paragraphs_editor_preview
+  - field.field.paragraph.drawer.field_short_description
+  - field.field.paragraph.drawer.field_text_blocks
+  - field.field.paragraph.drawer.field_title
+  - field.field.paragraph.drawers.field_component_title
+  - field.field.paragraph.drawers.field_contact
+  - field.field.paragraph.drawers.field_drawer
+  - field.field.paragraph.drawers.field_short_title
+  - language.content_settings.paragraph.drawer
+  - language.content_settings.paragraph.drawers
+  - paragraphs.paragraphs_type.drawer
+  - paragraphs.paragraphs_type.drawers

@@ -1,0 +1,18 @@
+uuid: 1b9d86a2-d9a1-418b-a7d6-f8d812c9fea9
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+id: paragraphs_library_item.paragraphs_library_item.changed
+field_name: changed
+entity_type: paragraphs_library_item
+bundle: paragraphs_library_item
+label: Changed
+description: 'The time that the library item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

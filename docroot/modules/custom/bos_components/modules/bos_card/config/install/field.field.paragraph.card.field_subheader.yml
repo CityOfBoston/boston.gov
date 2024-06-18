@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheader
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_subheader
+field_name: field_subheader
+entity_type: paragraph
+bundle: card
+label: Sub-Title
+description: 'Leave blank if no sub-title. Will display in all-caps Montserrat below title. <strong>Display is limited to 70 characters.</strong>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

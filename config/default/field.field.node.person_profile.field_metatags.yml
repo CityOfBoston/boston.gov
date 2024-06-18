@@ -1,0 +1,23 @@
+uuid: 57b6d6be-8472-4cd7-978b-ae0c31ea4b4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.person_profile
+  module:
+    - metatag
+id: node.person_profile.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: person_profile
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:3:{s:21:"schema_person_address";s:289:"a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_address:address_line1]";s:15:"addressLocality";s:29:"[node:field_address:locality]";s:13:"addressRegion";s:40:"[node:field_address:administrative_area]";s:10:"postalCode";s:32:"[node:field_address:postal_code]";}";s:19:"schema_person_image";s:123:"a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:29:"[boston:social-image-default]";}";s:25:"schema_person_affiliation";s:221:"a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:14:"City Of Boston";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:45:"https://patterns.boston.gov/images/b-dark.svg";}}";}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

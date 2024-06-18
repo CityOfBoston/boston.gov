@@ -1,0 +1,52 @@
+// <UnitGroup />
+@import '@globals';
+
+.ml-unit-group {
+  width: 100%;
+  // margin: 0 auto;
+  border-collapse: collapse;
+  font-family: $font-family-montserrat;
+  font-size: rem( 14px );
+  border-collapse: collapse;
+}
+  @include media-breakpoint-up( large ) {
+    .ml-unit-group {
+      font-size: rem( 16px );
+    }
+  }
+  .ml-unit-group__cell {
+    width: 33.333333%;
+    padding: $table-cell-spacing;
+    text-align: center;
+
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  // table {
+    
+  // }
+  // tr {
+  //   background: #eee;
+  //   border-bottom: 1px solid #fff;
+  // }
+  // tr, td {
+  //   padding: 0;
+  // }
+  // tr td div {
+  //   max-height: 0;
+  //   padding: 0 10px;
+  //   box-sizing: border-box;
+  //   overflow: hidden;
+  //   transition: max-height 0.3s, padding 0.3s;
+  // }
+  // tr.active td div {
+  //   max-height: 100px;
+  //   padding: 10px 10px;
+  //   transition: max-height 0.6s, padding 0.6s;
+  // }

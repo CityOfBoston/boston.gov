@@ -1,0 +1,24 @@
+uuid: eecb421b-abea-485c-967b-35060e4ccef2
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_contact_info
+_core:
+  default_config_hash: SpLm7n67yV1LzC80GvIEuG6FU4gZq5jRuo_KnI0YLms
+id: paragraph.commission_contact_info.status
+field_name: status
+entity_type: paragraph
+bundle: commission_contact_info
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

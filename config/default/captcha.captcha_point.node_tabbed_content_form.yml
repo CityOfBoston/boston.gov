@@ -1,0 +1,7 @@
+uuid: 199359b7-4324-4756-81d7-b26e5d15b70b
+langcode: en
+status: false
+dependencies: {  }
+formId: node_tabbed_content_form
+captchaType: default
+label: node_tabbed_content_form

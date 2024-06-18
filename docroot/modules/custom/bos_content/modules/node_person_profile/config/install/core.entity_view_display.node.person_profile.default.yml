@@ -1,0 +1,196 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.person_profile.field_address
+    - field.field.node.person_profile.field_components
+    - field.field.node.person_profile.field_contact
+    - field.field.node.person_profile.field_description
+    - field.field.node.person_profile.field_email
+    - field.field.node.person_profile.field_first_name
+    - field.field.node.person_profile.field_last_name
+    - field.field.node.person_profile.field_metatags
+    - field.field.node.person_profile.field_person_photo
+    - field.field.node.person_profile.field_phone_number
+    - field.field.node.person_profile.field_political_party
+    - field.field.node.person_profile.field_position_title
+    - field.field.node.person_profile.field_preferred_contact
+    - field.field.node.person_profile.field_profile_type
+    - field.field.node.person_profile.field_sidebar_components
+    - field.field.node.person_profile.field_year_elected
+    - image.style.person_photo_profile_large_360x360_
+    - node.type.person_profile
+  module:
+    - address
+    - entity_reference_revisions
+    - fences
+    - media
+    - metatag
+    - text
+    - user
+id: node.person_profile.default
+targetEntityType: node
+bundle: person_profile
+mode: default
+content:
+  field_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: list-item
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'person-profile-bio squiggle-border-top'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_email:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: list-item
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_person_photo:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: person_photo_profile_large_360x360_
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'list-item person-profile-photo'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: list-item
+        fences_field_item_tag: none
+        fences_field_item_classes: list-item
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_political_party:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'detail-item detail-item--secondary'
+        fences_field_item_tag: div
+        fences_field_item_classes: detail-item__body--secondary
+        fences_label_tag: div
+        fences_label_classes: detail-item__left
+    weight: 8
+    region: content
+  field_position_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: person-profile-position-title
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_sidebar_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: sidebar
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'detail-item detail-item--secondary'
+        fences_field_item_tag: div
+        fences_field_item_classes: detail-item__body--secondary
+        fences_label_tag: div
+        fences_label_classes: detail-item__left
+    weight: 10
+    region: content
+  field_year_elected:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'detail-item detail-item--secondary'
+        fences_field_item_tag: div
+        fences_field_item_classes: detail-item__body--secondary
+        fences_label_tag: div
+        fences_label_classes: detail-item__left
+    weight: 7
+    region: content
+hidden:
+  content_moderation_control: true
+  field_contact: true
+  field_first_name: true
+  field_last_name: true
+  field_preferred_contact: true
+  field_profile_type: true
+  langcode: true
+  links: true
+  published_at: true

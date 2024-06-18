@@ -1,0 +1,13 @@
+uuid: 638cf351-09aa-4180-a789-263d3f87d9f5
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: ri9XQ6T6z66WwubpVwrrI6At5T42K1oi1TuB9eyhPCg
+id: how_to_text_step
+label: 'How-To Text Step'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle How-To Text Step'
+behavior_plugins: {  }

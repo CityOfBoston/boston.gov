@@ -1,0 +1,23 @@
+uuid: a80e543d-37d4-4b7c-a119-6a79777443de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.drawers
+id: paragraph.drawers.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: drawers
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

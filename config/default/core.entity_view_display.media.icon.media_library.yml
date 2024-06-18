@@ -1,0 +1,39 @@
+uuid: f8291124-6e44-4aed-a1db-552b997d2f76
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.icon.field_media_in_library
+    - field.field.media.icon.image
+    - media.type.icon
+  module:
+    - fences
+id: media.icon.media_library
+targetEntityType: media
+bundle: icon
+mode: media_library
+content:
+  image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: preview
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: media_library_cob
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

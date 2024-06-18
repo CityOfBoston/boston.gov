@@ -1,0 +1,20 @@
+uuid: 095a9623-2b70-49d7-aabf-ffb3cddff0d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.text_three_column
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: BRxGS99bjibSut5Jboc0abBgA57zG8jIJxGdt5gewFk
+id: paragraph.text_three_column
+target_entity_type_id: paragraph
+target_bundle: text_three_column
+default_langcode: site_default
+language_alterable: false

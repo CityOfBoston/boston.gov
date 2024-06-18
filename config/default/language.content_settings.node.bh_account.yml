@@ -1,0 +1,18 @@
+uuid: 74b8ae12-643d-4c33-8d6d-e45916071439
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.bh_account
+target_entity_type_id: node
+target_bundle: bh_account
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,8 @@
+uuid: fdb4fd17-0df0-43a2-88d4-dc10ce665f93
+langcode: en
+status: true
+dependencies: {  }
+name: 'Content Feed'
+vid: content_feed
+description: ''
+weight: 0

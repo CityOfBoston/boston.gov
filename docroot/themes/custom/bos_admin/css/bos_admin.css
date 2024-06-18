@@ -1,0 +1,1579 @@
+/* bos_admin Theme overrides file. All selectors must start with ".bos_admin" */
+
+/* Import the Open Sans webfont from Google CDN */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/uYKcPVoh6c5R0NpdEY5A-Q.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNShsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+
+/** edit-node form */
+.node-form #edit-meta {
+  background-color: #f2f2f0;
+}
+
+/* Adds a calendar to the workflow scheduler. */
+transitionset.moderation-state {
+  display: block;
+  border: 1px solid #b8b8b8;
+  margin-top: 1em;
+}
+transitionset.moderation-state a {
+  background-image: url(//themes/custom/bos_admin/images/calendar.svg);
+  background-repeat: no-repeat;
+  padding-left: 3em;
+  line-height: 3em;
+  display: block;
+}
+transitionset.moderation-state .scheduled-transition {
+  margin: 1em;
+}
+transitionset.moderation-state .scheduled-transition a {
+  background-image: none;
+  padding-left: initial;
+  line-height: initial;
+  display: initial;
+}
+transitionset.moderation-state .scheduled-transition label {
+  display: block;
+}
+transitionset.moderation-state .scheduled-transition button {
+  margin-top: 1em;;
+}
+
+div[id^=edit-moderation-state-].container-inline,
+div#edit-meta-published {
+  border: 1px solid #b8b8b8;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+div[id^=edit-moderation-state-].status-draft,
+div#edit-meta-published.status-draft {
+  background-color: #d14700;
+  color: #fff;
+}
+.bos_admin.node-needs_review .content-header,
+div[id^=edit-moderation-state-].status-needs-review,
+div#edit-meta-published.status-needs-review {
+  background-color: #0075d1;
+  color: #fff;
+}
+.bos_admin header.content-header,
+.bos_admin.node-draft .content-header,
+div[id^=edit-moderation-state-].status-draft-available,
+div#edit-meta-published.status-draft-available {
+  background-color: #d14700;
+}
+.bos_admin.node-archive .content-header,
+div.status-archive {
+  background-color: #888888;
+  color: #fff;
+}
+.bos_admin.node-published .content-header,
+div.status-published {
+  background-color: #1b8000;
+  color: #fff;
+}
+#block-bos-admin-page-title {
+  max-height: 58px;
+}
+.bos_admin .block-page-title-block:before {
+  content: url("//themes/custom/bos_admin/images/B_50px.png");
+  margin-right: 15px;
+  float: left;
+  margin-left: -15px;
+  margin-top: -5px;
+}
+.bos_admin h1.page-title {
+  line-height: 1.4em;
+  overflow: hidden;
+}
+
+/* Node revision summary page */
+.bos_admin .diff-revisions tr {
+    font-size: 110%;
+    font-weight: bold;
+}
+.bos_admin .diff-revisions tr .revision-log {
+  font-weight: normal;
+  margin: 5px 0 0 10px;
+  border: 1px solid #c5c5c5;
+  padding: 0.5em;
+  background-color: #d2e4fb;
+}
+.bos_admin .diff-revisions tr .revision-log:before {
+  content: "Revision Log: ";
+  color: #1979cc;
+  font-weight: bold;
+}
+/* For the node revision compare form */
+.bos_admin #block-bos-admin-content .diff-responsive-table-wrapper {
+    border:  1px solid #c5c5c5;
+    padding: .7em;
+    border-radius: 3px;
+}
+
+/******** LEGACY **************************/
+
+/*html {
+  zoom: 1.1;
+}*/
+
+/* Fix drag and drop offset in ckeditor toolbar configuration */
+/*.bos_admin .ckeditor-toolbar-configuration.js-form-wrapper.form-wrapper {
+  zoom: 0.9;
+}*/
+
+body.bos_admin {
+  font: normal 81.3%/1.538em "Open Sans", sans-serif;
+}
+
+.bos_admin h1,
+.bos_admin .heading-a {
+  font-weight: 300;
+  margin-bottom: 19px;
+  margin-bottom: 1rem;
+  font-size: 2.35em;
+  line-height: 1.4em;
+  color: #fff;
+}
+
+.bos_admin .content-header {
+  background-color: #333;
+  padding: 1rem 0 0;
+}
+
+.bos_admin.toolbar-tray-open.toolbar-fixed.toolbar-horizontal:not(html-entity-browser) {
+   padding-top: 5rem !important;
+}
+
+.bos_admin thead th {
+  border: none;
+  color: #909090;
+  text-transform: none;
+  font-weight: 500;
+  font-size: 0.91rem;
+}
+
+.bos_admin thead th.is-active {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #E6E4DF;
+  border-left: 1px solid #E6E4DF;
+  border-right: 1px solid #E6E4DF;
+}
+
+.bos_admin th.is-active > a,
+.bos_admin th.is-active > a:hover {
+  color: #333;
+}
+
+.bos_admin th > a:hover {
+  text-decoration: underline;
+}
+
+.bos_admin th > a:after,
+.bos_admin th.is-active > a:after {
+  display: none;
+}
+
+.bos_admin thead > tr {
+  border-bottom: 1px solid #E6E4DF;
+}
+
+.bos_admin .tabs__tab {
+  border: 1px solid transparent;
+}
+
+.bos_admin .tabs.primary {
+  margin: 0;
+  margin: 0;
+}
+
+.bos_admin .tabs.primary .tabs__tab.is-active {
+  border-radius: 0; /* LTR */
+}
+
+[dir="rtl"] .bos_admin .tabs.primary .tabs__tab.is-active {
+  border-top-right-radius: 0;
+}
+
+.bos_admin .is-collapse-enabled .tabs__trigger {
+  border-radius: 0; /* LTR */
+}
+
+[dir="rtl"] .is-collapse-enabled .tabs__trigger {
+  border-left: 1px solid transparent;
+  border-radius: 0 0 0 0;
+}
+
+.bos_admin .is-open .tabs__tab.is-active {
+  border-bottom: 1px solid transparent;
+}
+
+.bos_admin .is-horizontal .tabs__tab {
+  transition: all, 0.3s;
+}
+
+.bos_admin .is-horizontal .tabs__tab + .tabs__tab,
+[dir="rtl"] .bos_admin .is-horizontal .tabs__tab + .tabs__tab,
+.bos_admin .is-horizontal .tabs.primary .tabs__tab:first-child,
+[dir="rtl"] .bos_admin .is-horizontal .tabs.primary .tabs__tab:first-child,
+.bos_admin .is-horizontal .tabs.primary .tabs__tab:last-child,
+[dir="rtl"] .bos_admin .is-horizontal .tabs.primary .tabs__tab:last-child,
+.bos_admin .is-horizontal .tabs__tab.is-active,
+.bos_admin .is-horizontal .tabs.primary .tabs__tab.is-active,
+[dir="rtl"] .bos_admin .is-horizontal .tabs.primary .tabs__tab.is-active {
+  border-radius: 0;
+  border: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.bos_admin .is-collapse-enabled .tabs:before,
+.bos_admin .is-horizontal .tabs:before {
+  display: none;
+}
+
+.bos_admin .tabs__tab,
+.bos_admin .tabs__tab:hover,
+.bos_admin .tabs__tab:focus,
+.bos_admin .tabs.primary a:focus {
+  background: transparent;
+}
+
+.bos_admin .is-horizontal .tabs.primary a:hover {
+  text-decoration: underline;
+}
+
+.bos_admin nav.is-horizontal.is-collapsible.position-container.is-horizontal-enabled ul.tabs.primary {
+  background: #777777;
+  margin-left: -2.1rem;
+  margin-right: -2.1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.bos_admin .tabs.primary .tabs__tab a {
+  color: #fff;
+}
+.bos_admin .tabs.primary .tabs__tab.is-active a {
+  color: initial;
+}
+.bos_admin .is-horizontal .tabs.primary .tabs__tab:first-child.is-active {
+  box-shadow: -0.5rem 0px 0 #fff;
+}
+
+.bos_admin .is-horizontal ul.tabs.secondary li:first-of-type {
+  margin-left: 0;
+}
+
+[dir="rtl"] .bos_admin .is-horizontal ul.tabs.secondary li:first-of-type {
+  margin-left: 1em;
+}
+
+[dir="rtl"] .bos_admin .is-horizontal ul.tabs.secondary li:first-of-type {
+  margin-right: 0;
+}
+
+.bos_admin .vertical-tabs {
+  border-radius: 0;
+  border: 1px solid #b5b5b5;
+  background: #f2f2f0;
+}
+
+.bos_admin .vertical-tabs__panes {
+  border: none;
+  background-color: #d2e4fb; /* DU */
+  padding: 15px 15px 15px 15px;  /* DU */
+}
+
+.bos_admin .vertical-tabs__menu {
+  border-bottom: none;
+}
+
+.bos_admin .vertical-tabs__menu-item {
+  border: 1px solid #ccc;
+  border-top: 0;
+  background: #eee;
+}
+
+.bos_admin .vertical-tabs__menu-item a {
+  border: 0 none;
+  transition: all, 0.2s;
+  padding: 15px;
+}
+
+.bos_admin .vertical-tabs__pane {
+  padding: 5px 0 0 0;
+  border: 1px solid #bfbfbf;
+  border-radius:  3px;
+}
+
+.bos_admin .vertical-tabs__menu-item a:hover,
+.bos_admin .vertical-tabs__menu-item a:focus {
+  background: #d2e4fb;
+}
+
+.bos_admin .vertical-tabs__menu-item.is-selected a,
+.bos_admin .vertical-tabs__menu-item.is-selected a:hover,
+.bos_admin .vertical-tabs__menu-item.is-selected a:focus {
+  background-color: #d2e4fb;
+  color: #000;
+  padding: 15px;
+}
+
+.bos_admin .vertical-tabs__menu-item.is-selected {
+  border: 0 none;
+  box-shadow: none;
+  background-color: #f2f2f0;
+}
+
+.bos_admin .button {
+  border-radius: 0;
+  background-image: none;
+  background-color: #F9F9F9;
+  text-shadow: none;
+  transition: all, 0.2s;
+}
+
+.bos_admin .button:hover,
+.bos_admin .button:focus {
+  background-color: #FFFFFF;
+  border-color: #008ee6;
+  background-image: none;
+}
+
+.bos_admin .button-action:before {
+  display: none;
+}
+
+.bos_admin .action-links {
+  margin: 2em 0;
+}
+
+.bos_admin .button--primary {
+  background: #0071b8;
+  border-color: #0071b8;
+}
+
+.bos_admin .button--primary:hover,
+.bos_admin .button--primary:focus {
+  background-image: none;
+  background-color: #1f86c7;
+  border-color: #1f86c7;
+}
+
+.bos_admin .button:focus {
+  box-shadow: none;
+  border-color: rgb(104, 163, 207);
+  outline: rgb(193, 224, 255) solid 2px;
+}
+
+.bos_admin .button--small:focus {
+  outline: none;
+}
+
+.bos_admin .action-links .button--primary {
+  color: #327EBD;
+  background: #fff;
+  font-size: 14px;
+  padding: 0.33rem 1.33rem;
+  border: 2px solid #327ebd;
+  font-family: sans-serif;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.bos_admin .action-links .button--primary:hover,
+.bos_admin .action-links .button--primary:focus {
+  color: #fff;
+  box-shadow: none;
+  background-image: none;
+  background-color: #327EBD;
+}
+
+.bos_admin .action-links .button--primary:focus {
+  border-color: #08639b;
+  outline: none;
+}
+
+/* David
+removed b/c it greys out call to action buttons on
+edit forms
+ */
+/*.bos_admin .button--small {
+  border-color: #cacaca;
+  border-radius: 0.2rem;
+  color: #b1b1b1;
+  font-weight: 500;
+  background: #fff;
+}*/
+
+.bos_admin .button--danger {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.bos_admin .button--danger:hover {
+  text-decoration: underline;
+}
+
+/* DU Formats display form buttons for translated entities */
+.bos_admin .node-form #edit-actions {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.bos_admin .node-form #edit-actions .button {
+  margin: 0 0 10px 0;
+  max-width: min-content;
+}
+.bos_admin .node-form .layout-region-node-main #edit-actions {
+  display: block;
+}
+/* -- */
+
+/* DU hides breadcrumb on contentual editor component pages */
+.bos_admin.path-paragraphs-edit #block-bos-admin-breadcrumbs {
+  display:none;
+}
+.bos_admin.path-paragraphs-edit .page-content {
+  margin-top: 10px;
+}
+/* -- */
+.bos_admin select {
+  min-height: 28px;
+  text-shadow: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .bos_admin select {
+    border-radius: 0;
+    background: url(../images/caret-down.svg) no-repeat 98% 64% #fcfcfa;
+  }
+
+  .bos_admin select:focus,
+  .bos_admin select:hover {
+    background: url(../images/caret-down.svg) no-repeat 98% 64% #fcfcfa;
+  }
+  .bos_admin select:focus {
+    border-color: #68A3CF;
+    outline: 2px solid #C1E0FF;
+    outline-offset: 0px;
+    color: #000;
+  }
+}
+
+.js .bos_admin .form-actions .dropbutton .dropbutton-action > * {
+  text-shadow: none;
+}
+
+.js .bos_admin .form-actions .dropbutton .dropbutton-action > *,
+.js .bos_admin .dropbutton-widget .dropbutton-action a,
+.js .bos_admin .dropbutton-widget .dropbutton-action input,
+.js .bos_admin .dropbutton-widget .dropbutton-action button,
+.js .bos_admin .dropbutton-multiple .dropbutton-widget,
+.js .bos_admin .dropbutton-widget .dropbutton-action input,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-toggle button {
+  border-radius: 0;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action a:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action button:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action input:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action a:focus,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action button:focus,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action input:focus {
+  box-shadow: none;
+}
+
+.js .bos_admin .form-actions .dropbutton-wrapper .dropbutton-widget .dropbutton-toggle button,
+.bos_admin .form-actions .dropbutton .secondary-action {
+  border-color: #FFFFFF;
+}
+
+.js .bos_admin .dropbutton-multiple .dropbutton-widget {
+  background: #fcfcfa;
+  background-image: none;
+  text-shadow: none;
+}
+
+.js .bos_admin .form-actions .dropbutton-multiple .dropbutton-widget {
+  background-color: #0071b8;
+}
+
+.js .bos_admin .dropbutton-multiple .dropbutton-widget {
+  text-shadow: none;
+}
+
+.js .bos_admin .dropbutton-multiple.open .dropbutton-action:first-child a,
+.js .bos_admin .dropbutton-multiple.open .dropbutton-action:first-child .button {
+  border-radius: 0;
+}
+
+.js .bos_admin .form-actions .dropbutton-wrapper .dropbutton-widget .dropbutton-action .button:hover,
+.js .bos_admin .form-actions .dropbutton-wrapper .dropbutton-widget .dropbutton-action .button:focus {
+  background-image: none;
+  box-shadow: none;
+}
+
+.bos_admin label {
+  margin: 0 0 0.2em;
+}
+
+.bos_admin input.form-autocomplete,
+.bos_admin input.form-text,
+.bos_admin input.form-tel,
+.bos_admin input.form-email,
+.bos_admin input.form-url,
+.bos_admin input.form-search,
+.bos_admin input.form-number,
+.bos_admin input.form-color,
+.bos_admin input.form-file,
+.bos_admin input.form-date,
+.bos_admin input.form-time,
+.bos_admin textarea.form-textarea {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.bos_admin .form-text:focus,
+.bos_admin .form-tel:focus,
+.bos_admin .form-email:focus,
+.bos_admin .form-url:focus,
+.bos_admin .form-search:focus,
+.bos_admin .form-number:focus,
+.bos_admin .form-color:focus,
+.bos_admin .form-file:focus,
+.bos_admin .form-textarea:focus,
+.bos_admin .form-date:focus,
+.bos_admin .form-time:focus {
+  border-color: #68A3CF;
+  outline: 2px solid #C1E0FF;
+  outline-offset: 0px;
+  color: #000;
+}
+
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action a:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action button:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action input:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action a:focus,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action button:focus,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-action input:focus,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-toggle button:hover,
+.js .bos_admin .dropbutton-wrapper .dropbutton-widget .dropbutton-toggle button:focus {
+  background-image:none;
+  background-color: #FFFFFF;
+}
+
+.bos_admin .link.tabledrag-toggle-weight {
+  margin-bottom: 0.3em;
+}
+
+.bos_admin .toolbar {
+  font-family: "Open Sans";
+}
+
+.bos_admin.toolbar-fixed.toolbar-vertical {
+  padding-top: 32px !important;
+}
+
+.bos_admin .toolbar a {
+  transition: all, 0.2s;
+}
+
+.bos_admin .toolbar .toolbar-bar {
+  background-color: #2D2D2D;
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.85);
+}
+
+.bos_admin .toolbar .toolbar-menu {
+  background: #333;
+}
+
+.bos_admin .toolbar .toolbar-tray-vertical {
+  border: none;
+  box-shadow: none;
+}
+
+.bos_admin .toolbar-tray a {
+  color: #BBBBBB;
+}
+
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item {
+  font-weight: 600;
+}
+
+.bos_admin .toolbar .toolbar-bar .toolbar-item {
+  color: #BEBEBE;
+}
+
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:hover {
+  background-image: none;
+  background-color: #2D2D2D;
+  color: #fff;
+  text-decoration: none;
+}
+
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active,
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:focus {
+  background-image: none;
+  background-color: #333;
+  text-decoration: none;
+}
+
+.bos_admin .toolbar .toolbar-tray-horizontal .menu-item + .menu-item,
+[dir="rtl"] .bos_admin .toolbar .toolbar-tray-horizontal .menu-item + .menu-item,
+.bos_admin .toolbar .toolbar-tray-horizontal .menu-item:last-child {
+  border-left: none; /* LTR */
+  border-right: none;
+}
+
+.bos_admin .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.bos_admin .toolbar .toolbar-tray a.is-active {
+  color: #bbb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bos_admin .toolbar .toolbar-tray-vertical .menu-item + .menu-item {
+  border: 0 none;
+}
+
+.bos_admin .toolbar .toolbar-tray {
+  background-color: #333;
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.85);
+}
+
+.bos_admin .toolbar .toolbar-tray-horizontal {
+  border-bottom: 1px solid #333;
+}
+
+.bos_admin .toolbar .toolbar-toggle-orientation {
+  background-color: #333;
+}
+
+.bos_admin .toolbar .toolbar-icon.toolbar-handle:focus {
+  background-color: transparent;
+}
+
+.bos_admin .toolbar .toolbar-icon.toolbar-handle:before {
+  background-image: url(../images/chevron-disc-down.svg);
+}
+
+.bos_admin .toolbar .toolbar-icon.toolbar-handle:hover:before {
+  background-image: url(../images/chevron-disc-down-hover.svg);
+}
+
+.bos_admin .toolbar .toolbar-icon.toolbar-handle.open:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/chevron-disc-up.svg);
+}
+
+.bos_admin .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:before {
+  background-image: url(../images/chevron-disc-down.svg);
+}
+
+.bos_admin .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle:hover:before {
+  background-image: url(../images/chevron-disc-down-hover.svg);
+}
+
+.bos_admin .toolbar .toolbar-menu .toolbar-menu .toolbar-icon.toolbar-handle.open:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/);
+}
+
+.bos_admin .toolbar-tray-horizontal a:focus, .toolbar-box a:focus {
+  background: transparent;
+}
+
+.bos_admin .toolbar .toolbar-tray-vertical .toolbar-menu a {
+  color: #BBB;
+}
+
+.bos_admin .toolbar .toolbar-tray-vertical .toolbar-menu a:hover {
+  color: #fff;
+}
+
+.bos_admin .toolbar .toolbar-tray-vertical .toolbar-menu ul ul {
+  border: none;
+}
+
+.bos_admin .toolbar .toolbar-tray-horizontal .toolbar-toggle-orientation {
+  border: none;
+}
+
+/* Style checkbox and radio buttons in Chrome + Safari + Opera */
+@supports (-webkit-appearance:none) {
+  input[type=checkbox],
+  input[type=radio],
+  input[type=checkbox]#edit-delete {
+    -webkit-appearance:none;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin-right: 0.25em;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    width: 16px !important;
+    height: 16px !important;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: background 0.5s ease;
+    outline: none;
+  }
+
+  .bos_admin-theme .location .form-item input.form-checkbox {
+    width: 16px;
+    display: inline-block;
+  }
+
+  input[type=checkbox]#edit-delete {
+    margin-bottom: 0;
+  }
+
+  input[type=radio] {
+    border-radius: 50%;
+  }
+
+  input[type=checkbox]:hover,
+  input[type=checkbox]:focus,
+  input[type=radio]:hover,
+  input[type=radio]:focus {
+    border-color: #0074BD;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]#edit-delete:hover,
+  input[type=checkbox]#edit-delete:focus {
+    border-color: #D01616;
+    cursor: pointer;
+  }
+
+  input[type=checkbox]:checked,
+  input[type=checkbox]:disabled:checked,
+  input[type=radio]:checked,
+  input[type=radio]:disabled:checked{
+    background: #0074BD;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]#edit-delete:checked,
+  input[type=checkbox]#edit-delete:disabled:checked {
+    background: #D01616;
+    box-shadow: inset 0px 0px 0px 3px #fff;
+  }
+
+  input[type=checkbox]:disabled,
+  input[type=radio]:disabled {
+    opacity: .5;
+    background: #E2E2E2;
+  }
+
+  input[type=checkbox]#edit-delete:disabled {
+    opacity: .5;
+    background: #E88181;
+  }
+
+  input[type=checkbox]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+  }
+
+  input[type=checkbox]:disabled:hover,
+  input[type=radio]:disabled:hover {
+    border-color: #B5B5B5;
+    cursor: default;
+    /*cursor: not-allowed;*/
+  }
+
+}
+
+.bos_admin .dropbutton-single .dropbutton-action a {
+  border-radius: 0 !important;
+  background-image: none;
+  background: #F5F5F2;
+}
+
+.bos_admin .ui-dialog .ui-dialog-titlebar {
+  border-radius: 0;
+  background: #333;
+}
+
+.bos_admin .ui-dialog .ui-widget-content.ui-dialog-buttonpane {
+  border-radius: 0;
+}
+
+.bos_admin .ui-dialog .ui-dialog-titlebar,
+.bos_admin .ui-dialog {
+  outline: none;
+}
+
+.bos_admin .ui-dialog {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bos_admin .ui-button-icon-only.ui-dialog-titlebar-close.ui-state-active,
+.bos_admin .ui-button-icon-only.ui-dialog-titlebar-close.ui-widget-content .ui-state-active {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.bos_admin .ui-dialog .ui-dialog-titlebar-close {
+  opacity: 0.5;
+  transition: all, 0.2s;
+}
+
+.bos_admin .ui-dialog .ui-dialog-titlebar-close:hover {
+  opacity: 1;
+}
+
+.bos_admin .messages {
+  margin: 1rem 0 1rem 0;
+  border-width: 1px 0px 1px 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  background-size: 1.3rem;
+  background-position: 5px 50%;
+}
+
+.bos_admin .messages--error {
+  border-color: #E32700;
+}
+
+.bos_admin .messages--warning {
+  border-color: #E29700;
+}
+
+.bos_admin .messages--status {
+  border-color: #73B355;
+}
+
+.bos_admin .cke_top,
+.bos_admin .cke_bottom {
+  background: #F7F7F7;
+  background-image: none;
+  box-shadow: none;
+}
+
+.bos_admin .filter-wrapper {
+  background: #F7F7F7;
+}
+
+.bos_admin .cke_ltr .cke_button:first-child,
+.bos_admin .cke_rtl .cke_button:last-child,
+.bos_admin .cke_toolgroup {
+  border-radius: 0;
+}
+
+/* Main menu icons. */
+.bos_admin .toolbar-icon-system-admin-content:active:before,
+.bos_admin .toolbar-icon-system-admin-content.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/file.svg);
+}
+
+.bos_admin .toolbar-icon-system-admin-structure:active:before,
+.bos_admin .toolbar-icon-system-admin-structure.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/orgchart.svg);
+}
+
+.bos_admin .toolbar-icon-system-themes-page:active:before,
+.bos_admin .toolbar-icon-system-themes-page.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/paintbrush.svg);
+}
+
+.bos_admin .toolbar-icon-entity-user-collection:active:before,
+.bos_admin .toolbar-icon-entity-user-collection.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/people.svg);
+}
+
+.bos_admin .toolbar-icon-system-modules-list:active:before,
+.bos_admin .toolbar-icon-system-modules-list.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/puzzlepiece.svg);
+}
+
+.bos_admin .toolbar-icon-system-admin-config:active:before,
+.bos_admin .toolbar-icon-system-admin-config.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/wrench.svg);
+}
+
+.bos_admin .toolbar-icon-system-admin-reports:active:before,
+.bos_admin .toolbar-icon-system-admin-reports.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/barchart.svg);
+}
+
+.bos_admin .toolbar-icon-help-main:active:before,
+.bos_admin .toolbar-icon-help-main.is-active:before {
+  background-image: url(//core/themes/stable/images/core/icons/787878/questionmark-disc.svg);
+}
+
+/* Main menu icons end. */
+.bos_admin.path-batch .layout-container {
+    padding-top: 1.3rem;
+}
+
+/* Module: Views */
+.bos_admin .views-display-top {
+  background-color: #fafafa;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.bos_admin .views-displays {
+  border: 1px solid #e8e8e8;
+}
+
+.bos_admin .views-admin .form-edit .form-actions {
+  border-color: #e8e8e8;
+  background-color: #fafafa;
+}
+
+.bos_admin .views-ui-display-tab-bucket .views-display-setting:nth-of-type(even) {
+  background-color: inherit;
+}
+
+.bos_admin .views-displays .tabs.secondary a {
+  border-radius: 0;
+}
+
+.bos_admin .view-preview-form__title {
+  background-color: #fafdfe;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 1.2em;
+}
+
+.bos_admin .views-preview-wrapper {
+  border: 1px solid #e8e8e8;
+}
+
+.bos_admin .views-ui-dialog .views-override {
+  background-color: #f6f6f6;
+}
+
+/* style motd view preview */
+.bos_admin .view-display-id-motd_analysis_page .view-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  border-top: 5px solid black;
+  max-width:  66.67rem;
+  margin:  0 auto;
+  padding-top: 32px;
+}
+
+.bos_admin .details-wrapper .form-wrapper thead tr {
+  border: none;
+}
+.bos_admin .details-wrapper .form-wrapper th.field-label {
+  color: inherit;
+  background: transparent;
+  padding-left: 0;
+}
+
+.bos_admin .details-wrapper .form-wrapper th.field-label h4,
+.bos_admin .details-wrapper .form-wrapper .form-type-managed-file label,
+.bos_admin .details-wrapper .form-wrapper .form-type-entity-autocomplete label,
+.bos_admin .details-wrapper .form-wrapper.field--widget-options-buttons .fieldset-legend,
+.bos_admin .details-wrapper .form-wrapper .form-type-select label div:not(.filter-wrapper),
+.bos_admin .details-wrapper .field--widget-options-select .form-type-select label,
+.bos_admin .details-wrapper .form-wrapper .form-type-textfield label,
+.bos_admin .entity-content-form-revision-information .form-wrapper .form-type-textarea label,
+.bos_admin .details-wrapper .form-wrapper.field--type-datetime label,
+.bos_admin .details-wrapper .form-wrapper .text-format-wrapper button.link-edit-summary,
+.bos_admin .details-wrapper .form-wrapper .form-type-textarea label {
+  font-size: 1.5rem;
+  padding: .5rem 0;
+  font-variant: all-small-caps;
+}
+
+.bos_admin #edit-field-sidebar-components--description,
+.bos_admin #edit-field-components--description {
+  margin-bottom: 5px;
+}
+
+/* Theme for admin configuration page. */
+.bos_admin .panel {
+  background: url(../images/config/gears-medium.png) no-repeat scroll center right #fbfbfb;
+}
+.bos_admin h3.panel__title {
+  background: url(../images/config/gears-small.png) no-repeat scroll 0 0 transparent;
+  line-height: 26px;
+  text-indent: 35px;
+  border-bottom: 1px solid #bfbfbf;
+  font-size: 125%;
+}
+.bos_admin .panel__content li {
+  border: none;
+}
+.bos_admin .admin-people.panel {
+  background-image: url(../images/config/people-medium.png);
+}
+.bos_admin .admin-people h3.panel__title {
+  background-image: url(../images/config/people-small.png);
+}
+.bos_admin .admin-content-authoring.panel {
+  background-image: url(../images/config/pen-medium.png);
+}
+.bos_admin .admin-content-authoring h3.panel__title {
+  background-image: url(../images/config/pen-small.png);
+}
+.bos_admin .admin-development.panel {
+  background-image: url(../images/config/development-medium.png);
+}
+.bos_admin .admin-development h3.panel__title {
+  background-image: url(../images/config/development-small.png);
+}
+.bos_admin .admin-search-and-metadata.panel {
+  background-image: url(../images/config/search-medium.png);
+}
+.bos_admin .admin-search-and-metadata h3.panel__title {
+  background-image: url(../images/config/search-small.png);
+}
+.bos_admin .admin-web-services.panel {
+  background-image: url(../images/config/services-medium.png);
+}
+.bos_admin .admin-web-services h3.panel__title {
+  background-image: url(../images/config/services-small.png);
+}
+.bos_admin .admin-system.panel {
+  background-image: url(../images/config/system-medium.png);
+}
+.bos_admin .admin-system h3.panel__title {
+  background-image: url(../images/config/system-small.png);
+}
+.bos_admin .admin-user-interface.panel {
+  background-image: url(../images/config/user-interface-medium.png);
+}
+.bos_admin .admin-user-interface h3.panel__title {
+  background-image: url(../images/config/user-interface-small.png);
+}
+.bos_admin .admin-media.panel {
+  background-image: url(../images/config/media-medium.png);
+}
+.bos_admin .admin-media h3.panel__title {
+  background-image: url(../images/config/media-small.png);
+}
+.bos_admin .admin-regional-and-language.panel {
+  background-image: url(../images/config/regional-medium.png);
+}
+.bos_admin .admin-regional-and-language h3.panel__title {
+  background-image: url(../images/config/regional-small.png);
+}
+.bos_admin .admin-security.panel {
+  background-image: url(../images/config/gears-medium.png);
+}
+.bos_admin .admin-security h3.panel__title {
+  background-image: url(../images/config/gears-small.png);
+}
+.bos_admin .admin-workflow.panel {
+  background-image: url(../images/config/workflow-medium.png);
+}
+.bos_admin .admin-workflow h3.panel__title {
+  background-image: url(../images/config/workflow-small.png);
+}
+.bos_admin .admin-salesforce.panel {
+  background-image: url(../images/config/gears-medium.png);
+}
+.bos_admin .admin-salesforce h3.panel__title {
+  background-image: url(../images/config/gears-small.png);
+}
+
+/* Style text added into a group details section. */
+.bos_admin .details-wrapper .bos-boxed-content {
+  border: 1px solid #c5c5c5;
+  padding: 3px;
+  background-color: #fbe3cf;
+}
+.bos_admin .details-wrapper .bos-boxed-content-t {
+  border: 1px solid #c5c5c5;
+  padding: 5px;
+  background-color: transparent;
+}
+.bos_admin .details-wrapper .bos-boxed-content a {
+  background: url(../images/info.svg) no-repeat -2px -1px;
+  background-size: 20px;
+  padding-left: 25px
+}
+ /* Editor pages for contextual editing. */
+.bos_admin .context_editor-wrapper {
+  width: 50%;
+  margin: 0 5%;
+  border: 1px solid #555;
+  padding: 10px;
+  background-color: #f2f2f0;
+}
+.bos_admin .ce-pretty {
+  background-color: #d2e4fb;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.bos_admin .ce-pretty .ce-title {
+  color: #0074BD;
+  font-style: italic;
+}
+
+/*
+David:
+Where: node--status-item--listing-long.html.twig
+       paragraph--message-for-the-day--listing.html.twig
+What: Helper for status_display preview - restricts icon sizing.
+*/
+.g--top {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.g {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+.g--24:nth-child(1n) {
+  margin-right: 0;
+  margin-left: auto;
+}
+.g--24:nth-child(1n) {
+  margin-right: 24px;
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+.g--24 {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: 170px;
+  flex-basis: 170px;
+  max-width: 170px;
+  width: 170px;
+}
+.g--6:nth-child(2n) {
+  margin-right: 0;
+  margin-left: auto;
+}
+@media screen and (min-width: 840px)
+.g--6:last-child {
+  margin-right: 0;
+}
+@media screen and (min-width: 840px)
+.g--6:nth-child(1n) {
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+.g--6:last-child {
+  margin-right: 0;
+}
+.g--6:nth-child(1n) {
+  margin-right: 24px;
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+@media screen and (min-width: 840px)
+.g--6 {
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: calc(99.9% * 6/12 - 0.75rem);
+  flex-basis: calc(99.9% * 6/12 - 0.75rem);
+  max-width: calc(99.9% * 6/12 - 0.75rem);
+  width: calc(99.9% * 6/12 - 0.75rem);
+}
+.cds-l {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -js-display: flex;
+  display: flex;
+  text-align: left;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+}
+.d-b {
+  display: block;
+}
+.cds-ic {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 31px;
+  position: relative;
+  display: inline-block;
+  height: 65px;
+  width: 65px;
+}
+.cds-ic svg {
+  width: 65px;
+  height: 65px;
+}
+.cds-ia {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  max-width: 28px;
+  max-height: 28px
+}
+.cds-c {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.cds-t {
+  font-size: calc(14px + 2 * ((100vw - 420px) / 860));
+  line-height: 1.1;
+}
+
+.t--upper {
+  text-transform: uppercase;
+}
+.t--number, .t--sans {
+  font-family: Montserrat,Arial,sans-serif;
+}
+.m-b300 {
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+.t--subinfo {
+  color: #091f2f;
+  font-family: Lora,Georgia,serif;
+  font-size: calc(14px + 2 * ((100vw - 480px) / 960));
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/*
+David:
+Where: Status_item admin editor form
+What: Creates a horizontally arranged group.
+*/
+.cob-group-grid {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  border: 1px solid #b5b5b5;
+  padding: 0 6px;
+  margin-top: 10px;
+}
+.cob-group-grid.center {
+  justify-content: center;
+}
+.cob-group-grid .form-wrapper:nth-child(n+2) {
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 1280px) {
+  .cob-group-grid.center {
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 975px) {
+  .cob-group-grid {
+    flex-flow: column wrap;
+    max-width: available;
+  }
+}
+.cob-group-grid .form-wrapper {
+   /*max-width: 50%;*/
+}
+.cob-group-grid .field--name-field-use-alert img {
+  height: 10px;
+}
+
+/* Spcific column layout for event node */
+.page-node-type-post .cob-group-grid .field--name-field-intro-image,
+.page-node-type-topic-page .cob-group-grid .field--name-field-intro-image,
+.page-node-type-event .cob-group-grid .field--name-field-intro-image {
+  width: 60%;
+}
+.page-node-type-post .cob-group-grid .field--name-field-thumbnail,
+.page-node-type-topic-page .cob-group-grid .field--name-field-thumbnail,
+.page-node-type-event .cob-group-grid .field--name-field-thumbnail {
+  width: 40%;
+}
+
+  /*
+    David:
+    Where: Status Item admin page.
+    What: Hides the title on the weight field..
+   */
+.cob-group-grid .form-item-field-weight label {
+  display: none;
+}
+
+
+
+/*
+  David:
+  Where: Media widget dialog media--media-library.html.twig.
+  What: Restricts the size of the dialog window.
+ */
+.media-library-item {
+  background: #ebebeb;
+}
+.media-library-item .media_library_cob.field--name-thumbnail img {
+  height: 120px;
+}
+
+.media_library_cob .content {
+  text-align: center;
+  margin-bottom:  15px;
+  /* display: block !important; */
+  /* padding-left: 0; */
+}
+
+/* Is used in media--icon */
+
+.media_library_cob .field--name-uri {
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  max-height: 120px;
+  min-height: 120px;
+}
+
+.media_svg_only .media-library-item {
+  width: 100px;
+  height: 100px
+}
+.media_svg_only .media_library_cob .field--name-uri {
+  height: 100px;
+  width: 100px;
+}
+.media_svg_only .media-library-item .field__items {
+  display: none;
+}
+.media_svg_only .media-library-item .field--name-uri {
+  display: block;
+}
+.media_svg_only .media-library-item img {
+  height: 65px;
+  width: 65px;
+  padding-top: 25px;
+}
+.media_svg_only .media-library-item__preview {
+  padding-bottom: 0;
+}
+
+/*
+  David:
+  Where: Media widget component.
+  Where: Media widget dialog media--media-library.html.twig.
+  What: Hides the Add-media buttons on media library..
+ */
+.field--widget-media-library-widget .media-library-add-button {
+  /*visibility: hidden;*/
+}
+.media-library-view .hide-media {
+  /*display: none;*/
+}
+
+/*
+  David:
+  Where: Media widget component.
+  Where: File/Document widget in paragraphs EXPEREMENTAL for document para in bos_link.
+  What: Lays out the display nicely.
+ */
+.field--widget-entity-browser-file table.entities-list td:nth-child(3),
+.field--widget-entity-browser-file table.entities-list td:nth-child(4),
+.field--widget-entity-browser-file table.entities-list td:nth-child(5) {
+  text-align: center;
+  vertical-align: text-top;
+}
+.field--widget-entity-browser-file table.entities-list th:nth-child(2),
+.field--widget-entity-browser-file table.entities-list td:nth-child(2),
+.field--widget-entity-browser-file table.entities-list td:nth-child(4) {
+  display: none;
+}
+.field--widget-entity-browser-file table.entities-list th:nth-child(3) {
+  max-width: 200px;
+  width: 200px;
+}
+.field--widget-entity-browser-file .field--name-filename {
+  font-size: 110%;
+  font-weight: bold;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+.field--widget-entity-browser-file .field--name-filesize {
+  margin-top:5px;
+  padding-left: 20px;
+}
+.field--widget-entity-browser-file .field--name-uid {
+  margin-top:3px;
+}
+.field--widget-entity-browser-file .field--name-uid:before {
+  content: "Uploaded by: ";
+}
+/* Removes the "show row weights" notice */
+.tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+/*
+  David:
+  Where: Commissions paragraph component.
+  Where: content-editor experience in paragraph-EXPEREMENTAL layout.
+  What: make drop down fit inside borders.
+ */
+.field--name-field-commission .chosen-container-single {
+  max-width: 69%;
+}
+
+/*
+  David:
+  Where: Content listing form for Embed Buttons.
+  Where: /admin/config/content/embed.
+  What: Fix size of icon to reflect how it will appear in the WYSIWYG toolbar.
+ */
+.admin-content-embed-buttons td.priority-low img {
+  max-width: 16px;
+}
+
+/*
+  David:
+  Where: Editor form, paragraphs experemental
+  Where: themes/custom/bos_admin/templates/field-multiple-value-form.html.twig.
+  What: Visually differentiate the add new component elements.
+ */
+
+.field--name-field-components .cob-admin-components:not([data-drupal-selector*=subform]) > .description,
+.field--name-field-components .cob-admin-components:not([data-drupal-selector*=subform]) > .cob-admin-button-wrapper,
+.field--name-field-sidebar-components .cob-admin-button-wrapper {
+  padding: 10px;
+  /*background-color: #d2e4fb;*/
+  background-color: #f2f2f0;
+  color: #222;
+}
+.field--name-field-components .cob-admin-components .cob-admin-button-wrapper .form-type-select,
+.field--name-field-sidebar-components .cob-admin-components .cob-admin-button-wrapper .form-type-select {
+  color: #222;
+}
+.field--name-field-components .cob-admin-components:not([data-drupal-selector*=subform]) > .description,
+.field--name-field-components .paragraphs-tabs-wrapper .cob-admin-components #edit-field-components--description.description {
+  border-top: 1px solid #a5a5a5;
+  border-left: 1px solid #a5a5a5;
+  border-right: 1px solid #a5a5a5;
+  margin-bottom: 0;
+}
+.field--name-field-components .cob-admin-components:not([data-drupal-selector*=subform]) > .cob-admin-button-wrapper,
+.field--name-field-sidebar-components .cob-admin-button-wrapper {
+  border-bottom: 1px solid #a5a5a5;
+  border-left: 1px solid #a5a5a5;
+  border-right: 1px solid #a5a5a5;
+  padding-top: 0px;
+  color: #f2f2f0;
+}
+.field--name-field-sidebar-components .cob-admin-button-wrapper {
+  border-top: 1px solid #a5a5a5;
+}
+.field--name-field-components .cob-admin-button-wrapper,
+.field--name-field-sidebar-components .cob-admin-button-wrapper {
+  display: flex;
+  flex-flow: row;
+}
+.field--name-field-components .cob-admin-button-wrapper .button,
+.field--name-field-sidebar-components .cob-admin-button-wrapper .button {
+  height: fit-content;
+  padding: 5px 1.5em;
+  margin-top: 28px;
+  margin-left: 10px;
+}
+.field--name-field-components .cob-admin-button-wrapper .ajax-progress {
+  margin-top: 32px;
+}
+.js .bos_admin .cob-admin-components .dropbutton .dropbutton-action input.button--primary:hover {
+  background-color: #0087cd !important;
+  color: #fff;
+}
+
+/*
+  David:
+  Where: Editor form, revsision log message
+  What: Make the need for a log message more prominent.
+ */
+.bos_admin .field--name-revision-log textarea.form-textarea::placeholder {
+  color: #ff686b;
+}
+
+/*
+  David:
+  Where: status items view
+  What: Emulate the homepage block.
+ */
+.view-status-items .preview-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*
+David
+D9: Aligns drag handles to the top of the content region (mimic d8 behaviour)
+ */
+td.field-multiple-drag {
+  vertical-align: top !important;
+}
+
+/*
+Stella
+Hide default contact info
+ */
+.field-group-html-element {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.field-group-html-element .field--name-field-contact {
+  display: inline-block;
+  width: 50%;
+}
+.field-group-html-element .field--name-field-hide-contact-form {
+  display: inline-block;
+  width: 48%;
+  vertical-align: sub;
+}
+@media screen and (max-width: 1300px) {
+  .field-group-html-element .field--name-field-contact {
+    display: block;
+    width: 100%;
+  }
+  .field-group-html-element .field--name-field-hide-contact-form {
+    display: block;
+    width:100%;
+    vertical-align: auto;
+  }
+}

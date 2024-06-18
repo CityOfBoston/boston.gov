@@ -1,0 +1,18 @@
+uuid: d9ccd280-acc5-4dc0-8b4b-105443c8bec3
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.election_results
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.election_results
+target_entity_type_id: paragraph
+target_bundle: election_results
+default_langcode: site_default
+language_alterable: false

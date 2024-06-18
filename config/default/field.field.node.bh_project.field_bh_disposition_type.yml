@@ -1,0 +1,29 @@
+uuid: cc4227a3-6138-4404-b02c-b25200f24741
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_disposition_type
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_disposition_type
+id: node.bh_project.field_bh_disposition_type
+field_name: field_bh_disposition_type
+entity_type: node
+bundle: bh_project
+label: 'Disposition Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_disposition_type: bh_disposition_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

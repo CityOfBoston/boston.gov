@@ -1,0 +1,14 @@
+uuid: d01b19d6-ca34-40d7-bcc7-bf7137a1b48c
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.topic_page
+id: node_type_topic_page
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

@@ -1,0 +1,21 @@
+uuid: ef0a49ad-c3c0-4baa-9c4c-9c347c70517a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_extra_info
+    - paragraphs.paragraphs_type.grid_links
+_core:
+  default_config_hash: MfqTNteK__suw8f6_wkfERF4Kslv_GGMb4I37-cbgL4
+id: paragraph.grid_links.field_extra_info
+field_name: field_extra_info
+entity_type: paragraph
+bundle: grid_links
+label: 'Extra Info'
+description: 'Place a phone number or email that can display on a resource.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

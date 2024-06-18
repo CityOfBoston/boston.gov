@@ -1,0 +1,15 @@
+uuid: a03543ec-04f7-459c-b34a-4f071198af4c
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Render a featured-item thumbnail responsive image.'
+id: media.responsive_image_person
+label: 'Person Card (resp)'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,30 @@
+uuid: 7cd2a615-7e16-4dfd-9b07-17d42be58473
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_results.field_source_url
+    - paragraphs.paragraphs_type.election_results
+id: paragraph.election_results.default
+targetEntityType: paragraph
+bundle: election_results
+mode: default
+content:
+  field_source_url:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

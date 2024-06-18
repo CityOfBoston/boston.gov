@@ -1,0 +1,234 @@
+{#
+ * @file
+ * Default theme implementation to display a node.
+ *
+ * Available variables:
+ * - $title: the (sanitized) title of the node.
+ * - $content: An array of node items. Use render($content) to print them all,
+ *   or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $user_picture: The node author's picture from user-picture.tpl.php.
+ * - $date: Formatted creation date. Preprocess functions can reformat it by
+ *   calling format_date() with the desired parameters on the $created variable.
+ * - $name: Themed username of node author output from theme_username().
+ * - $node_url: Direct URL of the current node.
+ * - $display_submitted: Whether submission information should be displayed.
+ * - $submitted: Submission information created from $name and $date during
+ *   template_preprocess_node().
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. The default values can be one or more of the
+ *   following:
+ *   - node: The current template type; for example, "theming hook".
+ *   - node-[type]: The current node type. For example, if the node is a
+ *     "Blog entry" it would result in "node-blog". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node-teaser: Nodes in teaser form.
+ *   - node-preview: Nodes in preview mode.
+ *   The following are controlled through the node publishing options.
+ *   - node-promoted: Nodes promoted to the front page.
+ *   - node-sticky: Nodes ordered above other non-sticky nodes in teaser
+ *     listings.
+ *   - node-unpublished: Unpublished nodes visible only to administrators.
+ * - $title_prefix (array): An array containing additional output populated by
+ *   modules, intended to be displayed in front of the main title tag that
+ *   appears in the template.
+ * - $title_suffix (array): An array containing additional output populated by
+ *   modules, intended to be displayed after the main title tag that appears in
+ *   the template.
+ *
+ * Other variables:
+ * - $node: Full node object. Contains data that may not be safe.
+ * - $type: Node type; for example, story, page, blog, etc.
+ * - $comment_count: Number of comments attached to the node.
+ * - $uid: User ID of the node author.
+ * - $created: Time the node was published formatted in Unix timestamp.
+ * - $classes_array: Array of html class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
+ *   teaser listings.
+ * - $id: Position of the node. Increments each time it's output.
+ *
+ * Node status variables:
+ * - $view_mode: View mode; for example, "full", "teaser".
+ * - $teaser: Flag for the teaser state (shortcut for $view_mode == 'teaser').
+ * - $page: Flag for the full page state.
+ * - $promote: Flag for front page promotion state.
+ * - $sticky: Flags for sticky post setting.
+ * - $status: Flag for published status.
+ * - $comment: State of comment settings for the node.
+ * - $readmore: Flags true if the teaser content of the node cannot hold the
+ *   main body content.
+ * - $is_front: Flags true when presented in the front page.
+ * - $logged_in: Flags true when the current user is a logged-in member.
+ * - $is_admin: Flags true when the current user is an administrator.
+ *
+ * Field variables: for each field instance attached to the node a corresponding
+ * variable is defined; for example, $node->body becomes $body. When needing to
+ * access a field's raw values, developers/themers are strongly encouraged to
+ * use these variables. Otherwise they will have to explicitly specify the
+ * desired field language; for example, $node->body['en'], thus overriding any
+ * language negotiation rule that was previously applied.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_node()
+ * @see template_process()
+ *
+ * @ingroup themeable
+ #}
+
+<div class="breadcrumb" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+
+<div class="brc-lu">
+  {% if (content.field_updated_date["#items"]) %}
+    Last updated: {{ content.field_updated_date }}
+  {% elseif (content.field_published_date["#items"]) %}
+    Last updated: {{ content.field_published_date }}
+  {% else %}
+    Not published yet!
+  {% endif %}
+</div>
+
+<article{{ attributes }}>
+
+  <div class="b b--w b--fw">
+    <div class="b-c">
+
+      <div class="department-info-wrapper g">
+      <div class="column g--8">
+          {{ title_prefix }}
+
+          {% if title %}
+            <h1{{ title_attributes }}>
+              {% if is_cancelled %}
+                <span class='t--err t--s60pct'>Canceled:</span><br>
+              {% endif %}
+              {{ title.0 }}
+            </h1>
+          {%  endif %}
+
+          {{ title_suffix }}
+
+        {% if is_cancelled %}
+          {{ elements.field_extra_info }}
+        {% else %}
+          {{ elements.field_intro_text }}
+        {% endif %}
+
+        {% if elements.body %}
+          <div class="body">
+            {{ elements.body }}
+          </div>
+        {% endif %}
+
+        {% if has_testimony %}
+          <div class="b b--g b--p300">
+            {% if elements.field_time["#entity_type"] %}
+              <div class="n-li-a">Public testimony begins at {{ elements.field_time }}</div>
+            {% else %}
+              <div class="n-li-a">The public can offer testimony.</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% include 'themes/custom/bos_theme/templates/snippets/topic-nav.html.twig' %}
+
+        {% if elements.field_drawer["#items"] %}
+          <a id="topics" data-text="topics" class="subnav-anchor"></a>
+          <h2 class="header-border-bottom">Discussion Topics</h2>
+          <div class="body">
+            <ol>
+              {{ elements.field_drawer }}
+            </ol>
+          </div>
+        {% endif %}
+
+        {% if elements.field_details_link %}
+          <div class="external-link external-link--inline">
+            <a class="button" href="{{ elements.field_details_link }}">Event website<span class="a11y--hidden"> for {{ title }}</span></a>
+          </div>
+        {% endif %}
+
+      </div>
+
+      <div class="column sidebar g--4">
+
+        <div class="date-title t--intro">
+            {% if elements.field_public_notice_date.0.start_date %}
+              {{ elements.field_public_notice_date.0.start_date }}
+            {% elseif elements.field_public_notice_date.0["#text"] %}
+              {{ elements.field_public_notice_date.0 }}
+            {% endif %}
+        </div>
+
+        <ul class="sb">
+
+        <li class="sb-i">
+          {{ field_date }}
+        </li>
+
+        {% if elements.field_address["#items"] %}
+          <li class="sb-i">
+            {{ elements.field_address }}
+          </li>
+        {% endif %}
+        {% if elements.field_email["#items"] %}
+          <li class="sb-i">
+            {{ elements.field_email }}
+          </li>
+        {% endif %}
+        {% if elements.field_phone_number %}
+          <li class="sb-i">
+            {{ elements.field_phone_number }}
+          </li>
+        {% endif %}
+
+        {{ elements.field_event_contact }}
+
+        {{ elements.field_multiple_neighborhoods }}
+
+        {% if elements.field_event_type %}
+          <li class="sb-i">
+            {{ elements.field_event_type }}
+          </li>
+        {% endif %}
+
+        <li class="sb-i dl-i">
+            <div class="dl-t">Posted:</div>
+            <div class="dl-d">{{ notice_date_short }}</div>
+        </li>
+
+        {% if elements.field_links["#items"] %}
+          {{ elements.field_links }}
+        {% endif %}
+
+        {% if elements.field_sidebar_components["#items"] %}
+          {{ elements.field_sidebar_components }}
+        {% endif %}
+
+        </ul>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+  {% if elements.field_components %}
+  <div class="b b--fw">
+    <div class="b-c">
+      <div class="g">
+        <div class="department-components g--12" {{ content_attributes }}>
+          {{ elements.field_components }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if elements.field_contacts %}
+    {{ elements.field_contacts }}
+  {% endif %}
+</article>

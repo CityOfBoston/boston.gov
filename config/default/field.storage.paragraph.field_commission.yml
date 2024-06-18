@@ -1,0 +1,20 @@
+uuid: 314d1f82-c6dc-46b2-a7b3-63d32f0b3f3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_commission
+field_name: field_commission
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

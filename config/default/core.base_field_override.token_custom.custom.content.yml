@@ -1,0 +1,24 @@
+uuid: 50ee0b2d-f2a2-4d3b-8088-81dab956ffbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - token_custom.type.custom
+  module:
+    - text
+id: token_custom.custom.content
+field_name: content
+entity_type: token_custom
+bundle: custom
+label: Content
+description: 'The content that will replace this token.'
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+    format: plain_text
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

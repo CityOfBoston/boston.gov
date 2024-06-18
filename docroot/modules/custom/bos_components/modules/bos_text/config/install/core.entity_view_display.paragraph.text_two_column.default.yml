@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_two_column.field_column_configuration
+    - field.field.paragraph.text_two_column.field_left_column
+    - field.field.paragraph.text_two_column.field_right_column
+    - paragraphs.paragraphs_type.text_two_column
+  module:
+    - fences
+    - text
+id: paragraph.text_two_column.default
+targetEntityType: paragraph
+bundle: text_two_column
+mode: default
+content:
+  field_left_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_right_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  field_column_configuration: true

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_banner_bh_
+id: taxonomy_term.project_banner_bh_
+target_entity_type_id: taxonomy_term
+target_bundle: project_banner_bh_
+default_langcode: site_default
+language_alterable: false

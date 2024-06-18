@@ -1,0 +1,8 @@
+uuid: 8ad20779-f2f1-44d2-a341-6aab6d2487a7
+langcode: en
+status: true
+dependencies: {  }
+id: date_format_file_directory_storage_date
+label: 'File Directory Storage'
+locked: false
+pattern: m-Y

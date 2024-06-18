@@ -1,0 +1,20 @@
+uuid: 94a493ca-3c27-4b69-8155-1bc1c5908f4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_bh_neighborhood
+field_name: field_bh_neighborhood
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

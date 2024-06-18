@@ -1,0 +1,42 @@
+uuid: fec4f318-0b4a-4938-9c65-eef089577533
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_topics.field_short_title
+    - field.field.paragraph.featured_topics.field_topics
+    - paragraphs.paragraphs_type.featured_topics
+  module:
+    - fences
+_core:
+  default_config_hash: n7mqfHS0EvDvD4bVp9QYlGDHinhIMVjDW9nHcIH0RTk
+id: paragraph.featured_topics.default
+targetEntityType: paragraph
+bundle: featured_topics
+mode: default
+content:
+  field_short_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_topics:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: featured_topics
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,23 @@
+uuid: a71ba3f0-3777-4d5d-9445-cf6e2b284dd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.total_house_income_data_bpda
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.total_house_income_data_bpda
+field_name: total_house_income_data_bpda
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: 'Total Household Income'
+description: "These figures are provided by MOH and are a threshold income levels set by MOH based upon consideration of BPDA, HUD and other references.<br/>\r\nThe authoritative source of these income levels (for 2022) is <a href=\"https://docs.google.com/spreadsheets/d/190UYOANxp59q3G1cRy962tyYcBhv_k_v55mWk154XKQ/edit#gid=0\">this spreadsheet.</a><br/>\r\n<span style=\"font-weight:bold;\">Note: </span>From July 2022, only these figures are used in the on-site <a href=\"/income-restricted-housing-guide\">AMI tables</a> and the <a href=\"/metrolist/ami-estimator/\">estimator</a>."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,8 @@
+bos_swiftype.boston:
+  js:
+    js/swiftype.boston.js: {}
+  dependencies:
+  - core/jquery
+  css:
+    theme:
+      css/swiftype.boston.css: { weight: -10 }

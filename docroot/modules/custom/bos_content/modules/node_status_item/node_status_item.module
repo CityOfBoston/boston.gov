@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Provides a status item entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_theme().
+ */
+function node_status_item_theme() {
+  return [
+    'status_item' => [
+      'render element' => 'elements',
+    ],
+    'node__status_item' => [
+      'base hook' => "node",
+    ],
+    'node__status_item__listing_long' => [
+      'base hook' => "node",
+    ],
+    'viewfield_item__field_list__status_items' => [
+      'base hook' => 'viewfield_item',
+    ],
+    'field__field_messages__status_item__mode__full' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_views_post_execute().
+ *
+ * This de-duplicates nodes from the output from the view/query.
+ */
+function node_status_item_views_post_execute(ViewExecutable $view) {
+  if (in_array($view->current_display, ["motd", "motd_analysis_page","bos_311_motd_api"])) {
+    // An array with keys equal to the status_item node id.
+    $check = [];
+
+    if (!$view->result) {
+      // Stop if there is nothing to process.
+      return;
+    }
+
+    \Drupal::state()->delete("motd_arg");
+
+    if ($view->current_display == "motd_analysis_page") {
+      $arg = $view->exposed_data["field_recurrence_value"] ?: "now";
+      $arg = new DateTime($arg);
+      $arg = $arg->format("Y-m-d");
+    }
+    elseif (in_array($view->current_display, ["motd", "bos_311_motd_api"])) {
+      $arg = $view->args[0];
+    }
+
+    if (isset($arg)) {
+      $arg_date = new DateTime("America/New_York");
+      // Only save if the date is not the default (ie. today).
+      if ($arg != $arg_date->format("Y-m-d")) {
+        \Drupal::state()->set("motd_arg", $arg);
+      }
+    }
+
+    if (in_array($view->current_display, ["motd", "motd_analysis_page"])) {
+      foreach ($view->result as $key => $row) {
+        if (isset($check[$row->nid])) {
+          unset($view->result[$key]);
+        }
+        $check[$row->nid] = $row->paragraphs_item_field_data_node__field_messages_id;
+      }
+    }
+    else if (in_array($view->current_display, ["bos_311_motd_api"])) {
+      foreach ($view->result as $key => $row) {
+        if ($row->paragraphs_item_field_data_node__field_messages_langcode !== $row->node_field_data_langcode) {
+          unset($view->result[$key]);
+        }
+        else {
+          if (isset($check[$row->nid . "-" . $row->node_field_data_langcode])) {
+            unset($view->result[$key]);
+          }
+          $check[$row->nid . "-" . $row->node_field_data_langcode] = $row->paragraphs_item_field_data_node__field_messages_id;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_status_item_preprocess_viewfield_item__field_list__status_items(&$variables) {
+  // Normally this would go in the theme to make the preprocess function more
+  // discoverable but it needs to be run against the admin theme as well.
+  $view = $variables['content']["#view"];
+  $timestamp = strtotime("now");
+  if (isset($view->args[0])) {
+    $timestamp = strtotime($view->args[0]);
+  }
+  $variables['header'] = [
+    "date" => \Drupal::service('date.formatter')->format($timestamp, 'date_format_status'),
+    "date_attrib" => new Attribute(),
+  ];
+  $variables['header']['date_attrib']->addClass("str-t");
+
+  if (!empty($timestamp)) {
+    // See if this date falls on a special named date (i.e. a holiday or city
+    // event, etc.).
+    $dt = new DateTime("now");
+    $dt = $dt->format("Y-m-d");
+    $query = \Drupal::entityQuery('taxonomy_term')
+      ->accessCheck();
+    $group = $query->orConditionGroup()
+      ->condition('field_date', $dt . "T04:00:00", "=")
+      ->condition('field_date', $dt . "T05:00:00", "=")
+      ->condition('field_date', $dt, "=");
+    $result = $query
+      ->condition('vid', 'holidays')
+      ->condition($group)
+      ->range(0, 1)
+      ->execute();
+    if (!empty($result)) {
+      $tid = end($result);
+      $taxonomy = Term::load($tid);
+      $variables["header"]["text"] = $taxonomy->get('name')->value;
+      $variables['header']['date_attrib']->removeClass("str-t");
+      $variables['header']['date_attrib']->addClass("str-st");
+    }
+  }
+
+  // Render and map the rows to reduce templating.
+  $variables['empty'] = TRUE;
+  $view = $view->render();
+  if (!empty($view["#rows"]) && count($view["#rows"])) {
+    $variables["rows"] = $view["#rows"][0]["#rows"];
+    $variables['empty'] = FALSE;
+  }
+}
+
+/**
+ * Prepares variables for status item templates.
+ *
+ * Default template: status-item.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the status item information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__status_item(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

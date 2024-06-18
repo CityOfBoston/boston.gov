@@ -1,0 +1,20 @@
+uuid: df87707d-9902-4ec2-ab64-67ecb9c1321c
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.post
+  module:
+    - datetime
+id: node.post.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: post
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

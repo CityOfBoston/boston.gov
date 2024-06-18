@@ -1,0 +1,18 @@
+uuid: 9c356d00-2a14-41f7-b097-fbf469588c37
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: metrolist_development
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

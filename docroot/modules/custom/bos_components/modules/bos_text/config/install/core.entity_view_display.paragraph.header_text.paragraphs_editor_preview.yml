@@ -1,0 +1,16 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.header_text.field_contact
+    - field.field.paragraph.header_text.field_intro_text
+    - paragraphs.paragraphs_type.header_text
+id: paragraph.header_text.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: header_text
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_contact: true
+  field_intro_text: true

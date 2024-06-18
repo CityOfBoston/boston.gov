@@ -1,0 +1,56 @@
+uuid: f2348746-18af-491b-8d12-442bba9f61a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.published_by
+    - field.field.node.listing_page.field_components
+    - field.field.node.listing_page.field_header_component
+    - field.field.node.listing_page.field_intro_image
+    - field.field.node.listing_page.field_manual_date
+    - field.field.node.listing_page.field_metatags
+    - field.field.node.listing_page.field_published_date
+    - field.field.node.listing_page.field_updated_date
+    - node.type.listing_page
+  module:
+    - datetime
+    - user
+id: node.listing_page.published_by
+targetEntityType: node
+bundle: listing_page
+mode: published_by
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_header_component: true
+  field_intro_image: true
+  field_manual_date: true
+  field_metatags: true
+  langcode: true
+  published_at: true

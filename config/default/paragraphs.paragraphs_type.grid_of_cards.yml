@@ -1,0 +1,18 @@
+uuid: 9187bd74-d5ff-4805-8284-474ab497f688
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: Cer60BH1IFZv_ErlgCBejhjoj4Q0NktZJF93Y6oaMdI
+id: grid_of_cards
+label: 'Grid of Cards'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Cards'
+behavior_plugins: {  }

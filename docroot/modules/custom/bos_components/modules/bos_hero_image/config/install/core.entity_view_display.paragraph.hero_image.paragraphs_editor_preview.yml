@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.hero_image.field_grid_link
+    - field.field.paragraph.hero_image.field_header
+    - field.field.paragraph.hero_image.field_image
+    - field.field.paragraph.hero_image.field_short_title
+    - field.field.paragraph.hero_image.field_subheader
+    - paragraphs.paragraphs_type.hero_image
+id: paragraph.hero_image.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: hero_image
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_grid_link: true
+  field_header: true
+  field_image: true
+  field_short_title: true
+  field_subheader: true

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Political Party'
+vid: political_party
+description: ''
+weight: 0

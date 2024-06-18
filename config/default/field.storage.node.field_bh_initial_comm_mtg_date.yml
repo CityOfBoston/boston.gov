@@ -1,0 +1,20 @@
+uuid: 72492700-47b7-4bfa-8c7f-cc524b29c018
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_bh_initial_comm_mtg_date
+field_name: field_bh_initial_comm_mtg_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

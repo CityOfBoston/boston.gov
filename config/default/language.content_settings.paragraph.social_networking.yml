@@ -1,0 +1,20 @@
+uuid: 6c8ad1bd-8bc8-4191-a4a2-6a0669fd8209
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.social_networking
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: PDJsx15Gc6IV_JlTftdA7-gHnMM_LQGYlflF1ucBahE
+id: paragraph.social_networking
+target_entity_type_id: paragraph
+target_bundle: social_networking
+default_langcode: site_default
+language_alterable: false

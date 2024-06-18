@@ -1,0 +1,351 @@
+{#
+ * @file
+ * Default theme implementation to display a node.
+ *
+ * Available variables:
+ * - $title: the (sanitized) title of the node.
+ * - $content: An array of node items. Use render($content) to print them all,
+ *   or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $user_picture: The node author's picture from user-picture.tpl.php.
+ * - $date: Formatted creation date. Preprocess functions can reformat it by
+ *   calling format_date() with the desired parameters on the $created variable.
+ * - $name: Themed username of node author output from theme_username().
+ * - $node_url: Direct URL of the current node.
+ * - $display_submitted: Whether submission information should be displayed.
+ * - $submitted: Submission information created from $name and $date during
+ *   template_preprocess_node().
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. The default values can be one or more of the
+ *   following:
+ *   - node: The current template type; for example, "theming hook".
+ *   - node-[type]: The current node type. For example, if the node is a
+ *     "Blog entry" it would result in "node-blog". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node-teaser: Nodes in teaser form.
+ *   - node-preview: Nodes in preview mode.
+ *   The following are controlled through the node publishing options.
+ *   - node-promoted: Nodes promoted to the front page.
+ *   - node-sticky: Nodes ordered above other non-sticky nodes in teaser
+ *     listings.
+ *   - node-unpublished: Unpublished nodes visible only to administrators.
+ * - $title_prefix (array): An array containing additional output populated by
+ *   modules, intended to be displayed in front of the main title tag that
+ *   appears in the template.
+ * - $title_suffix (array): An array containing additional output populated by
+ *   modules, intended to be displayed after the main title tag that appears in
+ *   the template.
+ *
+ * Other variables:
+ * - $node: Full node object. Contains data that may not be safe.
+ * - $type: Node type; for example, story, page, blog, etc.
+ * - $comment_count: Number of comments attached to the node.
+ * - $uid: User ID of the node author.
+ * - $created: Time the node was published formatted in Unix timestamp.
+ * - $classes_array: Array of html class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
+ *   teaser listings.
+ * - $id: Position of the node. Increments each time it's output.
+ *
+ * Node status variables:
+ * - $view_mode: View mode; for example, "full", "teaser".
+ * - $teaser: Flag for the teaser state (shortcut for $view_mode == 'teaser').
+ * - $page: Flag for the full page state.
+ * - $promote: Flag for front page promotion state.
+ * - $sticky: Flags for sticky post setting.
+ * - $status: Flag for published status.
+ * - $comment: State of comment settings for the node.
+ * - $readmore: Flags true if the teaser content of the node cannot hold the
+ *   main body content.
+ * - $is_front: Flags true when presented in the front page.
+ * - $logged_in: Flags true when the current user is a logged-in member.
+ * - $is_admin: Flags true when the current user is an administrator.
+ *
+ * Field variables: for each field instance attached to the node a corresponding
+ * variable is defined; for example, $node->body becomes $body. When needing to
+ * access a field's raw values, developers/themers are strongly encouraged to
+ * use these variables. Otherwise they will have to explicitly specify the
+ * desired field language; for example, $node->body['en'], thus overriding any
+ * language negotiation rule that was previously applied.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_node()
+ * @see template_process()
+ *
+ * @ingroup themeable
+ #}
+
+{% if content.intro_image %}
+
+  {{ content.intro_image }}
+
+  <div class="brc--wh" data-swiftype-index="false">
+    {{ drupal_block('system_breadcrumb_block') }}
+  </div>
+
+{% else %}
+
+  <div class="breadcrumb" data-swiftype-index="false">
+    {{ drupal_block('system_breadcrumb_block') }}
+  </div>
+
+{%  endif %}
+
+<div class="brc-lu">
+  {% if (content.field_updated_date["#items"]) %}
+    Last updated: {{ content.field_updated_date }}
+  {% elseif (content.field_published_date["#items"]) %}
+    Last updated: {{ content.field_published_date }}
+  {% else %}
+    Not published yet!
+  {% endif %}
+</div>
+
+<article {{ attributes }}>
+
+  <div class="p-v400">
+
+    <div class="event-detail-page g">
+      <div class="column g--8 m-b300">
+
+        {{ title_prefix }}
+
+        {% if title %}
+
+          <h1{{ title_attributes }}>
+
+            {% if is_cancelled %}
+              <span class='t--err t--s60pct'>Canceled:</span><br>
+            {% endif %}
+
+            {{ title.0 }}
+
+          </h1>
+
+        {%  endif %}
+
+        {{ title_suffix }}
+
+        {% if is_cancelled %}
+
+          <div class="supporting-text squiggle-border-bottom">Reason for cancellation:
+
+            {% if content.field_extra_info_event.0["#context"]["value"] %}
+              {{ content.field_extra_info_event }}
+            {% else %}
+              Please contact organizer.
+            {% endif %}
+          </div>
+        {% else %}
+          {% if content.field_intro_text %}
+            {{ content.field_intro_text }}
+          {% endif %}
+        {% endif %}
+
+        {% include 'themes/custom/bos_theme/templates/snippets/topic-nav.html.twig' %}
+
+        {#  This is the RHS sidebar. #}
+        <div class="body-sidebar-item-mobile m-b600 g--4">
+          {% if event_date %}
+          <div class="date-title t--intro">
+            {{ event_date }}
+          </div>
+
+          <ul class="sb">
+            {% if content.field_event_times %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_event_times }}
+              </li>
+            {% endif %}
+
+            {% endif %}
+
+            {% if content.field_address["#items"] %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_address }}
+              </li>
+            {% endif %}
+
+            {% if content.field_event_contact %}
+              <li class="dl-i evt-sb-i">
+                {{ content.field_event_contact }}
+              </li>
+            {% endif %}
+
+            {% if content.field_email["#items"] %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_email }}
+              </li>
+            {% endif %}
+
+            {% if content.field_phone_number["#items"] %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_phone_number }}
+              </li>
+            {% endif %}
+
+            {% if content.cost %}
+              <li class="dl-i evt-sb-i">
+                {{ content.cost }}
+              </li>
+            {% endif %}
+
+            {% if content.field_multiple_neighborhoods%}
+              <li class="dl-i evt-sb-i">
+                {{ content.field_multiple_neighborhoods }}
+              </li>
+            {% endif %}
+
+            {% if content.field_event_type %}
+              <li class="dl-i evt-sb-i">
+                {{ content.field_event_type }}
+              </li>
+            {% endif %}
+
+            {% if content.field_published_date %}
+              <li class="dl-i evt-sb-i">
+                {{ content.field_published_date }}
+              </li>
+            {% endif %}
+
+            {% if content.field_links %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_links }}
+              </li>
+            {% endif %}
+
+            {% if content.field_sidebar_components %}
+              <li class="sb-i evt-sb-i">
+                {{ content.field_sidebar_components }}
+              </li>
+            {% endif %}
+
+          </ul>
+
+          <div class="addtocal">
+            {{ drupal_field('field_event_date_recur', 'node', nid, 'add_to_calendar') }}
+          </div>
+
+        </div>
+
+        {% if content.body %}
+          <div class="body">
+            {{ content.body|without("comments", "links") }}
+          </div>
+        {% endif %}
+
+        {% if content.field_details_link[0]["#title"] %}
+          <div{% if content.field_details_link[0]["url"].external %} class="external-link external-link--inline" {% endif %}>
+            <a class="button" href="{{ content.field_details_link[0]["#url"] }}">
+              {{ content.field_details_link[0]["#title"] }}
+              <span class="visually-hidden">
+                for {{ title.0|raw }}
+              </span>
+            </a>
+          </div>
+        {% endif %}
+
+      </div>
+      {#  This is the RHS sidebar. #}
+      <div class="column body-sidebar-item-desktop m-b700 g--4">
+        {% if event_date %}
+          <div class="date-title t--intro">
+            {{ event_date }}
+          </div>
+
+        <ul class="sb">
+          {% if content.field_event_times %}
+            <li class="sb-i evt-sb-i">
+              {{ content.field_event_times }}
+            </li>
+          {% endif %}
+
+        {% endif %}
+
+        {% if content.field_address["#items"] %}
+          <li class="sb-i evt-sb-i">
+            {{ content.field_address }}
+          </li>
+        {% endif %}
+
+        {% if content.field_event_contact %}
+          <li class="dl-i evt-sb-i">
+            {{ content.field_event_contact }}
+          </li>
+        {% endif %}
+
+        {% if content.field_email["#items"] %}
+          <li class="sb-i evt-sb-i">
+            {{ content.field_email }}
+          </li>
+        {% endif %}
+
+        {% if content.field_phone_number["#items"] %}
+          <li class="sb-i evt-sb-i">
+            {{ content.field_phone_number }}
+          </li>
+        {% endif %}
+
+        {% if content.cost %}
+          <li class="dl-i evt-sb-i">
+            {{ content.cost }}
+          </li>
+        {% endif %}
+
+        {% if content.field_multiple_neighborhoods%}
+          <li class="dl-i evt-sb-i">
+            {{ content.field_multiple_neighborhoods }}
+          </li>
+        {% endif %}
+
+        {% if content.field_event_type %}
+          <li class="dl-i evt-sb-i">
+            {{ content.field_event_type }}
+          </li>
+        {% endif %}
+
+        {% if content.field_published_date %}
+          <li class="dl-i evt-sb-i">
+            {{ content.field_published_date }}
+          </li>
+        {% endif %}
+
+        {% if content.field_links %}
+          <li class="sb-i evt-sb-i">
+            {{ content.field_links }}
+          </li>
+        {% endif %}
+
+        {% if content.field_sidebar_components %}
+          <li class="sb-i evt-sb-i">
+            {{ content.field_sidebar_components }}
+          </li>
+        {% endif %}
+
+        </ul>
+
+        <div class="addtocal">
+          {{ drupal_field('field_event_date_recur', 'node', nid, 'add_to_calendar') }}
+        </div>
+
+      </div>
+
+    </div>
+
+    {% if content.field_components %}
+      <div class="g">
+        <div class="department-components g--12" {{ content_attributes }}>
+          {{ content.field_components }}
+        </div>
+      </div>
+    {% endif %}
+    {% if content.field_contacts %}
+  {#    {{ theme('page_contacts', 'title': "Who's Involved", 'contacts': content.field_contacts) }}#}
+    {% endif %}
+
+  </div>
+
+</article>

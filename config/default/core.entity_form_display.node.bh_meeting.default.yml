@@ -1,0 +1,300 @@
+uuid: 0fcfac28-27eb-4c13-884b-56feeaa478ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_meeting.body
+    - field.field.node.bh_meeting.field_address
+    - field.field.node.bh_meeting.field_bh_contact_person_sfid
+    - field.field.node.bh_meeting.field_bh_event_ref
+    - field.field.node.bh_meeting.field_bh_host_organization
+    - field.field.node.bh_meeting.field_bh_languages_supported
+    - field.field.node.bh_meeting.field_bh_meeting_contact_email
+    - field.field.node.bh_meeting.field_bh_meeting_end_time
+    - field.field.node.bh_meeting.field_bh_meeting_goal
+    - field.field.node.bh_meeting.field_bh_meeting_recording_pass
+    - field.field.node.bh_meeting.field_bh_meeting_start_time
+    - field.field.node.bh_meeting.field_bh_number_of_attendees
+    - field.field.node.bh_meeting.field_bh_post_meeting_notes
+    - field.field.node.bh_meeting.field_bh_post_meeting_recording
+    - field.field.node.bh_meeting.field_bh_update_ref
+    - field.field.node.bh_meeting.field_bh_virt_meeting_web_addr
+    - node.type.bh_meeting
+  module:
+    - address
+    - content_moderation
+    - datetime
+    - field_group
+    - path
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_bh_meeting:
+      children:
+        - group_basic_
+        - group_meeting_records
+      label: 'BH Meeting'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_basic_:
+      children:
+        - field_bh_update_ref
+        - title
+        - field_bh_meeting_start_time
+        - field_bh_meeting_end_time
+        - field_bh_virt_meeting_web_addr
+        - field_address
+        - field_bh_host_organization
+        - body
+        - field_bh_meeting_goal
+        - field_bh_meeting_contact_email
+        - field_bh_contact_person_sfid
+        - field_bh_languages_supported
+        - field_bh_event_ref
+      label: 'Basic Information'
+      region: content
+      parent_name: group_bh_meeting
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_meeting_records:
+      children:
+        - field_bh_number_of_attendees
+        - field_bh_post_meeting_notes
+        - field_bh_post_meeting_recording
+        - field_bh_meeting_recording_pass
+      label: 'Meeting Records'
+      region: content
+      parent_name: group_bh_meeting
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.bh_meeting.default
+targetEntityType: node
+bundle: bh_meeting
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bh_contact_person_sfid:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_event_ref:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_host_organization:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_languages_supported:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_meeting_contact_email:
+    type: email_default
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_bh_meeting_end_time:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bh_meeting_goal:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_meeting_recording_pass:
+    type: string_textfield
+    weight: 19
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_meeting_start_time:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bh_number_of_attendees:
+    type: number
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_post_meeting_notes:
+    type: string_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_post_meeting_recording:
+    type: string_textfield
+    weight: 18
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_update_ref:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bh_virt_meeting_web_addr:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

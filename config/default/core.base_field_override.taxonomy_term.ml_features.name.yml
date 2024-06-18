@@ -1,0 +1,18 @@
+uuid: 80bcaea4-a00e-4631-854f-2470824ce48d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_features
+id: taxonomy_term.ml_features.name
+field_name: name
+entity_type: taxonomy_term
+bundle: ml_features
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,14 @@
+uuid: 9c5af226-95bc-4954-9dd1-948c6838a00f
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: pathauto_file_pattern
+label: 'Default File Path'
+type: 'canonical_entities:file'
+pattern: 'files/[file:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: -10
+relationships: {  }

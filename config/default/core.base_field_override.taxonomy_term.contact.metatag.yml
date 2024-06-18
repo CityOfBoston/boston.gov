@@ -1,0 +1,18 @@
+uuid: 4bbbb49c-34e5-47a7-b58c-717e46a8880c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.contact
+id: taxonomy_term.contact.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: contact
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

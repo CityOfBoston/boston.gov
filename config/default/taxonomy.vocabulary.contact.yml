@@ -1,0 +1,10 @@
+uuid: f0161626-9979-47b7-8623-635256a1d9d2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hAdh8P1wPiIVuz2KfdUZ63A2PkEqE5rss4CBtO0lRiU
+name: Contact
+vid: contact
+description: 'Contact classification mechanism.'
+weight: 0

@@ -1,0 +1,24 @@
+uuid: ac1366cc-e7b8-4269-9781-7dde3521e30f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.external_link
+_core:
+  default_config_hash: V-DDd3Tort1LNywlLpOifJ7M1hpa5Tu-B4fG5EG3m10
+id: paragraph.external_link.status
+field_name: status
+entity_type: paragraph
+bundle: external_link
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

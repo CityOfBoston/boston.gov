@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:5a248bee-228e-444c-91c0-9e14de442087'
+id: commission_contact_info
+label: 'Commission Contact Info'
+icon_uuid: 5a248bee-228e-444c-91c0-9e14de442087
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Contact Info'
+behavior_plugins: {  }

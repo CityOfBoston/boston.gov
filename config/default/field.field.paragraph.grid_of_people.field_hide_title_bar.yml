@@ -1,0 +1,23 @@
+uuid: e0a4bc24-2f5a-497c-94a2-1d83d93ca5b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.grid_of_people
+id: paragraph.grid_of_people.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: grid_of_people
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

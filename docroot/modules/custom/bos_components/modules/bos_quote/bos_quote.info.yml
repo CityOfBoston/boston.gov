@@ -1,0 +1,22 @@
+name:  Bos Quote Component
+type: module
+description: Provides config and theming for quote component.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.quote.created
+  - core.base_field_override.paragraph.quote.status
+  - core.entity_form_display.paragraph.quote.default
+  - core.entity_view_display.paragraph.quote.default
+  - core.entity_view_display.paragraph.quote.paragraphs_editor_preview
+  - field.field.paragraph.quote.field_first_name
+  - field.field.paragraph.quote.field_last_name
+  - field.field.paragraph.quote.field_person_photo
+  - field.field.paragraph.quote.field_quote
+  - field.field.paragraph.quote.field_single_neighborhood
+  - language.content_settings.paragraph.quote
+  - paragraphs.paragraphs_type.quote

@@ -1,0 +1,149 @@
+<?php
+
+/**
+ * @file
+ * Library for connecting to Swiftype.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_swiftype_theme() {
+  return [
+    'bos_swiftype_search_results' => [
+      'template' => 'search-results',
+      'variables' => [
+        'results' => NULL,
+        'range'   => range(1, 5),
+        'selected_facets' => [],
+        "facets" => [],
+        "facets_extra" => [],
+        "has_results" => FALSE,
+        "no_search" => FALSE,
+        "info" => new stdClass(),
+        "records" => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_swiftype_preprocess_page__search(&$variables, $hook, $info) {
+  $variables["attributes"]->setAttribute("id", "page");
+  // Make responsive to menu appearing on right by adding class mn.
+  $variables["attributes"]->addClass("mn");
+  $variables["attributes"]->addClass("page--wa");
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_swiftype_preprocess_bos_swiftype_search_results(&$variables) {
+  $variables["attached"]["libraries"][] = "bos_swiftype/bos_swiftype.boston";
+  $variables["bos_search_url"] = "/search";
+  if (isset($variables["results"]['body'])) {
+    $variables["info"] = $variables["results"]['body']->info;
+    $variables["search_term"] = $variables["info"]->page->query;
+    $variables["has_results"] = $variables["info"]->page->total_result_count > 0;
+    $variables["records"] = $variables["results"]['body']->records->page;
+    foreach ($variables["records"] as $key => &$record) {
+      $record->url = bos_swiftype_result_url($record, $variables["search_term"]);
+      $record->clean = bos_swiftype_clean_result($record->title);
+      $record->facet_type = bos_swiftype_facet_type($record->type);
+    }
+    $variables["facets"] = (array) $variables["info"]->page->facets->type;
+    foreach ($variables["facets"] as $key => $facet) {
+      if (!bos_swiftype_facet_type($key)) {
+        unset($variables["facets"][$key]);
+      }
+      else {
+        $checked = "";
+        if (is_array($variables["selected_facets"])) {
+          $checked = in_array($key, $variables["selected_facets"]) ? " checked" : "";
+        }
+        $variables["facets_extra"][$facet] = [
+          "facet" => $facet,
+          "selected" => $checked,
+          "facet_type" => bos_swiftype_facet_type($key),
+        ];
+      }
+    }
+
+    // Create the pager.
+    $variables["info"]->start_pager["url"] = t("@url?page=@page&query=@q&@facet", [
+      "@url" => $variables["bos_search_url"],
+      "@page" => $variables["info"]->page->current_page - 1,
+      "@q" => $variables["search_term"],
+      "@facet" => http_build_query(['facet' => $variables["selected_facets"]]),
+    ]);
+    $variables["info"]->end_pager["url"] = t("@url?page=@page&query=@q&@facet", [
+      "@url" => $variables["bos_search_url"],
+      "@page" => $variables["info"]->page->current_page + 1,
+      "@q" => $variables["search_term"],
+      "@facet" => http_build_query(['facet' => $variables["selected_facets"]]),
+    ]);
+    foreach ($variables["range"] as $key => $range) {
+      $new[$key] = [
+        "id" => $range,
+        "url" => t("@url?page=@page&query=@q&@facet", [
+          "@url" => $variables["bos_search_url"],
+          "@page" => $range,
+          "@q" => $variables["search_term"],
+          "@facet" => http_build_query([
+            'facet' => $variables["selected_facets"],
+          ]),
+        ]),
+      ];
+    }
+    $variables["range"] = $new ?: [];
+  }
+
+}
+
+/**
+ * Provides a more generic name for the funnny CT names we have.
+ *
+ * @param string $type
+ *   The name of the content type.
+ *
+ * @return bool|mixed
+ *   A more friendly display of the content type name.
+ */
+function bos_swiftype_facet_type(string $type) {
+  $facets = [
+    'article' => 'Articles',
+    'department_profile' => 'Departments',
+    'documents' => 'Documents',
+    'event' => 'Events',
+    'how_to' => 'How-Tos',
+    'post' => 'News',
+    'person_profile' => 'People',
+    'program_initiative_profile' => 'Programs',
+    'public_notice' => 'Public Notices',
+    'topic_page' => 'Guides',
+  ];
+
+  return !empty($facets[$type]) ? $facets[$type] : FALSE;
+}
+
+/**
+ * Implements bos_swiftype_result_url($result).
+ */
+function bos_swiftype_result_url($result, $query) {
+  $query = [
+    'id' => $result->id,
+    'url' => $result->url,
+    'query' => $query,
+  ];
+
+  return "/search/click?" . http_build_query($query, '', '&');
+}
+
+/**
+ * Implements bos_swiftype_clean_result($result).
+ */
+function bos_swiftype_clean_result($result) {
+  return str_replace(' | Boston.gov', '', $result);
+}

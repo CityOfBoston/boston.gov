@@ -1,0 +1,18 @@
+uuid: d5b3b87b-7679-4baf-9be5-6441f83ff1ff
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.features
+id: taxonomy_term.features.name
+field_name: name
+entity_type: taxonomy_term
+bundle: features
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

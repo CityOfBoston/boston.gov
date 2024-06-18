@@ -1,0 +1,18 @@
+uuid: e5d948a7-0229-4cfd-9b19-ed4bc01dfbc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.utilities_included
+id: taxonomy_term.utilities_included.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: utilities_included
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

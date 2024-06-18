@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Bid Offering'
+vid: bid_offering
+description: ''
+weight: 0

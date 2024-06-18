@@ -1,0 +1,27 @@
+uuid: 02aeb7fd-6e24-470f-aaa7-d07ee00ccd7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.grid_of_cards.field_component_theme
+    - field.field.paragraph.grid_of_cards.field_component_title
+    - field.field.paragraph.grid_of_cards.field_contact
+    - field.field.paragraph.grid_of_cards.field_drawer
+    - field.field.paragraph.grid_of_cards.field_hide_title_bar
+    - field.field.paragraph.grid_of_cards.field_short_title
+    - paragraphs.paragraphs_type.grid_of_cards
+_core:
+  default_config_hash: biiYNzIOrWRU-tqCjLEHiQuvRD6OQkTxcUkhpboWSTQ
+id: paragraph.grid_of_cards.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: grid_of_cards
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_drawer: true
+  field_hide_title_bar: true
+  field_short_title: true

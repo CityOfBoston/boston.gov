@@ -1,0 +1,18 @@
+uuid: 854b18e9-02e6-47c3-b38c-e0f1dec927b9
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.title
+field_name: title
+entity_type: node
+bundle: transaction
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: ee2f2083-cab0-4c16-88f4-90dd06ac8c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_banner_title
+    - taxonomy.vocabulary.project_banner_bh_
+id: taxonomy_term.project_banner_bh_.field_banner_title
+field_name: field_banner_title
+entity_type: taxonomy_term
+bundle: project_banner_bh_
+label: 'Banner Title'
+description: 'This text appears in red in capitals on the banner. If a Banner Title and Banner Text are both provided, they are separated by a slash (/).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

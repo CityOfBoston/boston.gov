@@ -1,0 +1,24 @@
+uuid: 098de60e-dfd7-4fa2-84c6-ea9c552c80ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_launch_script
+    - filter.format.json_friendly
+    - paragraphs.paragraphs_type.web_app
+  module:
+    - text
+id: paragraph.web_app.field_component_launch_script
+field_name: field_component_launch_script
+entity_type: paragraph
+bundle: web_app
+label: 'Component Launch Script'
+description: 'Add javascript code to run once the component javascript is loaded.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - json_friendly
+field_type: text_long

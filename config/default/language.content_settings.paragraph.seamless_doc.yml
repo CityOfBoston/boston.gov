@@ -1,0 +1,20 @@
+uuid: 175adec8-77c5-42cf-9a85-eb2f73964279
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.seamless_doc
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 6Kr1iEjB1N6vk6-ZVk5wYxotQ2ZfDHN8fkoAl6pmlNQ
+id: paragraph.seamless_doc
+target_entity_type_id: paragraph
+target_bundle: seamless_doc
+default_langcode: site_default
+language_alterable: false

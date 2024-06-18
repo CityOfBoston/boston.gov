@@ -1,0 +1,8 @@
+uuid: 415cc2eb-cb01-47cc-8956-62706ed090a5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Record Type (BH)'
+vid: bh_record_type
+description: 'Building Housing: Record Type'
+weight: 0

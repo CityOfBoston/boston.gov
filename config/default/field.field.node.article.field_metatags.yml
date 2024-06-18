@@ -1,0 +1,23 @@
+uuid: 437f57e2-4d56-4443-8db9-a8f70d57dc12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.article
+  module:
+    - metatag
+id: node.article.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: article
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:3:{s:20:"schema_article_image";s:76:"a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:21:"[custom:schema_image]";}";s:21:"schema_article_author";s:241:"a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:15:"City of Boston ";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}}";s:24:"schema_article_publisher";s:241:"a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:15:"City of Boston ";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}}";}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

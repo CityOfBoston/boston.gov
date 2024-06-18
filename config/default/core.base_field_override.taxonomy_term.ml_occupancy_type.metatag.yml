@@ -1,0 +1,18 @@
+uuid: bc2e942f-6875-4ffd-b3c1-65b2ac5e4801
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+id: taxonomy_term.ml_occupancy_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: ml_occupancy_type
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

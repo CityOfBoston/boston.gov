@@ -1,0 +1,10 @@
+uuid: 1358b7e7-a284-465e-9141-9352129278c4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 67zvx8vWtdIcxs-liH8ZxUCDzxorpdguHQL-xnNw4k4
+name: 'Bid Type'
+vid: bid_type
+description: ''
+weight: 0

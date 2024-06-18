@@ -1,0 +1,25 @@
+uuid: d74d51bc-5087-457c-9de4-31797b70a8a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - link
+_core:
+  default_config_hash: 7kpP6eRUm6k5_o7G9C8E_Ko27v6INJEYQ0pmwao4BOg
+id: paragraph.external_link.field_external_link
+field_name: field_external_link
+entity_type: paragraph
+bundle: external_link
+label: 'External Link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

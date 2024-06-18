@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_publish_to_metrolist
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.field_mah_publish_to_metrolist
+field_name: field_mah_publish_to_metrolist
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Publish to Metrolist'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,87 @@
+uuid: c03319de-91ec-4b30-888d-9ea49d09acf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.elections.field_display_title
+    - field.field.taxonomy_term.elections.field_election_date
+    - field.field.taxonomy_term.elections.field_election_subtitle
+    - field.field.taxonomy_term.elections.field_election_type
+    - taxonomy.vocabulary.elections
+  module:
+    - datetime
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_election:
+      children:
+        - field_display_title
+        - field_election_subtitle
+        - field_election_type
+        - field_election_date
+        - description
+      label: Election
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: true
+id: taxonomy_term.elections.default
+targetEntityType: taxonomy_term
+bundle: elections
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_display_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_election_date:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_election_subtitle:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_election_type:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  status: true

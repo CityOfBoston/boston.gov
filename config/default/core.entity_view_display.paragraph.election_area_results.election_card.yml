@@ -1,0 +1,39 @@
+uuid: 7b00fa0d-812d-4270-ae3f-8250899de0e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.election_card
+    - field.field.paragraph.election_area_results.field_election_area
+    - field.field.paragraph.election_area_results.field_election_contest_results
+    - field.field.paragraph.election_area_results.field_precincts_reported
+    - field.field.paragraph.election_area_results.field_precincts_total
+    - paragraphs.paragraphs_type.election_area_results
+  module:
+    - entity_reference_revisions
+    - fences
+id: paragraph.election_area_results.election_card
+targetEntityType: paragraph
+bundle: election_area_results
+mode: election_card
+content:
+  field_election_contest_results:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: election_card
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_election_area: true
+  field_precincts_reported: true
+  field_precincts_total: true

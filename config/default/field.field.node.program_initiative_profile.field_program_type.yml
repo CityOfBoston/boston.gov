@@ -1,0 +1,31 @@
+uuid: 48e7d62c-bc91-4488-aa05-8e9890a4083d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_type
+    - node.type.program_initiative_profile
+    - taxonomy.vocabulary.program_type
+_core:
+  default_config_hash: ZfMUruJXDX2mzjPwnNZtRH6_OHT66oKCV0U4YPi3JJA
+id: node.program_initiative_profile.field_program_type
+field_name: field_program_type
+entity_type: node
+bundle: program_initiative_profile
+label: 'Program/Initiative Type'
+description: 'Please select what type of profile this is. This selection field will determine which listing page this content shows up on (Initiatives or Programs).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      program_type: program_type
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

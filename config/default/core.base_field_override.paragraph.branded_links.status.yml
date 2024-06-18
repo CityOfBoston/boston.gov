@@ -1,0 +1,22 @@
+uuid: 100860b4-15e3-4c4a-9427-2bb7e1c616ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.branded_links
+id: paragraph.branded_links.status
+field_name: status
+entity_type: paragraph
+bundle: branded_links
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

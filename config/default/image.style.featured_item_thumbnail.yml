@@ -1,0 +1,15 @@
+uuid: 400c8eb0-6f47-4325-b601-2d69131303b6
+langcode: en
+status: true
+dependencies: {  }
+name: featured_item_thumbnail
+label: 'Featured Item Thumbnail (625px)'
+effects:
+  e563015d-9b73-43f8-8e1c-549d41ab9cf0:
+    uuid: e563015d-9b73-43f8-8e1c-549d41ab9cf0
+    id: image_scale
+    weight: 1
+    data:
+      width: 625
+      height: null
+      upscale: false

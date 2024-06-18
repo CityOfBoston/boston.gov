@@ -1,0 +1,21 @@
+uuid: 95c1459b-afaf-46a8-b331-e71650b87a05
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.text_two_column.field_column_configuration
+    - field.field.paragraph.text_two_column.field_left_column
+    - field.field.paragraph.text_two_column.field_right_column
+    - paragraphs.paragraphs_type.text_two_column
+_core:
+  default_config_hash: bP5i2cX1HiDXR957aTULWUkoY7m0xdOh31KmpxsGNxg
+id: paragraph.text_two_column.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: text_two_column
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_column_configuration: true
+  field_left_column: true
+  field_right_column: true

@@ -1,0 +1,15 @@
+uuid: 686118e9-cf8f-4ba7-9d2a-a648ee8036ac
+langcode: und
+status: true
+dependencies: {  }
+name: topic_listing_large
+label: 'Topic Listing Large (280x160)'
+effects:
+  8cd4eaad-b491-438b-bd50-aeceaadaedf9:
+    uuid: 8cd4eaad-b491-438b-bd50-aeceaadaedf9
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 280
+      height: 160
+      anchor: center-center

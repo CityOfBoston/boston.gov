@@ -1,0 +1,18 @@
+uuid: 5205716e-9ca9-4308-adae-05f7a3594c1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.changed
+field_name: changed
+entity_type: node
+bundle: place_profile
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

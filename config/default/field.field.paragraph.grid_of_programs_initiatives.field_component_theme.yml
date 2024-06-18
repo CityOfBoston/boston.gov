@@ -1,0 +1,25 @@
+uuid: 3b3c8dfc-a522-4854-91a5-d2a8f93feb4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+  module:
+    - options
+_core:
+  default_config_hash: ohg93H6r4uBBZoyVt5IqdjHe_mlaWIRroEGO-MRDeR8
+id: paragraph.grid_of_programs_initiatives.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

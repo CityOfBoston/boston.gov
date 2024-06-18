@@ -1,0 +1,23 @@
+uuid: dc90f1e6-6ce9-438e-917a-b3050b7c6314
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theme
+    - node.type.site_alert
+  module:
+    - options
+id: node.site_alert.field_theme
+field_name: field_theme
+entity_type: node
+bundle: site_alert
+label: Theme
+description: 'Site alerts can be set to use a red or blue background.'
+required: true
+translatable: false
+default_value:
+  -
+    value: dark-blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

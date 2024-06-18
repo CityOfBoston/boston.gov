@@ -1,0 +1,19 @@
+uuid: 652ee46f-42fe-4226-860d-84afb7637aef
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'Defines a single column layout for the <b>Formatted Text</b> (text) paragraph.'
+    image_path: sites/default/files/paragraphs_type_icon/text_one_column_icon.svg
+_core:
+  default_config_hash: kf4rRghLLoVPL7J_r5oPX_0nSNxo9zESuHiyhs8fDoc
+id: text_one_column
+label: 'One Column Text'
+icon_uuid: null
+icon_default: null
+description: 'Defines a single column layout for the <b>Formatted Text</b> (text) paragraph.'
+behavior_plugins: {  }

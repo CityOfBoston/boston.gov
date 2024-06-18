@@ -1,0 +1,18 @@
+uuid: bfed0485-b9af-48c6-a9d1-82b20cb7b70f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.title
+field_name: title
+entity_type: node
+bundle: bh_contact
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

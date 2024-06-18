@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_tranlsate module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_translate_theme() {
+  $theme['paragraph__translate'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_translate') . '/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_translate_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] = 'bos_translate/bos_translate_js';
+  $variables['#attached']['library'][] = 'bos_translate/bos_translate_css';
+}

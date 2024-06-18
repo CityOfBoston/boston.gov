@@ -1,0 +1,21 @@
+uuid: bae32606-63eb-4d2f-acd6-e12fe68da6f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: HkIFqVmgIFKiixXA-p2r_hi72QUeXE5U7kGTs3WV9Fc
+id: paragraph.card.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: card
+label: Title
+description: 'The title for the card. <strong>Display is limited to 70 characters.</strong>'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

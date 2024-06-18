@@ -1,0 +1,21 @@
+uuid: 77bff1f3-0bf0-41e5-8119-692010b7a3b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_dnd_funding_award_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_dnd_funding_award_date
+field_name: field_bh_dnd_funding_award_date
+entity_type: node
+bundle: bh_project
+label: 'DND Funding Award Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

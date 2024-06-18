@@ -1,0 +1,18 @@
+uuid: 150ab5c6-6c6a-4a1f-9238-8e049f1dfaa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: bh_update
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

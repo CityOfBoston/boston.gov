@@ -1,0 +1,18 @@
+uuid: ce2b0889-69fd-4d74-b40a-650520fd72c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_rent_type
+id: taxonomy_term.ml_rent_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: ml_rent_type
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

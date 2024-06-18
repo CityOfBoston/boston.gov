@@ -1,0 +1,24 @@
+uuid: 8690ebf6-5d49-4ab6-ab52-a52aa4045ebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.news_and_announcements
+_core:
+  default_config_hash: 3HbV8Md4vrCJ3rrvUqFbrej0SQ9FKM9oOSgZ8RCqCbI
+id: paragraph.news_and_announcements.status
+field_name: status
+entity_type: paragraph
+bundle: news_and_announcements
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

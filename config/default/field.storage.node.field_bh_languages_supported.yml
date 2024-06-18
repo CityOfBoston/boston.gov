@@ -1,0 +1,21 @@
+uuid: 3b20f203-461a-4d89-900a-4dc1cebef275
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_languages_supported
+field_name: field_bh_languages_supported
+entity_type: node
+type: string
+settings:
+  max_length: 1024
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

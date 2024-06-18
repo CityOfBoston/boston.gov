@@ -1,0 +1,20 @@
+uuid: 1bc4f16a-59a5-45d4-b48d-aa5d36104158
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos_admin
+id: boston_admin_system_main
+theme: bos_admin
+region: content
+weight: -4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

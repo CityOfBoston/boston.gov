@@ -1,0 +1,30 @@
+uuid: 878a29c4-ae72-493a-bc5a-916d1c0b79e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_banner_moderation_state
+field_name: field_banner_moderation_state
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Draft
+      label: Draft
+    -
+      value: Published
+      label: Published
+    -
+      value: Archived
+      label: Archived
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

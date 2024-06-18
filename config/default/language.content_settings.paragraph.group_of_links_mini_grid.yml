@@ -1,0 +1,20 @@
+uuid: 2f842bcd-1997-48f8-a4e4-59f7649f9e5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: rwsfjWuIdPgrsxNwetVudtwu6wmAeh6mcgA5LI9bYGo
+id: paragraph.group_of_links_mini_grid
+target_entity_type_id: paragraph
+target_bundle: group_of_links_mini_grid
+default_langcode: site_default
+language_alterable: false

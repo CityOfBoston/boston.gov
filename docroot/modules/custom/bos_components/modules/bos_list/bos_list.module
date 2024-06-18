@@ -1,0 +1,279 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_list module.
+ */
+
+use Drupal\Core\Render\Markup;
+use Drupal\views\Entity\View;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_list_theme() {
+  $theme['paragraph__list'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['field__component__field_component_title'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['field__field_component_title__video__mode__full'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__metrolist_affordable_housing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__metrolist_affordable_housing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__bids_rfps'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__bids_rfps'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view_unformatted__departments_listing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__departments_listing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__news_landing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__news_landing'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__calendar'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__calendar'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__calendar'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['node__event__calendar_listing'] = [
+    'base hook' => 'node',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view_unformatted__calendar'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__places'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__places'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view_unformatted__places'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__public_notice'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__public_notice'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['viewfield__paragraph__field_list'] = [
+    'base hook' => 'viewfield',
+  ];
+  $theme['views_view_unformatted__public_notice'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__topic_landing_page'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__topic_landing_page'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view_unformatted__topic_landing_page'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_view__transactions'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['views_exposed_form__transactions'] = [
+    'base hook' => 'views_view',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['node__transaction__listing'] = [
+    'base hook' => 'node',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['fieldset_field_contact_target_id'] = [
+    'base hook' => 'fieldset',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['checkboxes_field_contact_target_id'] = [
+    'base hook' => 'checkboxes',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['bef_checkboxes_bef_checkboxes'] = [
+    'base hook' => 'bef_checkboxes',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['fieldset_bef_checkboxes'] = [
+    'base hook' => 'fieldset',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  $theme['input_title'] = [
+    'base hook' => 'input',
+    'path' => 'modules/custom/bos_components/modules/bos_list/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_list_preprocess_paragraph__list(&$variables) {
+  _bos_components_fix_attributes($variables);
+
+  $variables["attributes"]->addClass("b");
+  $variables["attributes"]->addClass("b--fw");
+  $variables["attributes"]->addClass("clearfix");
+
+  if ($variables['paragraph']->field_component_theme->value == "grey" ||
+    $variables['paragraph']->field_component_theme->value == "g") {
+    $variables["attributes"]->addClass("b--g");
+  }
+  elseif ($variables['paragraph']->field_component_theme->value == "blue" ||
+    $variables['paragraph']->field_component_theme->value == "b") {
+    $variables["attributes"]->addClass("b--b");
+  }
+  elseif ($variables['paragraph']->field_component_theme->value == "w") {
+    $variables["attributes"]->addClass("b--w");
+  }
+  else {
+    $variables["attributes"]->addClass("b--w");
+  }
+
+  if ($variables["paragraph"]->bundle() == "list" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+    $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_list_preprocess_views_view__topic_landing_page(&$variables) {
+  // Breadcrumbs only show if the view is not exposed within the guides node.
+  if (NULL != \Drupal::request()->getQueryString() || \Drupal::request()->getPathInfo() != "/guides") {
+    $variables["show_breadcrumbs"] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_list_form_views_exposed_form_alter(&$form, $form_state, $form_id) {
+  if ($form["#id"] == 'views-exposed-form-places-listing') {
+    $form['title']['#attributes']['class'] = ['sf-i-f', 'form-text'];
+    $form['title']['#attributes']['placeholder'] = 'Search...';
+    $form["actions"]["submit"]["#attributes"]['class'] = [
+      'sf-i-b',
+      'form-submit',
+    ];
+    unset($form["#info"]["filter-title"]["label"]);
+  }
+  elseif ($form["#id"] == 'views-exposed-form-transactions-page-1') {
+    $form['title']['#attributes']['class'] = ['sf-i-f', 'form-text'];
+    $form['title']['#attributes']['placeholder'] = 'Search transactions...';
+    $form["actions"]["submit"]["#attributes"]['class'] = [
+      'sf-i-b',
+      'form-submit',
+    ];
+    unset($form["#info"]["filter-title"]["label"]);
+  }
+
+}
+
+function bos_list_preprocess_form_element(&$variables) {
+  if ((isset($variables['element']['#title']) && strtolower($variables['element']['#title']) === 'search') || (isset($variables['element']['#attributes']['id'] ) && $variables['element']['#attributes']['id'] === "edit-title")) {
+    $variables['label_display'] = 'after';
+    $variables['label']['#attributes']['class'] = 'sf-i-l';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_list_form_alter(&$form, $form_state, $form_id) {
+  if ($form["#form_id"] == 'views_exposed_form') {
+    $current_path = \Drupal::service('path.current')->getPath();
+    $form["#action"] = $current_path;
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_list_paragraph_list_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup = [];
+  if ($view = View::load($para["entity"]->field_list[0]->target_id)) {
+    if ($para["entity"]->hasField("field_component_title") && $para["entity"]->get("field_component_title")->value) {
+      $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+    }
+    else {
+      $markup[] = Markup::create("(No Title)");
+    }
+    $markup[] = Markup::create("View: " . $view->label());
+    $markup[] = Markup::create("Display: " . $view->getDisplay($para["entity"]->field_list[0]->display_id)["display_title"]);
+    return [
+      'attributes' => $attributes,
+      'content' => $markup,
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function bos_list_theme_suggestions_alter(array &$suggestions, array $variables, string $hook) {
+  if ($hook == 'fieldset' || $hook == 'checkboxes' || $hook == 'bef_checkboxes') {
+    if (isset($variables["element"]["#theme"])) {
+      $suggestions[] = $hook . '_' . $variables["element"]["#theme"];
+    }
+    if (isset($variables["element"]["#parents"])) {
+      $suggestion = $hook . "_";
+      foreach($variables["element"]["#parents"] as $parent) {
+        $suggestion .= "_$parent";
+      }
+      $suggestions[] = $suggestion;
+    }
+  }
+  if ($hook == 'input') {
+    if (isset($variables["element"]["#parents"][0])) {
+      $suggestions[] = $hook . '__' . $variables["element"]["#parents"][0];
+    }
+  }
+}

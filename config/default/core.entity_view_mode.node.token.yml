@@ -1,0 +1,17 @@
+uuid: d198ec46-233b-4801-a049-8da6cfc93125
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    internal: true
+_core:
+  default_config_hash: qnSbHAZ0We475L2KjWYIMO2vN17n_c0ieRc0u5sZrqU
+id: node.token
+label: Token
+description: ''
+targetEntityType: node
+cache: true

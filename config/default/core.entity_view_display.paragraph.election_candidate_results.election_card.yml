@@ -1,0 +1,71 @@
+uuid: f857f0f5-7053-43b3-9c87-9c50c936ff3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.election_card
+    - field.field.paragraph.election_candidate_results.field_calc_percent
+    - field.field.paragraph.election_candidate_results.field_candidate_prtid
+    - field.field.paragraph.election_candidate_results.field_candidate_vot
+    - field.field.paragraph.election_candidate_results.field_candidate_wrind
+    - field.field.paragraph.election_candidate_results.field_election_candidate
+    - paragraphs.paragraphs_type.election_candidate_results
+  module:
+    - fences
+id: paragraph.election_candidate_results.election_card
+targetEntityType: paragraph
+bundle: election_candidate_results
+mode: election_card
+content:
+  field_calc_percent:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 4
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: 'precinct_total g--2 ta--c--ac'
+        fences_field_item_tag: none
+        fences_field_item_classes: m-v000
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_candidate_vot:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: 'precinct_total g--2 ta--c--ac'
+        fences_field_item_tag: none
+        fences_field_item_classes: m-v000
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_election_candidate:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: 'precinct_total g--4 ta--c--ac'
+        fences_field_item_tag: none
+        fences_field_item_classes: m-v000
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_candidate_prtid: true
+  field_candidate_wrind: true

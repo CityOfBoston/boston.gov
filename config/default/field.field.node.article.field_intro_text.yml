@@ -1,0 +1,23 @@
+uuid: 39d8127b-b62a-42ca-8d5e-6981d45a25f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.article
+  module:
+    - text
+_core:
+  default_config_hash: d4rwY6YxYchwJ3tmTFj10ebWsNW7RFH6DUbrP9hfFKk
+id: node.article.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: article
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

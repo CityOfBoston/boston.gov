@@ -1,0 +1,156 @@
+uuid: c65f32b9-cf03-4b94-b787-8a7690ba1e62
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.election_card
+    - field.field.paragraph.election_contest_results.field_calc_total_votes
+    - field.field.paragraph.election_contest_results.field_candidate_results
+    - field.field.paragraph.election_contest_results.field_contest_ballots
+    - field.field.paragraph.election_contest_results.field_contest_numvoters
+    - field.field.paragraph.election_contest_results.field_contest_overvotes
+    - field.field.paragraph.election_contest_results.field_contest_undervotes
+    - field.field.paragraph.election_contest_results.field_election_contest
+    - field.field.paragraph.election_contest_results.field_precinct_reported
+    - field.field.paragraph.election_contest_results.field_precinct_total
+    - field.field.paragraph.election_contest_results.field_pushcontests
+    - paragraphs.paragraphs_type.election_contest_results
+  module:
+    - entity_reference_revisions
+    - fences
+id: paragraph.election_contest_results.election_card
+targetEntityType: paragraph
+bundle: election_contest_results
+mode: election_card
+content:
+  field_calc_total_votes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 7
+    region: content
+  field_candidate_results:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: election_card
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_contest_ballots:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_contest_overvotes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_contest_undervotes:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_election_contest:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: election_card
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_precinct_reported:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_precinct_total:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ','
+      prefix_suffix: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden:
+  field_contest_numvoters: true
+  field_pushcontests: true

@@ -1,0 +1,18 @@
+uuid: 6fecfa8a-ca9d-4491-9c3e-30019a1a317f
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.name
+field_name: name
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,24 @@
+uuid: 98fb5a63-0d5a-4d26-a29d-ba12c3568f84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column
+    - filter.format.filtered_html
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - text
+id: paragraph.bos_chart.field_left_column
+field_name: field_left_column
+entity_type: paragraph
+bundle: bos_chart
+label: 'Column Body Text'
+description: '[Optional] In a two column layout, this text displays in the text column.<br> If the Column Layout is "Single Column", then any text input here will display between the "Chart Title" and "Chart Body Text"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - filtered_html
+field_type: text_long

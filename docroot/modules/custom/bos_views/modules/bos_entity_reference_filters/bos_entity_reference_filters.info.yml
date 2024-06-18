@@ -1,0 +1,10 @@
+name: bos_entity_reference_filters
+type: module
+description: 'Provides a view that is used by entity reference fields to modify output.'
+package: 'City of Boston (views)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - views
+config_devel:
+  - views.view.entity_reference_filters

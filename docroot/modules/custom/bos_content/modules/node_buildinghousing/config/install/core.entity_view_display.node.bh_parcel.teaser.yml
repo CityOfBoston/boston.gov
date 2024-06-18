@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - core.entity_view_mode.node.teaser
+        - field.field.node.bh_parcel.body
+        - node.type.bh_parcel
+    module:
+        - text
+        - user
+id: node.bh_parcel.teaser
+targetEntityType: node
+bundle: bh_parcel
+mode: teaser
+content:
+    body:
+        label: hidden
+        type: text_summary_or_trimmed
+        weight: 101
+        settings:
+            trim_length: 600
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }

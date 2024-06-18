@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+id: paragraph.grid_of_programs_initiatives.created
+field_name: created
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

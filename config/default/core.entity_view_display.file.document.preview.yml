@@ -1,0 +1,59 @@
+uuid: 12b845ec-e49d-4dff-afdc-eb862a5c41fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.preview
+    - field.field.file.document.field_updated_date
+    - file_entity.type.document
+  module:
+    - file_entity
+id: file.document.preview
+targetEntityType: file
+bundle: document
+mode: preview
+content:
+  filemime:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  filename:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  filesize:
+    type: file_size
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  uid:
+    type: uri_link
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uri:
+    type: file_image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      title: field_image_title_text
+      alt: field_image_alt_text
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  field_updated_date: true
+  langcode: true

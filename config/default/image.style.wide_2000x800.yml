@@ -1,0 +1,15 @@
+uuid: 28b04cf0-4101-491e-9dfc-a85ee65ca552
+langcode: en
+status: true
+dependencies: {  }
+name: wide_2000x800
+label: wide_2000x800
+effects:
+  5a60195e-3d43-4003-8c4e-2dd20a364976:
+    uuid: 5a60195e-3d43-4003-8c4e-2dd20a364976
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2000
+      height: 800
+      anchor: center-center

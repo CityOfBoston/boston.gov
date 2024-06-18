@@ -1,0 +1,366 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+
+<!-- vars changed for yearly tax info -->
+{% set rateRes = 10.67 %}
+{% set rateCom = 24.55 %}
+
+<!-- other vars that shouldn't have to change -->
+{% set data = data_full[0] %}
+{% set dataSQLValueHistory = data_value_history %}
+{% set dataSQLOwner = data_owner[0] %}
+{% set dataSQLOwnersCurrent = data_owners_current %}
+{% set coords = data_coords.features[0].geometry.coordinates %}
+{% set unitDisplay = (attribute(data,'property_type') == '0102') ? ' #'~attribute(data,'apt_unit') : '' %}
+{% set exemptResidential = (attribute(data,'residential_exemption_flag')) ? 'Yes' : 'No' %}
+{% set exemptPersonal = (attribute(data,'residential_personal_flag')) ? 'Yes' : 'No' %}
+{% set masterParcelId = attribute(data,'condo_main') %}
+{% set masterParcelLink = "<a href="~attribute(data,'condo_main')~">"~attribute(data,'condo_main')~"</a>" %}
+<!-- must set condo and residential attributes after data_full to get propertyType -->
+{% set dataSQLResCondo = (attribute(data,'property_type') == "0101")  ? data_res[0] : data_condo[0] %}
+{% set propertyType = {
+    "0101": "Single Family",
+    "0111": "Apartment Property",
+    "0102": "Condo Unit",
+    "0986": "Exempt/Other",
+    "0995": "Condo Main",
+    "0348": "Commercial Property",
+} %}
+{% set PropertyTypeVal = (propertyType[attribute(data,'property_type')]) ? propertyType[attribute(data,'property_type')] : "Unknown" %}
+
+<!-- assign Key/Value data returned from SQL endpoint -->
+{% set dataMain = {
+    "Grade" : attribute(data, 'Grade'),
+    "Exterior Condition" : attribute(dataSQLResCondo, 'Exterior Condition'),
+    "Exterior Style" : attribute(dataSQLResCondo, 'Building Style'),
+    "Exterior Finish" : attribute(dataSQLResCondo, 'Exterior Finish'),
+    "Foundation" : attribute(dataSQLResCondo, 'Foundation'),
+    "Roof Cover" : attribute(dataSQLResCondo, 'Roof Cover'),
+    "Roof Structure" : attribute(dataSQLResCondo, 'Roof Structure')}
+%}
+
+{% set dataCondo = {
+	"Master Parcel" : masterParcelLink,
+	"Corner Unit" : attribute(dataSQLResCondo, 'Corner Unit'),
+    "Penthouse Unit" : attribute(dataSQLResCondo, 'Penthouse Unit'),
+    "Floor" : attribute(data, 'Base Floor') ,}
+%}
+
+{% set dataUnit = {
+    "Land Use" : attribute(dataSQLResCondo,'Composite Land Use'),
+    "Story Height" : attribute(dataSQLResCondo,'Story Height'),
+    "Orientation" : attribute(dataSQLResCondo,'Orientation'),
+    "View" : attribute(dataSQLResCondo, 'View'),
+    "AC Type" : attribute(dataSQLResCondo, 'AC Type'),
+    "Heat Type" : attribute(dataSQLResCondo, 'Heat Type'),
+    "Fireplaces" : attribute(dataSQLResCondo, 'Fireplaces'),
+    "Plumbing" : attribute(data, 'XXXX'),
+    "Interior Condition" : attribute(dataSQLResCondo, 'Interior Condition'),
+    "Total Rooms" : attribute(dataSQLResCondo, 'Total Rooms'),
+    "Bedrooms" : attribute(dataSQLResCondo, 'Bedrooms'),
+    "Full Bathrooms" : attribute(dataSQLResCondo, 'Full Bath'),
+    "Half Bathrooms" : attribute(dataSQLResCondo, 'Half Bath'),
+    "Bath Style 1" : attribute(dataSQLResCondo, 'Bath Style 1'),
+    "Bath Style 2" : attribute(dataSQLResCondo, 'Bath Style 2'),
+    "Bath Style 3" : attribute(dataSQLResCondo, 'Bath Style 3'),
+    "Number of Kitchens" : attribute(dataSQLResCondo, 'Kitchens'),
+    "Kitchen Type" : attribute(dataSQLResCondo, 'Kitchen Type'),
+    "Kitchen Style 1" : attribute(dataSQLResCondo, 'Kitchen Style 1'),
+    "Kitchen Style 2" : attribute(dataSQLResCondo, 'Kitchen Style 2'),
+    "Kitchen Style 3" : attribute(dataSQLResCondo, 'Kitchen Style 3'),
+    "Parking Spots" : attribute(dataSQLResCondo, '# of Parking Spots'),
+    "Parking Type" : attribute(dataSQLResCondo, 'Parking Type'),
+    "Parking Ownership" : attribute(dataSQLResCondo, 'Parking Ownership'),
+    "Tandem Parking" : attribute(dataSQLResCondo, 'Tandem Parking'),}
+%}
+
+<div class="breadcrumb" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+
+<div id="assessing">
+	<div class="desktop-100">
+		<h1 class="title">Assessing Online</h1>
+
+		<div class="column mobile-100 desktop-66-left">
+			<div id="parcel_info" class="component-section m-b600">
+				<div class="sh cl">
+        			<h2 class="sh-title">Parcel Information</h2>
+        		</div>
+    		
+				<div id="map-container" class="geolocation-map-wrapper">
+					{% set drupal_settings = {
+					  '#attached': {
+					    'drupalSettings': {
+					      'bos_assessing': {
+					        'coords': coords,
+					      }
+					    }
+					  }
+					} %}
+					{{ drupal_settings }}
+					{#{ drupal_view('assessing', 'embed_1') }#}
+					{#{ drupal_dump(data_coords) }#}
+				</div>
+
+				<div class="desktop-100">
+					<ul class="dl column desktop-50">
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">PARCEL ID</div>
+	        				<div class="detail-item">{{ attribute(data,'parcel_id') }}</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">ADDRESS</div>
+	        				<div class="detail-item">{{ attribute(data,'street_number')~ '-' ~attribute(data,'street_number_suffix') ~' '~ attribute(data,'street_name_only')~ ' ' ~attribute(data,'street_name_suffix')~unitDisplay~ ' ' ~attribute(data,'location_zip_code') }}</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">PROPERTY TYPE</div>
+	        				<div class="detail-item">{{ PropertyTypeVal }}</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">CLASSIFICATION CODE</div>
+	        				<div class="detail-item">{{ attribute(data,'property_type') }}</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">LAND AREA</div>
+	        				<div class="detail-item">{{ attribute(data,'land_area')|number_format(thousands_separator) }} sq ft</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">LIVING AREA</div>
+	        				<div class="detail-item">{{ attribute(data,'living_area')|number_format(thousands_separator) }} sq ft</div>
+	        			</li>
+						<li class="dl-i">
+	        				<div class="detail-item__label">YEAR BUILT</div>
+	        				<div class="detail-item">{{ attribute(data,'year_built') }}</div>
+	        			</li>				
+	        		</ul>
+					<ul class="dl column desktop-50">
+						<li class="dl-i">
+	        				<div class="detail-item__label">OWNER (AS OF JAN 1, {{ data_year_current }})</div>
+	        				<div class="detail-item">{{ attribute(dataSQLOwner,'owner') }}</div>
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">CURRENT OWNER/S</div>
+	        				{% for items in dataSQLOwnersCurrent %}
+	        					<div class="detail-item">{{ items.owner_name }}</div>
+	        				{% endfor %}
+	        			</li>
+	        			<li class="dl-i">
+	        				<div class="detail-item__label">OWNER'S MAILING ADDRESS</div>
+	        				<div class="detail-item">{{ attribute(data,'mail_street_address1') }}</div>
+	        				<div class="detail-item">{{ attribute(data,'mail_city_and_state') ~' '~ attribute(data,'mail_zip_code')}}</div>
+	        			</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+
+			</div>
+			{% if (PropertyTypeVal == 'Condo Unit' or  PropertyTypeVal == 'Single Family') %}
+			<div class="component-section m-b600">
+			  	<div class="sh cl">
+        			<h2 class="sh-title">Property Attributes</h2>
+        		</div>
+        		<ul class="dl">
+				    {% if (PropertyTypeVal == 'Condo Unit') %}
+					    <li class="dl-i">
+	        				<div class="detail-item__label">Condo</div>
+	        			</li>
+					    {% for key,value in dataCondo %}
+						    {% if value != "" %}
+							    <li class="dl-i">
+							        <span class="dl-t">{{ key }}</span>
+							        <span class="dl-d">{{ value|raw }}</span>
+							    </li>
+						    {% endif %}
+					    {% endfor %}
+					{% endif %}
+					{% for key,value in dataMain %}
+						{% if value != "" %}
+						    <li class="dl-i">
+						        <span class="dl-t">{{ key }}</span>
+						        <span class="dl-d">{{ value }}</span>
+						    </li>
+						{% endif %}
+				    {% endfor %}
+
+				    {% if (PropertyTypeVal == 'Condo Unit') %}
+				    <div class="squiggle-border-bottom">&nbsp;</div>
+				    {% endif %}
+
+				</ul>
+				<ul class="dl">
+					{% if (PropertyTypeVal == 'Condo Unit') %}
+        			<li class="dl-i">
+        				<div class="detail-item__label">Unit</div>
+        			</li>
+        			{% else %}
+        			<li class="dl-i"></li>
+        			{% endif %}
+				    {% for key,value in dataUnit %}
+				    	{% if value != "" %}<li class="dl-i">
+				        	<span class="dl-t">{{ key }}</span>
+				        	<span class="dl-d">{{ value }}</span>
+				        {% endif %}
+				    </li>
+				    {% endfor %}
+				</ul>	
+			</div>
+			{% endif %}
+			<div class="component-section m-b600 value-history">
+			  	<div class="sh cl">
+        			<h2 class="sh-title">Value History</h2>
+        		</div>
+        		<div class="g">
+        			<div class="detail-item__label g--4 m-b300">Year</div>
+        			<div class="detail-item__label g--4 m-b300">Property Type</div>
+        			<div class="detail-item__label g--4 m-b300">Assessed Value</div>
+        		</div>
+        		<ul class="dl">
+        			{% for items in dataSQLValueHistory %}
+	        		<li class="g dl-i">
+	        			<div class="g--4 m-b300">FY {{ items.Fiscal_Year }}</div>
+	        			<div class="g--4 m-b300">{{ PropertyTypeVal }}</div>
+	        			<div class="g--4 m-b300">${{ items.Assessed_value|number_format(0, '.', ',')}}</div>
+	        		</li>
+	        		{% endfor %}
+	        	</ul>
+        	</div>
+		</div>
+		<div id="value_tax" class="column mobile-100 desktop-33-right">
+			<div class="component-section custom">
+			  	<div class="sh cl">
+        			<h2 class="sh-title">Value Tax</h2>
+        		</div>
+        		<ul class="dl">
+        			<li class="dl-i">
+        				<div class="detail-item__label m-b300">Fiscal Year {{ data_year_fiscal }} Assessment Breakdown</div>
+        			</li>
+        		</ul>
+       			<ul class="dl assessing-right-column">
+       				<li class="dl-i dotted">
+				        <span class="dl-t"></span>
+				        <span class="dl-d"></span>
+				    </li>
+				    <li class="dl-i">
+				        <span class="dl-t detail-item__label">Total Full Valuation</span>
+				        <span class="dl-d">${{ attribute(data,'total_value')|number_format(0, '.', ',') }}</span>
+				    </li>
+				    <li class="dl-i">
+				        <span class="dl-t">Residential Tax Rate *</span>
+				        <span class="dl-d">${{ rateRes }}</span>
+				    </li>
+				    <li class="dl-i">
+				        <span class="dl-t">Commercial Tax Rate *</span>
+				        <span class="dl-d">${{ rateCom }}</span>
+				    </li>
+				     <li class="dl-i">
+				        <span class="dl-t">* Per Thousand</span>
+				        <span class="dl-d"></span>
+				    </li>
+				    <li class="dl-i dotted">
+				        <span class="dl-t"></span>
+				        <span class="dl-d"></span>
+				    </li>
+				</ul>
+				<ul class="dl assessing-right-column">
+					<li class="dl-i">
+				        <span class="dl-t detail-item__label">Exemptions</span>
+				        <span class="dl-d"></span>
+				    </li>
+				    <li class="dl-i">
+				        <span class="dl-t">Residential Exemption</span>
+				        <span class="dl-d">{{ exemptResidential }}</span>
+				    </li>
+				    <li class="dl-i">
+				        <span class="dl-t">Personal Exemptions</span>
+				        <span class="dl-d">{{ exemptPersonal }}</span>
+				    </li>
+				</ul>
+				<div class="squiggle-border-bottom">&nbsp;</div>
+				<ul class="dl assessing-right-column">
+        			<li class="dl-i">
+        				<div class="detail-item__label">Real Estate Taxes</div>
+        				<div class="detail-item m-b300">Learn how to pay City of Boston real estate taxes.</div>
+        				<div>
+					        <a class="btn btn--sm btn--100" href="/departments/tax-collection/how-pay-your-real-estate-taxes">pay real estate taxes</a>
+					    </div>
+					    <div class="squiggle-border-bottom">&nbsp;</div>
+        			</li>
+        		</ul>
+        		{% if (data_year_current == data_year_fiscal) %}
+				<ul class="dl assessing-right-column">
+        			<li class="dl-i">
+        				<div class="detail-item__label">Residential Exemption</div>
+        				<div class="detail-item m-b300">The deadline for a Residential Exemption submission is April 1, {{ attribute(data,'Bill Year') }}.</div>
+        				<div>
+					        <a class="btn btn--sm btn--100" href="/departments/assessing/how-file-residential-exemption">file residential exemption</a>
+					    </div>
+					    <div class="squiggle-border-bottom">&nbsp;</div>
+        			</li>
+        		</ul>
+        		<ul class="dl assessing-right-column">
+        			<li class="dl-i">
+        				<div class="detail-item__label">Personal Exemption</div>
+        				<div class="detail-item m-b300">The deadline for a Personal Exemption submission is April 1, {{ attribute(data,'Bill Year') }}.</div>
+        				<div>
+					        <a class="btn btn--sm btn--100" href="/departments/assessing/how-file-personal-exemption">file personal exemption</a>
+					    </div>
+					    <div class="squiggle-border-bottom">&nbsp;</div>
+        			</li>
+        		</ul>
+        		{% else %}
+        		<ul class="dl assessing-right-column">
+        			<li class="dl-i">
+        				<div class="detail-item__label">Abatements / Exemptions</div>
+        				<div class="detail-item">Applications for Abatements, Residential Exemptions, and Personal Exemptions for {{ data_year_fiscal  }} are not yet available online. Applications will become available for download beginning 1/1/{{  data_year_fiscal }}.</div>
+        				<div class="squiggle-border-bottom">&nbsp;</div>
+        			</li>
+        		</ul>
+        		{% endif %}
+        		<div>
+        			<div class="detail-item m-b300"><a href="https://www.invoicecloud.com/portal/(S(wybeugg2wb2eb5j3qo1yfvkg))/2/Site.aspx?G=13377843-58b1-429b-be78-ab0ebba80835" target="_blank">View Quarterly Tax Bill and Payment Information</a> for this parcel for FY{{ attribute(data,'Bill Year') }} and FY{{ attribute(data,'Bill Year') + 1 }}.</div>
+        			<div class="detail-item m-b300">View <a href="https://data.boston.gov/dataset/approved-building-permits/resource/6ddcd912-32a0-43df-9908-63574f8c7e77?filters=parcel_id%3A0201525012" target="_blank">approved building permits</a> associated with this parcel.</div>
+        		</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- end columns -->
+</div>
+
+<!-- end Assessing section -->
+<!-- end container -->
+
+<!-- script to add current breadcrumb -->
+<script>
+const bc = document.querySelector("#breadcrumb ul");
+let node = document.createElement("li");
+const textnode = document.createTextNode("Property Details");
+bc.appendChild(node).appendChild(textnode);;
+let lastItem = bc.children[bc.children.length - 1];
+lastItem.className = "brc-l-i";
+</script>
+{{ attach_library('bos_assessing/assessing_map') }}

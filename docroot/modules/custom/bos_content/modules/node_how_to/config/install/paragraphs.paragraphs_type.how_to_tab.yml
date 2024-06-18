@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:f681ce91-e930-4d8c-94be-dfbfdc5222e1'
+id: how_to_tab
+label: 'How-To Tab'
+icon_uuid: f681ce91-e930-4d8c-94be-dfbfdc5222e1
+icon_default: null
+description: 'Migrated from paragraph bundle How-To Tab'
+behavior_plugins: {  }

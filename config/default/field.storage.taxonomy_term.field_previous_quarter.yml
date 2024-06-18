@@ -1,0 +1,22 @@
+uuid: 5a6b6e9f-170e-4166-aec4-890fa913f206
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: JGOABKNdQRYeP0T_9c3IA5AJ6jGEZQDbzA4FZTkTeeQ
+id: taxonomy_term.field_previous_quarter
+field_name: field_previous_quarter
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 6
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

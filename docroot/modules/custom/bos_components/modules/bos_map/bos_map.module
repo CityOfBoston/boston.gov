@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_map module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_map_theme() {
+  $theme['paragraph__map'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_map_preprocess_paragraph__map(&$variables) {
+  if (!empty($variables['paragraph'])) {
+    $paragraph = $variables['paragraph'];
+    if ($paragraph->hasField('field_map_inline') && isset($paragraph->get('field_map_inline')->value)) {
+      $variables['inline'] = $paragraph->get('field_map_inline')->value;
+    }
+    if ($paragraph->hasField('field_map_config_json') && isset($paragraph->get('field_map_config_json')->value)) {
+      $config = $paragraph->get('field_map_config_json')->value;
+      $config = preg_replace("~( {2,})|\r|\n~", " ", $config);
+      $variables['config'] = $config;
+      if (!json_decode($variables["config"])) {
+        \Drupal::messenger()->addWarning("Map JSON invalid.", FALSE);
+        \Drupal::logger("maps")->warning("Map JSON invalid.");
+      }
+    }
+    $variables['#attached']['library'][] = 'bos_map/map';
+    $photo_id = Html::getUniqueId('ph-p-m');
+    $variables['paragraph']->_photo_id = $photo_id;
+    $variables['photo_id'] = $photo_id;
+    $variables['map_id'] = 'map--' . $paragraph->id();
+
+    if (isset($variables['content']['field_thumbnail'])) {
+      $background_image = $variables["elements"]["field_thumbnail"];
+      if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+        $background_image[0]["default_responsive_image_style_id"] = "photo_bleed_images";
+        $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      }
+    }
+    else {
+      $background_image = \Drupal::entityTypeManager()->getStorage('file')
+        ->loadByProperties(["filename" => "map-background-image-map.jpg"]);
+      $background_image = end($background_image);
+      $uri = $background_image->getFileUri();
+      $css = BackgroundResponsiveImage::buildMediaQueries($uri, "photo_bleed_images", ".$photo_id");
+      $css .= ".ph-p-m {background-color: #288be4; background-blend-mode: screen;}";
+    }
+    $variables['#attached']['html_head'][] = [
+      [
+        "#tag" => "style",
+        "#value" => $css,
+        "#weight" => 100,
+      ],
+      "map-image-css-" . $photo_id,
+    ];
+    if ($variables["paragraph"]->bundle() == "map" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+      $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+    }
+  }
+}
+
+/**
+ * Implements hook_rebuild().
+ */
+function bos_map_rebuild() {
+  // Install the default background image.
+  // Copy rather than move so we dont get git issues.
+  $modName = basename(__FILE__, ".module");
+  $modulePath = drupal::root() . '/' .\Drupal::service('extension.path.resolver')->getPath("module", $modName);
+  $path = drupal::root() . "/sites/default/files/img/maps/";
+  $destName = "map-background-image-map.jpg";
+  if (!file_exists($path)) {
+    mkdir($path, 0777, TRUE);
+  }
+  if (file_exists($path . $destName)) {
+    return;
+  }
+  copy($modulePath . "/map-background-image.jpg", $path . $destName);
+
+  // Check if the file exists that is listed in para.para_type.module.yml.
+  $filesystem = \Drupal::service('file_system');
+  $entity = str_replace("bos_", "", $modName);
+  $mod = \Drupal::entityTypeManager()
+    ->getStorage("paragraphs_type")->load($entity);
+  if (!empty($mod)) {
+    $destination = "public://img/maps/" . $destName;
+    $image = Drupal::entityTypeManager()->getStorage("file")
+      ->loadByProperties(["uri" => $destination]);
+    if (count($image) == 0) {
+      $image = File::create();
+      $image->setFileUri($destination);
+      $image->setOwnerId(\Drupal::currentUser()->id());
+      $image->setMimeType('image/' . pathinfo($destination, PATHINFO_EXTENSION));
+      $image->setFileName($filesystem->basename($destination));
+      $image->setPermanent();
+      $image->save();
+    }
+  }
+}

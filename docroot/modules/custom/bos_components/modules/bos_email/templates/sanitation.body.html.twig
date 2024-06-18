@@ -1,0 +1,29 @@
+{#
+This is a standardized template copied from code used by Postmark.
+The template receives the following useful fields:
+  To: The email recipient
+  ReplyTo: The reply-to recipient
+  From: The email sender
+  server: The email-caller service
+  Tag: The email-caller sub-category
+  Subject: The email subject
+  TextBody: The raw text for the body
+  server: the Email Processor used
+  service: the Email Service used (as a class)
+  _error_message: Any error message.
+  variant: The variant we are currently processing.
+#}
+<table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="width: 570px; margin: 0 auto; padding: 0; -premailer-width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; background-color: #FFFFFF;">
+  <!-- Body content -->
+  <tbody><tr>
+    <td class="content-cell" style="font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; padding: 45px;">
+      <div class="f-fallback">
+        <div align="center">
+          <p style="margin: 0.4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545E;">
+            {{ TextBody }}
+          </p>
+        </div>
+      </div>
+    </td>
+  </tr></tbody>
+</table>

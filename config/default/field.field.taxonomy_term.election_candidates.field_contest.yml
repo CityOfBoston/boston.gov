@@ -1,0 +1,29 @@
+uuid: 82b9a271-1d47-42da-aee7-7db169e99dac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_contest
+    - taxonomy.vocabulary.election_candidates
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_candidates.field_contest
+field_name: field_contest
+entity_type: taxonomy_term
+bundle: election_candidates
+label: Contest
+description: 'The contest this candidate is competing in.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      election_contests: election_contests
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

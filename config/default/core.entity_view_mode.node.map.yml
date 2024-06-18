@@ -1,0 +1,15 @@
+uuid: 26838bb9-76b1-47df-ab80-28bce1e3d169
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.map
+label: Map
+description: ''
+targetEntityType: node
+cache: true

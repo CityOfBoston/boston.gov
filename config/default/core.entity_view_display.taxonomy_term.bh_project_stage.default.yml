@@ -1,0 +1,22 @@
+uuid: a767ff69-3084-420e-9e61-641a463c0cc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_stage
+  module:
+    - text
+id: taxonomy_term.bh_project_stage.default
+targetEntityType: taxonomy_term
+bundle: bh_project_stage
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

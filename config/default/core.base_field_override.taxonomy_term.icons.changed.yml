@@ -1,0 +1,18 @@
+uuid: aa4ec483-10c4-4431-9473-d36ffa9d15a1
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.icons
+id: taxonomy_term.icons.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: icons
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

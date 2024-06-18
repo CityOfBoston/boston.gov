@@ -1,0 +1,25 @@
+services:
+  bos_email.configform.contactform:
+    class: Drupal\bos_email\Plugin\EmailProcessor\Contactform
+    tags:
+      - { name: 'event_subscriber' }
+
+  bos_email.configform.registry:
+    class: Drupal\bos_email\Plugin\EmailProcessor\Registry
+    tags:
+      - { name: 'event_subscriber' }
+
+  bos_email.configform.metrolist:
+    class: Drupal\bos_email\Plugin\EmailProcessor\MetrolistInitiationForm
+    tags:
+      - { name: 'event_subscriber' }
+
+  bos_email.configform.sanitation:
+    class: Drupal\bos_email\Plugin\EmailProcessor\Sanitation
+    tags:
+      - { name: 'event_subscriber' }
+
+  bos_email.configform.commissions:
+    class: Drupal\bos_email\Plugin\EmailProcessor\Commissions
+    tags:
+      - { name: 'event_subscriber' }

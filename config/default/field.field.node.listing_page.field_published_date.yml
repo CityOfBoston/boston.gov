@@ -1,0 +1,26 @@
+uuid: 85638034-906e-43c7-9f68-342b38145744
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.listing_page
+  module:
+    - datetime
+_core:
+  default_config_hash: EuLiZaUUyaQ59vFy2pQFO9SyCUI1m-pPz2IM2kcTKIM
+id: node.listing_page.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: listing_page
+label: 'Published Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

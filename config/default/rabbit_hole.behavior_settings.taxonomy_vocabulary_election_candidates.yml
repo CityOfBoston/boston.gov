@@ -1,0 +1,14 @@
+uuid: df11d6a8-d847-498a-96ae-a48218328a75
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_vocabulary_election_candidates
+entity_type_id: taxonomy_vocabulary
+entity_id: election_candidates
+action: page_redirect
+allow_override: 0
+redirect: /departments/elections/unofficial-election-results
+redirect_code: 301
+redirect_fallback_action: page_not_found

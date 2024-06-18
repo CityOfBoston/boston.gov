@@ -1,0 +1,25 @@
+uuid: c67595e2-5475-4141-8282-22aa6aeb5780
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cancelled
+    - node.type.public_notice
+_core:
+  default_config_hash: Qx6rVYy3Sm9fbfHjET769ovk5Ftx42aP6v0tub0-ZJk
+id: node.public_notice.field_cancelled
+field_name: field_cancelled
+entity_type: node
+bundle: public_notice
+label: Canceled
+description: 'If this notice is cancelled, check this box and give a reason below.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

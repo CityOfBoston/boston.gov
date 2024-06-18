@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.branded_links
+  module:
+    - options
+id: paragraph.branded_links.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: branded_links
+label: 'Component Theme'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

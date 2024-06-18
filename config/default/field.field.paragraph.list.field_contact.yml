@@ -1,0 +1,32 @@
+uuid: fbfc0638-78c3-40d1-8c0a-d7fa10c634c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.list
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: nTyYfYZg80d1lXlyqdvuzJTldO3-B1VuvP0lK01tWIk
+id: paragraph.list.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: list
+label: Contact
+description: 'The contact associated with this list component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

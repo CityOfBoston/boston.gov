@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_icon
+    - paragraphs.paragraphs_type.social_networking
+  module:
+    - options
+id: paragraph.social_networking.field_social_icon
+field_name: field_social_icon
+entity_type: paragraph
+bundle: social_networking
+label: 'Social Icon'
+description: 'Please select the icon for the social media link.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

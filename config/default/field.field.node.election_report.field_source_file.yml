@@ -1,0 +1,23 @@
+uuid: dba90d71-6442-4b92-afe6-3656246548dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source_file
+    - node.type.election_report
+  module:
+    - link
+id: node.election_report.field_source_file
+field_name: field_source_file
+entity_type: node
+bundle: election_report
+label: 'Source File'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 1
+field_type: link

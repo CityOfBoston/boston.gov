@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_document
+    - node.type.procurement_advertisement
+  module:
+    - file
+id: node.procurement_advertisement.field_document
+field_name: field_document
+entity_type: node
+bundle: procurement_advertisement
+label: Document
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'file/[current-date:html_year]/[current-date:html_month_bare]'
+  file_extensions: 'txt pdf xls xlsx docx doc pptx pptm ppt rtf xlsm'
+  max_filesize: ''
+  description_field: false
+field_type: file

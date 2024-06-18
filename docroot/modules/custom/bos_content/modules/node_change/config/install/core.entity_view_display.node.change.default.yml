@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.change.body
+    - node.type.change
+  module:
+    - fences
+    - text
+    - user
+id: node.change.default
+targetEntityType: node
+bundle: change
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  langcode: true
+  links: true
+  published_at: true

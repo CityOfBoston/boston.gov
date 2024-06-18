@@ -1,0 +1,126 @@
+uuid: 7e08eee4-73d9-445b-b095-1c0e3e0d57df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card.field_link
+    - field.field.paragraph.card.field_short_description
+    - field.field.paragraph.card.field_subheader
+    - field.field.paragraph.card.field_thumbnail
+    - field.field.paragraph.card.field_title
+    - paragraphs.paragraphs_type.card
+  module:
+    - entity_reference_revisions
+    - fences
+    - smart_trim
+_core:
+  default_config_hash: ep2I-FTYihcvO-VL_TiRn_eoQF4xUrl6TuRvCR599h4
+id: paragraph.card.default
+targetEntityType: paragraph
+bundle: card
+mode: default
+content:
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_short_description:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_subheader:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_thumbnail:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_card_3x
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_title:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

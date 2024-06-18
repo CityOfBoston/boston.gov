@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme for Read More text feature.
+ *
+ * Available variables:
+ * - textId:
+ * - lessText:
+ * - moreText:
+ */
+#}
+
+
+<div class="bh-read-more-text">
+  <input type="checkbox" class="read-more-state" id="{{ textId }}" />
+
+  <div class="read-more-wrap">
+    {{ lessText }}
+    <span class="read-more-target">{{ moreText }}</span>
+  </div><label for="{{ textId }}" class="read-more-trigger"></label>
+</div>
+

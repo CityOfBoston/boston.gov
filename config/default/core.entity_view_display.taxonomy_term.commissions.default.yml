@@ -1,0 +1,24 @@
+uuid: f1e5c446-4eae-45e7-aca7-9c9387c2aebc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.commissions.field_commission_id
+    - taxonomy.vocabulary.commissions
+  module:
+    - text
+id: taxonomy_term.commissions.default
+targetEntityType: taxonomy_term
+bundle: commissions
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_commission_id: true
+  langcode: true

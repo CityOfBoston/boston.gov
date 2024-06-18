@@ -1,0 +1,32 @@
+uuid: 74844123-d9b4-4126-be4f-ebd7c29bbd62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.grid_of_people
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: lgG8QS-47Q5DweMld_uaoMnrvsZExMDzgzuB8L0r0f4
+id: paragraph.grid_of_people.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: grid_of_people
+label: Contact
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

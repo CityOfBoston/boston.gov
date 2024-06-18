@@ -1,0 +1,10 @@
+uuid: ede514dc-1ca4-4c0e-8e7c-dc283b22b125
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: PjBvn6rXdNYNGg8o5tUYaLPVriamISAP0MBjB4XXqJA
+name: 'Event Type'
+vid: event_type
+description: 'Event classification mechanism.'
+weight: 0

@@ -1,0 +1,20 @@
+uuid: 079e8798-a036-4b6c-93d4-0d66a955945a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: C-jCFPqTrU3eEsyw4B-7bk7FhoZKrH2pU1lu0oZ79IA
+name: 'Emergency Alert'
+type: emergency_alert
+description: 'Emergency alerts augment the homepage status component with emergency information when an emergency is active.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

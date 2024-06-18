@@ -1,0 +1,25 @@
+uuid: aa49b77e-ea4d-42ec-9ec4-694632d45b15
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.hero_image.field_grid_link
+    - field.field.paragraph.hero_image.field_header
+    - field.field.paragraph.hero_image.field_image
+    - field.field.paragraph.hero_image.field_short_title
+    - field.field.paragraph.hero_image.field_subheader
+    - paragraphs.paragraphs_type.hero_image
+_core:
+  default_config_hash: _CljZpGRD9rBtndSomkx-l1kq0b8vPIh1_vIijPbg-E
+id: paragraph.hero_image.separated_title
+targetEntityType: paragraph
+bundle: hero_image
+mode: separated_title
+content: {  }
+hidden:
+  field_grid_link: true
+  field_header: true
+  field_image: true
+  field_short_title: true
+  field_subheader: true

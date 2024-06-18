@@ -1,0 +1,10 @@
+uuid: 44bd165a-b74d-42b6-92c7-895effe149af
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4SqjCNQKAYo4PFKHykh0RlleGgbyGU1FJOrMo-d-CSY
+name: 'Place Type'
+vid: place_type
+description: 'A descriptive type for a place, like "Parks"'
+weight: 0

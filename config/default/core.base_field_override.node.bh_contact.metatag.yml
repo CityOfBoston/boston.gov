@@ -1,0 +1,18 @@
+uuid: 68fdf694-14bf-4e4c-a398-0667fe87410a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.metatag
+field_name: metatag
+entity_type: node
+bundle: bh_contact
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

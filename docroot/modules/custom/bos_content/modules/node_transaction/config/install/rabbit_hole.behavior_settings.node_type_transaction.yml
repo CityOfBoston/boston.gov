@@ -1,0 +1,11 @@
+langcode: und
+status: true
+dependencies: {  }
+id: node_type_transaction
+entity_type_id: null
+entity_id: null
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

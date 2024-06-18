@@ -1,0 +1,20 @@
+name: bos_discussion_topic
+type: module
+description: 'Provides theming and configuration for bos_discussion_topic.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.discussion_topic.created
+  - core.base_field_override.paragraph.discussion_topic.status
+  - core.entity_form_display.paragraph.discussion_topic.default
+  - core.entity_view_display.paragraph.discussion_topic.default
+  - core.entity_view_display.paragraph.discussion_topic.paragraphs_editor_preview
+  - field.field.paragraph.discussion_topic.field_description
+  - field.field.paragraph.discussion_topic.field_links
+  - field.field.paragraph.discussion_topic.field_title
+  - language.content_settings.paragraph.discussion_topic
+  - paragraphs.paragraphs_type.discussion_topic

@@ -1,0 +1,17 @@
+uuid: 2d2b8cfe-2407-4455-b5f8-d581c1c89d65
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.header_text.field_contact
+    - field.field.paragraph.header_text.field_intro_text
+    - paragraphs.paragraphs_type.header_text
+id: paragraph.header_text.separated_title
+targetEntityType: paragraph
+bundle: header_text
+mode: separated_title
+content: {  }
+hidden:
+  field_contact: true
+  field_intro_text: true

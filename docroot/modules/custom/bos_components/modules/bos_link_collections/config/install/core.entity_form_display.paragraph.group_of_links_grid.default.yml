@@ -1,0 +1,109 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_of_links_grid.field_component_title
+    - field.field.paragraph.group_of_links_grid.field_contact
+    - field.field.paragraph.group_of_links_grid.field_description
+    - field.field.paragraph.group_of_links_grid.field_grid_links
+    - field.field.paragraph.group_of_links_grid.field_link
+    - field.field.paragraph.group_of_links_grid.field_short_title
+    - field.field.paragraph.group_of_links_grid.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_grid
+  module:
+    - paragraphs
+    - text
+id: paragraph.group_of_links_grid.default
+targetEntityType: paragraph
+bundle: group_of_links_grid
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_grid_links:
+    type: paragraphs
+    weight: 6
+    region: content
+    settings:
+      title: 'Grid Link'
+      title_plural: 'Grid Links'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_link:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: 'Call to Action'
+      title_plural: 'Call to Action'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheader:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

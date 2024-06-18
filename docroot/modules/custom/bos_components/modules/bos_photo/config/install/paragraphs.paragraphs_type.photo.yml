@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:70b9c063-330d-49a9-8775-2a404533b78c'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: photo
+label: Photo
+icon_uuid: 70b9c063-330d-49a9-8775-2a404533b78c
+icon_default: null
+description: 'Migrated from paragraph bundle Photo'
+behavior_plugins: {  }

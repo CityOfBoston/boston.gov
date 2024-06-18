@@ -1,0 +1,22 @@
+uuid: a5bad1e7-3775-4b57-a343-6fedc3cc95c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.sticky
+field_name: sticky
+entity_type: node
+bundle: bh_account
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

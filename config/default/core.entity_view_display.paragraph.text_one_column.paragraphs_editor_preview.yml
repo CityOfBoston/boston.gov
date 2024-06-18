@@ -1,0 +1,17 @@
+uuid: e155ae14-7d09-4c81-b5cd-51d0abdc6a99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.text_one_column.field_middle_column
+    - paragraphs.paragraphs_type.text_one_column
+_core:
+  default_config_hash: faSajSZU5yj2UtVcx6gr-wZX0pO39W_3GU3Aafr9zhw
+id: paragraph.text_one_column.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: text_one_column
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_middle_column: true

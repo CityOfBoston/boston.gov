@@ -1,0 +1,30 @@
+uuid: 5ba657a7-54b9-477e-83da-2ee012478fdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.ribbon_link
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - link
+_core:
+  default_config_hash: Zb1F-5R_-EulBFse0CAohkm6S1INdh1gI8A7ngmcna8
+id: paragraph.internal_link.ribbon_link
+targetEntityType: paragraph
+bundle: internal_link
+mode: ribbon_link
+content:
+  field_internal_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

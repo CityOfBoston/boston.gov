@@ -1,0 +1,5 @@
+services:
+  metrolist_uri_fix:
+    class: '\Drupal\node_metrolist\EventSubscriber\SalesforceEventsSubscriber'
+    tags:
+      - { name: 'event_subscriber' }

@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - title: The title value of the item.
+ * - label: The label value of the item.
+ * - body: The content value of the item.
+ * - bgColor: The background color for this item.
+ * - icon: The icon value of the detail item.
+ * - link_url: Call to action url
+ * - link_text: Call to action text
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+<div class="bh-project-type bg--cb m-b600 p-a300" style="background-color: {{ bgColor }}">
+  <div class="bh-project-info">
+
+    <div class="">
+      {# <img src="https://patterns.boston.gov/images/global/icons/experiential/triple-decker.svg"> #}
+      <div typeof="foaf:Image" class="project-type-icon">
+        {{ icon }}
+      </div>
+    </div>
+
+    <div class="">
+      {% if title %}
+        <div class="t--subinfo t--w br br-b100 br-g100 br--w">{{ title }}</div>
+      {% endif %}
+      <h4 class="t--w m-t300 m-b100">{{ label }}</h4>
+      <div class="t--subtitle t--sans t-upper t--w">{{ body|raw }}</div>
+    </div>
+
+  </div>
+
+  {% if link_url and link_text %}
+    <div class="m-t200 bh-project-cta">
+      <a href="{{ link_url }}" class="btn btn--b btn--w" style="color: {{ bgColor }};">{{ link_text }}</a>
+    </div>
+  {% endif %}
+
+</div>
+

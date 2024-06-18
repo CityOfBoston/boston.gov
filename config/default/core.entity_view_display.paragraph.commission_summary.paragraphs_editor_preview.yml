@@ -1,0 +1,23 @@
+uuid: bfc80876-18dc-4aeb-bcbd-16fdb0f3d9e2
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.commission_summary.field_commission
+    - field.field.paragraph.commission_summary.field_component_title
+    - field.field.paragraph.commission_summary.field_hide_title_bar
+    - field.field.paragraph.commission_summary.field_short_title
+    - paragraphs.paragraphs_type.commission_summary
+_core:
+  default_config_hash: kv18NB-DZmNJPQsuZXipV4d_nWaLbWepgAo9jk2PpFc
+id: paragraph.commission_summary.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: commission_summary
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_commission: true
+  field_component_title: true
+  field_hide_title_bar: true
+  field_short_title: true

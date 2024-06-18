@@ -1,0 +1,17 @@
+uuid: 26f9594f-88dc-4223-ba04-4c8f4735b804
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: puBstSLDz8mbaWU357zaqQDBGMGsJzG0j-TQNQkjg20
+id: '404'
+label: '404 page not found'
+tags:
+  title: '[site:name]'
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'
+  og_type: website
+  og_url: '[site:url]'
+  og_title: '[site:name]'
+  og_site_name: '[site:name]'
+  twitter_cards_page_url: '[site:url]'

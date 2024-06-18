@@ -1,0 +1,9 @@
+{
+  "name": "cob/bos_google_cloud",
+  "type": "drupal-module",
+  "description": "Integration for Google Cloud API.",
+  "require": {
+    "drupal/core": "^10",
+    "google/cloud-ai-platform": "^0.32.0"
+  }
+}

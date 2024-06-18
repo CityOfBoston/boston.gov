@@ -1,0 +1,22 @@
+uuid: d27f7811-732f-4d3a-80a5-c42b51722003
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.election_results
+id: paragraph.election_results.status
+field_name: status
+entity_type: paragraph
+bundle: election_results
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

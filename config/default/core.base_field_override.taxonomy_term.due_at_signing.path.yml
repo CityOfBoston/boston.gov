@@ -1,0 +1,20 @@
+uuid: 0c45c255-0ecc-4286-bf38-7de8c5f7ad2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.due_at_signing
+  module:
+    - path
+id: taxonomy_term.due_at_signing.path
+field_name: path
+entity_type: taxonomy_term
+bundle: due_at_signing
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

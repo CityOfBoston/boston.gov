@@ -1,0 +1,23 @@
+uuid: 14634714-470e-4368-aa36-68001a2d5c54
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+_core:
+  default_config_hash: 747B0iiwUdldPAOIk3AH-Z7rjP2aJmWH8-4j1o_pvM8
+id: file.field_file_image_title_text
+field_name: field_file_image_title_text
+entity_type: file
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

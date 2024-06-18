@@ -1,0 +1,22 @@
+uuid: f8f2f294-1b5f-4e9c-8c03-ccfac5e8eaae
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.how_to
+id: node.how_to.status
+field_name: status
+entity_type: node
+bundle: how_to
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

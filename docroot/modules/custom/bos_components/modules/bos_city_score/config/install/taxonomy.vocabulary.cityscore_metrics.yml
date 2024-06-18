@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Cityscore Metrics'
+vid: cityscore_metrics
+description: 'Database for City Score Metrics'
+weight: 0

@@ -1,0 +1,66 @@
+{#
+ * @file
+ * Default simple view template to display a list of rows.
+ *
+ * @ingroup views_templates
+ #}
+
+<div class="view-metrolist-affordable-housing-page">
+  <div class="b b--fw views-exposed-topbar">
+    <div class="b-fv b--g">
+      {% if exposed %}
+        <div class="view-filters">
+          {{ exposed }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="b b--g b--fw">
+    <div class="b-c">
+      {% if attachment_before %}
+        <div class="attachment attachment-before">
+          {{ attachment_before }}
+        </div>
+      {% endif %}
+
+      {% if header %}
+        <div class="view-header">
+          {{ header }}
+        </div>
+      {% endif %}
+
+      {% if rows %}
+        {{ rows }}
+      {% elseif empty %}
+        {{ empty }}
+      {% endif %}
+
+      {% if pager %}
+        {{ pager }}
+      {% endif %}
+
+      {% if attachment_after %}
+        <div class="attachment attachment-after">
+          {{ attachment_after }}
+        </div>
+      {% endif %}
+
+      {% if more %}
+        {{ more }}
+      {% endif %}
+
+      {% if footer %}
+        <div class="view-footer">
+          {{ footer }}
+        </div>
+      {% endif %}
+
+      {% if feed_icon %}
+        <div class="feed-icon">
+          {{ feed_icon }}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

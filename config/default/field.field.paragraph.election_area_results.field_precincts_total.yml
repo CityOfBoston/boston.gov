@@ -1,0 +1,23 @@
+uuid: e5ad5963-b6b3-46f4-ba84-5c83b49ae38a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_precincts_total
+    - paragraphs.paragraphs_type.election_area_results
+id: paragraph.election_area_results.field_precincts_total
+field_name: field_precincts_total
+entity_type: paragraph
+bundle: election_area_results
+label: 'Precincts Total'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

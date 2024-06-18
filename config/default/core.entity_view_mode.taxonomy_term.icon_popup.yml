@@ -1,0 +1,13 @@
+uuid: dab0f14d-2b78-4ae5-b6ba-abc6bc3b50c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: xKdaASb_pNxqxynIoBKEap5NRjahE3c7ua9wye538_k
+id: taxonomy_term.icon_popup
+label: 'Icon w/Popup (sans title)'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

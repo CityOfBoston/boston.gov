@@ -1,0 +1,71 @@
+{#
+ * @file
+ * Returns the HTML for a node.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https%0%
+ #}
+{#<div class="brc--wh" data-swiftype-index="false">#}
+  {{ drupal_block('system_breadcrumb_block') }}
+{#</div>#}
+
+<input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">
+{% if tabs|length >= 1 %}
+  {% for key, tab in tabs %}
+    {% set title_id = tab.id|raw %}
+    {% set checked = (key == 0) ? ' checked ' : ' ' %}
+    <input id="tabCTRL{{ key }}" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-{{ key }}" data-href="#{{ title_id }}"{{ checked }}aria-hidden="true">
+  {% endfor %}
+{% endif %}
+
+<div class="hro {{ image_class }} hro--wh b--fw contextual-region" bos_context_type="{{ attributes.bos_context_type }}">
+  <div class="hro-c b-c">
+    <h1 class="hro-t">{{ title.0 }}</h1>
+
+    {{ title_suffix }}
+
+    {% if content.field_intro_text %}
+      <div class="hro-st hro-st--l">{{ content.field_intro_text }}</div>
+    {% endif %}
+  </div>
+
+  <ul class="tab">
+    {# Only add tabs if there are more than 1 components on the page #}
+
+    {% if tabs|length >= 1 %}
+      {% for key, tab in tabs %}
+        {% set title_id = tab.id|raw %}
+        {% set checked = (key == 0) ? 'checked' : '' %}
+        <li class="tab-li tab-li-{{ key }}">
+          <label for="tabMenuCTRL" class="tab-li-m" aria-hidden="true">{{ tab.title }}</label>
+          <label for="tabCTRL{{ key }}" data-href="#{{ title_id }}" class="tab-li-a tab-li-a-{{ key }}">{{ tab.title }}</label>
+        </li>
+      {% endfor %}
+    {% endif %}
+
+    <li class="tab-li tab-li-close">
+      <label for="tabMenuCTRL" class="tab-li-a tab-li-a--c" aria-hidden="true">Close</label>
+    </li>
+
+  </ul>
+</div>
+
+<article{{ attributes }}>
+
+  <div class="brc-lu">
+    {% if (content.field_updated_date["#items"]) %}
+      Last updated: {{ content.field_updated_date }}
+    {% elseif (content.field_published_date["#items"]) %}
+      Last updated: {{ content.field_published_date }}
+    {% else %}
+      Not published yet!
+    {% endif %}
+  </div>
+
+    <div class="tabbed-info-wrapper desktop-100">
+      {% if content.field_tabbed_content %}
+        {{ content.field_tabbed_content }}
+      {% endif %}
+    </div>
+</article>

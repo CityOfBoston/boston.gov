@@ -1,0 +1,55 @@
+uuid: a16f3580-09bf-4915-9f0e-9021d451fec6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_long
+    - field.field.node.how_to.body
+    - field.field.node.how_to.field_components
+    - field.field.node.how_to.field_contact
+    - field.field.node.how_to.field_hide_contact_form
+    - field.field.node.how_to.field_how_to_tabs
+    - field.field.node.how_to.field_intro_image
+    - field.field.node.how_to.field_links
+    - field.field.node.how_to.field_manual_date
+    - field.field.node.how_to.field_metatags
+    - field.field.node.how_to.field_need_to_know
+    - field.field.node.how_to.field_payment_info
+    - field.field.node.how_to.field_published_date
+    - field.field.node.how_to.field_sidebar_components
+    - field.field.node.how_to.field_updated_date
+    - node.type.how_to
+  module:
+    - user
+_core:
+  default_config_hash: 8MjiPY_psQXs2vgTShHtCNksBEY3OFk6RUtmbeijTZ0
+id: node.how_to.listing_long
+targetEntityType: node
+bundle: how_to
+mode: listing_long
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_components: true
+  field_contact: true
+  field_hide_contact_form: true
+  field_how_to_tabs: true
+  field_intro_image: true
+  field_links: true
+  field_manual_date: true
+  field_metatags: true
+  field_need_to_know: true
+  field_payment_info: true
+  field_published_date: true
+  field_sidebar_components: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

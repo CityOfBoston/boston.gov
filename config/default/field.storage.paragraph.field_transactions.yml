@@ -1,0 +1,20 @@
+uuid: 3591ee53-05a4-4b32-bcf8-7bf4bcf6cebf
+langcode: und
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_transactions
+field_name: field_transactions
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

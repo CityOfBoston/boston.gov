@@ -1,0 +1,7 @@
+administer boston:
+  title: 'Administer Boston.gov Core Customizations'
+  description: 'Alter Boston Component settings (Admins Only).'
+
+admin_search_boston:
+  title: 'Custom (Advanced) Content Search'
+  description: 'Search boston.gov entities and components for occurances of a string.'

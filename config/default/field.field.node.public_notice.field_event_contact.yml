@@ -1,0 +1,19 @@
+uuid: 7c861fa2-22f4-4472-afc8-f5faedf9dede
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_contact
+    - node.type.public_notice
+id: node.public_notice.field_event_contact
+field_name: field_event_contact
+entity_type: node
+bundle: public_notice
+label: Contact
+description: 'The name of the primary point of contact for this notice'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

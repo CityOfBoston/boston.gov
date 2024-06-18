@@ -1,0 +1,20 @@
+uuid: 5c179f20-b67f-4261-a870-f5d61563b982
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.commissions
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: bw-izB7SVrbKUtdRtxjdnlUrNRV35Kr9w0Ou8PbEY6U
+id: taxonomy_term.commissions
+target_entity_type_id: taxonomy_term
+target_bundle: commissions
+default_langcode: site_default
+language_alterable: false

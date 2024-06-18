@@ -1,0 +1,30 @@
+/** styles for new input search box and search button **/
+#web-app .sf {
+	margin-bottom: 2em;
+}
+
+#web-app .sf-i-f.search {
+	border:4px solid #000;
+	padding:10px 75px 10px 10px;
+	height:auto !important;
+}
+
+#web-app .sf-i-f.search::placeholder {
+	padding-bottom:10px;
+}
+
+#web-app .sf-i-b{
+	margin-right:20px;
+}
+
+/** styles for dynamic font-resize on search bar. **/
+#web-app .resize {
+	display:block;
+	position: absolute;
+    top: -9999px;
+    font-size:58px;
+}
+
+#web-app .resize span{
+	padding-right:50px;
+}

@@ -1,0 +1,67 @@
+uuid: af37ce20-5cc8-4e8d-bed5-1a6f8d397ee7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.metrolist_affordable_housing.body
+    - field.field.node.metrolist_affordable_housing.field_mah_address
+    - field.field.node.metrolist_affordable_housing.field_mah_contact
+    - field.field.node.metrolist_affordable_housing.field_mah_email
+    - field.field.node.metrolist_affordable_housing.field_mah_household_income_limit
+    - field.field.node.metrolist_affordable_housing.field_mah_lottery_deadline
+    - field.field.node.metrolist_affordable_housing.field_mah_lottery_indicator
+    - field.field.node.metrolist_affordable_housing.field_mah_lottery_type
+    - field.field.node.metrolist_affordable_housing.field_mah_lottery_url
+    - field.field.node.metrolist_affordable_housing.field_mah_neighborhood
+    - field.field.node.metrolist_affordable_housing.field_mah_not_active
+    - field.field.node.metrolist_affordable_housing.field_mah_outer_location
+    - field.field.node.metrolist_affordable_housing.field_mah_phone
+    - field.field.node.metrolist_affordable_housing.field_mah_publish_to_metrolist
+    - field.field.node.metrolist_affordable_housing.field_mah_resale
+    - field.field.node.metrolist_affordable_housing.field_mah_zipcode
+    - node.type.metrolist_affordable_housing
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 5DwCzFY9m352uanv9mUc5goMHVVtM9aMsxnpzmpJAEU
+id: node.metrolist_affordable_housing.teaser
+targetEntityType: node
+bundle: metrolist_affordable_housing
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_mah_address: true
+  field_mah_contact: true
+  field_mah_email: true
+  field_mah_household_income_limit: true
+  field_mah_lottery_deadline: true
+  field_mah_lottery_indicator: true
+  field_mah_lottery_type: true
+  field_mah_lottery_url: true
+  field_mah_neighborhood: true
+  field_mah_not_active: true
+  field_mah_outer_location: true
+  field_mah_phone: true
+  field_mah_publish_to_metrolist: true
+  field_mah_resale: true
+  field_mah_zipcode: true
+  langcode: true
+  published_at: true

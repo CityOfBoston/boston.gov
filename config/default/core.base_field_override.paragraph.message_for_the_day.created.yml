@@ -1,0 +1,20 @@
+uuid: 51773fb6-0af8-48f6-8bfc-bd61f574f7f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.message_for_the_day
+_core:
+  default_config_hash: W-FoHPUShfT6hbZYgo9BISQqj-FjA29KtXETbDaQCao
+id: paragraph.message_for_the_day.created
+field_name: created
+entity_type: paragraph
+bundle: message_for_the_day
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

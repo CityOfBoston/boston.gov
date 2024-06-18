@@ -1,0 +1,23 @@
+uuid: 80d92663-3670-4eec-b35f-5c1fd0b9243d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_original_id
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_term.election_candidates.field_original_id
+field_name: field_original_id
+entity_type: taxonomy_term
+bundle: election_candidates
+label: 'Candidate ID'
+description: 'The original CandidateID from the imported file.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

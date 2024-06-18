@@ -1,0 +1,20 @@
+uuid: 7c1c035f-6c1d-4860-9e4a-15ed8a804290
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 8Y1kNUsx12HcbqkKY3dfnjYE5YeOau-Y23OsVWrqff8
+id: node.neighborhood_lookup
+target_entity_type_id: node
+target_bundle: neighborhood_lookup
+default_langcode: site_default
+language_alterable: false

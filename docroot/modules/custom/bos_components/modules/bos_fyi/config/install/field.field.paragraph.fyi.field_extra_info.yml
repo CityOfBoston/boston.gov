@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_extra_info
+    - paragraphs.paragraphs_type.fyi
+id: paragraph.fyi.field_extra_info
+field_name: field_extra_info
+entity_type: paragraph
+bundle: fyi
+label: 'FYI Content'
+description: '80 character sentence to add to the FYI'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

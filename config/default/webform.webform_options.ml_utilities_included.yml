@@ -1,0 +1,15 @@
+uuid: 71bc68a2-d811-4ce4-b4fb-c998bd6b9645
+langcode: en
+status: true
+dependencies: {  }
+id: ml_utilities_included
+label: 'Utilities Included'
+category: MetroList
+likert: false
+options: |
+  Gas: Gas
+  Electric: Electric
+  Water/Sewer: Water/Sewer
+  'Heat & Hot Water': 'Heat & Hot Water'
+  Internet: Internet
+  Cable: Cable

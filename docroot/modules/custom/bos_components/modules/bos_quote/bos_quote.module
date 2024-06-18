@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_quote module.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_quote_theme() {
+  $theme['paragraph__quote'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_quote_preprocess_paragraph(&$vars) {
+  if (!empty($vars['paragraph']) && $vars['paragraph']->bundle() == 'quote') {
+    if ($vars['paragraph']->get('field_person_photo')->isEmpty()) {
+      $lib = \Drupal::service('library.discovery')->getLibraryByName('bos_theme', 'global-styling.patterns');
+      $vars['fallback_image_url'] = $lib['remote'] . '/images/global/icons/quote.svg';
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_quote_paragraph_quote_summary_alter(array $form_widget, array $para, array $attributes) {
+  $name = $para["entity"]->get("field_first_name")->value . " " . $para["entity"]->get("field_last_name")->value;
+  $markup[] = Markup::create($name);
+  if ($para["entity"]->hasField("field_person_photo") && count($para["entity"]->get("field_person_photo"))) {
+    $markup[] = Markup::create("<span class='info'>(has photo)</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info' style='color:red;'>(no photo)</span>");
+  }
+  if ($para["entity"]->hasField("field_quote") && count($para["entity"]->get("field_quote"))) {
+    $quote = advanced_text_formatter_trim_text(strip_tags($para["entity"]->get("field_quote")->value), [
+      'word_boundary' => TRUE,
+      'ellipsis' => TRUE,
+      'max_length' => 50,
+    ]);
+    $markup[] = Markup::create("<span class='body-text'>" . $quote . "</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

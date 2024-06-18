@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Theme override to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+#}
+<header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+  <div class="lo lo--abs">
+    <div class="lo-l lo-b-cont">
+      <a href="/" id="logoImg">
+        <img src="https://patterns-stg.boston.gov/images/public/logo.svg" alt="Boston.gov" class="lo-i">
+      </a>
+    </div>
+  </div>
+  <div id="seal" title="Homepage | City of Boston Seal" rel="home" class="s">
+    <img src="https://patterns-stg.boston.gov/images/public/seal.svg" alt="City of Boston Seal" class="s-i">
+  </div>
+</header>
+
+<div class="page">
+  <div class="main site-maintenance err err--403">
+    <div class="container">
+      <section class="main-content site-maintenance-content" id="content" role="main">
+        <div class="denied-text site-maintenance-text column desktop-66-left">
+          {% if title %}
+            <h1>boston.gov Under Maintenance</h1>
+          {% endif %}
+
+          {{ page.highlighted }}
+
+          {{ page.content }}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+

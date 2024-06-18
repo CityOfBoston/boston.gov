@@ -1,0 +1,18 @@
+uuid: 8ba12a93-7bfc-4c6e-b687-1e804cb30bfa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_owned_by_dnd
+field_name: field_bh_owned_by_dnd
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Default theme implementation for BH Project Manager Contact Information.
+ *
+ * Available variables:
+ * - title: The title value of the display.
+ * - label: The label value of the display.
+ * - name: The name of the Project Manager
+ * - phone: The phone number of the Project Manager.
+ * - email: The email address of the Project Manger.
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+<div class="co">
+
+  <input id="collapsible-project-manager-contact" type="checkbox" class="co-f d-n" aria-hidden=true>
+  <label for="collapsible-project-manager-contact" class="co-t">Contact Information</label>
+
+  <div class="bh-project-manager-contact m-b300 m-b500--xxl co-b">
+    <div class="t--info br br-b200">{{ title }}</div>
+
+
+    <ul class="sb">
+      <li class="sb-i">
+        <div class="t--cb">
+          {{ name }}{% if label %}, {{ label }}{% endif %}
+        </div>
+      </li>
+
+    {% if email %}
+      <li class="sb-i">
+
+          <div class="t--cb">
+            <img src="https://patterns.boston.gov/images/global/icons/icon-email.svg" class="icon icon-email sb-ic" alt="" />
+          </div>
+            <div class="detail-item__body--secondary">
+              <span class="sb-d"><a href="mailto:{{ email }}"
+                 title="Have a question, or just need help? You can send an email to {{ email }} through the form below.">
+
+                {% if email == 'neighborhooddevelopment.dnd@boston.gov' %}
+                  EMAIL US
+                {% else %}
+                  {{ email }}
+                {% endif %}
+
+                </a></span>
+            </div>
+
+      </li>
+    {% endif %}
+
+    {% if phone %}
+      <li class="sb-i">
+          <div class="t--cb">
+            <img src="https://patterns.boston.gov/images/global/icons/icon-phone.svg" class="icon icon-phone sb-ic" alt="" />
+          </div>
+            <div class="detail-item__body--secondary">
+              <a href="tel:{{ phone }}"><span class="sb-d">{{ phone }}</span></a>
+            </div>
+      </li>
+    {% endif %}
+
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+uuid: f7b79cc5-9592-4ad1-827a-d9cab460b285
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'For use when creating election cards for unofficial election results in node_election.'
+id: paragraph.election_card
+label: 'Election Card'
+description: ''
+targetEntityType: paragraph
+cache: true

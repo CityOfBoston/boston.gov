@@ -1,0 +1,32 @@
+uuid: eea4b7a0-b42f-43d9-ae4d-23dd2952cb28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_single_neighborhood
+    - paragraphs.paragraphs_type.quote
+    - taxonomy.vocabulary.neighborhoods
+_core:
+  default_config_hash: OJ7OtNYzFgZdf7sUWnrrcqipvjg8crKmzH9AhKCEsq8
+id: paragraph.quote.field_single_neighborhood
+field_name: field_single_neighborhood
+entity_type: paragraph
+bundle: quote
+label: Location
+description: 'Select the neighborhood the person quoted is from.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      neighborhoods: neighborhoods
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

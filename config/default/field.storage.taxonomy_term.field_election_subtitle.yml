@@ -1,0 +1,21 @@
+uuid: 63f2b7cc-8c31-4ab2-ba6f-42fd8b9c0640
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_election_subtitle
+field_name: field_election_subtitle
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

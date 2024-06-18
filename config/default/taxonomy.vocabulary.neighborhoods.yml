@@ -1,0 +1,10 @@
+uuid: b375037a-ac05-49fd-bc2f-dd9d35201d53
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wLdDCPQMoacc9Fo7vG6JWpCAQBHLUzTMSx6mfKhHPEo
+name: Neighborhoods
+vid: neighborhoods
+description: 'Boston area neighborhoods'
+weight: 0

@@ -1,0 +1,18 @@
+uuid: 2d89a814-f013-4443-b82c-da0b78fcd563
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

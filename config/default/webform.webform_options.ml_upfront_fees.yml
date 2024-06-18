@@ -1,0 +1,13 @@
+uuid: 8a628efa-1a50-4998-a457-42e5774fea93
+langcode: en
+status: true
+dependencies: {  }
+id: ml_upfront_fees
+label: 'Upfront Fees'
+category: MetroList
+likert: false
+options: |-
+  'Security deposit': 'Security deposit'
+  'First month''s rent': 'First month''s rent'
+  'Last month''s rent': 'Last month''s rent'
+  'Broker''s fee': 'Broker''s fee'

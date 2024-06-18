@@ -1,0 +1,23 @@
+uuid: 29a29a9a-d900-4e88-a6f4-99ebe0146c3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - dynamic_entity_reference
+    - paragraphs
+    - taxonomy
+id: paragraph.field_vote
+field_name: field_vote
+entity_type: paragraph
+type: dynamic_entity_reference
+settings:
+  exclude_entity_types: false
+  entity_type_ids:
+    taxonomy_term: taxonomy_term
+module: dynamic_entity_reference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

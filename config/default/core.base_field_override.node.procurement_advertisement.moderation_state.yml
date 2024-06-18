@@ -1,0 +1,18 @@
+uuid: 5e84e641-3e8d-489f-8111-53ef0dfb3073
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: procurement_advertisement
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

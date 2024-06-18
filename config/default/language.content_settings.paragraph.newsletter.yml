@@ -1,0 +1,20 @@
+uuid: 23f78c54-e4a7-449a-80cd-45350025807d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.newsletter
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: vZWCIPc4W-w5l9WhdWwqA2aTQYcZVFArsbxYE5sdLy4
+id: paragraph.newsletter
+target_entity_type_id: paragraph
+target_bundle: newsletter
+default_langcode: site_default
+language_alterable: false

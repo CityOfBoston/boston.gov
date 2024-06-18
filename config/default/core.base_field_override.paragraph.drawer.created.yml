@@ -1,0 +1,20 @@
+uuid: 517237da-77ff-45b4-802b-1362695353a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.drawer
+_core:
+  default_config_hash: jIgxgjsAA_vl55N8DThvosjMlc2LXDaZMWBIIEYpxlU
+id: paragraph.drawer.created
+field_name: created
+entity_type: paragraph
+bundle: drawer
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

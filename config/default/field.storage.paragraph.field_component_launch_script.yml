@@ -1,0 +1,19 @@
+uuid: 23c31c15-8ed3-4ecf-a896-c12acfb8a252
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_component_launch_script
+field_name: field_component_launch_script
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 84a5d60d-74b1-4613-9de6-8e6e82534b53
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.uid
+field_name: uid
+entity_type: node
+bundle: transaction
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

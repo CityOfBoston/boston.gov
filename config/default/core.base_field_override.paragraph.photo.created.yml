@@ -1,0 +1,20 @@
+uuid: 8612bf75-d242-4dfd-9930-ac5a7ae61f84
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.photo
+_core:
+  default_config_hash: mRGFosQua40QDS45kd-fo3MIR-86GNjNBMHib9xZzdY
+id: paragraph.photo.created
+field_name: created
+entity_type: paragraph
+bundle: photo
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

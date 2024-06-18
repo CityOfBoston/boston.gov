@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Neighborhoods
+vid: neighborhoods
+description: 'Boston area neighborhoods'
+weight: 0

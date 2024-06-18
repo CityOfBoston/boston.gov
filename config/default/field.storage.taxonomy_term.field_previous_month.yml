@@ -1,0 +1,22 @@
+uuid: ab33f0bf-b216-4eb8-affa-5fe795aead55
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: McV_-br0Sh-jcM9yOp6lha0cUgL2h0C10xa5_Y47JdU
+id: taxonomy_term.field_previous_month
+field_name: field_previous_month
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 6
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: ac0525a0-d483-4109-86e7-75f48c15c7e7
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.menu_link
+field_name: menu_link
+entity_type: node
+bundle: place_profile
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,5 @@
+node_elections.admin:
+  title: 'Election Results'
+  description: 'Manage election results'
+  parent: system.admin_content
+  route_name: node_elections.admin

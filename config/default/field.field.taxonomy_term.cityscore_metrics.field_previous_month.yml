@@ -1,0 +1,25 @@
+uuid: 26d2db54-e3af-4c71-86d2-d57a49467446
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_previous_month
+    - taxonomy.vocabulary.cityscore_metrics
+_core:
+  default_config_hash: MGe4MO0CFbVBOFPXR2M9BEkHMZyencX6ibexdmYlp5E
+id: taxonomy_term.cityscore_metrics.field_previous_month
+field_name: field_previous_month
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'Previous Month'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

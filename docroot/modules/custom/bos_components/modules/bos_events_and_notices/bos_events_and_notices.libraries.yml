@@ -1,0 +1,10 @@
+bos_events_and_notices_mnl_by_zipcode:
+  version: "0.1"
+  js:
+    js/bos_events_and_notices_mnl_by_zipcode.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupal.ajax
+    - core/views.ajax

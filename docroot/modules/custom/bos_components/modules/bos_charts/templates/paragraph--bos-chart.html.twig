@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ */
+#}
+
+{% if chart_layout.custom_css %}
+  <style>{{ chart_layout.custom_css }}</style>
+{% endif %}
+
+  {% block Single_Chart %}
+    <div {{ attributes }}>
+      {{ title_prefix }}
+      {%  if content.field_title["#items"] %}
+        <h3 class="m-v000">{{ content.field_title }}</h3>
+      {% endif %}
+      {{ title_suffix }}
+
+      {% block Chart_Header_Text %}
+
+        {% if chart_layout.col2 == "none" %}
+          {#  If there is only a single column, show any column text here #}
+          {{ content.field_left_column }}
+        {% endif %}
+
+      {% endblock Chart_Header_Text %}
+
+      {% block Columns %}
+
+        <div class="g m-t000">
+
+          {# Column 1, the left column #}
+          <div class="bos_chart_col1 g--{{ chart_layout.col1size }} g--{{ chart_layout.col1size }}--sl field-name-field-left-column field-items">
+            {% if chart_layout.col1 == "chart" %}
+              {# The main body copy for the chart #}
+              {% if content.field_column_description["#items"] %}
+                {{ content.field_column_description }}
+              {% endif %}
+              <div{{ content_attributes }}></div>
+              {% if content.field_middle_column["#items"] %}
+                {{ content.field_middle_column }}
+              {% endif %}
+            {% else %}
+              {{ content.field_left_column }}
+            {%  endif %}
+          </div>
+
+          {% if chart_layout.col2 != "none" %}
+            {# Column 2, the right column #}
+            <div class="bos_chart_col2 g--{{ chart_layout.col2size }} g--{{ chart_layout.col2size }}--sl field-name-field-right-column field-items">
+              {% if chart_layout.col2 == "chart" %}
+                {% if content.field_column_description["#items"] %}
+                  {{ content.field_column_description }}
+                {% endif %}
+                <div{{ content_attributes }}></div>
+                {% if content.field_middle_column["#items"] %}
+                  {{ content.field_middle_column }}
+                {% endif %}
+              {% else %}
+                {{ content.field_left_column }}
+              {%  endif %}
+            </div>
+          {% endif %}
+
+        </div>
+      {% endblock Columns %}
+
+    </div>
+{% endblock Single_Chart %}

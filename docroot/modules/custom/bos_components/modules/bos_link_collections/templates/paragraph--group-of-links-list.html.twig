@@ -1,0 +1,87 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+#}
+
+{% set left_region_classes = ['links-grid-left-rail'] %}
+{% set right_region_classes = ['links-grid-field-list-links'] %}
+
+{% if
+  content.field_subheader['#items'].getValue()
+  or content.field_description['#items'].getValue()
+  or content.field_link['#items'].getValue()
+%}
+  {% set left_region_classes = left_region_classes|merge(['g--3']) %}
+  {% set right_region_classes = right_region_classes|merge(['g--9']) %}
+{% else %}
+  {% set right_region_classes = right_region_classes|merge(['g--12']) %}
+{% endif %}
+
+<div {{attributes.addClass('b b--g b--fw')}}>
+
+  <div class="b-c">
+    {% if content.field_component_title and not hideTitle %}
+    <div class="sh cl">
+
+      {{ content.contextual_links }}
+
+      {{ content.field_component_title }}
+
+      {% if content.field_short_title['#items'].getValue() %}
+        {{ content.field_short_title }}
+      {% endif %}
+
+      {% if content.field_contact['#items'].getValue() %}
+        {{ content.field_contact }}
+      {% endif %}
+
+    </div>
+    {% endif %}
+
+    <div class="g">
+      <div {{ create_attribute({'class': left_region_classes}) }}>
+
+        <div class="links-grid-field-subheader p-t500">
+          {{ content.field_subheader }}
+        </div>
+
+        <div class="links-grid-field-description">
+          {{ content.field_description }}
+        </div>
+
+        {% if cta %}
+          {{ cta }}
+        {% endif %}
+
+      </div>
+
+      <div {{ create_attribute({'class': right_region_classes}) }}>
+        {{ content.field_list_links }}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

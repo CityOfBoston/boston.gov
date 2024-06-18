@@ -1,0 +1,11 @@
+uuid: d57ffa6f-32ca-4e49-923c-71c1c086f389
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.link
+label: Link
+description: ''
+targetEntityType: taxonomy_term
+cache: true

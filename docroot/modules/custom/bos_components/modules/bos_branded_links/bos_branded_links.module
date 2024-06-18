@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for branded links module.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_branded_links_theme() {
+  $theme['paragraph__branded_links__default'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__branded_links__full'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__from_library'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['field__field_links'] = [
+    'base hook' => 'field',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_branded_links_preprocess_paragraph__branded_links__full(&$variables) {
+  _bos_branded_links_add_classes($variables);
+  $variables['hideTitle'] = FALSE;
+  if (isset($variables['paragraph']->field_hide_title_bar)) {
+    $variables['hideTitle'] = ($variables['paragraph']->field_hide_title_bar->value == 1);
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_branded_links_preprocess_paragraph__branded_links__default(&$variables) {
+  _bos_branded_links_add_classes($variables);
+  $variables['hideTitle'] = FALSE;
+  if (isset($variables['paragraph']->field_hide_title_bar)) {
+    $variables['hideTitle'] = ($variables['paragraph']->field_hide_title_bar->value == 1);
+  }
+}
+
+
+function _bos_branded_links_add_classes (array &$variables) {
+  _bos_components_fix_attributes($variables);
+  $variables['attributes']->addClass("b");
+  $variables['attributes']->addClass("b--fw");
+  $variables['attributes']->addClass("b--b");
+  //$variables['attributes']->addClass("b--by");
+
+
+  // Change out background color based on field value
+  //@TODO: move functionality to global field?
+  //@TODO: still need to change copy / link color styles
+  switch ($variables["paragraph"]->field_component_theme->value) {
+    case 'g':
+      $variables['attributes']->addClass("b--g");
+      break;
+    case 'w':
+      $variables['attributes']->addClass("b--w");
+      break;
+    case 'b':
+    default:
+      $variables['attributes']->addClass("b--b");
+      break;
+  }
+
+
+  //@TODO: move to other locations and logic
+  $style_overrides = [];
+  $style_overrides[] = 'padding: unset;'; //cleanup so spacing that is not needed without a text title
+  //$style_overrides[] = 'border-top: .444rem solid #c9ab80;'; //custom top boarder for BPHC - DEMO ONLY
+
+  $variables['attributes']->setAttribute('style', $style_overrides);
+}
+
+
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_branded_links_paragraph_branded_links_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_links") && count($para["entity"]->get("field_links"))) {
+    $markup[] = Markup::create("has " . count($para["entity"]->get("field_links")) . " links.");
+    $bits = [];
+    foreach ($para["entity"]->get("field_links") as $link) {
+      $pg = \Drupal::entityTypeManager()->getStorage("paragraph")->load($link->target_id);
+      //@TODO: get the title of each link for the 3 different types (internal, external, document)
+      //$bits[] = Markup::create($pg->getName());
+      if (count($bits) > 4) {
+        break;
+      }
+    }
+    //$markup[] = Markup::create("<span class='info'>" . implode(" / ", $bits) . "</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no links.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_branded_links_form_paragraph_branded_links_entity_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+    // Remove the Add More button if we have 6 or more links
+    if ($form['field_links']['widget']['#max_delta'] >= 5) {
+      unset($form['field_links']['widget']['add_more']);
+    }
+}

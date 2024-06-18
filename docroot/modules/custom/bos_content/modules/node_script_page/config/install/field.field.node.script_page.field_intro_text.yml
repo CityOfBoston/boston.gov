@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.script_page
+  module:
+    - text
+id: node.script_page.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: script_page
+label: 'Intro Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,8 @@
+uuid: d78a2ac2-6d5c-477a-8de0-b45e14d92b26
+langcode: en
+status: true
+dependencies: {  }
+name: 'Election Candidates'
+vid: election_candidates
+description: 'Candidates participating in an Election Contest'
+weight: 0

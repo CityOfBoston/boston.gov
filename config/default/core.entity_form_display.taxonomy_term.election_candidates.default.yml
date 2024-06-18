@@ -1,0 +1,134 @@
+uuid: 54c72232-71c6-4ee5-a218-b3574762be1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.election_candidates.field_candidate_dis
+    - field.field.taxonomy_term.election_candidates.field_candidate_showvotes
+    - field.field.taxonomy_term.election_candidates.field_candidate_wri
+    - field.field.taxonomy_term.election_candidates.field_candidate_wrind
+    - field.field.taxonomy_term.election_candidates.field_contest
+    - field.field.taxonomy_term.election_candidates.field_display_title
+    - field.field.taxonomy_term.election_candidates.field_elector_group
+    - field.field.taxonomy_term.election_candidates.field_original_id
+    - taxonomy.vocabulary.election_candidates
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_election_candidate:
+      children:
+        - field_display_title
+        - field_contest
+        - field_elector_group
+        - group_metadata
+      label: 'Election Candidate'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: true
+    group_metadata:
+      children:
+        - field_original_id
+        - field_candidate_dis
+        - field_candidate_wri
+        - field_candidate_wrind
+        - field_candidate_showvotes
+      label: Metadata
+      region: content
+      parent_name: group_election_candidate
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+        required_fields: true
+id: taxonomy_term.election_candidates.default
+targetEntityType: taxonomy_term
+bundle: election_candidates
+mode: default
+content:
+  field_candidate_dis:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_showvotes:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_wri:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_candidate_wrind:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_contest:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_display_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_elector_group:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_original_id:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

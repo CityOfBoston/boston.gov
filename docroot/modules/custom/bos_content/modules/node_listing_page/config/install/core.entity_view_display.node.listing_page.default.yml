@@ -1,0 +1,96 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.listing_page.field_components
+    - field.field.node.listing_page.field_header_component
+    - field.field.node.listing_page.field_intro_image
+    - field.field.node.listing_page.field_manual_date
+    - field.field.node.listing_page.field_metatags
+    - field.field.node.listing_page.field_published_date
+    - field.field.node.listing_page.field_updated_date
+    - node.type.listing_page
+  module:
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - metatag
+    - user
+id: node.listing_page.default
+targetEntityType: node
+bundle: listing_page
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_header_component:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_intro_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  field_manual_date: true
+  langcode: true
+  published_at: true

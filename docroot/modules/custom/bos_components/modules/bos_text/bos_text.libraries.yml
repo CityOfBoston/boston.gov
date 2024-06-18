@@ -1,0 +1,7 @@
+bos_text_css:
+  version: 1.x
+  css:
+    theme:
+      css/bos_text.css: { }
+  dependencies:
+    - core/drupalSettings

@@ -1,0 +1,252 @@
+// <Range />
+@import '@globals';
+@import '@globals/typography/filters';
+
+// Multi-Thumb Sliders: General Case
+// https://css-tricks.com/multi-thumb-sliders-general-case/
+// https://codepen.io/thebabydino/pen/vYEEara
+
+// $pad: 2rem;
+// $highlight-color: $color-yellow;
+$highlight-color: $color-red;
+$transition-duration: .3s;
+$thumb-diameter: ( $checkbox-dimensions--desktop / 2 );
+$thumb-translate-y: ( $thumb-diameter * -.75 );
+
+@mixin track() {
+  width: 100%; height: 100%;
+  background: none /* get rid of Firefox track background */
+}
+
+@mixin thumb-highlighted() {
+  border-color: $highlight-color;
+  background-color: $highlight-color;
+}
+
+@mixin thumb() {
+  box-sizing: border-box; /* different between Chrome & Firefox */
+  /* box-sizing needed now that we have a non-zero border */
+  // border: solid calc( .5 * var(--radius) ) transparent;
+  // width: var(--thumb-diameter);
+  // height: var(--thumb-diameter);
+  // border-radius: 50%; /* make circular */
+  // background:
+  // 	linear-gradient( rgba( #000, .15 ), rgba( #fff, .2 ) ) content-box,
+  // 	linear-gradient( rgba( #fff, .3 ), rgba( #000, .3 ) ) border-box,
+  // 	// $highlight-color
+  // ;
+  pointer-events: auto;
+
+  // Downward Arrow
+  // https://css-tricks.com/snippets/css/css-triangle/
+
+  width: $thumb-diameter;
+  height: $thumb-diameter;
+  border-radius: 50% 50% 50% 0;
+
+  // Position:relative + bottom doesn’t work in Firefox so we have to use transform.
+  // Rotate is to achieve map marker look.
+  // Translate has to come before rotate.
+  // R/L .03rem;
+  transform: translateY( $thumb-translate-y ) rotate( -45deg ); // scale( 0.5 );
+
+  border: 8px solid $color-metrolist-text-blue;
+  background-color: #0A1F2F;
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include thumb-highlighted();
+  }
+}
+
+.ml-range {
+  $track-width: 100%;
+  --track-width: #{$track-width};
+
+  $track-height: $checkbox-dimensions--desktop;
+  --track-height: #{$track-height};
+
+  --thumb-diameter: #{$thumb-diameter};
+
+  $thumb-radius: ( $thumb-diameter / 2 );
+  --thumb-radius: #{$thumb-radius};
+
+  // $useful-width: ( $track-width - $thumb-diameter );
+  // --useful-width: #{$useful-width};
+  --useful-width: calc( var(--track-width) - var(--thumb-diameter) );
+
+  --min-max-difference: calc( var(--max) - var(--min) );
+
+  --fill:
+    linear-gradient(
+      90deg,
+      red calc( var(--thumb-radius) + ( var(--lower-bound) - var(--min) ) / var(--min-max-difference) * var(--useful-width) ),
+      transparent 0
+    ),
+    linear-gradient(
+      90deg,
+      red calc( var(--thumb-radius) + ( var(--upper-bound) - var(--min) ) / var(--min-max-difference) * var(--useful-width) ),
+      transparent 0
+    )
+  ;
+
+  line-height: 0.85;
+}
+
+.ml-range__multi-input {
+  display: grid;
+  grid-template-rows: max-content var(--track-height) max-content;
+  grid-gap: .625rem;
+  // overflow: hidden;
+  position: relative;
+  padding-top: 0.25rem; // ( $thumb-diameter / 2 );
+  // margin: 1em .5em - $pad;
+  // padding: 0 $pad;
+  width: var(--track-width);
+  // font: 700 1.125em ubuntu mono, consolas, monaco, monospace;
+
+  * {
+    --highlighted: 0;
+    --not-highlighted: calc( 1 - var(--highlighted) );
+    margin: 0;
+  }
+
+  &::before, &::after {
+    grid-column: 1;
+    grid-row: 2;
+    // border-radius: var(--radius);
+    // box-shadow: inset 0 2px 3px rgba( #000, .3 );
+    // background: #ccc;
+    color: #eee;
+    content: ''
+  }
+
+  // Range Bar Container (empty portion)
+  &::before {
+    height: 35px;
+    border: 2px solid #383838;
+  }
+
+  // Range Bar (colored in portion)
+  &::after {
+    /* non-standard WebKit version */
+    -webkit-mask: var(--fill);
+    -webkit-mask-composite: xor;
+
+    /* standard version, supported in Firefox */
+    mask: var(--fill);
+    mask-composite: exclude;
+
+    position: relative;
+    top: .5rem;
+    height: 23px;
+
+    background:
+      // linear-gradient( rgba( #fff, .3 ), rgba( #000, .3 ) )
+      $color-supporting-blue;
+  }
+}
+
+.ml-range__input {
+  &::-webkit-slider-runnable-track,
+  &::-webkit-slider-thumb,
+  & {
+    -webkit-appearance: none
+  }
+
+  padding: 0;
+  // height: auto;
+  height: 2.2rem;
+  color: inherit;
+  border: none;
+  grid-column: 1;
+  grid-row: 2;
+  z-index: calc( 1 + var( --highlighted) );
+  top: 0; left: 0;
+  background: none; /* get rid of white Chrome background */
+  // filter: grayScale(var( --not-highlighted) );
+  // transition: filter $transition-duration ease-out;
+  cursor: grab;
+  pointer-events: none;
+
+  &::-webkit-slider-runnable-track {
+    @include track();
+  }
+  &::-moz-range-track {
+    @include track();
+  }
+
+  $thumb-position-tweak: .07rem;
+
+  &::-webkit-slider-thumb {
+    @include thumb();
+  }
+
+  &:focus::-webkit-slider-thumb {
+    outline: inherit;
+    @include thumb-highlighted();
+  }
+
+  &:first-of-type::-webkit-slider-thumb,
+  &:last-of-type.ml-range__input--inverted::-webkit-slider-thumb {
+    transform: translate( $thumb-position-tweak, $thumb-translate-y ) rotate( -45deg );
+  }
+
+  &:last-of-type::-webkit-slider-thumb,
+  &:first-of-type.ml-range__input--inverted::-webkit-slider-thumb {
+    transform: translate( $thumb-position-tweak * -1, $thumb-translate-y ) rotate( -45deg );
+  }
+
+  &::-moz-range-thumb {
+    @include thumb();
+  }
+  // Firefox’s translate doesn’t calculate in the same way as Chrome’s, so manually adjusting
+  // &:first-of-type::-moz-range-thumb {
+  // 	transform: translate( $thumb-position-tweak, $thumb-translate-y * 1.5 ) rotate( -45deg );
+  // }
+  // &:last-of-type::-moz-range-thumb {
+  // 	transform: translate( $thumb-position-tweak * -1, $thumb-translate-y * 1.5 ) rotate( -45deg );
+  // }
+  &:focus::-moz-range-thumb {
+    outline: inherit;
+    @include thumb-highlighted();
+  }
+
+  &:focus {
+    --highlighted: 1;
+    // outline-color: transparent;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// .ml-range__review,
+// .ml-range__review-unit {}
+
+.ml-range__review {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.ml-range__review > .en-dash {
+  margin: 0 .25rem;
+}
+.ml-range__review.ml-range__review--inverted {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.manual_range_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ml-manual_range__input {
+  max-width: 40%;
+  width: 100%;
+}

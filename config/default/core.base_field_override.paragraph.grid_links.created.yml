@@ -1,0 +1,20 @@
+uuid: 571a4d0a-1b7a-403e-992b-093a77d0acf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_links
+_core:
+  default_config_hash: 7vLNzMfeKSi4OqxSSQLVc3CtZUk_oPxN-TQJzEUqp30
+id: paragraph.grid_links.created
+field_name: created
+entity_type: paragraph
+bundle: grid_links
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

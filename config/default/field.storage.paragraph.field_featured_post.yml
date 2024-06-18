@@ -1,0 +1,22 @@
+uuid: 28702f08-cefc-4494-95fd-b7337bead9c1
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+_core:
+  default_config_hash: USuYoLUpNY8Oa9BkO2gbK6Bfcjunkha-HtQ4ilzjaHw
+id: paragraph.field_featured_post
+field_name: field_featured_post
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

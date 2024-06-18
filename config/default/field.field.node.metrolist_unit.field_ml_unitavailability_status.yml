@@ -1,0 +1,29 @@
+uuid: 5e1c79fc-90a0-4fda-8c69-5536ca38c8a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unitavailability_status
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.availability_status
+id: node.metrolist_unit.field_ml_unitavailability_status
+field_name: field_ml_unitavailability_status
+entity_type: node
+bundle: metrolist_unit
+label: 'Availability Status'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      availability_status: availability_status
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

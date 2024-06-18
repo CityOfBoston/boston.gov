@@ -1,0 +1,49 @@
+name: Event
+type: module
+description: 'Event Details, used with the calendar and many other places throughout the site.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.base_field_override.node.event.promote
+  - core.base_field_override.node.event.status
+  - core.base_field_override.node.event.sticky
+  - core.base_field_override.node.event.title
+  - core.base_field_override.node.event.uid
+  - core.entity_form_display.node.event.default
+  - core.entity_view_display.node.event.default
+  - core.entity_view_display.node.event.featured_item
+  - field.field.node.event.body
+  - field.field.node.event.field_address
+  - field.field.node.event.field_event_type
+  - field.field.node.event.field_links
+  - field.field.node.event.field_manual_date
+  - field.field.node.event.field_multiple_neighborhoods
+  - field.field.node.event.field_cost
+  - field.field.node.event.field_email
+  - field.field.node.event.field_links
+  - field.field.node.event.field_featured
+  - field.field.node.event.field_city_hall
+  - field.field.node.event.field_thumbnail
+  - field.field.node.event.field_components
+  - field.field.node.event.field_event_type
+  - field.field.node.event.field_event_dates
+  - field.field.node.event.field_intro_image
+  - field.field.node.event.field_cancel_event
+  - field.field.node.event.field_details_link
+  - field.field.node.event.field_phone_number
+  - field.field.node.event.field_updated_date
+  - field.field.node.event.field_event_contact
+  - field.field.node.event.field_city_sponsored
+  - field.field.node.event.field_metatags
+  - field.field.node.event.field_published_date
+  - field.field.node.event.field_related
+  - field.field.node.event.field_extra_info_event
+  - field.field.node.event.field_sidebar_components
+  - field.field.node.event.field_multiple_neighborhoods
+  - language.content_settings.node.event
+  - metatag.metatag_defaults.node__event
+  - node.type.event
+  - rabbit_hole.behavior_settings.node_type_event

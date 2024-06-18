@@ -1,0 +1,22 @@
+uuid: 022de0a1-c0c7-4d47-b91d-0282353dd0b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.topic_page
+_core:
+  default_config_hash: 840vH-lq7EKpP7Q5YdSMvrcVVf8rlzoJ9vpMvQ2ZDNE
+id: node.topic_page.uid
+field_name: uid
+entity_type: node
+bundle: topic_page
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

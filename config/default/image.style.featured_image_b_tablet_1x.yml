@@ -1,0 +1,15 @@
+uuid: 5043677f-c4d4-4d42-a825-2d1f11c859cb
+langcode: und
+status: true
+dependencies: {  }
+name: featured_image_b_tablet_1x
+label: 'Featured image b-tablet 1x (614x350)'
+effects:
+  171e4161-393a-4cda-b837-dabec4b65e80:
+    uuid: 171e4161-393a-4cda-b837-dabec4b65e80
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 614
+      height: 350
+      anchor: center-center

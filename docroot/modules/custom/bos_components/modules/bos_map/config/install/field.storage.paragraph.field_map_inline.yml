@@ -1,0 +1,18 @@
+uuid: dea8bfa7-cdcd-43f9-8b37-e7eab6b179af
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_map_inline
+field_name: field_map_inline
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

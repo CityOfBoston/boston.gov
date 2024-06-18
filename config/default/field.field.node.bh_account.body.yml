@@ -1,0 +1,25 @@
+uuid: 60381287-f03f-48a2-846c-eb6bc01e40f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.bh_account
+  module:
+    - text
+_core:
+  default_config_hash: YAnyJhXpI7iUxdjeLaWUP35ggAIJIyRgFOBwL0zuYno
+id: node.bh_account.body
+field_name: body
+entity_type: node
+bundle: bh_account
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

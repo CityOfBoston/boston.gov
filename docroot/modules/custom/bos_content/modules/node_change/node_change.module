@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Provides a test component page entity type.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function node_change_theme() {
+  return [
+    'node__change' => [
+      'base_hook' => 'node',
+      'render element' => 'elements',
+      'path' => 'modules/custom/bos_content/modules/node_change/templates',
+    ],
+  ];
+}

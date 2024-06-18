@@ -1,0 +1,15 @@
+uuid: 177e6ceb-8eb9-4335-8096-e6d1ce97e839
+langcode: und
+status: true
+dependencies: {  }
+name: media_fixed_height_100px_
+label: 'Media Fixed Height (100px)'
+effects:
+  4912a4bc-c33d-415a-8e39-f9fb10a0e5f6:
+    uuid: 4912a4bc-c33d-415a-8e39-f9fb10a0e5f6
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 100
+      upscale: false

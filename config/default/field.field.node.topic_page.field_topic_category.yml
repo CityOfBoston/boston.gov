@@ -1,0 +1,32 @@
+uuid: 5b1c51eb-60df-4fa2-955f-f71675392ca0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topic_category
+    - node.type.topic_page
+    - taxonomy.vocabulary.topic_category
+_core:
+  default_config_hash: 49TxA58pJ1RjRbAoRheVAOyCeNlWV-rfamtt25mxLPw
+id: node.topic_page.field_topic_category
+field_name: field_topic_category
+entity_type: node
+bundle: topic_page
+label: 'Topic Category'
+description: 'Select Topic Categories that pertain to this Topic.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topic_category: topic_category
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

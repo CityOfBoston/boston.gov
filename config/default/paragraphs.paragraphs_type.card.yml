@@ -1,0 +1,18 @@
+uuid: 57aa01d0-53d5-4439-ad14-a27677f795bc
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: y5DYOfbA1RyxnIcSYZxpnQsGYHbJDSleX7PfkjQ5NHw
+id: card
+label: Card
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Card'
+behavior_plugins: {  }

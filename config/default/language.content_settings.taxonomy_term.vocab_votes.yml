@@ -1,0 +1,11 @@
+uuid: 23f5ce7f-a912-4db5-b185-8206d3750a7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.vocab_votes
+id: taxonomy_term.vocab_votes
+target_entity_type_id: taxonomy_term
+target_bundle: vocab_votes
+default_langcode: site_default
+language_alterable: false

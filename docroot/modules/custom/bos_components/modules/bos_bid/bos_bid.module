@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Code for the Boston Component Bid feature.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_bid_theme() {
+  $theme['paragraph__bid__default'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_bid/templates',
+  ];
+  return $theme;
+}

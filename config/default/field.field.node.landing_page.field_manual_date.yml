@@ -1,0 +1,25 @@
+uuid: 1548ccaa-a621-45f5-b30e-fbcbeba8bfe9
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manual_date
+    - node.type.landing_page
+_core:
+  default_config_hash: 6Pn-G5OxIVRyzpMSLYZ3i619FpjrmJJ-znLTjuaPWM0
+id: node.landing_page.field_manual_date
+field_name: field_manual_date
+entity_type: node
+bundle: landing_page
+label: 'Manual Date'
+description: 'The updated and published dates are set by Drupal unless this checkbox is selected, in which case they can be set manually.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Manual
+  off_label: Automatic
+field_type: boolean

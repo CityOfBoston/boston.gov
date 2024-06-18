@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_theme
+    - node.type.emergency_alert
+  module:
+    - options
+id: node.emergency_alert.field_theme
+field_name: field_theme
+entity_type: node
+bundle: emergency_alert
+label: 'Alert State'
+description: "The emergency alert has two states: \r\n<br>1) Preparation (the alert will display with dark blue background), and \r\n<br>2) Active (the alert will display with red background)\r\n<br>\r\n<br><b>As an example: </b>\r\n<br> - When there is snow coming but the city has not declared snow emergency yet - use the preparation state. \r\n<br> - When the city has a snow emergency in effect - use the active state. \r\n<br> - When a snow emergency has ended but there remains a lot of work to clean up - it may be appropriate to keep the alert active with a preparation state."
+required: true
+translatable: false
+default_value:
+  -
+    value: dark-blue
+default_value_callback: ''
+settings: {  }
+field_type: list_string

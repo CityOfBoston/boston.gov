@@ -1,0 +1,23 @@
+uuid: aca13af8-1125-44ca-92f5-8990d2458cbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_candidate_wrind
+    - paragraphs.paragraphs_type.election_candidate_results
+id: paragraph.election_candidate_results.field_candidate_wrind
+field_name: field_candidate_wrind
+entity_type: paragraph
+bundle: election_candidate_results
+label: wrInd
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

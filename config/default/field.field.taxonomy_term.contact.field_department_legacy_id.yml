@@ -1,0 +1,21 @@
+uuid: 6244ea5d-5f4f-483c-b6a2-61cadc635430
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_department_legacy_id
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: 5Nq8uuQu8vA46Z8IqtGbYt5x5dJoWrITufr4KbYKwig
+id: taxonomy_term.contact.field_department_legacy_id
+field_name: field_department_legacy_id
+entity_type: taxonomy_term
+bundle: contact
+label: 'Legacy ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

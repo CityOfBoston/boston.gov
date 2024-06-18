@@ -1,0 +1,18 @@
+uuid: 076bccc2-bc7e-47bb-ad6a-38efa7fb0ada
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+id: paragraphs_library_item.paragraphs_library_item.metatag
+field_name: metatag
+entity_type: paragraphs_library_item
+bundle: paragraphs_library_item
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

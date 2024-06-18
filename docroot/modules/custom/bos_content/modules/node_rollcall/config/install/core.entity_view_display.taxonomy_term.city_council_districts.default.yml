@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.city_council_districts
+  module:
+    - text
+id: taxonomy_term.city_council_districts.default
+targetEntityType: taxonomy_term
+bundle: city_council_districts
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

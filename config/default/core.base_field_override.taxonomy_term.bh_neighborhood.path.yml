@@ -1,0 +1,20 @@
+uuid: 452adee0-9c44-44fe-bac7-c8aa0b40f50c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_neighborhood
+  module:
+    - path
+id: taxonomy_term.bh_neighborhood.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_neighborhood
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,13 @@
+uuid: 253c2985-12df-4b19-b71b-382f17c60d08
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: fKwJmXvJTG7hntMkjdXTKUeTZJOrrS9bqlaFIVnus5c
+id: transaction_grid
+label: 'Transaction Grid'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Transaction Grid'
+behavior_plugins: {  }

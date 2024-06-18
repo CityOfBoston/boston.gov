@@ -1,0 +1,11 @@
+uuid: b7db62cb-d0d5-4d23-a1f0-1b8ab3e93472
+langcode: en
+status: true
+dependencies: {  }
+id: feedback_form
+label: 'Feedback form'
+category: Likert
+likert: true
+options: |-
+  'Yes': 'Yes'
+  'No': 'No'

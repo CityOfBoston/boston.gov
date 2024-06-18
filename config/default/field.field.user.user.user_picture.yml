@@ -1,0 +1,40 @@
+uuid: 78fdc923-93b0-437a-b3f4-4239a2402e24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.user_picture
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: Iiq0AttdhgbebJwabSFwQQ1ORn64GoGz0xSZ_eyCJ8A
+id: user.user.user_picture
+field_name: user_picture
+entity_type: user
+bundle: user
+label: Picture
+description: "Please upload an appropriate picture of yourself (max 1024 by 1024 pixels) - preferably against a neutral background.  \r\nThe picture should be in a square (1:1) format."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'img/user/photos/[current-date:html_year]/[current-date:html_month_bare]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: '1 MB'
+  max_resolution: 1024x1024
+  min_resolution: 100x100
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

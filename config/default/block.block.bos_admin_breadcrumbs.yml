@@ -1,0 +1,20 @@
+uuid: 0addf429-49dc-4fb7-a17c-a7a5d8087ff4
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos_admin
+id: bos_admin_breadcrumbs
+theme: bos_admin
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

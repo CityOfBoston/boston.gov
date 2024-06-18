@@ -1,0 +1,18 @@
+uuid: dbee27d6-a17a-402d-b2eb-eb9059d4de46
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+id: taxonomy_term.political_party.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: political_party
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

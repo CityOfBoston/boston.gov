@@ -1,0 +1,48 @@
+uuid: 69cd3572-2857-47ce-b804-3c5d96e6f936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_daily_hours
+    - paragraphs.paragraphs_type.daily_hours
+  module:
+    - office_hours
+_core:
+  default_config_hash: 6u0cydMeuCgjov4knH90n_C0sKXZ89DDxwCS4OKW-FE
+id: paragraph.daily_hours.field_daily_hours
+field_name: field_daily_hours
+entity_type: paragraph
+bundle: daily_hours
+label: 'Daily Hours'
+description: 'Add daily open hours.'
+required: true
+translatable: false
+default_value:
+  -
+    day: 1
+    starthours: 900
+    endhours: 1700
+    daydelta: 0
+  -
+    day: 2
+    starthours: 900
+    endhours: 1700
+    daydelta: 0
+  -
+    day: 3
+    starthours: 900
+    endhours: 1700
+    daydelta: 0
+  -
+    day: 4
+    starthours: 900
+    endhours: 1700
+    daydelta: 0
+  -
+    day: 5
+    starthours: 900
+    endhours: 1700
+    daydelta: 0
+default_value_callback: ''
+settings: {  }
+field_type: office_hours

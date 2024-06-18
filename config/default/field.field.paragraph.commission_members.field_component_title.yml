@@ -1,0 +1,23 @@
+uuid: b6d4828c-9333-4310-8a12-b19388c1ab94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.commission_members
+_core:
+  default_config_hash: AiHqEEVTv7AP7yrdywBVwXHICOTCBcqsL1kJzbMX6h8
+id: paragraph.commission_members.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: commission_members
+label: Title
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Current members'
+default_value_callback: ''
+settings: {  }
+field_type: string

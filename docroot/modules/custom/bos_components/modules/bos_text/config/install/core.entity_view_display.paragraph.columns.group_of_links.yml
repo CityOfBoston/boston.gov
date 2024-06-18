@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.group_of_links
+    - field.field.paragraph.columns.field_column_description
+    - field.field.paragraph.columns.field_column_title
+    - field.field.paragraph.columns.field_image
+    - field.field.paragraph.columns.field_link
+    - paragraphs.paragraphs_type.columns
+id: paragraph.columns.group_of_links
+targetEntityType: paragraph
+bundle: columns
+mode: group_of_links
+content: {  }
+hidden:
+  field_column_description: true
+  field_column_title: true
+  field_image: true
+  field_link: true

@@ -1,0 +1,36 @@
+uuid: 4b6ad0cd-a7b2-406f-b618-840f165441ec
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.roll_call_dockets.body
+    - field.field.node.roll_call_dockets.field_components
+    - field.field.node.roll_call_dockets.field_meeting_date
+    - node.type.roll_call_dockets
+  module:
+    - text
+    - user
+id: node.roll_call_dockets.teaser
+targetEntityType: node
+bundle: roll_call_dockets
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_meeting_date: true
+  langcode: true
+  published_at: true

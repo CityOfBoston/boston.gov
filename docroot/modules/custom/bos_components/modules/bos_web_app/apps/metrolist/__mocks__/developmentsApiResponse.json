@@ -1,0 +1,1132 @@
+[
+  {
+    "title": "O'Connor Way Senior Housing",
+    "id": "13657426",
+    "slug": "oconnor-way-senior-housing",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "South Boston",
+    "streetAddress": "5 Major Michael J. O\u2019Connor Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13657426-1",
+        "count": 5,
+        "amiQualification": 30,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657426-2",
+        "count": 17,
+        "amiQualification": 50,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657426-3",
+        "count": 12,
+        "amiQualification": 60,
+        "bedrooms": 1,
+        "price": 1111,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657426-4",
+        "count": 12,
+        "amiQualification": 60,
+        "bedrooms": 1,
+        "price": 1333,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-29T20:00:01Z",
+    "applicationDueDate": "2020-08-04",
+    "type": null
+  },
+  {
+    "title": "The Reserve at Burlington",
+    "id": "13657141",
+    "slug": "reserve-burlington",
+    "cardinalDirection": "north",
+    "city": "Burlington",
+    "neighborhood": null,
+    "streetAddress": "20 Corporate Drive",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13657141-1",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 0,
+        "price": 1433,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657141-2",
+        "count": 29,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1631,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657141-3",
+        "count": 13,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1813,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13657141-4",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 3,
+        "price": 1996,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-29T17:45:01Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "Portside at East Pier",
+    "id": "13656671",
+    "slug": "portside-east-pier",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "East Boston",
+    "streetAddress": "50 Lewis Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13656671-1",
+        "count": 1,
+        "amiQualification": 150,
+        "bedrooms": 2,
+        "price": 3000,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-26T16:30:01Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "St. Gabriel's",
+    "id": "13656676",
+    "slug": "st-gabriels",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Brighton",
+    "streetAddress": "159-201 Washington St",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13656676-1",
+        "count": 1,
+        "amiQualification": 150,
+        "bedrooms": 2,
+        "price": 2982,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-26T16:30:01Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "Jones Meadow 55+",
+    "id": "13656296",
+    "slug": "jones-meadow-55",
+    "cardinalDirection": "north",
+    "city": "Littleton",
+    "neighborhood": null,
+    "streetAddress": "100 Spectacle Pond Road",
+    "offer": "sale",
+    "units": [
+      {
+        "id": "13656296-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 251000,
+        "priceRate": "once"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-23T19:30:01Z",
+    "applicationDueDate": "2020-08-10",
+    "type": null
+  },
+  {
+    "title": "The Ledges",
+    "id": "13655671",
+    "slug": "ledges",
+    "cardinalDirection": "west",
+    "city": "Ashland",
+    "neighborhood": null,
+    "streetAddress": "One Robert Hill Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655671-1",
+        "count": 1,
+        "amiQualification": 50,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655671-2",
+        "count": 15,
+        "amiQualification": 30,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655671-3",
+        "count": 24,
+        "amiQualification": 50,
+        "bedrooms": 1,
+        "price": 1200,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655671-4",
+        "count": 24,
+        "amiQualification": 60,
+        "bedrooms": 1,
+        "price": 1440,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-18T19:15:01Z",
+    "applicationDueDate": "2020-08-14",
+    "type": null
+  },
+  {
+    "title": "16 Laurel Street",
+    "id": "13655646",
+    "slug": "16-laurel-street",
+    "cardinalDirection": "north",
+    "city": "Everett",
+    "neighborhood": "Outside Boston",
+    "streetAddress": "16 Laurel Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655646-1",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1786,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655646-2",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1989,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-18T19:00:02Z",
+    "applicationDueDate": "2020-08-16",
+    "type": null
+  },
+  {
+    "title": "Park Lane Seaport",
+    "id": "13655286",
+    "slug": "park-lane-seaport",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Seaport",
+    "streetAddress": "1 Park Lane",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655286-1",
+        "count": 1,
+        "amiQualification": 120,
+        "bedrooms": 1,
+        "price": 2310,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-18T17:45:01Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "1943 DOT AVE",
+    "id": "13655281",
+    "slug": "1943-dot-ave",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Dorchester",
+    "streetAddress": "1943 Dorchester Ave",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655281-1",
+        "count": 2,
+        "amiQualification": 70,
+        "bedrooms": 0,
+        "price": 1024,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-18T17:45:01Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "Modera Marshfield",
+    "id": "13655296",
+    "slug": "modera-marshfield",
+    "cardinalDirection": "south",
+    "city": "Marshfield",
+    "neighborhood": null,
+    "streetAddress": "120 Commerce Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655296-1",
+        "count": 16,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1573,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655296-2",
+        "count": 35,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1867,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655296-3",
+        "count": 11,
+        "amiQualification": 80,
+        "bedrooms": 3,
+        "price": 2135,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-18T17:45:01Z",
+    "applicationDueDate": "2020-08-10",
+    "type": null
+  },
+  {
+    "title": "598 North Apartments",
+    "id": "13655291",
+    "slug": "598-north-apartments",
+    "cardinalDirection": "north",
+    "city": "Wakefield",
+    "neighborhood": null,
+    "streetAddress": "598 North Ave.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655291-1",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1630,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655291-2",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1807,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-18T17:45:01Z",
+    "applicationDueDate": "2020-08-16",
+    "type": "apt"
+  },
+  {
+    "title": "King's Lynne Apartments",
+    "id": "13655071",
+    "slug": "kings-lynne-apartments",
+    "cardinalDirection": "north",
+    "city": "Lynn",
+    "neighborhood": null,
+    "streetAddress": "115 O'Callaghan Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13655071-1",
+        "count": 1,
+        "amiQualification": 50,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655071-2",
+        "count": 1,
+        "amiQualification": 50,
+        "bedrooms": 2,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655071-3",
+        "count": 1,
+        "amiQualification": 50,
+        "bedrooms": 3,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13655071-4",
+        "count": 1,
+        "amiQualification": 50,
+        "bedrooms": 4,
+        "price": null,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-17T18:30:01Z",
+    "applicationDueDate": "2020-07-15",
+    "type": "apt"
+  },
+  {
+    "title": "Keystone Apartments",
+    "id": "13652486",
+    "slug": "keystone-apartments",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Dorchester",
+    "streetAddress": "151 Hallet Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652486-1",
+        "count": 1,
+        "amiQualification": null,
+        "bedrooms": 2,
+        "price": 2711,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": false,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "71 Topliff Street",
+    "id": "13652406",
+    "slug": "71-topliff-street",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Dorchester",
+    "streetAddress": "71 Topliff Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652406-1",
+        "count": 3,
+        "amiQualification": 120,
+        "bedrooms": 3,
+        "price": 3200,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "multi-family"
+  },
+  {
+    "title": "347 West 2nd Street",
+    "id": "13652436",
+    "slug": "347-west-2nd-street",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "South Boston",
+    "streetAddress": "347 West 2nd Street",
+    "offer": "sale",
+    "units": [
+      {
+        "id": "13652436-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 5,
+        "price": 635580,
+        "priceRate": "once"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "multi-family"
+  },
+  {
+    "title": "Symphony Plaza",
+    "id": "13652471",
+    "slug": "symphony-plaza",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Back Bay",
+    "streetAddress": "333 Mass Ave.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652471-1",
+        "count": 1,
+        "amiQualification": 30,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": null
+  },
+  {
+    "title": "6 Lorne Street",
+    "id": "13652401",
+    "slug": "6-lorne-street",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Dorchester",
+    "streetAddress": "6 Lorne Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652401-1",
+        "count": 1,
+        "amiQualification": 100,
+        "bedrooms": 4,
+        "price": 2500,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "multi-family"
+  },
+  {
+    "title": "Hanover Westford Hills",
+    "id": "13652431",
+    "slug": "hanover-westford-hills",
+    "cardinalDirection": "north",
+    "city": "Westborough",
+    "neighborhood": null,
+    "streetAddress": "1 Westford Hills Road",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652431-1",
+        "count": 15,
+        "amiQualification": 50,
+        "bedrooms": 1,
+        "price": 840,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652431-2",
+        "count": 17,
+        "amiQualification": 50,
+        "bedrooms": 2,
+        "price": 975,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652431-3",
+        "count": 4,
+        "amiQualification": 50,
+        "bedrooms": 3,
+        "price": 1097,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "2020-07-21",
+    "type": "apt"
+  },
+  {
+    "title": "20 Englewood Ave",
+    "id": "13652466",
+    "slug": "20-englewood-ave",
+    "cardinalDirection": "west",
+    "city": "Brookline",
+    "neighborhood": null,
+    "streetAddress": "20 Englewood Avenue",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652466-1",
+        "count": 1,
+        "amiQualification": 100,
+        "bedrooms": 2,
+        "price": 2655,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Lodge at Foxborough",
+    "id": "13652386",
+    "slug": "lodge-foxborough",
+    "cardinalDirection": "south",
+    "city": "Foxborough",
+    "neighborhood": null,
+    "streetAddress": "400 Foxborough Blvd.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652386-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1424,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652386-2",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1694,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "467 Main Street",
+    "id": "13652426",
+    "slug": "467-main-street",
+    "cardinalDirection": "west",
+    "city": "Reading",
+    "neighborhood": null,
+    "streetAddress": "467 Main Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652426-1",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1515,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652426-2",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1660,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Holmes Beverly",
+    "id": "13652461",
+    "slug": "holmes-beverly",
+    "cardinalDirection": "north",
+    "city": "Beverly",
+    "neighborhood": null,
+    "streetAddress": "110 Rantoul St",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652461-1",
+        "count": 1,
+        "amiQualification": 100,
+        "bedrooms": 2,
+        "price": 2250,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Print Lofts",
+    "id": "13652361",
+    "slug": "print-lofts",
+    "cardinalDirection": "south",
+    "city": "Norwood",
+    "neighborhood": null,
+    "streetAddress": "129 Guild Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652361-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 0,
+        "price": 1445,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652361-2",
+        "count": 8,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1625,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Farm View",
+    "id": "13652506",
+    "slug": "farm-view",
+    "cardinalDirection": "west",
+    "city": "Lexington",
+    "neighborhood": null,
+    "streetAddress": "34 Lowell St.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652506-1",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": null,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652506-2",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": null,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "2020-07-01",
+    "type": "apt"
+  },
+  {
+    "title": "Emery Flats",
+    "id": "13652421",
+    "slug": "emery-flats",
+    "cardinalDirection": "north",
+    "city": "Woburn",
+    "neighborhood": null,
+    "streetAddress": "200 Presidential Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652421-1",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 0,
+        "price": 1446,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652421-2",
+        "count": 2,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1535,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Halstead Salem Station",
+    "id": "13652451",
+    "slug": "halstead-salem-station",
+    "cardinalDirection": "north",
+    "city": "Salem",
+    "neighborhood": null,
+    "streetAddress": "72 Flint Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652451-1",
+        "count": 8,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1625,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652451-2",
+        "count": 5,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1777,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "2020-07-14",
+    "type": "apt"
+  },
+  {
+    "title": "The Beverly",
+    "id": "13652356",
+    "slug": "beverly",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "North End",
+    "streetAddress": "101 Beverly Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652356-1",
+        "count": 1,
+        "amiQualification": 140,
+        "bedrooms": 0,
+        "price": 2412,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-2",
+        "count": 1,
+        "amiQualification": 150,
+        "bedrooms": 0,
+        "price": 2650,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-3",
+        "count": 1,
+        "amiQualification": 165,
+        "bedrooms": 0,
+        "price": 2850,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-4",
+        "count": 1,
+        "amiQualification": 140,
+        "bedrooms": 1,
+        "price": 2646,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-5",
+        "count": 1,
+        "amiQualification": 150,
+        "bedrooms": 1,
+        "price": 2945,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-6",
+        "count": 1,
+        "amiQualification": 165,
+        "bedrooms": 1,
+        "price": 3195,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-7",
+        "count": 1,
+        "amiQualification": 140,
+        "bedrooms": 2,
+        "price": 3470,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652356-8",
+        "count": 1,
+        "amiQualification": 140,
+        "bedrooms": 3,
+        "price": 4000,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "Redtail Crossing",
+    "id": "13652501",
+    "slug": "redtail-crossing",
+    "cardinalDirection": "south",
+    "city": "Wrentham",
+    "neighborhood": null,
+    "streetAddress": "5 Eagle Brook Blvd.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652501-1",
+        "count": 4,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1904,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652501-2",
+        "count": 3,
+        "amiQualification": 80,
+        "bedrooms": 3,
+        "price": 2197,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "2020-07-31",
+    "type": "apt"
+  },
+  {
+    "title": "Avenu at Natick",
+    "id": "13652416",
+    "slug": "avenu-natick",
+    "cardinalDirection": "west",
+    "city": "Natick",
+    "neighborhood": null,
+    "streetAddress": "3 Superior Drive",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652416-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 0,
+        "price": 1465,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652416-2",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1657,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652416-3",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1836,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "275 Roxbury Street",
+    "id": "13652446",
+    "slug": "275-roxbury-street",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "Roxbury",
+    "streetAddress": "275 Roxbury Street",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652446-1",
+        "count": 1,
+        "amiQualification": 30,
+        "bedrooms": 1,
+        "price": 1270,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "The Point at Marlborough",
+    "id": "13652341",
+    "slug": "point-marlborough",
+    "cardinalDirection": "west",
+    "city": "Marlborough",
+    "neighborhood": null,
+    "streetAddress": "21 Austen Way",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652341-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 1360,
+        "priceRate": "monthly"
+      },
+      {
+        "id": "13652341-2",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 2,
+        "price": 1589,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "waitlist",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "483 Summer Street Apartments",
+    "id": "13652491",
+    "slug": "483-summer-street-apartments",
+    "cardinalDirection": "north",
+    "city": "Arlington",
+    "neighborhood": null,
+    "streetAddress": "483 Summer St.",
+    "offer": "rent",
+    "units": [
+      {
+        "id": "13652491-1",
+        "count": 1,
+        "amiQualification": 70,
+        "bedrooms": 2,
+        "price": 1232,
+        "priceRate": "monthly"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "lottery",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "2020-07-01",
+    "type": "apt"
+  },
+  {
+    "title": "735 Harrison Ave",
+    "id": "13652411",
+    "slug": "735-harrison-ave",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "South End",
+    "streetAddress": "735 Harrison Ave",
+    "offer": "sale",
+    "units": [
+      {
+        "id": "13652411-1",
+        "count": 1,
+        "amiQualification": 80,
+        "bedrooms": 1,
+        "price": 327219,
+        "priceRate": "once"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "apt"
+  },
+  {
+    "title": "404 West 1st Street",
+    "id": "13652441",
+    "slug": "404-west-1st-street",
+    "cardinalDirection": null,
+    "city": "Boston",
+    "neighborhood": "South Boston",
+    "streetAddress": "404 West 1st Street",
+    "offer": "sale",
+    "units": [
+      {
+        "id": "13652441-1",
+        "count": 1,
+        "amiQualification": 120,
+        "bedrooms": 2,
+        "price": 403891,
+        "priceRate": "once"
+      }
+    ],
+    "incomeRestricted": true,
+    "assignment": "first",
+    "listingDate": "2020-06-16T19:19:44Z",
+    "applicationDueDate": "",
+    "type": "condo"
+  }
+]

@@ -1,0 +1,20 @@
+uuid: 1074730a-524a-4c71-baf9-63031af31a0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: BwP6JwTpoKnpT17Npy-0Q8Twt8EIuAfBDqA0oHxXi-I
+id: node.department_profile
+target_entity_type_id: node
+target_bundle: department_profile
+default_langcode: site_default
+language_alterable: false

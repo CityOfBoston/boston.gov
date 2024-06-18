@@ -1,0 +1,101 @@
+langcode: en
+id: building_housing_parcels
+label: 'Building Housing - Parcels'
+weight: -6
+type: salesforce_mapping
+key: ''
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: ''
+pull_record_type_filter:
+  Master: 0
+sync_triggers:
+  push_create: false
+  push_update: false
+  push_delete: false
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: Parcel__c
+drupal_entity_type: node
+drupal_bundle: bh_parcel
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_parcel_name
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 0
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_parcel_header
+    direction: sf_drupal
+    salesforce_field: Parcel_Header__c
+    id: 1
+  -
+    drupal_field_type: RelatedTermString
+    drupal_field_value: field_bh_property_type
+    direction: sf_drupal
+    salesforce_field: Property_Type__c
+    id: 2
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_owned_by_dnd
+    direction: sf_drupal
+    salesforce_field: Active__c
+    id: 3
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_assessing_lot_size
+    direction: sf_drupal
+    salesforce_field: Assessing_Lot_Size__c
+    id: 4
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_street_address_temp
+    direction: sf_drupal
+    salesforce_field: Street_Address__c
+    id: 5
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 6
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_bh_coordinates.lat
+    direction: sf_drupal
+    salesforce_field: Y_Coordinate__c
+    id: 7
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: field_bh_coordinates.lng
+    direction: sf_drupal
+    salesforce_field: X_Coordinate__c
+    id: 8
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_parcel.field_bh_assessing_lot_size
+    - field.field.node.bh_parcel.field_bh_coordinates
+    - field.field.node.bh_parcel.field_bh_owned_by_dnd
+    - field.field.node.bh_parcel.field_bh_parcel_header
+    - field.field.node.bh_parcel.field_bh_parcel_name
+    - field.field.node.bh_parcel.field_bh_property_type
+    - field.field.node.bh_parcel.field_bh_street_address_temp
+    - field.storage.node.field_bh_coordinates
+    - field.storage.node.field_bh_property_type
+    - node.type.bh_parcel
+    - taxonomy.vocabulary.bh_property_type
+  module:
+    - geolocation
+    - salesforce_pull
+uuid: 7d220287-e502-464c-a988-285fe1415f8b

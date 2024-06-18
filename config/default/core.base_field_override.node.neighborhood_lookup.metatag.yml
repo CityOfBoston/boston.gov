@@ -1,0 +1,18 @@
+uuid: ca3a39c9-4152-47e0-8f76-24394d54052f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.metatag
+field_name: metatag
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

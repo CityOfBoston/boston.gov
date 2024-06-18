@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:f622e089-018a-4e81-8000-3eb78b5b9763'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'Defines a single social media item with a link.'
+    image_path: sites/default/files/paragraphs_type_icon/social_networking_icon.svg
+id: social_networking
+label: 'Social Media Link'
+icon_uuid: f622e089-018a-4e81-8000-3eb78b5b9763
+icon_default: null
+description: 'Defines a single social media item with a link.'
+behavior_plugins: {  }

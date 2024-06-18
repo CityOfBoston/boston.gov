@@ -1,0 +1,183 @@
+<?php
+
+/**
+ * @file
+ * Main file for the vocab contact module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function vocab_contact_theme($existing, $type, $theme, $path) {
+  return [
+    'taxonomy_term__contact' => [
+      'base hook' => 'taxonomy_term',
+    ],
+    'field__field_address' => [
+      'base hook' => 'field',
+    ],
+    'field__field_email' => [
+      'base hook' => 'field',
+    ],
+    'field__field_phone_number' => [
+      'base hook' => 'field',
+    ],
+    'field__field_department_profile__contact__mode__popup_icon' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_contact_token_info().
+ */
+function vocab_contact_token_info() {
+  $info = [];
+  // Define our new token.
+  $info['tokens']['boston']['contact-path'] = [
+    'name' => t('Contact Path'),
+    'description' => t('A token to replace the contact path for person profile.'),
+  ];
+  return $info;
+}
+
+/**
+ * Reformat the phone number.
+ *
+ * Implements hook_preprocess_HOOK().
+ */
+function vocab_contact_preprocess_field__field_phone_number(&$variables) {
+  foreach ($variables['items'] as $key => &$phone) {
+    $phone["phone"] = $phone['content']["#context"]["value"];
+    $phone['content']["#context"]["value"] = bos_core_format_telephone($phone['content']["#context"]["value"]);
+  }
+}
+
+/**
+ * Get email hide pop-up value.
+ *
+ * Implements hook_preprocess_HOOK().
+ */
+function vocab_contact_preprocess_field__field_email(array &$variables) {
+  $variables["hide_form"] = NULL;
+  if ($node = \Drupal::routeMatch()->getParameter('node')){
+    if (isset($node) && !is_string($node) && $node->hasField("field_contact")) {
+        $contact_field = $node->field_contact;
+        if ($contact_field->count()) {
+          $tid = $contact_field->first()->target_id;
+          $term = Drupal::entityTypeManager()
+            ->getStorage("taxonomy_term")
+            ->load($tid);
+          if(isset($term->get('field_department_profile')->entity)){
+            $term_dept_profile = $term->field_department_profile;
+            if ($term_dept_profile->count()) {
+              $dept_node = Drupal::entityTypeManager()
+                ->getStorage("node")
+                ->load($term_dept_profile->first()->target_id);
+            }
+            $variables["hide_form"] = ($dept_node->field_hide_contact_form->value == 1 ? TRUE : FALSE);
+            $variables["test"] = $dept_node->field_hide_contact_form->value;
+          }
+        }
+    } else {
+      if ($node->hasField("field_hide_contact_form") && NULL !== $node->field_hide_contact_form) {
+        $variables["hide_form"] = ($node->field_hide_contact_form->value == 1 ? TRUE : FALSE);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function vocab_contact_preprocess_field__field_department_profile__contact__mode__popup_icon(array &$variables) {
+  $variables["department_link"] = "#";
+  if (!empty($variables["element"]['#items'][0])) {
+    $variables["department_link"] = \Drupal::service('path_alias.manager')
+      ->getAliasByPath('/node/' . $variables["element"]['#items'][0]->target_id);
+  }
+  if (!empty($variables["content"][0]["#node"])) {
+    if (!empty($variables["content"][0]["#node"]->field_icon->title)) {
+      $variables["tooltip"] = $variables["content"][0]["#node"]->field_icon->title;
+    }
+    elseif (!empty($variables["content"][0]["#node"]->title->value)) {
+      $variables["tooltip"] = $variables["content"][0]["#node"]->title->value;
+    }
+    elseif (!empty($variables["content"][0]["#node"]->field_icon->alt)) {
+      $variables["tooltip"] = $variables["content"][0]["#node"]->field_icon->alt;
+    }
+    else {
+      $variables["tooltip"] = "City of Boston";
+    }
+  }
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function vocab_contact_tokens($type, $tokens, array $data = [], array $options = []) {
+  $replacements = [];
+
+  if ($type == 'boston') {
+    // Loop through the available tokens.
+    foreach ($tokens as $name => $original) {
+      // Find our custom tokens by name.
+      switch ($name) {
+        case 'contact-path':
+          $dept_prefix = $term_name = "";
+          // Work out the value of our token.
+          if (!empty($data['node'])) {
+            $node = $dept_node = $data['node'];
+            // Find the contact and get the last part of it's alias.
+            if ($node->hasField("field_contact")) {
+              $contact_field = $node->field_contact;
+              if ($contact_field->count()) {
+                $tid = $contact_field->first()->target_id;
+                $term = Drupal::entityTypeManager()
+                  ->getStorage("taxonomy_term")
+                  ->load($tid);
+                $term_path = \Drupal::service('path_alias.manager')
+                  ->getAliasByPath('/taxonomy/term/' . $tid);
+                $path_array = explode('/', $term_path);
+                $term_name = array_pop($path_array);
+                // If the field_department_profile is set then this is not a
+                // department, so set $node to the department_profile node
+                // so we can get the department_type.
+                if ($term->hasField('field_department_profile')) {
+                  $term_dept_profile = $term->field_department_profile;
+                  if ($term_dept_profile->count()) {
+                    $dept_node = Drupal::entityTypeManager()
+                      ->getStorage("node")
+                      ->load($term_dept_profile->first()->target_id);
+                  }
+                }
+              }
+            }
+            // Figure out which type of department we have
+            // and get it's replacement.
+            if ($dept_node->hasField('field_department_type')) {
+              $dept_type = $dept_node->field_department_type;
+              if (!empty($dept_type)) {
+                switch ($dept_type->value) {
+                  case 'cabinet':
+                    $dept_prefix = 'government/cabinets/';
+                    break;
+
+                  case 'department':
+                  default:
+                    $dept_prefix = 'departments/';
+                    break;
+
+                }
+              }
+            }
+          }
+          // Give our token it's final value!
+          $replacements[$original] = $dept_prefix . $term_name;
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}

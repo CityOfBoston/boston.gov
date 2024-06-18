@@ -1,0 +1,24 @@
+name: Listing page
+type: module
+description: 'Provides a listing page entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.entity_form_display.node.listing_page.default
+  - core.entity_view_display.node.listing_page.article
+  - core.entity_view_display.node.listing_page.default
+  - core.entity_view_display.node.listing_page.teaser
+  - core.entity_view_display.node.listing_page.topics_list
+  - field.field.node.listing_page.field_components
+  - field.field.node.listing_page.field_header_component
+  - field.field.node.listing_page.field_intro_image
+  - field.field.node.listing_page.field_manual_date
+  - field.field.node.listing_page.field_published_date
+  - field.field.node.listing_page.field_updated_date
+  - language.content_settings.node.listing_page
+  - node.type.listing_page
+  - rabbit_hole.behavior_settings.node_type_listing_page
+  - xmlsitemap.settings.node.listing_page

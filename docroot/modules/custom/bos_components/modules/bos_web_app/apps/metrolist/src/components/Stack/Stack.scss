@@ -1,0 +1,296 @@
+// <Stack />
+@import '@globals';
+@import '@globals/typography/filters';
+
+// Reference: https://absolutely.every-layout.dev/layouts/stack/
+
+$space: 1rem;
+
+.ml-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+  .ml-stack.ml-stack--space-0_25 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: ( $space * 0.25 );
+    }
+  }
+  .ml-stack.ml-stack--space-0_5 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: ( $space * 0.5 );
+    }
+  }
+  .ml-stack.ml-stack--space-1 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: $space;
+    }
+  }
+  .ml-stack.ml-stack--space-1_25 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: ( $space * 1.25 );
+    }
+  }
+  .ml-stack.ml-stack--space-1_5 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: ( $space * 1.5 );
+    }
+  }
+  .ml-stack.ml-stack--space-2 {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: ( $space * 2 );
+    }
+  }
+
+  .ml-stack.ml-stack--space-panel {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: $panel-spacing;
+    }
+  }
+
+  // .ml-stack.ml-stack--space-below-filters {
+  //   & > :not([class*="hide-until-"]) + :not([hidden]) {
+  //     margin-top: rem( $filter-group-label-height ) + $panel-spacing;
+  //   }
+  // }
+  // @include media-breakpoint-up( large ) {
+  //   .ml-stack.ml-stack--space-below-filters {
+  //     & > :not([class*="ml-hide-until-xlarge"]) + * {
+  //       margin-top: $panel-spacing;
+  //     }
+  //   }
+  // }
+
+  .ml-stack.ml-stack--space-sister-checkboxes {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: rem( 38px );
+    }
+  }
+
+  .ml-stack.ml-stack--space-subcategories {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: $panel-spacing;
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-subcategories {
+      & > :not([class*="ml-hide-until-xlarge"]) + * {
+        margin-top: rem( 21px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--space-home-header {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      margin-top: rem( 10px );
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-home-header {
+      & > :not([class*="ml-hide-until-xlarge"]) + * {
+        margin-top: rem( 24px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--space-ami-estimator {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-ami-estimator {
+      & > :not([class*="hide-until-"]) + :not([hidden]) {
+        margin-top: rem( 72px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--space-ami-estimator-navigation {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-ami-estimator-navigation {
+      & > :not([class*="hide-until-"]) + :not([hidden]) {
+        margin-top: rem( 149px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--space-ami-estimator-footer {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-ami-estimator-footer {
+      & > :not([class*="hide-until-"]) + :not([hidden]) {
+        margin-top: rem( 49px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--space-ami-estimator-income-rate {
+    & > :not([class*="hide-until-"]) + :not([hidden]) {
+      
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-ami-estimator-income-rate {
+      & > :not([class*="hide-until-"]) + :not([hidden]) {
+        margin-top: rem( 67px );
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--indent-checkbox {
+    margin-left: rem( 35px );
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-stack.ml-stack--space-panel {
+      & > :not([class*="ml-hide-until-xlarge"]) + * {
+        margin-top: $panel-spacing--desktop;
+      }
+    }
+  }
+
+  .ml-stack.ml-stack--align-beginning {
+    align-items: flex-start;
+  }
+    @include media-breakpoint-up( xsmall ) {
+      .ml-stack.ml-stack--align-beginning-xsmall {
+        align-items: flex-start;
+      }
+    }
+    @include media-breakpoint-up( small ) {
+      .ml-stack.ml-stack--align-beginning-small[class*="-xsmall"],
+      .ml-stack.ml-stack--align-beginning-small {
+        align-items: flex-start;
+      }
+    }
+    @include media-breakpoint-up( medium ) {
+      .ml-stack.ml-stack--align-beginning-medium[class*="-xsmall"],
+      .ml-stack.ml-stack--align-beginning-medium[class*="-small"],
+      .ml-stack.ml-stack--align-beginning-medium {
+        align-items: flex-start;
+      }
+    }
+    @include media-breakpoint-up( large ) {
+      .ml-stack.ml-stack--align-beginning-large[class*="-xsmall"],
+      .ml-stack.ml-stack--align-beginning-large[class*="-small"],
+      .ml-stack.ml-stack--align-beginning-large[class*="-medium"],
+      .ml-stack.ml-stack--align-beginning-large {
+        align-items: flex-start;
+      }
+    }
+    @include media-breakpoint-up( xlarge ) {
+      .ml-stack.ml-stack--align-beginning-xlarge[class*="-xsmall"],
+      .ml-stack.ml-stack--align-beginning-xlarge[class*="-small"],
+      .ml-stack.ml-stack--align-beginning-xlarge[class*="-medium"],
+      .ml-stack.ml-stack--align-beginning-xlarge[class*="-large"],
+      .ml-stack.ml-stack--align-beginning-xlarge {
+        align-items: flex-start;
+      }
+    }
+
+  .ml-stack.ml-stack--align-middle {
+    align-items: center;
+  }
+    @include media-breakpoint-up( xsmall ) {
+      .ml-stack.ml-stack--align-middle-xsmall {
+        align-items: center;
+      }
+    }
+    @include media-breakpoint-up( small ) {
+      .ml-stack.ml-stack--align-middle-small[class*="-xsmall"],
+      .ml-stack.ml-stack--align-middle-small {
+        align-items: center;
+      }
+    }
+    @include media-breakpoint-up( medium ) {
+      .ml-stack.ml-stack--align-middle-medium[class*="-xsmall"],
+      .ml-stack.ml-stack--align-middle-medium[class*="-small"],
+      .ml-stack.ml-stack--align-middle-medium {
+        align-items: center;
+      }
+    }
+    @include media-breakpoint-up( large ) {
+      .ml-stack.ml-stack--align-middle-large[class*="-xsmall"],
+      .ml-stack.ml-stack--align-middle-large[class*="-small"],
+      .ml-stack.ml-stack--align-middle-large[class*="-medium"],
+      .ml-stack.ml-stack--align-middle-large {
+        align-items: center;
+      }
+    }
+    @include media-breakpoint-up( xlarge ) {
+      .ml-stack.ml-stack--align-middle-xlarge[class*="-xsmall"],
+      .ml-stack.ml-stack--align-middle-xlarge[class*="-small"],
+      .ml-stack.ml-stack--align-middle-xlarge[class*="-medium"],
+      .ml-stack.ml-stack--align-middle-xlarge[class*="-large"],
+      .ml-stack.ml-stack--align-middle-xlarge {
+        align-items: center;
+      }
+    }
+
+    .ml-stack.ml-stack--align-beginning {
+      align-items: flex-end;
+    }
+      @include media-breakpoint-up( xsmall ) {
+        .ml-stack.ml-stack--align-end-xsmall {
+          align-items: flex-end;
+        }
+      }
+      @include media-breakpoint-up( small ) {
+        .ml-stack.ml-stack--align-end-small[class*="-xsmall"],
+        .ml-stack.ml-stack--align-end-small {
+          align-items: flex-end;
+        }
+      }
+      @include media-breakpoint-up( medium ) {
+        .ml-stack.ml-stack--align-end-medium[class*="-xsmall"],
+        .ml-stack.ml-stack--align-end-medium[class*="-small"],
+        .ml-stack.ml-stack--align-end-medium {
+          align-items: flex-end;
+        }
+      }
+      @include media-breakpoint-up( large ) {
+        .ml-stack.ml-stack--align-end-large[class*="-xsmall"],
+        .ml-stack.ml-stack--align-end-large[class*="-small"],
+        .ml-stack.ml-stack--align-end-large[class*="-medium"],
+        .ml-stack.ml-stack--align-end-large {
+          align-items: flex-end;
+        }
+      }
+      @include media-breakpoint-up( xlarge ) {
+        .ml-stack.ml-stack--align-end-xlarge[class*="-xsmall"],
+        .ml-stack.ml-stack--align-end-xlarge[class*="-small"],
+        .ml-stack.ml-stack--align-end-xlarge[class*="-medium"],
+        .ml-stack.ml-stack--align-end-xlarge[class*="-large"],
+        .ml-stack.ml-stack--align-end-xlarge {
+          align-items: flex-end;
+        }
+      }
+
+.ml-stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@include media-breakpoint-up( large ) {
+  .ml-stack.ml-stack--reverse-large {
+    flex-direction: column-reverse;
+
+    // &.ml-stack--space-below-filters,
+    &.ml-stack--space-panel {
+      & > :not([class*="ml-hide-until-xlarge"]) + * {
+        margin-top: 0;
+      }
+    }
+
+    & > :not([class*="ml-hide-until-xlarge"]) + * {
+      margin-bottom: $panel-spacing;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+uuid: 470a3404-7df2-4378-87b9-16349133051b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+  module:
+    - path
+_core:
+  default_config_hash: RQd0OjyhX_Ans0Vbx5ZiKsMbXCXMRsC8Ypy9BB9IUwk
+id: node.script_page.path
+field_name: path
+entity_type: node
+bundle: script_page
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

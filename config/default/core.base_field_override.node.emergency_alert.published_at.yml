@@ -1,0 +1,20 @@
+uuid: 03d189cd-2597-4699-b77f-f316fc9b7b69
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+  module:
+    - publication_date
+id: node.emergency_alert.published_at
+field_name: published_at
+entity_type: node
+bundle: emergency_alert
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

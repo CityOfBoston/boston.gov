@@ -1,0 +1,12 @@
+ignored_messages: {  }
+person_tracking: 'off'
+ignored_headers: {  }
+rollbar_js_url: 'https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.3/rollbar.min.js'
+scrub_fields:
+  - passwd
+  - password
+  - secret
+  - confirm_password
+  - password_confirmation
+  - auth_token
+  - csrf_token

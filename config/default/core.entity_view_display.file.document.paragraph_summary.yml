@@ -1,0 +1,68 @@
+uuid: 43607a6a-ad66-4001-8e44-a02be7a05690
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.paragraph_summary
+    - field.field.file.document.field_updated_date
+    - file_entity.type.document
+  module:
+    - datetime
+    - fences
+    - file
+    - file_entity
+    - user
+id: file.document.paragraph_summary
+targetEntityType: file
+bundle: document
+mode: paragraph_summary
+content:
+  field_updated_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  filemime:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  filename:
+    type: file_link
+    label: hidden
+    settings:
+      link_to_file: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  filesize:
+    type: file_size
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  uri: true

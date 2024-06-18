@@ -1,0 +1,20 @@
+uuid: 018dc014-271a-4ad9-addf-d0dfabddd576
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.topic_page
+  module:
+    - path
+id: node.topic_page.path
+field_name: path
+entity_type: node
+bundle: topic_page
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,21 @@
+uuid: 9ad0b40a-705b-4b8a-bf87-75cadf8fc70a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+      - menu-secondary-menu
+    parent: 'menu-secondary-menu:'
+_core:
+  default_config_hash: OdS3BYTrW7MUXOzyE9i7-VVxJtpj6QaIZUprs9X5gWk
+name: 'Listing Page'
+type: listing_page
+description: 'If you need to add a listing page, utilize this content type to do so.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

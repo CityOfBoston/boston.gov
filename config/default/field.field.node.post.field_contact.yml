@@ -1,0 +1,32 @@
+uuid: 97654e17-706c-4d9b-b962-fd1f70acb287
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.post
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: w_DkHk5TiOB6_RYB7wazd2UJ3KUY9NJZcTN3hUtXz8g
+id: node.post.field_contact
+field_name: field_contact
+entity_type: node
+bundle: post
+label: Contact
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

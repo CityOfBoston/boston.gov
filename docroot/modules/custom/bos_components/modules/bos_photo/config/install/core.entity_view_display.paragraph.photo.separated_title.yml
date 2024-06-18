@@ -1,0 +1,26 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.photo.field_component_title
+    - field.field.paragraph.photo.field_contacts
+    - field.field.paragraph.photo.field_image
+    - field.field.paragraph.photo.field_link
+    - field.field.paragraph.photo.field_photo_caption
+    - field.field.paragraph.photo.field_photo_credit
+    - field.field.paragraph.photo.field_short_title
+    - paragraphs.paragraphs_type.photo
+id: paragraph.photo.separated_title
+targetEntityType: paragraph
+bundle: photo
+mode: separated_title
+content: {  }
+hidden:
+  field_component_title: true
+  field_contacts: true
+  field_image: true
+  field_link: true
+  field_photo_caption: true
+  field_photo_credit: true
+  field_short_title: true

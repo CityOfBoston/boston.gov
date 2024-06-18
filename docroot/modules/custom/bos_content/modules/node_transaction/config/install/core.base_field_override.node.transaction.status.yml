@@ -1,0 +1,21 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.status
+field_name: status
+entity_type: node
+bundle: transaction
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

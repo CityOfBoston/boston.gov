@@ -1,0 +1,8 @@
+uuid: 1319902e-8338-41a3-ba92-4c4cb7a0fbe0
+langcode: und
+status: true
+dependencies: {  }
+name: 'Procurement Type'
+vid: procurement_type
+description: ''
+weight: 0

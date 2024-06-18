@@ -1,0 +1,18 @@
+uuid: e0ddd08e-83b2-430f-ba96-ff625374d891
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+id: node.metrolist_unit.title
+field_name: title
+entity_type: node
+bundle: metrolist_unit
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 784e42aa-4dcb-47f0-aa5b-146aa0cc3c77
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_contact_info
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: oBkpxLXPSGnd57MbZL-FLEkZmocGTOF_fCIdYgGBfuA
+id: paragraph.commission_contact_info
+target_entity_type_id: paragraph
+target_bundle: commission_contact_info
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,22 @@
+uuid: f3536572-e24a-4ea1-81ae-31a65ac115e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.promote
+field_name: promote
+entity_type: node
+bundle: bh_contact
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,24 @@
+uuid: 090a833e-6d44-4a6f-b6b6-84a0e64949af
+langcode: und
+status: true
+dependencies:
+  config:
+    - views.view.who_s_new
+  module:
+    - views
+  theme:
+    - seven
+id: seven_user_new
+theme: seven
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:who_s_new-block_1'
+settings:
+  id: 'views_block:who_s_new-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: '5'
+visibility: {  }

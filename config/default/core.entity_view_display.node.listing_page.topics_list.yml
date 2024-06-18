@@ -1,0 +1,41 @@
+uuid: 7d0e2a89-70d1-4dc9-aff8-3ff5eac64bbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.topics_list
+    - field.field.node.listing_page.field_components
+    - field.field.node.listing_page.field_header_component
+    - field.field.node.listing_page.field_intro_image
+    - field.field.node.listing_page.field_manual_date
+    - field.field.node.listing_page.field_metatags
+    - field.field.node.listing_page.field_published_date
+    - field.field.node.listing_page.field_updated_date
+    - node.type.listing_page
+  module:
+    - user
+_core:
+  default_config_hash: et24XQqXIsNHO5HAPdcfHr6sBJuwOrcBp12l-bGYmHY
+id: node.listing_page.topics_list
+targetEntityType: node
+bundle: listing_page
+mode: topics_list
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_header_component: true
+  field_intro_image: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,23 @@
+uuid: 01a96de5-65aa-4c05-92bb-cd320af947a7
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.procurement_advertisement
+  module:
+    - text
+id: node.procurement_advertisement.body
+field_name: body
+entity_type: node
+bundle: procurement_advertisement
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

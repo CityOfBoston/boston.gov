@@ -1,0 +1,24 @@
+uuid: 49a7dabf-3592-42da-91ae-5ba5fb6c27dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.how_to_tab
+_core:
+  default_config_hash: vnJIshnpSLHVPUznMtSqkkHDCOgflZeXd8odaUR_yAE
+id: paragraph.how_to_tab.status
+field_name: status
+entity_type: paragraph
+bundle: how_to_tab
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

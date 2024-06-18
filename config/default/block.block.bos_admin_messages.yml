@@ -1,0 +1,20 @@
+uuid: bd9e6e1e-e45a-4124-988b-35da8cf58448
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos_admin
+id: bos_admin_messages
+theme: bos_admin
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

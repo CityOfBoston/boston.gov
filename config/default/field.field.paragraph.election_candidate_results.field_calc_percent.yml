@@ -1,0 +1,23 @@
+uuid: fc9ba6f7-adb4-412d-9d56-e81f2de2078b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_calc_percent
+    - paragraphs.paragraphs_type.election_candidate_results
+id: paragraph.election_candidate_results.field_calc_percent
+field_name: field_calc_percent
+entity_type: paragraph
+bundle: election_candidate_results
+label: Percentage
+description: 'This is the candidate/choice percentage of votes counted so far.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 1.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

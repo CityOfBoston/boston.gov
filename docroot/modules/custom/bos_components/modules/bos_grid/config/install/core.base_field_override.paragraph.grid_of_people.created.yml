@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_people
+id: paragraph.grid_of_people.created
+field_name: created
+entity_type: paragraph
+bundle: grid_of_people
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

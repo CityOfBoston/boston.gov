@@ -1,0 +1,25 @@
+uuid: aaae6300-7e82-469e-bf00-21b4f4c05468
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_type
+    - node.type.department_profile
+  module:
+    - options
+_core:
+  default_config_hash: v6iqSYTbi7Lw9-30icWE4MiNpcNoj2g1GTqZRBXqvyA
+id: node.department_profile.field_department_type
+field_name: field_department_type
+entity_type: node
+bundle: department_profile
+label: 'Department Type'
+description: 'Please select the appropriate department type for this department profile.'
+required: true
+translatable: false
+default_value:
+  -
+    value: department
+default_value_callback: ''
+settings: {  }
+field_type: list_string

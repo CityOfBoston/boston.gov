@@ -1,0 +1,12 @@
+uuid: f4cea19c-d0bf-41b9-ad80-f4f7dc1a964f
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_commissions
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

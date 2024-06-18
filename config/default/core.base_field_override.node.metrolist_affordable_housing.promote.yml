@@ -1,0 +1,22 @@
+uuid: 233f7731-e7b4-44d0-90ba-d8e551c323fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.promote
+field_name: promote
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,32 @@
+uuid: 939a45c7-3f67-4e0f-a74c-146d32d4d577
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_one_column.field_middle_column
+    - paragraphs.paragraphs_type.text_one_column
+  module:
+    - fences
+    - text
+_core:
+  default_config_hash: 7fVlwsUeuXOtkEYs4H14DopympCx3b-2Df2cLIhsD6s
+id: paragraph.text_one_column.default
+targetEntityType: paragraph
+bundle: text_one_column
+mode: default
+content:
+  field_middle_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,10 @@
+uuid: 7dbfd97b-11a0-419b-8238-ab6818bc6ae6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4zj7odo3yRV6YLrR0B7Jat3lw7NY1LjHcGuIGpe-ksU
+name: 'Bid Offering'
+vid: bid_offering
+description: ''
+weight: 0

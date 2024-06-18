@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - content_moderation
+    - link
+id: paragraph.internal_link.default
+targetEntityType: paragraph
+bundle: internal_link
+mode: default
+content:
+  field_internal_link:
+    type: link_default
+    weight: 101
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,29 @@
+uuid: 8f139a8c-c1a5-44dc-afd5-b0bab3326587
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_neighborhood
+    - node.type.metrolist_development
+    - taxonomy.vocabulary.ml_neighborhood
+id: node.metrolist_development.field_ml_neighborhood
+field_name: field_ml_neighborhood
+entity_type: node
+bundle: metrolist_development
+label: Neighborhood
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ml_neighborhood: ml_neighborhood
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

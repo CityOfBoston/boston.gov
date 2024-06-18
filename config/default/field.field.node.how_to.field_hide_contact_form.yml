@@ -1,0 +1,23 @@
+uuid: 1ac9cd08-9d6d-4d75-8ed5-165858c938c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_contact_form
+    - node.type.how_to
+id: node.how_to.field_hide_contact_form
+field_name: field_hide_contact_form
+entity_type: node
+bundle: how_to
+label: 'Hide Default Contact Information?'
+description: 'Check the box if you want to hide default department contact information from appearing on the page.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

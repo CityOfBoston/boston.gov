@@ -1,0 +1,32 @@
+uuid: 2ed8f148-64ab-431a-ba09-8b90f42f4022
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.newsletter
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: WT6xwWJ5rJVtshvbn3_kyngzs0bfEsAxPV7dT_QH74E
+id: paragraph.newsletter.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: newsletter
+label: Contact
+description: "This won't appear in the sidebar version of this component."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

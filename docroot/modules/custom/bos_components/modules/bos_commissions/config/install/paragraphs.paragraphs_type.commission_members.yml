@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:a4d926b0-7278-4eb4-b06d-9a89e38dbb9f'
+id: commission_members
+label: 'Commission Members'
+icon_uuid: a4d926b0-7278-4eb4-b06d-9a89e38dbb9f
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Members'
+behavior_plugins: {  }

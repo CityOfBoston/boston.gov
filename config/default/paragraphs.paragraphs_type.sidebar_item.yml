@@ -1,0 +1,22 @@
+uuid: 28f20f0d-61e8-4032-be0f-4c2d6060001a
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_browser
+    - paragraphs_library
+third_party_settings:
+  paragraphs_browser:
+    description: 'Defines a basic sidebar text item.'
+    image_path: sites/default/files/paragraphs_type_icon/sidebar_item_icon.svg
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: WCafZQ6hiRB-sN0PV1ajH3UX9WFg0SnBZ01Ngegu1L0
+id: sidebar_item
+label: 'Sidebar Item'
+icon_uuid: null
+icon_default: null
+description: 'Defines a basic sidebar text item.'
+behavior_plugins: {  }

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+id: paragraph.internal_link.separated_title
+targetEntityType: paragraph
+bundle: internal_link
+mode: separated_title
+content: {  }
+hidden:
+  field_internal_link: true

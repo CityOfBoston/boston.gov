@@ -1,0 +1,12 @@
+uuid: 1e42bf15-8b67-4477-a572-bc0cf35b0348
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_political_party
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

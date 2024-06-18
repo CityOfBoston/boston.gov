@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * Install file for bos_core.
+ */
+
+/**
+ * #2120 - Add an index to the 'date_recur__node__field_event_date_recur' table to help with performance (slow query)
+ */
+function bos_core_update_8001() {
+
+  $schema = \Drupal\Core\Database\Database::getConnection()->schema();
+  $tableName = 'date_recur__node__field_event_date_recur';
+  $newIndexName = 'date_recur__node__field_event_date_recur_revision_index';
+  $fieldName = 'field_event_date_recur_value';
+
+  if ($schema->tableExists($tableName)) {
+    $fields = ['revision_id', $fieldName];
+    $spec = [];
+
+    $spec['fields']['revision_id'] = [
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'description' => 'The entity revision id this data is attached to',
+    ];
+
+    $spec['fields']['field_event_date_recur_value'] = [
+      'type' => 'varchar',
+      'description' => 'The start date value.',
+      'length' => 20,
+      'not null' => FALSE,
+    ];
+
+    $spec['indexes'][$newIndexName] = $fields;
+
+    $schema->addIndex($tableName, $newIndexName, $fields, $spec);
+  }
+}
+
+/**
+ * Fix entity.definitions.bundle_field_map key store with old bundles.
+ */
+function bos_core_update_8003() {
+
+  /** @var \Drupal\Core\KeyValueStore\KeyValueFactoryInterface $key_value_factory */
+  $key_value_factory = \Drupal::service('keyvalue');
+  $field_map_kv_store = $key_value_factory->get('entity.definitions.bundle_field_map');
+  $node_map = $field_map_kv_store->get('node');
+ // Remove the field_dates field from the bundle field map for the page bundle.
+  unset($node_map['body']['bundles']['advpoll']);
+  $field_map_kv_store->set('node', $node_map);
+
+  $field_map_kv_store = $key_value_factory->get('entity.definitions.bundle_field_map');
+  $node_map = $field_map_kv_store->get('node');
+  unset($node_map['field_thanks']['bundles']['advpoll']);
+  $field_map_kv_store->set('node', $node_map);
+
+  $field_map_kv_store = $key_value_factory->get('entity.definitions.bundle_field_map');
+  $node_map = $field_map_kv_store->get('node');
+  unset($node_map['field_vote_button_text']['bundles']['advpoll']);
+  $field_map_kv_store->set('node', $node_map);
+
+}
+
+/**
+ * Update saml settings to reuse simplesaml mappings
+ * @return void
+ */
+function bos_core_update_1001() {
+//  $sql = \Drupal::database()
+//    ->update("authmap")
+//    ->fields([
+//      "provider" => 'samlauth'
+//    ])
+//    ->condition("provider", "=", "simplesamlphp_auth")
+//    ->execute();
+}
+
+/**
+ * Remove legacy advpoll objects from database.
+ *
+ * @return void
+ */
+function bos_core_update_8004() {
+  $manager = \Drupal::entityDefinitionUpdateManager();
+  foreach([
+    "advpoll_max_choices",
+    "advpoll_dates",
+    "advpoll_cookie_duration",
+    "advpoll_results",
+    "advpoll_options",
+    "advpoll_mode",
+    "advpoll_closed",
+    "advpoll_behavior",
+  ] as $table) {
+    try {
+      $definition = $manager->getFieldStorageDefinition($table, "node");
+      if (!empty($definition)) {
+        $manager->uninstallFieldStorageDefinition($definition);
+      }
+    }
+    catch(\Exception $e) {
+      continue;
+    }
+  }
+}

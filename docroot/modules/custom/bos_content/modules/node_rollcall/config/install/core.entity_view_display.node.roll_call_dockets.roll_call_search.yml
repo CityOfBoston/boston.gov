@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.roll_call_search
+    - field.field.node.roll_call_dockets.body
+    - field.field.node.roll_call_dockets.field_components
+    - field.field.node.roll_call_dockets.field_meeting_date
+    - node.type.roll_call_dockets
+  module:
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - text
+    - user
+id: node.roll_call_dockets.roll_call_search
+targetEntityType: node
+bundle: roll_call_dockets
+mode: roll_call_search
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: roll_call_search
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_meeting_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_normal_date
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  langcode: true
+  links: true
+  published_at: true

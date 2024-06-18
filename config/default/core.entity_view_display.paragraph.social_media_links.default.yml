@@ -1,0 +1,26 @@
+uuid: 86df52d6-24da-424a-b1d6-6c638723dc81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_links.field_social_media_link
+    - paragraphs.paragraphs_type.social_media_links
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: LczZ8tUcxcvLH9pRTwe7D18Dd6fjN5I7evRfuEZ7gu0
+id: paragraph.social_media_links.default
+targetEntityType: paragraph
+bundle: social_media_links
+mode: default
+content:
+  field_social_media_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

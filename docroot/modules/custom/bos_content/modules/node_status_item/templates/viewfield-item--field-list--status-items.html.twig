@@ -1,0 +1,69 @@
+{#
+ * @file
+ * Main view template.
+ *
+ * Variables available:
+ * - $classes_array: An array of classes determined in
+ *   template_preprocess_views_view(). Default classes are:
+ *     .view
+ *     .view-[css_name]
+ *     .view-id-[view_name]
+ *     .view-display-id-[display_name]
+ *     .view-dom-id-[dom_id]
+ * - $classes: A string version of $classes_array for use in the class attribute
+ * - $css_name: A css-safe version of the view name.
+ * - $css_class: The user-specified classes names, if any
+ * - $header: The view header
+ * - $footer: The view footer
+ * - $rows: The results of the view query, if any
+ * - $empty: The empty text to display if the view is empty
+ * - $pager: The pager next/prev links to display, if any
+ * - $exposed: Exposed widget form/info to display
+ * - $feed_icon: Feed icon to display, if any
+ * - $more: A link to view more, if any.
+ *
+ * @ingroup views_templates
+ #}
+
+<div id="statusHeader" class="b b--fw emergency-override-processed">
+
+  {% if header %}
+
+    <div class="m-b600">
+      <div class='b b--fw'>
+        <div class='b-c b-c--nbp'>
+          <div class='str'>
+            <div class='str-c'>
+              {% if header.text %}
+                <div class='str-t str-t--r m-b100'><h2>{{ header.text }}</h2></div>
+              {% endif %}
+              {% if header.date %}
+                <div{{ header.date_attrib }}><h2>{{ header.date }}</h2></div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+  {% if not empty %}
+
+    <div class="b-c b-c--ntp b-c--nbp">
+      <div class="p-b300">
+        <div class="g g--top">
+          {{ rows }}
+        </div>
+      </div>
+    </div>
+
+  {% elseif empty %}
+
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+
+  {% endif %}
+
+</div>

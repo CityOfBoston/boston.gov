@@ -1,0 +1,20 @@
+uuid: f242a34c-7942-4007-ad1f-d310df178525
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+  module:
+    - datetime
+id: node.bh_update.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: bh_update
+label: 'Scheduled transition date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

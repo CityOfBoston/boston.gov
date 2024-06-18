@@ -1,0 +1,17 @@
+uuid: a41bc62a-ce25-4bd9-a1a6-7ca9fc391afb
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'BH Meeting'
+type: bh_meeting
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

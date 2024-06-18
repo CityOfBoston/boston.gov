@@ -1,0 +1,18 @@
+uuid: 3eed5577-1cfb-4558-b3df-896686ad9b9b
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.massachusetts_general_law
+id: taxonomy_term.massachusetts_general_law.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: massachusetts_general_law
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

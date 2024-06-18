@@ -1,0 +1,11 @@
+uuid: f032dff3-5bf5-4dcd-8903-fd43319800ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - file_entity.type.document
+id: file.document
+target_entity_type_id: file
+target_bundle: document
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 219d4a1e-7e85-4454-8c31-ac712c3d6908
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ml_unit_waitlist_open
+field_name: field_ml_unit_waitlist_open
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

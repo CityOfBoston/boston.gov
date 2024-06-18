@@ -1,0 +1,20 @@
+uuid: 009de905-0905-452f-9714-a6b101b3d7dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.landing_page
+_core:
+  default_config_hash: hD8yqFJg28O2BPOHiSOozb2hF24H8ZcMlWWEfUauF-Q
+id: node.landing_page.metatag
+field_name: metatag
+entity_type: node
+bundle: landing_page
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,23 @@
+uuid: 355cfcd4-359f-4324-b842-e33a59bec7da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column
+    - paragraphs.paragraphs_type.text_three_column
+  module:
+    - text
+_core:
+  default_config_hash: kRQyE7i5HoS6QnYha_Ck3NWtNEAIGzwaQIzmL86y-Ns
+id: paragraph.text_three_column.field_left_column
+field_name: field_left_column
+entity_type: paragraph
+bundle: text_three_column
+label: 'Left Column'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

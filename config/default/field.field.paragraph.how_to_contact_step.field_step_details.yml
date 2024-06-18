@@ -1,0 +1,23 @@
+uuid: 3f22dffa-b457-4c4f-8a5b-62b01b4607d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_step_details
+    - paragraphs.paragraphs_type.how_to_contact_step
+  module:
+    - text
+_core:
+  default_config_hash: oAndFKWkY8FVRTyiT6hFlsAMPU9ozzV9S5wNlTpPp4I
+id: paragraph.how_to_contact_step.field_step_details
+field_name: field_step_details
+entity_type: paragraph
+bundle: how_to_contact_step
+label: 'Contact Step Details'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

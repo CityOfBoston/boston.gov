@@ -1,0 +1,26 @@
+uuid: 88046364-a1ee-4a35-8061-134a6bc85093
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Content
+tags:
+  canonical_url: '[node:url]'
+  description: '[node:summary]'
+  title: '[node:title] | [site:name]'
+  og_description: '[node:summary]'
+  og_updated_time: '[node:changed:custom:c]'
+  article_modified_time: '[node:created:custom:c]'
+  article_published_time: '[node:created:custom:c]'
+  og_url: '[current-page:url:absolute]'
+  og_image: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_title: '[node:title]'
+  twitter_cards_description: '[node:summary]'
+  twitter_cards_creator: '@CityOfBoston'
+  twitter_cards_type: summary
+  twitter_cards_creator_id: '124455872'
+  twitter_cards_site: '@CityOfBoston'
+  twitter_cards_site_id: '124455872'
+  twitter_cards_title: '[node:title]'

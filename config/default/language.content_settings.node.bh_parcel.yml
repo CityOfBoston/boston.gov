@@ -1,0 +1,18 @@
+uuid: 07dc2762-1cf3-440b-84d3-6e85f77c5019
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.bh_parcel
+target_entity_type_id: node
+target_bundle: bh_parcel
+default_langcode: site_default
+language_alterable: false

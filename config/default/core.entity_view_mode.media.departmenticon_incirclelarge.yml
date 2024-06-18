@@ -1,0 +1,15 @@
+uuid: 49ab8dcb-4926-4f70-9043-5d028caf4542
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: "Department Icon: In Circle Large:\r\n- defined in https://patterns.boston.com/components/detail/department_icon--in-circle-large.html"
+id: media.departmenticon_incirclelarge
+label: DepartmentIcon.InCircleLarge
+description: ''
+targetEntityType: media
+cache: true

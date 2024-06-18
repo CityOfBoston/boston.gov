@@ -1,0 +1,23 @@
+uuid: ffb4a6a3-794f-4dc9-b56e-4da1340ccd47
+langcode: en
+status: true
+dependencies: {  }
+name: topic_header_image
+label: 'Topic Header Image'
+effects:
+  d1f295d6-b7dd-4ff0-b3fe-d7c7e4b2171a:
+    uuid: d1f295d6-b7dd-4ff0-b3fe-d7c7e4b2171a
+    id: image_scale
+    weight: 1
+    data:
+      width: 2000
+      height: null
+      upscale: true
+  2b533ec4-7175-4c35-8c8f-7a100e489583:
+    uuid: 2b533ec4-7175-4c35-8c8f-7a100e489583
+    id: image_crop
+    weight: 2
+    data:
+      width: 2000
+      height: 460
+      anchor: center-center

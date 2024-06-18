@@ -1,0 +1,23 @@
+uuid: 00a76f64-2bbc-4e1b-8cef-e18d90fcf7ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.landing_page
+  module:
+    - datetime
+_core:
+  default_config_hash: IpyR0tSlSsxj4iwYum8KcSM9iK1axGur6pi4hsyiry0
+id: node.landing_page.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: landing_page
+label: 'Updated Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

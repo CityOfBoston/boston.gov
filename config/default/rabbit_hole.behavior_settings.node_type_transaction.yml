@@ -1,0 +1,14 @@
+uuid: 00393f91-3966-4232-8bc3-4c3fa6291947
+langcode: und
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9nL3PdUglGlOCajDPCkGiVeVkrT4pJNKh2d_Ox9KjXo
+id: node_type_transaction
+entity_type_id: null
+entity_id: null
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

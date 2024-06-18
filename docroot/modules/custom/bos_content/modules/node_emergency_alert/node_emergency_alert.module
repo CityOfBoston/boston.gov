@@ -1,0 +1,121 @@
+<?php
+
+/**
+ * @file
+ * Provides an emergency alert entity type.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\core\Template\Attribute;
+use Drupal\editor\Entity\Editor;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_theme().
+ */
+function node_emergency_alert_theme() {
+  return [
+    'emergency_alert' => [
+      'render element' => 'elements',
+    ],
+    'node__emergency_alert' => [
+      'render element' => 'elements',
+      'base hook' => 'node',
+    ],
+    'block__views_block__emergency_alerts_block_emergency_alert' => [
+      'render element' => 'elements',
+      'base hook' => 'block',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_emergency_alert_preprocess_form_element(&$variables) {
+  if (isset($variables["element"]["#bundle"]) && $variables["element"]["#bundle"] == "emergency_alert") {
+    if (isset($variables["name"]) && $variables["name"] == "field_theme") {
+      $variables["description"]["attributes"]->addClass("bos-boxed-content-t");
+    }
+  }
+}
+
+function node_emergency_alert_preprocess_field_multiple_value_form(array &$variables) {
+  _bos_core_rename_multiple_button($variables, "emergency_alert", [
+    "field_included_nodes" => "Include another page",
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_emergency_alert_preprocess_node__emergency_alert(&$variables) {
+  $variables["para_attributes"] = new Attribute();
+  $variables['block_theme'] = $variables["content"]["field_theme"][0]["#markup"];
+  $variables["para_attributes"]->addClass("b--" . $variables['block_theme']);
+  $variables["#attached"]["library"][] = "node_emergency_alert/emergency_alert.call";
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_emergency_alert_form_node_emergency_alert_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add styles for the CKEditor boxes on the admin forms.
+  _bos_admin_add_ckeditor_classes($form, [
+    "field_description" => [
+      "html" => "b--cc desktop-100 node-emergency-alert b--dark-blue",
+      "body" => "lh--000  t--sans b--dark-blue",
+    ],
+  ]);
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function node_emergency_alert_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+
+  if ($view->id() == "emergency_alerts" && $view->current_display == "block_emergency_alert") {
+    // DIG-4391- May 2024
+    if (!empty($output["#rows"])) {
+      // The output is already filtered for display dates.
+      // We need to check if the current node is in the list of excluded nodes.
+      $nid = $view->args[0] ?? NULL;
+      if ($nid) {
+        foreach ($output["#rows"] as $sa => &$row) {
+
+          foreach($row["#rows"] as $key => $ea_node) {
+            $emergency_alert = $ea_node["#node"];
+            $included = $emergency_alert->field_included_nodes->getValue();
+            array_walk($included, function(&$value, $k) { $value = $value["target_id"]; });
+            // Add the homepage, the Emergency Alert always shows on the homepage.
+            if (preg_match('/node\/(\d+)/', (\Drupal::config('system.site')
+              ->get('page.front') ?? ""), $matches)) {
+              $included[] = $matches[1];
+            }
+            // If the current node is not in the list of included nodes, remove the row.
+            if (!in_array($nid, $included)) {
+              unset($output["#rows"][$sa]["#rows"][$key]);
+            }
+          }
+
+          if (empty($output["#rows"][$sa]["#rows"])) {
+            unset($output["#rows"][$sa]);
+          }
+
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function node_emergency_alert_ckeditor_css_alter(array &$css, Editor $editor) {
+  if (\Drupal::routeMatch()->getParameters()->has("node")
+    && \Drupal::routeMatch()->getParameters()->get("node")->getType() == "emergency_alert") {
+    $css[] =\Drupal::service('extension.path.resolver')->getPath("module", "node_emergency_alert") . "/css/emergency_alert.boston.css";
+    $css[] =\Drupal::service('extension.path.resolver')->getPath("module", "node_emergency_alert") . "/css/ckeditor.boston.emergency_alert.css";
+  }
+}

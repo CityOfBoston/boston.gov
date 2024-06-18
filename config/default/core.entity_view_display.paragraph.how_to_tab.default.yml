@@ -1,0 +1,59 @@
+uuid: 4aa67bfe-18c7-4512-90f3-073a42dac462
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.how_to_tab.field_how_to_steps
+    - field.field.paragraph.how_to_tab.field_how_to_title
+    - field.field.paragraph.how_to_tab.field_keep_in_mind
+    - paragraphs.paragraphs_type.how_to_tab
+  module:
+    - entity_reference_revisions
+    - fences
+    - text
+_core:
+  default_config_hash: C82deYTjwMbukBiaPUKMJbHlGcUrJ27gP4lVpMEaX9s
+id: paragraph.how_to_tab.default
+targetEntityType: paragraph
+bundle: how_to_tab
+mode: default
+content:
+  field_how_to_steps:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_how_to_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_keep_in_mind:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: h3
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden: {  }

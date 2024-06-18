@@ -1,0 +1,33 @@
+uuid: 720d5b2e-f753-4139-8e5e-4c6cada6fb81
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.group_of_links_list.field_component_theme
+    - field.field.paragraph.group_of_links_list.field_component_title
+    - field.field.paragraph.group_of_links_list.field_contact
+    - field.field.paragraph.group_of_links_list.field_description
+    - field.field.paragraph.group_of_links_list.field_hide_title_bar
+    - field.field.paragraph.group_of_links_list.field_link
+    - field.field.paragraph.group_of_links_list.field_list_links
+    - field.field.paragraph.group_of_links_list.field_short_title
+    - field.field.paragraph.group_of_links_list.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_list
+_core:
+  default_config_hash: QiJQuMKvmB2ScWlYNcDAaX3Zjfsb9sUcNYHdROyH148
+id: paragraph.group_of_links_list.separated_title
+targetEntityType: paragraph
+bundle: group_of_links_list
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_description: true
+  field_hide_title_bar: true
+  field_link: true
+  field_list_links: true
+  field_short_title: true
+  field_subheader: true

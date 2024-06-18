@@ -1,0 +1,25 @@
+uuid: 716966ad-578f-42df-b43b-7f11bbf80e79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.bos_signup_emergency_alerts
+  module:
+    - options
+_core:
+  default_config_hash: Vf7YiNUOeDKa_CA4z8eeqexLizotUaDygPjNXiZ5NkM
+id: paragraph.bos_signup_emergency_alerts.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: bos_signup_emergency_alerts
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: b
+default_value_callback: ''
+settings: {  }
+field_type: list_string

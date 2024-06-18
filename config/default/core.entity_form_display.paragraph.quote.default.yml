@@ -1,0 +1,76 @@
+uuid: e520d053-32a8-4d85-8df4-2b7279bca9ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_entity_browser
+    - field.field.paragraph.quote.field_first_name
+    - field.field.paragraph.quote.field_last_name
+    - field.field.paragraph.quote.field_person_photo
+    - field.field.paragraph.quote.field_quote
+    - field.field.paragraph.quote.field_single_neighborhood
+    - paragraphs.paragraphs_type.quote
+  module:
+    - entity_browser
+_core:
+  default_config_hash: MFHn19w339agg5hxstzYvjKdT0-UF-fS08qxJi4NrS4
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+content:
+  field_first_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_person_photo:
+    type: entity_browser_entity_reference
+    weight: 2
+    region: content
+    settings:
+      entity_browser: image_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings:
+        view_mode: default
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_quote:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 103
+      placeholder: ''
+    third_party_settings: {  }
+  field_single_neighborhood:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

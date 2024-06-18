@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_drawers module.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_drawers_theme() {
+  $theme['paragraph__drawers'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_drawers') . '/templates',
+  ];
+  $theme['paragraph__drawer'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_drawers') . '/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_drawers_preprocess_paragraph(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $paragraph = $vars['paragraph'];
+    switch ($paragraph->bundle()) {
+      case 'drawer':
+        $vars['id'] = Html::getUniqueId('dr');
+        break;
+    }
+    if ($vars["paragraph"]->bundle() == "drawers" && isset($vars['content']['field_hide_title_bar']['#items'])) {
+      $vars['hideTitle'] = $vars['content']['field_hide_title_bar']['#items']->value;
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_hook_summary_alter().
+ */
+function bos_drawers_paragraph_drawer_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup[] = Markup::create($para["entity"]->get("field_title")->value);
+  if ($para["entity"]->hasField("field_text_blocks") && count($para["entity"]->get("field_text_blocks"))) {
+    $markup[] = Markup::create("<span class='info'>with " . count($para["entity"]->get("field_text_blocks")) . " text-blocks.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>with no text-blocks!.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_hook_summary_alter().
+ */
+function bos_drawers_paragraph_drawers_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'>" . $contact->name->value . "</span>");
+    }
+  }
+  if ($para["entity"]->hasField("field_drawer") && count($para["entity"]->get("field_drawer"))) {
+    $markup[] = Markup::create("<span class='info'>has " . count($para["entity"]->get("field_drawer")) . " drawers.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no drawers!.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

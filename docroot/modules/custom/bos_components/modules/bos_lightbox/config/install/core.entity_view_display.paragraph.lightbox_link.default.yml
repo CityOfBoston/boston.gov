@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lightbox_link.field_lightbox_link
+    - paragraphs.paragraphs_type.lightbox_link
+  module:
+    - link
+id: paragraph.lightbox_link.default
+targetEntityType: paragraph
+bundle: lightbox_link
+mode: default
+content:
+  field_lightbox_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

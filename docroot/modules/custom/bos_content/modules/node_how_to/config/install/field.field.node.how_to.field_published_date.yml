@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.how_to
+  module:
+    - datetime
+id: node.how_to.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: how_to
+label: 'Published Date'
+description: 'Add the date this content is effectively published.'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

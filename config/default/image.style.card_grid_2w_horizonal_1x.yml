@@ -1,0 +1,15 @@
+uuid: 6ed99e97-3b40-4de0-8fd3-fadff065d00c
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_2w_horizonal_1x
+label: 'Card grid 2w Horizonal 1x (190x190)'
+effects:
+  a539ddee-1431-4156-bd02-2da10af29c52:
+    uuid: a539ddee-1431-4156-bd02-2da10af29c52
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 190
+      height: 190
+      anchor: center-center

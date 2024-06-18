@@ -1,0 +1,22 @@
+uuid: d82a33aa-d630-4db4-93a1-dcf3360207fb
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.status
+field_name: status
+entity_type: node
+bundle: place_profile
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

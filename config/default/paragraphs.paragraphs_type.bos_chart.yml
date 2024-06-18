@@ -1,0 +1,10 @@
+uuid: ae502fd3-69f5-4919-8994-268244241f35
+langcode: en
+status: true
+dependencies: {  }
+id: bos_chart
+label: Chart
+icon_uuid: null
+icon_default: null
+description: 'Embed a chart using VegaLite'
+behavior_plugins: {  }

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:c7f6c94c-51cf-40f4-8b24-720a9d71754f'
+id: tabbed_content_tab
+label: 'Tabbed Content Tab'
+icon_uuid: c7f6c94c-51cf-40f4-8b24-720a9d71754f
+icon_default: null
+description: 'Migrated from paragraph bundle Tabbed Content Tab'
+behavior_plugins: {  }

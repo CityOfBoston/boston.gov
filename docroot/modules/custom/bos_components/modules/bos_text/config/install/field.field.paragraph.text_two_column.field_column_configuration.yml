@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_configuration
+    - paragraphs.paragraphs_type.text_two_column
+  module:
+    - options
+id: paragraph.text_two_column.field_column_configuration
+field_name: field_column_configuration
+entity_type: paragraph
+bundle: text_two_column
+label: 'Column Configuration'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

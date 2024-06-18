@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - bos_migration
+id: paragraph__bos_signup_emergency_alerts
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: bos_paragraphs
+label: 'Emergency Paragraph'
+source:
+  plugin: d7_paragraphs_item
+  bundle: bos_signup_emergency_alerts
+process:
+  id: item_id
+  revision_id: revision_id
+  field_component_title: field_component_title
+  field_component_theme: field_component_theme
+  field_contact: field_contact
+  field_icon: field_icon
+  field_short_title: field_short_title
+  field_intro_text: field_intro_text
+  field_description: field_description
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: bos_signup_emergency_alerts
+migration_dependencies:
+  required: {  }
+  optional: {  }

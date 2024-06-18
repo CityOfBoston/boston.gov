@@ -1,0 +1,18 @@
+uuid: 275cf2b4-3ca4-4dc7-8b89-09df661ec956
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: bh_contact
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

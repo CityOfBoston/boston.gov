@@ -1,0 +1,20 @@
+uuid: 64a8c3a8-5679-4c96-bead-c1608c07de82
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_precincts_total
+field_name: field_precincts_total
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: d873ade7-dadd-4eb6-94f8-a58eb1d09840
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.wysiwyg
+    - field.field.paragraph.commission_members.field_commission
+    - field.field.paragraph.commission_members.field_component_title
+    - field.field.paragraph.commission_members.field_hide_title_bar
+    - field.field.paragraph.commission_members.field_short_title
+    - paragraphs.paragraphs_type.commission_members
+_core:
+  default_config_hash: Vr2hC59uTmzgjMXQsc-NLe-hU_6PzHmZuF8gPPBMmGw
+id: paragraph.commission_members.wysiwyg
+targetEntityType: paragraph
+bundle: commission_members
+mode: wysiwyg
+content: {  }
+hidden:
+  field_commission: true
+  field_component_title: true
+  field_hide_title_bar: true
+  field_short_title: true

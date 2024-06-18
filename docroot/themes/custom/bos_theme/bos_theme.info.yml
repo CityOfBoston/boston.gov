@@ -1,0 +1,41 @@
+name: Boston
+type: theme
+description: Boston City Council public website theme.
+package: boston
+screenshot: images/b_base_2.png
+base theme: stable9
+core_version_requirement: ^8 || ^9 || ^10
+
+ckeditor5_stylesheets:
+  - css/bos_theme_overrides.css
+  - css/ckeditor.boston.css
+  - https://patterns.boston.gov/css/patterns-cob-theme.css
+
+#components:
+#  namespaces:
+#    bos_theme: templates
+#
+#component-libraries:
+#  bos-theme:
+#    paths:
+#      - templates
+
+regions:
+  header: 'Header'
+  navigation: 'Navigation bar'
+  site_alert: 'Site alert'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  footer: 'Footer'
+  modal: 'Hidden Modal'
+  bottom: 'Page bottom'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+features:
+  - name
+  - favicon
+  - main_menu
+  - secondary_menu
+config_devel:
+  - bos_theme.settings

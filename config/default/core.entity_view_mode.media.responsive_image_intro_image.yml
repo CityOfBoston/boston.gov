@@ -1,0 +1,15 @@
+uuid: 1a8b924d-4317-47e0-b0d3-82f2721cfdef
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'For the field_intro_image on nodes.'
+id: media.responsive_image_intro_image
+label: 'Intro Image (resp)'
+description: ''
+targetEntityType: media
+cache: true

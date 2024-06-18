@@ -1,0 +1,35 @@
+services:
+  bos_google_cloud.GcSearch:
+    class: Drupal\bos_google_cloud\Services\GcSearch
+    arguments: ['@logger.factory', '@config.factory']
+
+  bos_google_cloud.GcConversation:
+    class: Drupal\bos_google_cloud\Services\GcConversation
+    arguments: ['@logger.factory', '@config.factory']
+
+  bos_google_cloud.GcTextSummarizer:
+    class: Drupal\bos_google_cloud\Services\GcTextSummarizer
+    arguments: ['@logger.factory', '@config.factory', '@bos_google_cloud.GcCacheAI']
+
+  bos_google_cloud.GcTextRewriter:
+    class: Drupal\bos_google_cloud\Services\GcTextRewriter
+    arguments: ['@logger.factory', '@config.factory', '@bos_google_cloud.GcCacheAI']
+
+  bos_google_cloud.GcTranslate:
+    class: Drupal\bos_google_cloud\Services\GcTranslation
+    arguments: ['@logger.factory', '@config.factory', '@bos_google_cloud.GcCacheAI']
+
+  bos_google_cloud.GcGeocoder:
+    class: Drupal\bos_google_cloud\Services\GcGeocoder
+    arguments: []
+
+  bos_google_cloud.GcCacheAI:
+    class: Drupal\bos_google_cloud\Services\GcCacheAI
+    arguments: ['@logger.factory', '@config.factory', '@cache.gen_ai']
+
+  cache.gen_ai:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: [ '@cache_factory', 'get' ]
+    arguments: [ 'gen_ai' ]

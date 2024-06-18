@@ -1,0 +1,113 @@
+uuid: e50b11bb-717b-4749-80a7-b0ec2ef938cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cabinet.field_component_theme
+    - field.field.paragraph.cabinet.field_contacts
+    - field.field.paragraph.cabinet.field_description
+    - field.field.paragraph.cabinet.field_person
+    - field.field.paragraph.cabinet.field_short_title
+    - field.field.paragraph.cabinet.field_title
+    - paragraphs.paragraphs_type.cabinet
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_details:
+      children:
+        - field_title
+        - field_component_theme
+        - field_short_title
+        - field_person
+        - field_description
+      label: Details
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: true
+        required_fields: true
+    group_contacts:
+      children:
+        - field_contacts
+      label: Contacts
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        required_fields: true
+_core:
+  default_config_hash: keSy_lWihaistuUZ4MEa9N9HX_0aPClTy0_3kRD5DdE
+id: paragraph.cabinet.default
+targetEntityType: paragraph
+bundle: cabinet
+mode: default
+content:
+  field_component_theme:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_contacts:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_person:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

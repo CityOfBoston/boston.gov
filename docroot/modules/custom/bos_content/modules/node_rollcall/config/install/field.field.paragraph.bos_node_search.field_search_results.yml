@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_search_results
+    - paragraphs.paragraphs_type.bos_node_search
+id: paragraph.bos_node_search.field_search_results
+field_name: field_search_results
+entity_type: paragraph
+bundle: bos_node_search
+label: 'Search Results Title'
+description: "The title above the search results from the view which displays after a search is performed.\r\nLeave blank to omit this title"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

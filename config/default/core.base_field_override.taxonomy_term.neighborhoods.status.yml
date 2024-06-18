@@ -1,0 +1,22 @@
+uuid: 6deaade7-1add-402e-a6f3-f075dec3a628
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.status
+field_name: status
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

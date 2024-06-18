@@ -1,0 +1,18 @@
+uuid: 8d3b2562-c8af-4bc1-ae6c-d7b94d046644
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_city_sponsored
+field_name: field_city_sponsored
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

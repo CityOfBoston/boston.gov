@@ -1,0 +1,23 @@
+uuid: 0dd679db-e53b-4e89-9bba-98834a20c2b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.commission_members.field_commission
+    - field.field.paragraph.commission_members.field_component_title
+    - field.field.paragraph.commission_members.field_hide_title_bar
+    - field.field.paragraph.commission_members.field_short_title
+    - paragraphs.paragraphs_type.commission_members
+_core:
+  default_config_hash: mjDIH4mpB-injMsHBsMEYWug8BjblcDDT51ynZqf50M
+id: paragraph.commission_members.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: commission_members
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_commission: true
+  field_component_title: true
+  field_hide_title_bar: true
+  field_short_title: true

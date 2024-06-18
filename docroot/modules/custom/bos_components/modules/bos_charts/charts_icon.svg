@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" data-name="Layer 1" viewBox="0 0 144 144" version="1.1" sodipodi:docname="charts_icon.svg" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata id="metadata3803">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1920" inkscape:window-height="983" id="namedview3801" showgrid="false" inkscape:zoom="5.5902778" inkscape:cx="42.037267" inkscape:cy="79.15528" inkscape:window-x="1600" inkscape:window-y="27" inkscape:window-maximized="1" inkscape:current-layer="layer1" />
+  <defs id="defs3780">
+    <style id="style3778">.cls-1,.cls-3{fill:#fff;}.cls-1{stroke:#121f2c;}.cls-1,.cls-2,.cls-3{stroke-miterlimit:10;stroke-width:3px;}.cls-2{fill:none;stroke:#0d202e;}.cls-3{stroke:#111f2d;stroke-linecap:round;}.cls-4{fill:#0d202e;}</style>
+  </defs>
+  <rect class="cls-1" x="14.55" y="25.99" width="113.06" height="75.32" id="rect3782" />
+  <rect class="cls-1" x="21.52" y="31.81" width="99.12" height="63.74" id="rect3784" />
+  <rect class="cls-1" x="56.36" y="101.32" width="29.43" height="17.97" id="rect3786" />
+  <rect class="cls-1" x="47.47" y="119.28" width="47.21" height="5.16" id="rect3788" />
+  <g inkscape:groupmode="layer" id="layer1" inkscape:label="Chart">
+    <g id="g4963" transform="translate(2)">
+      <rect id="rect3883" stroke-miterlimit="10" height="27.886246" width="6.2996683" y="58.6432" x="40.910553" style="fill:#ffffff;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <rect id="rect3885" stroke-miterlimit="10" height="13.940372" width="6.2996683" y="72.583572" x="51.200409" style="fill:#ffffff;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <rect id="rect3887" stroke-miterlimit="10" height="38.28236" width="6.2996683" y="48.247082" x="62.170452" style="fill:#ffffff;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3889" stroke-miterlimit="10" y2="42.105175" x2="31.565847" y1="42.105175" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3891" stroke-miterlimit="10" y2="47.074837" x2="34.82048" y1="47.074837" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3893" stroke-miterlimit="10" y2="52.044502" x2="31.565847" y1="52.044502" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3895" stroke-miterlimit="10" y2="57.014164" x2="34.82048" y1="57.014164" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3897" stroke-miterlimit="10" y2="61.978321" x2="31.565847" y1="61.978321" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3899" stroke-miterlimit="10" y2="66.947983" x2="34.82048" y1="66.947983" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3901" stroke-miterlimit="10" y2="71.917648" x2="31.565847" y1="71.917648" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3903" stroke-miterlimit="10" y2="76.881805" x2="34.82048" y1="76.881805" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3905" stroke-miterlimit="10" y2="81.851471" x2="31.565847" y1="81.851471" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3907" stroke-miterlimit="10" y2="86.821136" x2="69.312447" y1="86.821136" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+      <line id="line3909" stroke-miterlimit="10" y2="86.441391" x2="28.311216" y1="40.784336" x1="28.311216" style="fill:none;stroke:#0d202e;stroke-width:1.39956081;stroke-linecap:round;stroke-miterlimit:10" />
+    </g>
+    <g id="g4970">
+      <line id="line4024" stroke-miterlimit="10" y2="45.761757" x2="110.72301" y1="45.761757" x1="80.059448" style="fill:none;stroke:#121f2c;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none" />
+      <line id="line4026" stroke-miterlimit="10" y2="55.237946" x2="110.72301" y1="55.237946" x1="80.059448" style="fill:none;stroke:#121f2c;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none" />
+      <line id="line4028" stroke-miterlimit="10" y2="64.286385" x2="110.72301" y1="64.286385" x1="80.059448" style="fill:none;stroke:#121f2c;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none" />
+      <line id="line4030" stroke-miterlimit="10" y2="73.762573" x2="110.72301" y1="73.762573" x1="80.059448" style="fill:none;stroke:#121f2c;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none" />
+      <line id="line4028-7" stroke-miterlimit="10" y2="83.450729" x2="111.03365" y1="83.450729" x1="80.370087" style="fill:none;stroke:#121f2c;stroke-width:1.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>

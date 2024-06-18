@@ -1,0 +1,47 @@
+uuid: d9450bff-560f-448c-810b-84b61a450c65
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.tabbed_content_tab.field_component_title
+    - field.field.paragraph.tabbed_content_tab.field_components
+    - paragraphs.paragraphs_type.tabbed_content_tab
+  module:
+    - fences
+    - smart_trim
+_core:
+  default_config_hash: VJ5jM7PtOAj3Kwu0lPz8CUpVi6vMdfjD2BV7Roh-N0Q
+id: paragraph.tabbed_content_tab.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: tabbed_content_tab
+mode: paragraphs_editor_preview
+content:
+  field_component_title:
+    type: smart_trim
+    label: inline
+    settings:
+      trim_length: 25
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: true
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_components: true

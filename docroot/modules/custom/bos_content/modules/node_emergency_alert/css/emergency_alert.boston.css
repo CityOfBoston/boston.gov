@@ -1,0 +1,83 @@
+/**
+  Locate contextual button out of the way of the main page button.
+ */
+.node-emergency-alert div.contextual {
+  padding-right: 70px;
+}
+
+/**
+  Manage Topic-pages hero image when have emergency alert.
+ */
+#page.ea:not(.sa) .hero-image {
+  margin-top: 0;
+}
+
+/*
+  Place a dividing line between Emergency alert and site alerts, if there are
+  any site alerts.
+ */
+#sa > div:first-child {
+  border-bottom: 1px solid #fff;
+}
+#sa > div:only-child {
+  border-bottom: none;
+}
+/*
+  Blue theme.
+ */
+.node-emergency-alert .b--dark-blue {
+  color: #1871bd;
+  /* border-bottom: 1px solid #fff; */
+}
+.node-emergency-alert .b--dark-blue .str-t,
+.node-emergency-alert .b--dark-blue .str-c {
+  color: #fff;
+  background-color: #091f2f;
+}
+.node-emergency-alert .b--dark-blue .str:before {
+  border-color: #fb4d42;
+}
+
+/**
+  Red theme.
+ */
+.node-emergency-alert .b--red {
+  color: #091f2f;
+  border-bottom: 1px solid #fff;
+}
+.node-emergency-alert .b--red .str-t,
+.node-emergency-alert .b--red .str-c {
+  color: #fff;
+  background-color: #fb4d42;
+}
+.node-emergency-alert .b--red a:not(:disabled) {
+  background-color: #091f2f;
+}
+.node-emergency-alert .b--red a.btn:hover:not(:disabled) {
+  background-color: #1871bd;
+}
+
+/**
+  Yellow theme.
+ */
+
+.b--yellow {
+  background-color: #f7bd5c;
+  color: #091f2f;
+  border-bottom: 1px solid #fff;
+}
+.node-emergency-alert .b--yellow .str-t,
+.node-emergency-alert .b--yellow .str-c {
+  color: #1871bd;
+  background-color: #f7bd5c;
+}
+
+/**
+  Manage seal, if this css is loaded, then the seal is hidden.
+ */
+#page #main-menu #seal {
+  -webkit-transform: translateX(-50%) translateY(0%);
+  transform: translateX(-50%) translateY(0%);
+  box-shadow: none;
+  display: none;
+}

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.grid_of_topics
+id: paragraph.grid_of_topics.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: grid_of_topics
+label: Title
+description: 'Please provide a title for this component. The title will be displayed across the top of the component.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cancelled
+    - node.type.public_notice
+id: node.public_notice.field_cancelled
+field_name: field_cancelled
+entity_type: node
+bundle: public_notice
+label: Canceled
+description: 'If this notice is cancelled, check this box and give a reason below.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

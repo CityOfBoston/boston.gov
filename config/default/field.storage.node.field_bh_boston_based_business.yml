@@ -1,0 +1,18 @@
+uuid: 18a6e9fb-1ca9-4361-b351-463318a46c7d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_boston_based_business
+field_name: field_bh_boston_based_business
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

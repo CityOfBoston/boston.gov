@@ -1,0 +1,289 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_link module.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_link_theme() {
+  return [
+    'paragraph__external_link' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__internal_link' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__document' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__document__cta_button' => [
+      'base hook' => 'paragraph',
+    ],
+    'field__node__field_link__emergency_alert' => [
+      'base hook' => 'field',
+    ],
+    'field__field_internal_link__internal_link__mode__button_blue' => [
+      'base hook' => 'field',
+      'template' => 'field--field-link--button-blue',
+    ],
+    'field__field_external_link__external_link__mode__button_blue' => [
+      'base hook' => 'field',
+      'template' => 'field--field-link--button-blue',
+    ],
+
+  ];
+}
+
+/**
+ * Implements hook_preprocess_hook().
+ */
+function bos_link_preprocess_paragraph__document__cta_button(&$variables) {
+  $document = $variables['paragraph']->get('field_document')->getValue();
+  $title = $variables['paragraph']->get('field_title')->getValue();
+  $arr['attributes']['class'] = ['btn'];
+  $variables['link'] = _bos_core_get_file_link(
+    $document['0']['target_id'],
+    $title['0']['value'],
+    $arr
+  );
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_link_preprocess_paragraph(&$vars) {
+  $paragraph = $vars['paragraph'];
+  if ($paragraph && $paragraph->bundle() == 'document') {
+    $document = $paragraph->get('field_document')->getValue();
+    $title = $paragraph->get('field_title')->getValue();
+
+    if (!empty($document['0']['target_id']) && !empty($title['0']['value'])) {
+      $arr = [];
+      switch ($paragraph->getParentEntity()->bundle()) {
+        case "public_notice":
+          $arr['attributes'] = ['target' => "_blank"];
+          break;
+
+        default:
+          $arr['attributes'] = [
+            'class' => [
+              'doc-l',
+            ],
+          ];
+          break;
+      }
+      $vars['link'] = _bos_core_get_file_link(
+        $document['0']['target_id'],
+        $title['0']['value'],
+        $arr
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_link_preprocess_paragraph__internal_link(&$variables) {
+  // Try to catch where the link text has not been provided, and use the
+  // title of the internally referenced node.
+  $paragraph = &$variables['paragraph'];
+  if (empty($paragraph->field_internal_link->title)) {
+    $uri = explode(":", $paragraph->field_internal_link->uri);
+    $scheme = $uri[0];
+    if ($scheme == "entity" && count($uri) > 1) {
+      $parts = explode("/", $uri[1]);
+      $entity = $parts[0] ?: NULL;
+      $id = $parts[1] ?: NULL;
+      if (NULL != ($ent = \Drupal::entityTypeManager()->getStorage($entity)->load($id))) {
+        $paragraph->field_internal_link->title = ($ent->get("title")->getString() ?: "");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function bos_link_preprocess_field(&$vars) {
+  $field_name = $vars['element']['#field_name'];
+  if ($field_name == 'field_external_link' || $field_name == 'field_internal_link') {
+    if (_paragraph_is_direct_child_of($vars['element']['#object'], 'fyi')
+        || _paragraph_is_direct_child_of($vars['element']['#object'], 'site_alert')) {
+      $vars['items'][0]['content']['#options']['attributes']['class'][] = 'fyi-l';
+    }
+  }
+  if ($field_name == 'field_external_link') {
+    if ($vars["element"]["#view_mode"] == "button_blue" || $vars["element"]["#view_mode"] == "cta_button") {
+      $vars['items'][0]['content']['#options']['attributes']['class'][] = 'btn';
+    }
+    else {
+      $vars['items'][0]['content']['#options']['attributes']['class'][] = 'lnk-e';
+    }
+    $vars['items'][0]['content']['#options']['attributes']['target'] = '_blank';
+  }
+
+  if ($field_name == 'field_internal_link') {
+    if ($vars["element"]["#view_mode"] == "cta_button") {
+      $vars['items'][0]['content']['#options']['attributes']['class'][] = 'btn';
+    }
+    // Try to catch where the link text has not been provided, and use the
+    // title of the internally referenced node. (the hook_paragraph above should
+    // already have handled this...).
+    if (empty($vars["element"]["#title"])
+      && !empty($id = $vars["element"][0]["#url"]->getRouteParameters()["node"])) {
+      if (NULL != ($ent = \Drupal::entityTypeManager()->getStorage("node")->load($id))) {
+        /**
+        * @var \Drupal\node\Entity\Node $ent
+        */
+        $vars["element"]["#title"] = ($ent->getTitle() ?: "");
+      }
+    }
+  }
+}
+
+/**
+ * Implements theme_preprocess_hook().
+ */
+function bos_link_preprocess_field__field_internal_link__internal_link__mode__button_blue(array &$variables, $hook) {
+  $variables["items"][0]["content"]["#attributes"]["class"][] = "btn";
+}
+
+/**
+ * Implements theme_preprocess_hook().
+ */
+function bos_link_preprocess_field__field_external_link__external_link__mode__button_blue(array &$variables, $hook) {
+  $variables["items"][0]["content"]["#attributes"]["class"][] = "btn";
+}
+
+/**
+ * Implements hook_contact_token_info().
+ */
+function bos_link_token_info() {
+  $info = [];
+  // Define our new token.
+  $info['tokens']['boston']['entity-type'] = [
+    'name' => t('Current entitytype'),
+    'description' => t('A token to replace the entity type (e.g. public_notice).'),
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function bos_link_tokens($type, $tokens, array $data = [], array $options = []) {
+  $replacements = [];
+
+  if ($type == 'boston') {
+    // Loop through the available tokens.
+    foreach ($tokens as $name => $original) {
+      // Find our custom tokens by name.
+      switch ($name) {
+        case 'entity-type':
+          // Give our token it's final value!
+          $replacements[$original] = "unknown_type";
+          if (\Drupal::request()->get('ajax_form')) {
+            $uri_parts = explode("/", \Drupal::request()->getRequestUri());
+            if ($uri_parts[1] == "node") {
+              $node = \Drupal::entityTypeManager()->getStorage("node")->load($uri_parts[2]);
+              if (isset($node) && NULL != $node->bundle()) {
+                $replacements[$original] = $node->bundle();
+              }
+            }
+          }
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_paragraph_document_summary_alter(array $form_widget, array $para, array $attributes) {
+  if ($para["entity"]->field_document->target_id) {
+    $document = File::load($para["entity"]->field_document->target_id);
+    $type = explode("/", $document->filemime->value);
+    $type = end($type);
+    $markup[] = Markup::create($para["entity"]->field_title->value . " <i>(" . $type . ")</i>");
+    $markup[] = Markup::create("<span class='document'>" . $document->label() . "</span>");
+    return [
+      'attributes' => $attributes,
+      'content' => $markup,
+    ];
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_paragraph_external_link_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_external_link")->title);
+  $uri = $para["entity"]->get("field_external_link")->uri;
+  $url = parse_url($uri);
+  $url["host"] = $url["scheme"] . "://" . $url["host"];
+  $url["host"] = (strpos($url["host"], "boston.gov") === FALSE ? $url["host"] : "<span style='color: red;'>(internal) </span>");
+  if (empty($url["path"])) {
+    $url["path"] = "/";
+  }
+  $url = $url["host"] . $url['path'];
+  $markup[] = Markup::create("<span class='link'></span><a href='" . $uri . "' target='_blank' title='Click to view in new tab'>" . $url . "</a>");
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_paragraph_internal_link_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_internal_link")->title);
+  $uri = $para["entity"]->get("field_internal_link")->uri;
+  if (isset($uri)) {
+    $url = Url::fromUri($uri);
+    $url_rel = $url->toString();
+    $markup[] = Markup::create("<span class='link'></span><a href='" . $url->setAbsolute(TRUE)
+      ->toString() . "' target='_blank' title='Click to view in new tab'>" . $url_rel . "</a>");
+  }
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_link_paragraph_lightbox_link_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_lightbox_link")->title);
+  $uri = $para["entity"]->get("field_lightbox_link")->uri;
+  $url = Url::fromUri($uri);
+  $url_rel = $url->toString();
+  $markup[] = Markup::create("<span class='link'></span><a href='" . $url->setAbsolute(TRUE)->toString() . "' target='_blank' title='Click to view in new tab'>" . $url_rel . "</a>");
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_link_form_alter(&$form, $form_state, $form_id) {
+
+
+}

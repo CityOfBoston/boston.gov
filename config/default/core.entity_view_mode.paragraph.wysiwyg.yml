@@ -1,0 +1,11 @@
+uuid: dfd43bd9-2387-4c9f-9079-4dd6c37ee462
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.wysiwyg
+label: wysiwyg
+description: ''
+targetEntityType: paragraph
+cache: true

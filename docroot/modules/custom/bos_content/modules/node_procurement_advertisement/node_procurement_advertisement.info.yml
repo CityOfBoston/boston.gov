@@ -1,0 +1,51 @@
+name: Procurement Advertisement
+type: module
+description: 'Page for Procurement Advertisements.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - bos_components
+config_devel:
+  - core.base_field_override.node.procurement_advertisement.changed
+  - core.base_field_override.node.procurement_advertisement.created
+  - core.base_field_override.node.procurement_advertisement.menu_link
+  - core.base_field_override.node.procurement_advertisement.metatag
+  - core.base_field_override.node.procurement_advertisement.path
+  - core.base_field_override.node.procurement_advertisement.promote
+  - core.base_field_override.node.procurement_advertisement.published_at
+  - core.base_field_override.node.procurement_advertisement.status
+  - core.base_field_override.node.procurement_advertisement.sticky
+  - core.base_field_override.node.procurement_advertisement.title
+  - core.base_field_override.node.procurement_advertisement.uid
+  - core.entity_form_display.node.procurement_advertisement.default
+  - core.entity_view_display.node.procurement_advertisement.default
+  - core.entity_view_display.node.procurement_advertisement.teaser
+  - field.field.node.procurement_advertisement.body
+  - field.field.node.procurement_advertisement.field_award_date
+  - field.field.node.procurement_advertisement.field_awarded_by
+  - field.field.node.procurement_advertisement.field_bid
+  - field.field.node.procurement_advertisement.field_bid_type
+  - field.field.node.procurement_advertisement.field_contact
+  - field.field.node.procurement_advertisement.field_contract_length
+  - field.field.node.procurement_advertisement.field_date_range
+  - field.field.node.procurement_advertisement.field_department
+  - field.field.node.procurement_advertisement.field_document
+  - field.field.node.procurement_advertisement.field_email
+  - field.field.node.procurement_advertisement.field_event_project_number
+  - field.field.node.procurement_advertisement.field_intro_text
+  - field.field.node.procurement_advertisement.field_ma_general_law
+  - field.field.node.procurement_advertisement.field_multi_year_contract
+  - field.field.node.procurement_advertisement.field_not_awarded
+  - field.field.node.procurement_advertisement.field_offering
+  - field.field.node.procurement_advertisement.field_phone_number
+  - field.field.node.procurement_advertisement.field_procurement
+  - field.field.node.procurement_advertisement.field_procurement_footer
+  - field.field.node.procurement_advertisement.field_related_links
+  - field.field.node.procurement_advertisement.field_unspsc
+  - field.field.node.procurement_advertisement.field_url
+  - field.storage.node.field_procurement
+  - field.storage.node.field_procurement_footer
+  - language.content_settings.node.procurement_advertisement
+  - node.type.procurement_advertisement

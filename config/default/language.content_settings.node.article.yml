@@ -1,0 +1,20 @@
+uuid: aa8b976b-c0cb-43d4-b040-ea8628fe2cf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: 9sttcxleo97MqboOBzSKPZwj4MrhWsYvszqHl8jKQ_U
+id: node.article
+target_entity_type_id: node
+target_bundle: article
+default_langcode: site_default
+language_alterable: false

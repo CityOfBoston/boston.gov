@@ -1,0 +1,20 @@
+uuid: 413d88d7-8e72-4b23-86e8-f062c69d369a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bos311
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: VJIDow417mRNgG8uGr6rIedNVUdkVsIxIGmbQFpA3hw
+id: paragraph.bos311
+target_entity_type_id: paragraph
+target_bundle: bos311
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,23 @@
+uuid: 839650a4-be1f-4caf-a974-4741cfd4f7be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_candidate_prtid
+    - paragraphs.paragraphs_type.election_candidate_results
+id: paragraph.election_candidate_results.field_candidate_prtid
+field_name: field_candidate_prtid
+entity_type: paragraph
+bundle: election_candidate_results
+label: PrtId
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

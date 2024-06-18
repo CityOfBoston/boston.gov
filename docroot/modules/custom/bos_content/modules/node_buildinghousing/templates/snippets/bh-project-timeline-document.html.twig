@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - label: The label value of the item.
+ * - icon: The icon value of the detail item.
+ * - fileIcon: The icon value of the detail item.
+ * - date:
+ * - dateId:
+ * - link:
+ * - currentState:
+ * - documents:
+ *
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+<div class="bh-project-timeline-item g g--12 timeline-documents timeline-document-{{ currentState }}">
+
+  <div class="g g--2">
+    <div typeof="foaf:Image" class="bh-project-timeline-icon">
+      {{ icon }}
+    </div>
+  </div>
+
+
+  <div class="g--10 m-b600 m-h100 p-a000  bh-project-timeline-content" >
+
+    <h6 class="m-v000 bh-timeline-season t--ob">{{ date }}</h6>
+    {% for document in documents %}
+
+        {% if loop.index == 1 %}
+
+          <div class="g--8 m-t400 m-b600 m-h100 p-a000" style="min-height: 124px;">
+            <div class="fl--l bg--cb m-r300 p-v200 p-r300 p-l300" style="height: 124px; width:124px;">{{ fileIcon }}</div>
+            <div class="b b--w p-a300" style="min-height: 124px; max-width: 450px;">
+              <h6 class="m-v000">{{ document.label }}</h6>
+              <div class="t--ob "><a href="{{ document.url }}" target="_blank">{{ document.link|length > 70 ? document.link|slice(0, 70) ~ '...' : document.link }}</a></div>
+            </div>
+          </div>
+        {% endif %}
+
+
+      {% endfor %}
+
+    {% if documents|length > 1 %}
+      <div class="bh-drawer dr">
+        <input type="checkbox" id="dr-{{ dateId }}" class="dr-tr a11y--h">
+        <label for="dr-{{ dateId }}" class="dr-h">
+          <div class="dr-t show-more-docs">+ View {{ documents|length - 1 }} More Documents</div>
+          <div class="dr-t hide-more-docs">- Hide {{ documents|length - 1 }} More Documents</div>
+        </label>
+        <div class="dr-c">
+
+          {% for document in documents %}
+
+            {% if loop.index > 1 %}
+              <div class="g--8 m-t400 m-b600 m-h100 p-a000" style="min-height: 124px;">
+                <div class="fl--l bg--cb p-a200 m-r300" style="height: 124px;">{{ fileIcon }}</div>
+                <div class="b b--w p-a300" style="min-height: 124px; max-width: 450px;">
+                  <h6 class="m-v000">{{ document.label }}</h6>
+                  <div class="t--ob "><a href="{{ document.url }}" target="_blank">{{ document.link|length > 50 ? document.link|slice(0, 50) ~ '...' : document.link }}</a></div>
+                </div>
+              </div>
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+

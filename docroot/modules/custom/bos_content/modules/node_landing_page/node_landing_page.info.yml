@@ -1,0 +1,36 @@
+name: Landing Page
+type: module
+description: 'Provides a landing page entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - bos_components
+  - bos_vocab
+config_devel:
+  - core.base_field_override.node.landing_page.status
+  - core.base_field_override.node.landing_page.promote
+  - core.entity_form_display.node.landing_page.default
+  - core.entity_view_display.node.landing_page.article
+  - core.entity_view_display.node.landing_page.calendar_listing
+  - core.entity_view_display.node.landing_page.contact
+  - core.entity_view_display.node.landing_page.default
+  - core.entity_view_display.node.landing_page.department_listing
+  - core.entity_view_display.node.landing_page.featured_item
+  - core.entity_view_display.node.landing_page.featured_topics
+  - core.entity_view_display.node.landing_page.listing_long
+  - core.entity_view_display.node.landing_page.poll_stub
+  - core.entity_view_display.node.landing_page.popup_icon
+  - core.entity_view_display.node.landing_page.published_by
+  - core.entity_view_display.node.landing_page.teaser
+  - core.entity_view_display.node.landing_page.topics_list
+  - field.field.node.landing_page.field_components
+  - field.field.node.landing_page.field_contacts
+  - field.field.node.landing_page.field_manual_date
+  - field.field.node.landing_page.field_published_date
+  - field.field.node.landing_page.field_updated_date
+  - language.content_settings.node.landing_page
+  - node.type.landing_page
+  - rabbit_hole.behavior_settings.node_type_landing_page
+  - xmlsitemap.settings.node.landing_page

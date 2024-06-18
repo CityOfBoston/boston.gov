@@ -1,0 +1,15 @@
+uuid: c87f05a9-1107-4df0-9c35-2e141d91bf6c
+langcode: und
+status: true
+dependencies: {  }
+name: thumbnail_event_rectangle_575x230_
+label: 'Thumbnail event rectangle (575x230)'
+effects:
+  bc355bbd-46bb-477f-89d4-44ff57874def:
+    uuid: bc355bbd-46bb-477f-89d4-44ff57874def
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 575
+      height: 230
+      anchor: center-center

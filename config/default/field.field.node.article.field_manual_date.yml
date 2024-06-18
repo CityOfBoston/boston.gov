@@ -1,0 +1,23 @@
+uuid: ed8f2f9b-5843-4493-805a-9ae65d9f8f76
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manual_date
+    - node.type.article
+id: node.article.field_manual_date
+field_name: field_manual_date
+entity_type: node
+bundle: article
+label: 'Manual Date'
+description: 'The updated and published dates are set by Drupal unless this checkbox is selected, in which case they can be set manually.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Manual
+  off_label: Automatic
+field_type: boolean

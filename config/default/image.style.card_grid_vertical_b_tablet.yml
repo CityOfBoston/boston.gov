@@ -1,0 +1,15 @@
+uuid: f16cd0f6-4a04-4b84-a4c9-7130fdd9a4f3
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_vertical_b_tablet
+label: 'Card grid vertical b-tablet (615x215)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 615
+      height: 215
+      anchor: center-center

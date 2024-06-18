@@ -1,0 +1,15 @@
+uuid: 424a493e-6e63-4d7a-95a5-f6f7ca3320cd
+langcode: en
+status: true
+dependencies: {  }
+name: intro_image_mobile_1x
+label: 'Intro image a-mobile 1x (420x115)'
+effects:
+  8a791aa7-f52a-416b-852e-58d6d57637b0:
+    uuid: 8a791aa7-f52a-416b-852e-58d6d57637b0
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 420
+      height: 115
+      anchor: center-bottom

@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * The install file for the node_procurement_advertisement module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function node_procurement_advertisement_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function node_procurement_advertisement_install() {
+  // Ensure the translation fields are created in the database.
+  // @see: https://www.drupal.org/project/drupal/issues/2599228
+  // patch is in place - this is just to be sure ...
+  // DU removed 02/2022 \Drupal::service('entity.definition_update_manager')->applyUpdates();
+
+  // Using content_access module to hide this page from all but authenticated
+  // users.
+  if (function_exists("content_access_set_settings")) {
+    $settings = [
+      'view' => ["anonymous", "authenticated"],
+      'view own' => ["authenticated"],
+    ];
+    try {
+      content_access_set_settings($settings, basename(__FILE__, ".install"));
+    }
+    catch (ErrorException $e) {
+      \Drupal::logger('procurement_advertisement')
+        ->warning("Could not update content_access settings during module installation.");
+    }
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function node_procurement_advertisement_update_8001() {
+  // Check that the default taxonomy term exists.
+  if (taxonomy_get_term_by_name('default', 'procurement_footer') == FALSE) {
+
+    // Check that the procurement_footer vocabulary exists.
+    if (taxonomy_vocabulary_machine_name_load('procurement_footer') == FALSE) {
+      // Create the procurement_footer vocabulary that didn't exist.
+      $vocabulary = new stdClass();
+      $vocabulary->name = 'Procurement Footer';
+      $vocabulary->machine_name = 'procurement_footer';
+      taxonomy_vocabulary_save($vocabulary);
+    }
+
+    // Load the vocabulary ID for procurement_footer.
+    $vocab = taxonomy_vocabulary_machine_name_load('procurement_footer');
+    $vid = $vocab->vid;
+
+    // Create the 'default' term in the procurement_footer vocabulary.
+    $term = new stdClass();
+    $term->name = 'default';
+    $term->description = 'The City of Boston is committed to and affirmatively ensures that Disadvantaged Business Enterprises (DBE), Small Local Business Enterprise (SLBE), Minority Business Enterprise (MBE), Women Business Enterprise (WBE), and Veteran Owned Small Business Enterprise (VOSBE) firms shall be afforded full opportunity to submit qualifications in response to this and will not be discriminated against on the basis of race, color, national origin, ancestry, disability, gender, transgender status, political affiliation, age, sexual orientation, or religion in any consideration leading to the award of contract. No qualified disabled person shall, on the basis of disability, be excluded from participating in, be denied the benefits of, or otherwise subjected to discrimination in any consideration leading to the award of contract. The award of any contract shall be subject to the approval of the Mayor of Boston. The maximum time for IFB acceptance by the City after the opening of the bids shall be ninety (90) days unless noted otherwise. The maximum time for RFP acceptance by the City after the opening of the bids shall be one hundred-eighty (180) days unless noted otherwise. The City/County and the Official reserve the right to reject any or all bids, or any item or items thereof, and to award a contract as the Official deems to be in the best interest of the City. All contracts shall be subject to the availability of an appropriation therefore, if sufficient funds are not appropriated for the contract in any fiscal year, the Official shall cancel the contract. The City reserves the right to reject any and all bids, or any part or parts thereof, and to award a contract as the Official deems to be in the best interest of the City. This contract shall be subject to the availability of an appropriation. If sufficient funds are not appropriated for the contract in any fiscal year, the Official shall cancel the contract. Late bids will not be accepted.';
+    $term->vid = $vid;
+    taxonomy_term_save($term);
+    node_types_rebuild();
+  }
+}
+
+/**
+ * Moves Data from old bid_amount field to New bid_amount field.
+ */
+function node_procurement_advertisement_update_8002() {
+  Drupal::database()->query("INSERT INTO paragraph__field_new_bid_amount
+    (bundle,
+    deleted,
+    entity_id,
+    revision_id,
+    langcode,
+    delta,
+    field_new_bid_amount_value)
+  SELECT old.bundle,
+    old.deleted,
+    old.entity_id,
+    old.revision_id,
+    old.langcode,
+    old.delta,
+    old.field_bid_amount_value
+  FROM paragraph__field_bid_amount old
+  left JOIN paragraph__field_new_bid_amount nw on old.entity_id = nw.entity_id and old.delta = nw.delta
+  WHERE nw.entity_id is NULL;")->execute();
+}

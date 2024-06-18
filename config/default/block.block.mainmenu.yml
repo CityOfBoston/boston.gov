@@ -1,0 +1,32 @@
+uuid: b9ad89c6-754d-4677-845e-b038482e0556
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - bos_theme
+id: mainmenu
+theme: bos_theme
+region: navigation
+weight: -3
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'main:'
+  suggestion: menu_main_menu
+  expand: 0
+visibility: {  }

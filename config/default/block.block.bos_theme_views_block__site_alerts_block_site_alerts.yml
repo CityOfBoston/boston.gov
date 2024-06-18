@@ -1,0 +1,24 @@
+uuid: d57d760f-bbb7-4dd4-b80b-491db117159e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.site_alerts
+  module:
+    - views
+  theme:
+    - bos_theme
+id: bos_theme_views_block__site_alerts_block_site_alerts
+theme: bos_theme
+region: site_alert
+weight: 0
+provider: null
+plugin: 'views_block:site_alerts-block_site_alerts'
+settings:
+  id: 'views_block:site_alerts-block_site_alerts'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

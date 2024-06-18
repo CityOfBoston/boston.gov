@@ -1,0 +1,20 @@
+uuid: bfa41adb-1b4a-43f5-bc00-19e7ce1bf812
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_total_house_income_data
+field_name: field_total_house_income_data
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 6
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

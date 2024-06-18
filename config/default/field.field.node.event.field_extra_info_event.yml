@@ -1,0 +1,21 @@
+uuid: 81324778-d821-4c6b-a299-e1341b9d1c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_extra_info_event
+    - node.type.event
+_core:
+  default_config_hash: KeDInKEOeAba-MHq3Cg5ebRMrI3MNnZequ70n5PzAUk
+id: node.event.field_extra_info_event
+field_name: field_extra_info_event
+entity_type: node
+bundle: event
+label: 'Cancellation Reason'
+description: 'If this event is cancelled, enter a reason.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

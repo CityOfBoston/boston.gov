@@ -1,0 +1,11 @@
+uuid: dc8a7302-743d-4989-ad3c-baadf357693d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.group_of_links
+label: group_of_links
+description: ''
+targetEntityType: paragraph
+cache: true

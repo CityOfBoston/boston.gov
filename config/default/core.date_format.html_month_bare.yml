@@ -1,0 +1,8 @@
+uuid: b8ee9bc5-61c9-4977-96af-3d962f48b4a0
+langcode: und
+status: true
+dependencies: {  }
+id: html_month_bare
+label: 'HTML Month Bare'
+locked: false
+pattern: m

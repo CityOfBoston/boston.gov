@@ -1,0 +1,100 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.public_notice.body
+    - field.field.node.public_notice.field_address
+    - field.field.node.public_notice.field_cancelled
+    - field.field.node.public_notice.field_city_hall
+    - field.field.node.public_notice.field_components
+    - field.field.node.public_notice.field_contact
+    - field.field.node.public_notice.field_drawer
+    - field.field.node.public_notice.field_email
+    - field.field.node.public_notice.field_event_contact
+    - field.field.node.public_notice.field_extra_info
+    - field.field.node.public_notice.field_featured
+    - field.field.node.public_notice.field_intro_text
+    - field.field.node.public_notice.field_is_there_public_testimony
+    - field.field.node.public_notice.field_links
+    - field.field.node.public_notice.field_manual_date
+    - field.field.node.public_notice.field_metatags
+    - field.field.node.public_notice.field_multiple_neighborhoods
+    - field.field.node.public_notice.field_phone_number
+    - field.field.node.public_notice.field_public_notice_date
+    - field.field.node.public_notice.field_related
+    - field.field.node.public_notice.field_time
+    - field.field.node.public_notice.field_updated_date
+    - node.type.public_notice
+  module:
+    - advanced_text_formatter
+    - fences
+    - user
+id: node.public_notice.teaser
+targetEntityType: node
+bundle: public_notice
+mode: teaser
+content:
+  body:
+    type: advanced_text
+    label: hidden
+    settings:
+      trim_length: '600'
+      ellipsis: '1'
+      word_boundary: '1'
+      filter: input
+      format: plain_text
+      allowed_html:
+        - a
+        - b
+        - br
+        - dd
+        - dl
+        - dt
+        - em
+        - i
+        - li
+        - ol
+        - p
+        - strong
+        - u
+        - ul
+      use_summary: 0
+      token_replace: 0
+      autop: 0
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_address: true
+  field_cancelled: true
+  field_city_hall: true
+  field_components: true
+  field_contact: true
+  field_drawer: true
+  field_email: true
+  field_event_contact: true
+  field_extra_info: true
+  field_featured: true
+  field_intro_text: true
+  field_is_there_public_testimony: true
+  field_links: true
+  field_manual_date: true
+  field_metatags: true
+  field_multiple_neighborhoods: true
+  field_phone_number: true
+  field_public_notice_date: true
+  field_related: true
+  field_time: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

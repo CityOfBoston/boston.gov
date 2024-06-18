@@ -1,0 +1,14 @@
+uuid: 7a1383dd-078c-4fb8-845e-6e2ead53f1a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.election_editor
+  module:
+    - user
+id: user_remove_role_action.election_editor
+label: 'Remove the Election Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: election_editor

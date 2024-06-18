@@ -1,0 +1,23 @@
+uuid: 28a2542b-91ca-47ca-9e00-b5c133774847
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hours_icon
+    - paragraphs.paragraphs_type.custom_hours_text
+  module:
+    - options
+_core:
+  default_config_hash: E5x9j4WWj85dCe2bi92iJu8EtSyH5ofU34tzpgpkZXI
+id: paragraph.custom_hours_text.field_hours_icon
+field_name: field_hours_icon
+entity_type: paragraph
+bundle: custom_hours_text
+label: 'Hours Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

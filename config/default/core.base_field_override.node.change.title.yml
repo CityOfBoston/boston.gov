@@ -1,0 +1,18 @@
+uuid: 1ecf1958-c60b-4740-b96e-6ed5cf1ce407
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.change
+id: node.change.title
+field_name: title
+entity_type: node
+bundle: change
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

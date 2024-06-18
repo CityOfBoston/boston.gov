@@ -1,0 +1,5 @@
+node_how_to_styles:
+  version: "0.1"
+  css:
+    component:
+      css/node_how_to.css: {}

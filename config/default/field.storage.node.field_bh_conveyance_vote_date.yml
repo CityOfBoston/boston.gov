@@ -1,0 +1,20 @@
+uuid: d9b0e50f-5874-4798-a5ea-e9df8cb3621c
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_bh_conveyance_vote_date
+field_name: field_bh_conveyance_vote_date
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

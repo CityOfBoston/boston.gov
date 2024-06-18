@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.how_to_contact_step.field_address
+    - field.field.paragraph.how_to_contact_step.field_operation_hours
+    - field.field.paragraph.how_to_contact_step.field_step_details
+    - field.field.paragraph.how_to_contact_step.field_title
+    - paragraphs.paragraphs_type.how_to_contact_step
+  module:
+    - address
+    - entity_reference_revisions
+    - fences
+    - text
+id: paragraph.how_to_contact_step.default
+targetEntityType: paragraph
+bundle: how_to_contact_step
+mode: default
+content:
+  field_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_operation_hours:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_step_details:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

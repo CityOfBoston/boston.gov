@@ -1,0 +1,26 @@
+uuid: 29654c36-c615-471c-91f8-a8f752204d15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.plain_text
+    - node.type.roll_call_dockets
+  module:
+    - text
+id: node.roll_call_dockets.body
+field_name: body
+entity_type: node
+bundle: roll_call_dockets
+label: Description
+description: 'This is the description of the Docket.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats:
+    - plain_text
+field_type: text_with_summary

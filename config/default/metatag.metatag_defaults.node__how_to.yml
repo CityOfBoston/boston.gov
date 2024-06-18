@@ -1,0 +1,12 @@
+uuid: 074a64f0-ef7c-4887-a99a-5152c300eeb3
+langcode: und
+status: true
+dependencies: {  }
+id: node__how_to
+label: 'Content: How-To'
+tags:
+  schema_how_to_step: 'a:5:{s:5:"pivot";s:1:"1";s:5:"@type";s:9:"HowToStep";s:4:"name";s:29:"[custom:schema_how_to_titles]";s:4:"text";s:30:"[custom:schema_how_to_details]";s:3:"url";s:10:"[node:url]";}'
+  schema_how_to_type: HowTo
+  schema_how_to_image: 'a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:21:"[custom:schema_image]";}'
+  schema_how_to_name: '[node:title]'
+  schema_how_to_description: '[node:body]'

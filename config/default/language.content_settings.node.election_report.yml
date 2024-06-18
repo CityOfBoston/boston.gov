@@ -1,0 +1,11 @@
+uuid: e33a6d67-497e-4bff-b2df-25fb700e05b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.election_report
+id: node.election_report
+target_entity_type_id: node
+target_bundle: election_report
+default_langcode: site_default
+language_alterable: false

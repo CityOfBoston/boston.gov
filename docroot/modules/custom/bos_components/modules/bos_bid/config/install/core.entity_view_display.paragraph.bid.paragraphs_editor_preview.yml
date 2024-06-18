@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.bid.field_awarded
+    - field.field.paragraph.bid.field_bid_amount
+    - field.field.paragraph.bid.field_company_name
+    - field.field.paragraph.bid.field_new_bid_amount
+    - paragraphs.paragraphs_type.bid
+id: paragraph.bid.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: bid
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_awarded: true
+  field_bid_amount: true
+  field_company_name: true
+  field_new_bid_amount: true

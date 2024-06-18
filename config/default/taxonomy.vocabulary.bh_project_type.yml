@@ -1,0 +1,8 @@
+uuid: dcb603d3-8e3d-414b-8963-b2e67cc0268a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Type (BH)'
+vid: bh_project_type
+description: 'Building Housing: Disposition Type'
+weight: 0

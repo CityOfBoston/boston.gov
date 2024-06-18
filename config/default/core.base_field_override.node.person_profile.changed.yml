@@ -1,0 +1,18 @@
+uuid: b348f2fd-86e8-43e8-868b-8394cffbecf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+id: node.person_profile.changed
+field_name: changed
+entity_type: node
+bundle: person_profile
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

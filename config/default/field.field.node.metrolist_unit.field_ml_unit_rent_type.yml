@@ -1,0 +1,29 @@
+uuid: 2e81b228-45c4-44f6-816c-afdb48b96f1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_rent_type
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.ml_rent_type
+id: node.metrolist_unit.field_ml_unit_rent_type
+field_name: field_ml_unit_rent_type
+entity_type: node
+bundle: metrolist_unit
+label: 'Rent Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ml_rent_type: ml_rent_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

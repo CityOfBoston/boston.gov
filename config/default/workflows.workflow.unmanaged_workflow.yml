@@ -1,0 +1,44 @@
+uuid: 8aad9c74-1307-4dbc-b5a6-9ca779d64e43
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.change
+    - node.type.metrolist_affordable_housing
+  module:
+    - content_moderation
+id: unmanaged_workflow
+label: 'Unmanaged Workflow'
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+  entity_types:
+    node:
+      - change
+      - metrolist_affordable_housing
+  default_moderation_state: published

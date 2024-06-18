@@ -1,0 +1,20 @@
+uuid: 6ac059c5-5ae5-4107-8051-f9a68a0ec618
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_contest_ismajor
+field_name: field_contest_ismajor
+entity_type: taxonomy_term
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

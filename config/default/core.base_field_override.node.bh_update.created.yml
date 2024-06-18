@@ -1,0 +1,18 @@
+uuid: 157d9f68-4862-4ac1-aa5d-58eb8bb32e60
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.created
+field_name: created
+entity_type: node
+bundle: bh_update
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

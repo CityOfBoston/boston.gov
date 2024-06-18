@@ -1,0 +1,19 @@
+uuid: c954a413-95a7-43eb-802b-9b7867381cc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - geolocation_geometry
+    - node
+id: node.field_parcel_geo_polygon
+field_name: field_parcel_geo_polygon
+entity_type: node
+type: geolocation_geometry_polygon
+settings: {  }
+module: geolocation_geometry
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

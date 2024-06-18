@@ -1,0 +1,8 @@
+uuid: f9832d93-fd02-4c41-8471-9db1cc31401b
+langcode: en
+status: true
+dependencies: {  }
+name: City
+vid: city
+description: 'MetroList: City'
+weight: 0

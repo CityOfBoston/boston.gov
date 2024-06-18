@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_recurrence
+    - paragraphs.paragraphs_type.message_for_the_day
+  module:
+    - date_recur
+id: paragraph.message_for_the_day.field_recurrence
+field_name: field_recurrence
+entity_type: paragraph
+bundle: message_for_the_day
+label: Recurrence
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: now
+    default_end_date: now
+    default_date_time_zone: America/New_York
+    default_time_zone: America/New_York
+    default_rrule: ''
+default_value_callback: ''
+settings:
+  precreate: P2Y
+  parts:
+    all: true
+    frequencies:
+      SECONDLY: {  }
+      MINUTELY: {  }
+      HOURLY: {  }
+      DAILY: {  }
+      WEEKLY: {  }
+      MONTHLY: {  }
+      YEARLY: {  }
+field_type: date_recur

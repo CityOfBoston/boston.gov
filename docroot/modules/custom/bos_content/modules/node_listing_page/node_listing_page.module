@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Provides a listing page entity type.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_theme().
+ */
+function node_listing_page_theme() {
+  return [
+    'node__listing_page' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for event templates.
+ *
+ * Default template: event.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the event information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__listing_page(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_listing_page_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "listing_page") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        if ($variables["cob"]["header_image"]) {
+          $variables["attributes"]->addClass("page--wa");
+        }
+        else {
+          $variables["attributes"]->addClass("page");
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_listing_page_preprocess_paragraph__header_text(&$variables) {
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_listing_page_preprocess_node__listing_page(&$variables) {
+  _bos_theme_fix_attributes($variables);
+  $variables['attributes']->setAttribute("id", "node-" . $variables['elements']['#node']->id());
+
+  $background_image = $variables["elements"]["field_intro_image"];
+  if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+    $photo_id = Html::getUniqueId('hro');
+    $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+    $variables['#attached']['html_head'][] = [
+      [
+        "#tag" => "style",
+        "#value" => $css,
+        "#weight" => 100,
+      ],
+      'listing-page-intro-image-css',
+    ];
+
+    // Now make and render the Intro_image block.
+    $nestedElement = [
+      ["div" => "hero-image b b--fw b--fw--480"],
+      ["div" => "hro $photo_id hro--pt hro--pb"],
+    ];
+    $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+  }
+
+}

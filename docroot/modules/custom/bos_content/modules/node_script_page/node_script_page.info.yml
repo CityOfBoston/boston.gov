@@ -1,0 +1,33 @@
+name: Script Page
+type: module
+description: 'Page for content derived from 3rd party scripts/embeds.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - bos_components
+  - bos_seamless_doc
+config_devel:
+  - core.base_field_override.node.script_page.changed
+  - core.base_field_override.node.script_page.created
+  - core.base_field_override.node.script_page.menu_link
+  - core.base_field_override.node.script_page.metatag
+  - core.base_field_override.node.script_page.path
+  - core.base_field_override.node.script_page.promote
+  - core.base_field_override.node.script_page.published_at
+  - core.base_field_override.node.script_page.status
+  - core.base_field_override.node.script_page.sticky
+  - core.base_field_override.node.script_page.title
+  - core.base_field_override.node.script_page.uid
+  - core.entity_form_display.node.script_page.default
+  - core.entity_view_display.node.script_page.default
+  - core.entity_view_display.node.script_page.listing
+  - field.field.node.script_page.field_components
+  - field.field.node.script_page.field_contact
+  - field.field.node.script_page.field_embed_list
+  - field.field.node.script_page.field_intro_text
+  - field.field.node.script_page.field_link
+  - field.field.node.script_page.field_sidebar_components
+  - language.content_settings.node.script_page
+  - node.type.script_page

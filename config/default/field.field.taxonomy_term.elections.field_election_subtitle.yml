@@ -1,0 +1,24 @@
+uuid: 35398845-eeeb-4dc3-b23d-516b133ad0a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_election_subtitle
+    - taxonomy.vocabulary.elections
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Election Subtitle'
+id: taxonomy_term.elections.field_election_subtitle
+field_name: field_election_subtitle
+entity_type: taxonomy_term
+bundle: elections
+label: 'Election Subtitle'
+description: 'A subtitle or description for this election event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

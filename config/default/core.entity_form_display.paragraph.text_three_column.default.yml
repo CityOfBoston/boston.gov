@@ -1,0 +1,79 @@
+uuid: c39d497c-a953-40b8-997e-ea1fb0741aa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_three_column.field_left_column
+    - field.field.paragraph.text_three_column.field_middle_column
+    - field.field.paragraph.text_three_column.field_right_column
+    - field.field.paragraph.text_three_column.field_short_title
+    - paragraphs.paragraphs_type.text_three_column
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_column_info:
+      children:
+        - field_left_column
+        - field_middle_column
+        - field_right_column
+      label: 'Column Info'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: kGXFdSWakLZCLWy2vwR4t3v0qiq0iypFpNCKldYryUc
+id: paragraph.text_three_column.default
+targetEntityType: paragraph
+bundle: text_three_column
+mode: default
+content:
+  field_left_column:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_middle_column:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_right_column:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

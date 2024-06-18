@@ -1,0 +1,161 @@
+uuid: 35a81e06-a63b-49f3-a625-d0c272cc740a
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.web_app.field_anchor_custom_attributes
+    - field.field.paragraph.web_app.field_anchor_custom_css
+    - field.field.paragraph.web_app.field_anchor_custom_id
+    - field.field.paragraph.web_app.field_app_name
+    - field.field.paragraph.web_app.field_component_launch_script
+    - field.field.paragraph.web_app.field_component_title
+    - field.field.paragraph.web_app.field_hide_title_bar
+    - field.field.paragraph.web_app.field_short_title
+    - field.field.paragraph.web_app.field_webapp_name
+    - paragraphs.paragraphs_type.web_app
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_title:
+      children:
+        - field_component_title
+        - field_hide_title_bar
+        - field_short_title
+      label: title
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: g
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_advanced_settings:
+      children:
+        - field_anchor_custom_id
+        - field_anchor_custom_css
+        - field_anchor_custom_attributes
+        - group_dev_only
+      label: 'Advanced Settings'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_dev_only:
+      children:
+        - field_component_launch_script
+      label: 'Dev Only'
+      region: content
+      parent_name: group_advanced_settings
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Take care with adding anything here.  <br><b>This is a script which will run after the webapp is deployed.</b><br>Do not include &lt;script&gt; tags or any other markup - just add the javascript, it will be correctly injected.'
+        required_fields: true
+    group_legacy:
+      children:
+        - field_app_name
+      label: Legacy
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'This field should be empty, its content selected from the web-app dropdown.'
+        required_fields: true
+_core:
+  default_config_hash: 0ZBqzWJCbLu72UAADPRLeyvHicZbcKJtllhpwtoI1Zs
+id: paragraph.web_app.default
+targetEntityType: paragraph
+bundle: web_app
+mode: default
+content:
+  field_anchor_custom_attributes:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_anchor_custom_css:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_anchor_custom_id:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_app_name:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_component_launch_script:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_webapp_name:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

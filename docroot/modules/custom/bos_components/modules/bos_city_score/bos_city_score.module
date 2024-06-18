@@ -1,0 +1,175 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_city_score module.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\views\ResultRow;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\bos_city_score\Controller\CityscoreRest;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Display the help page.
+ *
+ * @param string $route_name
+ *   As.
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   As.
+ *
+ * @return array
+ *   As.
+ */
+function bos_city_score_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case ("help.page.bos_city_score"):
+      // As this help form contains some clues on authentication, lock access.
+      if (\Drupal::currentUser()->hasPermission('administer boston')) {
+        return CityscoreRest::helpPage();
+      }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bos_city_score_theme() {
+  return [
+    'html__rest__views__cityscore__html_table' => [
+      'base hook' => 'html',
+      'path' => 'modules/custom/bos_components/modules/bos_city_score/templates',
+      'template' => 'html--rest--views--cityscore--html-table',
+    ],
+    'paragraph__city_score_dashboard' => [
+      'base hook' => 'paragraph',
+      'path' => 'modules/custom/bos_components/modules/bos_city_score/templates',
+      'template' => 'paragraph--city-score-dashboard',
+    ],
+    'field__taxonomy_term__cityscore_metrics' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_city_score/templates',
+      'template' => 'field--taxonomy-term--cityscore-metrics',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_city_score_preprocess_paragraph(&$variables) {
+  // Add the js and css for the city-score component.
+  if ($variables['elements']['#paragraph']->bundle() == "city_score_dashboard") {
+    $variables['#attached']['library'][] = "bos_city_score/heroku.style";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_city_score_preprocess_field(&$variables, $hook, $b) {
+  if (!isset($variables["element"]) || (isset($variables["element"]) && $variables["element"]["#bundle"] != "cityscore_metrics")) {
+    return;
+  }
+  // Used by the cityscore view, cityscore page.
+  $variables["label_hidden"] = TRUE;
+  $fieldVal = (empty($variables["items"][0]['content']['#markup']) ? 0 : intval($variables["items"][0]['content']['#markup']));
+  if ($variables["element"]["#field_type"] == "decimal" && $fieldVal < 1) {
+    $variables["items"][0]["attributes"]->addClass("cs__low");
+  }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function bos_city_score_views_post_render(ViewExecutable $view, &$output, $cache) {
+  if ($view->storage->id() == "cityscore" && isset($output)) {
+    switch ($view->current_display) {
+      case "html_css_table":
+        break;
+
+      case "json_metrics":
+        break;
+
+      case "cityscore_totals_json":
+        // Strip array created by the view and just return a json string.
+        $json = json_decode($output['#markup']);
+        $output['#markup'] = json_encode($json[0]);
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_city_score_preprocess_views_view_table(&$variables) {
+  if ($variables['view']->storage->id() == "cityscore" && $variables['view']->current_display == "html_css_table") {
+    $variables['attributes']['class'][] = "views-table";
+    $variables['attributes']['id'][] = "cityscoreTable";
+  }
+}
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function bos_city_score_views_post_execute(ViewExecutable $view) {
+  if ($view->id() != "cityscore") {
+    return;
+  }
+  if ($view->current_display != "json_metrics") {
+    return;
+  }
+  // Used to generate totals(averages) for the view.
+  $total = [
+    "day" => ["total" => 0, "count" => 0],
+    "week" => ["total" => 0, "count" => 0],
+    "month" => ["total" => 0, "count" => 0],
+    "quarter" => ["total" => 0, "count" => 0],
+  ];
+  foreach ($view->result as $row) {
+    if (isset($row->_entity->field_previous_day->value)) {
+      $total['day']['total'] += $row->_entity->field_previous_day->value;
+      $total['day']['count']++;
+    }
+    if (isset($row->_entity->field_previous_week->value)) {
+      $total['week']['total'] += $row->_entity->field_previous_week->value;
+      $total['week']['count']++;
+    }
+    if (isset($row->_entity->field_previous_month->value)) {
+      $total['month']['total'] += $row->_entity->field_previous_month->value;
+      $total['month']['count']++;
+    }
+    if (isset($row->_entity->field_previous_quarter->value)) {
+      $total['quarter']['total'] += $row->_entity->field_previous_quarter->value;
+      $total['quarter']['count']++;
+    }
+  }
+  $tot = new ResultRow([
+    "taxonomy_term_field_data_weight" => 1000,
+    "tid" => 10000000,
+  ]);
+  $actLang = "en";
+  $defLang = "en";
+  if (isset($view->result[0]) && isset($view->result[0]->_entity)) {
+    $actLang = $view->result[0]->_entity->activeLangcode;
+    $defLang = $view->result[0]->_entity->defaultLangcode;
+  }
+  $tot->_entity = new Term([
+    'activeLangcode' => $actLang,
+    'defaultLangcode' => $defLang,
+  ], 'taxonomy_term', 'cityscore_metrics');
+  $total['day']['count'] = ($total['day']['count'] == 0 ? 1 : $total['day']['count']);
+  $total['week']['count'] = ($total['week']['count'] == 0 ? 1 : $total['week']['count']);
+  $total['month']['count'] = ($total['month']['count'] == 0 ? 1 : $total['month']['count']);
+  $total['quarter']['count'] = ($total['quarter']['count'] == 0 ? 1 : $total['quarter']['count']);
+  $tot->_entity->field_previous_day = number_format($total['day']['total'] / $total['day']['count'], 6);
+  $tot->_entity->field_previous_week = number_format($total['week']['total'] / $total['week']['count'], 6);
+  $tot->_entity->field_previous_month = number_format($total['month']['total'] / $total['month']['count'], 6);
+  $tot->_entity->field_previous_quarter = number_format($total['quarter']['total'] / $total['quarter']['count'], 6);
+  $tot->_entity->weight = 1000;
+  $tot->_entity->name = 'TOTAL';
+  $tot->_entity->save;
+  $view->result[] = $tot;
+}

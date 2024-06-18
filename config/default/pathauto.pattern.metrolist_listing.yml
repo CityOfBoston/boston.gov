@@ -1,0 +1,22 @@
+uuid: d22fca8c-2f59-4257-80bb-f1149c179489
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: metrolist_listing
+label: 'MetroList Listing'
+type: 'canonical_entities:node'
+pattern: 'metrolist/search/housing/[node:title]'
+selection_criteria:
+  345b939a-e045-4336-9cc0-6d62749e5a3a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 345b939a-e045-4336-9cc0-6d62749e5a3a
+    context_mapping:
+      node: node
+    bundles:
+      metrolist_development: metrolist_development
+selection_logic: and
+weight: -5
+relationships: {  }

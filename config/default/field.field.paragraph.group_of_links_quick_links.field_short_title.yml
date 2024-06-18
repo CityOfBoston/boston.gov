@@ -1,0 +1,21 @@
+uuid: 67525552-03fe-4bb0-97be-edf58dc70f1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_title
+    - paragraphs.paragraphs_type.group_of_links_quick_links
+_core:
+  default_config_hash: lCRdUtr6e7A0uLhTZHYzjcq5cKvgFM2axfKc2sBvHlA
+id: paragraph.group_of_links_quick_links.field_short_title
+field_name: field_short_title
+entity_type: paragraph
+bundle: group_of_links_quick_links
+label: 'Navigation Title'
+description: 'The nav title is used to populate the in-page navigation. <b>Please keep it short: one to three words is ideal.</b><br>Example can be found on boston.gov/winter/.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

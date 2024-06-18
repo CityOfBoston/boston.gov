@@ -1,0 +1,15 @@
+uuid: f51458b1-3bf6-4852-bb07-d2fc849a1a5f
+langcode: und
+status: true
+dependencies: {  }
+name: logo_square_a_mobile
+label: 'logo square a-mobile (672x672)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 672
+      height: 672
+      anchor: center-center

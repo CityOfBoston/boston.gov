@@ -1,0 +1,7 @@
+uuid: eb5ae996-dfda-4525-9e4d-a6cf4ef8541a
+langcode: en
+status: false
+dependencies: {  }
+formId: node_procurement_advertisement_form
+captchaType: default
+label: node_procurement_advertisement_form

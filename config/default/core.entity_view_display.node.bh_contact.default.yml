@@ -1,0 +1,32 @@
+uuid: 9748a9e9-ce5f-4159-925a-d6484e9d4d05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_contact.body
+    - node.type.bh_contact
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: gZhxeg04400bysNtHWnNp330MhNYeaqV5BBpUuVU_tM
+id: node.bh_contact.default
+targetEntityType: node
+bundle: bh_contact
+mode: default
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  published_at: true

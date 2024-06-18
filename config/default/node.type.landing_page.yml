@@ -1,0 +1,21 @@
+uuid: b0d6b5a9-8ae4-49f8-bfe9-72f8d99c01b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+      - menu-secondary-menu
+    parent: 'menu-secondary-menu:'
+_core:
+  default_config_hash: totHUNvNjPsnTxuoRcXsgG_Ic-xJoKj1ftgez2eoVRY
+name: 'Landing Page'
+type: landing_page
+description: 'A landing page will allow users to control the display of a list of components.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_keep_in_mind
+    - paragraphs.paragraphs_type.how_to_tab
+  module:
+    - text
+id: paragraph.how_to_tab.field_keep_in_mind
+field_name: field_keep_in_mind
+entity_type: paragraph
+bundle: how_to_tab
+label: 'Keep in Mind'
+description: 'Add additional notes to keep in mind when considering the subject presented by this tab.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

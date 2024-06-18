@@ -1,0 +1,28 @@
+uuid: 2184f1cd-fab9-4636-9f1f-4c440b1d72cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_units_affordable
+    - node.type.bh_project
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Income-Restricted Units'
+id: node.bh_project.field_bh_units_affordable
+field_name: field_bh_units_affordable
+entity_type: node
+bundle: bh_project
+label: 'Units affordable'
+description: "Finalized during the City Planning stage. Affordable units cost 30% or less of a resident's income."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

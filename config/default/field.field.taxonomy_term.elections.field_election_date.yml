@@ -1,0 +1,21 @@
+uuid: 6d3b22da-b9ca-4b0e-a5b5-bcff1920e2d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_election_date
+    - taxonomy.vocabulary.elections
+  module:
+    - datetime
+id: taxonomy_term.elections.field_election_date
+field_name: field_election_date
+entity_type: taxonomy_term
+bundle: elections
+label: 'Election Date'
+description: 'The actual date on which this election was held'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.header_text.field_contact
+    - field.field.paragraph.header_text.field_intro_text
+    - paragraphs.paragraphs_type.header_text
+  module:
+    - text
+id: paragraph.header_text.default
+targetEntityType: paragraph
+bundle: header_text
+mode: default
+content:
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 101
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

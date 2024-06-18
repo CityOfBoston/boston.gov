@@ -1,0 +1,27 @@
+uuid: 2af85eb8-7a3e-4754-9581-9e8bd9a5c771
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_attachment
+    - node.type.bh_project
+  module:
+    - file
+id: node.bh_project.field_bh_attachment
+field_name: field_bh_attachment
+entity_type: node
+bundle: bh_project
+label: Attachments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc pdf ppt'
+  max_filesize: ''
+  description_field: true
+field_type: file

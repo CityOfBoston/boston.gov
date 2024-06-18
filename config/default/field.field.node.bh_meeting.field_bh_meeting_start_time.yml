@@ -1,0 +1,21 @@
+uuid: 4f2b433d-2fda-428c-9361-c19756f022cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_meeting_start_time
+    - node.type.bh_meeting
+  module:
+    - datetime
+id: node.bh_meeting.field_bh_meeting_start_time
+field_name: field_bh_meeting_start_time
+entity_type: node
+bundle: bh_meeting
+label: 'Meeting Start Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+uuid: 88db091f-7339-4100-8e02-63f7a9a9db3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.group_of_links_list
+_core:
+  default_config_hash: mExCJ7anWppQbztVL1R3JEhk1sUN0uX_GwJ4OUameqg
+id: paragraph.group_of_links_list.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: group_of_links_list
+label: Title
+description: 'The title of the component that is displayed on the top of this component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

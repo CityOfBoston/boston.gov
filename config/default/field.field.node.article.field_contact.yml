@@ -1,0 +1,31 @@
+uuid: d7b96ef0-ae30-41e0-8793-120f2ed54ece
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.article
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: Ws4_lJVZ1cErNRBHyayyYxcbMYL1Cai0ZeZBfupwOWc
+id: node.article.field_contact
+field_name: field_contact
+entity_type: node
+bundle: article
+label: Contact
+description: 'Select department that should be displayed for this article.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

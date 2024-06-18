@@ -1,0 +1,21 @@
+uuid: 9112e6cc-cd48-4bac-a0b6-d087c3b5c214
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: gZCLESMdXmEZxHqnQFx7a0rUefrkVuFzHSMnWe0qioM
+id: likert_comparison_metrolist_1_7
+label: 'Likert: Comparison (MetroList 1-7)'
+category: Likert
+likert: true
+options: |
+  1: 'Disagree a lot'
+  2: Disagree
+  3: 'Somewhat disagree'
+  4: Neutral
+  5: 'Somewhat agree'
+  6: Agree
+  7: 'Agree a lot'

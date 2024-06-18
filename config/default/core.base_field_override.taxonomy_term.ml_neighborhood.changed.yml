@@ -1,0 +1,18 @@
+uuid: 06f267cd-1302-4bdc-a3e3-c0abeea11cff
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_neighborhood
+id: taxonomy_term.ml_neighborhood.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: ml_neighborhood
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

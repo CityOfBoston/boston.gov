@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Theme override for the IFrame entity browser. Template copied from core/modules/system/templates/page.html.twig
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div class="layout-container">
+
+    {#
+      We ommit most of the regions in this template, which generally includes
+      messages too. Since this is not desired we try to figure out where messages
+      live and display them separately.
+
+      @see entity_browser_preprocess_page__entity_browser__iframe()
+    #}
+    {{ messages }}
+
+    <main role="main">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+        <div class="layout-content">
+
+            {{ page.content }}
+
+        </div>{# /.layout-content #}
+
+    </main>
+
+</div>{# /.layout-container #}

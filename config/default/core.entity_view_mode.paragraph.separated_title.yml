@@ -1,0 +1,11 @@
+uuid: ba5e9c42-2285-4d92-8ab8-35a94e994de8
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.separated_title
+label: 'Separated Title'
+description: ''
+targetEntityType: paragraph
+cache: true

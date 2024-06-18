@@ -1,0 +1,31 @@
+uuid: 869bf70c-1536-4409-bdbd-8f5b14990307
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.text
+_core:
+  default_config_hash: SDpO8XukEtTYWOdjVkZciYpS4RkR7hbf6SNcInSAOKw
+id: paragraph.text.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: text
+label: Contact
+description: 'Please select a Contact who owns this content. The contact will be displayed on the component to give users a way to get in contact with the owner.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

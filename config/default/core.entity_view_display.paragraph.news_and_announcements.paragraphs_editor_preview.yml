@@ -1,0 +1,29 @@
+uuid: abc597c1-b309-4d87-953f-41e4a2a112fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.news_and_announcements.field_component_theme
+    - field.field.paragraph.news_and_announcements.field_component_title
+    - field.field.paragraph.news_and_announcements.field_featured_post
+    - field.field.paragraph.news_and_announcements.field_hide_title_bar
+    - field.field.paragraph.news_and_announcements.field_link
+    - field.field.paragraph.news_and_announcements.field_list
+    - field.field.paragraph.news_and_announcements.field_short_title
+    - paragraphs.paragraphs_type.news_and_announcements
+_core:
+  default_config_hash: y7HjOa_G_4OED0g8qyd5r7R_l4OepTDFcMBg-CCTvoI
+id: paragraph.news_and_announcements.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: news_and_announcements
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_featured_post: true
+  field_hide_title_bar: true
+  field_link: true
+  field_list: true
+  field_short_title: true

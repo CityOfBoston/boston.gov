@@ -1,0 +1,21 @@
+uuid: 2f65f531-25c3-4853-8627-a194544d8bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_position_title
+    - node.type.person_profile
+_core:
+  default_config_hash: hqNwMLwBS0wZ6YyW0fYTl8RZCa2ExVnCi2n5Pt4xZc0
+id: node.person_profile.field_position_title
+field_name: field_position_title
+entity_type: node
+bundle: person_profile
+label: 'Position Title'
+description: 'Please supply the job/position title of the person.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

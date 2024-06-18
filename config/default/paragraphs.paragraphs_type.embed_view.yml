@@ -1,0 +1,15 @@
+uuid: 7b0157f8-9d4e-443a-a4aa-e8e65b19d68e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: embed_view
+label: 'Embed View'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

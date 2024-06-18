@@ -1,0 +1,102 @@
+uuid: 0cdde87d-4cd4-4ee5-a261-7b858270ef85
+langcode: en
+status: true
+dependencies:
+  module:
+    - file_entity
+    - honeypot
+    - lightning_core
+    - media
+    - paragraphs_type_permissions
+    - system
+    - workbench
+third_party_settings:
+  lightning_core:
+    description: 'All users when logged in will have this role.'
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'authenticated user'
+weight: -9
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access workbench'
+  - 'bypass honeypot protection'
+  - 'download any document files'
+  - 'view files'
+  - 'view media'
+  - 'view own unpublished media'
+  - 'view paragraph content 3_column_w_image'
+  - 'view paragraph content bid'
+  - 'view paragraph content bos311'
+  - 'view paragraph content bos_signup_emergency_alerts'
+  - 'view paragraph content branded_links'
+  - 'view paragraph content cabinet'
+  - 'view paragraph content card'
+  - 'view paragraph content city_score_dashboard'
+  - 'view paragraph content columns'
+  - 'view paragraph content commission_contact_info'
+  - 'view paragraph content commission_members'
+  - 'view paragraph content commission_search'
+  - 'view paragraph content commission_summary'
+  - 'view paragraph content custom_hours_text'
+  - 'view paragraph content daily_hours'
+  - 'view paragraph content discussion_topic'
+  - 'view paragraph content document'
+  - 'view paragraph content drawer'
+  - 'view paragraph content drawers'
+  - 'view paragraph content election_area_results'
+  - 'view paragraph content election_candidate_results'
+  - 'view paragraph content election_card'
+  - 'view paragraph content election_contest_results'
+  - 'view paragraph content election_results'
+  - 'view paragraph content embed_view'
+  - 'view paragraph content events_and_notices'
+  - 'view paragraph content external_link'
+  - 'view paragraph content featured_topics'
+  - 'view paragraph content from_library'
+  - 'view paragraph content fyi'
+  - 'view paragraph content gol_list_links'
+  - 'view paragraph content grid_links'
+  - 'view paragraph content grid_of_cards'
+  - 'view paragraph content grid_of_people'
+  - 'view paragraph content grid_of_places'
+  - 'view paragraph content grid_of_programs_initiatives'
+  - 'view paragraph content grid_of_quotes'
+  - 'view paragraph content grid_of_topics'
+  - 'view paragraph content group_of_links_grid'
+  - 'view paragraph content group_of_links_list'
+  - 'view paragraph content group_of_links_mini_grid'
+  - 'view paragraph content group_of_links_quick_links'
+  - 'view paragraph content header_text'
+  - 'view paragraph content hero_image'
+  - 'view paragraph content how_to_contact_step'
+  - 'view paragraph content how_to_tab'
+  - 'view paragraph content how_to_text_step'
+  - 'view paragraph content iframe'
+  - 'view paragraph content internal_link'
+  - 'view paragraph content lightbox_link'
+  - 'view paragraph content list'
+  - 'view paragraph content map'
+  - 'view paragraph content message_for_the_day'
+  - 'view paragraph content news_and_announcements'
+  - 'view paragraph content newsletter'
+  - 'view paragraph content photo'
+  - 'view paragraph content quote'
+  - 'view paragraph content seamless_doc'
+  - 'view paragraph content sidebar_item'
+  - 'view paragraph content sidebar_item_w_icon'
+  - 'view paragraph content social_media_links'
+  - 'view paragraph content social_networking'
+  - 'view paragraph content status_overrides'
+  - 'view paragraph content tabbed_content_tab'
+  - 'view paragraph content text'
+  - 'view paragraph content text_one_column'
+  - 'view paragraph content text_three_column'
+  - 'view paragraph content text_two_column'
+  - 'view paragraph content transaction_grid'
+  - 'view paragraph content transactions'
+  - 'view paragraph content video'
+  - 'view paragraph content web_app'
+  - 'view the administration theme'

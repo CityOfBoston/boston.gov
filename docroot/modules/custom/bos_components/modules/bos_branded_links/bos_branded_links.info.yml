@@ -1,0 +1,13 @@
+name: 'Branded Links Component'
+type: module
+description: 'Provides theming for lists of branded links.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+  - link
+  - content_translation
+  - paragraphs_library
+config_devel: null

@@ -1,0 +1,16 @@
+uuid: f54b64b4-1972-4869-bc1a-302463425d1a
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: hero_image
+label: 'Hero Image'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Hero Image'
+behavior_plugins: {  }

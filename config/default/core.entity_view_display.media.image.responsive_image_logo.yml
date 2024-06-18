@@ -1,0 +1,45 @@
+uuid: cb735c92-8d00-4b9f-9536-0c313eb57f4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.responsive_image_logo
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - media.type.image
+    - responsive_image.styles.logo_images
+  module:
+    - fences
+    - responsive_image
+_core:
+  default_config_hash: VLDxfMVPTkd2xvOjFMCh3kWmaOYnd03zggFXuUXQVEY
+id: media.image.responsive_image_logo
+targetEntityType: media
+bundle: image
+mode: responsive_image_logo
+content:
+  image:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: logo_images
+      image_link: ''
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

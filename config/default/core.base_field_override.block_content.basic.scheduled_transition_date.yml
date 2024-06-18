@@ -1,0 +1,20 @@
+uuid: 1413dedc-2926-4386-b499-f113cae888ff
+langcode: und
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+  module:
+    - datetime
+id: block_content.basic.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: block_content
+bundle: basic
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

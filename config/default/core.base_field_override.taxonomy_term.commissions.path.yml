@@ -1,0 +1,22 @@
+uuid: d254cac4-d98d-470b-bb24-227aebe37809
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.commissions
+  module:
+    - path
+_core:
+  default_config_hash: BNJHJD9ZFDVpU9j8O35KJcZRlf3iTnEV528JIACMPlY
+id: taxonomy_term.commissions.path
+field_name: path
+entity_type: taxonomy_term
+bundle: commissions
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,18 @@
+uuid: 0c8c2ce7-7504-4365-b50b-7c0d4654c979
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.holidays
+id: taxonomy_term.holidays.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: holidays
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:7ee0ecba-c25b-4866-8019-84daad7cb89c'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: card
+label: Card
+icon_uuid: 7ee0ecba-c25b-4866-8019-84daad7cb89c
+icon_default: null
+description: 'Migrated from paragraph bundle Card'
+behavior_plugins: {  }

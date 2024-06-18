@@ -1,0 +1,15 @@
+uuid: 7613eedf-cbfa-4488-b8e5-d9ed3ec95006
+langcode: und
+status: true
+dependencies: {  }
+name: person_photo_b_tablet_1x
+label: 'Person photo b-tablet 1x (120x120)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 120
+      height: 120
+      anchor: center-center

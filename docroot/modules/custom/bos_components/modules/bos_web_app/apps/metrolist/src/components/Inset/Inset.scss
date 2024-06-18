@@ -1,0 +1,38 @@
+// <Inset />
+@import '@globals';
+
+.ml-inset {
+  width: ( $nominal-width-mobile-search__content / $nominal-width-mobile ) * 100%;
+  margin: 0 auto;
+}
+  @include media-breakpoint-up( large ) {
+    .ml-inset {
+      width: ( $nominal-width-desktop-search__content / $nominal-width-desktop ) * 100%;
+    }
+  }
+
+  @include media-breakpoint-up( xsmall ) {
+    .ml-inset.ml-inset--until-xsmall {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-up( small ) {
+    .ml-inset.ml-inset--until-small {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-up( medium ) {
+    .ml-inset.ml-inset--until-medium {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-inset.ml-inset--until-large {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-up( xlarge ) {
+    .ml-inset.ml-inset--until-xlarge {
+      width: 100%;
+    }
+  }

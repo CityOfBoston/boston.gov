@@ -1,0 +1,21 @@
+uuid: 9a763070-941c-4286-8588-80d6382aab95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_topics
+  module:
+    - options
+id: paragraph.grid_of_topics.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_topics
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

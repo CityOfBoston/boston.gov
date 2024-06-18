@@ -1,0 +1,22 @@
+uuid: b14a7654-699a-492d-a2da-906c88370181
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.transaction_grid
+id: paragraph.transaction_grid.status
+field_name: status
+entity_type: paragraph
+bundle: transaction_grid
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

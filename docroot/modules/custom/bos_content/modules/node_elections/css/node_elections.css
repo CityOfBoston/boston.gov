@@ -1,0 +1,27 @@
+.field-label-inline .field-label {
+  display: inline-block;
+}
+.field-label-inline .field-label::after {
+  content: ": ";
+}
+
+fieldset.flex .fieldset-wrapper,
+section.flex {
+  display: flex;
+  border: 1px solid silver;
+  padding: 10px;
+  margin-left: 40px;
+}
+fieldset.flex .form-item,
+section.flex .form-item {
+  margin-left: 10px;
+}
+section.flex label {
+  color: white;
+}
+.election_results_parent .es_hide:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+.bg--g000 {
+  background-color: #fff;
+}

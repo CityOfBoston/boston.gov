@@ -1,0 +1,15 @@
+uuid: 1640a7c2-266d-43cb-bd9e-80340c25c0d1
+langcode: en
+status: true
+dependencies: {  }
+name: news_item_thumb
+label: 'News Item -thumbnail (725x725)'
+effects:
+  074b0971-eed3-42ee-aac7-80286d33f2ed:
+    uuid: 074b0971-eed3-42ee-aac7-80286d33f2ed
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 725
+      height: 725
+      anchor: center-center

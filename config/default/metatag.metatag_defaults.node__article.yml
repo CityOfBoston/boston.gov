@@ -1,0 +1,20 @@
+uuid: 258a7b5c-19ea-4dc3-ae6a-2a020573419f
+langcode: und
+status: true
+dependencies: {  }
+id: node__article
+label: 'Content: Article'
+tags:
+  og_image: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_image_secure_url: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_image_url: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  schema_article_author: 'a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:15:"City of Boston ";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}}'
+  schema_article_date_modified: '[node:changed]'
+  schema_article_date_published: '[node:field_published_date]'
+  schema_article_description: '[node:body]'
+  schema_article_headline: '[node:title]'
+  schema_article_image: 'a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:21:"[custom:schema_image]";}'
+  schema_article_is_accessible_for_free: 'True'
+  schema_article_name: '[node:title]'
+  schema_article_publisher: 'a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:15:"City of Boston ";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}}'
+  schema_article_type: Article

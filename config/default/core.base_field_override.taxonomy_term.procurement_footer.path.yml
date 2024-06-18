@@ -1,0 +1,20 @@
+uuid: 77518055-20d4-459d-b98a-11a6847990cf
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_footer
+  module:
+    - path
+id: taxonomy_term.procurement_footer.path
+field_name: path
+entity_type: taxonomy_term
+bundle: procurement_footer
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,10 @@
+uuid: 3a00d0c8-7516-4df6-ad90-37e7abd3217f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 31xSouAIiV0zYsGAb1JjVAeNw4tGwEsstZMshcgStK0
+name: 'Boards and Commissions'
+vid: commissions
+description: 'References boards and commissions from the City Clerk database'
+weight: 0

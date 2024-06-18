@@ -1,0 +1,8 @@
+uuid: 4f17c235-c8ba-4e06-8621-d105f82c2ae3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Elector Groups'
+vid: elector_groups
+description: 'Elector Groups for an Election.'
+weight: 0

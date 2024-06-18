@@ -1,0 +1,20 @@
+uuid: 99afb06b-bc7b-4406-a03a-3bfd188d4179
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.massachusetts_general_law
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 7dVjXlyx5y02mDivgbrOUWhEUJXtrJQ4-Z4wFP8Vbrs
+id: taxonomy_term.massachusetts_general_law
+target_entity_type_id: taxonomy_term
+target_bundle: massachusetts_general_law
+default_langcode: site_default
+language_alterable: false

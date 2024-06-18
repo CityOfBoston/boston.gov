@@ -1,0 +1,18 @@
+uuid: a0bf9a05-b10f-4b9a-8b96-e27987a0b459
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.procurement_advertisement
+target_entity_type_id: node
+target_bundle: procurement_advertisement
+default_langcode: site_default
+language_alterable: false

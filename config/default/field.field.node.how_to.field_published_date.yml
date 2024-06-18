@@ -1,0 +1,26 @@
+uuid: 922da530-f20a-4041-9d04-285213df42ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.how_to
+  module:
+    - datetime
+_core:
+  default_config_hash: gI5aMvcJIhl3KWjR7RR97c9L2LFeWzcE0uYiRFAF8LY
+id: node.how_to.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: how_to
+label: 'Published Date'
+description: 'Add the date this content is effectively published.'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

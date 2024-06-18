@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.program_initiative_profile
+  module:
+    - datetime
+id: node.program_initiative_profile.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: program_initiative_profile
+label: 'Updated Date'
+description: 'The date this content was effectively last updated.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

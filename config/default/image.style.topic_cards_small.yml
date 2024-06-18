@@ -1,0 +1,15 @@
+uuid: 56b194ca-101a-430e-9182-87fc91066444
+langcode: und
+status: true
+dependencies: {  }
+name: topic_cards_small
+label: 'Topic Cards Small (614x256)'
+effects:
+  299fc753-745b-4e47-9cce-70ae76672eac:
+    uuid: 299fc753-745b-4e47-9cce-70ae76672eac
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 614
+      height: 256
+      anchor: center-center

@@ -1,0 +1,20 @@
+uuid: cc204a25-84f8-45c9-a429-2d1526af3b6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.fyi
+_core:
+  default_config_hash: j2U4gZpUS0Y3Jfl_EMSS-Eny8ALjwWoAjxBnzabRMKc
+id: paragraph.fyi.created
+field_name: created
+entity_type: paragraph
+bundle: fyi
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

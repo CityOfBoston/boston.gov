@@ -1,0 +1,47 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.status_overrides.field_override_message
+    - field.field.paragraph.status_overrides.field_status_item
+    - paragraphs.paragraphs_type.status_overrides
+  module:
+    - entity_reference_revisions
+    - fences
+id: paragraph.status_overrides.default
+targetEntityType: paragraph
+bundle: status_overrides
+mode: default
+content:
+  field_override_message:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_status_item:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

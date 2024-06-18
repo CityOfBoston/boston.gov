@@ -1,0 +1,17 @@
+name: Change
+type: module
+description: 'Provides a change log for Boston.gov and The Hub..'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_content
+configure: entity.change.settings
+config_devel:
+  - core.entity_form_display.node.change.default
+  - core.entity_view_display.node.change.default
+  - core.entity_view_display.node.change.teaser
+  - field.field.node.change.body
+  - language.content_settings.node.change
+  - node.type.change
+  - rabbit_hole.behavior_settings.node_type_change
+  - views.view.change

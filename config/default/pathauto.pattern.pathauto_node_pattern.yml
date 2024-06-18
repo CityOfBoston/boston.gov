@@ -1,0 +1,37 @@
+uuid: 38150d7e-6600-4dbd-bfde-1d4c4d2f8e1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_node_pattern
+label: 'Default Content Path'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  15d93c30-d9f9-4e5f-8429-1d9eb96fbc21:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 15d93c30-d9f9-4e5f-8429-1d9eb96fbc21
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+      bh_project: bh_project
+      department_profile: department_profile
+      event: event
+      how_to: how_to
+      landing_page: landing_page
+      listing_page: listing_page
+      metrolist_development: metrolist_development
+      person_profile: person_profile
+      place_profile: place_profile
+      post: post
+      procurement_advertisement: procurement_advertisement
+      program_initiative_profile: program_initiative_profile
+      public_notice: public_notice
+      topic_page: topic_page
+      transaction: transaction
+selection_logic: and
+weight: -4
+relationships: {  }

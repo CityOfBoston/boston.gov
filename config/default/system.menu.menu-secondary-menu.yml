@@ -1,0 +1,8 @@
+uuid: b0cebd4e-16a8-4124-bacf-421e7e761797
+langcode: en
+status: true
+dependencies: {  }
+id: menu-secondary-menu
+label: 'Secondary Menu'
+description: 'Place secondary menu links here. They will be present in the header bar. On mobile they will collapse into the off-canvas navigation.'
+locked: false

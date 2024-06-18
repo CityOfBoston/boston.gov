@@ -1,0 +1,34 @@
+uuid: 9b302d42-2e8c-4ada-a707-5a02dbf11439
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.topic_cards_large
+    - image.style.topic_cards_small
+  theme:
+    - bos_theme
+id: topic_cards
+label: 'Topic Cards'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_cards_large
+    breakpoint_id: boston.480-768-980.0
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_cards_small
+    breakpoint_id: boston.480-768-980.480
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_cards_large
+    breakpoint_id: boston.480-768-980.768
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: topic_cards_large
+    breakpoint_id: boston.person.full
+    multiplier: 1x
+breakpoint_group: 480-768-980
+fallback_image_style: topic_cards_large

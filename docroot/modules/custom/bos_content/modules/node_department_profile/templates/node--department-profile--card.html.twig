@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Creates a card-style layout for a department profile.
+ */
+#}
+<a href="{{ node_url }}" class="cdd g--4--xxl g--6 m-b300 m-b500--xxl" title="{{ content.field_intro_text[0]['#text'] }}">
+  <div class="cdd-c">
+
+    <div class="cdd-ic">
+      {{ content.field_icon }}
+    </div>
+
+    <div class="cdd-d">
+      <div class="cdd-d-i">
+        <div class="t--sans t--upper t--cb m-b100 t--s100">
+          {{ title.0 }}
+        </div>
+        <div class="t--subinfo">
+          {{ content.field_phone_number.0 }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</a>

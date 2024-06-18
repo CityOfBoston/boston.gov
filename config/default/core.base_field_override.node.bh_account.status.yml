@@ -1,0 +1,22 @@
+uuid: 71db4db3-7324-4a78-acc2-801d91494747
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.status
+field_name: status
+entity_type: node
+bundle: bh_account
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

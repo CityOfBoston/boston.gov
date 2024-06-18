@@ -1,0 +1,18 @@
+uuid: d6ae2858-c509-49f3-80db-bcaff78cbeb9
+langcode: en
+status: true
+dependencies:
+  module:
+    - poll
+id: poll.poll.metatag
+field_name: metatag
+entity_type: poll
+bundle: poll
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

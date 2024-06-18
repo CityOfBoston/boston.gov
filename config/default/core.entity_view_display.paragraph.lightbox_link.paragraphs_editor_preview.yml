@@ -1,0 +1,17 @@
+uuid: 92d06585-687f-405f-8027-55867e552542
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.lightbox_link.field_lightbox_link
+    - paragraphs.paragraphs_type.lightbox_link
+_core:
+  default_config_hash: YYFreGY-Y7YCveaIv6mUerGCtns-8l5REHFY8H5cXIo
+id: paragraph.lightbox_link.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: lightbox_link
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_lightbox_link: true

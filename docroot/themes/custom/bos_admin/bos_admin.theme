@@ -1,0 +1,806 @@
+<?php
+
+/**
+ * @file
+ * Contains functions to alter Drupal's markup for the adminimal theme.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Form\FormState;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Render\Markup;
+use Drupal\Core\GeneratedLink;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements theme.api.php hook_theme().
+ *
+ * @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/function/hook_theme/8.2.x
+ */
+function bos_admin_theme($existing, $type, $theme, $path) {
+  return [
+    'container' => [
+      'base hook' => 'container',
+      'path' => 'themes/custom/bos_admin/templates',
+      'template' => 'container',
+    ],
+    'media__media_library' => [
+      "base hook" => "media",
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function bos_admin_preprocess_html(&$variables) {
+  // Add adminimal class to the body.
+  $variables['attributes']['class'][] = 'bos_admin';
+  $variables['#attached']['library'][] = "bos_admin/global-styling";
+  if ($variables["root_path"] == "entity-browser") {
+    $variables['attributes']['class'][] = "html-" . $variables["root_path"];
+  }
+  // For the /admin/config/content/embed page add a class so we can theme
+  // the icon.
+  if (\Drupal::request()->attributes->has("_route_params")
+    && isset(\Drupal::request()->attributes->get("_route_params")["entity_type"])
+    && \Drupal::request()->attributes->get("_route_params")["entity_type"] == "embed_button") {
+    $variables['attributes']['class'][] = 'admin-content-embed-buttons';
+  }
+  if (NULL != ($node = \Drupal::routeMatch()->getParameter('node'))
+    && isset($node->hasField['moderation_state'])) {
+    $variables['attributes']['class'][] = "node-" . $node->get('moderation_state')->getString();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_page__admin__workbench(array &$variables) {
+  if ($variables["page"]["#title"]->__toString() == "My Workbench") {
+    $variables['#attached']['library'][] = "bos_admin/workbench";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function bos_admin_preprocess_html__entity_browser__modal__document_entity_browser(&$variables) {
+  $variables["html_attributes"]->addClass("no-scroll");
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_block(&$variables) {
+  if (isset($variables["content"]["#title"])
+    && is_object($variables["content"]["#title"]) && get_class($variables["content"]["#title"]) != "Drupal\Core\Render\Markup"
+    && NULL != ($arguments = $variables["content"]["#title"]->getArguments())
+    && !empty($arguments["@title"])) {
+    $at_settings = [
+      'word_boundary' => TRUE,
+      'ellipsis' => TRUE,
+      'max_length' => 35,
+    ];
+    if (isset($variables["content"]["#title"]->getArguments()["@type"])) {
+      $arguments['@title'] = advanced_text_formatter_trim_text($arguments["@title"], $at_settings);
+      $variables["content"]["#title"] = new TranslatableMarkup("<b>Edit</b> <em>@type</em> | @title [<em>Original Language</em>]", $arguments);
+    }
+    else {
+      $arguments["@type"] = $arguments["@title"]->getArguments()["@type"];
+      $variables["content"]["#title"] = t("<b>Edit</b> <em>@type</em> | %title [<em>%language</em>]", $arguments);
+
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_admin_block(&$variables) {
+  if (NULL !== \Drupal::routeMatch()->getParameters()->get("link_id") && \Drupal::routeMatch()->getParameters()->get("link_id") == "system.admin_config") {
+    _bos_admin_fix_attributes($variables);
+    $variables["attributes"]->addClass("admin-" . strtolower(Html::cleanCssIdentifier($variables["block"]["title"])));
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_input__date(&$variables) {
+  // Set the time widget to display hh:mm only.
+  if ($variables["attributes"]["type"] == "time") {
+    $variables["attributes"]["step"] = 0;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_textarea(&$variables) {
+  // Try to set something that will pass into the CKEditor.
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_admin_preprocess_input__textfield(&$variables) {
+
+  // Views autocomplete form ...
+  $variables["#attached"]["library"][] = "bos_admin/autocomplete";
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_admin_form_revision_overview_form_alter(&$form, FormStateInterface $form_state) {
+  $unhelpfulUsernamePattern = "~(CON|INT|BPHC|BPS)[0-9]{5,}~";
+  foreach ($form["node_revisions_table"] as $key => &$revision) {
+    if (is_numeric($key)) {
+      $context = &$revision["revision"]["#context"];
+      // If user is numeric, then find the realname.
+      $user = str_replace("\n", "", strip_tags($context["username"]->__toString()));
+      if (is_numeric($user)) {
+        $user = bos_admin_author_expand($user);
+      }
+      $context["username"] = Markup::create($user);
+      // If revision was migrated from D7, then insert relname into message.
+      if (preg_match($unhelpfulUsernamePattern, $context["message"]["#markup"], $rev_username)) {
+        $rev_user = Drupal::entityTypeManager()
+          ->getStorage("user")
+          ->loadByProperties(["name" => $rev_username[0]]);
+        $rev_user = reset($rev_user);
+        $context["message"]["#markup"] = preg_replace($unhelpfulUsernamePattern, $rev_user->realname, $context["message"]["#markup"]);
+      }
+      // Add the revision number.
+      $revision["revision"]["#template"] = preg_replace("~\{\{ date \}\}~", "{{ revisionid }} on {{ date }}", $revision["revision"]["#template"]);
+      $context["revisionid"] = new GeneratedLink();
+      $revfield = $revision["revision"]["#context"]["date"]->getGeneratedLink();
+      $revText = isset($revision['select_column_one']) ? $revision['select_column_one']['#return_value'] : "Unnamed Revision";
+      $revfield = preg_replace("~>[0-9\/ -\:apm]*<~", ">" . $revText . "<", $revfield);
+      $context["revisionid"]->setGeneratedLink($revfield);
+      $context["date"]->setGeneratedLink(strip_tags($revision["revision"]["#context"]["date"]->getGeneratedLink()));
+      // Add some tooltips to help editors with this form.
+      $tooltip = "Select this revision for compare";
+      $revision["select_column_one"]["#attributes"]["title"] = $tooltip;
+      $revision["select_column_two"]["#attributes"]["title"] = $tooltip;
+    }
+  }
+  // Revision form ...
+  $title = "compare";
+  $form["node_revisions_table"]["#header"]["select_column_one"] = $title;
+  $form["node_revisions_table"]["#header"]["select_column_two"] = $title;
+  $form["#attached"]["library"][] = "bos_admin/revisions";
+  $form["reset"] = [
+    "#attributes" => ["class" => ["compare-reset"]],
+    "#button_type" => "danger",
+    "#type" => "submit",
+    "#value" => Markup::create("Reset selections"),
+  ];
+  $form["#submit"][] = "bos_admin_revisions_defaults";
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bos_admin_form_node_status_item_edit_form_alter(&$form, FormStateInterface $form_state) {
+  // If this is the result of an edit button click.
+  if ($form_state->isSubmitted()) {
+    if ($value = $form_state->getValue("field_messages")) {
+      $value = reset($value);
+      $clicked = $value["_weight"];
+      if (isset($form["field_messages"]["widget"][$clicked]["subform"]["field_short_description"]["widget"][0]["value"])) {
+        $form["field_messages"]["widget"][$clicked]["subform"]["fsd"] = $form["field_messages"]["widget"][$clicked]["subform"]["field_short_description"]["widget"][0]["value"];
+        $form["field_messages"]["widget"][$clicked]["subform"]["fsd"]["#disabled"] = "disabled";
+      }
+    }
+  }
+  //  If this is as a result of clicking a Collapse button
+  else if ((!empty($form_state->getUserInput()) && $form_state->getUserInput()["_triggering_element_value"] == "Collapse")
+    || (!empty($form_state->getTriggeringElement() && (string) $form_state->getTriggeringElement()["#value"] == "Collapse"))) {
+    // do nothing
+  }
+  // This is as a result of the form being first built.
+  else {
+    $widget_elements = Drupal\Core\Render\Element::children($form["field_messages"]["widget"]);
+    foreach($widget_elements as $key ) {
+      if (is_numeric($key)) {
+        if (isset($form["field_messages"]["widget"][$key]["subform"])) {
+          $message = &$form["field_messages"]["widget"][$key];
+          if (isset($message["subform"]["field_short_description"]["widget"][0]["value"])) {
+            $message["subform"]["fsd"] = $message["subform"]["field_short_description"]["widget"][0]["value"];
+            $message["subform"]["fsd"]["#disabled"] = "disabled";
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function bos_admin_form_entity_embed_dialog_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form["entity"])) {
+    if ((NULL != $form_state->getValue("op")) && ($form_state->getValue("op")->__toString() == "Next")) {
+      if ($form_state->hasValue("entity_browser") && isset($form_state->getValue("entity_browser")["entities"][0])) {
+        $media_type = $form_state->getValue("entity_browser")["entities"][0]->bundle();
+        if ($media_type == "icon") {
+          // User has just selected an icon in the entity browser and is being
+          // shown a dialog with additional settings.
+          // Make basic customization of the dialog.
+          _bos_admin_base_entity_dialog_content($form, $media_type);
+          // Hide image style & set default so it gets mapped into a css class.
+          $form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#type"] = "hidden";
+          $form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#default_value"] = "icon_embedded_ck_editor";
+          $form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#options"] = [
+            "icon_embedded_ck_editor" => "Default Embedded Icon Style",
+          ];
+        }
+        elseif ($media_type == "image") {
+          // User has just selected an image in the entity browser and is being
+          // shown a dialog with additional settings.
+          // Make basic customization of the dialog.
+          _bos_admin_base_entity_dialog_content($form, $media_type);
+          // Hide the title and alt fields as these have already been provided.
+          $form["attributes"]["data-entity-embed-display-settings"]["alt"]["#type"] = "hidden";
+          $form["attributes"]["data-entity-embed-display-settings"]["title"]["#type"] = "hidden";
+        }
+      }
+    }
+    elseif (NULL == $form_state->getValue("op")) {
+      // An already embedded element is being updated.
+      // Make basic customization of the dialog.
+      $media_type = ($form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#default_value"] == "icon_embedded_ck_editor" ? "icon" : "image");
+      _bos_admin_base_entity_dialog_content($form, $media_type);
+      // If this is an icon, set the default style & hide the style dialog.
+      if ($media_type == "icon") {
+        $form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#type"] = "hidden";
+        $form["attributes"]["data-entity-embed-display-settings"]["image_style"]["#options"]["icon_embedded_ck_editor"] = "Default Icon Style";
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function bos_admin_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  // Re-organize the layout of the editor form.
+  $entity = $form_state->getFormObject()->getEntity();
+  if (!empty($entity)) {
+    $langcode = $entity->language()->getId();
+    $moderation_state = NULL;
+    if ($entity->hasField("moderation_state")) {
+      $moderation_state = $entity->get("moderation_state")->getString();
+    }
+    $bundle = $entity->bundle() ?? NULL;
+  }
+
+  // Node-edit forms: Make the Revision log message required.
+  $form["revision_log"]["widget"][0]["value"]["#attributes"]["placeholder"] = "If changing moderation state, you must supply a relevant log note for this update.";
+  $form["revision_log"]["widget"][0]["value"]["#title"] = Markup::create("Revision log message <span style='color: red;'>*</span>");
+
+  /* @see https://boston.gitbook.io/digital-documentation/developer-guides-1/drupal/drupal-8/site-development-notes/content-type-back-end/content-editor-ux */
+  // Create a secondary block group, and load.
+  $form["group_secondary"] = [
+    "#type" => "container",
+    "#weight" => 99,
+    "#attributes" => [
+      "class" => ["entity-meta__header", "entity-meta"],
+    ],
+  ];
+  // Load status and moderation state elements into block.
+  $form["status"]["#group"] = "group_secondary";
+  $form["moderation_state"]["#group"] = "group_secondary";
+
+  // Create a child block inside secondary block.
+  $form["group_secondary_revision_log"] = [
+    "#type" => "container",
+    "#group" => "group_secondary",
+    "#weight" => 99,
+    "#attributes" => [
+      "class" => ["entity-content-form-revision-information"],
+    ],
+  ];
+  // Load revision log to secondary-child block.
+  $form["revision_log"]["#group"] = "group_secondary_revision_log";
+
+  // Close the URL Alias details fieldset.
+  $form["path"]["widget"][0]["#open"] = FALSE;
+
+  // Find the tabs group which is the ultimate parent.
+  $parent = NULL;
+  foreach ((array) $form['#fieldgroups'] as $fieldgroup) {
+    if ($fieldgroup->format_type == "tabs") {
+      $parent = $fieldgroup->group_name;
+      break;
+    }
+  }
+  if (!isset($parent)) {
+    \Drupal::messenger()
+      ->addWarning("DISPLAY WARNING: To arrange properly, this display form requires\n
+            a \"tabs\" group element, and
+            a customised node-edit-form.html.twig template.
+          See the article content-type for examples.");
+    \Drupal::logger("component")
+      ->warning("To display to content editors properly, the module %mod display_form requires a 'tabs' group element.", ["%mod" => $bundle]);
+    $form['advanced']['#group'] = "group_secondary";
+    return;
+  }
+
+  // Move the Revisions info into a new details fieldset, and collapse.
+  $form["group_revision"] = [
+    "#type" => "details",
+    "#open" => FALSE,
+    "#group" => "advanced",
+    "#weight" => "-10",
+    "#title" => \Drupal::translation()->translate('Revision Information'),
+  ];
+  $form["revision_information"]["#group"] = "group_revision";
+
+  // Create a new field_group to hold config form elements.
+  $fieldset = new stdClass();
+  $fieldset->children = [
+    "advanced",
+  ];
+  $fieldset->format_type = "tab";
+  $fieldset->format_settings = [
+    "id" => "",
+    "classes" => "group-page-bos-admin field-group-tab",
+    "description" => "",
+    "required_fields" => TRUE,
+    "formatter" => "closed",
+  ];
+  $fieldset->label = "Advanced";
+  $fieldset->group_name = "group_bos_theme";
+  $fieldset->entity_type = "node";
+  $fieldset->bundle = $bundle;
+  $fieldset->context = "form";
+  $fieldset->mode = "default";
+  $fieldset->parent_name = $parent;
+  $fieldset->weight = 200;
+
+  // Configure the field group so it sits in the vertical tabs area.
+  $form["#fieldgroups"][$fieldset->group_name] = $fieldset;
+  $form["#fieldgroups"][$fieldset->parent_name]->children[] = $fieldset->group_name;
+  $form["#group_children"][$fieldset->group_name] = $fieldset->parent_name;
+  foreach ($fieldset->children as $child) {
+    $form["#group_children"][$child] = $fieldset->group_name;
+    $form[$child]["#group"] = $fieldset->group_name;
+  }
+
+  // Add css to close border on meta element.
+  $form["meta"]["#attributes"]["class"][] = "entity-meta";
+
+  if ((!empty($entity) && $entity->getEntityTypeId() == "node" && preg_match("/node\-.*\-edit\-form*/", $form["#id"]))
+    || ($form["#form_id"] == "views_exposed_form" && $form["#action"] == "/entity-browser/modal/document_entity_browser")
+    || ($form["#form_id"] == "entity_browser_document_entity_browser_form")) {
+    if (isset($form["#validate"]) && count($form['#validate']) > 1) {
+      array_splice($form["#validate"], 1, 0, "bos_admin_node_edit_validate");
+    }
+    else {
+      $form['#validate'][] = "bos_admin_node_edit_validate";
+    }
+    // Add stub for ckeditor context-awareness for themeing.
+    $form["#attached"]["library"][] = "bos_admin/ckeditor";
+
+    foreach (Element::getVisibleChildren($form) as $form_field) {
+      if (
+        (substr($form_field, 0, 6) == "field_"
+          || substr($form_field, 0, 4) == "body")
+        && isset($form[$form_field]["widget"][0]["#base_type"])
+        && $form[$form_field]["widget"][0]["#base_type"] == "textarea") {
+        $type = $form["#entity_type"];
+        $classes = " " . $type . "_" . ($bundle ?: "unk") . " " . $form_field;
+        _bos_admin_add_ckeditor_classes($form, [
+          $form_field => [
+            "body" => $classes,
+            "html" => " " . $type . "_" . ($bundle ?: "unk") . "_wrapper",
+          ],
+        ]);
+      }
+    }
+
+  }
+
+  // Theme the status a little bit.
+  if (!empty($form["meta"]["published"]["#markup"])) {
+    $form["meta"]["published"]["#wrapper_attributes"]['class'][] = "status-" . Html::cleanCssIdentifier(strtolower($form["meta"]["published"]["#markup"]));
+  }
+
+  // Add class to the moderation state widget/element on the form.
+  if (!empty($moderation_state)) {
+    $form["moderation_state"]["widget"][0]["current"]["#wrapper_attributes"]["class"][] = Html::cleanCssIdentifier(strtolower("status-" . $moderation_state));
+  }
+  $form["moderation_state"]["widget"][0]["scheduled_transitions"]["#attributes"]['class'][] = "moderation-state";
+
+  if (!empty($form["meta"]["author"]["#markup"])) {
+    $form["meta"]["author"]["#title"] = new TranslatableMarkup("Revision Author");
+    $form["author"]["#title"] = new TranslatableMarkup("Original Author");
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $form["meta"]["author"]["#markup"] = bos_admin_author_expand($form["meta"]["author"]["#markup"]);
+    if (!empty($node)) {
+      $account = \Drupal::entityTypeManager()->getStorage("user")->load($node->get("revision_uid")->target_id);
+      if (isset($account)) {
+        $form["meta"]["author"]["#markup"] = bos_admin_author_expand($account->get("name")->value);
+      }
+    }
+    // Management of secondary actions menu.
+    $form["#attached"]["library"][] = "bos_admin/actions";
+
+    // Move the metadata (update/publish) fields into advanced tab.
+    if (preg_match("~node_.*[_edit]?_form*~", $form_id) &&
+      (isset($form["#fieldgroups"]["group_page_meta_data"]) || isset($form["#fieldgroups"]["group_page_metadata"]))) {
+      if (!empty($bundle) && (
+          \Drupal::currentUser()->hasPermission("set any published on date")
+          || \Drupal::currentUser()->hasPermission("set " . $bundle . " published on date")
+        )) {
+        if (isset($form["#fieldgroups"]["group_page_metadata"])) {
+          $form["#group_children"]["group_page_metadata"] = "group_bos_theme";
+          $form["#fieldgroups"]["group_page_metadata"]->weight = 100;
+        }
+        if (isset($form["#fieldgroups"]["group_page_meta_data"])) {
+          $form["#group_children"]["group_page_meta_data"] = "group_bos_theme";
+          $form["#fieldgroups"]["group_page_meta_data"]->weight = 100;
+        }
+
+        $form["#attached"]["library"][] = "bos_admin/manual_date";
+      }
+      if (!\Drupal::currentUser()->hasPermission("set any published on date")
+        && !\Drupal::currentUser()->hasPermission("set " . $bundle . " published on date")) {
+        $form["field_manual_date"]["#attributes"]["class"][] = "hidden";
+        $form["field_updated_date"]["#attributes"]["class"][] = "hidden";
+        $form["field_published_date"]["#attributes"]["class"][] = "hidden";
+
+        if (isset($form["#fieldgroups"]["group_page_meta_data"])) {
+          $form["#fieldgroups"]["group_page_meta_data"]->format_type = "hidden";
+          $form["#fieldgroups"]["group_page_meta_data"]->format_settings["classes"]="group-page-metadata field-group-tab hidden";
+        }
+        elseif (isset($form["#fieldgroups"]["group_page_metadata"])) {
+          $form["#fieldgroups"]["group_page_metadata"]->format_type = "hidden";
+          $form["#fieldgroups"]["group_page_metadata"]->format_settings["classes"]="group-page-metadata field-group-tab hidden";
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function bos_admin_form_paragraph_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Add class to edit pages which are created from contextual editor.
+  if (preg_match("/.*?_entity_edit_form/", $form_id)) {
+    $form["#attributes"]["class"][] = "context_editor-wrapper";
+    // Walk up the lineage chain to find the ultimate entity (usually a node).
+    if (isset($form_state->getBuildInfo()['args'][0]) && NULL != $form_state->getFormObject()->getEntity()) {
+      // Get this entity to start from.
+      $this_entity = $form_state->getFormObject()->getEntity();
+      $chain = [$this_entity];
+      while (isset($this_entity) && $this_entity->hasField("parent_id")) {
+        $this_entity = $this_entity->getParentEntity();
+        if (isset($this_entity)) {
+          $chain[] = $this_entity;
+        }
+      }
+      $chain = array_reverse($chain);
+      $top = $chain[0];
+      // Check the 'top' $chain entity is the entity reported by the form.
+      if ($top->id() == $form_state->getBuildInfo()['args'][0]->id()) {
+
+        // Make the lineage into an array of strings.
+        $bundle[0] = ucwords(str_replace(["_", "-"], " ", $top->bundle()));
+        if ($bundle[0] != "Paragraphs Library Item") {
+          $title[0] = "<div class='ce-pretty'>";
+          $title[] = "<h2>" . $bundle[0] . ": <span class='ce-title'>" . $top->getTitle() . "</span> (nid " . $top->id() . ")" . "</h2>";
+          switch ($chain[1]->getEntityTypeId()) {
+            case "node":
+              $title[] = "<h3 class='ce-pretty'> > <span class='ce-title'>" . $chain[1]->getTitle() . "</span> (nid " . $chain[1]->id() . ")</h3>";
+              break;
+
+            case "paragraph":
+              foreach ($chain[1]->getFields() as $fieldName => $field) {
+                $crumb = ucwords(str_replace([
+                  '-',
+                  '_',
+                ], " ", $chain[1]->bundle() . (isset($chain[2]) ? " > " . $chain[2]->bundle() : '')));
+                if (preg_match('/^(field_).*?title/', $fieldName) && !empty($field->getValue()[0]['value'])) {
+                  $title[] = "<h3 class='ce-pretty'>Editing: " . $crumb . " > <span class='ce-title'>" . $field->getValue()[0]['value'] . "</span> (pid " . $chain[1]->id() . ")</h3>";
+                  break;
+                }
+              }
+              break;
+
+            case "taxonomy":
+              break;
+          }
+        }
+        $title[] = "</div>";
+
+        // Add this title to the form.
+        $form['lineage'] = [
+          '#type' => 'markup',
+          "#weight" => -100,
+          '#markup' => implode("", $title) . "<hr>",
+        ];
+
+        // Add a cancel button.
+        $form["actions"]["delete"] = [
+          "#access" => TRUE,
+          "#attributes" => [
+            "class" => [
+              "button",
+              "button--danger",
+            ],
+          ],
+          "#button_type" => "danger",
+          "#title" => new TranslatableMarkup("Return to @entity", [
+            "@entity" => $bundle[0],
+          ]),
+          "#value" => new TranslatableMarkup("Return to @entity", [
+            "@entity" => $bundle[0],
+          ]),
+          "#type" => "link",
+          "#url" => Url::fromRoute("entity.node.canonical", [
+            "node" => $this_entity->id(),
+          ], [
+            "fragment" => Html::cleanCssIdentifier(strtolower($chain[1]->field_short_title->value ?? "")),
+          ]),
+          "#weight" => 100,
+        ];
+      }
+    }
+  }
+}
+
+/**
+ * Check to see if a log value has been provided when one is needed.
+ *
+ * @param array $form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormState $form_state
+ *   The form_state object.
+ */
+function bos_admin_node_edit_validate(array &$form, FormState &$form_state) {
+  $form["moderation_state"]["widget"][0]["#changed"] = FALSE;
+  $new_value = $form_state->getValue('moderation_state');
+  if (isset($form["moderation_state"]["widget"][0]["current"]) && strtolower($form["moderation_state"]["widget"][0]["current"]["#markup"]) != strtolower($new_value[0]["value"])) {
+    $form["moderation_state"]["widget"][0]["#changed"] = TRUE;
+  }
+  if ((string) $form_state->getTriggeringElement()['#value'] == "Save") {
+    // If the moderation state has changed require a log message.
+    if ($form["moderation_state"]["widget"][0]["#changed"] && $form_state->getValue('revision_log')[0]['value'] == "") {
+      $form_state->setErrorByName('revision_log', "Please provide a revision log message.");
+    }
+    if (!empty($form_state->getValue('field_manual_date')) && $form_state->getValue('field_manual_date')['value'] == 1) {
+      if ($form_state->getValue('field_updated_date')[0]['value'] == "") {
+        $form_state->setErrorByName('field_updated_date', "Please provide a date for the (metadata) Updated Date field.");
+      }
+      if ($form_state->getValue('field_published_date')[0]['value'] == "") {
+        $form_state->setErrorByName('field_published_date', "Please provide a date for the (metadata) Published Date field.");
+      }
+    }
+  }
+
+  // Build out more meaningful error messages.
+  if (!empty($errors = $form_state->getErrors())) {
+    // Remove all errors which check the filename (string) against the list of
+    // accepted extensions.
+    // But, retest using the extension taken from the URI.
+    foreach ($errors as $key => &$error) {
+      if ($key == "widget" || strpos($key, "][") != FALSE) {
+        $key_parts = explode("][", $key);
+
+        if (!is_string($error) && NULL != ($err = $error->render())) {
+          if (array_key_exists("%files-allowed", $error->getArguments())) {
+            // Dig in and get the file ...
+            if ($key == "widget") {
+              $file_id = array_filter($form_state->getValue("entity_browser_select"));
+              $file_id = array_values($file_id);
+              $file_ids = explode(":", reset($file_id));
+              $file_ids = array_pop($file_ids);
+            }
+            else {
+              $file_id = $form_state->getValue($key_parts[0]);
+              array_shift($key_parts);
+              foreach ($key_parts as $key_part) {
+                $file_id = $file_id[$key_part];
+              }
+              if (!empty($file_id["target_id"])) {
+                $file_id = $file_id["target_id"];
+                $file_ids = explode(":", $file_id);
+                $file_ids = array_pop($file_ids);
+              }
+              else if(!empty($file_id["fids"])) {
+                $file_ids = array_pop($file_id["fids"]);
+              }
+            }
+            $file = File::load($file_ids);
+            $file_uri = $file->get("uri")->value;
+            // Now get the extension.
+            if (strpos($file_uri, ".") !== FALSE) {
+              $extension = explode(".", $file_uri);
+              $extension = array_pop($extension);
+              if (!empty($extension)) {
+                // Revalidate using the uri.
+                $list = array_values($error->getArguments());
+                $list = explode(" ", $list[0]);
+                // Validate.
+                if (in_array($extension, $list)) {
+                  // Extension is allowed, so remove error.
+                  unset($errors[$key]);
+                  // If all errors gone, then reset error flag.
+                  if (count($errors == 0)) {
+                    $form_state->clearErrors();
+                    return;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        if (isset($key_parts[1]) && !empty($para = $form[$key_parts[0]]['widget'][$key_parts[1]])) {
+          $text = $error->getUntranslatedString();
+          if (stripos($text, "collapsed paragraph") !== FALSE) {
+            $text = str_replace("@path:", "<b>@para</b> (@path) - ", $text);
+          }
+          $arguments = $error->getArguments() + ["@para" => $para["#paragraph_type"] ?? "-Unknown-"];
+          $error = new TranslatableMarkup($text, $arguments, $error->getOptions());
+        }
+      }
+    }
+  }
+  // Write the messages back into the form_state.
+  $form_state->clearErrors();
+  foreach ($errors as $name => $new_error) {
+    $form_state->setErrorByName($name, $new_error);
+  }
+}
+
+/**
+ * Update the custom Updated and Published fields on the node.
+ *
+ * @param string $name
+ *   The Username.
+ *
+ * @return string
+ *   A formatted string with Username and email etc.
+ */
+function bos_admin_author_expand(string $name) {
+  $output = $name;
+  try {
+    $user = Drupal::entityTypeManager()
+      ->getStorage("user")
+      ->loadByProperties(["name" => $name]);
+    if ($user = reset($user)) {
+      $output = (string) new TranslatableMarkup("%name | (<a href='@userLink'>user #@uid</a>)", [
+        "%email" => $user->getEmail(),
+        "%name" => $user->realname,
+        "@uid" => $user->id(),
+        "@userLink" => "/user/" . $user->id(),
+      ]);
+    }
+  }
+  catch (Exception $e) {
+    $output = $name;
+  }
+  return $output;
+}
+
+/**
+ * Revisions form compare Submit call-back.  Sets default layout/filter.
+ *
+ * @param array $form
+ *   The form object.
+ * @param \Drupal\Core\Form\FormState $form_state
+ *   The form state object.
+ */
+function bos_admin_revisions_defaults(array &$form, FormState &$form_state) {
+  $route = $form_state->getRedirect()->getRouteParameters();
+  $route["filter"] = "split_fields";
+  $form_state->getRedirect()
+    ->setRouteParameters($route)
+    ->setOption('query', ["filter" => "strip_tags"]);
+}
+
+/**
+ * Ensure attributes element of variables array is an Attribute object.
+ *
+ * This snippet fixes the situation where a module has defined an attributes
+ * element as an array and not a Drupal\core\Template\Attribute object.
+ *
+ * @param array $variables
+ *   The current variables array as generated pre-rendering.
+ * @param string $check_field
+ *   The attribute field.
+ */
+function _bos_admin_fix_attributes(array &$variables, string $check_field = "attributes") {
+  if (function_exists("_bos_core_fix_attributes")) {
+    _bos_core_fix_attributes($variables, $check_field);
+  }
+}
+
+/**
+ * Entity browser dialog window called from CKEditor needs customizing.
+ *
+ * @param array $form
+ *   The form from the form_alter hook.
+ */
+function _bos_admin_base_entity_dialog_content(array &$form, string $type) {
+  if (!empty($form["attributes"]["data-entity-embed-display-settings"])) {
+
+    $form_settings = &$form["attributes"]["data-entity-embed-display-settings"];
+
+    // We need to remove the svg styling content from the dialog window.
+    if ($type == "image") {
+      $form_settings["svg_attributes"]["#attributes"]["class"][] = "hidden";
+      $form_settings["svg_attributes"]["height"]["#default_value"] = 0;
+      $form_settings["svg_attributes"]["width"]["#default_value"] = 0;
+      $form_settings["svg_render_as_image"]["#type"] = "hidden";
+      $form_settings["svg_render_as_image"]["#default_value"] = 0;
+    }
+    if ($type == "icon") {
+      $form_settings["svg_attributes"]["#attributes"]["class"][] = "hidden";
+      $form_settings["svg_attributes"]["height"]["#default_value"] = 150;
+      $form_settings["svg_attributes"]["width"]["#default_value"] = 150;
+      $form_settings["svg_render_as_image"]["#type"] = "hidden";
+      $form_settings["svg_render_as_image"]["#default_value"] = 1;
+    }
+    // Remove the tip about modifying styles as we don't need to encourage that!
+    unset($form_settings["image_style"]["#description"]);
+
+    // Remove all styles who's machine name does not contain "_ckeditor".
+    foreach ($form_settings["image_style"]["#options"] as $style => $style_name) {
+      if (!stripos($style, "_ckeditor") > 0) {
+        unset($form_settings["image_style"]["#options"][$style]);
+      }
+      if (!stripos($style, "_ckeditor_default") > 0
+        && !isset($form_settings["image_style"]["#default_value"])) {
+        // If no default value, then use the machine id "_ckeditor_default".
+        $form_settings["image_style"]["#default_value"] = $style;
+      }
+
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_field_multiple_value_form(array &$variables) {
+  if (!empty($variables["element"]["#field_name"])
+    && $variables["element"]["#field_name"] == "field_components"
+    && !empty($variables["element"]["add_more"])) {
+    $variables["button"]["add_more_button"]["#value"] = new TranslatableMarkup("add this component");
+  }
+}
+
+/**
+ * Helper: Loads the drupalSettings ckeditor cob-style array.
+ *
+ * @param array $form
+ *   Usual form array from form_alter.
+ * @param array $classes
+ *   Array of element/class rules nested by form_field.
+ */
+function _bos_admin_add_ckeditor_classes(array &$form, array $classes) {
+  foreach ($classes as $form_field => $rules) {
+    foreach ($rules as $element => $class_list) {
+      $config = &$form['#attached']['drupalSettings']['ckeditor']['cob_styles'][$form_field];
+      if (empty($config[$element])) {
+        $config[$element] = $class_list;
+      }
+      else {
+        $config[$element] .= " " . $class_list;
+      }
+    }
+  }
+}

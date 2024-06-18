@@ -1,0 +1,5 @@
+services:
+  bos_core.commands:
+    class: Drupal\bos_core\Commands\BosCoreCommands
+    tags:
+      - { name: drush.command }

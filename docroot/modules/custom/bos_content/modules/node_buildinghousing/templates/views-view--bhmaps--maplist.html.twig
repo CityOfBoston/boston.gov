@@ -1,0 +1,101 @@
+{#
+/**
+ * @file
+ * Theme override for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+{% set classes = [
+  dom_id ? 'js-view-dom-id-' ~ dom_id,
+] %}
+
+<div class="dr">
+  <input type="checkbox" id="dr-map-list" class="dr-tr a11y--h" >
+
+    <header class="bh-show-on-mobile">
+      <label for="dr-map-list" class="dr-h ">
+        <div class="dr-ic">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+            <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z" />
+          </svg>
+        </div>
+        <div class="bh-dr-title"></div>
+      </label>
+    </header>
+
+  <div class="dr-c">
+
+    <div{{ attributes.addClass(classes) }}>
+      {{ title_prefix }}
+      {{ title }}
+      {{ title_suffix }}
+
+      {% if header %}
+        <header>
+          <h6>{{ header }}</h6>
+        </header>
+      {% endif %}
+
+
+      {{ exposed }}
+      {{ attachment_before }}
+
+      {% if rows -%}
+        {{ rows }}
+      {% elseif empty -%}
+        {{ empty }}
+      {% endif %}
+      {{ pager }}
+
+      {{ attachment_after }}
+      {{ more }}
+
+      {% if footer %}
+        <footer>
+          {{ footer }}
+        </footer>
+      {% endif %}
+
+      {{ feed_icons }}
+    </div>
+  </div>
+
+
+
+
+      <header class="bh-hide-on-mobile">
+        <label for="dr-map-list" class="dr-h ">
+          <div class="dr-ic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+              <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z" />
+            </svg>
+          </div>
+          <div class="bh-dr-title"></div>
+        </label>
+      </header>
+</div>

@@ -1,0 +1,13 @@
+uuid: 66a690b4-47b7-4a49-872b-b43d81e7a274
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 5_VJYGvd9c5Za4vWezp7fIb95VDz3uSEzmVk-3ZRGhY
+id: group_of_links_mini_grid
+label: 'Group of Links - Mini Grid'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Group of Links - Mini Grid'
+behavior_plugins: {  }

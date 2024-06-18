@@ -1,0 +1,11 @@
+uuid: afc5f12d-ff02-42e6-bce7-fdb0fa168ccd
+langcode: en
+status: true
+dependencies:
+  content: {  }
+id: columns
+label: 'Text w/ Image'
+icon_uuid: null
+icon_default: null
+description: 'Creates a single column with an image centered at top.'
+behavior_plugins: {  }

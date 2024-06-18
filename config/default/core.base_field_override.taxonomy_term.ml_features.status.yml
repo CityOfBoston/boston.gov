@@ -1,0 +1,22 @@
+uuid: 42bf2b73-655f-481d-87ac-0cb98b397523
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_features
+id: taxonomy_term.ml_features.status
+field_name: status
+entity_type: taxonomy_term
+bundle: ml_features
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: 4e0f2f03-3545-4492-9543-40a18d7f2f39
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: building_housing_project
+label: 'Building Housing Project'
+type: 'canonical_entities:node'
+pattern: 'buildinghousing/[node:field_bh_project_name]'
+selection_criteria:
+  c4ebaf00-a77d-4f3e-aa9f-2e1b711dc110:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c4ebaf00-a77d-4f3e-aa9f-2e1b711dc110
+    context_mapping:
+      node: node
+    bundles:
+      bh_project: bh_project
+selection_logic: and
+weight: -5
+relationships: {  }

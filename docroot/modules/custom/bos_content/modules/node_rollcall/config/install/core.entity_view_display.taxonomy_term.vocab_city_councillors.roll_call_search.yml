@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.roll_call_search
+    - field.field.taxonomy_term.vocab_city_councillors.field_active
+    - field.field.taxonomy_term.vocab_city_councillors.field_district
+    - field.field.taxonomy_term.vocab_city_councillors.field_email
+    - field.field.taxonomy_term.vocab_city_councillors.field_first_name
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors.roll_call_search
+targetEntityType: taxonomy_term
+bundle: vocab_city_councillors
+mode: roll_call_search
+content: {  }
+hidden:
+  description: true
+  field_active: true
+  field_district: true
+  field_email: true
+  field_first_name: true
+  langcode: true

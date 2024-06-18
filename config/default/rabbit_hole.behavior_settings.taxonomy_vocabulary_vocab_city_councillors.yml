@@ -1,0 +1,14 @@
+uuid: 08360463-9462-4e6c-80ea-4ba59e058008
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_vocabulary_vocab_city_councillors
+entity_type_id: taxonomy_vocabulary
+entity_id: vocab_city_councillors
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

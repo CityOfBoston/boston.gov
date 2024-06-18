@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Returns the HTML for the footer region.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https://drupal.org/node/1728140
+ */
+#}
+
+{% if content %}
+  <a href="#content" class="bk_top_btn scrollToTopBtn" id="main-content" data-swiftype-index="false"><img src="/themes/custom/bos_theme/images/back_top_btn.png" alt="Back to top" /></a>
+  <footer class="ft">
+      <div class="ft-c ft-ite">
+        {{ content }}
+        <ul class="ft-ll ft-ite-311">
+          <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow">
+              <span class="ft-ll-311">BOS:311</span>
+              <span class="tablet--hidden"> - </span>Report an issue
+            </a>
+          </li>
+        </ul>
+      </div>
+  </footer>
+{% endif %}

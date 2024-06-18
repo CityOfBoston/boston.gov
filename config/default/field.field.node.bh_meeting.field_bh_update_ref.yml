@@ -1,0 +1,28 @@
+uuid: 5ecaf417-c20d-4e70-821a-d6c224b009d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_update_ref
+    - node.type.bh_meeting
+    - node.type.bh_update
+id: node.bh_meeting.field_bh_update_ref
+field_name: field_bh_update_ref
+entity_type: node
+bundle: bh_meeting
+label: 'BH Update'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      bh_update: bh_update
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

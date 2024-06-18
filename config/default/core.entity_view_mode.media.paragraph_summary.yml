@@ -1,0 +1,15 @@
+uuid: 242f8256-1c29-47af-a5db-7d9f7bf687f1
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Used in "Paragraphs EXPEREMENTAL" summary display.'
+id: media.paragraph_summary
+label: Paragraph-Summary
+description: ''
+targetEntityType: media
+cache: true

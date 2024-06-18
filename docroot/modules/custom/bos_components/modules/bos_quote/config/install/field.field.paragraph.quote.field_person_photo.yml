@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_person_photo
+    - media.type.image
+    - paragraphs.paragraphs_type.quote
+id: paragraph.quote.field_person_photo
+field_name: field_person_photo
+entity_type: paragraph
+bundle: quote
+label: Photo
+description: 'Enter a headshot image of the person quoted. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 4717f2c1-b9a2-4465-97c9-f21f5f423a7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.seamless_doc
+_core:
+  default_config_hash: MXPKMYf4rCPdVQKurEEfPcVNkALY331Ds6e7RyXj--E
+id: paragraph.seamless_doc.created
+field_name: created
+entity_type: paragraph
+bundle: seamless_doc
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

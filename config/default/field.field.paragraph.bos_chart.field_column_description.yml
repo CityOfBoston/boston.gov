@@ -1,0 +1,24 @@
+uuid: 955ccffd-8483-454c-9282-93cdfd9ad9a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_description
+    - filter.format.filtered_html
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - text
+id: paragraph.bos_chart.field_column_description
+field_name: field_column_description
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart Body Text'
+description: '[Optional] This text sits in the chart column, above the chart, below the title.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - filtered_html
+field_type: text_long

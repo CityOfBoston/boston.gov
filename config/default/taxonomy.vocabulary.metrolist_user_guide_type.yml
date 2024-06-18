@@ -1,0 +1,8 @@
+uuid: d08ee77f-ac63-4299-afd6-cbfb9ce1378f
+langcode: en
+status: true
+dependencies: {  }
+name: 'MetroList: User Guide Type'
+vid: metrolist_user_guide_type
+description: 'MetroList: User Guide Type'
+weight: 0

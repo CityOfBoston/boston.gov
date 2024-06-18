@@ -1,0 +1,21 @@
+uuid: 1b1471e4-ee13-4eeb-bed4-a5c5723f7d8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.post
+  module:
+    - text
+id: node.post.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: post
+label: 'Intro Text'
+description: 'A short description or intro to the Post'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

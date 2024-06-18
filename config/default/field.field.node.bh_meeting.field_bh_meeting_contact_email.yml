@@ -1,0 +1,19 @@
+uuid: 09b779c2-303d-49cf-9878-aac7a9276bf8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_meeting_contact_email
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_meeting_contact_email
+field_name: field_bh_meeting_contact_email
+entity_type: node
+bundle: bh_meeting
+label: 'Meeting Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

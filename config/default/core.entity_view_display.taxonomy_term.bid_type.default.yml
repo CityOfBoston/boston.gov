@@ -1,0 +1,24 @@
+uuid: 8984baaf-c9e3-4f2f-9ff2-beb4bb9cca0a
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_type
+  module:
+    - text
+_core:
+  default_config_hash: tYO7YMN0yCbQOaCxhWjjrv2bn-giD9PnMF96FzexKrk
+id: taxonomy_term.bid_type.default
+targetEntityType: taxonomy_term
+bundle: bid_type
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

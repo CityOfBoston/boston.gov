@@ -1,0 +1,22 @@
+uuid: f362c388-8a38-44a3-878c-51fc6242fc58
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+id: node.bh_meeting.promote
+field_name: promote
+entity_type: node
+bundle: bh_meeting
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

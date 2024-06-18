@@ -1,0 +1,29 @@
+uuid: fd2dac80-7623-4902-9cb0-ad5d9e51c175
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_property_type
+    - node.type.bh_parcel
+    - taxonomy.vocabulary.bh_property_type
+id: node.bh_parcel.field_bh_property_type
+field_name: field_bh_property_type
+entity_type: node
+bundle: bh_parcel
+label: 'Property Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_property_type: bh_property_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

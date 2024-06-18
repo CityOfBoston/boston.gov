@@ -1,0 +1,22 @@
+name: Neighborhood Lookup
+type: module
+description: 'Provides content for MNL web app'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_content
+  - jsonapi
+config_devel:
+  - core.entity_form_display.node.neighborhood_lookup.default
+  - core.entity_view_display.node.neighborhood_lookup.default
+  - core.entity_view_display.node.neighborhood_lookup.teaser
+  - field.field.node.neighborhood_lookup.field_sam_address
+  - field.field.node.neighborhood_lookup.field_sam_id
+  - field.field.node.neighborhood_lookup.field_sam_neighborhood_data
+  - field.storage.node.field_sam_address
+  - field.storage.node.field_sam_id
+  - field.storage.node.field_sam_neighborhood_data
+  - language.content_settings.node.neighborhood_lookup
+  - node.type.neighborhood_lookup
+  - jsonapi.settings
+

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:e7cb8a38-4143-47e2-818f-c7c5815265bc'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: video
+label: Video
+icon_uuid: e7cb8a38-4143-47e2-818f-c7c5815265bc
+icon_default: null
+description: 'Migrated from paragraph bundle Video'
+behavior_plugins: {  }

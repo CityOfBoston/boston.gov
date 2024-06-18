@@ -1,0 +1,20 @@
+uuid: 96779ab4-271a-4780-b5ff-2d5f722de244
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cityscore_metrics
+  module:
+    - path
+id: taxonomy_term.cityscore_metrics.path
+field_name: path
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,20 @@
+uuid: 1eafaa1d-6ee2-4dfa-a3e0-c5da0f39335b
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+  module:
+    - datetime
+id: node.place_profile.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: place_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

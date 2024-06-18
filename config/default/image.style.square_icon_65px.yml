@@ -1,0 +1,15 @@
+uuid: c7d9aec8-40b4-416e-9d8f-3f382d6d0835
+langcode: und
+status: true
+dependencies: {  }
+name: square_icon_65px
+label: 'Square icon 65px'
+effects:
+  c8f26cdb-9158-440c-a633-b90f3e348eb4:
+    uuid: c8f26cdb-9158-440c-a633-b90f3e348eb4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 65
+      height: 65
+      anchor: center-center

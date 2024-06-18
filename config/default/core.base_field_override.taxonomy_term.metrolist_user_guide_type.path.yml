@@ -1,0 +1,20 @@
+uuid: b9a3febf-8428-40fa-8e07-66e2c136495f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.metrolist_user_guide_type
+  module:
+    - path
+id: taxonomy_term.metrolist_user_guide_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: metrolist_user_guide_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

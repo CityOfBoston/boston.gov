@@ -1,0 +1,29 @@
+uuid: 6e0ac212-8dad-4cc1-afd3-f12da67ebbb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_features
+    - node.type.metrolist_development
+    - taxonomy.vocabulary.ml_features
+id: node.metrolist_development.field_ml_features
+field_name: field_ml_features
+entity_type: node
+bundle: metrolist_development
+label: Features
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ml_features: ml_features
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

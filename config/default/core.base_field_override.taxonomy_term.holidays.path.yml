@@ -1,0 +1,20 @@
+uuid: ff2fd6da-a2c2-40f3-8524-896b32c5f466
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.holidays
+  module:
+    - path
+id: taxonomy_term.holidays.path
+field_name: path
+entity_type: taxonomy_term
+bundle: holidays
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

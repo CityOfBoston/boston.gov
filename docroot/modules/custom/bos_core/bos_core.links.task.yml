@@ -1,0 +1,15 @@
+needs_review.admin:
+  title: 'Needs Review'
+  base_route: system.admin_content
+  route_name: bos_core.content_moderation.list
+
+bos_core.admin:
+  title: 'Boston Configurations'
+  route_name: bos_core.admin
+  base_route: bos_core.admin
+  weight: 0
+bos_core.admin.query:
+  title: 'Query Site Content'
+  route_name: bos_core.admin.query
+  base_route: bos_core.admin
+  weight: 1

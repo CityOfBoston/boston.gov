@@ -1,0 +1,20 @@
+uuid: 28123618-cbd4-43d5-95bd-40f532426b6d
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - bos_admin
+id: bos_admin_help
+theme: bos_admin
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: visible
+  provider: help
+visibility: {  }

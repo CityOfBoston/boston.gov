@@ -1,0 +1,29 @@
+uuid: aa8b6636-43df-40a1-b9d6-f866b49bd823
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_type
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.unit_type
+id: node.metrolist_unit.field_ml_unit_type
+field_name: field_ml_unit_type
+entity_type: node
+bundle: metrolist_unit
+label: 'Unit Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      unit_type: unit_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

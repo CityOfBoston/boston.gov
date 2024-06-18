@@ -1,0 +1,23 @@
+uuid: dfee98b0-e602-4318-a1e6-6187eff4b09d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contest_overvotes
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_contest_overvotes
+field_name: field_contest_overvotes
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Over Votes'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

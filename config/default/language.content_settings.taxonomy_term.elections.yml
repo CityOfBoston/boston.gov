@@ -1,0 +1,11 @@
+uuid: 1c004f61-498d-4050-bbd4-d74e2ec8c947
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.elections
+id: taxonomy_term.elections
+target_entity_type_id: taxonomy_term
+target_bundle: elections
+default_langcode: site_default
+language_alterable: false

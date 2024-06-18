@@ -1,0 +1,19 @@
+uuid: 1be65c7f-ce06-4825-a053-e5f381a87ede
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.bos_chart
+id: paragraph.bos_chart.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart Title'
+description: 'This is the title which will appear above the chart.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

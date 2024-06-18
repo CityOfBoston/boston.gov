@@ -1,0 +1,44 @@
+name: Department Profile
+type: module
+description: 'Provides a department profile entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - bos_components
+config_devel:
+  - core.base_field_override.node.department_profile.changed
+  - core.base_field_override.node.department_profile.created
+  - core.base_field_override.node.department_profile.menu_link
+  - core.base_field_override.node.department_profile.metatag
+  - core.base_field_override.node.department_profile.path
+  - core.base_field_override.node.department_profile.promote
+  - core.base_field_override.node.department_profile.published_at
+  - core.base_field_override.node.department_profile.scheduled_transition_date
+  - core.base_field_override.node.department_profile.scheduled_transition_state
+  - core.base_field_override.node.department_profile.status
+  - core.base_field_override.node.department_profile.sticky
+  - core.base_field_override.node.department_profile.title
+  - core.base_field_override.node.department_profile.uid
+  - core.entity_form_display.node.department_profile.default
+  - core.entity_view_display.node.department_profile.default
+  - core.entity_view_display.node.department_profile.card
+  - core.entity_view_display.node.department_profile.published_by
+  - field.field.node.department_profile.body
+  - field.field.node.department_profile.field_address
+  - field.field.node.department_profile.field_components
+  - field.field.node.department_profile.field_department_type
+  - field.field.node.department_profile.field_email
+  - field.field.node.department_profile.field_hide_contact_form
+  - field.field.node.department_profile.field_icon
+  - field.field.node.department_profile.field_intro_text
+  - field.field.node.department_profile.field_manual_date
+  - field.field.node.department_profile.field_operation_hours
+  - field.field.node.department_profile.field_phone_number
+  - field.field.node.department_profile.field_published_date
+  - field.field.node.department_profile.field_sidebar_components
+  - field.field.node.department_profile.field_updated_date
+  - language.content_settings.node.department_profile
+  - node.type.department_profile
+  - xmlsitemap.settings.node.department_profile

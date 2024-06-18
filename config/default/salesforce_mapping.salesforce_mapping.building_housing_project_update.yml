@@ -1,0 +1,87 @@
+langcode: en
+id: building_housing_project_update
+label: 'Building Housing - Project Update'
+weight: -8
+type: salesforce_mapping
+key: ''
+always_upsert: false
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_frequency: 0
+push_frequency: 0
+push_limit: 0
+push_retries: 3
+pull_where_clause: ''
+sync_triggers:
+  push_create: false
+  push_update: false
+  push_delete: false
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: Update__c
+drupal_entity_type: node
+drupal_bundle: bh_update
+field_mappings:
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_headline
+    direction: sf_drupal
+    salesforce_field: Headline__c
+    id: 0
+  -
+    drupal_field_type: RelatedIDs
+    drupal_field_value: field_bh_project_ref
+    direction: sf_drupal
+    salesforce_field: Project__c
+    id: 1
+  -
+    drupal_field_type: properties
+    drupal_field_value: status
+    direction: sf_drupal
+    salesforce_field: Publish_to_Web__c
+    id: 2
+  -
+    drupal_field_type: properties
+    drupal_field_value: title
+    direction: sf_drupal
+    salesforce_field: Name
+    id: 3
+  -
+    drupal_field_type: properties_extended
+    drupal_field_value: body.value
+    direction: sf_drupal
+    salesforce_field: Update_Body__c
+    id: 4
+  -
+    drupal_field_type: RelatedTermString
+    drupal_field_value: field_bh_update_type_ref
+    direction: sf_drupal
+    salesforce_field: Type__c
+    id: 5
+  -
+    drupal_field_type: properties
+    drupal_field_value: field_bh_update_posted_date
+    direction: sf_drupal
+    salesforce_field: CreatedDate
+    id: 6
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_update.body
+    - field.field.node.bh_update.field_bh_headline
+    - field.field.node.bh_update.field_bh_project_ref
+    - field.field.node.bh_update.field_bh_update_posted_date
+    - field.field.node.bh_update.field_bh_update_type_ref
+    - field.storage.node.body
+    - field.storage.node.field_bh_project_ref
+    - field.storage.node.field_bh_update_type_ref
+    - node.type.bh_project
+    - node.type.bh_update
+    - taxonomy.vocabulary.bh_project_update_type
+  module:
+    - salesforce_pull
+    - text
+uuid: 4d61d347-c70e-4381-a2a7-1260d061edd4

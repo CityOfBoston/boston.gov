@@ -1,0 +1,8 @@
+uuid: 0b0a10a9-85bd-4bfe-b88c-b3731250620b
+langcode: en
+status: true
+dependencies: {  }
+id: menu-translation-menu
+label: Translation
+description: 'Translation links'
+locked: false

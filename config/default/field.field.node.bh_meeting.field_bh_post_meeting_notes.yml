@@ -1,0 +1,19 @@
+uuid: 0ccc52e4-d26b-4a44-9304-033fcf954c44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_post_meeting_notes
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_post_meeting_notes
+field_name: field_bh_post_meeting_notes
+entity_type: node
+bundle: bh_meeting
+label: 'Post-meeting Notes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

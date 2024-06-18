@@ -1,0 +1,20 @@
+uuid: 803a7014-d431-415d-9a62-c9eeff9abdbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+  module:
+    - path
+id: taxonomy_term.ml_occupancy_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: ml_occupancy_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

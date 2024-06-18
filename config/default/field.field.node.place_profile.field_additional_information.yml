@@ -1,0 +1,21 @@
+uuid: c281e4d2-ff1b-4a09-afd5-2d615ca3828e
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_information
+    - node.type.place_profile
+  module:
+    - text
+id: node.place_profile.field_additional_information
+field_name: field_additional_information
+entity_type: node
+bundle: place_profile
+label: 'Additional Information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

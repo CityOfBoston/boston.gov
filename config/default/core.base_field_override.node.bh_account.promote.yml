@@ -1,0 +1,22 @@
+uuid: a562a602-1b43-4bb7-8bb4-3de140c97cb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.promote
+field_name: promote
+entity_type: node
+bundle: bh_account
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

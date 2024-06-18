@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Module file for bos_fyi.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_fyi_theme() {
+  $theme['paragraph__fyi'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['paragraph__fyi__document'] = [
+    'base hook' => 'paragraph',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_fyi_preprocess_paragraph__fyi(&$variables) {
+  _bos_components_fix_attributes($variables);
+  if (isset($variables["#attributes"]) && $variables["#attributes"]->hasClass("component-section")) {
+    $variables["#attributes"]->removeClass("component-section");
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function bos_fyi_theme_suggestions_paragraph_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables["elements"]["#paragraph"]) && $variables["elements"]["#paragraph"]->bundle() == "document") {
+    $parent = $variables["elements"]["#paragraph"]->getParentEntity();
+    if (isset($parent) && $parent->bundle() == "fyi") {
+      $suggestions[] = "paragraph__fyi__document";
+    }
+  }
+
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_fyi_paragraph_fyi_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup[] = Markup::create($para["entity"]->get("field_title")->value);
+  $markup[] = Markup::create("<span class='info'>" . $para["entity"]->get("field_extra_info")->value . "</span>");
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

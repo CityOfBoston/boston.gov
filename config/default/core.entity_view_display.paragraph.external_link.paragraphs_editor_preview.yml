@@ -1,0 +1,17 @@
+uuid: e9aaab13-8a15-42d0-922f-57a57240c4f8
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+_core:
+  default_config_hash: Thyg3xhNK5b4rzSLnjLAMwsPDw8kWsDExxq6PwII53A
+id: paragraph.external_link.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: external_link
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_external_link: true

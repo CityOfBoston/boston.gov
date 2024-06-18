@@ -1,0 +1,23 @@
+uuid: dec8a15d-dd09-4298-9e46-fec4ab9efc04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_num_of_ownership_units
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_num_of_ownership_units
+field_name: field_ml_num_of_ownership_units
+entity_type: node
+bundle: metrolist_development
+label: 'Number of Ownership Units'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

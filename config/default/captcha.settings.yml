@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: QDFjOXYIYVwCPQYHY4wAx4DUqOEkNaZokIx6DGApR9I
+enable_globally: 0
+enable_globally_on_admin_routes: false
+default_challenge: recaptcha_v3/anonymousform
+description: ''
+title: ''
+administration_mode: false
+administration_mode_on_admin_routes: false
+whitelist_ips: ''
+wrong_captcha_response_message: aSDASd
+default_validation: 1
+persistence: 1
+enable_stats: false
+log_wrong_responses: false

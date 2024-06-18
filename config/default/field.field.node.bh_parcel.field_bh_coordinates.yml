@@ -1,0 +1,21 @@
+uuid: d2814b05-3976-442e-9e7a-87f34e3e54e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_coordinates
+    - node.type.bh_parcel
+  module:
+    - geolocation
+id: node.bh_parcel.field_bh_coordinates
+field_name: field_bh_coordinates
+entity_type: node
+bundle: bh_parcel
+label: Coordinates
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

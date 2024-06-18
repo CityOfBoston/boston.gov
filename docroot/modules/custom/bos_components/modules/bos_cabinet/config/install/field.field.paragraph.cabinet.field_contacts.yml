@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contacts
+    - paragraphs.paragraphs_type.cabinet
+    - taxonomy.vocabulary.contact
+id: paragraph.cabinet.field_contacts
+field_name: field_contacts
+entity_type: paragraph
+bundle: cabinet
+label: Contacts
+description: 'Enter any Departments, Boards or Agencies for this Cabinet.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

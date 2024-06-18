@@ -1,0 +1,24 @@
+uuid: da6eba4d-5504-473f-bf03-9b2f3be065dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.group_of_links_grid
+_core:
+  default_config_hash: lYKUkJ89Fsm_yv1bTsGgP1WcXAX00-tjWKYJa8ceMQw
+id: paragraph.group_of_links_grid.status
+field_name: status
+entity_type: paragraph
+bundle: group_of_links_grid
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

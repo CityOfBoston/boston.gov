@@ -1,0 +1,20 @@
+uuid: 1a8ff733-e6d1-4083-8dbe-2a6edb7c695f
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+  module:
+    - datetime
+id: node.emergency_alert.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: emergency_alert
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

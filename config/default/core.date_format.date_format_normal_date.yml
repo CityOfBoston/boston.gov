@@ -1,0 +1,8 @@
+uuid: 1e2ff3a5-ad8d-411a-954a-700ad9afa663
+langcode: en
+status: true
+dependencies: {  }
+id: date_format_normal_date
+label: 'Normal Date'
+locked: false
+pattern: 'F j, Y'

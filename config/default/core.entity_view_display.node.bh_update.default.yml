@@ -1,0 +1,481 @@
+uuid: 82d968ea-82bf-4d79-b3f9-64ff45034190
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bh_update.body
+    - field.field.node.bh_update.field_bh_attachment
+    - field.field.node.bh_update.field_bh_banner_status
+    - field.field.node.bh_update.field_bh_boston_based_business
+    - field.field.node.bh_update.field_bh_developer_name
+    - field.field.node.bh_update.field_bh_developer_website
+    - field.field.node.bh_update.field_bh_follower_emails
+    - field.field.node.bh_update.field_bh_headline
+    - field.field.node.bh_update.field_bh_image
+    - field.field.node.bh_update.field_bh_minority_owned_business
+    - field.field.node.bh_update.field_bh_project_images
+    - field.field.node.bh_update.field_bh_project_ref
+    - field.field.node.bh_update.field_bh_project_web_link
+    - field.field.node.bh_update.field_bh_text_updates
+    - field.field.node.bh_update.field_bh_update_posted_date
+    - field.field.node.bh_update.field_bh_update_type_ref
+    - field.field.node.bh_update.field_bh_veteran_owned_business
+    - field.field.node.bh_update.field_bh_women_owned_business
+    - field.field.node.bh_update.field_sf_web_update
+    - image.style.150_embedded_ckeditor
+    - node.type.bh_update
+  module:
+    - datetime
+    - fences
+    - field_group
+    - file
+    - svg_image
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_wrapper:
+      children:
+        - published_at
+        - field_sf_web_update
+        - field_bh_update_type_ref
+        - field_bh_headline
+        - field_bh_update_posted_date
+        - group_bh_update
+      label: Wrapper
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: m-b300
+        show_empty_fields: true
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_bh_update:
+      children:
+        - group_project
+        - group_developer
+        - group_update
+        - group_demographics
+      label: 'BH Update'
+      parent_name: group_wrapper
+      region: content
+      weight: 5
+      format_type: accordion
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        effect: bounceslide
+    group_update:
+      children:
+        - group_text_up
+        - group_documents
+        - group_f
+        - field_bh_project_images
+      label: Update
+      parent_name: group_bh_update
+      region: content
+      weight: 13
+      format_type: accordion_item
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+    group_demographics:
+      children:
+        - field_bh_minority_owned_business
+        - field_bh_women_owned_business
+        - field_bh_veteran_owned_business
+        - field_bh_boston_based_business
+      label: Demographics
+      parent_name: group_bh_update
+      region: content
+      weight: 14
+      format_type: accordion_item
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+    group_developer:
+      children:
+        - field_bh_developer_name
+        - field_bh_developer_website
+      label: Developer
+      parent_name: group_bh_update
+      region: content
+      weight: 12
+      format_type: accordion_item
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+    group_project:
+      children:
+        - field_bh_project_ref
+        - body
+        - field_bh_banner
+        - field_bh_image
+        - field_bh_project_web_link
+      label: Project
+      parent_name: group_bh_update
+      region: content
+      weight: 11
+      format_type: accordion_item
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+    group_f:
+      children:
+        - field_bh_follower_emails
+      label: 'Follower emails'
+      parent_name: group_update
+      region: content
+      weight: 26
+      format_type: fieldset
+      format_settings:
+        classes: m-v300
+        show_empty_fields: false
+        id: ''
+        description: ''
+    group_documents:
+      children:
+        - field_bh_attachment
+      label: Documents
+      parent_name: group_update
+      region: content
+      weight: 25
+      format_type: fieldset
+      format_settings:
+        classes: 'm-v300 ta--l'
+        show_empty_fields: false
+        id: ''
+        description: ''
+    group_text_up:
+      children:
+        - field_bh_text_updates
+      label: 'Text Updates'
+      parent_name: group_update
+      region: content
+      weight: 24
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+_core:
+  default_config_hash: Bo9O66NOzWi_ECAprZZ8iAmcXmJj-fdUATKpAarby1k
+id: node.bh_update.default
+targetEntityType: node
+bundle: bh_update
+mode: default
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 12
+    region: content
+  field_bh_attachment:
+    type: file_table
+    label: hidden
+    settings:
+      use_description_as_link_text: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 11
+    region: content
+  field_bh_boston_based_business:
+    type: boolean
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 25
+    region: content
+  field_bh_developer_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 8
+    region: content
+  field_bh_developer_website:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 9
+    region: content
+  field_bh_follower_emails:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: ul
+        fences_field_classes: 'm-b300 ul m-v100'
+        fences_field_item_tag: li
+        fences_field_item_classes: t--b
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 14
+    region: content
+  field_bh_headline:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bh_image:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 14
+    region: content
+  field_bh_minority_owned_business:
+    type: boolean
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 21
+    region: content
+  field_bh_project_images:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: 150_embedded_ckeditor
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 27
+    region: content
+  field_bh_project_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 11
+    region: content
+  field_bh_project_web_link:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 15
+    region: content
+  field_bh_text_updates:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: code
+        fences_field_item_classes: 'lo-t m-b200'
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 10
+    region: content
+  field_bh_update_posted_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_bh_update_type_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_bh_veteran_owned_business:
+    type: boolean
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 24
+    region: content
+  field_bh_women_owned_business:
+    type: boolean
+    label: above
+    settings:
+      format: yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-b300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 22
+    region: content
+  field_sf_web_update:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  published_at:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: m-t300
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_bh_banner_status: true
+  langcode: true
+  links: true
+  salesforce_id: true
+  salesforce_last_sync: true

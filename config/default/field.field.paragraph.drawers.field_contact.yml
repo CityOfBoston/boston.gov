@@ -1,0 +1,32 @@
+uuid: 151dac7a-7129-4141-8c89-6aecb6b4bbf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.drawers
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: AyTT1nosx12NUBxhoHIYTgNQrEbZaNM5ax7UYZ8Qf6o
+id: paragraph.drawers.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: drawers
+label: Contact
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

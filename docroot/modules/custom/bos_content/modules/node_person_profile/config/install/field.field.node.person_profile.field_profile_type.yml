@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_profile_type
+    - node.type.person_profile
+    - taxonomy.vocabulary.profile_type
+id: node.person_profile.field_profile_type
+field_name: field_profile_type
+entity_type: node
+bundle: person_profile
+label: 'Profile Type'
+description: 'Please select the appropriate profile type for the person.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      profile_type: profile_type
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

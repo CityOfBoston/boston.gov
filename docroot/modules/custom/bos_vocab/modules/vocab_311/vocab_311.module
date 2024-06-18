@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Main file for the vocab_311 module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function vocab_311_theme() {
+  $theme['taxonomy_term__311_request'] = [
+    'base hook' => 'taxonomy_term',
+    'path' => 'modules/custom/bos_vocab/modules/vocab_311/templates',
+  ];
+  $theme['field__field_external_link__311_request'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_vocab/modules//vocab_311/templates',
+  ];
+  return $theme;
+}

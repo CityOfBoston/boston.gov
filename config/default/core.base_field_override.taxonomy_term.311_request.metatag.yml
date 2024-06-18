@@ -1,0 +1,18 @@
+uuid: 03b34cd4-ea1a-46cf-b5ce-baf382816a1b
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.311_request
+id: taxonomy_term.311_request.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: 311_request
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,27 @@
+uuid: 703a4a93-0d5b-4e60-ada2-a385a6028806
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.cabinet.field_component_theme
+    - field.field.paragraph.cabinet.field_contacts
+    - field.field.paragraph.cabinet.field_description
+    - field.field.paragraph.cabinet.field_person
+    - field.field.paragraph.cabinet.field_short_title
+    - field.field.paragraph.cabinet.field_title
+    - paragraphs.paragraphs_type.cabinet
+_core:
+  default_config_hash: U20w0kAK8mqnvDo20v09DLTlE9EVpGq_yfUagkGwn0U
+id: paragraph.cabinet.separated_title
+targetEntityType: paragraph
+bundle: cabinet
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_contacts: true
+  field_description: true
+  field_person: true
+  field_short_title: true
+  field_title: true

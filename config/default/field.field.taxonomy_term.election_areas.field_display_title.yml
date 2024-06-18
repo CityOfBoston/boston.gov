@@ -1,0 +1,19 @@
+uuid: ab439964-8592-4f77-82d7-70b33bed9a0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.election_areas
+id: taxonomy_term.election_areas.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: election_areas
+label: 'Area Display Name'
+description: 'The name for the Area. (e.g. First District, or Statewide etc)'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

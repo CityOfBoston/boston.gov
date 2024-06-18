@@ -1,0 +1,20 @@
+uuid: 088f8ed6-0a0f-4b66-b4eb-4f4718b2aa15
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.311_request
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: x9ZhqifWFBneaDItLZcKKPiZkNPNfRGyRPtchIU6Qeg
+id: taxonomy_term.311_request
+target_entity_type_id: taxonomy_term
+target_bundle: 311_request
+default_langcode: site_default
+language_alterable: false

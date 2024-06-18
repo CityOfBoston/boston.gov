@@ -1,0 +1,15 @@
+uuid: b096ab9d-991f-4d1d-b03a-8c43d0f8147b
+langcode: und
+status: true
+dependencies: {  }
+id: node__person_profile
+label: 'Content: Person Profile'
+tags:
+  schema_person_affiliation: 'a:3:{s:5:"@type";s:12:"Organization";s:4:"name";s:14:"City Of Boston";s:4:"logo";a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:45:"https://patterns.boston.gov/images/b-dark.svg";}}'
+  schema_person_type: Person
+  schema_person_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:29:"[boston:social-image-default]";}'
+  schema_person_address: 'a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_address:address_line1]";s:15:"addressLocality";s:29:"[node:field_address:locality]";s:13:"addressRegion";s:40:"[node:field_address:administrative_area]";s:10:"postalCode";s:32:"[node:field_address:postal_code]";}'
+  schema_person_email: '[node:field_email]'
+  schema_person_name: '[node:field_first_name] [node:field_last_name]'
+  schema_person_telephone: '[node:field_phone_number]'
+  schema_person_job_title: '[node:field_position_title]'

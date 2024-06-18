@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_grid
+id: paragraph.group_of_links_grid.field_subheader
+field_name: field_subheader
+entity_type: paragraph
+bundle: group_of_links_grid
+label: Subheader
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,10 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup
+target_entity_type_id: node
+target_bundle: neighborhood_lookup
+default_langcode: site_default
+language_alterable: false

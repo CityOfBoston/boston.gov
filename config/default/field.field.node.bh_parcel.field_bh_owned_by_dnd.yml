@@ -1,0 +1,23 @@
+uuid: d47f54c7-1717-405e-a96e-a518531c0383
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_owned_by_dnd
+    - node.type.bh_parcel
+id: node.bh_parcel.field_bh_owned_by_dnd
+field_name: field_bh_owned_by_dnd
+entity_type: node
+bundle: bh_parcel
+label: 'Owned By DND'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

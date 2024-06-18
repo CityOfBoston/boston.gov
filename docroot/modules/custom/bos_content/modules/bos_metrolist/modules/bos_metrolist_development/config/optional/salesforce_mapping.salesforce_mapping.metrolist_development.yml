@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.metrolist_development.field_ml_address
+    - field.storage.node.field_ml_address
+    - node.type.metrolist_development
+  module:
+    - address
+    - salesforce_pull
+id: metrolist_development
+label: 'MetroList - Development'
+weight: -10
+type: salesforce_mapping
+key: ''
+async: false
+push_standalone: false
+pull_standalone: true
+pull_trigger_date: LastModifiedDate
+pull_where_clause: ''
+sync_triggers:
+  pull_create: true
+  pull_update: true
+  pull_delete: true
+salesforce_object_type: Affordable_Housing__c
+drupal_entity_type: node
+drupal_bundle: metrolist_development
+field_mappings:
+  1:
+    drupal_field_type: properties
+    drupal_field_value: title
+    salesforce_field: Name
+    direction: sf_drupal
+    id: 2
+  2:
+    drupal_field_type: properties_extended
+    drupal_field_value: field_ml_address.locality
+    salesforce_field: Outside_Boston_Location__c
+    direction: sf_drupal
+    id: 3
+  3:
+    drupal_field_type: properties_extended
+    drupal_field_value: field_ml_address.dependent_locality
+    salesforce_field: Neighborhood__c
+    direction: sf_drupal
+    id: 4
+  4:
+    drupal_field_type: properties_extended
+    drupal_field_value: field_ml_address.postal_code
+    salesforce_field: ZIP_Code__c
+    direction: sf_drupal
+    id: 5
+  5:
+    drupal_field_type: properties_extended
+    drupal_field_value: field_ml_address.address_line1
+    salesforce_field: Street_Address__c
+    direction: sf_drupal
+    id: 6
+push_limit: 0
+push_retries: 3
+push_frequency: 0
+pull_frequency: 0
+always_upsert: false

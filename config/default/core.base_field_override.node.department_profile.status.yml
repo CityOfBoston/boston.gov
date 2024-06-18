@@ -1,0 +1,22 @@
+uuid: e28c047b-6e20-4021-ae09-dfb50a21578c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+id: node.department_profile.status
+field_name: status
+entity_type: node
+bundle: department_profile
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

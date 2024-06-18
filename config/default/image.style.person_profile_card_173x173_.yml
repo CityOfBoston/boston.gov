@@ -1,0 +1,15 @@
+uuid: 143d94fc-6c90-494a-940e-4b121d267159
+langcode: und
+status: true
+dependencies: {  }
+name: person_profile_card_173x173_
+label: 'Person Profile Card (173x173)'
+effects:
+  fe5e9760-0431-4a94-bf32-0b6984d65ba9:
+    uuid: fe5e9760-0431-4a94-bf32-0b6984d65ba9
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 173
+      height: 173
+      anchor: center-center

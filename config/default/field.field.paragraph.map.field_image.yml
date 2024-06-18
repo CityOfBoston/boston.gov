@@ -1,0 +1,29 @@
+uuid: d454226d-c5fe-42d6-aaa2-bf65c38b858e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.map
+id: paragraph.map.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: map
+label: 'Background Image'
+description: "[optional] Background to display in map space before the actual dynamic map is loaded.<br>\r\nIf no image is supplied, then a default sample map of the Boston City region is used."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

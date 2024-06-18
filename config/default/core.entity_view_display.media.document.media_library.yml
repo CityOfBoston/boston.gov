@@ -1,0 +1,41 @@
+uuid: ee22b6de-388c-409a-940e-c1c8676cdaba
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.document.field_document
+    - field.field.media.document.field_media_in_library
+    - media.type.document
+  module:
+    - fences
+_core:
+  default_config_hash: b2OT-HhPhS2sEoaHLM_9deYfXw2A37hxc0TwsahXsp4
+id: media.document.media_library
+targetEntityType: media
+bundle: document
+mode: media_library
+content:
+  thumbnail:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: media_library_cob
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_document: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  uid: true

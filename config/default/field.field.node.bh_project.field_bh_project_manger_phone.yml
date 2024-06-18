@@ -1,0 +1,21 @@
+uuid: ed694177-29fb-400a-a267-4813d8d65663
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_project_manger_phone
+    - node.type.bh_project
+  module:
+    - telephone
+id: node.bh_project.field_bh_project_manger_phone
+field_name: field_bh_project_manger_phone
+entity_type: node
+bundle: bh_project
+label: 'Project Manger Phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

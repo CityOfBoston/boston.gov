@@ -1,0 +1,19 @@
+// <SectionHeader />
+@import '@globals';
+
+.ml-section-header {
+  border-bottom: $border-300 solid $color-charles-blue;
+  padding-bottom: $sizing-100;
+  margin-bottom: 1.5rem;
+}
+  .ml-section-header__heading {
+    margin: 0 0 $sizing-100;
+    font-family: $font-family-sans-serif;
+    font-size: responsive 20px 45px;
+    font-range: 480px 1440px;
+    font-weight: 700;
+    padding-right: $sizing-300;
+    line-height: 1;
+    color: $color-charles-blue;
+    text-transform: uppercase;
+  }

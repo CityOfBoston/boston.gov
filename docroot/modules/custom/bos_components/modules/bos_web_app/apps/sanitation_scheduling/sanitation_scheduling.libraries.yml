@@ -1,0 +1,21 @@
+sanitation_scheduling-dev:
+  version: scheduling.123456
+  css:
+    layout:
+      css/sanitation_scheduling.overrides.css: {preprocess: false, attributes: {media: screen, type: 'text/css'}}
+      //sanitation-scheduling-dev.web.app/assets/index.css: {preprocess: false, attributes: {media: screen, type: 'text/css'}}
+  js:
+    //sanitation-scheduling-dev.web.app/assets/bundle.js: {preprocess: false, attributes: {type: module, id: sanitation-js}}
+  dependencies:
+    - core/drupalSettings
+
+sanitation_scheduling:
+  version: scheduling.123456
+  css:
+    layout:
+      css/sanitation_scheduling.overrides.css: {preprocess: true, attributes: {media: screen, type: 'text/css'}}
+      //sanitation-scheduling-prod.web.app/assets/index.css: {preprocess: false, attributes: {media: screen, type: 'text/css'}}
+  js:
+    //sanitation-scheduling-prod.web.app/assets/bundle.js: {preprocess: false, attributes: {type: 'module', id: sanitation-js}}
+  dependencies:
+    - core/drupalSettings

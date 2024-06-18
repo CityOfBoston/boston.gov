@@ -1,0 +1,20 @@
+uuid: 3d17db8c-bfb5-468d-948d-f8159e5219a3
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+  module:
+    - datetime
+id: node.metrolist_affordable_housing.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: metrolist_affordable_housing
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

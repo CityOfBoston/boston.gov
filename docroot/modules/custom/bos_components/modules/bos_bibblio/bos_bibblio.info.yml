@@ -1,0 +1,8 @@
+name: bos_bibblio
+type: module
+description: 'Javascript based app to pull in suggested content from Bibblio service.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+
+

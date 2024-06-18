@@ -1,0 +1,20 @@
+uuid: c022326a-6382-4a38-89f2-592f1035431c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.external_link
+_core:
+  default_config_hash: csuZ8WajBJLCZag35pNWoisc-HIgI07S3QD-9vaLuBk
+id: paragraph.external_link.created
+field_name: created
+entity_type: paragraph
+bundle: external_link
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

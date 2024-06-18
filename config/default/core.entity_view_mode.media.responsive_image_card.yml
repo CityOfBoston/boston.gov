@@ -1,0 +1,15 @@
+uuid: 9b38854b-845d-4f02-aa71-1e2ad5c6e631
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Render a featured-item card responsive image for 2up horizontal.'
+id: media.responsive_image_card
+label: 'Card 2x (resp)'
+description: ''
+targetEntityType: media
+cache: true

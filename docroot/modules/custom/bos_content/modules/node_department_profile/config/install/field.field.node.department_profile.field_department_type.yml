@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_department_type
+    - node.type.department_profile
+  module:
+    - options
+id: node.department_profile.field_department_type
+field_name: field_department_type
+entity_type: node
+bundle: department_profile
+label: 'Department Type'
+description: 'Please select the appropriate department type for this department profile.'
+required: true
+translatable: false
+default_value:
+  -
+    value: department
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.how_to_text_step.field_step_details
+    - field.field.paragraph.how_to_text_step.field_title
+    - paragraphs.paragraphs_type.how_to_text_step
+id: paragraph.how_to_text_step.separated_title
+targetEntityType: paragraph
+bundle: how_to_text_step
+mode: separated_title
+content: {  }
+hidden:
+  field_step_details: true
+  field_title: true

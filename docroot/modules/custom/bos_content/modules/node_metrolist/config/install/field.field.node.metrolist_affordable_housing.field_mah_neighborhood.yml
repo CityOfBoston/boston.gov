@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_neighborhood
+    - node.type.metrolist_affordable_housing
+    - taxonomy.vocabulary.neighborhoods
+id: node.metrolist_affordable_housing.field_mah_neighborhood
+field_name: field_mah_neighborhood
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Neighborhood
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      neighborhoods: neighborhoods
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

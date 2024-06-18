@@ -1,0 +1,21 @@
+uuid: 010e5946-93e0-4df5-a45a-94233dfd9525
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - viewfield
+    - views
+id: node.field_bh_project_updates
+field_name: field_bh_project_updates
+entity_type: node
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

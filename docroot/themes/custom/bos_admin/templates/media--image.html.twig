@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+  'media',
+  'media--type-' ~ media.bundle()|clean_class,
+  not media.isPublished() ? 'media--unpublished',
+  view_mode ? 'media--view-mode-' ~ view_mode|clean_class,
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {% if content %}
+    <div class="media-image-wrapper media-library-cob content">
+      {{ content }}
+    </div>
+  {% endif %}
+</article>
+

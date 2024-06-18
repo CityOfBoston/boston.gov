@@ -1,0 +1,25 @@
+uuid: fcf8f1d0-faef-47d1-b9bd-6dfc9cff0689
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.metrolist_affordable_housing
+  module:
+    - text
+_core:
+  default_config_hash: '-SepFB5Ge6LO7VDuW7pA4D7dVMXk_DAo74plgcy3W7I'
+id: node.metrolist_affordable_housing.body
+field_name: body
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

@@ -1,0 +1,16 @@
+metrolist_views:
+  version: "0.1"
+  css:
+    component:
+      css/views_ml_block_avaliable_units.css: {}
+metrolist_views_ami_table:
+  version: "0.1"
+  css:
+    component:
+      css/views_ml_ami_table.css: {}
+metrolist_feedback:
+  version: "0.1"
+  css:
+    component:
+      css/views_ml_feedback.css: {}
+

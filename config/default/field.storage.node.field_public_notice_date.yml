@@ -1,0 +1,21 @@
+uuid: 24342d95-483c-4289-8705-de3ecb478a90
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - node
+id: node.field_public_notice_date
+field_name: field_public_notice_date
+entity_type: node
+type: daterange
+settings:
+  datetime_type: datetime
+  optional_end_date: true
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

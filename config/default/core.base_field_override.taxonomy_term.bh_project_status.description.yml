@@ -1,0 +1,20 @@
+uuid: b3e25b95-d1fb-466d-9650-1a0da921fab7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_status
+  module:
+    - text
+id: taxonomy_term.bh_project_status.description
+field_name: description
+entity_type: taxonomy_term
+bundle: bh_project_status
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,22 @@
+uuid: 834f47b1-59a2-4e5b-add6-93e056e2acf7
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bos311
+id: paragraph.bos311.status
+field_name: status
+entity_type: paragraph
+bundle: bos311
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

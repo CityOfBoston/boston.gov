@@ -1,0 +1,300 @@
+uuid: fcc1bdae-05d1-496f-90fb-6d0c998d3bc3
+langcode: und
+status: true
+dependencies:
+  config:
+    - filter.format.json_friendly
+    - media.type.document
+    - media.type.icon
+    - media.type.image
+    - node.type.article
+    - node.type.change
+    - node.type.department_profile
+    - node.type.election_report
+    - node.type.emergency_alert
+    - node.type.event
+    - node.type.how_to
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.metrolist_affordable_housing
+    - node.type.person_profile
+    - node.type.place_profile
+    - node.type.post
+    - node.type.procurement_advertisement
+    - node.type.program_initiative_profile
+    - node.type.public_notice
+    - node.type.roll_call_dockets
+    - node.type.script_page
+    - node.type.site_alert
+    - node.type.status_item
+    - node.type.tabbed_content
+    - node.type.topic_page
+    - node.type.transaction
+    - taxonomy.vocabulary.311_request
+    - taxonomy.vocabulary.bid_offering
+    - taxonomy.vocabulary.bid_type
+    - taxonomy.vocabulary.city_council_districts
+    - taxonomy.vocabulary.cityscore_metrics
+    - taxonomy.vocabulary.commissions
+    - taxonomy.vocabulary.contact
+    - taxonomy.vocabulary.election_areas
+    - taxonomy.vocabulary.election_candidates
+    - taxonomy.vocabulary.election_contests
+    - taxonomy.vocabulary.elections
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.features
+    - taxonomy.vocabulary.holidays
+    - taxonomy.vocabulary.icons
+    - taxonomy.vocabulary.massachusetts_general_law
+    - taxonomy.vocabulary.neighborhoods
+    - taxonomy.vocabulary.news_tags
+    - taxonomy.vocabulary.newsletters
+    - taxonomy.vocabulary.place_type
+    - taxonomy.vocabulary.political_party
+    - taxonomy.vocabulary.procurement_footer
+    - taxonomy.vocabulary.procurement_type
+    - taxonomy.vocabulary.profile_type
+    - taxonomy.vocabulary.program_type
+    - taxonomy.vocabulary.project_banner_bh_
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.topic_category
+    - taxonomy.vocabulary.vocab_city_councillors
+    - taxonomy.vocabulary.vocab_votes
+  module:
+    - ban
+    - bos_core
+    - bos_google_cloud
+    - content_moderation
+    - content_moderation_notifications
+    - contextual
+    - entity_browser
+    - entity_clone
+    - entity_usage
+    - environment_indicator
+    - file
+    - file_entity
+    - filter
+    - google_tag
+    - honeypot
+    - image
+    - lightning_core
+    - linkit
+    - media
+    - metatag
+    - node
+    - paragraphs_library
+    - paragraphs_type_permissions
+    - path
+    - pathauto
+    - profile
+    - publication_date
+    - rabbit_hole
+    - realname
+    - redirect
+    - responsive_image
+    - rest
+    - salesforce
+    - salesforce_mapping
+    - seckit
+    - shortcut
+    - system
+    - taxonomy
+    - toolbar
+    - votingapi
+    - xmlsitemap
+third_party_settings:
+  lightning_core:
+    description: 'City of Boston user with limited ability to alter site (non-content related) configuration.'
+id: site_administrator
+label: 'Site Administrator'
+weight: -7
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access contextual links'
+  - 'access document_entity_browser entity browser pages'
+  - 'access entity usage statistics'
+  - 'access environment indicator'
+  - 'access files overview'
+  - 'access icon_entity_browser entity browser pages'
+  - 'access image_entity_browser entity browser pages'
+  - 'access media overview'
+  - 'access media_entity_browser entity browser pages'
+  - 'access profile overview'
+  - 'access shortcuts'
+  - 'access site in maintenance mode'
+  - 'access site reports'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer account settings'
+  - 'administer boston'
+  - 'administer content moderation notifications'
+  - 'administer content types'
+  - 'administer entity browsers'
+  - 'administer entity clone'
+  - 'administer entity usage'
+  - 'administer files'
+  - 'administer google cloud platform'
+  - 'administer google tag manager'
+  - 'administer honeypot'
+  - 'administer image styles'
+  - 'administer linkit profiles'
+  - 'administer media'
+  - 'administer media types'
+  - 'administer menu'
+  - 'administer meta tags'
+  - 'administer paragraphs library'
+  - 'administer pathauto'
+  - 'administer profile'
+  - 'administer profile types'
+  - 'administer publication date'
+  - 'administer realname'
+  - 'administer redirect settings'
+  - 'administer responsive images'
+  - 'administer rest resources'
+  - 'administer salesforce'
+  - 'administer salesforce mapped objects'
+  - 'administer salesforce mapping'
+  - 'administer seckit'
+  - 'administer shortcuts'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'administer users'
+  - 'administer vote types'
+  - 'administer xmlsitemap'
+  - 'authorize salesforce'
+  - 'ban IP addresses'
+  - 'bypass node access'
+  - 'bypass paragraphs type content access'
+  - 'clone image_style entity'
+  - 'clone linkit_profile entity'
+  - 'clone paragraphs_library_item entity'
+  - 'clone responsive_image_style entity'
+  - 'clone taxonomy_term entity'
+  - 'clone user entity'
+  - 'create change content'
+  - 'create document media'
+  - 'create election_report content'
+  - 'create icon media'
+  - 'create image media'
+  - 'create media'
+  - 'create terms in city_council_districts'
+  - 'create terms in election_areas'
+  - 'create terms in election_candidates'
+  - 'create terms in election_contests'
+  - 'create terms in elections'
+  - 'create terms in project_banner_bh_'
+  - 'create terms in project_banner_bh_'
+  - 'create terms in vocab_city_councillors'
+  - 'create terms in vocab_votes'
+  - 'customize shortcut links'
+  - 'delete all revisions'
+  - 'delete any article content'
+  - 'delete any change content'
+  - 'delete any department_profile content'
+  - 'delete any document media'
+  - 'delete any election_report content'
+  - 'delete any emergency_alert content'
+  - 'delete any event content'
+  - 'delete any how_to content'
+  - 'delete any icon media'
+  - 'delete any image media'
+  - 'delete any landing_page content'
+  - 'delete any listing_page content'
+  - 'delete any media'
+  - 'delete any metrolist_affordable_housing content'
+  - 'delete any person_profile content'
+  - 'delete any place_profile content'
+  - 'delete any post content'
+  - 'delete any procurement_advertisement content'
+  - 'delete any program_initiative_profile content'
+  - 'delete any public_notice content'
+  - 'delete any roll_call_dockets content'
+  - 'delete any script_page content'
+  - 'delete any site_alert content'
+  - 'delete any status_item content'
+  - 'delete any tabbed_content content'
+  - 'delete any topic_page content'
+  - 'delete any transaction content'
+  - 'delete article revisions'
+  - 'delete change revisions'
+  - 'delete department_profile revisions'
+  - 'delete election_report revisions'
+  - 'delete emergency_alert revisions'
+  - 'delete event revisions'
+  - 'delete how_to revisions'
+  - 'delete landing_page revisions'
+  - 'delete listing_page revisions'
+  - 'delete metrolist_affordable_housing revisions'
+  - 'delete own election_report content'
+  - 'delete own roll_call_dockets content'
+  - 'delete person_profile revisions'
+  - 'delete place_profile revisions'
+  - 'delete post revisions'
+  - 'delete procurement_advertisement revisions'
+  - 'delete program_initiative_profile revisions'
+  - 'delete public_notice revisions'
+  - 'delete script_page revisions'
+  - 'delete site_alert revisions'
+  - 'delete status_item revisions'
+  - 'delete tabbed_content revisions'
+  - 'delete terms in 311_request'
+  - 'delete terms in bid_offering'
+  - 'delete terms in bid_type'
+  - 'delete terms in cityscore_metrics'
+  - 'delete terms in commissions'
+  - 'delete terms in contact'
+  - 'delete terms in election_areas'
+  - 'delete terms in election_candidates'
+  - 'delete terms in election_contests'
+  - 'delete terms in elections'
+  - 'delete terms in event_type'
+  - 'delete terms in features'
+  - 'delete terms in holidays'
+  - 'delete terms in icons'
+  - 'delete terms in massachusetts_general_law'
+  - 'delete terms in neighborhoods'
+  - 'delete terms in news_tags'
+  - 'delete terms in newsletters'
+  - 'delete terms in place_type'
+  - 'delete terms in political_party'
+  - 'delete terms in procurement_footer'
+  - 'delete terms in procurement_type'
+  - 'delete terms in profile_type'
+  - 'delete terms in program_type'
+  - 'delete terms in tags'
+  - 'delete terms in topic_category'
+  - 'delete topic_page revisions'
+  - 'delete transaction revisions'
+  - 'edit any change content'
+  - 'edit any document media'
+  - 'edit any election_report content'
+  - 'edit any icon media'
+  - 'edit any image media'
+  - 'edit any roll_call_dockets content'
+  - 'edit own election_report content'
+  - 'edit own roll_call_dockets content'
+  - 'edit terms in city_council_districts'
+  - 'edit terms in election_areas'
+  - 'edit terms in election_candidates'
+  - 'edit terms in election_contests'
+  - 'edit terms in elections'
+  - 'edit terms in project_banner_bh_'
+  - 'edit terms in project_banner_bh_'
+  - 'edit terms in vocab_city_councillors'
+  - 'edit terms in vocab_votes'
+  - 'rabbit hole bypass node'
+  - 'rabbit hole bypass taxonomy_term'
+  - 'revert change revisions'
+  - 'revert election_report revisions'
+  - 'set any published on date'
+  - 'set election_report published on date'
+  - 'switch shortcut sets'
+  - 'update any media'
+  - 'use text format json_friendly'
+  - 'view all media revisions'
+  - 'view any unpublished content'
+  - 'view election_report revisions'
+  - 'view latest version'
+  - 'view private files'
+  - 'view salesforce mapping'

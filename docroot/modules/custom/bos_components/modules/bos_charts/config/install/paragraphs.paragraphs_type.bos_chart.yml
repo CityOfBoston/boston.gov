@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: bos_chart
+label: Chart
+icon_uuid: null
+icon_default: null
+description: 'Embed a chart using VegaLite'
+behavior_plugins: {  }

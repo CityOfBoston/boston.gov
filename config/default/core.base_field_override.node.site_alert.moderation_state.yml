@@ -1,0 +1,18 @@
+uuid: eef24bfd-3985-45ba-a47e-5bb5dfc5b1d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.site_alert
+id: node.site_alert.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: site_alert
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,26 @@
+uuid: 580c8c39-3883-44fe-9606-d270a4611747
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_range
+    - node.type.emergency_alert
+  module:
+    - datetime_range
+id: node.emergency_alert.field_date_range
+field_name: field_date_range
+entity_type: node
+bundle: emergency_alert
+label: Active
+description: "Set a start and end date/time when this alert will display on the home page of the main website (and those included).<br>\r\nIf there is no start or end date, the alert will not be displayed. <br>\r\n<i><b>Note: </b> Only 1 emergency alert will be displayed on any page.</i>\r\n<i><b>Note: </b> To disable an alert either delete the start and end dates, or set both to be in the past</i>"
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: relative
+    default_end_date: '+1 day'
+default_value_callback: ''
+settings: {  }
+field_type: daterange

@@ -1,0 +1,9 @@
+uuid: e026741e-2540-435c-8685-2312deca2a5a
+langcode: en
+status: true
+dependencies: {  }
+id: cv
+label: 'Cabo Verdean Creole'
+direction: ltr
+weight: 4
+locked: false

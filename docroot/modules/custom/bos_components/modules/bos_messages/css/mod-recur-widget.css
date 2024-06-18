@@ -1,0 +1,28 @@
+.cob-group-grid-vert {
+  flex-flow: column wrap;
+  width: -webkit-fill-available;
+  border: 1px solid #b5b5b5;
+  padding: 0 6px;
+  margin-top: 10px;
+}
+
+.cob-group-grid-vert.no-border {
+  border: none;
+}
+
+.motd-wrapper {
+  border: 1px solid #d5d5d5;
+  padding: 3px 10px;
+}
+.motd-wrapper .form-type-select {
+  align-self: flex-start;
+  width: max-content;
+}
+.motd-wrapper .form-wrapper {
+  margin: auto;
+}
+.motd-wrapper .form-type-textarea label {
+  font-size: inherit !important;
+  padding: inherit !important;
+  font-variant: inherit !important;
+}

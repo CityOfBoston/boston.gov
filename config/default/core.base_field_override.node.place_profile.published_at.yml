@@ -1,0 +1,20 @@
+uuid: d83039c4-759d-4a6c-a965-beda27c8b64b
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+  module:
+    - publication_date
+id: node.place_profile.published_at
+field_name: published_at
+entity_type: node
+bundle: place_profile
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

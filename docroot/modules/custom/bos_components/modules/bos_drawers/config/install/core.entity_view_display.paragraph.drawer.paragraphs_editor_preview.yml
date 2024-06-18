@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.drawer.field_short_description
+    - field.field.paragraph.drawer.field_text_blocks
+    - field.field.paragraph.drawer.field_title
+    - paragraphs.paragraphs_type.drawer
+id: paragraph.drawer.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: drawer
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_short_description: true
+  field_text_blocks: true
+  field_title: true

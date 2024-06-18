@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.place_profile
+    - taxonomy.vocabulary.contact
+id: node.place_profile.field_contact
+field_name: field_contact
+entity_type: node
+bundle: place_profile
+label: Contact
+description: 'Please select the Contact who owns this content.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

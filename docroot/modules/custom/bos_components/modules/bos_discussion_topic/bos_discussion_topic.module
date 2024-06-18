@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_discussion_topic module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_discussion_topic_theme() {
+  $theme['paragraph__discussion_topic'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_discussion_topic/templates',
+  ];
+  return $theme;
+}

@@ -1,0 +1,20 @@
+uuid: 8848bbe8-52a1-41fe-a156-c015ea040894
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_features
+field_name: field_ml_features
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 581546f2-5e56-421b-b9c9-fabe0b8ab821
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_people
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: pwMW_0X7P9OGjJtQSAKtU92BNSHtXaR8yGbznxPtFfk
+id: paragraph.grid_of_people
+target_entity_type_id: paragraph
+target_bundle: grid_of_people
+default_langcode: site_default
+language_alterable: false

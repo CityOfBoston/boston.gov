@@ -1,0 +1,12 @@
+services:
+  node_buildinghousing.salesforce_pull:
+    class: Drupal\node_buildinghousing\EventSubscriber\SalesforceBuildingHousingUpdateSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+
+  node_buildinghousing.entity_load:
+    class: Drupal\node_buildinghousing\EventSubscriber\BhEntityEventSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }

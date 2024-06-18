@@ -1,0 +1,22 @@
+uuid: cfd4ae79-332a-4c9d-b443-a4788272ed66
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_neighborhood
+id: taxonomy_term.bh_neighborhood.status
+field_name: status
+entity_type: taxonomy_term
+bundle: bh_neighborhood
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

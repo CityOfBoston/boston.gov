@@ -1,0 +1,6 @@
+msgid "None"
+msgstr "---"
+msgid "More Information"
+msgstr "Macluumaad Dheeraad ah"
+msgid "Status Information"
+msgstr "Xogta Xaalada"

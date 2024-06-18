@@ -1,0 +1,21 @@
+uuid: ee0cad63-e9fa-4c4c-8ee9-d4d4b951cb4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_custom_id
+    - paragraphs.paragraphs_type.web_app
+id: paragraph.web_app.field_anchor_custom_id
+field_name: field_anchor_custom_id
+entity_type: paragraph
+bundle: web_app
+label: 'Anchor Custom ID'
+description: "The default ID for the main webapp anchor is \"<b>web-app</b>\".\r\nIf this webapp requires a different anchor id, you can set it here."
+required: false
+translatable: false
+default_value:
+  -
+    value: web-app
+default_value_callback: ''
+settings: {  }
+field_type: string

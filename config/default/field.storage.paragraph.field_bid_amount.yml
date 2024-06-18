@@ -1,0 +1,18 @@
+uuid: 922603d1-ad07-4c58-ae44-673d2f73a93e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_bid_amount
+field_name: field_bid_amount
+entity_type: paragraph
+type: float
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,27 @@
+uuid: 2c7245f0-eb91-4f1f-a649-a6b06c4e4866
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_select_contact_type
+field_name: field_select_contact_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: email
+      label: Email
+    -
+      value: url_link
+      label: 'URL Link'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 18a058de-36c6-41d0-b96c-c85990d6360b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: election_contests
+label: 'Contest Name'
+description: 'The name for this contest. Usually describes the office and (for general/municipal) the precinct or (for primaries) the group (affiliation).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

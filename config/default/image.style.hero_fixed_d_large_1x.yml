@@ -1,0 +1,15 @@
+uuid: d9bf7167-e466-4c19-a77a-9a753c2f4007
+langcode: und
+status: true
+dependencies: {  }
+name: hero_fixed_d_large_1x
+label: 'Hero fixed d-large 1x (1920x460)'
+effects:
+  4bc95871-fea9-4373-9b94-250c4b44fa98:
+    uuid: 4bc95871-fea9-4373-9b94-250c4b44fa98
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 460
+      anchor: center-bottom

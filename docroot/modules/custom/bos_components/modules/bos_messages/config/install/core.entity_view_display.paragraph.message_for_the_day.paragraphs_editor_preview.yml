@@ -1,0 +1,21 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.message_for_the_day.field_link
+    - field.field.paragraph.message_for_the_day.field_message
+    - field.field.paragraph.message_for_the_day.field_recurrence
+    - field.field.paragraph.message_for_the_day.field_use_alert
+    - paragraphs.paragraphs_type.message_for_the_day
+id: paragraph.message_for_the_day.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: message_for_the_day
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_enabled: true
+  field_link: true
+  field_message: true
+  field_recurrence: true
+  field_use_alert: true

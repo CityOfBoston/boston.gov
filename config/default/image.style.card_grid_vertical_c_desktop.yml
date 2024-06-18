@@ -1,0 +1,15 @@
+uuid: 6f30b559-2baa-49be-97a9-0f89d3cb31cd
+langcode: und
+status: true
+dependencies: {  }
+name: card_grid_vertical_c_desktop
+label: 'Card grid vertical c-desktop (670x235)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 670
+      height: 235
+      anchor: center-center

@@ -1,0 +1,79 @@
+uuid: a0be7cd1-01d4-4bac-ab87-ca92d1d6c03c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_document
+    - field.field.media.document.field_media_in_library
+    - image.style.thumbnail
+    - media.type.document
+  module:
+    - file
+    - svg_image
+    - user
+_core:
+  default_config_hash: 4tgcXj_iKv9Fw3xmONUfCHKqO7OeOa11qVesruN4k4k
+id: media.document.default
+targetEntityType: media
+bundle: document
+mode: default
+content:
+  created:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_document:
+    type: file_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_media_in_library: true
+  langcode: true

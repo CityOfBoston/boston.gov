@@ -1,0 +1,46 @@
+/* Mobile Adjustment */
+@media screen and (max-width: 700px) {
+  .bos_theme .vega-embed svg.marks {
+    width: 400px;
+    height: 400px;
+  }
+}
+/* Standardized tooltips */
+.bos_theme div#vg-tooltip-element {
+  max-width:50%;
+  padding: none;
+}
+.bos_theme div#vg-tooltip-element table {
+  max-width:none;
+  margin: 15px 0;
+}
+.bos_theme div#vg-tooltip-element table tr td.key {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  border-radius: 0;
+  vertical-align: top;
+  color: #808080;
+  max-width: 15%;
+  text-align: right;
+  padding-right: 10px;
+  width:15%;
+}
+.bos_theme div#vg-tooltip-element table tr td.value {
+  text-transform: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 14px;
+  display: block;
+  max-width: 85%;
+  max-height: none;
+  text-align: left;
+}
+
+
+/*.bos_theme .vega-embed {*/
+/*  width: 100%;*/
+/*  text-align: center;*/
+/*}*/
+/*.bos_theme .vega-embed .mark-text.layer_1_marks text:first-child {*/
+/*  fill: #595959;*/
+/*}*/

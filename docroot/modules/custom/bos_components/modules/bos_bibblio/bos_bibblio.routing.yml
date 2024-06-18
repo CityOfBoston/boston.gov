@@ -1,0 +1,7 @@
+bos_bibblio:
+ path: '/rest/bibblio'
+ defaults:
+   _controller: '\Drupal\bos_bibblio\Controller\BibblioAPI::beginApi'
+ methods: [POST]
+ requirements:
+   _access: 'TRUE'

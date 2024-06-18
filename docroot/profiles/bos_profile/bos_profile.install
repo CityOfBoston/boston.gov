@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Install file for Boston.gov.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function bos_profile_install() {
+  // DO NOT ADD MODULES TO ENABLE/DISABLE HERE.  Read on ...
+  /*
+   * Modules defined in  ../config/default/core.extension.yml are enabled during
+   * the config_import process (triggered by drush si command in Phing).
+   *
+   * The repo also contains config_split configuration files:
+   *     "/config/default/config_split.config_split.development.yml", and
+   *     "/config/default/config_split.config_split.production.yml"
+   * which defines development-only and production-only modules.
+   * These are switched on and off by the Phing script during the site-install
+   * process.
+   *
+   * This module is installed after the config_import process and therefore will
+   * override the modules enabled/disabled by core.extension.yml and
+   * config_splits, but will then be added back in when the next drush cex
+   * command is run, so use care!. */
+  /* @see https://docs.acquia.com/acquia-cloud/develop/config-d8 */
+
+  /* Be sure an environment indicator is set.
+   * Note: on Acquia servers this will be one of prod / test / dev as per: */
+  /*  @see https://docs.acquia.com/acquia-cloud/develop/env-variable . */
+  \Drupal::logger('profile')->info("bos_profile install started. Using <b>@env</b>.", [
+    '@env' => \Boston::current_environment(),
+  ]);
+}

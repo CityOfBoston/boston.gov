@@ -1,0 +1,21 @@
+uuid: f8a81eab-2436-4827-bb26-b239d6deca6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.how_to_tab.field_how_to_steps
+    - field.field.paragraph.how_to_tab.field_how_to_title
+    - field.field.paragraph.how_to_tab.field_keep_in_mind
+    - paragraphs.paragraphs_type.how_to_tab
+_core:
+  default_config_hash: jDCUq4PupKC9P0wl-a6BFcDUVT1ovwWm5u3jxNnKxwc
+id: paragraph.how_to_tab.separated_title
+targetEntityType: paragraph
+bundle: how_to_tab
+mode: separated_title
+content: {  }
+hidden:
+  field_how_to_steps: true
+  field_how_to_title: true
+  field_keep_in_mind: true

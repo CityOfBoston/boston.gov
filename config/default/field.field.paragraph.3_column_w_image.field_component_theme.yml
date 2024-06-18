@@ -1,0 +1,21 @@
+uuid: 358e8fff-1db4-4286-9767-2971a4079412
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.3_column_w_image
+  module:
+    - options
+id: paragraph.3_column_w_image.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: 3_column_w_image
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

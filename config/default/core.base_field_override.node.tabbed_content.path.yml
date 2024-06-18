@@ -1,0 +1,20 @@
+uuid: efea6caa-b1f8-44b4-8168-29fc19860ac8
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+  module:
+    - path
+id: node.tabbed_content.path
+field_name: path
+entity_type: node
+bundle: tabbed_content
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

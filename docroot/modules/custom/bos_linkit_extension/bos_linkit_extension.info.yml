@@ -1,0 +1,19 @@
+name: Boston Linkit Dialog Form Extension
+type: module
+description: 'Extends linkit dialog form to allow document uploading and mail/tel links.'
+core_version_requirement: ^8 || ^9 || ^10
+package: City of Boston
+dependencies:
+  - bos_core
+  - linkit
+  - editor_file
+  - editor_advanced_link
+  - field_group
+  - drupal:ckeditor
+  - drupal:editor
+  - drupal:filter
+  - drupal:file
+
+config_devel:
+  - embed.button.media_entity_embed
+  - linkit.linkit_profile.bos_settings_linkit_editor

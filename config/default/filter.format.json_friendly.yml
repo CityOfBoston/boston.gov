@@ -1,0 +1,25 @@
+uuid: d4652d28-8c30-40f6-b96b-8b9964e6df3c
+langcode: und
+status: true
+dependencies:
+  module:
+    - shortcode
+    - token_filter
+name: 'JSON Friendly'
+format: json_friendly
+weight: 0
+filters:
+  shortcode:
+    id: shortcode
+    provider: shortcode
+    status: false
+    weight: 0
+    settings:
+      form: '1'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: false
+    weight: 0
+    settings:
+      replace_empty: '0'

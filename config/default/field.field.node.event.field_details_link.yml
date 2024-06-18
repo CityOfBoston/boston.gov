@@ -1,0 +1,25 @@
+uuid: 7d45f2f0-7cc3-4590-b5ba-99c80af2d85f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_details_link
+    - node.type.event
+  module:
+    - link
+_core:
+  default_config_hash: qmrVaMJXsXTm7J80IupLqYOWPoA3oVjnU7cThPpI_w8
+id: node.event.field_details_link
+field_name: field_details_link
+entity_type: node
+bundle: event
+label: 'Details Link'
+description: 'Enter an external link for details of this event'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

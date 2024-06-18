@@ -1,0 +1,47 @@
+uuid: 57e14883-2b2c-4a89-bdf0-ccb6263486e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.thumbnail
+    - field.field.file.image.field_file_image_alt_text
+    - field.field.file.image.field_file_image_title_text
+    - field.field.file.image.field_icon_category
+    - field.field.file.image.field_image_caption
+    - file_entity.type.image
+    - image.style.thumbnail
+  module:
+    - file_entity
+_core:
+  default_config_hash: 8trPid18Dj2TjH8c4n0Eb1KrYcJR0xYIyNlgYlGk2XI
+id: file.image.thumbnail
+targetEntityType: file
+bundle: image
+mode: thumbnail
+content:
+  filename:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uri:
+    type: file_image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: thumbnail
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_file_image_alt_text: true
+  field_file_image_title_text: true
+  field_icon_category: true
+  field_image_caption: true
+  filemime: true
+  filesize: true
+  langcode: true
+  uid: true

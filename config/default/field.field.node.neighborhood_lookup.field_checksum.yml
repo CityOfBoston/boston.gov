@@ -1,0 +1,24 @@
+uuid: bdad75cb-5add-4e8d-9cbc-dbefce8fe048
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_checksum
+    - node.type.neighborhood_lookup
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: checksum
+id: node.neighborhood_lookup.field_checksum
+field_name: field_checksum
+entity_type: node
+bundle: neighborhood_lookup
+label: checksum
+description: 'Used to track changes in the SAM Data field.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

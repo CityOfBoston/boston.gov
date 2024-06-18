@@ -1,0 +1,8 @@
+uuid: 6a6d7a66-7a75-4fd1-a97a-32da9a5b7bc4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Neighborhood (BH)'
+vid: bh_neighborhood
+description: 'Building Housing: Neighborhood'
+weight: 0

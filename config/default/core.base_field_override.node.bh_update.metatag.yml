@@ -1,0 +1,18 @@
+uuid: 78da8dcd-05b2-47d1-a84a-edd9b6d4e93c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+id: node.bh_update.metatag
+field_name: metatag
+entity_type: node
+bundle: bh_update
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

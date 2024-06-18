@@ -1,0 +1,18 @@
+uuid: 87b6d118-6ea9-4b73-9e4d-2857e06340ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel_project_assoc
+id: node.bh_parcel_project_assoc.created
+field_name: created
+entity_type: node
+bundle: bh_parcel_project_assoc
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

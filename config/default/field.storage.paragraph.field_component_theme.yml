@@ -1,0 +1,30 @@
+uuid: 17bd657e-934c-4f54-8a7d-505f3e19a54b
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: g
+      label: Grey
+    -
+      value: w
+      label: White
+    -
+      value: b
+      label: Blue
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

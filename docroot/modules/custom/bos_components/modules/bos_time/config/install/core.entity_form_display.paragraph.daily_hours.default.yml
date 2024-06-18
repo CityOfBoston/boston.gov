@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.daily_hours.field_daily_hours
+    - field.field.paragraph.daily_hours.field_hours_icon
+    - field.field.paragraph.daily_hours.field_title
+    - paragraphs.paragraphs_type.daily_hours
+  module:
+    - content_moderation
+    - office_hours
+id: paragraph.daily_hours.default
+targetEntityType: paragraph
+bundle: daily_hours
+mode: default
+content:
+  field_daily_hours:
+    type: office_hours_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hours_icon:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: 0cd92f15-ef15-443b-b8bc-505bcd9165ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.total_house_income_data_hud
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.total_house_income_data_hud
+field_name: total_house_income_data_hud
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: 'Total Household Income (HUD)'
+description: 'The HUD data entered here will be the same data that is available via the MetroList: AMI REST API.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

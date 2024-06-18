@@ -1,0 +1,16 @@
+name: Bid Offering Vocabulary
+description: "Adds taxonomy for Bid Offerings."
+package: "City of Boston (taxonomy)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+
+dependencies:
+  - bos_vocab
+  - taxonomy
+
+config_devel:
+  - core.entity_form_display.taxonomy_term.bid_offering.default
+  - core.entity_view_display.taxonomy_term.bid_offering.default
+  - language.content_settings.taxonomy_term.bid_offering
+  - taxonomy.vocabulary.bid_offering

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contacts
+    - node.type.program_initiative_profile
+    - taxonomy.vocabulary.contact
+id: node.program_initiative_profile.field_contacts
+field_name: field_contacts
+entity_type: node
+bundle: program_initiative_profile
+label: Contacts
+description: 'Please select the Contacts who own this content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

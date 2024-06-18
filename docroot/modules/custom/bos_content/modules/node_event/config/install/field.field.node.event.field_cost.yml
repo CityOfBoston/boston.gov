@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cost
+    - node.type.event
+id: node.event.field_cost
+field_name: field_cost
+entity_type: node
+bundle: event
+label: Price
+description: 'Enter the cost, with a $ or FREE'
+required: false
+translatable: false
+default_value:
+  -
+    value: FREE
+default_value_callback: ''
+settings: {  }
+field_type: string

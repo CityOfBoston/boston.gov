@@ -1,0 +1,18 @@
+uuid: aae7b928-e8b9-4808-81c3-ebd4c7a11649
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.created
+field_name: created
+entity_type: node
+bundle: place_profile
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,23 @@
+uuid: 4547be5e-62e6-4e26-b43c-8c21907d8d86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.department_profile
+  module:
+    - datetime
+_core:
+  default_config_hash: W2dTzor1j5sWSEY73MGaPuzsPQpaYj4gPQAnKI2XAh4
+id: node.department_profile.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: department_profile
+label: 'Published Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

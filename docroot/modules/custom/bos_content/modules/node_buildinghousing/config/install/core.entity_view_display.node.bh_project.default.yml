@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.bh_project.body
+        - node.type.bh_project
+    module:
+        - text
+        - user
+id: node.bh_project.default
+targetEntityType: node
+bundle: bh_project
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_default
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }

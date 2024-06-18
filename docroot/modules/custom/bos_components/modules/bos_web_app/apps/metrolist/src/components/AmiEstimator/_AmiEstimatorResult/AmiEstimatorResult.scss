@@ -1,0 +1,27 @@
+// <AmiEstimatorResult />
+@import '@globals';
+
+.ml-ami-estimator__result {
+  .btn[class*="btn--metrolist"] {
+    height: rem( 66px );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+  }
+}
+
+.ml-ami {
+  font-weight: bold;
+  color: $color-metrolist-green;
+}
+
+.ml-all-caps {
+  text-transform: uppercase;
+}
+
+@include media-breakpoint-up( large ) {
+  .ml-ami-estimator__result {
+    font-size: rem( 30px );
+  }
+}

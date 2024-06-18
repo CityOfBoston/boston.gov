@@ -1,0 +1,23 @@
+uuid: 3bf7cdf0-679a-4ad5-be9f-69cd79a1bab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+id: paragraph.grid_of_programs_initiatives.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,25 @@
+uuid: aca8d5a4-383f-4460-928f-ced4bf267b88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_people
+  module:
+    - options
+_core:
+  default_config_hash: I8oL20EfRM1s8U5zwbJVSMqIrQ9pe7GUoHqLP6jPELg
+id: paragraph.grid_of_people.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_people
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,11 @@
+bos_google_cloud.configForm:
+  title: 'Google Cloud API'
+  route_name: bos_google_cloud.configForm
+  base_route: bos_core.admin
+  weight: 2
+
+bos_google_cloud.PromptTesterForm:
+  title: 'Prompt Tester'
+  route_name: bos_google_cloud.PromptTesterForm
+  base_route: bos_google_cloud.configForm
+  weight: 0

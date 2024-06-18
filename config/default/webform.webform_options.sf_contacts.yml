@@ -1,0 +1,9 @@
+uuid: 22f5ebed-ec69-4d15-9667-f1c4076d7af2
+langcode: en
+status: true
+dependencies: {  }
+id: sf_contacts
+label: 'SF Contacts'
+category: MetroList
+likert: false
+options: "new: 'New Contact'"

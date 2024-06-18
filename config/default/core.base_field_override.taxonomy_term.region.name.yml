@@ -1,0 +1,18 @@
+uuid: 57363817-a676-4221-8590-1332bcddb308
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.region
+id: taxonomy_term.region.name
+field_name: name
+entity_type: taxonomy_term
+bundle: region
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

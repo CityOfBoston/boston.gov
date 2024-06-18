@@ -1,0 +1,5 @@
+bos_email.admin.services:
+  title: 'Email Services'
+  route_name: bos_email.admin.services
+  base_route: bos_core.admin
+  weight: 1

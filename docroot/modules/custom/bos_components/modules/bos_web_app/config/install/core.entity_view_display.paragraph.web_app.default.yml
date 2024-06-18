@@ -1,0 +1,20 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.web_app.field_app_name
+    - paragraphs.paragraphs_type.web_app
+id: paragraph.web_app.default
+targetEntityType: paragraph
+bundle: web_app
+mode: default
+content:
+  field_app_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

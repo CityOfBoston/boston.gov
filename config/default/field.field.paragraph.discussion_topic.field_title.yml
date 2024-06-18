@@ -1,0 +1,21 @@
+uuid: 18119673-c39d-4c23-a4b0-79eae9206a2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.discussion_topic
+_core:
+  default_config_hash: ZJ8mS3YturNmoA9oWvV7Y3XgqaohmJThJUr_MLLS9eA
+id: paragraph.discussion_topic.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: discussion_topic
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

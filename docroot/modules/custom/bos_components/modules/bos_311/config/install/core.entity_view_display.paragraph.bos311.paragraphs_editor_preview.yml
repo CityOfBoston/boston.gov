@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.bos311.field_311_request
+    - field.field.paragraph.bos311.field_component_title
+    - field.field.paragraph.bos311.field_short_title
+    - paragraphs.paragraphs_type.bos311
+id: paragraph.bos311.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: bos311
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_311_request: true
+  field_component_title: true
+  field_short_title: true

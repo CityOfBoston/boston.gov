@@ -1,0 +1,16 @@
+uuid: beb3dd0d-5938-491b-8078-89a10b379ba5
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: gol_list_links
+label: 'List Links'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle List Links'
+behavior_plugins: {  }

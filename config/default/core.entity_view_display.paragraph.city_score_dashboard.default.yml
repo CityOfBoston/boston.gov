@@ -1,0 +1,99 @@
+uuid: f40a76a5-0d58-4da1-a9a9-6ad21720e343
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.city_score_dashboard.field_component_title
+    - field.field.paragraph.city_score_dashboard.field_extra_info
+    - field.field.paragraph.city_score_dashboard.field_main_table
+    - field.field.paragraph.city_score_dashboard.field_short_description
+    - field.field.paragraph.city_score_dashboard.field_short_title
+    - paragraphs.paragraphs_type.city_score_dashboard
+  module:
+    - fences
+    - viewfield
+_core:
+  default_config_hash: yazp4aywoEqXfl53PdtzDmP1OIZTPzvilm1ynpQS8hM
+id: paragraph.city_score_dashboard.default
+targetEntityType: paragraph
+bundle: city_score_dashboard
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_extra_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_main_table:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_short_description:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

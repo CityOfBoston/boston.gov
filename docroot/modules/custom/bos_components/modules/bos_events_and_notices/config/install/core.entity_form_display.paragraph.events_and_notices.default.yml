@@ -1,0 +1,80 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.events_and_notices.field_component_title
+    - field.field.paragraph.events_and_notices.field_enable_local_events
+    - field.field.paragraph.events_and_notices.field_featured_item
+    - field.field.paragraph.events_and_notices.field_link
+    - field.field.paragraph.events_and_notices.field_list
+    - field.field.paragraph.events_and_notices.field_short_title
+    - paragraphs.paragraphs_type.events_and_notices
+  module:
+    - paragraphs
+    - viewfield
+id: paragraph.events_and_notices.default
+targetEntityType: paragraph
+bundle: events_and_notices
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_enable_local_events:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_featured_item:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: paragraphs
+    weight: 6
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_list:
+    type: viewfield_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

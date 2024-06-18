@@ -1,0 +1,18 @@
+uuid: ea749d18-f748-47ff-8924-d4c07fc57c0e
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.place_profile
+id: node.place_profile.metatag
+field_name: metatag
+entity_type: node
+bundle: place_profile
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

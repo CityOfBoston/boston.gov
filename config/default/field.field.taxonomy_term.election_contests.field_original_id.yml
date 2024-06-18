@@ -1,0 +1,23 @@
+uuid: ed6f01e0-283c-4c9e-87e5-b779131f3840
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_original_id
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests.field_original_id
+field_name: field_original_id
+entity_type: taxonomy_term
+bundle: election_contests
+label: 'Contest ID'
+description: 'The original ContestID from the imported file.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

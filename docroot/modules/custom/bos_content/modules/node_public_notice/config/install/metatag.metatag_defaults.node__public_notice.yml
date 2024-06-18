@@ -1,0 +1,13 @@
+langcode: und
+status: true
+dependencies: {  }
+id: node__public_notice
+label: 'Content: Public Notice'
+tags:
+  schema_event_url: '[node:url]'
+  schema_event_name: '[node:title]'
+  schema_event_type: Event
+  schema_event_start_date: '[custom:schema_start_date]'
+  schema_event_end_date: '[custom:schema_end_date]'
+  schema_event_location: 'a:2:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_address:address_line1]";s:15:"addressLocality";s:29:"[node:field_address:locality]";s:13:"addressRegion";s:40:"[node:field_address:administrative_area]";s:10:"postalCode";s:32:"[node:field_address:postal_code]";}}'
+  schema_event_description: '[node:body]'

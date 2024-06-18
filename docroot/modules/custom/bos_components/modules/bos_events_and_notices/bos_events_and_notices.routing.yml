@@ -1,0 +1,7 @@
+bos_events_and_notices.mnl_by_zipcode:
+  path: '/bos_events_and_notices/mnl_by_zipcode/{zipcode}'
+  defaults:
+    _controller: '\Drupal\bos_events_and_notices\Controller\BosEventsAndNoticesController::getMnlByZipcode'
+    _title: 'MNL By Zipcode'
+  requirements:
+    _permission: 'access content'

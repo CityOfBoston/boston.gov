@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 66 66" enable-background="new 0 0 66 66" xml:space="preserve">
+<g>
+	<defs>
+		<circle id="SVGID_23_" cx="33" cy="33" r="31.4"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_23_"  overflow="visible"/>
+	</clipPath>
+
+		<use xlink:href="#SVGID_23_"  overflow="visible" fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#091F2F" stroke-width="3" stroke-miterlimit="10"/>
+</g>
+<g>
+</g>
+<rect x="14.3" y="18.7" fill="none" stroke="#091F2F" stroke-width="3" stroke-miterlimit="10" width="37.3" height="24"/>
+<rect x="28" y="42.7" fill="none" stroke="#091F2F" stroke-width="3" stroke-miterlimit="10" width="9" height="9.7"/>
+<line fill="none" stroke="#091F2F" stroke-width="3" stroke-miterlimit="10" x1="14" y1="37.5" x2="52" y2="37.5"/>
+<line fill="none" stroke="#091F2F" stroke-width="3" stroke-miterlimit="10" x1="23" y1="52.5" x2="43" y2="52.5"/>
+</svg>

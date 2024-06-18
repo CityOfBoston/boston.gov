@@ -1,0 +1,11 @@
+uuid: b25218b5-4f9a-4cf6-8236-dfd66224e132
+langcode: en
+status: true
+dependencies: {  }
+id: node__post
+label: 'Content: Post'
+tags:
+  og_image: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_image_secure_url: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_image_url: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
+  og_type: Article

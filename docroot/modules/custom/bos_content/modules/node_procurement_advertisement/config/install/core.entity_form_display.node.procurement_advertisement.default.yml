@@ -1,0 +1,425 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.document_entity_browser
+    - field.field.node.procurement_advertisement.body
+    - field.field.node.procurement_advertisement.field_award_date
+    - field.field.node.procurement_advertisement.field_awarded_by
+    - field.field.node.procurement_advertisement.field_bid
+    - field.field.node.procurement_advertisement.field_bid_type
+    - field.field.node.procurement_advertisement.field_contact
+    - field.field.node.procurement_advertisement.field_contract_length
+    - field.field.node.procurement_advertisement.field_date_range
+    - field.field.node.procurement_advertisement.field_department
+    - field.field.node.procurement_advertisement.field_document
+    - field.field.node.procurement_advertisement.field_email
+    - field.field.node.procurement_advertisement.field_event_project_number
+    - field.field.node.procurement_advertisement.field_intro_text
+    - field.field.node.procurement_advertisement.field_ma_general_law
+    - field.field.node.procurement_advertisement.field_multi_year_contract
+    - field.field.node.procurement_advertisement.field_not_awarded
+    - field.field.node.procurement_advertisement.field_offering
+    - field.field.node.procurement_advertisement.field_phone_number
+    - field.field.node.procurement_advertisement.field_procurement
+    - field.field.node.procurement_advertisement.field_procurement_footer
+    - field.field.node.procurement_advertisement.field_related_links
+    - field.field.node.procurement_advertisement.field_unspsc
+    - field.field.node.procurement_advertisement.field_url
+    - node.type.procurement_advertisement
+    - workflows.workflow.city_of_boston_workflows
+  module:
+    - content_moderation
+    - datetime
+    - datetime_range
+    - entity_browser
+    - field_group
+    - link
+    - paragraphs
+    - path
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_procurement_advertisement:
+      children:
+        - group_basic_information
+        - group_sidebar
+        - group_submissions
+      label: 'Procurement Advertisement'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: vertical
+    group_basic_information:
+      children:
+        - title
+        - field_event_project_number
+        - field_intro_text
+        - body
+        - field_procurement_footer
+        - field_ma_general_law
+        - field_offering
+        - field_procurement
+        - field_contact
+        - field_multi_year_contract
+        - field_contract_length
+      label: 'Basic Information'
+      region: content
+      parent_name: group_procurement_advertisement
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_sidebar:
+      children:
+        - field_date_range
+        - field_awarded_by
+        - field_bid_type
+        - field_url
+        - field_document
+        - field_unspsc
+        - group_contact
+        - field_related_links
+      label: Sidebar
+      region: content
+      parent_name: group_procurement_advertisement
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_contact:
+      children:
+        - field_department
+        - field_email
+        - field_phone_number
+      label: Contact
+      region: content
+      parent_name: group_sidebar
+      weight: 59
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        formatter: closed
+    group_submissions:
+      children:
+        - field_not_awarded
+        - field_award_date
+        - field_bid
+      label: Submissions
+      region: content
+      parent_name: group_procurement_advertisement
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.procurement_advertisement.default
+targetEntityType: node
+bundle: procurement_advertisement
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 24
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_award_date:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_awarded_by:
+    type: entity_reference_autocomplete
+    weight: 53
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_bid:
+    type: paragraphs
+    weight: 6
+    region: content
+    settings:
+      title: Bid
+      title_plural: Bids
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_bid_type:
+    type: entity_reference_autocomplete
+    weight: 54
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 29
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contract_length:
+    type: number
+    weight: 31
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_date_range:
+    type: daterange_default
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_department:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_document:
+    type: entity_browser_file
+    weight: 56
+    region: content
+    settings:
+      entity_browser: document_entity_browser
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: false
+      selection_mode: selection_append
+      view_mode: thumbnail
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_email:
+    type: string_textfield
+    weight: 36
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_event_project_number:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 23
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_ma_general_law:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_multi_year_contract:
+    type: boolean_checkbox
+    weight: 30
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_not_awarded:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_offering:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_number:
+    type: string_textfield
+    weight: 37
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_procurement:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_procurement_footer:
+    type: entity_reference_autocomplete
+    weight: 25
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_related_links:
+    type: link_default
+    weight: 60
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_unspsc:
+    type: number
+    weight: 58
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_url:
+    type: string_textfield
+    weight: 55
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 3
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

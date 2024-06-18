@@ -1,0 +1,21 @@
+uuid: e8639381-3c98-42e3-b337-3dc9ad5c5ef8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_virt_meeting_web_addr
+field_name: field_bh_virt_meeting_web_addr
+entity_type: node
+type: string
+settings:
+  max_length: 1024
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

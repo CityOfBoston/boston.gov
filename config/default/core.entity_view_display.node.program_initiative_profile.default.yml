@@ -1,0 +1,174 @@
+uuid: e02b43ff-8217-4b30-a693-8ec08f6030cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.program_initiative_profile.body
+    - field.field.node.program_initiative_profile.field_components
+    - field.field.node.program_initiative_profile.field_contacts
+    - field.field.node.program_initiative_profile.field_content_feeds
+    - field.field.node.program_initiative_profile.field_intro_image
+    - field.field.node.program_initiative_profile.field_intro_text
+    - field.field.node.program_initiative_profile.field_manual_date
+    - field.field.node.program_initiative_profile.field_metatags
+    - field.field.node.program_initiative_profile.field_program_logo
+    - field.field.node.program_initiative_profile.field_program_type
+    - field.field.node.program_initiative_profile.field_published_date
+    - field.field.node.program_initiative_profile.field_sidebar_components
+    - field.field.node.program_initiative_profile.field_updated_date
+    - node.type.program_initiative_profile
+  module:
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - text
+    - user
+_core:
+  default_config_hash: Mzqv2z-5Dn9XAoMnw6IH3kxuKO92OWZC6UWdoruBFRA
+id: node.program_initiative_profile.default
+targetEntityType: node
+bundle: program_initiative_profile
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_contacts:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: department_listing
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_intro_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 'intro-text supporting-text squiggle-border-bottom'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_program_logo:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_logo
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_short
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 7
+    region: content
+  field_sidebar_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: sidebar
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_short
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 8
+    region: content
+hidden:
+  content_moderation_control: true
+  field_content_feeds: true
+  field_manual_date: true
+  field_metatags: true
+  field_program_type: true
+  langcode: true
+  links: true
+  published_at: true

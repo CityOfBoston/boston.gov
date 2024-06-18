@@ -1,0 +1,29 @@
+uuid: 4685b2d4-9d9a-4a28-8673-ce7b4d78ea39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_area
+    - taxonomy.vocabulary.election_areas
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests.field_area
+field_name: field_area
+entity_type: taxonomy_term
+bundle: election_contests
+label: Area
+description: 'Select the Area this contest is being held in.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      election_areas: election_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

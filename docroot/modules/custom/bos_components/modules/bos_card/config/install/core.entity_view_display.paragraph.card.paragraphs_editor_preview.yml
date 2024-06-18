@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.card.field_link
+    - field.field.paragraph.card.field_short_description
+    - field.field.paragraph.card.field_subheader
+    - field.field.paragraph.card.field_thumbnail
+    - field.field.paragraph.card.field_title
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: card
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_link: true
+  field_short_description: true
+  field_subheader: true
+  field_thumbnail: true
+  field_title: true

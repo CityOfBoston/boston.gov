@@ -1,0 +1,56 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ #}
+
+{% set classes = 'entity entity-paragraphs-item paragraphs-item-how-to-contact-step component-section' %}
+
+<div class="stp {{ classes }}"{{ attributes }}>
+    <div class="stp-wrapper p-t500">
+      <div class="stp-column">
+        <div class="stp-column-label">
+          <div class="stp-column--label">Step</div>
+          <div class="stp-column--value">{{ how_to_step_count }}</div>
+        </div>
+      </div>
+      <div class="stp-column-content"{{ content_attributes }}>
+      {% if content.field_title %}
+        <h2 class="header-border-bottom">{{ content.field_title }}</h2>
+      {% endif %}
+      {% if content.field_step_details %}
+        <div class="child-content">
+          {{ content.field_step_details }}
+        </div>
+      {% endif %}
+      {% if content.field_address %}
+        <div class="detail-item-list-item">
+          {{ content.field_address }}
+        </div>
+      {% endif %}
+      {% if content.field_operation_hours %}
+        {{ content.field_operation_hours }}
+      {% endif %}
+      </div>
+    </div>
+</div>

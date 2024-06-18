@@ -1,0 +1,20 @@
+uuid: a9585d55-efa6-4847-b85e-7eb4ce430a0c
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.site_alert
+  module:
+    - datetime
+id: node.site_alert.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: site_alert
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

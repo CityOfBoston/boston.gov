@@ -1,0 +1,37 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.place_profile
+  module:
+    - address
+id: node.place_profile.field_address
+field_name: field_address
+entity_type: node
+bundle: place_profile
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine2:
+      override: optional
+    sortingCode:
+      override: hidden
+  fields: {  }
+field_type: address

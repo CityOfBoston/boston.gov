@@ -1,0 +1,20 @@
+uuid: 6efde74b-704e-40a8-9ab2-491c87c196c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.menu_link
+field_name: menu_link
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

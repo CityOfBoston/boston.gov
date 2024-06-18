@@ -1,0 +1,23 @@
+uuid: c28d1270-eba1-46d2-ab0e-d831bd104f61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.bos311
+_core:
+  default_config_hash: axqkYGumZyNUyUQIVry1A3s5j3wHC6qAfXO8xbJJxrY
+id: paragraph.bos311.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: bos311
+label: Title
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'BOS:311'
+default_value_callback: ''
+settings: {  }
+field_type: string

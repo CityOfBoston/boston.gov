@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.roll_call_vote.field_councillor
+    - field.field.paragraph.roll_call_vote.field_vote
+    - paragraphs.paragraphs_type.roll_call_vote
+  module:
+    - dynamic_entity_reference
+id: paragraph.roll_call_vote.default
+targetEntityType: paragraph
+bundle: roll_call_vote
+mode: default
+content:
+  field_councillor:
+    type: dynamic_entity_reference_options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_vote:
+    type: dynamic_entity_reference_options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

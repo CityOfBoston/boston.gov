@@ -1,0 +1,18 @@
+uuid: 2f240d08-2b3c-422a-aeaf-505c73139669
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.changed
+field_name: changed
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

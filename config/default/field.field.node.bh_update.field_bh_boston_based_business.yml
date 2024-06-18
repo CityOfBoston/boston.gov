@@ -1,0 +1,23 @@
+uuid: 6e74a022-84ce-4e9b-9316-3dd9ca19c2b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_women_owned_business
+    - node.type.bh_update
+id: node.bh_update.field_bh_boston_based_business
+field_name: field_bh_boston_based_business
+entity_type: node
+bundle: bh_update
+label: 'Boston-Based Business'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

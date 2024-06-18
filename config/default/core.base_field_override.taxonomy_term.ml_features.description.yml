@@ -1,0 +1,20 @@
+uuid: 169101f1-c1e2-4461-a898-211351ca2f1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_features
+  module:
+    - text
+id: taxonomy_term.ml_features.description
+field_name: description
+entity_type: taxonomy_term
+bundle: ml_features
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,18 @@
+uuid: b356f30f-c992-4da4-9565-117ec7cd06fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.availability_status
+id: taxonomy_term.availability_status.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: availability_status
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,20 @@
+uuid: 3c1873cd-56e5-4535-8c7f-9f55a5a2bfc2
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.newsletters
+  module:
+    - path
+id: taxonomy_term.newsletters.path
+field_name: path
+entity_type: taxonomy_term
+bundle: newsletters
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

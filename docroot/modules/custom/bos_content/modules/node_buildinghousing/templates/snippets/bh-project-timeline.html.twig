@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - title: The title value of the item.
+ * - items: The value of the items.
+ * - label: The label value of the item.
+ * - body: The content value of the item.
+ * - bgColor: The background color for this item.
+ * - icon: The icon value of the detail item.
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+
+
+{% if label %}
+  <h2 class="sh cl sh-title p-t400">{{ label }}</h2>
+{% endif %}
+<div class="bh-project-timeline g m-v600 p-a300">
+  {{ items }}
+</div>
+

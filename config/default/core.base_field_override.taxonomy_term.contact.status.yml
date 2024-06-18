@@ -1,0 +1,22 @@
+uuid: 4a8608ad-bb90-422f-a285-b608aeeaade4
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.contact
+id: taxonomy_term.contact.status
+field_name: status
+entity_type: taxonomy_term
+bundle: contact
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

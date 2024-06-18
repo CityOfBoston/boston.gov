@@ -1,0 +1,27 @@
+uuid: b9577f67-7d90-425a-87b2-62ad7d2ef16d
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.grid_of_topics.field_component_theme
+    - field.field.paragraph.grid_of_topics.field_component_title
+    - field.field.paragraph.grid_of_topics.field_contact
+    - field.field.paragraph.grid_of_topics.field_hide_title_bar
+    - field.field.paragraph.grid_of_topics.field_short_title
+    - field.field.paragraph.grid_of_topics.field_topics
+    - paragraphs.paragraphs_type.grid_of_topics
+_core:
+  default_config_hash: _8N5YsZ-ll5K9qEKaLMphSXVUC0g0g4PxrAtgEpHbms
+id: paragraph.grid_of_topics.separated_title
+targetEntityType: paragraph
+bundle: grid_of_topics
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true
+  field_topics: true

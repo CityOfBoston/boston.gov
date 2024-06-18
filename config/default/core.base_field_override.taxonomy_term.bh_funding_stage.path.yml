@@ -1,0 +1,20 @@
+uuid: b2ec86f8-99d4-4dc5-830a-528f6eacddb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_funding_stage
+  module:
+    - path
+id: taxonomy_term.bh_funding_stage.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_funding_stage
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

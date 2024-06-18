@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_grid module.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_grid_theme() {
+  return [
+    'paragraph__grid_of_cards' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__grid_of_topics' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__grid_of_people' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__grid_of_places' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__grid_of_programs_initiatives' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__grid_of_quotes' => [
+      'base hook' => 'paragraph',
+    ],
+
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_grid_preprocess_field(&$variables, $hook) {
+  if ($variables["field_name"] == "field_person_photo") {
+    if (isset($variables["element"]["#object"]) && $variables["element"]["#object"]->bundle() == "person_profile" && $variables["element"]["#view_mode"] == "listing") {
+      $variables['items'][0]['content']['#item_attributes']['class'] = "cdp-i";
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_grid_preprocess_paragraph(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    $paragraph = $vars['paragraph'];
+    switch ($paragraph->bundle()) {
+      case 'grid_of_programs_initiatives':
+      case 'grid_of_people':
+      case 'grid_of_places':
+        $theme = $paragraph->get('field_component_theme')->getValue()['0']['value'];
+        $vars['attributes']['class'][] = 'b--' . (!empty($theme) ? $theme : 'g');
+        $vars['attributes']['class'][] = 'b--fw';
+        $vars['section_header_theme'] = ($theme === 'b' ? 'sh--w' : '');
+        break;
+    }
+    if ($vars["paragraph"]->bundle() == "grid_of_cards" || $vars["paragraph"]->bundle() == "grid_of_people" || $vars["paragraph"]->bundle() == "grid_of_places" || $vars["paragraph"]->bundle() == "grid_of_programs_initiatives" || $vars["paragraph"]->bundle() == "grid_of_quotes" || $vars["paragraph"]->bundle() == "grid_of_topics" && isset($vars['content']['field_hide_title_bar']['#items'])) {
+      if (!isset($vars["content"]["field_hide_title_bar"]["#items"])) {
+        $vars['hideTitle'] = FALSE;
+      }
+      else {
+        $vars["hideTitle"] = $vars["content"]["field_hide_title_bar"]["#items"][0]->value == 1;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function bos_grid_preprocess_node(&$vars) {
+  // TODO: This wont be called for anything except nodes defined in the
+  // hook_theme of this module ...
+  if (!empty($vars['elements']['node']) && $vars['elements']['#view_mode'] == 'listing') {
+    $node = $vars['elements']['#node'];
+    switch ($node->bundle()) {
+      case 'topic_page':
+        $vars['title_raw'] = $node->getTitle();
+        break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function bos_grid_preprocess_paragraph__grid_of_cards(&$variables) {
+  if (!empty($variables['paragraph'])) {
+    $paragraph = $variables['paragraph'];
+    $theme = $paragraph->get('field_component_theme')->getValue();
+    $variables['attributes']['class'][] = !empty($theme['0']['value']) ? 'b--' . $theme['0']['value'] : 'b--g';
+    $variables['section_header_theme'] = $theme['0']['value'] === 'b' ? 'sh--w' : '';
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_grid_paragraph_grid_of_cards_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></span>" . $contact->name->value);
+    }
+  }
+  if ($para["entity"]->hasField("field_component_theme")) {
+    if ($para["entity"]->get("field_component_theme")[0]->value == "b") {
+      $markup[] = Markup::create("<span class='info'>(blue theme)</span>");
+    }
+    elseif ($para["entity"]->get("field_component_theme")[0]->value == "g") {
+      $markup[] = Markup::create("<span class='info'>(grey theme)</span>");
+    }
+    else {
+      $markup[] = Markup::create("<span class='info'>(white theme)</span>");
+    }
+  }
+
+  if ($para["entity"]->hasField("field_drawer") && count($para["entity"]->get("field_drawer"))) {
+    $markup[] = Markup::create("<i>grid with " . count($para["entity"]->get("field_drawer")) . " cards.</i>");
+  }
+  else {
+    $markup[] = Markup::create("<i>grid with no cards.</i>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_grid_paragraph_grid_of_quotes_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></span>" . $contact->name->value);
+    }
+  }
+  if ($para["entity"]->hasField("field_grid_of_quotes") && count($para["entity"]->get("field_grid_of_quotes"))) {
+    $markup[] = Markup::create("<span class='info'>grid with " . count($para["entity"]->get("field_grid_of_quotes")) . " quotes.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>grid with no quotes.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

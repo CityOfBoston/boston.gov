@@ -1,0 +1,13 @@
+// <AmiEstimatorDisclosure />
+@import '@globals';
+
+@include media-breakpoint-up( medium ) {
+  .ml-ami-estimator__disclosure {
+    font-size: rem( 24px );
+  }
+}
+
+.ml-ami-estimator__disclosure-accept {
+  font: inherit;
+  margin: 0 auto;
+}

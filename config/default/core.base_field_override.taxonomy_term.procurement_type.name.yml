@@ -1,0 +1,18 @@
+uuid: 8741b58f-b872-435c-ae0a-3363656d6228
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_type
+id: taxonomy_term.procurement_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: procurement_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

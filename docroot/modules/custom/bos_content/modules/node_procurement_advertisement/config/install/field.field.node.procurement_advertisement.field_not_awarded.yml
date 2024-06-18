@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_not_awarded
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_not_awarded
+field_name: field_not_awarded
+entity_type: node
+bundle: procurement_advertisement
+label: 'Not Awarded'
+description: 'Check this off if the bid is closed and <strong>will not</strong> be awarded.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

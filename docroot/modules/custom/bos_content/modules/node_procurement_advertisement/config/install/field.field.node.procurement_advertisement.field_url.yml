@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_url
+field_name: field_url
+entity_type: node
+bundle: procurement_advertisement
+label: 'Supplier Portal Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

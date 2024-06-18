@@ -1,0 +1,21 @@
+uuid: ab7116cc-74d3-4bb2-a234-d93d1b13d111
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_election_type
+    - taxonomy.vocabulary.elections
+  module:
+    - options
+id: taxonomy_term.elections.field_election_type
+field_name: field_election_type
+entity_type: taxonomy_term
+bundle: elections
+label: 'Election Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

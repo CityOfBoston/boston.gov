@@ -1,0 +1,20 @@
+uuid: aa2f5f66-4da3-4591-9f4f-2a688dc3560b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+  module:
+    - publication_date
+id: node.department_profile.published_at
+field_name: published_at
+entity_type: node
+bundle: department_profile
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

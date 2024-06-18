@@ -1,0 +1,362 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.icon_entity_browser
+    - field.field.node.department_profile.body
+    - field.field.node.department_profile.field_address
+    - field.field.node.department_profile.field_components
+    - field.field.node.department_profile.field_department_type
+    - field.field.node.department_profile.field_email
+    - field.field.node.department_profile.field_hide_contact_form
+    - field.field.node.department_profile.field_icon
+    - field.field.node.department_profile.field_intro_text
+    - field.field.node.department_profile.field_manual_date
+    - field.field.node.department_profile.field_metatags
+    - field.field.node.department_profile.field_operation_hours
+    - field.field.node.department_profile.field_phone_number
+    - field.field.node.department_profile.field_published_date
+    - field.field.node.department_profile.field_sidebar_components
+    - field.field.node.department_profile.field_updated_date
+    - node.type.department_profile
+    - workflows.workflow.city_of_boston_workflows
+  module:
+    - address
+    - content_moderation
+    - datetime
+    - entity_browser
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_department_profile:
+      children:
+        - group_basic_in
+        - group_contact_information
+        - group_sidebar_components
+        - group_components
+        - group_page_metadata
+      label: 'Department Profile'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: vertical
+    group_page_metadata:
+      children:
+        - field_manual_date
+        - field_published_date
+        - field_updated_date
+      label: 'Page Metadata'
+      region: content
+      parent_name: group_department_profile
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: 'group-page-metadata field-group-tab'
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_basic_in:
+      children:
+        - title
+        - field_intro_text
+        - body
+      label: 'Basic Information'
+      region: content
+      parent_name: group_department_profile
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_contact_information:
+      children:
+        - field_icon
+        - field_phone_number
+        - field_email
+        - field_hide_contact_form
+        - field_address
+        - field_department_type
+        - field_operation_hours
+      label: 'Contact Information'
+      region: content
+      parent_name: group_department_profile
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_components:
+      children:
+        - field_components
+      label: Components
+      region: content
+      parent_name: group_department_profile
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_sidebar_components:
+      children:
+        - field_sidebar_components
+      label: 'Sidebar Components'
+      region: content
+      parent_name: group_department_profile
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.department_profile.default
+targetEntityType: node
+bundle: department_profile
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_components:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_department_type:
+    type: options_buttons
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_contact_form:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_icon:
+    type: entity_browser_entity_reference
+    weight: 10
+    region: content
+    settings:
+      entity_browser: icon_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings:
+        view_mode: thumbnail
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_manual_date:
+    type: boolean_checkbox
+    weight: 26
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_operation_hours:
+    type: paragraphs
+    weight: 16
+    region: content
+    settings:
+      title: 'Hours of Operation'
+      title_plural: 'Operation Hours'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_phone_number:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_published_date:
+    type: datetime_default
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_sidebar_components:
+    type: paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: 'Sidebar Component'
+      title_plural: 'Sidebar Components'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_updated_date:
+    type: datetime_default
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,127 @@
+{#
+ * @file
+ * Returns the HTML for a node.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https%0%
+ #}
+{#<input id="tabMenuCTRL" type="checkbox" name="tab-menu-ctrl" class="tab-menu-ctrl" aria-hidden="true">#}
+{#{% for index,tab in tabs %}#}
+{#<input id="tabCTRL{{ index }}" type="radio" name="tab-ctrl" class="tab-ctrl tab-ctrl-{{ index }}" data-href="#how-to-tab" {% if index == 0 %}checked="" {% endif %}aria-hidden="true">#}
+{#{% endfor %}#}
+
+<div class="hro {{ image_class }} hro--wh b--fw">
+  <div class="hro-c b-c">
+    <h1 class="hro-t">{{ node.label }}</h1>
+
+  </div>
+{#  <ul class="tab">#}
+{#    {% for index,tab in tabs %}#}
+{#    <li class="tab-li tab-li-{{ index }}">#}
+{#      <label for="tabMenuCTRL" class="tab-li-m" aria-hidden="true">{{ tab }}</label>#}
+{#      <label for="tabCTRL{{ index }}" data-href="#{{ tab|lower|replace(' ','-') }}" class="tab-li-a tab-li-a-{{ index }}">#}
+{#        {{ tab }}#}
+{#      </label>#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#    <li class="tab-li tab-li-close">#}
+{#      <label for="tabMenuCTRL" class="tab-li-a tab-li-a--c" aria-hidden="true">Close</label>#}
+{#    </li>#}
+{#  </ul>#}
+</div>
+
+<article{{ attributes }}>
+  {{ drupal_block('system_breadcrumb_block') }}
+
+  <div class="brc-lu">
+    {% if (content.field_updated_date["#items"]) %}
+      Last updated: {{ content.field_updated_date }}
+    {% elseif (content.field_published_date["#items"]) %}
+      Last updated: {{ content.field_published_date }}
+    {% else %}
+      Not published yet!
+    {% endif %}
+  </div>
+
+  {{ title_suffix }}
+  <div class="b b--fw">
+    <div class="b-c">
+      <div class="tabbed-info-wrapper">
+
+        {% if content.body %}
+          <div class="hro-st hro-st--l">{{ content.body }}</div>
+        {% endif %}
+
+        <div class="g">
+          <div class="column g--8">
+
+            {% if content.field_how_to_tabs %}
+              {{ content.field_how_to_tabs }}
+            {% endif %}
+
+            {% if not node.field_components.isempty %}
+              <div class="hr--dash m-v600"></div>
+              <div class="how-to-components component-within-component tab-components" {{ content_attributes }}>
+                <div>
+
+                </div>
+                {{ content.field_components }}
+              </div>
+            {% endif %}
+
+          </div><!-- end desktop g--8 -->
+          <div class="column g--4">
+            <ul class="sb">
+              {% if not node.field_payment_info.isempty %}
+              <li class="sb-i">
+                {{ content.field_payment_info }}
+              </li>
+              {% endif %}
+              {% if not node.field_links.isempty %}
+              <li class="sb-i">
+                {{ content.field_links }}
+              </li>
+              {% endif %}
+              {% if not node.field_need_to_know.isempty %}
+              <li class="sb-i">
+                {{ content.field_need_to_know }}
+              </li>
+              {% endif %}
+              {% if not node.field_contact.isempty %}
+                {% if content.field_contact["#items"] and (content.field_hide_contact_form['#items'].value == 0 or content.field_contact["#items"] is null) %}
+                  <li class="sb-i contact-info">
+                    {{ content.field_contact }}
+                  </li>
+                {% endif %}
+              {% endif %}
+              {% if not node.field_sidebar_components.isempty %}
+              <li class="sb-i list-item-wrapper">
+                {{ content.field_sidebar_components }}
+              </li>
+              {% endif %}
+            </ul>
+          </div><!-- end desktop g--4 -->
+        </div>
+      </div><!-- end .tabbed-info-wrapper -->
+    </div>
+  </div>
+  <!-- begin Bibblio custom markup-->
+       <!-- on hold until further notice -->
+       <!--<div class="bibblio-container">
+          <div class="content entity entity-paragraphs-item paragraphs-item-text component-section">
+              <div class="sh">
+                <h2 class="sh-title">Suggested Content</h2>
+              </div>
+              <div class="supporting-text">
+                <p>We're testing out suggested content on Boston.gov below. If you see anything out of place, let us know at <a href="mailto:feedback@boston.gov" title="If you see anything out of place, let us know.">feedback@boston.gov</a>.</p>
+              </div>
+              <div class="paragraphs-items paragraphs-items-field-text-blocks paragraphs-items-field-text-blocks-full paragraphs-items-full">
+                      <div id="bibblio-custom">
+                          <div class="g b--w"></div>
+                      </div>
+              </div>
+          </div>
+        </div>-->
+  <!-- end Bibblio custom markup -->
+</article>

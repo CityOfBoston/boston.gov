@@ -1,0 +1,23 @@
+uuid: e6d7a353-b3e6-40c3-941e-779781f7511a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.branded_links
+id: paragraph.branded_links.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: branded_links
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

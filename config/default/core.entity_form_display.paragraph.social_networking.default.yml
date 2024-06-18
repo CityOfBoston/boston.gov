@@ -1,0 +1,58 @@
+uuid: bc65bdb1-8f00-4707-aef9-af7e9e61fbcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_networking.field_external_link
+    - field.field.paragraph.social_networking.field_social_icon
+    - paragraphs.paragraphs_type.social_networking
+  module:
+    - field_group
+    - link
+third_party_settings:
+  field_group:
+    group_social_network_info:
+      children:
+        - field_external_link
+        - field_social_icon
+      label: 'Social Networking Info'
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: 9lyq_R15vtA93P_iUxOhOOwJK0qB9oIFf1ji4n20TvM
+id: paragraph.social_networking.default
+targetEntityType: paragraph
+bundle: social_networking
+mode: default
+content:
+  field_external_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_social_icon:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

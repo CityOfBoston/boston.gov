@@ -1,0 +1,102 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a component test page entity.
+ *
+ * This template is used when viewing a registered component test page's page,
+ * e.g., /admin/content/component-test-page)/123. 123 being the component test page's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_component_test_page()
+ * @see theme's node.html.php
+ */
+#}
+
+<div class="breadcrumb" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+
+<div class="brc-lu">
+  {% if (content.field_updated_date["#items"]) %}
+    Last updated: {{ content.field_updated_date }}
+  {% elseif (content.field_published_date["#items"]) %}
+    Last updated: {{ content.field_published_date }}
+  {% else %}
+    Not published yet!
+  {% endif %}
+</div>
+
+<article{{ attributes }}>
+  <div class="p-v400">
+      <div class="g">
+        <div class="column g--8">
+
+            {{ title_prefix }}
+
+            {% if title %}
+                <h1{{ title_attributes }}>{{ title.0 }}</h1>
+            {%  endif %}
+
+            {{ title_suffix }}
+
+            {% if content.field_intro_text %}
+                {{ content.field_intro_text }}
+            {% endif %}
+
+          {% include 'themes/custom/bos_theme/templates/snippets/topic-nav.html.twig' %}
+
+            <div class="body">
+                {# We hide the comments and links now so that we can render them later. #}
+                {#{{ content|without('created', 'uid', 'comments', 'links') }}#}
+                {{ content.body }}
+            </div>
+
+        </div>
+
+        <div id="desktop-sidebar" class="column g--4">
+          <ul class="sb">
+            {% if content.field_contact["#items"] and (content.field_hide_contact_form['#items'].value == 0 or content.field_contact["#items"] is null) %}
+              <li class="sb-i">
+                  <div>Still have questions? Contact:</div>
+                    {{ content.field_contact }}
+              </li>
+            {%  endif %}
+            {% if (content.field_sidebar_components) %}
+                {{ content.field_sidebar_components }}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div class="g">
+    <div class="column g--12">
+    {%  if (content.field_components) %}
+      <div class="department-components" {{ content_attributes }}>
+        {{ content.field_components }}
+      </div>
+    {% endif %}
+    </div>
+
+    <div id="mobile-sidebar" class="column g--12">
+      <ul class="sb">
+        {% if content.field_contact["#items"] and (content.field_hide_contact_form['#items'].value == 0 or content.field_contact["#items"] is null) %}
+          <li class="sb-i">
+            <div>Still have questions? Contact:</div>
+            {{ content.field_contact }}
+          </li>
+        {%  endif %}
+        {% if (content.field_sidebar_components) %}
+          {{ content.field_sidebar_components }}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+    {{ content['links']  }}
+    {{ content['comments']  }}
+
+</article>

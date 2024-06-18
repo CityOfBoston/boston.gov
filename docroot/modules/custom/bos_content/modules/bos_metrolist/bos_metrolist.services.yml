@@ -1,0 +1,10 @@
+services:
+  bos_metrolist.metrolist_ami_path_subscriber:
+    class: Drupal\bos_metrolist\MetrolistAMIPathSubscriber
+    tags:
+      - { name: path_processor_inbound }
+      - { name: event_subscriber }
+  serializer.encoder.metrolist_zillow_xml:
+    class: Drupal\bos_metrolist\Encoder\MetroListZillowXMLEncoder
+    tags:
+      - { name: encoder, priority: 21, format: 'metrolist_zillow_xml' }

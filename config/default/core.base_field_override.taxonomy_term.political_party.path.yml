@@ -1,0 +1,20 @@
+uuid: cbf41a1f-b9a2-467d-a5fb-327fe21bad97
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.political_party
+  module:
+    - path
+id: taxonomy_term.political_party.path
+field_name: path
+entity_type: taxonomy_term
+bundle: political_party
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

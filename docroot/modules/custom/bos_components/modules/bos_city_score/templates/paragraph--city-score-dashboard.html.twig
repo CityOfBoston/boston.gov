@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ */
+#}
+<div{{ attributes }}>
+   <div class="contextual-region">
+       {{ title_suffix }}
+   </div>
+   <div class="sh">
+     {% if content.field_component_title %}
+       {{ content.field_component_title }}
+     {% endif %}
+      <div class="brc-lu hidden">Last updated:
+         <span class="date-display-single" data-type="xsd:dateTime" property="dc:date"></span>
+      </div>
+   </div>
+   <div class="cs">
+      <div class="cs__block--chart cs--block">
+         <ul class="cs--chart">
+            <li class="cs--chartPoint">
+               <span class="cs--large cs--less">&lt;</span>
+               <p>
+                  {% if content.field_extra_info %}
+                     {{ content.field_extra_info }}
+                  {% endif %}
+               </p>
+            </li>
+            <li class="cs--chartPoint">
+               <span>1.0</span>
+            </li>
+            <li class="cs--chartPoint">
+               <span class="cs--large cs--greater">&gt;</span>
+               <p>
+                  {% if content.field_short_description %}
+                     {{ content.field_short_description }}
+                  {% endif %}
+               </p>
+            </li>
+            <li class="cs--chartAmount">
+               <span class="cs--chartAmount--label">Today's Score</span>
+               <strong class="cs--chartAmount--value">-</strong>
+            </li>
+         </ul>
+      </div>
+      <div id="scoreTable" class="cs--block">
+         {{ content.field_main_table }}
+      </div>
+   </div>
+</div>

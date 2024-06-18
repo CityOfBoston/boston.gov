@@ -1,0 +1,33 @@
+uuid: 977de117-e700-48c8-94be-21bebab52a69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.from_library.field_reusable_paragraph
+    - paragraphs.paragraphs_type.from_library
+_core:
+  default_config_hash: r4TZydyh5ONZnEbmIQMgY2PeiciP9cSAwBGrDLmxvd8
+id: paragraph.from_library.default
+targetEntityType: paragraph
+bundle: from_library
+mode: default
+content:
+  field_reusable_paragraph:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

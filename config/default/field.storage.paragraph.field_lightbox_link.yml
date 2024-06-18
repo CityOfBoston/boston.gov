@@ -1,0 +1,19 @@
+uuid: d8f67007-19ab-4f69-9d79-f9a1eb1729a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_lightbox_link
+field_name: field_lightbox_link
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

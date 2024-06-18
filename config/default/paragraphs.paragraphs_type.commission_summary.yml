@@ -1,0 +1,13 @@
+uuid: 39be8ee0-f560-4b83-a998-813bc23270ce
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: x2OIwBu6zjTqUYgyzx4HfoRbUcI2hAYcEHaL6ACbnGA
+id: commission_summary
+label: 'Commission Summary'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Summary'
+behavior_plugins: {  }

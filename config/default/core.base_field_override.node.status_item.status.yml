@@ -1,0 +1,22 @@
+uuid: 61d5e5f9-daae-4228-84c0-fe12553fd913
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.status_item
+id: node.status_item.status
+field_name: status
+entity_type: node
+bundle: status_item
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

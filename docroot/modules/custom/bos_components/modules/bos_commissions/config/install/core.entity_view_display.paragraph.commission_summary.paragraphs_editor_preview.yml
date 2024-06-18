@@ -1,0 +1,18 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.commission_summary.field_commission
+    - field.field.paragraph.commission_summary.field_component_title
+    - field.field.paragraph.commission_summary.field_short_title
+    - paragraphs.paragraphs_type.commission_summary
+id: paragraph.commission_summary.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: commission_summary
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_commission: true
+  field_component_title: true
+  field_short_title: true

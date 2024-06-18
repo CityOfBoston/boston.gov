@@ -1,0 +1,48 @@
+uuid: 4d299feb-de64-432a-8184-add999af8013
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_sidebar_icon
+field_name: field_sidebar_icon
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: icon-alert
+      label: Alert
+    -
+      value: icon-document
+      label: Document
+    -
+      value: icon-email
+      label: Email
+    -
+      value: icon-event
+      label: Event
+    -
+      value: icon-form
+      label: Form
+    -
+      value: icon-location
+      label: Location
+    -
+      value: icon-payment
+      label: Payment
+    -
+      value: icon-phone
+      label: Phone
+    -
+      value: icon-time
+      label: Time
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

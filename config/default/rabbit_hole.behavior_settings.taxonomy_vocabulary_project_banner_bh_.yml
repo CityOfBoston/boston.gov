@@ -1,0 +1,14 @@
+uuid: 1abbea09-1167-435c-9cd1-bd7b56042f2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_banner_bh_
+id: taxonomy_vocabulary_project_banner_bh_
+entity_type_id: taxonomy_vocabulary
+entity_id: project_banner_bh_
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

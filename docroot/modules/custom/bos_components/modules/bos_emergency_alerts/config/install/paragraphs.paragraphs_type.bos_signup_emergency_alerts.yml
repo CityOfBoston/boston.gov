@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:ac606762-ec69-427f-bb97-a26948145e41'
+id: bos_signup_emergency_alerts
+label: 'Signup Emergency Alerts'
+icon_uuid: ac606762-ec69-427f-bb97-a26948145e41
+icon_default: null
+description: 'Migrated from paragraph bundle Signup Emergency Alerts'
+behavior_plugins: {  }

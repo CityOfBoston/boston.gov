@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Theme override of a datetime form wrapper.
+ *
+ * Available variables:
+ * - content: The form element to be output, usually a datelist, or datetime.
+ * - title: The title of the form element.
+ * - title_attributes: HTML attributes for the title wrapper.
+ * - description: Description text for the form element.
+ * - required: An indicator for whether the associated form element is required.
+ *
+ * @see template_preprocess_datetime_wrapper()
+ */
+#}
+{%
+  set title_classes = [
+    'label',
+    required ? 'js-form-required',
+    required ? 'form-required',
+  ]
+%}
+{% set extra_attrib = create_attribute() %}
+{% set hasCheckbox = (element["#show_checkbox"] == TRUE) %}
+{% set show = (hasCheckbox and element["#default_value"] is not empty) %}
+{% if not show %}
+  {% set extra_attribs = ["hidden"] %}
+{% endif %}
+
+
+{% if hasCheckbox and not show %}
+
+  <div id="cbx-field-end-date-wrapper">
+    <input id="cbx-field-end-date" type="checkbox" class="form-checkbox" tabindex="-1" onClick>
+    <label for="cbx-field-end-date" class="option">Set End Date/Time</label>
+  </div>
+
+{% endif %}
+
+{% if hasCheckbox %}
+  <div{{ extra_attrib.addClass(extra_attribs).setAttribute("id", "field-datetime-wrapper") }}>
+{% endif %}
+
+  {% if title %}
+    <label{{ title_attributes.addClass(title_classes) }}>{{ title }}</label>
+  {% endif %}
+
+  {{ content }}
+
+  {% if errors %}
+    <div class="form-item--error-message">
+      <strong>{{ errors }}</strong>
+    </div>
+  {% endif %}
+
+  {% if description %}
+    <div{{ description_attributes.addClass('description') }}>
+      {{ description }}
+    </div>
+  {% endif %}
+
+{% if hasCheckbox %}
+  </div>
+{% endif %}

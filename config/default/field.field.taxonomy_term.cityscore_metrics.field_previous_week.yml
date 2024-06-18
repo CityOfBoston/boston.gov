@@ -1,0 +1,25 @@
+uuid: 8fd21e0f-6b06-4fd1-843d-aabe4266803f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_previous_week
+    - taxonomy.vocabulary.cityscore_metrics
+_core:
+  default_config_hash: WHu2VETzxnuzCNoodVnKb_yg8mgXaMO8u0p3rXx7Avg
+id: taxonomy_term.cityscore_metrics.field_previous_week
+field_name: field_previous_week
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'Previous Week'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

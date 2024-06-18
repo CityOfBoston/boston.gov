@@ -1,0 +1,18 @@
+uuid: 8e741e7c-3718-4dba-a5a0-a0efb6b928df
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.social_media_links
+id: paragraph.social_media_links.created
+field_name: created
+entity_type: paragraph
+bundle: social_media_links
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,21 @@
+uuid: 6c67d743-abb6-44af-9cb8-1fcf29c36bd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_title
+    - node.type.status_item
+_core:
+  default_config_hash: 8bIxgAIdHhKMAyQD3MguwDsp9x2dKXseyv9LzIv8tmA
+id: node.status_item.field_title
+field_name: field_title
+entity_type: node
+bundle: status_item
+label: 'Display Title'
+description: 'Set the display title for this item.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

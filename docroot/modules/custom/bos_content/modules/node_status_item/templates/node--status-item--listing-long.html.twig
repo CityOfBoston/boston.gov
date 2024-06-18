@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a status item entity.
+ *
+ * This template is used when viewing a registered status item's page,
+ * e.g., /admin/content/status-item)/123. 123 being the status item's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_status_item()
+ */
+#}
+
+  {% if content %}
+      {{ content.field_messages }}
+  {% endif %}

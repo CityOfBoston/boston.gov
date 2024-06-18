@@ -1,0 +1,15 @@
+uuid: 99771759-b269-4cde-a46c-45e648c861ef
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.gol_list_links.field_link
+    - paragraphs.paragraphs_type.gol_list_links
+id: paragraph.gol_list_links.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: gol_list_links
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_link: true

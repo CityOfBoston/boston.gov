@@ -1,0 +1,23 @@
+uuid: 069d4a58-db8b-45bb-a2b2-6cd93920ec52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_precinct_total
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_precinct_total
+field_name: field_precinct_total
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Precinct Total'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

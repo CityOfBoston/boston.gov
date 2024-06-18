@@ -1,0 +1,50 @@
+// <Button />
+@import '@globals';
+
+// Not using `ml-button`; extends standard button
+.btn[class*="btn--metrolist"] {
+  font-size: rem( 14px );
+  width: 100%;
+  // padding: rem( 13px 21px ); // mockup
+  padding: rem( 13px 7px );
+  letter-spacing: rem( 0.01px );
+  text-align: center;
+}
+
+// Primary Color Scheme
+.btn.btn--metrolist-primary {
+  background-color: $color-optimistic-blue--a11y;
+}
+
+@include media-breakpoint-up( small ) {
+  .btn.btn--metrolist-primary {
+    min-width: rem( 125px );
+    // width: ( 125 / $nominal-width-home ) * 100%;
+  }
+}
+@include media-breakpoint-up( large ) {
+  .btn.btn--metrolist-primary {
+    min-width: rem( 220px );
+    // width: ( 220 / $nominal-width-home-desktop ) * 100%;
+  }
+}
+
+// Secondary Color Scheme
+.btn.btn--metrolist-secondary {
+  background-color: $color-white;
+  color: $color-metrolist-ami-estimator-button-secondary-text;
+  border: 1px solid $color-metrolist-ami-estimator-button-secondary-text;
+
+  &:hover,
+  &:focus {
+    border-color: transparent;
+  }
+}
+.btn.btn--metrolist-secondary:hover:not(:disabled), .btn.btn--metrolist-secondary:focus:not(:disabled) {
+  background-color: $color-white;
+  color: $color-metrolist-ami-estimator-button-secondary-text;
+}
+.btn[class*="btn--metrolist"][disabled] {
+  border: 0;
+  color: $color-white;
+}

@@ -1,0 +1,18 @@
+uuid: e342de85-c448-4411-8819-8cdee6f6bf43
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_neighborhood
+id: taxonomy_term.ml_neighborhood.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: ml_neighborhood
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

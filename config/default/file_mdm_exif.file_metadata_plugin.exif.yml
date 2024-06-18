@@ -1,0 +1,35 @@
+_core:
+  default_config_hash: u0ZqkNrnyVSnHXGBP0zlKY9dP1ZARzJZ9VSovzU_eDg
+ifd_map:
+  0:
+    type: 0
+    aliases:
+      - '0'
+      - IFD0
+      - Main
+  1:
+    type: 1
+    aliases:
+      - '1'
+      - IFD1
+      - Thumbnail
+  Exif:
+    type: 2
+    aliases:
+      - Exif
+  GPS:
+    type: 3
+    aliases:
+      - GPS
+  Interoperability:
+    type: 4
+    aliases:
+      - Interoperability
+      - Interop
+configuration:
+  cache:
+    override: false
+    settings:
+      enabled: true
+      expiration: 172800
+      disallowed_paths: {  }

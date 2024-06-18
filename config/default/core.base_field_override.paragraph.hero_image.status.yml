@@ -1,0 +1,24 @@
+uuid: d80c72a4-9526-4acc-8033-5c649740182f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.hero_image
+_core:
+  default_config_hash: HktNlJkxq-n7VNhVbSm1X3R20Oryu4H-3URpj7jVk4g
+id: paragraph.hero_image.status
+field_name: status
+entity_type: paragraph
+bundle: hero_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

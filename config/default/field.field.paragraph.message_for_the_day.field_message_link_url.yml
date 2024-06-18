@@ -1,0 +1,23 @@
+uuid: 79871de4-c763-4f5e-9c99-e281a857bf40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_message_link_url
+    - paragraphs.paragraphs_type.message_for_the_day
+  module:
+    - link
+id: paragraph.message_for_the_day.field_message_link_url
+field_name: field_message_link_url
+entity_type: paragraph
+bundle: message_for_the_day
+label: message_link_url
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

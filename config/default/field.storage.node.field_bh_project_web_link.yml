@@ -1,0 +1,21 @@
+uuid: 754f3ef5-9175-407e-97e2-06821bb4b8fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_project_web_link
+field_name: field_bh_project_web_link
+entity_type: node
+type: string
+settings:
+  max_length: 1024
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

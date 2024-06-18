@@ -1,0 +1,23 @@
+uuid: 41cb1db0-058e-4f2a-8e91-faadf237a3b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_number_of_units
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_number_of_units
+field_name: field_ml_number_of_units
+entity_type: node
+bundle: metrolist_development
+label: 'Number of Units'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

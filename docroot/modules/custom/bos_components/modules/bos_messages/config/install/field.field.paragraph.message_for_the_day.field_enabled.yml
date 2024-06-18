@@ -1,0 +1,22 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_enabled
+    - paragraphs.paragraphs_type.message_for_the_day
+id: paragraph.message_for_the_day.field_enabled
+field_name: field_enabled
+entity_type: paragraph
+bundle: message_for_the_day
+label: 'Message Active'
+description: 'Inactive messages will not appear on-site regardless of recurrence rules.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Active
+  off_label: Inactive
+field_type: boolean

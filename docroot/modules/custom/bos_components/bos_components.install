@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * The install file for bos311 module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function bos_components_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}

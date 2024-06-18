@@ -1,0 +1,18 @@
+uuid: b743ad61-fdd7-40eb-952c-2defbc2a70fc
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.metatag
+field_name: metatag
+entity_type: node
+bundle: transaction
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

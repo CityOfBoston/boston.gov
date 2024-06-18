@@ -1,0 +1,23 @@
+uuid: 6e7f7c0b-f0cc-4c4b-b5ef-d179c8ac8b6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: gQMNBlTaVT7NyDeU9j9UJIyO7QWBMKiDkuYDvCOQ_N4
+id: taxonomy_term.field_day
+field_name: field_day
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

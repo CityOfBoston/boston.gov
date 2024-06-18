@@ -1,0 +1,20 @@
+uuid: 18a726c0-ae0d-4769-940b-6fdd2ec3d990
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+  module:
+    - path
+id: node.metrolist_affordable_housing.path
+field_name: path
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

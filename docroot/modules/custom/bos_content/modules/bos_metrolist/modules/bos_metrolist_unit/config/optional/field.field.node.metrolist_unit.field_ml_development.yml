@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_development
+    - node.type.metrolist_development
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_development
+field_name: field_ml_development
+entity_type: node
+bundle: metrolist_unit
+label: Development
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      metrolist_development: metrolist_development
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

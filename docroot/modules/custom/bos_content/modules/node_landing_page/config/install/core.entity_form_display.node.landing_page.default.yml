@@ -1,0 +1,216 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.field_components
+    - field.field.node.landing_page.field_contacts
+    - field.field.node.landing_page.field_manual_date
+    - field.field.node.landing_page.field_meta_tags
+    - field.field.node.landing_page.field_published_date
+    - field.field.node.landing_page.field_updated_date
+    - node.type.landing_page
+    - workflows.workflow.city_of_boston_workflows
+  module:
+    - content_moderation
+    - datetime
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - publication_date
+third_party_settings:
+  field_group:
+    group_landing_page:
+      children:
+        - group_basic_information
+        - group_component
+        - group_page_metadata
+      label: 'Landing Page'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: vertical
+    group_basic_information:
+      children:
+        - title
+        - field_contacts
+      label: 'Basic Information'
+      region: content
+      parent_name: group_landing_page
+      weight: 17
+      format_type: tab
+      format_settings:
+        classes: 'group-basic-info field-group-tab'
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_page_metadata:
+      children:
+        - field_manual_date
+        - field_updated_date
+        - field_published_date
+      label: 'Page Metadata'
+      region: content
+      parent_name: group_landing_page
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: 'group-page-metadata field-group-tab'
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_component:
+      children:
+        - field_components
+      label: Component
+      region: content
+      parent_name: group_landing_page
+      weight: 18
+      format_type: tab
+      format_settings:
+        classes: 'group-components field-group-tab'
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_components:
+    type: paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Component
+      title_plural: Components
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_contacts:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_manual_date:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_published_date:
+    type: datetime_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_updated_date:
+    type: datetime_default
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

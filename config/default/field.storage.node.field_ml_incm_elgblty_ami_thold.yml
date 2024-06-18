@@ -1,0 +1,20 @@
+uuid: e474fece-9c37-490e-952d-78c47a0c4a45
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_incm_elgblty_ami_thold
+field_name: field_ml_incm_elgblty_ami_thold
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

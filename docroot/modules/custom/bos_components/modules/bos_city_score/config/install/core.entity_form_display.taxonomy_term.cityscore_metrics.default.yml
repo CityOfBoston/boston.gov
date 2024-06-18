@@ -1,0 +1,130 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.cityscore_metrics.field_calc_timestamp
+    - field.field.taxonomy_term.cityscore_metrics.field_day
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_day
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_month
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_quarter
+    - field.field.taxonomy_term.cityscore_metrics.field_previous_week
+    - field.field.taxonomy_term.cityscore_metrics.field_table_timestamp
+    - taxonomy.vocabulary.cityscore_metrics
+  module:
+    - field_group
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_metrics:
+      children:
+        - field_day
+        - field_previous_day
+        - field_previous_week
+        - field_previous_month
+        - field_previous_quarter
+        - field_table_timestamp
+        - field_calc_timestamp
+        - field_current
+      label: Metrics
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+id: taxonomy_term.cityscore_metrics.default
+targetEntityType: taxonomy_term
+bundle: cityscore_metrics
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_calc_timestamp:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_day:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_previous_day:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_previous_month:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_previous_quarter:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_previous_week:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_table_timestamp:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 12
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

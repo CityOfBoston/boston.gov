@@ -1,0 +1,16 @@
+uuid: e06ab82e-20ee-447b-8462-82f2561d80d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_offering
+_core:
+  default_config_hash: p8tnFEhmDITS6jHPEdx1_7slAfWw_FLhRWwS3fHIAeI
+id: taxonomy_term.bid_offering.default
+targetEntityType: taxonomy_term
+bundle: bid_offering
+mode: default
+content: {  }
+hidden:
+  description: true
+  langcode: true

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.featured_topics.field_short_title
+    - field.field.paragraph.featured_topics.field_topics
+    - paragraphs.paragraphs_type.featured_topics
+id: paragraph.featured_topics.separated_title
+targetEntityType: paragraph
+bundle: featured_topics
+mode: separated_title
+content: {  }
+hidden:
+  field_short_title: true
+  field_topics: true

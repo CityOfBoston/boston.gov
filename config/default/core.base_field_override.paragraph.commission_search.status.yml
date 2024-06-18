@@ -1,0 +1,22 @@
+uuid: 772b6e35-545b-436d-946a-a6c7132e45d6
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.commission_search
+id: paragraph.commission_search.status
+field_name: status
+entity_type: paragraph
+bundle: commission_search
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

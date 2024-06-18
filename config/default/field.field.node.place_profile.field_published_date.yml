@@ -1,0 +1,23 @@
+uuid: 88343b7a-0417-4e2e-abba-958b65440699
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.place_profile
+  module:
+    - datetime
+_core:
+  default_config_hash: QwS1ZDc4qYsMj4t4Ckv75A3NjMOxQ9z844DcgIXt2TY
+id: node.place_profile.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: place_profile
+label: 'Published Date'
+description: 'Provide a published date for this Place Profile page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

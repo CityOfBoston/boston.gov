@@ -1,0 +1,22 @@
+uuid: 92593697-1fd5-42c6-801d-7803557f36c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_rent_type
+id: taxonomy_term.ml_rent_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: ml_rent_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,25 @@
+uuid: cd1cf1f9-009a-4556-b62c-0ab930d78539
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.program_initiative_profile
+  module:
+    - text
+_core:
+  default_config_hash: jVfB4PrmSkSIZtqe-ZWxq6hcPrJiDKoq24uBb2IWEOo
+id: node.program_initiative_profile.body
+field_name: body
+entity_type: node
+bundle: program_initiative_profile
+label: Body
+description: 'Please provide the main content for this page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

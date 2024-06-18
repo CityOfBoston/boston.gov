@@ -1,0 +1,23 @@
+uuid: 3fc9fd3b-faa6-482e-b336-202094d937b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - dynamic_entity_reference
+    - paragraphs
+    - taxonomy
+id: paragraph.field_councillor
+field_name: field_councillor
+entity_type: paragraph
+type: dynamic_entity_reference
+settings:
+  exclude_entity_types: false
+  entity_type_ids:
+    taxonomy_term: taxonomy_term
+module: dynamic_entity_reference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

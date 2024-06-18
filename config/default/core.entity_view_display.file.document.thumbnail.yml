@@ -1,0 +1,99 @@
+uuid: ad4263f6-26b7-43ba-8bd7-d2a27492a7ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.thumbnail
+    - field.field.file.document.field_updated_date
+    - file_entity.type.document
+  module:
+    - datetime
+    - fences
+    - file
+    - file_entity
+    - user
+_core:
+  default_config_hash: zlB0VonOjJywsH9sIrMlYt9bIpPdi3QysmBkBUaV1YY
+id: file.document.thumbnail
+targetEntityType: file
+bundle: document
+mode: thumbnail
+content:
+  field_updated_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_normal_date
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  filemime:
+    type: file_filemime
+    label: hidden
+    settings:
+      link_to_file: false
+      filemime_image: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  filename:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  filesize:
+    type: file_size
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  langcode: true
+  uri: true

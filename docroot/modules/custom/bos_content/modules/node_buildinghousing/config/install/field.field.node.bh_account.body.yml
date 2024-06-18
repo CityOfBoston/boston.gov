@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.node.body
+        - node.type.bh_account
+    module:
+        - text
+id: node.bh_account.body
+field_name: body
+entity_type: node
+bundle: bh_account
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+    display_summary: true
+field_type: text_with_summary

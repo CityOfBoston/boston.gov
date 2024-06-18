@@ -1,0 +1,20 @@
+uuid: b0383100-2890-40b0-92a0-408ea1b7d897
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_disposition_type
+  module:
+    - path
+id: taxonomy_term.bh_disposition_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_disposition_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

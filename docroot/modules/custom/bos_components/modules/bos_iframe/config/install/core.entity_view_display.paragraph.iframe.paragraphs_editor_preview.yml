@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.iframe.field_component_title
+    - field.field.paragraph.iframe.field_contact
+    - field.field.paragraph.iframe.field_iframe_size
+    - field.field.paragraph.iframe.field_short_title
+    - field.field.paragraph.iframe.field_source_url
+    - paragraphs.paragraphs_type.iframe
+id: paragraph.iframe.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: iframe
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_title: true
+  field_contact: true
+  field_iframe_size: true
+  field_short_title: true
+  field_source_url: true

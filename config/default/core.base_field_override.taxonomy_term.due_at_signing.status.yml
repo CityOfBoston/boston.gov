@@ -1,0 +1,22 @@
+uuid: b5471208-15dc-45bd-a864-d427ab0b43bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.due_at_signing
+id: taxonomy_term.due_at_signing.status
+field_name: status
+entity_type: taxonomy_term
+bundle: due_at_signing
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

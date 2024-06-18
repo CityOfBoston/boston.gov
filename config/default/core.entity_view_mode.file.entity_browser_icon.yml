@@ -1,0 +1,15 @@
+uuid: 67acb8ac-24cb-42c9-9ec9-d8e788ce2969
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: 'Specifically for the entity browser to display icons from patterns library.'
+id: file.entity_browser_icon
+label: 'Entity Browser - Icon'
+description: ''
+targetEntityType: file
+cache: true

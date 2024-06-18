@@ -1,0 +1,25 @@
+uuid: 8958c75a-6804-4050-a6cd-dfab177412ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hours_icon
+    - paragraphs.paragraphs_type.daily_hours
+  module:
+    - options
+_core:
+  default_config_hash: GOoIa0bWTxiNVLqoG3vg5izMFM7kOj_ABxQrK8AxBn8
+id: paragraph.daily_hours.field_hours_icon
+field_name: field_hours_icon
+entity_type: paragraph
+bundle: daily_hours
+label: 'Hours Icon'
+description: 'Add an hours icon to display next the open hours.'
+required: false
+translatable: false
+default_value:
+  -
+    value: icon-time
+default_value_callback: ''
+settings: {  }
+field_type: list_string

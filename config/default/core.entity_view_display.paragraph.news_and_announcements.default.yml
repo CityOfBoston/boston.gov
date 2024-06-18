@@ -1,0 +1,101 @@
+uuid: 384378bf-667b-4408-9128-ab25ebeba573
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.news_and_announcements.field_component_theme
+    - field.field.paragraph.news_and_announcements.field_component_title
+    - field.field.paragraph.news_and_announcements.field_featured_post
+    - field.field.paragraph.news_and_announcements.field_hide_title_bar
+    - field.field.paragraph.news_and_announcements.field_link
+    - field.field.paragraph.news_and_announcements.field_list
+    - field.field.paragraph.news_and_announcements.field_short_title
+    - paragraphs.paragraphs_type.news_and_announcements
+  module:
+    - entity_reference_revisions
+    - fences
+    - viewfield
+_core:
+  default_config_hash: s54Y6-Z0z92WupSD8mEBTepbbiPZZzPDRVro4iIHMXY
+id: paragraph.news_and_announcements.default
+targetEntityType: paragraph
+bundle: news_and_announcements
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_featured_post:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: featured_item
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_hide_title_bar:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_list:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: true
+      empty_view_title: hidden
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_short_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  field_component_theme: true

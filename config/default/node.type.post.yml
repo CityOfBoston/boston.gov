@@ -1,0 +1,20 @@
+uuid: 1cda2308-efba-4405-8890-b26b565f608a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: VvMp2CNpvBrHWNY8moc07ZB6xIUihIhpQ5YSlj85rWE
+name: Post
+type: post
+description: 'A full body text and image(s)/video(s) of the press release or storytelling piece.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

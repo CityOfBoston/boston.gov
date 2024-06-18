@@ -1,0 +1,20 @@
+uuid: f7a7e841-e274-4355-8c0c-83ed2dbe0c25
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos_theme
+id: mainpagecontent
+theme: bos_theme
+region: content
+weight: -3
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

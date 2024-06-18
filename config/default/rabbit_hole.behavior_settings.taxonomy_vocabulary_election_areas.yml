@@ -1,0 +1,14 @@
+uuid: deb93858-cc3f-415c-a56c-7f5d5d559fa6
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.election_areas
+id: taxonomy_vocabulary_election_areas
+entity_type_id: taxonomy_vocabulary
+entity_id: election_areas
+action: page_redirect
+allow_override: 0
+redirect: /departments/elections/unofficial-election-results
+redirect_code: 301
+redirect_fallback_action: page_not_found

@@ -1,0 +1,159 @@
+uuid: b809e566-2688-43fd-9eb8-085b94e36e39
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.document
+    - media.type.icon
+    - media.type.image
+    - node.type.change
+    - taxonomy.vocabulary.project_banner_bh_
+  module:
+    - ape
+    - block
+    - block_content
+    - bos_core
+    - bos_google_cloud
+    - config
+    - config_update_ui
+    - content_access
+    - content_moderation
+    - content_translation
+    - contextual
+    - embed
+    - entity_browser
+    - entity_clone
+    - entity_usage
+    - environment_indicator
+    - field_ui
+    - file
+    - file_entity
+    - filter
+    - lightning_core
+    - media
+    - module_filter
+    - node
+    - paragraphs
+    - paragraphs_library
+    - path
+    - poll
+    - profile
+    - system
+    - taxonomy
+    - token_custom
+    - toolbar
+    - views_ui
+    - votingapi
+    - workbench
+    - workflows
+    - xmlsitemap
+third_party_settings:
+  lightning_core:
+    description: 'City of Boston user with access to administer content and site configuration for development purposes.'
+id: developer
+label: Developer
+weight: -6
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access contextual links'
+  - 'access document_entity_browser entity browser pages'
+  - 'access entity usage statistics'
+  - 'access environment indicator'
+  - 'access files overview'
+  - 'access icon_entity_browser entity browser pages'
+  - 'access image_entity_browser entity browser pages'
+  - 'access media overview'
+  - 'access media_entity_browser entity browser pages'
+  - 'access site in maintenance mode'
+  - 'access site reports'
+  - 'access toolbar'
+  - 'administer ape'
+  - 'administer block_content display'
+  - 'administer block_content fields'
+  - 'administer block_content form display'
+  - 'administer blocks'
+  - 'administer boston'
+  - 'administer content translation'
+  - 'administer content types'
+  - 'administer custom token types'
+  - 'administer custom tokens'
+  - 'administer display modes'
+  - 'administer embed buttons'
+  - 'administer entity browsers'
+  - 'administer file display'
+  - 'administer file fields'
+  - 'administer file form display'
+  - 'administer file types'
+  - 'administer filters'
+  - 'administer google cloud platform'
+  - 'administer media display'
+  - 'administer media fields'
+  - 'administer media form display'
+  - 'administer module_filter'
+  - 'administer modules'
+  - 'administer node display'
+  - 'administer node fields'
+  - 'administer node form display'
+  - 'administer paragraph display'
+  - 'administer paragraph fields'
+  - 'administer paragraph form display'
+  - 'administer paragraphs settings'
+  - 'administer paragraphs types'
+  - 'administer paragraphs_library_item display'
+  - 'administer paragraphs_library_item fields'
+  - 'administer paragraphs_library_item form display'
+  - 'administer permissions'
+  - 'administer poll display'
+  - 'administer poll fields'
+  - 'administer poll form display'
+  - 'administer profile display'
+  - 'administer profile fields'
+  - 'administer profile form display'
+  - 'administer site configuration'
+  - 'administer software updates'
+  - 'administer taxonomy'
+  - 'administer taxonomy_term display'
+  - 'administer taxonomy_term fields'
+  - 'administer taxonomy_term form display'
+  - 'administer themes'
+  - 'administer url aliases'
+  - 'administer user display'
+  - 'administer user fields'
+  - 'administer user form display'
+  - 'administer views'
+  - 'administer voting api'
+  - 'administer workbench'
+  - 'administer workflows'
+  - 'administer xmlsitemap'
+  - 'clone content_moderation_state entity'
+  - 'clone node_type entity'
+  - 'clone taxonomy_vocabulary entity'
+  - 'clone token_custom entity'
+  - 'clone token_custom_type entity'
+  - 'clone user_role entity'
+  - 'create change content'
+  - 'create document media'
+  - 'create icon media'
+  - 'create image media'
+  - 'create media'
+  - 'create terms in project_banner_bh_'
+  - 'delete any document media'
+  - 'delete any icon media'
+  - 'delete any image media'
+  - 'delete any media'
+  - 'delete configuration'
+  - 'edit any change content'
+  - 'edit any document media'
+  - 'edit any icon media'
+  - 'edit any image media'
+  - 'edit behavior plugin settings'
+  - 'edit terms in project_banner_bh_'
+  - 'export configuration'
+  - 'grant content access'
+  - 'import configuration'
+  - 'view any unpublished content'
+  - 'view config updates report'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view private files'

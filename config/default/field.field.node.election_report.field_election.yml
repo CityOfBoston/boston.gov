@@ -1,0 +1,25 @@
+uuid: 1ebec7e4-75a1-4456-a72b-2f91493c825d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_election
+    - node.type.election_report
+id: node.election_report.field_election
+field_name: field_election
+entity_type: node
+bundle: election_report
+label: Election
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: election_reports_2022
+      display_name: elections_autocomplete
+      arguments: {  }
+field_type: entity_reference

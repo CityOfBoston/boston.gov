@@ -1,0 +1,31 @@
+uuid: 3edfa72f-b37e-4bb3-87bc-27208199603a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.311_request.field_external_link
+    - taxonomy.vocabulary.311_request
+  module:
+    - link
+_core:
+  default_config_hash: K1FFbVa6rOIF5oQb-YF5ykt_kqxJGuLiq0oyxPYJ1yQ
+id: taxonomy_term.311_request.default
+targetEntityType: taxonomy_term
+bundle: 311_request
+mode: default
+content:
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  description: true
+  langcode: true

@@ -1,0 +1,88 @@
+name:  Bos Link Collections Components
+type: module
+description: Provides theming for various types of link collections.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+  - bos_link
+config_devel:
+  - core.base_field_override.paragraph.grid_links.created
+  - core.base_field_override.paragraph.grid_links.status
+  - core.base_field_override.paragraph.group_of_links_grid.created
+  - core.base_field_override.paragraph.group_of_links_grid.status
+  - core.base_field_override.paragraph.group_of_links_list.created
+  - core.base_field_override.paragraph.group_of_links_list.status
+  - core.base_field_override.paragraph.group_of_links_mini_grid.created
+  - core.base_field_override.paragraph.group_of_links_mini_grid.status
+  - core.base_field_override.paragraph.group_of_links_quick_links.created
+  - core.base_field_override.paragraph.group_of_links_quick_links.status
+  - core.entity_form_display.paragraph.grid_links.default
+  - core.entity_form_display.paragraph.group_of_links_grid.default
+  - core.entity_form_display.paragraph.group_of_links_list.default
+  - core.entity_form_display.paragraph.group_of_links_mini_grid.default
+  - core.entity_form_display.paragraph.group_of_links_quick_links.default
+  - core.entity_view_display.paragraph.grid_links.default
+  - core.entity_view_display.paragraph.grid_links.group_of_links
+  - core.entity_view_display.paragraph.group_of_links_grid.default
+  - core.entity_view_display.paragraph.group_of_links_grid.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.group_of_links_grid.ribbon_link
+  - core.entity_view_display.paragraph.group_of_links_grid.separated_title
+  - core.entity_view_display.paragraph.group_of_links_list.default
+  - core.entity_view_display.paragraph.group_of_links_list.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.group_of_links_list.ribbon_link
+  - core.entity_view_display.paragraph.group_of_links_list.separated_title
+  - core.entity_view_display.paragraph.group_of_links_mini_grid.default
+  - core.entity_view_display.paragraph.group_of_links_mini_grid.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.group_of_links_quick_links.quick_links
+  - core.entity_view_display.paragraph.group_of_links_quick_links.default
+  - core.entity_view_display.paragraph.group_of_links_quick_links.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.group_of_links_quick_links.quick_links
+  - field.field.paragraph.grid_links.field_extra_info
+  - field.field.paragraph.grid_links.field_grid_link
+  - field.field.paragraph.grid_links.field_short_description
+  - field.field.paragraph.group_of_links_grid.field_component_title
+  - field.field.paragraph.group_of_links_grid.field_contact
+  - field.field.paragraph.group_of_links_grid.field_grid_links
+  - field.field.paragraph.group_of_links_grid.field_link
+  - field.field.paragraph.group_of_links_grid.field_short_title
+  - field.field.paragraph.group_of_links_grid.field_subheader
+  - field.field.paragraph.group_of_links_list.field_component_title
+  - field.field.paragraph.group_of_links_list.field_contact
+  - field.field.paragraph.group_of_links_list.field_link
+  - field.field.paragraph.group_of_links_list.field_list_links
+  - field.field.paragraph.group_of_links_list.field_short_title
+  - field.field.paragraph.group_of_links_list.field_subheader
+  - field.field.paragraph.group_of_links_list.field_description
+  - field.field.paragraph.group_of_links_mini_grid.field_component_title
+  - field.field.paragraph.group_of_links_mini_grid.field_contact
+  - field.field.paragraph.group_of_links_mini_grid.field_links
+  - field.field.paragraph.group_of_links_mini_grid.field_short_title
+  - field.field.paragraph.group_of_links_quick_links.field_component_title
+  - field.field.paragraph.group_of_links_quick_links.field_contact
+  - field.field.paragraph.group_of_links_quick_links.field_links
+  - field.field.paragraph.group_of_links_quick_links.field_short_title
+  - language.content_settings.paragraph.grid_links
+  - language.content_settings.paragraph.group_of_links_grid
+  - language.content_settings.paragraph.group_of_links_list
+  - language.content_settings.paragraph.group_of_links_mini_grid
+  - language.content_settings.paragraph.group_of_links_quick_links
+  - paragraphs.paragraphs_type.grid_links
+  - paragraphs.paragraphs_type.group_of_links_grid
+  - paragraphs.paragraphs_type.group_of_links_list
+  - paragraphs.paragraphs_type.group_of_links_mini_grid
+  - paragraphs.paragraphs_type.group_of_links_quick_links
+  - core.entity_view_display.paragraph.group_of_links_quick_links.quick_links
+  - core.base_field_override.paragraph.gol_list_links.created
+  - core.base_field_override.paragraph.gol_list_links.status
+  - core.entity_form_display.paragraph.gol_list_links.default
+  - core.entity_view_display.paragraph.gol_list_links.default
+  - core.entity_view_display.paragraph.gol_list_links.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.gol_list_links.ribbon_link
+  - core.entity_view_display.paragraph.gol_list_links.separated_title
+  - field.field.paragraph.gol_list_links.field_description
+  - field.field.paragraph.gol_list_links.field_link
+  - language.content_settings.paragraph.gol_list_links
+  - paragraphs.paragraphs_type.gol_list_links

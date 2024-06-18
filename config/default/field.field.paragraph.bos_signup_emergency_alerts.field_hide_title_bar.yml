@@ -1,0 +1,23 @@
+uuid: 7d306391-8d6d-42dc-9cac-e45e976e65c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.bos_signup_emergency_alerts
+id: paragraph.bos_signup_emergency_alerts.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: bos_signup_emergency_alerts
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

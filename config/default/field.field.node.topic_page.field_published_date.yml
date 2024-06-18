@@ -1,0 +1,23 @@
+uuid: a2225547-d629-428d-aed4-107a408e22c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.topic_page
+  module:
+    - datetime
+_core:
+  default_config_hash: uxk3tcyw-505J25Puvob9mw1aisYhlMdMSQCtR_dpTM
+id: node.topic_page.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: topic_page
+label: 'Published Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

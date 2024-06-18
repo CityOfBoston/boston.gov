@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact
+    - paragraphs.paragraphs_type.branded_links
+    - taxonomy.vocabulary.contact
+id: paragraph.branded_links.field_contact
+field_name: field_contact
+entity_type: paragraph
+bundle: branded_links
+label: Contact
+description: 'Which department is the best point of contact for this component.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,13 @@
+uuid: fcbedda7-2f2c-452d-bad2-f74f34c6f983
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: cpvsZGNKPDCME-XStKvsx0ZYJqdWVYO0YjJAYlECGVg
+id: grid_links
+label: 'Grid links'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_grid_links'
+behavior_plugins: {  }

@@ -1,0 +1,22 @@
+uuid: 8e9e27c3-4b63-452e-8a6b-2ae4eac560f5
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node.tabbed_content.status
+field_name: status
+entity_type: node
+bundle: tabbed_content
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

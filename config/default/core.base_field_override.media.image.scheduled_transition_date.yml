@@ -1,0 +1,20 @@
+uuid: db6058d5-d5d4-4aa0-931e-f18492161ba1
+langcode: und
+status: true
+dependencies:
+  config:
+    - media.type.image
+  module:
+    - datetime
+id: media.image.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: media
+bundle: image
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

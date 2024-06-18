@@ -1,0 +1,14 @@
+uuid: 474d69b9-f3d6-4ca2-b4df-693d687a9673
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+id: node_type_department_profile
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

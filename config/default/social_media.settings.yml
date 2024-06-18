@@ -1,0 +1,97 @@
+social_media:
+  facebook_share:
+    enable: 1
+    text: Facebook
+    api_url: 'http://www.facebook.com/share.php?u=[current-page:url]&title=[current-page:title]'
+    api_event: href
+    default_img: 1
+    weight: 1
+    attributes: |-
+      target|_blank
+      class|facebook-share
+      rel|noopener noreferrer
+  facebook_msg:
+    enable: 1
+    api_url: "FB.ui({method: 'send',link: '[current-page:url]'})"
+    api_event: onclick
+    drupalSettings: 'application_id|Your Application ID'
+    library: social_media/facebook
+    text: 'Facebook messenger'
+    default_img: 1
+    weight: 2
+    attributes: |-
+      target|_blank
+      class|facebook-msg
+      rel|noopener noreferrer
+  linkedin:
+    enable: 1
+    api_url: 'http://www.linkedin.com/shareArticle?mini=true&url=[current-page:url]&title=[current-page:title]&source=[current-page:url]'
+    api_event: href
+    text: Linkedin
+    default_img: 1
+    weight: 3
+    attributes: |-
+      target|_blank
+      class|linkedin
+      rel|noopener noreferrer
+  twitter:
+    enable: 1
+    api_url: 'https://twitter.com/intent/tweet?url=[current-page:url]&url=[current-page:url]&hashtags=Hashtag'
+    api_event: href
+    text: Twitter
+    default_img: 1
+    weight: 4
+    attributes: |-
+      target|_blank
+      class|twitter
+      rel|noopener noreferrer
+  pinterest:
+    enable: 1
+    api_url: 'https://www.pinterest.com/pin/create/button/?url=[current-page:url]&description=[current-page:title]'
+    api_event: href
+    text: Pinterest
+    default_img: 1
+    weight: 5
+    attributes: |-
+      target|_blank
+      class|pinterest
+      rel|noopener noreferrer
+  tiktok:
+    enable: 0
+    api_url: ''
+    api_event: href
+    text: TikTok
+    default_img: 1
+    weight: 6
+    attributes: |-
+      target|_blank
+      class|tiktok
+      rel|noopener noreferrer
+  whatsapp:
+    enable: 0
+    api_url: 'https://wa.me/?text=[current-page:url]'
+    api_event: href
+    default_img: 1
+    attributes: |-
+      class|whatsapp show-for-small-only
+      data-action|share/whatsapp/share
+    weight: 7
+  email:
+    enable: 1
+    api_url: 'mailto:?subject=[current-page:title]&body=Check out this site [current-page:url]'
+    api_event: href
+    text: Email
+    default_img: 1
+    weight: 8
+    attributes: class|email
+  print:
+    enable: 0
+    api_url: window.print()
+    api_event: onclick
+    text: Print
+    default_img: 1
+    attributes: class|print
+    weight: 9
+langcode: en
+_core:
+  default_config_hash: dfTa2HkSKvNWB_DYT7sVaiv7lztYl_vQaZyE9901WpE

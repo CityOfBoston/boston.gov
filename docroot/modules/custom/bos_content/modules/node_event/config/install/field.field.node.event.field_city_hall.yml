@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_hall
+    - node.type.event
+id: node.event.field_city_hall
+field_name: field_city_hall
+entity_type: node
+bundle: event
+label: 'Is this event happening at City Hall?'
+description: 'Check this box if the event is happening at City Hall, or on City Hall Plaza.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

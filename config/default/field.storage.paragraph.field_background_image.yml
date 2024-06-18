@@ -1,0 +1,24 @@
+uuid: bc88ec81-a72b-4e08-bf26-631e3429180d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_background_image
+field_name: field_background_image
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: city-hall-building-background
+      label: 'City Hall Building'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

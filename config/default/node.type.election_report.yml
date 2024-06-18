@@ -1,0 +1,18 @@
+uuid: 86c43a92-b437-4ec7-a7eb-c5f5ed75a3b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Election Report'
+type: election_report
+description: 'Unofficial reporting of an Election.  There will be multiple reports per election as votes are counted.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: true

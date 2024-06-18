@@ -1,0 +1,18 @@
+uuid: e8655b08-d742-4af9-a1b5-f7eddbb2c474
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: _u2GCIc_ApcZAduSuVRErI9OHxZvx7NTi8gFvtGlR-Y
+id: grid_of_people
+label: 'Grid of People'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of People'
+behavior_plugins: {  }

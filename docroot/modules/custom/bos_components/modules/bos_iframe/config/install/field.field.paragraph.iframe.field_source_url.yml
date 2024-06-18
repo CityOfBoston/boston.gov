@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_source_url
+    - paragraphs.paragraphs_type.iframe
+id: paragraph.iframe.field_source_url
+field_name: field_source_url
+entity_type: paragraph
+bundle: iframe
+label: 'Source URL'
+description: 'A valid URL for the iframe, such as "http://boston.gov/recent-trash-stories".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: c4f26ab9-2dc3-4b50-ba36-e358370eb548
+langcode: en
+status: true
+dependencies: {  }
+id: travis
+label: travis
+description: 'Configurations for builds on the travis environment.'
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/travis
+module:
+  captcha: 0
+  dblog: 0
+  devel: 0
+  masquerade: 0
+  recaptcha_v3: 0
+  stage_file_proxy: 0
+  syslog: 0
+theme: {  }
+complete_list:
+  - bos_theme.settings
+  - config_ignore.settings
+partial_list: {  }

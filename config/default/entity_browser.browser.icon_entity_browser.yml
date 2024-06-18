@@ -1,0 +1,31 @@
+uuid: 56d5933c-76c0-4beb-a53c-31ba07bc75d3
+langcode: und
+status: true
+dependencies:
+  config:
+    - views.view.wysiwyg_entity_browser
+  module:
+    - views
+name: icon_entity_browser
+label: 'Icon Entity Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '840'
+  link_text: 'Choose Icon'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  ea90b405-b820-4018-9437-107152596698:
+    id: view
+    uuid: ea90b405-b820-4018-9437-107152596698
+    label: 'Choose icon'
+    weight: -10
+    settings:
+      submit_text: 'Select  Icon'
+      auto_select: false
+      view: wysiwyg_entity_browser
+      view_display: icon_library

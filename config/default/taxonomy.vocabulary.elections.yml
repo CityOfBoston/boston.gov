@@ -1,0 +1,8 @@
+uuid: 4b6da94f-ae4c-48bf-8e9d-3efe961d794b
+langcode: en
+status: true
+dependencies: {  }
+name: Elections
+vid: elections
+description: 'Election Events with unofficial result reported by City of Boston'
+weight: 0

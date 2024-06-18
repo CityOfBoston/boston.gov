@@ -1,0 +1,18 @@
+uuid: 57df00f3-a5e8-41cb-a016-a4ccfeeb0245
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+id: node.public_notice.changed
+field_name: changed
+entity_type: node
+bundle: public_notice
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

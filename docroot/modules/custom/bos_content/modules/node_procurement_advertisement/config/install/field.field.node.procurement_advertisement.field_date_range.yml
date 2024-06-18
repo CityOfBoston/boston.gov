@@ -1,0 +1,20 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_range
+    - node.type.procurement_advertisement
+  module:
+    - datetime_range
+id: node.procurement_advertisement.field_date_range
+field_name: field_date_range
+entity_type: node
+bundle: procurement_advertisement
+label: 'Bid Date'
+description: 'This reflects the date that will be displayed to users when an ad is open and when it closes. This is for display purposes only. To control when the ad goes live on the site, use the scheduled publishing functionality for this content type. See the Digital Team if you have any questions.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

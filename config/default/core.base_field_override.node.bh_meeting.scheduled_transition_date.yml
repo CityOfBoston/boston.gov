@@ -1,0 +1,20 @@
+uuid: 83b8fa41-fb46-4752-86f4-57742f282b87
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+  module:
+    - datetime
+id: node.bh_meeting.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: bh_meeting
+label: 'Scheduled transition date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

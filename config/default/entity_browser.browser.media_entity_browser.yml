@@ -1,0 +1,55 @@
+uuid: 935d6a70-d0c1-4398-a38c-38d0bd782b92
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.wysiwyg_entity_browser
+  module:
+    - lightning_media
+    - views
+_core:
+  default_config_hash: UoGZLPH_DEy28wDjCYqiBKYsKoHlf6l6deygJjqdgPc
+name: media_entity_browser
+label: 'Media Entity Browser (WYSIWYG)'
+display: iframe
+display_configuration:
+  width: '1070'
+  height: '840'
+  link_text: ''
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  6586703a-6976-4124-8a49-cbb07ceaa3b1:
+    id: view
+    uuid: 6586703a-6976-4124-8a49-cbb07ceaa3b1
+    label: 'Image Library'
+    weight: -10
+    settings:
+      submit_text: 'Insert into Editor'
+      auto_select: false
+      view: wysiwyg_entity_browser
+      view_display: image_library
+  4cff5ddf-dbc4-499e-b2be-a072ea018450:
+    id: file_upload
+    uuid: 4cff5ddf-dbc4-499e-b2be-a072ea018450
+    label: 'New Image'
+    weight: -8
+    settings:
+      target_bundles: {  }
+      upload_validators: {  }
+      submit_text: 'Upload & Insert into Editor'
+      form_mode: media_browser
+      return_file: false
+  cea4c8de-3e21-411c-9db3-dc395e4b057c:
+    id: view
+    uuid: cea4c8de-3e21-411c-9db3-dc395e4b057c
+    label: 'Icon Library'
+    weight: -9
+    settings:
+      submit_text: 'Insert into Editor'
+      auto_select: false
+      view: wysiwyg_entity_browser
+      view_display: icon_library

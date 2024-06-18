@@ -1,0 +1,24 @@
+uuid: 6581c121-7a36-416b-b9bd-5a5ff24f2bfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_people
+_core:
+  default_config_hash: ehMpl_z6lyUfk3-iWQ6UiaeqP4sq4nY8xrJR-jSx1kg
+id: paragraph.grid_of_people.status
+field_name: status
+entity_type: paragraph
+bundle: grid_of_people
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

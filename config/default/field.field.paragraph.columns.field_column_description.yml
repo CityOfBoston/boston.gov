@@ -1,0 +1,21 @@
+uuid: aaac08eb-7839-4045-a9fa-a2aca77bf8e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_column_description
+    - paragraphs.paragraphs_type.columns
+  module:
+    - text
+id: paragraph.columns.field_column_description
+field_name: field_column_description
+entity_type: paragraph
+bundle: columns
+label: 'Column Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

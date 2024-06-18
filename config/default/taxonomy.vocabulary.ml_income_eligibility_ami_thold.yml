@@ -1,0 +1,8 @@
+uuid: 4c492331-f1a8-4c59-9a90-d6b9de0d545c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Income Eligibility AMI Threshold'
+vid: ml_income_eligibility_ami_thold
+description: 'MetroList: Income Eligibility AMI Threshold'
+weight: 0

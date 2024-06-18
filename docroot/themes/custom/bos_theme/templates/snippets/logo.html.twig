@@ -1,0 +1,13 @@
+{% if site_name %}
+  {% set mayor_name =  "Michelle Wu" %}
+    <div class="lo lo--abs">
+      <div class="lo-l lo-b-cont">
+        <a href="{{ front_page }}" id="logoImg">
+          <img src="{{ asset_url }}/images/{{ asset_name }}/logo.svg?{{ cache_buster }}" alt="{{ site_name }}" class="lo-i" />
+        </a>
+        {% if not hide_logo %}
+          <span class="lo-t"><a href="/mayor">Mayor {{ mayor_name }}</a></span>
+        {% endif %}
+      </div>
+    </div>
+{% endif %}

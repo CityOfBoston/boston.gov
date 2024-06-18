@@ -1,0 +1,15 @@
+uuid: faff0b3c-ae64-439a-bef5-d8862c5d6615
+langcode: und
+status: true
+dependencies: {  }
+name: hero_fixed_b_tablet_1x
+label: 'Hero fixed b-tablet 1x (768x400)'
+effects:
+  4bc95871-fea9-4373-9b94-250c4b44fa98:
+    uuid: 4bc95871-fea9-4373-9b94-250c4b44fa98
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 400
+      anchor: center-bottom

@@ -1,0 +1,22 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manual_date
+    - node.type.listing_page
+id: node.listing_page.field_manual_date
+field_name: field_manual_date
+entity_type: node
+bundle: listing_page
+label: 'Manual Date'
+description: 'The updated and published dates are set by Drupal unless this checkbox is selected, in which case they can be set manually.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Manual
+  off_label: Automatic
+field_type: boolean

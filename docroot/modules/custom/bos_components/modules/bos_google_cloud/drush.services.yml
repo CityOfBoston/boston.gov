@@ -1,0 +1,5 @@
+services:
+  bos_google_cloud.commands:
+    class: Drupal\bos_google_cloud\Commands\GcApiDrushCommands
+    tags:
+      - { name: drush.command }

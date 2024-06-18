@@ -1,0 +1,34 @@
+uuid: 218ade68-8f14-4f93-8311-65f87956dc18
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.person_photo_d_full_1x
+    - image.style.person_photo_profile_large_360x360_
+  theme:
+    - bos_theme
+id: person_profile_photo
+label: 'Person Profile Photo'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: person_photo_profile_large_360x360_
+    breakpoint_id: boston.person.mobile
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: person_photo_profile_large_360x360_
+    breakpoint_id: boston.person.tablet
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: person_photo_profile_large_360x360_
+    breakpoint_id: boston.person.desktop
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: person_photo_profile_large_360x360_
+    breakpoint_id: boston.person.full
+    multiplier: 1x
+breakpoint_group: person
+fallback_image_style: person_photo_d_full_1x

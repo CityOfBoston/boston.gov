@@ -1,0 +1,20 @@
+uuid: 9bd84d83-cf20-4f39-ba7a-748b8e12ac24
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.menu_link
+field_name: menu_link
+entity_type: node
+bundle: emergency_alert
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

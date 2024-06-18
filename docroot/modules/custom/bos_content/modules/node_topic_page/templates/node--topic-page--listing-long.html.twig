@@ -1,0 +1,58 @@
+{#
+ * @file
+ * Returns the HTML for a node.
+ *
+ * Complete documentation for this file is available online.
+ *
+ * @see https://drupal.org/node/1728164
+
+
+<div class="{{ classes }} view-mode-listing_long clearfix node-{{ node.id }} m-t500 g--4 g--4--sl"{{ attributes }}>
+  <div class="topic-wrapper">
+    <div class="topic-highlight-area">
+      <a href="{{ node_url }}" class="item-link gcd" title="Go to {{ title.0['#context'].value }}">{{ title.0['#context'].value }}</a>
+      <div class="image-wrapper">
+        {{ content.field_intro_image }}
+      </div>
+      <div class="topic-details">
+        <div class="grid-of-topics-label">
+          Guide:
+        </div>
+        <div class="topic-listing-title">
+          {{ title.0['#context'].value }}
+        </div>
+      </div>
+    </div>
+    <div class="topic-link-area">
+      <ul class="topics-links">
+        {% for nav_link in nav_links %}
+          <li>{{ nav_link }}</li>
+        {% endfor %}
+        {% if num_components %}
+          <li><a href="{{ node_url }}"> SEE {{ num_components }} MORE </a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+#}
+
+<div class="{{ classes }} view-mode-listing_long clearfix node-{{ node.id }} m-t500 g--4 g--4--sl"{{ attributes }}>
+  <a href="{{ node_url }}" class="item-link gcd" title="Go to {{ title.0['#context'].value }}">
+    <div class="gcd-ic" style="background-image: url({{ image_url }})"></div>
+    <div class="gcd-c">
+      <div class="gcd-st">Guide:</div>
+      <div class="gcd-t">{{ title.0['#context'].value }}</div>
+    </div>
+  </a>
+  <div class="gcd-lst">
+    <ul class="ul">
+      {% for nav_link in nav_links %}
+        <li class="gcd-lst-li t--sans tt-u">{{ nav_link }}</li>
+      {% endfor %}
+      {% if num_components %}
+        <li class="gcd-lst-li t--sans tt-u"><a href="{{ node_url }}">SEE {{ num_components }} MORE </a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>

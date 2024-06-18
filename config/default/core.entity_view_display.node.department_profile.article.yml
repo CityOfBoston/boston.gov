@@ -1,0 +1,229 @@
+uuid: 3f59210f-1a36-4edf-94ad-0d5c4c0dcb90
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.article
+    - field.field.node.department_profile.body
+    - field.field.node.department_profile.field_address
+    - field.field.node.department_profile.field_components
+    - field.field.node.department_profile.field_department_type
+    - field.field.node.department_profile.field_email
+    - field.field.node.department_profile.field_hide_contact_form
+    - field.field.node.department_profile.field_icon
+    - field.field.node.department_profile.field_intro_text
+    - field.field.node.department_profile.field_link_url
+    - field.field.node.department_profile.field_manual_date
+    - field.field.node.department_profile.field_metatags
+    - field.field.node.department_profile.field_operation_hours
+    - field.field.node.department_profile.field_phone_number
+    - field.field.node.department_profile.field_published_date
+    - field.field.node.department_profile.field_select_contact_type
+    - field.field.node.department_profile.field_sidebar_components
+    - field.field.node.department_profile.field_updated_date
+    - node.type.department_profile
+  module:
+    - address
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - link
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: rxpSKcyYQrPe-iWi_1gjPevcz5uA0BT3LmH7LMsQfA8
+id: node.department_profile.article
+targetEntityType: node
+bundle: department_profile
+mode: article
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 7
+    region: content
+  field_department_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_email:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_hide_contact_form:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_link_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_operation_hours:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 9
+    region: content
+  field_phone_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_published_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_short
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 12
+    region: content
+  field_sidebar_components:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: sidebar
+      link: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: date_format_boston_short
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 13
+    region: content
+  langcode:
+    type: language
+    label: above
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+    weight: 16
+    region: content
+hidden:
+  field_manual_date: true
+  field_metatags: true
+  field_select_contact_type: true
+  links: true
+  published_at: true

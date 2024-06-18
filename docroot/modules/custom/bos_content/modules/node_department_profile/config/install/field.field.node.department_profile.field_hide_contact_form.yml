@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_contact_form
+    - node.type.department_profile
+id: node.department_profile.field_hide_contact_form
+field_name: field_hide_contact_form
+entity_type: node
+bundle: department_profile
+label: 'Hide Contact Form'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

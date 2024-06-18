@@ -1,0 +1,5 @@
+base: '[]'
+summarizer: '{"spam":"UHJvdmlkZSBhIHByb2JhYmlsaXR5IHRoYXQgdGhpcyBlbWFpbCB0ZXh0IGlzIHNwYW0u","rollcall":"UHJvdmlkZSBhIHNob3J0IHRleHQgdGl0bGUgZm9yIHRoZSBmb2xsb3dpbmcgdGV4dCwgd2hpY2ggaXMgYSB2b3RpbmcgcmVjb3JkIG9mIGEgQ2l0eSBDb3VuY2lsIG1lZXRpbmcuIE9ubHkgdGhlIHRpdGxlIGlzIHJlcXVpcmVkLiBEbyBub3QgaW5jbHVkZSBtYXJrZG93biBmb3JtYXR0aW5nLg=="}'
+rewriter: '[]'
+search: '[]'
+translation: '[]'

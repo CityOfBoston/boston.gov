@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_newsletter module.
+ */
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_newsletter_theme() {
+  $theme['paragraph__newsletter'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_newsletter/templates',
+  ];
+  $theme['paragraph__newsletter__sidebar'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_newsletter/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK__TYPE().
+ */
+function bos_newsletter_preprocess_paragraph__newsletter(&$variables) {
+
+  // Newsletter ID.
+  if (!empty($variables['paragraph']) && $variables['paragraph']->hasField('field_newsletter')) {
+    if (isset($variables['paragraph']->get('field_newsletter')->getValue()['0']) && $tid = $variables['paragraph']->get('field_newsletter')->getValue()['0']['target_id']) {
+      $term = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->load($tid);
+      if (!empty($term) && $term->hasField('field_id')) {
+        $variables['newsletter_id'] = $term->get('field_id')
+          ->getValue()['0']['value'];
+      }
+    }
+    if ($variables["paragraph"]->bundle() == "newsletter" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+      $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+    }
+  }
+
+  if (!empty($variables['paragraph']) && $variables['paragraph']->hasField('field_component_theme')) {
+    // Component Theme.
+    $component_theme = $variables['paragraph']->get('field_component_theme')->getValue()['0']['value'];
+    $variables['component_theme'] = new Attribute();
+    $variables['component_theme']->addClass("b b--fw");
+    $variables['component_theme']->addClass("b--" . $component_theme);
+
+    // Section Header Theme.
+    $variables['section_header_theme'] = new Attribute();
+    $variables['section_header_theme']->addClass("sh cl m-b300");
+
+    // Make text  white if the theme is blue.
+    if ($component_theme == "b") {
+      $variables['component_theme']->addClass("b--wt");
+      $variables['section_header_theme']->addClass('sh--w');
+    }
+
+  }
+
+}

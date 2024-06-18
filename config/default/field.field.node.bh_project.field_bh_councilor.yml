@@ -1,0 +1,19 @@
+uuid: a7855a2d-b8f7-4285-90af-e43a582de97f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_councilor
+    - node.type.bh_project
+id: node.bh_project.field_bh_councilor
+field_name: field_bh_councilor
+entity_type: node
+bundle: bh_project
+label: Councilor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,38 @@
+uuid: f79db2cc-ea6e-4297-80bd-8db3c59b2fba
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.group_of_links
+    - field.field.paragraph.grid_links.field_extra_info
+    - field.field.paragraph.grid_links.field_grid_link
+    - field.field.paragraph.grid_links.field_short_description
+    - paragraphs.paragraphs_type.grid_links
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: a7e5L_6UA1ig_GxVTMusP7PBV4HC_UaXHo4r0bs7Fok
+id: paragraph.grid_links.group_of_links
+targetEntityType: paragraph
+bundle: grid_links
+mode: group_of_links
+content:
+  field_extra_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_grid_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: separated_title
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_short_description: true

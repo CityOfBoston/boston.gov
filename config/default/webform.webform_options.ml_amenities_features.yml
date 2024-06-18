@@ -1,0 +1,23 @@
+uuid: 7e85e333-343b-43bc-ad50-e47e1626a64f
+langcode: en
+status: true
+dependencies: {  }
+id: ml_amenities_features
+label: 'Amenities & Features'
+category: MetroList
+likert: false
+options: |
+  Refrigerator: Refrigerator
+  Stove: Stove
+  Dishwasher: Dishwasher
+  'Off-street parking': 'Off-street parking'
+  'Street parking': 'Street parking'
+  'Bicycle storage': 'Bicycle storage'
+  Elevator: Elevator
+  'Gym/Fitness area': 'Gym/Fitness area'
+  'Smoke free': 'Smoke free'
+  'Laundry in unit': 'Laundry in unit'
+  'Laundry in building': 'Laundry in building'
+  'Air conditioning': 'Air conditioning'
+  'Cats allowed': 'Cats allowed'
+  'Dogs allowed': 'Dogs allowed'

@@ -1,0 +1,22 @@
+uuid: de0359e1-85b1-4bb6-b4c2-ec061e637dd4
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.sticky
+field_name: sticky
+entity_type: node
+bundle: emergency_alert
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,20 @@
+uuid: b7f376cc-510e-4d1e-b899-6a04dfb432e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.transactions
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 9DSnej3YuRuK_Olkma0kPDm97tB-i5ljrQ0IBsnjaFo
+id: paragraph.transactions
+target_entity_type_id: paragraph
+target_bundle: transactions
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 8270924c-0401-483d-9c41-59b9ea01f167
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+id: node.program_initiative_profile.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: program_initiative_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

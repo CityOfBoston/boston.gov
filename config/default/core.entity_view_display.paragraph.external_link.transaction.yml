@@ -1,0 +1,38 @@
+uuid: 13a161db-0bf5-406e-a1ce-d863444d2e2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.transaction
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - fences
+    - link
+_core:
+  default_config_hash: UsqHzuUch9B8RjnVw86GC6_87ZjgPW06c2rRxWT6AYg
+id: paragraph.external_link.transaction
+targetEntityType: paragraph
+bundle: external_link
+mode: transaction
+content:
+  field_external_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

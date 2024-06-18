@@ -1,0 +1,25 @@
+uuid: a2c94178-6cfe-4964-9649-d7f5804bb4e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_district
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors.field_district
+field_name: field_district
+entity_type: taxonomy_term
+bundle: vocab_city_councillors
+label: District
+description: 'The District this Councillor currently represents.<br>If the District does not appear in the list, please make the current Councillor for this district inactive, and try again.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: roll_call_taxonomy
+      display_name: unused_districts_filter
+      arguments: {  }
+field_type: entity_reference

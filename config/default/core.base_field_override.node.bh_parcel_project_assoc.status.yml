@@ -1,0 +1,22 @@
+uuid: 3f624118-6f67-4d9d-b822-547606e9c321
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel_project_assoc
+id: node.bh_parcel_project_assoc.status
+field_name: status
+entity_type: node
+bundle: bh_parcel_project_assoc
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

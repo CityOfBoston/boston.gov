@@ -1,0 +1,18 @@
+uuid: 7058a24b-0670-4af7-831e-69e36107d24b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_property_type
+id: taxonomy_term.bh_property_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bh_property_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

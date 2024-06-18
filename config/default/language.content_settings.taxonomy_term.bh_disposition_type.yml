@@ -1,0 +1,18 @@
+uuid: 1545b8da-20ed-4ae5-bdaa-e229ddd1aaff
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_disposition_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.bh_disposition_type
+target_entity_type_id: taxonomy_term
+target_bundle: bh_disposition_type
+default_langcode: site_default
+language_alterable: false

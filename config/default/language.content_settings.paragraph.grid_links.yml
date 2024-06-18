@@ -1,0 +1,20 @@
+uuid: 0e49cb47-9ef7-42c5-b839-20e2474d5c8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_links
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: soUhPlsMKj8HLoVP-zfjszPN87OXnUt0ezGbJ93zxiY
+id: paragraph.grid_links
+target_entity_type_id: paragraph
+target_bundle: grid_links
+default_langcode: site_default
+language_alterable: false

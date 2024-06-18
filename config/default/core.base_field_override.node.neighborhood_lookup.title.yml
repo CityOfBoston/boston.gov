@@ -1,0 +1,18 @@
+uuid: 948838f0-7812-46d2-8ae5-fa055c65019a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.title
+field_name: title
+entity_type: node
+bundle: neighborhood_lookup
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

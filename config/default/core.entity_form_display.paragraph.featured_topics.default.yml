@@ -1,0 +1,42 @@
+uuid: 49017c3b-9d8f-4ca0-b7de-ad6a3de9a904
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_topics.field_short_title
+    - field.field.paragraph.featured_topics.field_topics
+    - paragraphs.paragraphs_type.featured_topics
+_core:
+  default_config_hash: 0oBbCG4IEBnYFuxdjmQ9jOLqkfCGf_faFVqwbMrM6ZI
+id: paragraph.featured_topics.default
+targetEntityType: paragraph
+bundle: featured_topics
+mode: default
+content:
+  field_short_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

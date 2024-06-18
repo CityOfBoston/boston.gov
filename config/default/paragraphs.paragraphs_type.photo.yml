@@ -1,0 +1,18 @@
+uuid: 02533ce9-7f23-4d70-b5e7-cf689cb0a413
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: 1GhyMqsQ9lz7ap9l0eD5KckNs_5NqDXQZnZ92VMIHi8
+id: photo
+label: Photo
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Photo'
+behavior_plugins: {  }

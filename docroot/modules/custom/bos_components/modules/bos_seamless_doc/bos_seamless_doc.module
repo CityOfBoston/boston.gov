@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_seamless_doc module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_seamless_doc_theme() {
+  $theme['paragraph__seamless_doc'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_seamless_doc/templates',
+  ];
+  return $theme;
+}

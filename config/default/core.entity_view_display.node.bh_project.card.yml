@@ -1,0 +1,232 @@
+uuid: cea574a3-e624-4317-b354-f74312e63d7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.bh_project.body
+    - field.field.node.bh_project.field_bh_attachment
+    - field.field.node.bh_project.field_bh_attachments
+    - field.field.node.bh_project.field_bh_commitment_letter_date
+    - field.field.node.bh_project.field_bh_construct_complete_date
+    - field.field.node.bh_project.field_bh_construction_start_date
+    - field.field.node.bh_project.field_bh_conveyance_vote_date
+    - field.field.node.bh_project.field_bh_coordinates
+    - field.field.node.bh_project.field_bh_councilor
+    - field.field.node.bh_project.field_bh_disposition_type
+    - field.field.node.bh_project.field_bh_dnd_funding_award_date
+    - field.field.node.bh_project.field_bh_funding_stage
+    - field.field.node.bh_project.field_bh_initial_comm_mtg_date
+    - field.field.node.bh_project.field_bh_initial_td_vote_date
+    - field.field.node.bh_project.field_bh_meetings
+    - field.field.node.bh_project.field_bh_neighborhood
+    - field.field.node.bh_project.field_bh_notification_signup
+    - field.field.node.bh_project.field_bh_parcel_id
+    - field.field.node.bh_project.field_bh_predicted_closing_date
+    - field.field.node.bh_project.field_bh_project_complete_date
+    - field.field.node.bh_project.field_bh_project_images
+    - field.field.node.bh_project.field_bh_project_manager_name
+    - field.field.node.bh_project.field_bh_project_manger_phone
+    - field.field.node.bh_project.field_bh_project_name
+    - field.field.node.bh_project.field_bh_project_parcels
+    - field.field.node.bh_project.field_bh_project_stage
+    - field.field.node.bh_project.field_bh_project_start_date
+    - field.field.node.bh_project.field_bh_project_status
+    - field.field.node.bh_project.field_bh_project_type
+    - field.field.node.bh_project.field_bh_project_updates
+    - field.field.node.bh_project.field_bh_property_size
+    - field.field.node.bh_project.field_bh_public_stage
+    - field.field.node.bh_project.field_bh_record_type
+    - field.field.node.bh_project.field_bh_rfp_issued_date
+    - field.field.node.bh_project.field_bh_total_num_units
+    - field.field.node.bh_project.field_bh_units_affordable
+    - field.field.node.bh_project.field_bh_units_for_rent
+    - field.field.node.bh_project.field_bh_units_to_own
+    - field.field.node.bh_project.field_bh_units_total
+    - field.field.node.bh_project.field_bh_wysiwyg_photo_a
+    - field.field.node.bh_project.field_project_manager_email
+    - node.type.bh_project
+  module:
+    - advanced_text_formatter
+    - datetime
+    - fences
+    - text
+    - user
+_core:
+  default_config_hash: gd-i5ylHvnj20bD7pPNUTs6iKcGWkn55qqSinfN3PRs
+id: node.bh_project.card
+targetEntityType: node
+bundle: bh_project
+mode: card
+content:
+  bh_computed_project_type:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_bh_homepage_link:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_developer_info:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_feedback_webform:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_follower_webform:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_manager_contact:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_map_link:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  bh_project_meeting_notice:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  body:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_bh_project_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bh_project_stage:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_bh_project_start_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: date_format_normal_date
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_bh_project_status:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_bh_total_num_units:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_bh_wysiwyg_photo_a:
+    type: advanced_text
+    label: hidden
+    settings:
+      trim_length: '0'
+      ellipsis: '1'
+      word_boundary: '1'
+      filter: drupal
+      format: full_html
+      allowed_html:
+        - a
+        - b
+        - br
+        - dd
+        - dl
+        - dt
+        - em
+        - i
+        - li
+        - ol
+        - p
+        - strong
+        - u
+        - ul
+      use_summary: 0
+      token_replace: 0
+      autop: 0
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 6
+    region: content
+hidden:
+  field_bh_attachment: true
+  field_bh_attachments: true
+  field_bh_commitment_letter_date: true
+  field_bh_construct_complete_date: true
+  field_bh_construction_start_date: true
+  field_bh_conveyance_vote_date: true
+  field_bh_coordinates: true
+  field_bh_councilor: true
+  field_bh_disposition_type: true
+  field_bh_dnd_funding_award_date: true
+  field_bh_funding_stage: true
+  field_bh_initial_comm_mtg_date: true
+  field_bh_initial_td_vote_date: true
+  field_bh_meetings: true
+  field_bh_neighborhood: true
+  field_bh_notification_signup: true
+  field_bh_parcel_id: true
+  field_bh_predicted_closing_date: true
+  field_bh_project_complete_date: true
+  field_bh_project_images: true
+  field_bh_project_manager_name: true
+  field_bh_project_manger_phone: true
+  field_bh_project_parcels: true
+  field_bh_project_type: true
+  field_bh_project_updates: true
+  field_bh_property_size: true
+  field_bh_public_stage: true
+  field_bh_record_type: true
+  field_bh_rfp_issued_date: true
+  field_bh_units_affordable: true
+  field_bh_units_for_rent: true
+  field_bh_units_to_own: true
+  field_bh_units_total: true
+  field_project_manager_email: true
+  langcode: true
+  links: true
+  published_at: true

@@ -1,0 +1,21 @@
+uuid: bc9c6ff8-9ff5-4141-a8cb-78dde509650d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_headline
+    - node.type.bh_update
+  module:
+    - text
+id: node.bh_update.field_bh_headline
+field_name: field_bh_headline
+entity_type: node
+bundle: bh_update
+label: Headline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

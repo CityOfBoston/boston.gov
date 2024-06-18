@@ -1,0 +1,20 @@
+uuid: efbe9e5d-11bc-4ded-b427-4202224485f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ml_num_of_ownership_units
+field_name: field_ml_num_of_ownership_units
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,13 @@
+uuid: a9cb6b7f-3e8d-428a-9180-d8e1fc8ff2b1
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: OGJ2hiW5PO_kL0b7RCOmY5SNLLuZkiE_uZNxJ_V3joc
+id: iframe
+label: Iframe
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Iframe'
+behavior_plugins: {  }

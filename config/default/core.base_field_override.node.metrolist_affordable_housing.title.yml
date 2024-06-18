@@ -1,0 +1,18 @@
+uuid: b9ca2afc-1db8-48f2-8f14-41b5fdc43fc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.title
+field_name: title
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Affordable Listing Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

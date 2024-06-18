@@ -1,0 +1,21 @@
+uuid: 9c308673-e26c-4b11-907e-b1350ee110d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_commission_id
+    - taxonomy.vocabulary.commissions
+_core:
+  default_config_hash: XoPC6jz4lmEDeX37Fa-whxCvTseWq39i7jvq59JUJG8
+id: taxonomy_term.commissions.field_commission_id
+field_name: field_commission_id
+entity_type: taxonomy_term
+bundle: commissions
+label: 'Commission ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

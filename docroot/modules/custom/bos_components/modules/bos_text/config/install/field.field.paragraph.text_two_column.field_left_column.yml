@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column
+    - paragraphs.paragraphs_type.text_two_column
+  module:
+    - text
+id: paragraph.text_two_column.field_left_column
+field_name: field_left_column
+entity_type: paragraph
+bundle: text_two_column
+label: 'Left Column'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

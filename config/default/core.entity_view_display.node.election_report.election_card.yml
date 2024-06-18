@@ -1,0 +1,59 @@
+uuid: 74ee0951-648a-407d-8b56-89dab7690ccb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.election_card
+    - field.field.node.election_report.field_area_results
+    - field.field.node.election_report.field_election
+    - field.field.node.election_report.field_election_isofficial
+    - field.field.node.election_report.field_source_file
+    - field.field.node.election_report.field_updated_date
+    - node.type.election_report
+  module:
+    - entity_reference_revisions
+    - fences
+    - user
+id: node.election_report.election_card
+targetEntityType: node
+bundle: election_report
+mode: election_card
+content:
+  field_area_results:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: election_card
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: area-results-all
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_election:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: 'sh cl'
+        fences_field_item_tag: none
+        fences_field_item_classes: sh-title
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_election_isofficial: true
+  field_source_file: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

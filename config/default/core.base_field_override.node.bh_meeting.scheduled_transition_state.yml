@@ -1,0 +1,18 @@
+uuid: 5f7af76e-8d2f-42a7-921a-5ecc62eb90cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_meeting
+id: node.bh_meeting.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: bh_meeting
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

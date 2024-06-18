@@ -1,0 +1,18 @@
+uuid: b71fb93e-5243-4b33-a099-f9b9c5d13971
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.metatag
+field_name: metatag
+entity_type: node
+bundle: listing_page
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

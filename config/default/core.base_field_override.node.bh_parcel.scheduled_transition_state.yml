@@ -1,0 +1,18 @@
+uuid: f32b0c45-c4fb-4944-9e95-fbb8e10c0ea1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel
+id: node.bh_parcel.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: bh_parcel
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

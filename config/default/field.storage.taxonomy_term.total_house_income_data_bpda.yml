@@ -1,0 +1,20 @@
+uuid: 533d3e45-26f6-4e68-a0d0-349f28cb8640
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.total_house_income_data_bpda
+field_name: total_house_income_data_bpda
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 6
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

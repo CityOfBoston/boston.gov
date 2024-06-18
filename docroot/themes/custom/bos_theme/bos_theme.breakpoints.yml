@@ -1,0 +1,163 @@
+boston.hero.mobile:
+  label: 'boston mobile (hero)'
+  mediaQuery: '(min-width: 0px) and (max-width: 419px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: hero
+
+boston.hero.tablet:
+  label: 'boston tablet (hero)'
+  mediaQuery: '(min-width: 420px)  and (max-width: 767px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: hero
+
+boston.hero.desktop:
+  label: 'boston desktop (hero)'
+  mediaQuery: '(min-width: 768px) and (max-width: 1439px)'
+  weight: 2
+  multipliers:
+    - 1x
+  group: hero
+
+boston.hero.large:
+  label: 'boston large (hero)'
+  mediaQuery: '(min-width: 1440px) and (max-width: 1919px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: hero
+
+boston.hero.oversize:
+  label: 'boston oversize (hero)'
+  mediaQuery: '(min-width: 1920px)'
+  weight: 0
+  multipliers:
+    - 1x
+  group: hero
+
+boston.card.mobile:
+  label: 'boston mobile (card)'
+  mediaQuery: '(min-width: 0px) and (max-width: 419px)'
+  weight: 5
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: card
+
+boston.card.tablet:
+  label: 'boston tablet (card)'
+  mediaQuery: '(min-width: 420px)  and (max-width: 767px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: card
+
+boston.card.desktop-small:
+  label: 'boston desktop under 840 (card)'
+  mediaQuery: '(min-width: 768px) and (max-width: 839px)'
+  weight: 3
+  multipliers:
+    - 1x
+  group: card
+
+boston.card.desktop-normal:
+  label: 'boston desktop over 840 (card)'
+  mediaQuery: '(min-width: 840px) and (max-width: 1439px)'
+  weight: 2
+  multipliers:
+    - 1x
+  group: card
+
+boston.card.large:
+  label: 'boston large (card)'
+  mediaQuery: '(min-width: 1440px) and (max-width: 1919px)'
+  weight: 1
+  multipliers:
+    - 1x
+  group: card
+
+boston.card.oversize:
+  label: 'boston oversize (card)'
+  mediaQuery: '(min-width: 1920px)'
+  weight: 0
+  multipliers:
+    - 1x
+  group: card
+
+boston.person.mobile:
+  label: 'boston mobile (person)'
+  mediaQuery: '(max-width: 839px)'
+  weight: 5
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: 840-980-1280
+
+boston.person.tablet:
+  label: 'boston tablet (person)'
+  mediaQuery: '(min-width: 840px)  and (max-width: 979px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 1.5x
+    - 2x
+  group: 840-980-1280
+
+boston.person.desktop:
+  label: 'boston desktop (person)'
+  mediaQuery: '(min-width: 980px) and (max-width: 1279px)'
+  weight: 3
+  multipliers:
+    - 1x
+  group: 840-980-1280
+
+boston.person.full:
+  label: 'boston desktop over 1280 (person)'
+  mediaQuery: '(min-width: 1280px)'
+  weight: 2
+  multipliers:
+    - 1x
+  group: 840-980-1280
+
+boston.480-768-980.0:
+  label: 'boston mobile (person)'
+  mediaQuery: '(max-width: 479px)'
+  weight: 5
+  multipliers:
+    - 1x
+  group: 480-768-980
+
+boston.480-768-980.480:
+  label: 'boston tablet'
+  mediaQuery: '(min-width: 480px)  and (max-width: 767px)'
+  weight: 4
+  multipliers:
+    - 1x
+  group: 480-768-980
+
+boston.480-768-980.768:
+  label: 'boston desktop'
+  mediaQuery: '(min-width: 768px)  and (max-width: 979px)'
+  weight: 3
+  multipliers:
+    - 1x
+  group: 480-768-980
+
+boston.480-768-980.980:
+  label: 'boston large'
+  mediaQuery: '(min-width: 980px)'
+  weight: 2
+  multipliers:
+    - 1x
+  group: 480-768-980

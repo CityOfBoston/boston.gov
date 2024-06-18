@@ -1,0 +1,13 @@
+uuid: cf03c3bd-86f3-4641-aced-039a6132960e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 7JTCitdvMvjXKdIc_CAfP5nOhqH02W5ZKzrLOgnO5KQ
+id: node.listing
+label: Listing
+description: ''
+targetEntityType: node
+cache: true

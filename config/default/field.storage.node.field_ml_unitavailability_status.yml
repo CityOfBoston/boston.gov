@@ -1,0 +1,20 @@
+uuid: 2f4a7e98-f55a-49eb-83ac-8fe3938ffc02
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_unitavailability_status
+field_name: field_ml_unitavailability_status
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

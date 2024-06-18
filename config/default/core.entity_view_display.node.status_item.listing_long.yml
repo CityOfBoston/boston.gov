@@ -1,0 +1,100 @@
+uuid: d1c08b55-b9a3-4d8e-8a98-307df948323a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_long
+    - field.field.node.status_item.field_enabled
+    - field.field.node.status_item.field_icon
+    - field.field.node.status_item.field_messages
+    - field.field.node.status_item.field_title
+    - field.field.node.status_item.field_weight
+    - node.type.status_item
+  module:
+    - entity_reference_revisions
+    - fences
+    - options
+    - user
+_core:
+  default_config_hash: K7WEvrvyzU_1FQ5VR_JPtvDJNEr-Cnjab0rFsawkPks
+id: node.status_item.listing_long
+targetEntityType: node
+bundle: status_item
+mode: listing_long
+content:
+  field_enabled:
+    type: boolean
+    label: hidden
+    settings:
+      format: true-false
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: thumbnail
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_messages:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: listing
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_weight:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  content_moderation_control: true
+  langcode: true
+  links: true
+  published_at: true

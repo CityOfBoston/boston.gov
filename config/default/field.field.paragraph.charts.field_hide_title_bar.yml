@@ -1,0 +1,23 @@
+uuid: 3f1e6111-8079-4616-95b2-68614ea284cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.charts
+id: paragraph.charts.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: charts
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

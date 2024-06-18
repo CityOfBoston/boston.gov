@@ -1,0 +1,18 @@
+uuid: 8f578c48-a89c-486e-9768-a5f4f665be7c
+langcode: und
+status: true
+dependencies:
+  config:
+    - media.type.image
+id: media.image.changed
+field_name: changed
+entity_type: media
+bundle: image
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

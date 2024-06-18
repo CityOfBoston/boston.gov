@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    internal: true
+id: taxonomy_term.token
+label: Tokens
+targetEntityType: taxonomy_term
+cache: true

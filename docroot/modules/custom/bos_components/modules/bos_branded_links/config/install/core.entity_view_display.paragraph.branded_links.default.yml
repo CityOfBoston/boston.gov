@@ -1,0 +1,63 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.branded_links.field_component_theme
+    - field.field.paragraph.branded_links.field_component_title
+    - field.field.paragraph.branded_links.field_contact
+    - field.field.paragraph.branded_links.field_image
+    - field.field.paragraph.branded_links.field_links
+    - field.field.paragraph.branded_links.field_short_title
+    - paragraphs.paragraphs_type.branded_links
+  module:
+    - entity_reference_revisions
+    - fences
+id: paragraph.branded_links.default
+targetEntityType: paragraph
+bundle: branded_links
+mode: default
+content:
+  field_component_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: responsive_image_logo
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    type: entity_reference_entity_view
+    region: content
+  field_links:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: quick_links
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    type: entity_reference_revisions_entity_view
+    region: content
+hidden:
+  field_component_theme: true
+  field_contact: true
+  field_short_title: true

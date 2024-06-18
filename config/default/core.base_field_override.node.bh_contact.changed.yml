@@ -1,0 +1,18 @@
+uuid: b386f147-3ca2-4dcd-bc35-7124d1081c74
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.changed
+field_name: changed
+entity_type: node
+bundle: bh_contact
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

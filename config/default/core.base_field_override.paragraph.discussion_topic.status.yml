@@ -1,0 +1,24 @@
+uuid: 2a236222-0a0a-4a73-b37e-47a7a1e6e704
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.discussion_topic
+_core:
+  default_config_hash: ETsuGxGGWIGQd_D8OEXh2sdkiKHPRyQk_tUg_c22Ywg
+id: paragraph.discussion_topic.status
+field_name: status
+entity_type: paragraph
+bundle: discussion_topic
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

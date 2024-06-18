@@ -1,0 +1,21 @@
+uuid: 1b5a9367-58b9-4517-9ab6-25d055989966
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.cabinet
+  module:
+    - options
+id: paragraph.cabinet.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: cabinet
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

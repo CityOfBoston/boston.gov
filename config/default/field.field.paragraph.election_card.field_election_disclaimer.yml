@@ -1,0 +1,21 @@
+uuid: 7e38e36e-4f32-455e-b2e7-ce006e6b71da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_election_disclaimer
+    - paragraphs.paragraphs_type.election_card
+  module:
+    - text
+id: paragraph.election_card.field_election_disclaimer
+field_name: field_election_disclaimer
+entity_type: paragraph
+bundle: election_card
+label: 'Election Disclaimer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

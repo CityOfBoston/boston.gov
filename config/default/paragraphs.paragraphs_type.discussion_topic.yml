@@ -1,0 +1,13 @@
+uuid: 2984f43a-bcc2-476b-ab19-0e0cf191468a
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 4v-yrVHOzYwS8oeSJumK2W2lIiVmp-ojqu2C5JInVLs
+id: discussion_topic
+label: 'Discussion Topic'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Discussion Topic'
+behavior_plugins: {  }

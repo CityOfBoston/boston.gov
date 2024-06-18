@@ -1,0 +1,18 @@
+uuid: e3950833-da69-4324-9255-6fb59f2ac014
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: metrolist_affordable_housing
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

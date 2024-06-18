@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.topic_page.field_components
+    - field.field.node.topic_page.field_contacts
+    - field.field.node.topic_page.field_intro_image
+    - field.field.node.topic_page.field_intro_text
+    - field.field.node.topic_page.field_manual_date
+    - field.field.node.topic_page.field_metatags
+    - field.field.node.topic_page.field_published_date
+    - field.field.node.topic_page.field_thumbnail
+    - field.field.node.topic_page.field_topic_category
+    - field.field.node.topic_page.field_updated_date
+    - node.type.topic_page
+  module:
+    - fences
+    - user
+id: node.topic_page.listing
+targetEntityType: node
+bundle: topic_page
+mode: listing
+content:
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: topic_listing_resp_
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_components: true
+  field_contacts: true
+  field_intro_text: true
+  field_manual_date: true
+  field_metatags: true
+  field_published_date: true
+  field_thumbnail: true
+  field_topic_category: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

@@ -1,0 +1,22 @@
+uuid: a45ceaf4-642e-4c06-b90b-c4c9ad7606bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.status
+field_name: status
+entity_type: node
+bundle: procurement_advertisement
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

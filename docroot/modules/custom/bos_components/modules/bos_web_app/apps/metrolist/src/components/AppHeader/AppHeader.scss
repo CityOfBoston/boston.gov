@@ -1,0 +1,58 @@
+// <AppHeader />
+@import '@globals';
+@import '@globals/typography/filters';
+
+.ml-app-header {
+  background-color: white;
+  padding: rem( 14px 0 11px );
+  text-align: center;
+  // display: none;
+  height: $filters-panel-top-offset;
+}
+  @include media-breakpoint-up( large ) {
+    .ml-app-header {
+      height: $filters-panel-top-offset * 1.029166666666667;
+      padding: rem( 42px 0 8px );
+      text-align: left;
+    }
+  }
+  .ml-app-header__heading-container {}
+  @include media-breakpoint-up( large ) {
+    .ml-app-header__heading-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .ml-app-header__heading,
+  .ml-app-header__subheading {
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: normal;
+    font-family: $font-family-body-text;
+    color: $color-body-text;
+    text-transform: none;
+    margin-top: 0;
+  }
+
+  .ml-app-header__heading {
+    // margin-bottom: .25rem;
+    margin-bottom: 0;
+  }
+
+  .ml-app-header__subheading {
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-app-header__heading,
+    .ml-app-header__subheading {
+      // margin-bottom: .5rem;
+    }
+  }
+
+  // 85 / 213

@@ -1,0 +1,19 @@
+uuid: 6485efca-20d9-43b8-bceb-338e98f3b001
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_thanks
+field_name: field_thanks
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

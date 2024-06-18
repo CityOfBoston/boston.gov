@@ -1,0 +1,20 @@
+uuid: ba9019ec-71e9-4e06-ad96-d7f191be5582
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel
+id: node.bh_parcel.menu_link
+field_name: menu_link
+entity_type: node
+bundle: bh_parcel
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

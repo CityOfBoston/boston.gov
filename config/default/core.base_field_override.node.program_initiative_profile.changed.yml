@@ -1,0 +1,18 @@
+uuid: 1c8f7916-8574-4184-be33-09b53f126166
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+id: node.program_initiative_profile.changed
+field_name: changed
+entity_type: node
+bundle: program_initiative_profile
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

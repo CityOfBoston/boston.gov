@@ -1,0 +1,32 @@
+uuid: 2569f708-ac85-4cf0-80d9-862a42783251
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_place
+    - node.type.place_profile
+    - paragraphs.paragraphs_type.grid_of_places
+_core:
+  default_config_hash: OwIUOy4nPjVFLKihm0ZB-lJ1z5UUJvGR3pYGvbM_MTc
+id: paragraph.grid_of_places.field_place
+field_name: field_place
+entity_type: paragraph
+bundle: grid_of_places
+label: Place
+description: 'Add Places to this component.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      place_profile: place_profile
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

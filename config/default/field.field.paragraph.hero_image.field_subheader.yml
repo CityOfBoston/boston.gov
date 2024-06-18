@@ -1,0 +1,21 @@
+uuid: 96c3e8fc-3260-4370-9a60-acb6286ee541
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheader
+    - paragraphs.paragraphs_type.hero_image
+_core:
+  default_config_hash: 1v_RZkDh0dnlQL4nVgGmAFRHQfR9S06-DTz-R7K526w
+id: paragraph.hero_image.field_subheader
+field_name: field_subheader
+entity_type: paragraph
+bundle: hero_image
+label: Subheader
+description: 'The text to be displayed after the large header text on the image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

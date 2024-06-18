@@ -1,0 +1,15 @@
+uuid: e886699f-91d0-45d9-ab92-48c269bd537e
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'A format optimized for Drawers, displaying the Docket and Voting records.'
+id: node.roll_call_search
+label: 'Roll Call Search'
+description: ''
+targetEntityType: node
+cache: true

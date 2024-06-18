@@ -1,0 +1,65 @@
+uuid: cac3adf7-8afb-47e0-9f44-6343d9732257
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.user_picture
+    - responsive_image.styles.person_photos
+  module:
+    - fences
+    - responsive_image
+    - user
+_core:
+  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  langcode:
+    type: language
+    label: above
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  masquerade:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  user_picture:
+    type: responsive_image
+    label: hidden
+    settings:
+      responsive_image_style: person_photos
+      image_link: content
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  realname: true

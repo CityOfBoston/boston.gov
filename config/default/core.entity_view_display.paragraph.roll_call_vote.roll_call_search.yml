@@ -1,0 +1,176 @@
+uuid: 7db75b3c-f3b8-453a-9fd1-4640fe366db0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.roll_call_search
+    - field.field.paragraph.roll_call_vote.field_councillor
+    - field.field.paragraph.roll_call_vote.field_vote
+    - paragraphs.paragraphs_type.roll_call_vote
+  module:
+    - dynamic_entity_reference
+    - fences
+id: paragraph.roll_call_vote.roll_call_search
+targetEntityType: paragraph
+bundle: roll_call_vote
+mode: roll_call_search
+content:
+  field_councillor:
+    type: dynamic_entity_reference_entity_view
+    label: hidden
+    settings:
+      taxonomy_term:
+        view_mode: roll_call_search
+      node:
+        view_mode: default
+        link: false
+      block_content:
+        view_mode: default
+        link: false
+      content_moderation_state:
+        view_mode: default
+        link: false
+      token_custom:
+        view_mode: default
+        link: false
+      menu_link_content:
+        view_mode: default
+        link: false
+      entity_embed_fake_entity:
+        view_mode: default
+        link: false
+      file:
+        view_mode: default
+        link: false
+      media:
+        view_mode: default
+        link: false
+      paragraph:
+        view_mode: default
+        link: false
+      paragraphs_library_item:
+        view_mode: default
+        link: false
+      poll:
+        view_mode: default
+        link: false
+      poll_choice:
+        view_mode: default
+        link: false
+      profile:
+        view_mode: default
+        link: false
+      redirect:
+        view_mode: default
+        link: false
+      salesforce_mapped_object:
+        view_mode: default
+        link: false
+      shortcut:
+        view_mode: default
+        link: false
+      path_alias:
+        view_mode: default
+        link: false
+      user:
+        view_mode: default
+        link: false
+      vote:
+        view_mode: default
+        link: false
+      vote_result:
+        view_mode: default
+        link: false
+      webform_submission:
+        view_mode: default
+        link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_vote:
+    type: dynamic_entity_reference_entity_view
+    label: hidden
+    settings:
+      taxonomy_term:
+        view_mode: roll_call_search
+      node:
+        view_mode: default
+        link: false
+      block_content:
+        view_mode: default
+        link: false
+      content_moderation_state:
+        view_mode: default
+        link: false
+      token_custom:
+        view_mode: default
+        link: false
+      menu_link_content:
+        view_mode: default
+        link: false
+      entity_embed_fake_entity:
+        view_mode: default
+        link: false
+      file:
+        view_mode: default
+        link: false
+      media:
+        view_mode: default
+        link: false
+      paragraph:
+        view_mode: default
+        link: false
+      paragraphs_library_item:
+        view_mode: default
+        link: false
+      poll:
+        view_mode: default
+        link: false
+      poll_choice:
+        view_mode: default
+        link: false
+      profile:
+        view_mode: default
+        link: false
+      redirect:
+        view_mode: default
+        link: false
+      salesforce_mapped_object:
+        view_mode: default
+        link: false
+      shortcut:
+        view_mode: default
+        link: false
+      path_alias:
+        view_mode: default
+        link: false
+      user:
+        view_mode: default
+        link: false
+      vote:
+        view_mode: default
+        link: false
+      vote_result:
+        view_mode: default
+        link: false
+      webform_submission:
+        view_mode: default
+        link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

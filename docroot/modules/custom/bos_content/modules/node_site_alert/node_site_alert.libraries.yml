@@ -1,0 +1,4 @@
+alert.call:
+  css:
+    theme:
+      css/site-alert.boston.css: {}

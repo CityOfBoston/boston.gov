@@ -1,0 +1,15 @@
+node_rollcall.uploader:
+  path: '/rest/rollcall/upload'
+  defaults:
+    _controller: '\Drupal\node_rollcall\Controller\Uploader::upload'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
+
+node_rollcall.summarizer_api:
+  path: '/rest/rollcall/experiment/{type}'
+  defaults:
+    _controller: '\Drupal\node_rollcall\Controller\Downloader::experiment'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'

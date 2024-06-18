@@ -1,0 +1,60 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present an emergency alert entity.
+ *
+ * This template is used when viewing a registered emergency alert's page,
+ * e.g., /admin/content/emergency-alert)/123. 123 being the emergency alert's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_emergency_alert()
+ */
+#}
+<article{{ attributes }}>
+
+  {% if (title_prefix or title_suffix) %}
+    {# This allows the injection of the contextual menu links #}
+    <header>
+      {{ title_prefix }}
+      {{ title_suffix }}
+    </header>
+  {% endif %}
+
+  <div class="b-c b-c--ntp b-c--nbp">
+    <div{{ para_attributes.addClass("b b--fw b--cc") }}>
+      <div class="b-c">
+
+        <div class="t--upper t--sans lh--000">
+          {% if (content.field_updated_date["#items"]) %}
+            Last updated: {{ content.field_updated_date }}
+          {% elseif (content.field_published_date["#items"]) %}
+            Last updated: {{ content.field_published_date }}
+          {% else %}
+            Not published yet!
+          {% endif %}
+        </div>
+
+        <div class="str m-v300">
+          <div class="str-c">
+            <div class="str-t">
+              {{ title.0|raw }}
+            </div>
+          </div>
+        </div>
+
+        <div class="t--sans lh--000 m-b500">
+          {{ content.field_description }}
+        </div>
+
+        {% if content.field_link %}
+          {{ content.field_link|raw }}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</article>

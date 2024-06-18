@@ -1,0 +1,23 @@
+uuid: 5f52f07c-78b2-401b-89cd-d6343a513f18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_middle_column
+    - paragraphs.paragraphs_type.text_three_column
+  module:
+    - text
+_core:
+  default_config_hash: XqWLwfkKLOwfzuyrbbf7XI3GDZr4BVtc1w6CFXVE7Ns
+id: paragraph.text_three_column.field_middle_column
+field_name: field_middle_column
+entity_type: paragraph
+bundle: text_three_column
+label: 'Middle Column'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

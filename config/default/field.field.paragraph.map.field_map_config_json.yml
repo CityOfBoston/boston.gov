@@ -1,0 +1,19 @@
+uuid: 694fa567-97ec-49fe-b5bc-212e3e83ba44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map_config_json
+    - paragraphs.paragraphs_type.map
+id: paragraph.map.field_map_config_json
+field_name: field_map_config_json
+entity_type: paragraph
+bundle: map
+label: 'Config JSON'
+description: 'Test your config JSON with the <a href="https://patterns.boston.gov/web-components/map-editor.html">map editor</a>.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

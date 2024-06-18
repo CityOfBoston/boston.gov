@@ -1,0 +1,29 @@
+uuid: 0ef95d7d-1b5a-4301-b178-357b48310d2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.text.field_background_image
+    - field.field.paragraph.text.field_component_theme
+    - field.field.paragraph.text.field_component_title
+    - field.field.paragraph.text.field_contact
+    - field.field.paragraph.text.field_hide_title_bar
+    - field.field.paragraph.text.field_short_title
+    - field.field.paragraph.text.field_text_blocks
+    - paragraphs.paragraphs_type.text
+_core:
+  default_config_hash: yhXMgPeWAwyA-JVp4nPDMgcyTvgzD6KsVJ8gMP3mSy4
+id: paragraph.text.separated_title
+targetEntityType: paragraph
+bundle: text
+mode: separated_title
+content: {  }
+hidden:
+  field_background_image: true
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true
+  field_text_blocks: true

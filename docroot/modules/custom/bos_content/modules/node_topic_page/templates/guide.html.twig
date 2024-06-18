@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a guide entity.
+ *
+ * This template is used when viewing a registered guide's page,
+ * e.g., /admin/content/guide)/123. 123 being the guide's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_guide()
+ */
+#}
+<article{{ attributes }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</article>

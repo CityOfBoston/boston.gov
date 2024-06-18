@@ -1,0 +1,22 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.grid_of_programs_initiatives.field_component_theme
+    - field.field.paragraph.grid_of_programs_initiatives.field_component_title
+    - field.field.paragraph.grid_of_programs_initiatives.field_contact
+    - field.field.paragraph.grid_of_programs_initiatives.field_program_initiative
+    - field.field.paragraph.grid_of_programs_initiatives.field_short_title
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+id: paragraph.grid_of_programs_initiatives.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: grid_of_programs_initiatives
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_program_initiative: true
+  field_short_title: true

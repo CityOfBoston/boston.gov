@@ -1,0 +1,14 @@
+name: Procurement Type Vocabulary
+description: "Adds taxonomy for Procurement Type."
+package: "City of Boston (taxonomy)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+
+dependencies:
+  - bos_vocab
+  - taxonomy
+
+config_devel:
+  - language.content_settings.taxonomy_term.procurement_type
+  - taxonomy.vocabulary.procurement_type

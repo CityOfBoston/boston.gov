@@ -1,0 +1,13 @@
+uuid: f23c53f3-eebb-435e-8673-c0b9f7b5fe0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 54sZfva7uo-4OFzb6xg_a-Qh-HWs6Z4NsKJWgxJ29IQ
+id: node.featured_item
+label: 'Featured Item'
+description: ''
+targetEntityType: node
+cache: true

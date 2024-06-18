@@ -1,0 +1,21 @@
+uuid: 6039f2d8-e09d-4956-be2b-b8f9efb601dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.discussion_topic.field_description
+    - field.field.paragraph.discussion_topic.field_links
+    - field.field.paragraph.discussion_topic.field_title
+    - paragraphs.paragraphs_type.discussion_topic
+_core:
+  default_config_hash: CHDokfqkOBe2yWG6Lr2GI6Sd5jDncK9iTAMaBlhxy40
+id: paragraph.discussion_topic.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: discussion_topic
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_description: true
+  field_links: true
+  field_title: true

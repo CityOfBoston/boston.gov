@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:7c0f033e-0f23-4f76-a9c4-0e4437e6779e'
+  module:
+    - paragraphs_browser
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+  paragraphs_browser:
+    description: 'Report non-emergency issues to the City.'
+    image_path: sites/default/files/paragraphs_type_icon/bos_311_icon.svg
+id: bos311
+label: 'Bos:311'
+icon_uuid: 7c0f033e-0f23-4f76-a9c4-0e4437e6779e
+icon_default: null
+description: 'Report non-emergency issues to the City.'
+behavior_plugins: {  }

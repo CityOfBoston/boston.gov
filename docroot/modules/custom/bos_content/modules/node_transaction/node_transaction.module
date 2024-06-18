@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Provides a node_transaction entity type.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function node_transaction_theme() {
+  return [
+    'transaction' => [
+      'render element' => 'elements',
+    ],
+    'node__transaction' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for transaction templates.
+ *
+ * Default template: transaction.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the transaction information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_transaction(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

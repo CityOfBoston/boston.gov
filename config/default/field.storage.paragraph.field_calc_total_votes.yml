@@ -1,0 +1,20 @@
+uuid: 663a0ef4-6703-4c7f-84c9-075fa312224d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_calc_total_votes
+field_name: field_calc_total_votes
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

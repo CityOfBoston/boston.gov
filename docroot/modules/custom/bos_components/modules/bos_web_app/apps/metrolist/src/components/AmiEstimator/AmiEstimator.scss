@@ -1,0 +1,214 @@
+// <AmiEstimator />
+@import '@globals';
+
+.ml-ami-estimator {
+  width: 90%;
+  margin: 0 auto;
+  color: $color-black;
+}
+  .ml-ami-estimator__heading,
+  .sh-title.ml-ami-estimator__heading {
+    font-family: $font-family-heading;
+    font-style: normal;
+    color: $color-metrolist-text-blue;
+    letter-spacing: rem( 1px );
+    margin: 0;
+    padding: 0;
+  }
+  .ml-ami-estimator__prompt-inner {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .ml-ami-estimator__prompt-question {
+    font-size: rem( 24px );
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    padding-bottom: rem( 8px );
+    border-bottom: rem( 4px ) solid $color-black;
+  }
+  .ml-ami-estimator__prompt-answer {
+    line-height: 0;
+  }
+  .ml-ami-estimator__prompt-answer-icon {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .ml-ami-estimator__prompt--answer-input {
+    color: $color-metrolist-text-blue;
+  }
+  .ml-ami-estimator__navigation {
+    justify-content: space-between;
+  }
+  .ml-ami-estimator__button,
+  .btn[class*="btn--metrolist"].ml-ami-estimator__button {
+    width: rem( 252px );
+    height: rem( 64px );
+    font-size: responsive rem( 14px ) rem( 16px );
+  }
+  .ml-ami-estimator__button[disabled],
+  .btn[class*="btn--metrolist"].ml-ami-estimator__button[disabled] {
+    background-color: #D8D8D8;
+  }
+  .ml-ami-estimator__footer {
+    text-align: center;
+    color: $color-metrolist-ami-estimator-footer-text--a11y;
+  }
+  .ml-ami-estimator__exit-link {
+    color: $color-charles-blue;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: rem( 14px );
+    font-family: $font-family-heading;
+    font-weight: bold;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .ml-ami-estimator__email-link {
+    color: $color-metrolist-ami-estimator-footer-text--a11y;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .ml-ami-estimator__email-link-email-address {
+    color: $color-metrolist-ami-estimator-footer-link--a11y;
+  }
+  .ml-ami-estimator__prompt-answer-error {
+    transition: opacity .125s linear, height .125s linear, padding-top .125s linear, padding-bottom .125s linear;
+    opacity: 0;
+    height: 0;
+
+    &[hidden] {
+      display: inherit;
+      visibility: hidden;
+    }
+
+    &.visible {
+      opacity: 1;
+      height: unset;
+    }
+  }
+
+// Transitions
+
+$prompt-width: 90vw;
+$prompt-width--tablet: 39rem;
+
+.ml-ami-estimator,
+.step,
+.ml-ami-estimator__prompt {
+  width: $prompt-width;
+}
+
+.step {
+  display: grid;
+  overflow: hidden;
+  margin: 0 auto;
+  margin: 0 auto;
+  transition: height .125s ease, min-height .125s ease, max-height .125s ease;
+  line-height: 1.5;
+}
+
+.ml-ami-estimator__prompt {
+  grid-row: 1;
+}
+
+@mixin bidirectional-slide-transition( $width, $property: 'all', $duration: 300, $easing: 'linear', $delay: 300 ) {
+  // Enter
+
+  .slide-left-enter,
+  .slide-right-enter {
+    width: $width;
+    opacity: 0;
+  }
+  
+  .slide-left-enter {
+    transform: translateX( $width * 2 );
+  }
+  
+  .slide-right-enter {
+    transform: translateX( $width * -2 );
+  }
+  
+  .slide-left-enter.slide-left-enter-active,
+  .slide-right-enter.slide-right-enter-active  {
+    opacity: 1;
+    transition: #{$property} #{$duration}ms #{$easing} #{$delay}ms;
+    transform: translateX( 0 );
+  }
+  
+  // Exit
+
+  .slide-left-exit,
+  .slide-right-exit {
+    width: $width;
+    opacity: 1;
+    transform: translateX( 0 );
+  }
+  
+  .slide-left-exit.slide-left-exit-active,
+  .slide-right-exit.slide-right-exit-active {
+    opacity: 0;
+    transition: #{$property} #{$duration} #{$easing};
+  }
+  
+  .slide-left-exit.slide-left-exit-active {
+    transform: translateX( $width * -2 );
+  }
+  
+  .slide-right-exit.slide-right-exit-active {
+    transform: translateX( $width * 2 );
+  }
+}
+
+@mixin bidirectional-slide-transition-override( $width ) {
+  // Enter
+
+  .slide-left-enter,
+  .slide-right-enter {
+    width: $width;
+  }
+  
+  .slide-left-enter {
+    transform: translateX( $width * 2 );
+  }
+  
+  .slide-right-enter {
+    transform: translateX( $width * -2 );
+  }
+  
+  // Exit
+
+  .slide-left-exit,
+  .slide-right-exit {
+    width: $width;
+  }
+  
+  .slide-left-exit.slide-left-exit-active {
+    transform: translateX( $width * -2 );
+  }
+  
+  .slide-right-exit.slide-right-exit-active {
+    transform: translateX( $width * 2 );
+  }
+}
+
+@include bidirectional-slide-transition( $prompt-width );
+
+@include media-breakpoint-up( large ) {
+  .ml-ami-estimator,
+  .step,
+  .ml-ami-estimator__prompt {
+    width: $prompt-width--tablet;
+  }
+
+  @include bidirectional-slide-transition-override( $prompt-width--tablet );
+}

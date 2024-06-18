@@ -1,0 +1,20 @@
+uuid: 66dc7e21-1f5f-478c-8872-c2f36e2d8a68
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_bh_units_for_rent
+field_name: field_bh_units_for_rent
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

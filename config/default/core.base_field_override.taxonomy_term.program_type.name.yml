@@ -1,0 +1,18 @@
+uuid: 2949a931-5f78-4d64-9839-3d2da1a2eab7
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.program_type
+id: taxonomy_term.program_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: program_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

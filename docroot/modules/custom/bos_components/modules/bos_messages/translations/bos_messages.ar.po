@@ -1,0 +1,6 @@
+msgid "None"
+msgstr "----"
+msgid "More Information"
+msgstr "معلومات اكثر"
+msgid "Status Information"
+msgstr "معلومات الحالة"

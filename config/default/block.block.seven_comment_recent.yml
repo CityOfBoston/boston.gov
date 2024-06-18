@@ -1,0 +1,18 @@
+uuid: cf8d09ea-54ef-4749-a95d-89d932770ea3
+langcode: und
+status: true
+dependencies:
+  theme:
+    - seven
+id: seven_comment_recent
+theme: seven
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:comments_recent-block_1'
+settings:
+  id: broken
+  label: ''
+  label_display: '0'
+  provider: core
+visibility: {  }

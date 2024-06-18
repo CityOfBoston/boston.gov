@@ -1,0 +1,23 @@
+uuid: 47a4b79f-2b39-4e92-8565-5c29418df1a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_map_visibility
+    - taxonomy.vocabulary.project_banner_bh_
+  module:
+    - options
+id: taxonomy_term.project_banner_bh_.field_map_visibility
+field_name: field_map_visibility
+entity_type: taxonomy_term
+bundle: project_banner_bh_
+label: 'Map Visibility'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: hidden
+default_value_callback: ''
+settings: {  }
+field_type: list_string

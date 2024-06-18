@@ -1,0 +1,26 @@
+uuid: 7a6593dd-f834-45da-8072-a3913c43e60b
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_range
+    - node.type.site_alert
+  module:
+    - datetime_range
+id: node.site_alert.field_date_range
+field_name: field_date_range
+entity_type: node
+bundle: site_alert
+label: Active
+description: "Set a start and end date/time when this alert will display on all pages of the main website (except those excluded).<br>\r\nIf there is no start or end date, the alert will not be displayed. <br>\r\n<i><b>Note: </b> Up to 3 alerts will be displayed on any page.</i>\r\n<i><b>Note: </b> To disable an alert either delete the start and end dates, or set both to be in the past</i>"
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: ''
+    default_end_date: ''
+default_value_callback: ''
+settings: {  }
+field_type: daterange

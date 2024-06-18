@@ -1,0 +1,22 @@
+uuid: b8db7cf8-ce28-4a5f-9fdf-a7af5ed28528
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+id: taxonomy_term.ml_occupancy_type.status
+field_name: status
+entity_type: taxonomy_term
+bundle: ml_occupancy_type
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

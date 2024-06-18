@@ -1,0 +1,15 @@
+uuid: 22eca7f0-214a-4fd3-a06a-2deabe374d8b
+langcode: und
+status: true
+dependencies: {  }
+name: pip_image_tablet
+label: 'PIP Image Tablet (666x233)'
+effects:
+  b91f63b1-193e-4273-8444-671a02b9d00f:
+    uuid: b91f63b1-193e-4273-8444-671a02b9d00f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 666
+      height: 233
+      anchor: center-center

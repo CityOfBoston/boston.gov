@@ -1,0 +1,7 @@
+uuid: d2104f57-17d6-4ce1-9d4e-eb051892d9ba
+langcode: en
+status: false
+dependencies: {  }
+formId: node_public_notice_form
+captchaType: default
+label: node_public_notice_form

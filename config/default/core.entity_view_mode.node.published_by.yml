@@ -1,0 +1,13 @@
+uuid: ca746fa6-33f9-4527-acfc-9e2428c3067c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: UlA4pidmGNlQAhTZ3LSnPkf0xKSvPuEsAjAkUCLn8I0
+id: node.published_by
+label: 'Published By'
+description: ''
+targetEntityType: node
+cache: true

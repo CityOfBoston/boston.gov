@@ -1,0 +1,54 @@
+// <ProgressBar />
+@import '@globals';
+
+.ml-progress-bar {
+  line-height: 0.85;
+}
+
+.ml-progress-bar,
+.ml-progress-bar__progress {
+  width: 100%;
+}
+
+.ml-progress-bar__progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: rem( 3px ) solid $color-black;
+  height: 1rem;
+}
+
+.ml-progress-bar__step {
+  font-style: italic;
+  font-size: rem( 16px );
+  color: $color-supporting-gray-darkest;
+}
+
+// https://css-tricks.com/one-invalid-pseudo-selector-equals-an-entire-ignored-selector/
+@mixin progress-indicator-container {
+  background-color: transparent;
+}
+@mixin progress-indicator {
+  background-color: $color-optimistic-blue--a11y;
+  transition: width 0.5s;
+  height: 100%;
+}
+
+// Chrome, Safari, etc.
+.ml-progress-bar__progress::-webkit-progress-bar {
+  @include progress-indicator-container();
+}
+.ml-progress-bar__progress::-webkit-progress-value {
+  @include progress-indicator();
+  height: 103%;
+} // Bar
+
+// Firefox
+.ml-progress-bar__progress::-moz-progress-bar {
+  @include progress-indicator();
+} // Bar
+
+// IE/Edge (supposedly; can’t get it to work)
+.ml-progress-bar__progress::-ms-fill {
+  @include progress-indicator();
+}

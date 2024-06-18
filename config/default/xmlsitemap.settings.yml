@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: 3my4yxTczVKbcKZ8ss1fyyilU1wC19kLZd_IPRbxuyU
+minimum_lifetime: 21600
+xsl: 0
+prefetch_aliases: 1
+chunk_size: auto
+batch_limit: 5
+path: xmlsitemap
+frontpage_priority: 1.0
+frontpage_changefreq: 86400
+lastmod_format: 'Y-m-d\TH:i\Z'
+gz: false
+clean_url: 0
+disable_cron_regeneration: true
+i18n_selection_mode: simple
+metatag_exclude_noindex: true
+cron_threshold_error: 1209600
+cron_threshold_warning: 172800

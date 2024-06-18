@@ -1,0 +1,333 @@
+<?php
+
+/**
+ * @file
+ * Main file for the bos_text module.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Markup;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_theme().
+ *
+ * Register module templates.
+ */
+function bos_text_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__text' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__text_one_column' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__text_two_column' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__3_column_w_image' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__columns' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__text_three_column' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__header_text' => [
+      'base hook' => 'paragraph',
+    ],
+    'field__component__field_columns' => [
+      'base hook' => 'field',
+    ],
+    'field__field_link' => [
+      'base hook' => 'field',
+    ],
+    'field__field_intro_text' => [
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] = 'bos_text/bos_text_css';
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_preprocess_paragraph__header_text(&$variables) {
+  _bos_components_fix_attributes($variables);
+
+  // In some cases we will need to bring the host content title into the
+  // header text component so we can display it within the header text component
+  // template.
+  // @var \ParagraphsItemEntity $paragraph.
+  $paragraph = $variables['elements']['#paragraph'];
+  $parent = $paragraph->getParentEntity();
+  $host_title = Html::escape($parent->label());
+  $variables['host_title'] = $host_title;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_preprocess_paragraph(&$variables) {
+  // Restrict to bundles from this module only.
+  if (empty($variables["paragraph"]->bundle()) || !in_array($variables["paragraph"]->bundle(), [
+    "text",
+    "text_one_column",
+    "text_two_column",
+    "text_three_column",
+    "3_column_w_image",
+  ])) {
+    return;
+  }
+
+  // Add standard classes.
+  $variables['attributes']['class'][] = 'entity';
+  $variables['attributes']['class'][] = 'entity-paragraphs-item';
+  $variables['attributes']['class'][] = Html::cleanCssIdentifier('paragraphs-item-' . $variables['paragraph']->bundle());
+  $variables['attributes']['class'][] = 'component-section';
+
+  // Manage background images.
+  if (isset($variables["paragraph"]->field_background_image->value)) {
+    $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables["paragraph"]->field_background_image->value);
+  }
+
+  // Assign tow/three_column classes.
+  // As defined in field.storage.paragraph.field_column_configuration.yml.
+  // ATM will be one of "col_half", "col_two_one_third" or "col_one_one_third".
+  if ($variables["paragraph"]->bundle() == "text_one_column") {
+    $variables['attributes']['class'][] = "squiggle-border-bottom, p-t400";
+  }
+
+  if ($variables["paragraph"]->bundle() == "text_two_column") {
+    $variables['attributes']['class'][] = $variables["paragraph"]->field_column_configuration->value;
+  }
+
+  if ($variables["paragraph"]->bundle() == "3_column_w_image") {
+    $variables['attributes']['class'][] = "b b--b b--fw";
+  }
+
+  // Set a flag if the title is to be hidden in twig.
+  if ($variables["paragraph"]->bundle() == "text" || $variables["paragraph"]->bundle() == "3_column_w_image" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+    $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+
+    //@TODO: Move to a new class and method
+    // set this block to be centered if it gets wrapped in a full width block for the theme change
+    if ($variables["paragraph"]->hasField("field_component_theme") && $variables["paragraph"]->field_component_theme->value) {
+      $variables['attributes']['class'][] = "b b--fw";
+    }
+  }
+  elseif ($variables["paragraph"]->bundle() == "header_text") {
+    $host = $variables["paragraph"]->getParentEntity();
+    if ($host && $host->getEntityTypeId() == 'node') {
+      $variables['host_title'] = Html::escape($host->getTitle());
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_preprocess_field(&$variables) {
+  // Restrict to bundles from this module only.
+  if (empty($variables["element"]['#bundle']) || !in_array($variables["element"]['#bundle'], [
+    "text",
+    "text_one_column",
+    "text_two_column",
+    "text_three_column",
+    "3_column_w_image",
+  ])) {
+    return;
+  }
+  $variables['attributes']['class'][] = "field";
+  if ($variables['label_hidden']) {
+    $variables['attributes']['class'][] = "field-label-hidden";
+  }
+  if ($variables['is_subcomponent_field']) {
+    $variables['attributes']['class'][] = "field-subcomponent";
+  }
+  elseif ($variables['is_component_field']) {
+    $variables['attributes']['class'][] = "field-component";
+  }
+  if ($variables["element"]['#bundle'] == "3_column_w_image") {
+    foreach ($variables['attributes']['class'] as $key => &$class) {
+      $class = str_replace('field', 'entity', $class);
+    }
+    $variables['attributes']['class'][] = "g";
+  }
+  if ($variables["element"]['#bundle'] == "text_two_column") {
+    $variables['attributes']['class'][] = 'g--6 g--6--sl m-t500';
+  }
+  if ($variables["element"]['#bundle'] == "text_three_column") {
+    $variables['attributes']['class'][] = 'g--4 g--4--sl m-t500';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_text_preprocess_field__field_intro_text(&$variables) {
+  _bos_components_fix_attributes($variables);
+  $variables['attributes']->addClass("intro-text");
+  $view_mode = $variables['element']['#view_mode'];
+  $bundle = $variables['element']['#bundle'];
+  // Add view modes and paragraph items to this array that
+  // should not have additional classes.
+  $intro_stripped = [
+    'listing',
+    'short_listing',
+    'long_listing',
+    'featured_item',
+    'user_action',
+  ];
+
+  // The squiggle should not be present.
+  $no_squiggle = [
+    'hero_image',
+  ];
+
+  // If view mode and paragraph item is not in the $intro_stripped array
+  // add additional classes.
+  if (!in_array($view_mode, $intro_stripped) && !in_array($bundle, $intro_stripped)) {
+    $variables['attributes']->addClass("supporting-text");
+    // Don't add squiggle border to intro-field in hero image component.
+    if (!in_array($bundle, $no_squiggle)) {
+      $variables['attributes']->addClass("squiggle-border-bottom");
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_text_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></span>" . $contact->name->value);
+    }
+    else {
+      $markup[] = Markup::create("No dept contact");
+    }
+  }
+  if ($para["entity"]->hasField("field_text_blocks") && count($para["entity"]->get("field_text_blocks"))) {
+    $markup[] = Markup::create("<span class='info'>has " . count($para["entity"]->get("field_text_blocks")) . " text blocks.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no text blocks!.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_columns_summary_alter(array $form_widget, array $para, array $attributes) {
+  if ($media = Media::load($para["entity"]->get("field_image")->target_id)) {
+    $markup[] = Markup::create($media->get("name")->value);
+  }
+  $markup[] = Markup::create($para["entity"]->get("field_column_title")->value);
+  if (!empty($text = strip_tags($para["entity"]->get("field_column_description")->value))) {
+    $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, [
+      'word_boundary' => TRUE,
+      'ellipsis' => TRUE,
+      'max_length' => 60,
+    ]) . "</span>");
+  }
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_3_column_w_image_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'>" . $contact->name->value . "</span>");
+    }
+  }
+  if ($para["entity"]->hasField("field_columns") && count($para["entity"]->get("field_columns"))) {
+    $markup[] = Markup::create("<span class='info'>has " . count($para["entity"]->get("field_columns")) . " columns.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no columns!.</span>");
+  }
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_text_one_column_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create("Single Column");
+  $text = strip_tags($para["entity"]->get("field_middle_column")->value);
+  $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 100,
+  ]) . "</span>");
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_text_two_column_summary_alter(array $form_widget, array $para, array $attributes) {
+  $map = [
+    'col_half' => "Equal split",
+    'col_two_one_third' => "Wider on left",
+    'col_one_one_third' => "Wider on right",
+  ];
+  $markup[] = Markup::create($map[$para["entity"]->get("field_column_configuration")->value]);
+  $text = strip_tags($para["entity"]->get("field_left_column")->value . " " . $para["entity"]->get("field_right_column")->value);
+  $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 100,
+  ]) . "</span>");
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_text_paragraph_text_three_column_summary_alter(array $form_widget, array $para, array $attributes) {
+  $text = strip_tags($para["entity"]->get("field_left_column")->value . " " . $para["entity"]->get("field_middle_column")->value . " " . $para["entity"]->get("field_right_column")->value);
+  $markup[] = "Equal Split";
+  $markup[] = Markup::create("<span class='body-text'>" . advanced_text_formatter_trim_text($text, [
+    'word_boundary' => TRUE,
+    'ellipsis' => TRUE,
+    'max_length' => 100,
+  ]) . "</span>");
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

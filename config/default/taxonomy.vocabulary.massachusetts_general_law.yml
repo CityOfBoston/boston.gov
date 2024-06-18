@@ -1,0 +1,10 @@
+uuid: 09c897e7-7dfc-414e-b055-0faf04299eb1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: L3duDpJKgUCn8yLCnSeRFOU9DHppdLJXJ-yXlcbm9m8
+name: 'Massachusetts General Law'
+vid: massachusetts_general_law
+description: ''
+weight: 0

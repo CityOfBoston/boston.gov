@@ -1,0 +1,15 @@
+uuid: e860c72a-880d-41a2-9e65-e3d4e0bfd7fd
+langcode: und
+status: true
+dependencies: {  }
+name: person_photo_profile_mid_285x582_
+label: 'Person photo profile mid (285x285)'
+effects:
+  63048a12-0d88-44c7-8d0b-ae43cb5a0896:
+    uuid: 63048a12-0d88-44c7-8d0b-ae43cb5a0896
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 285
+      height: 285
+      anchor: center-center

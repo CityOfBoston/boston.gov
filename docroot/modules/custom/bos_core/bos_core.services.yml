@@ -1,0 +1,47 @@
+services:
+  bos_core.gapost:
+    class: Drupal\bos_core\Services\BosCoreGAPost
+    arguments: ['@logger.factory', '@config.factory']
+
+  bos_core.userload:
+    class: Drupal\bos_core\EventSubscriber\AccountSubscriber
+    arguments: ['@current_user', '@config.factory']
+    tags:
+      - { name: 'event_subscriber' }
+
+  bos_core.exception_subscriber:
+    class: Drupal\bos_core\EventSubscriber\ExceptionSubscriber
+    arguments: ['@serializer', '%serializer.formats%']
+    tags:
+      - { name: event_subscriber }
+
+  bos_core.saml_subscriber:
+    class: Drupal\bos_core\EventSubscriber\SamlAuthentication
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+
+  bos_core.redirect:
+    class: Drupal\bos_core\Services\Redirect
+    tags:
+      - { name: Redirect }
+    arguments:
+      [ '@http_kernel' ]
+
+  bos_core.redirect.logout:
+    class: Drupal\bos_core\EventSubscriber\SamlRedirectSubscriber
+    arguments: ['@redirect.checker']
+    tags:
+      - { name: event_subscriber }
+
+  bose_core.node_subscriber:
+    class: Drupal\bos_core\EventSubscriber\NodeSummarizerSubscriber
+    tags:
+      - { name: 'event_subscriber' }
+
+  cache.icon_manifest:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: [ '@cache_factory', 'get' ]
+    arguments: [ 'icon_manifest' ]

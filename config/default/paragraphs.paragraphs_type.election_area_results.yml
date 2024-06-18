@@ -1,0 +1,10 @@
+uuid: c5c927a9-3273-418a-b03b-34043893b0c0
+langcode: en
+status: true
+dependencies: {  }
+id: election_area_results
+label: 'Election Area Results'
+icon_uuid: null
+icon_default: null
+description: 'Reporting on progress for Election Areas.'
+behavior_plugins: {  }

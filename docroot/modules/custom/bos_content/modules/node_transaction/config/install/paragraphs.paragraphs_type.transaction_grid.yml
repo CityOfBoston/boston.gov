@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:62370607-ca6c-4464-8f1c-40a79768fe0a'
+id: transaction_grid
+label: 'Transaction Grid'
+icon_uuid: 62370607-ca6c-4464-8f1c-40a79768fe0a
+icon_default: null
+description: 'Migrated from paragraph bundle Transaction Grid'
+behavior_plugins: {  }

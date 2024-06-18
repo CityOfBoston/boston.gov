@@ -1,0 +1,24 @@
+uuid: 58800838-88d9-449b-85ac-db530b77e669
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.quote
+_core:
+  default_config_hash: GJgWOc_juHCZp2gCqXSS8AQWULwOyiDHOr4N_XYnIBU
+id: paragraph.quote.status
+field_name: status
+entity_type: paragraph
+bundle: quote
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Theme override of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+ #}
+
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+{{ q }}
+{% endif %}
+
+<div class="drawer-trigger mobile-only ">
+  <div class="drawer-trigger-chevron"></div>
+  Filter
+</div>
+<div class="views-exposed-form drawer mobile-only">
+  <div class="views-exposed-widgets clearfix">
+    {% for i,filter in form['#info'] %}
+      {% set filter_name = filter.value %}
+      <div class="drawer-wrapper">
+        <button type="button" aria-expanded="true/false" aria-controls="drawer-{{ i }}" class="drawer-trigger">
+          <div class="drawer-trigger-chevron"></div>
+          {{ filter.label }}
+        </button>
+        <div id="drawer-{{ loop.index -1 }}" class="clearfix drawer drawer-{{ form[filter_name]['#id'] }}">
+          <div id="{{ form[filter_name]['#id'] }}-wrapper" class="views-exposed-widget views-widget-{{ form[filter_name]['#id'] }}">
+            <div class="views-widget">{{ form[filter_name] }}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% if form.actions.submit %}
+      <div class="views-exposed-widget views-submit-button">
+        {{ form.actions.submit }}
+      </div>
+    {% endif %}
+    {% if form.actions.reset %}
+      <div class="views-exposed-widget views-reset-button">
+        {{ form.actions.reset }}
+      </div>
+    {% endif %}
+  </div>
+</div>

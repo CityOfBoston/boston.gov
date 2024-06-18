@@ -1,0 +1,15 @@
+uuid: d4a792a7-1b03-4499-8a1d-8d3356b1b8c5
+langcode: und
+status: true
+dependencies: {  }
+name: photo_bleed_c_desktop_1x
+label: 'Photo bleed c-desktop 1x (1440x800)'
+effects:
+  592ef9b6-1587-4f3e-bb34-489ce335070b:
+    uuid: 592ef9b6-1587-4f3e-bb34-489ce335070b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 800
+      anchor: center-center

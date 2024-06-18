@@ -1,0 +1,54 @@
+uuid: 1fabef82-0c1c-470f-a952-782cee8b2843
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_address
+    - node.type.metrolist_development
+  module:
+    - address
+_core:
+  default_config_hash: yvDHteK8rW2NoJXd-SIlfi9-DaQCUYFOCJOJatTdITU
+id: node.metrolist_development.field_ml_address
+field_name: field_ml_address
+entity_type: node
+bundle: metrolist_development
+label: Address
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    langcode: ''
+    country_code: US
+    administrative_area: MA
+    locality: ''
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: ''
+    organization: ''
+    given_name: ''
+    additional_name: null
+    family_name: ''
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine2:
+      override: hidden
+    sortingCode:
+      override: hidden
+  fields: {  }
+field_type: address

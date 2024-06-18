@@ -1,0 +1,23 @@
+uuid: 5ad1561f-5b22-4222-83c8-e559af65bfea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_original_id
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.elector_groups.field_original_id
+field_name: field_original_id
+entity_type: taxonomy_term
+bundle: elector_groups
+label: GroupId
+description: 'The original ElectprGroup ID from the imported file.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

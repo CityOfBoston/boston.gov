@@ -1,0 +1,20 @@
+uuid: 612098c2-fd3d-4f72-8c33-58071cef835f
+langcode: en
+status: true
+dependencies:
+  config:
+    - token_custom.type.custom
+id: token_custom.custom.description
+field_name: description
+entity_type: token_custom
+bundle: custom
+label: Description
+description: Description.
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

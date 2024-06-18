@@ -1,0 +1,15 @@
+uuid: b4adaa56-dbe0-4e89-891f-a6e9add2f30b
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: ''
+id: media.colorbox
+label: Colorbox
+description: ''
+targetEntityType: media
+cache: true

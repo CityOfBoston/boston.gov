@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_table_timestamp
+    - taxonomy.vocabulary.cityscore_metrics
+id: taxonomy_term.cityscore_metrics.field_table_timestamp
+field_name: field_table_timestamp
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'Table Timestamp'
+description: 'The timestamp supplied in the data imported.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

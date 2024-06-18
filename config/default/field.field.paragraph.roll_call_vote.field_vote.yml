@@ -1,0 +1,95 @@
+uuid: 7ee3287b-9d99-4128-9769-4ffbed2b2544
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vote
+    - paragraphs.paragraphs_type.roll_call_vote
+    - taxonomy.vocabulary.vocab_votes
+  module:
+    - dynamic_entity_reference
+id: paragraph.roll_call_vote.field_vote
+field_name: field_vote
+entity_type: paragraph
+bundle: roll_call_vote
+label: Vote
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  taxonomy_term:
+    handler: 'default:taxonomy_term'
+    handler_settings:
+      target_bundles:
+        vocab_votes: vocab_votes
+      sort:
+        field: name
+        direction: asc
+      auto_create: false
+      auto_create_bundle: ''
+  node:
+    handler: 'default:node'
+    handler_settings: {  }
+  block_content:
+    handler: 'default:block_content'
+    handler_settings: {  }
+  content_moderation_state:
+    handler: 'default:content_moderation_state'
+    handler_settings: {  }
+  token_custom:
+    handler: 'default:token_custom'
+    handler_settings: {  }
+  menu_link_content:
+    handler: 'default:menu_link_content'
+    handler_settings: {  }
+  entity_embed_fake_entity:
+    handler: 'default:entity_embed_fake_entity'
+    handler_settings: {  }
+  file:
+    handler: 'default:file'
+    handler_settings: {  }
+  media:
+    handler: 'default:media'
+    handler_settings: {  }
+  paragraph:
+    handler: 'default:paragraph'
+    handler_settings: {  }
+  paragraphs_library_item:
+    handler: 'default:paragraphs_library_item'
+    handler_settings: {  }
+  poll:
+    handler: 'default:poll'
+    handler_settings: {  }
+  poll_choice:
+    handler: 'default:poll_choice'
+    handler_settings: {  }
+  profile:
+    handler: 'default:profile'
+    handler_settings: {  }
+  redirect:
+    handler: 'default:redirect'
+    handler_settings: {  }
+  salesforce_mapped_object:
+    handler: 'default:salesforce_mapped_object'
+    handler_settings: {  }
+  shortcut:
+    handler: 'default:shortcut'
+    handler_settings: {  }
+  path_alias:
+    handler: 'default:path_alias'
+    handler_settings: {  }
+  user:
+    handler: 'default:user'
+    handler_settings: {  }
+  vote:
+    handler: 'default:vote'
+    handler_settings: {  }
+  vote_result:
+    handler: 'default:vote_result'
+    handler_settings: {  }
+  webform_submission:
+    handler: 'default:webform_submission'
+    handler_settings: {  }
+field_type: dynamic_entity_reference

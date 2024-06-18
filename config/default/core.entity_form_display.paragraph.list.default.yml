@@ -1,0 +1,76 @@
+uuid: 7ca504fa-7097-4343-af8e-8d0ae64d0e7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.list.field_component_theme
+    - field.field.paragraph.list.field_component_title
+    - field.field.paragraph.list.field_contact
+    - field.field.paragraph.list.field_hide_title_bar
+    - field.field.paragraph.list.field_list
+    - field.field.paragraph.list.field_short_title
+    - paragraphs.paragraphs_type.list
+  module:
+    - viewfield
+_core:
+  default_config_hash: MUOLDyCDKq2ZS31NtEaQLRTl9rCfOOBIgR8H6N2Kak0
+id: paragraph.list.default
+targetEntityType: paragraph
+bundle: list
+mode: default
+content:
+  field_component_theme:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_list:
+    type: viewfield_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,14 @@
+uuid: a5773c45-bfff-4b3b-8076-47d4a9499b1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node_type_neighborhood_lookup
+entity_type_id: null
+entity_id: null
+action: page_redirect
+allow_override: 0
+redirect: /
+redirect_code: 301
+redirect_fallback_action: null

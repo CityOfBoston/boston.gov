@@ -1,0 +1,18 @@
+uuid: 90f51902-e49f-46ef-8b2e-0b8a4741d3ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.metrolist_unit
+target_entity_type_id: node
+target_bundle: metrolist_unit
+default_langcode: site_default
+language_alterable: false

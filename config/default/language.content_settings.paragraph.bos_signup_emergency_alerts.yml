@@ -1,0 +1,20 @@
+uuid: 53351f97-9425-4856-a438-67ba059fd8b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.bos_signup_emergency_alerts
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+_core:
+  default_config_hash: AxtOYTjeU8fwmk3VOz9KI2-kjvPNnEuDHEehCNhn9VA
+id: paragraph.bos_signup_emergency_alerts
+target_entity_type_id: paragraph
+target_bundle: bos_signup_emergency_alerts
+default_langcode: site_default
+language_alterable: false

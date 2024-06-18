@@ -1,0 +1,25 @@
+uuid: b700abcd-3fa2-41b4-bc84-275d4782e702
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cancel_event
+    - node.type.event
+_core:
+  default_config_hash: ZH4IZTco27YKYk_iZcWi-Pm5DaWHtuJNeIhl5zqPEuo
+id: node.event.field_cancel_event
+field_name: field_cancel_event
+entity_type: node
+bundle: event
+label: 'Cancel Event'
+description: 'If this event is cancelled, check this box and give a reason below.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

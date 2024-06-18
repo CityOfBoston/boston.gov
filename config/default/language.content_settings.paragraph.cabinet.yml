@@ -1,0 +1,20 @@
+uuid: cde77cdd-5fc7-42e9-8115-034b5eb2f174
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cabinet
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: PUs5nIEDaWef5zzXvkm7OVRSdpWzj66C0gzj1HUorqk
+id: paragraph.cabinet
+target_entity_type_id: paragraph
+target_bundle: cabinet
+default_langcode: site_default
+language_alterable: false

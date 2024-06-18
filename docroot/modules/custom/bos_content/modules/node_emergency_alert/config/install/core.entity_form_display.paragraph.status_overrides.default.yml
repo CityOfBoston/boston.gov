@@ -1,0 +1,45 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.status_overrides.field_override_message
+    - field.field.paragraph.status_overrides.field_status_item
+    - paragraphs.paragraphs_type.status_overrides
+  module:
+    - paragraphs
+id: paragraph.status_overrides.default
+targetEntityType: paragraph
+bundle: status_overrides
+mode: default
+content:
+  field_override_message:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Message
+      title_plural: Messages
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: message_for_the_day
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_status_item:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

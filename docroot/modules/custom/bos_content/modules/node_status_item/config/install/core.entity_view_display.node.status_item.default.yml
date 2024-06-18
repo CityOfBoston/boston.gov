@@ -1,0 +1,86 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.status_item.field_enabled
+    - field.field.node.status_item.field_icon
+    - field.field.node.status_item.field_messages
+    - field.field.node.status_item.field_title
+    - field.field.node.status_item.field_weight
+    - image.style.square_icon_65px
+    - node.type.status_item
+  module:
+    - fences
+    - media
+    - paragraphs
+    - user
+id: node.status_item.default
+targetEntityType: node
+bundle: status_item
+mode: default
+content:
+  field_enabled:
+    type: boolean
+    label: hidden
+    settings:
+      format: unicode-yes-no
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_icon:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: square_icon_65px
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_messages:
+    type: paragraph_summary
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  content_moderation_control: true
+  field_weight: true
+  langcode: true
+  published_at: true

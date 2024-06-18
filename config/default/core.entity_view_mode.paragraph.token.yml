@@ -1,0 +1,15 @@
+uuid: 8cfed6ff-3cbc-46f6-9973-48db7f26bfe8
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    internal: true
+id: paragraph.token
+label: Token
+description: ''
+targetEntityType: paragraph
+cache: true

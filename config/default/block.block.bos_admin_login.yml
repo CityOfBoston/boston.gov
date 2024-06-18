@@ -1,0 +1,20 @@
+uuid: 457d9bb3-139d-4682-9053-85a544d28984
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - bos_admin
+id: bos_admin_login
+theme: bos_admin
+region: content
+weight: -2
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  label_display: visible
+  provider: user
+visibility: {  }

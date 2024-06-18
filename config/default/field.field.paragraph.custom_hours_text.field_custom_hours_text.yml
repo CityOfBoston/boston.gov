@@ -1,0 +1,21 @@
+uuid: da6d6730-0ee0-41fa-ab2c-745448662ac2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_hours_text
+    - paragraphs.paragraphs_type.custom_hours_text
+_core:
+  default_config_hash: fVpOD0Z4PXlWUVf7Oe5KROSa1JJ4YgATu-KIrIslTR8
+id: paragraph.custom_hours_text.field_custom_hours_text
+field_name: field_custom_hours_text
+entity_type: paragraph
+bundle: custom_hours_text
+label: 'Custom Hours Text'
+description: 'Specify the custom hours text here (e.g. "Sunrise to Sunset").'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

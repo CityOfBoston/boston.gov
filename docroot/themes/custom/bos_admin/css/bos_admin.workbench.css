@@ -1,0 +1,66 @@
+.my-workbench {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.my-workbench .views-element-container {
+  padding: 15px;
+}
+div.admin.my-workbench .workbench-right {
+  width: 35%;
+  max-width: 35%;
+  margin-left: 5%;
+}
+div.admin.my-workbench .workbench-left {
+  width: 55%;
+  max-width: 55%;
+}
+div.admin.my-workbench .workbench-full {
+  clear: both;
+  min-width: 100%;
+}
+
+.view-workbench-needs-review_cob .view-header {
+
+}
+.view .view-content .views-col {
+  padding: 5px 0 5px 10px;
+  border-top: 1px solid #cecece;
+}
+.view .view-content .views-field-title {
+  font-size: 120%;
+  font-weight: bold;
+  width: 100%;
+}
+.view .view-content .wb-entity-wrapper {
+  width: 100%;
+}
+.view .view-content .views-field-title .wb-entity:first-child {
+  float: left;
+}
+.view .view-content .views-field-title .wb-entity:last-child {
+  float: right;
+  font-size: smaller;
+}
+.view .view-content .views-field-type,
+.view .view-content .views-field-revision-uid,
+.view .view-content .views-field-changed {
+  padding-left: 20px;
+  clear: both;
+}
+
+.view .view-content .views-row:nth-child(2n+1) {
+  background: linear-gradient(to right, rgba(207, 225, 248, 0.48), rgba(207, 225, 248, 0.48), rgba(207, 225, 248, 0.48), rgba(207, 225, 248, 0.48), transparent);
+}
+.view .view-content .views-row:last-child {
+  border-bottom: 1px solid #cecece;
+}
+
+.view .view-footer {
+  margin-top: 10px;
+  font-size: 110%;
+}
+.view .view-footer a {
+  font-weight: bold;
+}

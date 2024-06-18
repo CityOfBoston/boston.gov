@@ -1,0 +1,18 @@
+uuid: 5e99762d-9ded-4e84-bfe1-2dc814b333c4
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.icons
+id: taxonomy_term.icons.name
+field_name: name
+entity_type: taxonomy_term
+bundle: icons
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

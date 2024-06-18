@@ -1,0 +1,19 @@
+uuid: ac3da7ff-83ac-48f8-8e38-9e9b43aa8b5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_host_organization
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_host_organization
+field_name: field_bh_host_organization
+entity_type: node
+bundle: bh_meeting
+label: 'Host Organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

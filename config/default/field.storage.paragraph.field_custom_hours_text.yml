@@ -1,0 +1,21 @@
+uuid: 80414515-3cf6-4db0-9129-28abd57b3e1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_custom_hours_text
+field_name: field_custom_hours_text
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

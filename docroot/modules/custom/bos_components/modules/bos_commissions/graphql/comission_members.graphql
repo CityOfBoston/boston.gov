@@ -1,0 +1,10 @@
+{
+  commission(id:$commission_id) {
+    members {
+      name
+      appointed
+      expires
+      status
+    }
+  }
+}

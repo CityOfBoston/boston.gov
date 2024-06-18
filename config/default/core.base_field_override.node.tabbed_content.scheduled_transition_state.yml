@@ -1,0 +1,18 @@
+uuid: f29f0534-e6e0-4e1f-a712-a9d054f71344
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.tabbed_content
+id: node.tabbed_content.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: tabbed_content
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

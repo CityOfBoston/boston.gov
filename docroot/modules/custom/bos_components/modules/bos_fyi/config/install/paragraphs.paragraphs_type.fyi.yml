@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:3ce0fa92-4bb6-46e2-8445-13c4f74743d8'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: fyi
+label: FYI
+icon_uuid: 3ce0fa92-4bb6-46e2-8445-13c4f74743d8
+icon_default: null
+description: 'Migrated from paragraph bundle FYI'
+behavior_plugins: {  }

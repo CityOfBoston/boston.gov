@@ -1,0 +1,21 @@
+uuid: 5e0ace73-82d6-482b-b707-ca8300507722
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.place_profile
+  module:
+    - metatag
+id: node.place_profile.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: place_profile
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

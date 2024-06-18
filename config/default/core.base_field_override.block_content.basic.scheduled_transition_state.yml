@@ -1,0 +1,18 @@
+uuid: 7588ec8c-c130-4a81-b806-f820b4739e41
+langcode: und
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+id: block_content.basic.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: block_content
+bundle: basic
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

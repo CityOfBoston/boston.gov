@@ -1,0 +1,242 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_how_to_steps
+    - paragraphs.paragraphs_type.how_to_contact_step
+    - paragraphs.paragraphs_type.how_to_tab
+    - paragraphs.paragraphs_type.how_to_text_step
+  module:
+    - entity_reference_revisions
+id: paragraph.how_to_tab.field_how_to_steps
+field_name: field_how_to_steps
+entity_type: paragraph
+bundle: how_to_tab
+label: 'How-To Steps'
+description: 'Add how-to steps to display to the user here.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      how_to_contact_step: how_to_contact_step
+      how_to_text_step: how_to_text_step
+    negate: 0
+    target_bundles_drag_drop:
+      3_column_w_image:
+        weight: 2
+        enabled: false
+      bid:
+        weight: 36
+        enabled: false
+      bos311:
+        weight: 37
+        enabled: false
+      bos_signup_emergency_alerts:
+        weight: 38
+        enabled: false
+      cabinet:
+        weight: 39
+        enabled: false
+      card:
+        weight: 40
+        enabled: false
+      city_score_dashboard:
+        weight: 41
+        enabled: false
+      columns:
+        weight: 42
+        enabled: false
+      commission_contact_info:
+        weight: 43
+        enabled: false
+      commission_info:
+        weight: 44
+        enabled: false
+      commission_members:
+        weight: 45
+        enabled: false
+      commission_summary:
+        weight: 46
+        enabled: false
+      custom_hours_text:
+        weight: 23
+        enabled: false
+      daily_hours:
+        weight: 24
+        enabled: false
+      discussion_topic:
+        weight: 47
+        enabled: false
+      document:
+        weight: 3
+        enabled: false
+      drawer:
+        weight: 48
+        enabled: false
+      drawers:
+        weight: 49
+        enabled: false
+      election_results:
+        weight: 50
+        enabled: false
+      events_and_notices:
+        weight: 85
+        enabled: false
+      external_link:
+        weight: 4
+        enabled: false
+      featured_item:
+        weight: 5
+        enabled: false
+      featured_topics:
+        weight: 6
+        enabled: false
+      feedback:
+        weight: 7
+        enabled: false
+      fyi:
+        weight: 51
+        enabled: false
+      gol_list_links:
+        weight: 52
+        enabled: false
+      grid_links:
+        weight: 53
+        enabled: false
+      grid_of_cards:
+        weight: 54
+        enabled: false
+      grid_of_people:
+        weight: 55
+        enabled: false
+      grid_of_places:
+        weight: 56
+        enabled: false
+      grid_of_programs_initiatives:
+        weight: 57
+        enabled: false
+      grid_of_quotes:
+        weight: 58
+        enabled: false
+      grid_of_topics:
+        weight: 59
+        enabled: false
+      group_of_links_grid:
+        weight: 8
+        enabled: false
+      group_of_links_list:
+        weight: 60
+        enabled: false
+      group_of_links_mini_grid:
+        weight: 61
+        enabled: false
+      header_text:
+        weight: 9
+        enabled: false
+      hero_image:
+        weight: 10
+        enabled: false
+      how_to_contact_step:
+        weight: 33
+        enabled: true
+      how_to_tab:
+        weight: 11
+        enabled: false
+      how_to_text_step:
+        weight: 35
+        enabled: true
+      iframe:
+        weight: 62
+        enabled: false
+      internal_link:
+        weight: 12
+        enabled: false
+      lightbox_link:
+        weight: 63
+        enabled: false
+      list:
+        weight: 13
+        enabled: false
+      map:
+        weight: 64
+        enabled: false
+      map_coordinates:
+        weight: 65
+        enabled: false
+      map_esri_feed:
+        weight: 66
+        enabled: false
+      map_pin:
+        weight: 67
+        enabled: false
+      message_for_the_day:
+        weight: 68
+        enabled: false
+      news_and_announcements:
+        weight: 69
+        enabled: false
+      newsletter:
+        weight: 70
+        enabled: false
+      photo:
+        weight: 15
+        enabled: false
+      quote:
+        weight: 71
+        enabled: false
+      recollect_widget:
+        weight: 72
+        enabled: false
+      script_embed:
+        weight: 73
+        enabled: false
+      seamless_doc:
+        weight: 74
+        enabled: false
+      sidebar_item:
+        weight: 75
+        enabled: false
+      sidebar_item_w_icon:
+        weight: 76
+        enabled: false
+      social_media_links:
+        weight: 77
+        enabled: false
+      social_networking:
+        weight: 78
+        enabled: false
+      status_override:
+        weight: 79
+        enabled: false
+      tabbed_content_tab:
+        weight: 80
+        enabled: false
+      text:
+        weight: 16
+        enabled: false
+      text_one_column:
+        weight: 17
+        enabled: false
+      text_three_column:
+        weight: 18
+        enabled: false
+      text_two_column:
+        weight: 19
+        enabled: false
+      transaction_grid:
+        weight: 20
+        enabled: false
+      transactions:
+        weight: 81
+        enabled: false
+      user_action:
+        weight: 83
+        enabled: false
+      video:
+        weight: 84
+        enabled: false
+field_type: entity_reference_revisions

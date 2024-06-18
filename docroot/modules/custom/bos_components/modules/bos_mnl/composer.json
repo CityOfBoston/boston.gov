@@ -1,0 +1,21 @@
+{
+    "name": "org/bos_mnl",
+    "description": "This extension provides new commands for Drush.",
+    "type": "drupal-drush",
+    "authors": [
+        {
+            "name": "Author name",
+            "email": "author@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=8"
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        }
+    }
+}

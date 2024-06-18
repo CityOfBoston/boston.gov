@@ -1,0 +1,96 @@
+<?php
+/**
+ * Implements hook_theme().
+ *
+ * Register module templates.
+ */
+function bos_charts_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__charts' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__bos_chart' => [
+      'base hook' => 'paragraph',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_charts_preprocess_paragraph__bos_chart(&$variables) {
+  // TODO: Add some validation to the json supplied for the chart. (must be valid json or js crashes)
+  $variables["#attached"]['library'][] = "bos_charts/chart.vega_lite";
+  // Remove any "pretty" formatting on the JSON config string, and send to
+  // client side using drupalSettings
+  $chartid = "vis-" . rand(10000,99999);
+  $variables["#attached"]["drupalSettings"]["cob"]["charts"][$chartid] = [
+    "chartobj" => preg_replace('~\s*\r?\n\s*([\"\[\{\}\]])~',"$1", $variables["paragraph"]->field_component_launch_script->value),
+    "chartid" => $chartid
+  ];
+  if (!empty($variables["paragraph"]->field_component_data_type->value)) {
+    $variables["#attached"]["drupalSettings"]["cob"]["charts"][$chartid]["dataType"] = $variables["paragraph"]->field_component_data_type->value;
+  }
+  if (!empty($variables["paragraph"]->field_component_data->value)) {
+    $variables["#attached"]["drupalSettings"]["cob"]["charts"][$chartid]["data"] = $variables["paragraph"]->field_component_data->value;
+  }
+
+  // Determine the column layouts
+  $col1 = "chart";
+  $col2 = "text";
+  switch ($variables["paragraph"]->field_chart_text_layout->value) {
+    case "TC-1-2":
+      $col1 = "text";
+      $col2 = "chart";
+    case "CT-1-2":
+      $col1_size = 3;
+      $col2_size = 9;
+      break;
+
+    case "TC-1-1":
+      $col1 = "text";
+      $col2 = "chart";
+    case "CT-1-1":
+      $col1_size = 6;
+      $col2_size = 6;
+      break;
+
+    case "TC-2-1":
+      $col1 = "text";
+      $col2 = "chart";
+    case "CT-2-1":
+      $col1_size = 9;
+      $col2_size = 3;
+      break;
+
+    case "single_column":
+    default:
+      $col1 = "chart";
+      $col2 = "none";
+      $col1_size = 12;
+      $col2_size = 0;
+      break;
+  }
+  $variables["chart_layout"] = [
+    "col1size" => $col1_size,
+    "col2size" => $col2_size,
+    "col1" => $col1,
+    "col2" => $col2,
+    "custom_css" => $variables["paragraph"]->field_component_css->value,
+    "custom_data" => $variables["paragraph"]->field_component_data->value,
+  ];
+
+  // Create a unique vis_id for the chart so that we can have multiple charts on
+  // one page, and copy across any other css and attributes.
+  $variables["content_attributes"]["id"] = $chartid;
+  if (!empty($variables["paragraph"]->field_anchor_custom_attributes->value)) {
+    foreach (explode("\r\n", $variables["paragraph"]->field_anchor_custom_attributes->value) as $pair) {
+      $pair = explode(":", $pair, 2);
+      $variables["content_attributes"][$pair[0]] = $pair[1];
+    }
+  }
+  $variables["content_attributes"]["class"] = [$variables["paragraph"]->field_anchor_custom_css->value];
+}
+function bos_charts_preprocess_paragraph__charts(&$variables) {
+  $variables["hideTitle"] = ($variables["paragraph"]->field_hide_title_bar->value ?? FALSE);
+}

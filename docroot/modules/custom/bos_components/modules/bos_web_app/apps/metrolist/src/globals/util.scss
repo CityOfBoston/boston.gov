@@ -1,0 +1,110 @@
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "layout/dimensions";
+
+// --- Accessibility --- //
+
+// via Bootstrap v4
+// https://raw.githubusercontent.com/twbs/bootstrap/a4a04cd9ec741050390746f8056cc79a9c04c8df/scss/mixins/_screen-reader.scss
+//
+// Only display content to screen readers
+//
+// See: https://a11yproject.com/posts/how-to-hide-content/
+// See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Use to only display content when it's focused.
+
+// Useful for "Skip to main content" links; see https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+
+.sr-only-focusable {
+  &:not(:focus) {
+    @extend .sr-only;
+  }
+}
+
+.ml-full-width {
+  width: 100% !important;
+}
+
+.ml-full-bleed {
+  width: 100vw !important;
+}
+
+// Reveal at breakpoint — use sparingly
+// display: inline-block is a fallback for IE/other browsers
+// that don't support display: unset
+.ml-hide-until-xsmall,
+.ml-hide-until-small,
+.ml-hide-until-medium,
+.ml-hide-until-large,
+.ml-hide-until-xlarge {
+  display: none;
+}
+@include media-breakpoint-up( xsmall ) {
+  .ml-hide-until-xsmall {
+    display: inline-block;
+    display: unset;
+  }
+}
+@include media-breakpoint-up( small ) {
+  .ml-hide-until-small {
+    display: inline-block;
+    display: unset;
+  }
+}
+@include media-breakpoint-up( medium ) {
+  .ml-hide-until-medium {
+    display: inline-block;
+    display: unset;
+  }
+}
+@include media-breakpoint-up( large ) {
+  .ml-hide-until-large {
+    display: inline-block;
+    display: unset;
+  }
+}
+@include media-breakpoint-up( xlarge ) {
+  .ml-hide-until-xlarge {
+    display: inline-block;
+    display: unset;
+  }
+}
+
+// Hide at breakpoint — use sparingly
+@include media-breakpoint-up( xsmall ) {
+  .ml-hide-at-xsmall {
+    display: none;
+  }
+}
+@include media-breakpoint-up( small ) {
+  .ml-hide-at-small {
+    display: none;
+  }
+}
+@include media-breakpoint-up( medium ) {
+  .ml-hide-at-medium {
+    display: none;
+  }
+}
+@include media-breakpoint-up( large ) {
+  .ml-hide-at-large {
+    display: none;
+  }
+}
+@include media-breakpoint-up( xlarge ) {
+  .ml-hide-at-xlarge {
+    display: none;
+  }
+}

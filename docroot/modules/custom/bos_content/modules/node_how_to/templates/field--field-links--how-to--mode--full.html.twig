@@ -1,0 +1,28 @@
+{#
+ * @file
+ * Downloads Field template.
+ #}
+
+<div class="detail-item">
+  <img src="https://patterns.boston.gov/images/global/icons/icon-download.svg" class="icon icon-download sb-ic" alt="download" />
+  <div class="detail-item__content">
+    <div class="sb-d p-b400">Downloads:</div>
+    <div class="detail-item__body--secondary download-list uppercase-sm-list sb-b">
+      <div class="item-list sb-b">
+        <ul>
+          {% for item in items %}
+            <li
+              {% if loop.first %}
+                class="first m-b300"
+              {% elseif loop.last %}
+                class="last m-b300"
+              {% else %}
+                class="m-b300"
+              {% endif %}
+            >{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

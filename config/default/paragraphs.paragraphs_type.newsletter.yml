@@ -1,0 +1,13 @@
+uuid: df9c508c-18f3-409b-ab5c-ff76b7474ccc
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: I_6EgOxXA3EN48OZep0k-3aeUSm32IY8zKp2va-oD6E
+id: newsletter
+label: 'Newsletter Signup'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Newsletter Signup'
+behavior_plugins: {  }

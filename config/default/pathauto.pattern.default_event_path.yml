@@ -1,0 +1,22 @@
+uuid: 140ae4ea-3ea3-47bf-a60c-bfc77e30b70e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: default_event_path
+label: 'Event Path'
+type: 'canonical_entities:node'
+pattern: 'calendar/[node:title]'
+selection_criteria:
+  7093465c-ca45-4d0c-8a11-c3daa780e391:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 7093465c-ca45-4d0c-8a11-c3daa780e391
+    context_mapping:
+      node: node
+    bundles:
+      event: event
+selection_logic: and
+weight: -5
+relationships: {  }

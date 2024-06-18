@@ -1,0 +1,20 @@
+uuid: ae7591bd-f366-43c9-8f2a-60bcb2c5576d
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+  module:
+    - datetime
+id: node.program_initiative_profile.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: program_initiative_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

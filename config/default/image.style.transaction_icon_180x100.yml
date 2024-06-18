@@ -1,0 +1,15 @@
+uuid: f244395c-5eab-4d89-bade-4d5b0367a801
+langcode: und
+status: true
+dependencies: {  }
+name: transaction_icon_180x100
+label: 'Transaction icon 180x100'
+effects:
+  85d77b07-e75a-434d-a1da-d0d9f3b9d1c4:
+    uuid: 85d77b07-e75a-434d-a1da-d0d9f3b9d1c4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 180
+      height: 100
+      anchor: center-center

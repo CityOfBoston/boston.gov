@@ -1,0 +1,16 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.document.field_document
+    - field.field.paragraph.document.field_title
+    - paragraphs.paragraphs_type.document
+id: paragraph.document.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: document
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_document: true
+  field_title: true

@@ -1,0 +1,85 @@
+form_settings:
+  taxonomy_term:
+    default_value: false
+    disable: true
+    hidden: true
+  block_content:
+    default_value: false
+    disable: true
+    hidden: true
+  comment:
+    default_value: false
+    disable: true
+    hidden: true
+  file:
+    default_value: true
+    disable: true
+    hidden: true
+  node:
+    default_value: false
+    disable: true
+    hidden: true
+  shortcut:
+    default_value: false
+    disable: true
+    hidden: true
+  user:
+    default_value: false
+    disable: true
+    hidden: true
+  menu_link_content:
+    default_value: false
+    disable: true
+    hidden: true
+  content_moderation_state:
+    disable: true
+    hidden: true
+    default_value: false
+  media:
+    disable: true
+    hidden: true
+    default_value: false
+  moderation_note:
+    disable: true
+    hidden: true
+    default_value: false
+  paragraphs_library_item:
+    disable: true
+    hidden: true
+    default_value: false
+  poll_choice:
+    disable: true
+    hidden: true
+    default_value: false
+  poll:
+    disable: true
+    hidden: true
+    default_value: false
+  profile:
+    disable: true
+    hidden: true
+    default_value: false
+  redirect:
+    disable: true
+    hidden: true
+    default_value: false
+  salesforce_mapped_object:
+    disable: true
+    hidden: true
+    default_value: false
+  token_custom:
+    disable: true
+    hidden: true
+    default_value: false
+  vote:
+    disable: true
+    hidden: true
+    default_value: false
+  vote_result:
+    disable: true
+    hidden: true
+    default_value: false
+  paragraph:
+    default_value: true
+    disable: true
+    hidden: true

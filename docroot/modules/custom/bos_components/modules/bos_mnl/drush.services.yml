@@ -1,0 +1,5 @@
+services:
+  bos_mnl.commands:
+    class: Drupal\bos_mnl\Commands\MnlDrushCommands
+    tags:
+      - { name: drush.command }

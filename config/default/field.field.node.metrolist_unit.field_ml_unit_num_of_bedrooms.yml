@@ -1,0 +1,23 @@
+uuid: cee452cd-2d2c-4cea-88d9-9eab62f29a2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_num_of_bedrooms
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_num_of_bedrooms
+field_name: field_ml_unit_num_of_bedrooms
+entity_type: node
+bundle: metrolist_unit
+label: 'Number of Bedrooms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 9
+  prefix: ''
+  suffix: Bedroom|Bedrooms
+field_type: integer

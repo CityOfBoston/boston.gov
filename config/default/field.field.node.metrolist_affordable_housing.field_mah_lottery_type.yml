@@ -1,0 +1,21 @@
+uuid: 35ff01e8-446d-4275-9dc8-1101c260c8e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_lottery_type
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: 6I_UNzIobILQ2EgfUewfddTRr2yRUU-1N3CsNVqyM9o
+id: node.metrolist_affordable_housing.field_mah_lottery_type
+field_name: field_mah_lottery_type
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Lottery Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

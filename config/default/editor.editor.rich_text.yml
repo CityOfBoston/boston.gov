@@ -1,0 +1,61 @@
+uuid: cfa304a8-5ae8-43dd-9b64-6314fb8c74df
+langcode: en
+status: false
+dependencies:
+  config:
+    - filter.format.rich_text
+  module:
+    - ckeditor
+_core:
+  default_config_hash: 0bVELtfx9sXhjZ6s6W-dJo8SW-IR9jiEIEylzm-2Cro
+format: rich_text
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Strike
+            - Superscript
+            - Subscript
+            - '-'
+            - RemoveFormat
+        -
+          name: Linking
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - Table
+            - HorizontalRule
+            - DrupalMediaLibrary
+        -
+          name: 'Block Formatting'
+          items:
+            - Format
+        -
+          name: Tools
+          items:
+            - ShowBlocks
+            - Source
+  plugins: {  }
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

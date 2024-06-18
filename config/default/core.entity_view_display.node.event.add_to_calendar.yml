@@ -1,0 +1,99 @@
+uuid: 5340351b-9c78-450d-a5b3-17e1c2709de7
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.add_to_calendar
+    - field.field.node.event.body
+    - field.field.node.event.field_address
+    - field.field.node.event.field_cancel_event
+    - field.field.node.event.field_city_hall
+    - field.field.node.event.field_city_sponsored
+    - field.field.node.event.field_components
+    - field.field.node.event.field_contacts
+    - field.field.node.event.field_content_feeds
+    - field.field.node.event.field_cost
+    - field.field.node.event.field_details_link
+    - field.field.node.event.field_email
+    - field.field.node.event.field_event_contact
+    - field.field.node.event.field_event_date_recur
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_extra_info_event
+    - field.field.node.event.field_featured
+    - field.field.node.event.field_intro_image
+    - field.field.node.event.field_intro_text
+    - field.field.node.event.field_links
+    - field.field.node.event.field_manual_date
+    - field.field.node.event.field_metatags
+    - field.field.node.event.field_multiple_neighborhoods
+    - field.field.node.event.field_phone_number
+    - field.field.node.event.field_place_type
+    - field.field.node.event.field_published_date
+    - field.field.node.event.field_related
+    - field.field.node.event.field_sidebar_components
+    - field.field.node.event.field_thumbnail
+    - field.field.node.event.field_updated_date
+    - node.type.event
+  module:
+    - bos_core
+    - fences
+    - user
+id: node.event.add_to_calendar
+targetEntityType: node
+bundle: event
+mode: add_to_calendar
+content:
+  field_event_date_recur:
+    type: bosaddtocal_view
+    label: above
+    settings:
+      timezone_override: ''
+      date_format: 'Y-m-d\TH:i:s'
+      separator: '-'
+      event_title: '[node:title]'
+      location: '[node:field_address:address_line1] [node:field_address:address_line2] [node:field_address:locality] [node:field_address:postal_code]'
+      description: "[node:field_intro_text]\r\n\r\n[node:field_address:address_line1]\r\n[node:field_address:address_line2]\r\n\r\nDetails on how to join this event:\r\n[node:url]"
+      past_events: '1'
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  body: true
+  content_moderation_control: true
+  field_address: true
+  field_cancel_event: true
+  field_city_hall: true
+  field_city_sponsored: true
+  field_components: true
+  field_contacts: true
+  field_content_feeds: true
+  field_cost: true
+  field_details_link: true
+  field_email: true
+  field_event_contact: true
+  field_event_type: true
+  field_extra_info_event: true
+  field_featured: true
+  field_intro_image: true
+  field_intro_text: true
+  field_links: true
+  field_manual_date: true
+  field_metatags: true
+  field_multiple_neighborhoods: true
+  field_phone_number: true
+  field_place_type: true
+  field_published_date: true
+  field_related: true
+  field_sidebar_components: true
+  field_thumbnail: true
+  field_updated_date: true
+  langcode: true
+  links: true
+  published_at: true

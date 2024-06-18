@@ -1,0 +1,28 @@
+uuid: 252c5a20-0794-4410-9b50-42810f52034b
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing
+    - field.field.node.roll_call_dockets.body
+    - field.field.node.roll_call_dockets.field_components
+    - field.field.node.roll_call_dockets.field_meeting_date
+    - node.type.roll_call_dockets
+  module:
+    - user
+id: node.roll_call_dockets.listing
+targetEntityType: node
+bundle: roll_call_dockets
+mode: listing
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_components: true
+  field_meeting_date: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.custom_hours_text.field_custom_hours_text
+    - field.field.paragraph.custom_hours_text.field_hours_icon
+    - field.field.paragraph.custom_hours_text.field_title
+    - paragraphs.paragraphs_type.custom_hours_text
+  module:
+    - options
+id: paragraph.custom_hours_text.default
+targetEntityType: paragraph
+bundle: custom_hours_text
+mode: default
+content:
+  field_custom_hours_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_hours_icon:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

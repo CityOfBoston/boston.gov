@@ -1,0 +1,417 @@
+uuid: f385dc12-067d-431f-86be-9c5924f96022
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.metrolist_development.body
+    - field.field.node.metrolist_development.field_ml_address
+    - field.field.node.metrolist_development.field_ml_agent
+    - field.field.node.metrolist_development.field_ml_agent_address
+    - field.field.node.metrolist_development.field_ml_agent_email
+    - field.field.node.metrolist_development.field_ml_agent_phone
+    - field.field.node.metrolist_development.field_ml_available_units_view
+    - field.field.node.metrolist_development.field_ml_city
+    - field.field.node.metrolist_development.field_ml_due_at_signing
+    - field.field.node.metrolist_development.field_ml_features
+    - field.field.node.metrolist_development.field_ml_manager_email
+    - field.field.node.metrolist_development.field_ml_neighborhood
+    - field.field.node.metrolist_development.field_ml_num_of_ownership_units
+    - field.field.node.metrolist_development.field_ml_number_of_rental_units
+    - field.field.node.metrolist_development.field_ml_number_of_units
+    - field.field.node.metrolist_development.field_ml_region
+    - field.field.node.metrolist_development.field_ml_units_json
+    - field.field.node.metrolist_development.field_ml_utilities_included
+    - node.type.metrolist_development
+  module:
+    - address
+    - content_moderation
+    - field_group
+    - path
+    - publication_date
+    - telephone
+    - text
+    - viewfield
+third_party_settings:
+  field_group:
+    group_metrolist_:
+      children:
+        - group_basic_information
+        - group_development_
+      label: 'Metrolist Development'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_basic_information:
+      children:
+        - title
+        - body
+        - field_ml_manager_email
+        - field_ml_neighborhood
+        - field_ml_city
+        - field_ml_region
+      label: 'Basic Information'
+      region: content
+      parent_name: group_metrolist_
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_development_:
+      children:
+        - group_details
+      label: 'Development Details'
+      region: content
+      parent_name: group_metrolist_
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_agent:
+      children:
+        - field_ml_agent
+        - field_ml_agent_address
+        - field_ml_agent_email
+        - field_ml_agent_phone
+      label: Representation
+      region: content
+      parent_name: group_details
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_details:
+      children:
+        - group_overview
+        - group_agent
+        - group_features
+        - group_utilities_included
+        - group_due_at_
+      label: details
+      region: content
+      parent_name: group_development_
+      weight: 22
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_features:
+      children:
+        - field_ml_features
+      label: Features
+      region: content
+      parent_name: group_details
+      weight: 25
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_overview:
+      children:
+        - field_ml_address
+        - field_ml_available_units_view
+        - field_ml_number_of_units
+        - field_ml_number_of_rental_units
+        - field_ml_num_of_ownership_units
+        - field_ml_units_json
+      label: Overview
+      region: content
+      parent_name: group_details
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_utilities_included:
+      children:
+        - field_ml_utilities_included
+      label: 'Utilities Included'
+      region: content
+      parent_name: group_details
+      weight: 26
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_due_at_:
+      children:
+        - field_ml_due_at_signing
+      label: 'Due at Signing'
+      region: content
+      parent_name: group_details
+      weight: 27
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: 11OM2S9RcW4ahKyEH7A4uHk0D69Ad5au26StryYzsD0
+id: node.metrolist_development.default
+targetEntityType: node
+bundle: metrolist_development
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_address:
+    type: address_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_agent:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_agent_address:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_agent_email:
+    type: email_default
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_ml_agent_phone:
+    type: telephone_default
+    weight: 17
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_available_units_view:
+    type: viewfield_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_city:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_due_at_signing:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_features:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_manager_email:
+    type: email_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_ml_neighborhood:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_num_of_ownership_units:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_number_of_rental_units:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_number_of_units:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_region:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_ml_units_json:
+    type: viewfield_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ml_utilities_included:
+    type: entity_reference_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

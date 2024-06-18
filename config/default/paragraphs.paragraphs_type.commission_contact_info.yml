@@ -1,0 +1,13 @@
+uuid: 3c57671b-9d46-4793-b747-b3f698810fb7
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: 6fUDdW9u3JwHoIYt71zyPyuyq-iyBBxr_2hUooUNeqs
+id: commission_contact_info
+label: 'Commission Contact Info'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Commission Contact Info'
+behavior_plugins: {  }

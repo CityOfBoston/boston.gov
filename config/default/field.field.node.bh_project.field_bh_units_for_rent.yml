@@ -1,0 +1,23 @@
+uuid: a38577a8-537f-47cf-91cd-189590a57052
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_units_for_rent
+    - node.type.bh_project
+id: node.bh_project.field_bh_units_for_rent
+field_name: field_bh_units_for_rent
+entity_type: node
+bundle: bh_project
+label: 'Units for Rent'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

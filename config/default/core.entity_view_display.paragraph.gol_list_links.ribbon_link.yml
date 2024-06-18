@@ -1,0 +1,15 @@
+uuid: 6c27e9f3-62b2-4b15-aa9c-b178a8040c25
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.ribbon_link
+    - field.field.paragraph.gol_list_links.field_link
+    - paragraphs.paragraphs_type.gol_list_links
+id: paragraph.gol_list_links.ribbon_link
+targetEntityType: paragraph
+bundle: gol_list_links
+mode: ribbon_link
+content: {  }
+hidden:
+  field_link: true

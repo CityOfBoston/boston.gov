@@ -1,0 +1,15 @@
+uuid: 8c509e16-e9d9-4fff-b7ea-58670b659ea1
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: 'Renders the file as a link - Call to action style button.'
+id: file.cta_button
+label: 'CTA Button'
+description: ''
+targetEntityType: file
+cache: true

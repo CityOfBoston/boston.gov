@@ -1,0 +1,18 @@
+uuid: 96341d6e-1644-45cd-8d5a-41a17830f9c3
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: ArmHJBEk0qDvV3gBDCaLm1XWJktNXeR0iX2KvBPCY4A
+id: grid_of_places
+label: 'Grid of Places'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Places'
+behavior_plugins: {  }

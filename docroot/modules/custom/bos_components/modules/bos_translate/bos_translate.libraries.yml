@@ -1,0 +1,14 @@
+bos_translate_js:
+  version: 2.x
+  js:
+    js/translate.js: {}
+  dependencies:
+    - core/drupalSettings
+
+bos_translate_css:
+  version: 1.x
+  css:
+    theme:
+      css/translate.css: {}
+  dependencies:
+    - core/drupalSettings

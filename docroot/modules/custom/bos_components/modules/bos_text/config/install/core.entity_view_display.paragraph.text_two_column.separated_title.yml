@@ -1,0 +1,18 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.text_two_column.field_column_configuration
+    - field.field.paragraph.text_two_column.field_left_column
+    - field.field.paragraph.text_two_column.field_right_column
+    - paragraphs.paragraphs_type.text_two_column
+id: paragraph.text_two_column.separated_title
+targetEntityType: paragraph
+bundle: text_two_column
+mode: separated_title
+content: {  }
+hidden:
+  field_column_configuration: true
+  field_left_column: true
+  field_right_column: true

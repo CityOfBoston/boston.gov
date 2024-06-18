@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_project_number
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_event_project_number
+field_name: field_event_project_number
+entity_type: node
+bundle: procurement_advertisement
+label: 'Event/Project Number'
+description: 'The project number serves as the URL for the project. For example, if the project number is ABC123, the URL for the ad will be boston.gov/bid-listings/ABC123. If multiple ads have the same project number, a counter will be appended. For example, if there are multiple projects with ABC123 as the project number, the first will be boston.gov/bid-listings/ABC123, and the second will be boston.gov/bid-listings/ABC123-0. If needed, you can edit the original in this example and republish as new.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

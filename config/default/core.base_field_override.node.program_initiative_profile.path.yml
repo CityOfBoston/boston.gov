@@ -1,0 +1,20 @@
+uuid: b37f7b41-c4a1-4d54-9cd1-ba66d9c35d3a
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+  module:
+    - path
+id: node.program_initiative_profile.path
+field_name: path
+entity_type: node
+bundle: program_initiative_profile
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

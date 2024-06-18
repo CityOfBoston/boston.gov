@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install functions for main content module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function bos_content_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}

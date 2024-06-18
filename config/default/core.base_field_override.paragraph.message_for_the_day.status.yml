@@ -1,0 +1,24 @@
+uuid: a4d2a7cd-872b-41c5-8626-78d128c4d58b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.message_for_the_day
+_core:
+  default_config_hash: GBTYvrBZRE_datwPlNVE30E3dHBW42n98-lswc2T9QU
+id: paragraph.message_for_the_day.status
+field_name: status
+entity_type: paragraph
+bundle: message_for_the_day
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

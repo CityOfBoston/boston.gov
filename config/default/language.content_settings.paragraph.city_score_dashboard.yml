@@ -1,0 +1,20 @@
+uuid: b9c058ac-9d99-4e51-a7dc-b57da5e1fe92
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.city_score_dashboard
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: BZCQG_bTyU7v6jk4fAadHHHa89U0ECnmJvbDWHmCK-4
+id: paragraph.city_score_dashboard
+target_entity_type_id: paragraph
+target_bundle: city_score_dashboard
+default_langcode: site_default
+language_alterable: false

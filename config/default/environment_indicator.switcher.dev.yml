@@ -1,0 +1,12 @@
+uuid: 39415f5f-ff76-4579-a380-127053678d3b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: n-eqMha85-QDJ5mQnMyEmcEn6NqcTKRFB2m4eUcFW58
+machine: dev
+description: null
+name: 'Acquia DEV'
+url: 'https://d8-dev.boston.gov'
+fg_color: '#ffffff'
+bg_color: '#3e0202'

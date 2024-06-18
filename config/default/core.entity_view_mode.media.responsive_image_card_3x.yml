@@ -1,0 +1,15 @@
+uuid: 11776141-9cf2-4f94-a013-340f9e340034
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Render a featured-item card responsive image for 3up horizontal.'
+id: media.responsive_image_card_3x
+label: 'Card 3x (resp)'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_awarded_by
+    - node.type.person_profile
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_awarded_by
+field_name: field_awarded_by
+entity_type: node
+bundle: procurement_advertisement
+label: 'Awarded By'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person_profile: person_profile
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

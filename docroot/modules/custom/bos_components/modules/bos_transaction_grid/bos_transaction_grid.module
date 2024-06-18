@@ -1,0 +1,197 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for bos_transaction_grid module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Markup;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_transaction_grid_theme() {
+  return [
+    'paragraph__transaction_grid' => [
+      'base hook' => 'paragraph',
+      'path' => 'modules/custom/bos_components/modules/bos_transaction_grid/templates',
+      'template' => 'paragraph--transaction-grid',
+    ],
+    'paragraph__transactions' => [
+      'base hook' => 'paragraph',
+      'path' => 'modules/custom/bos_components/modules/bos_transaction_grid/templates',
+      'template' => 'paragraph--transactions',
+    ],
+    'field__paragraph__field_transactions' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_transaction_grid/templates',
+      'template' => 'field--paragraph--field-transactions',
+    ],
+    'field__field_external_link__mode__transaction' => [
+      'base hook' => 'field',
+      'path' => 'modules/custom/bos_components/modules/bos_transaction_grid/templates',
+      'template' => 'field--field-external-link--mode--transaction',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_transaction_grid_preprocess_paragraph__transactions(&$variables) {
+  $variables["content"]["field_icon"][0]["#item_attributes"]['class'][] = "lwi-i";
+  if (isset($variables["content"]["field_grid_link"][0]['#paragraph']) && $para = $variables["content"]["field_grid_link"][0]['#paragraph']) {
+    switch ($para->bundle()) {
+      case "external_link":
+        $variables['link'] = $para->field_external_link->uri;
+        $variables['title'] = $para->field_external_link->title;
+        break;
+
+      case "internal_link":
+        $uri = explode(":", $para->field_internal_link->uri);
+        if (count($uri) > 1) {
+          $uri = "/" . $uri[1];
+          $variables['link'] = \Drupal::service('path_alias.manager')
+            ->getAliasByPath($uri, "en");
+        }
+        $variables['title'] = $para->field_internal_link->title;
+        break;
+
+      case "document":
+        $file = File::load($para->field_document->target_id);
+        $variables['link'] = \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
+        $variables['title'] = $para->field_title->value;
+        break;
+
+      default:
+        break;
+    }
+  }
+}
+
+function bos_transaction_grid_preprocess_paragraph(&$vars) {
+  if (!empty($vars['paragraph'])) {
+    if ($vars["paragraph"]->bundle() == "transaction_grid" && isset($vars['content']['field_hide_title_bar']['#items'])) {
+      $vars['hideTitle'] = $vars['content']['field_hide_title_bar']['#items']->value;
+    }
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_transaction_grid_paragraph_transaction_grid_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></span>" . $contact->name->value);
+    }
+    else {
+      $markup[] = Markup::create("<span class='contact'></span>No contact supplied");
+    }
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_transaction_grid_paragraph_transactions_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  if ($para["entity"]->hasField("field_grid_link")) {
+    if (NULL != ($link_id = $para["entity"]->get("field_grid_link")->target_id)) {
+      if (NULL != ($link = Paragraph::load($link_id))) {
+        $title = "";
+        if ($link->hasField("field_internal_link")) {
+          $title = $link->get("field_internal_link")->title;
+        }
+        elseif ($link->hasField("field_external_link")) {
+          $title = $link->get("field_external_link")->title;
+        }
+        $markup[] = Markup::create(t("<span class='summary-content'>@title</span>", [
+          "@title" => $title,
+        ]));
+
+      }
+    }
+  }
+  if ($para["entity"]->hasField("field_icon")) {
+    if (NULL != ($icon_count = count($para["entity"]->get("field_icon")))) {
+      $markup[] = Markup::create(t("<span class='info'>Has @count icon</span>", [
+        "@count" => $icon_count,
+      ]));
+    }
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * This hook creates the paragraph summary for the transactiosn elements
+ * within a transaction_grid.
+ */
+function bos_transaction_grid_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['field_components'])) {
+    $children = Element::getVisibleChildren($form["field_components"]["widget"]);
+    foreach ($children as $child) {
+      if (is_numeric($child)) {
+        $para = $form_state->getStorage()["field_storage"]["#parents"]["#fields"]["field_components"]["paragraphs"][$child];
+        if ($para["entity"]->type[0]->target_id == "transaction_grid") {
+          if ($para['mode'] == 'edit') {
+            foreach ($para["entity"]->field_transactions as $key => $transaction) {
+              if (!$transaction->isEmpty() && !empty($transaction->target_id)) {
+                $transaction = Paragraph::load($transaction->target_id);
+                $icon = Media::load($transaction->field_icon[0]->target_id);
+                $link = Paragraph::load($transaction->field_grid_link[0]->target_id);
+                foreach ([
+                  "field_document",
+                  "field_internal_link",
+                  "field_external_link",
+                ] as $field) {
+                  if ($link->hasField($field)) {
+                    if ($field == "field_document") {
+                      $doc = File::load($link->{$field}[0]->target_id);
+                      $dest = $doc->filename[0]->value;
+                      $type = "Document";
+                    }
+                    else {
+                      $type = "Link";
+                      $dest = $link->{$field}[0]->title;
+                    }
+                    break;
+                  }
+                }
+                $filename = "[Missing Icon]";
+                if (isset($icon)) {
+                  $filename = str_replace(['_', "-"], " ", $icon->get("name")->value);
+                }
+                $markup[] = Markup::create("<span style='color: navy; font-weight: bold; text-transform: uppercase'>" . $filename . "</span>");
+                $markup[] = Markup::create("<b>" . $type . ": </b><i>" . $dest . "</i>");
+                $form["field_components"]["widget"][$child]["subform"]["field_transactions"]["widget"][$key]["top"]["summary"]["fields_info"]["#summary"]["content"] = $markup;
+                $markup = [];
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

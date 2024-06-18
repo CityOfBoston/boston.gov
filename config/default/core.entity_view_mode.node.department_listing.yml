@@ -1,0 +1,13 @@
+uuid: 9cba1996-f335-44b7-b04b-28a44c29ff6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: wBXI2UMBa7k_Uuz3pxV1mKDOWvpkUyq3d9tP-50Mp6A
+id: node.department_listing
+label: 'Department Listing'
+description: ''
+targetEntityType: node
+cache: true

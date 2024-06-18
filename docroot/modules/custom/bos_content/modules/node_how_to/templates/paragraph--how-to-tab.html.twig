@@ -1,0 +1,92 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ #}
+
+{#<div class="tab-p tab-p-{{ how_to_tabs_count }}" id="how_to_tab_content">#}
+{#  <div class="steps">#}
+{#  {% if content.field_how_to_steps %}#}
+{#    {{ content.field_how_to_steps }}#}
+{#  {% endif %}#}
+{#  </div>#}
+{#  <div class="keep-in-mind">#}
+{#  {% if content.field_keep_in_mind %}#}
+{#    {{ content.field_keep_in_mind }}#}
+{#  {% endif %}#}
+{#  </div>#}
+{#</div>#}
+
+{% set isChecked = (how_to_tabs_total == 1) ? 'checked' : ''%}
+{% set isExpanded = (how_to_tabs_total == 1) ? 'expanded' : ''%}
+
+<div {{ attributes.addClass(['dr', 'contextual-region']) }}>
+
+  <input type="checkbox" id="tab-p-{{ how_to_tabs_count }}" class="dr-tr a11y--h" {{ isChecked }}>
+
+  <label for="tab-p-{{ how_to_tabs_count }}" class="dr-h {{ isExpanded }}">
+
+    <div class="dr-ic">
+
+      <div class="dr-closed g g--hc g--vc">
+        <div class="g--4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path xmlns="http://www.w3.org/2000/svg" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
+          </svg>
+        </div>
+        <div class="g--8 t--subinfo">show</div>
+      </div>
+
+      <div class="dr-opened g g--hc g--vc">
+        <div class="g--4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path xmlns="http://www.w3.org/2000/svg" d="M0 10h24v4h-24z"/>
+          </svg>
+        </div>
+        <div class="g--8 t--subinfo">hide</div>
+      </div>
+
+
+
+    </div>
+
+    <div class="dr-t">{{ content.field_how_to_title }}</div>
+
+{#    {% if content.field_short_description['#items'].getValue() %}#}
+{#      <div class="dr-st">{{ content.field_short_description }}</div>#}
+{#    {% endif %}#}
+  </label>
+
+  <div class="dr-c">
+    <div class="steps">
+      {% if content.field_how_to_steps %}
+        {{ content.field_how_to_steps }}
+      {% endif %}
+    </div>
+    <div class="keep-in-mind">
+      {% if content.field_keep_in_mind %}
+        {{ content.field_keep_in_mind }}
+      {% endif %}
+    </div>
+  </div>
+</div>

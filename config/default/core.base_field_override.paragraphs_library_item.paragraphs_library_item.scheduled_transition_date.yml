@@ -1,0 +1,19 @@
+uuid: 76fbfb23-d848-419e-9d86-7944c61b3add
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs_library
+id: paragraphs_library_item.paragraphs_library_item.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: paragraphs_library_item
+bundle: paragraphs_library_item
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

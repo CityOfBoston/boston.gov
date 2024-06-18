@@ -1,0 +1,7 @@
+uuid: e30704a1-ddf2-45ab-bb23-99e8a4e2f6f5
+langcode: en
+status: false
+dependencies: {  }
+formId: node_neighborhood_lookup_form
+captchaType: default
+label: node_neighborhood_lookup_form

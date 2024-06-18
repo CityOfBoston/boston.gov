@@ -1,0 +1,20 @@
+uuid: f8654de0-ca52-4000-a982-732755b43e0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: lffD3mObWGT5Omm82absPoIaouoGCzyc2-8aNOZe3TE
+id: media.field_media_in_library
+field_name: field_media_in_library
+entity_type: media
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

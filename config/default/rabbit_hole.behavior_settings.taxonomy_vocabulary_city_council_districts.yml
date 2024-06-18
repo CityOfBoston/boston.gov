@@ -1,0 +1,14 @@
+uuid: c5339a4e-01af-49e7-bf29-09ac638bad95
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.city_council_districts
+id: taxonomy_vocabulary_city_council_districts
+entity_type_id: taxonomy_vocabulary
+entity_id: city_council_districts
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

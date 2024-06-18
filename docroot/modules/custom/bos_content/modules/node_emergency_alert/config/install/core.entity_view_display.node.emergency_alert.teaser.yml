@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.emergency_alert.field_description
+    - field.field.node.emergency_alert.field_link
+    - field.field.node.emergency_alert.field_theme
+    - field.field.node.emergency_alert.field_updated_date
+    - node.type.emergency_alert
+  module:
+    - user
+id: node.emergency_alert.teaser
+targetEntityType: node
+bundle: emergency_alert
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_date_range: true
+  field_description: true
+  field_included_nodes: true
+  field_link: true
+  field_status_overrides: true
+  field_theme: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

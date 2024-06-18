@@ -1,0 +1,23 @@
+bos_mnl.import:
+ path: '/rest/mnl/{operation}'
+ defaults:
+   _controller: '\Drupal\bos_mnl\Controller\MNLRest::beginUpdateImport'
+ methods: [POST]
+ requirements:
+   _access: 'TRUE'
+
+bos_mnl.recollect:
+ path: '/rest/recollect'
+ defaults:
+   _controller: '\Drupal\bos_mnl\Controller\Recollect::beginLookup'
+ methods: [POST]
+ requirements:
+   _access: 'TRUE'
+
+bos_mnl.admin:
+  path: '/admin/config/services/mnl'
+  defaults:
+    _title: 'My Neighborhood Lookup RESTful API endpoint.'
+    _form: '\Drupal\bos_mnl\Form\MNLSettingsForm'
+  requirements:
+    _permission: 'administer boston'

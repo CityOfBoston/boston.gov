@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Main file for the vocab_311 module.
+ */
+
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+function vocab_features_theme() {
+  $theme['taxonomy_term__features'] = [
+    'base hook' => 'taxonomy_term',
+    'path' => 'modules/custom/bos_vocab/modules/vocab_features/templates',
+  ];
+  $theme['taxonomy_term__features__sidebar_right'] = [
+    'base hook' => 'taxonomy_term',
+    'path' => 'modules/custom/bos_vocab/modules/vocab_features/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function vocab_features_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables) {
+  if ($variables["elements"]["#taxonomy_term"]->bundle() == "features") {
+    if ($variables["elements"]["#view_mode"] == "full" || $variables["elements"]["#view_mode"] == "default") {
+      $suggestions[] = "taxonomy_term__features";
+    }
+    else {
+      $suggestions[] = "taxonomy_term__features__" . $variables["elements"]["#view_mode"];
+    }
+  }
+}
+
+/**
+ * Prepares variables for place profile templates.
+ *
+ * Default template: place-profile.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the place profile information
+ *     and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_taxonomy_term__features(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}

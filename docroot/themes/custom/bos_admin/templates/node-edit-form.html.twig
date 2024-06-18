@@ -1,0 +1,25 @@
+{#
+ * @file
+ * Theme override for a node edit form.
+ * Modified from seven theme.
+ *
+ * Available variables:
+ * - form: The node add/edit form.
+ *
+ * @see seven node-edit-form.html.twig
+ * @see seven_form_node_form_alter()
+#}
+<div class="layout-node-form clearfix">
+  <div class="layout-region layout-region-node-main">
+    {{ form|without('footer', 'group_secondary') }}
+  </div>
+  <div class="layout-region layout-region-node-secondary">
+    {{ form.group_secondary }}
+    {{ form.actions }}
+  </div>
+  <div class="layout-region layout-region-node-footer">
+    <div class="layout-region-node-footer__content">
+      {{ form.footer }}
+    </div>
+  </div>
+</div>

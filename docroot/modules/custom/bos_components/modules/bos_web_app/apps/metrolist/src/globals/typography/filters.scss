@@ -1,0 +1,30 @@
+// $font-size-filter-label: rem( 12px );
+$font-size-filter-label: rem( 16px );
+
+$filter-group-label-height: rem( 40px );
+// $filter-group-label-padding-top-bottom: 17px;
+
+$filter-group-padding-top-bottom: rem( 16px );
+$filter-group-padding-left-right: rem( 21px );
+$filter-group-padding: ( $filter-group-padding-top-bottom + $filter-group-label-height ) $filter-group-padding-left-right $filter-group-padding-top-bottom;
+
+$filter-group-padding-top-bottom--desktop: rem( 27px );
+$filter-group-padding-left-right--desktop: rem( 20px );
+$filter-group-padding--desktop: ( $filter-group-padding-top-bottom--desktop + $filter-group-label-height ) $filter-group-padding-left-right--desktop $filter-group-padding-top-bottom--desktop;
+
+$checkbox-dimensions__pixels: 33px;
+$checkbox-dimensions: rem( $checkbox-dimensions__pixels );
+
+$checkbox-dimensions__pixels--desktop: 35px;
+$checkbox-dimensions--desktop: rem( $checkbox-dimensions__pixels--desktop );
+
+$checkbox-checked-box__dimensions-pixels--desktop: 23px;
+$checkbox-checked-box__dimensions--desktop: rem( $checkbox-checked-box__dimensions-pixels--desktop );
+
+$checkbox-dimensions-shrink-factor: ( $checkbox-dimensions__pixels / $checkbox-dimensions__pixels--desktop );
+
+$checkbox-checked-box__dimensions-pixels: ( $checkbox-dimensions__pixels - 12px );
+$checkbox-checked-box__dimensions: rem( $checkbox-checked-box__dimensions-pixels );
+
+$filters-panel-top-offset: 5rem;
+$filters-panel-top-offset--half: 2.2rem; // ( $filters-panel-top-offset / 2 );

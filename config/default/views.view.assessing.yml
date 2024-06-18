@@ -1,0 +1,516 @@
+uuid: 4cacf76f-310a-4b0c-85a6-fcd3d90f8dbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_coordinates
+  module:
+    - geolocation
+    - node
+    - user
+id: assessing
+label: Assessing
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      fields:
+        field_bh_coordinates:
+          id: field_bh_coordinates
+          table: node__field_bh_coordinates
+          field: field_bh_coordinates
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: geolocation_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: ''
+          type: geolocation_latlng
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 1
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts: {  }
+      arguments: {  }
+      filters: {  }
+      style:
+        type: maps_common
+        options:
+          data_provider_id: geolocation_field_provider
+          geolocation_field: field_bh_coordinates
+          title_field: none
+          label_field: none
+          marker_row_number: 0
+          marker_icon_path: ''
+          even_empty: 0
+          centre:
+            client_location:
+              enable: false
+              weight: 0
+              map_center_id: client_location
+            fit_bounds:
+              enable: false
+              weight: 0
+              settings:
+                reset_zoom: false
+                min_zoom: null
+              map_center_id: fit_bounds
+            fixed_boundaries:
+              enable: false
+              weight: 0
+              settings:
+                south: ''
+                west: ''
+                north: ''
+                east: ''
+              map_center_id: fixed_boundaries
+            first_row:
+              enable: false
+              weight: 0
+              settings:
+                location_option_id: first_row
+              map_center_id: location_plugins
+            fixed_value:
+              enable: false
+              weight: 0
+              settings:
+                location_option_id: fixed_value
+                latitude: 42.3601
+                longitude: -71.0589
+              map_center_id: location_plugins
+            freeogeoip:
+              enable: false
+              weight: 0
+              settings:
+                location_option_id: freeogeoip
+              map_center_id: location_plugins
+            ipstack:
+              enable: false
+              weight: 0
+              settings:
+                location_option_id: ipstack
+                access_key: ''
+              map_center_id: location_plugins
+          map_provider_id: google_maps
+          map_provider_settings:
+            map_features:
+              marker_infobubble:
+                weight: 0
+                settings:
+                  close_other: 1
+                  close_button: 0
+                  close_button_src: ''
+                  shadow_style: 0
+                  padding: 10
+                  border_radius: 8
+                  border_width: 2
+                  border_color: '#039be5'
+                  background_color: '#fff'
+                  min_width: null
+                  max_width: 550
+                  min_height: null
+                  max_height: null
+                  arrow_style: 2
+                  arrow_position: 30
+                  arrow_size: 10
+                enabled: false
+              control_streetview:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                  behavior: default
+                enabled: false
+              control_zoom:
+                weight: 0
+                settings:
+                  position: RIGHT_CENTER
+                  behavior: default
+                  style: LARGE
+                enabled: true
+              map_restriction:
+                weight: 0
+                settings:
+                  north: ''
+                  south: ''
+                  east: ''
+                  west: ''
+                  strict: true
+                enabled: false
+              map_type_style:
+                weight: 0
+                settings:
+                  style: '[]'
+                enabled: false
+              marker_clusterer:
+                weight: 0
+                settings:
+                  image_path: ''
+                  styles: ''
+                  max_zoom: 15
+                  minimum_cluster_size: 2
+                  zoom_on_click: true
+                  average_center: false
+                  grid_size: 60
+                enabled: false
+              marker_icon:
+                weight: 0
+                settings:
+                  marker_icon_path: ''
+                  anchor:
+                    x: 0
+                    'y': 0
+                  origin:
+                    x: 0
+                    'y': 0
+                  label_origin:
+                    x: 0
+                    'y': 0
+                  size:
+                    width: null
+                    height: null
+                  scaled_size:
+                    width: null
+                    height: null
+                enabled: false
+              marker_infowindow:
+                weight: 0
+                settings:
+                  info_window_solitary: true
+                  disable_auto_pan: true
+                  info_auto_display: false
+                  max_width: null
+                enabled: false
+              control_recenter:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                enabled: false
+              marker_label:
+                weight: 0
+                settings:
+                  color: ''
+                  font_family: ''
+                  font_size: ''
+                  font_weight: ''
+                enabled: false
+              marker_opacity:
+                weight: 0
+                settings:
+                  opacity: 1.0
+                enabled: false
+              geolocation_marker_scroll_to_id:
+                weight: 0
+                settings:
+                  scroll_target_id: ''
+                enabled: false
+              marker_zoom_to_animate:
+                weight: 0
+                settings:
+                  marker_zoom_anchor_id: ''
+                enabled: false
+              spiderfying:
+                weight: 0
+                settings:
+                  spiderfiable_marker_path: /modules/contrib/geolocation/modules/geolocation_google_maps/images/marker-plus.svg
+                  markersWontMove: true
+                  markersWontHide: false
+                  keepSpiderfied: true
+                  ignoreMapClick: false
+                  nearbyDistance: 20
+                  circleSpiralSwitchover: 9
+                  circleFootSeparation: 23
+                  spiralFootSeparation: 26
+                  spiralLengthStart: 11
+                  spiralLengthFactor: 4
+                  legWeight: 1.5
+                enabled: false
+              google_maps_layer_traffic:
+                weight: 0
+                enabled: false
+              control_rotate:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                  behavior: default
+                enabled: false
+              control_maptype:
+                weight: 0
+                settings:
+                  position: RIGHT_BOTTOM
+                  behavior: default
+                  style: DEFAULT
+                enabled: false
+              context_popup:
+                weight: 0
+                settings:
+                  content:
+                    value: ''
+                    format: filtered_html
+                enabled: false
+              google_maps_layer_bicycling:
+                weight: 0
+                enabled: false
+              client_location_indicator:
+                weight: 0
+                enabled: false
+              map_disable_tilt:
+                weight: 0
+                enabled: false
+              control_locate:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                enabled: false
+              map_disable_poi:
+                weight: 0
+                enabled: true
+              map_disable_user_interaction:
+                weight: 0
+                enabled: false
+              drawing:
+                weight: 0
+                settings:
+                  polyline: false
+                  strokeColor: '#FF0000'
+                  strokeOpacity: '0.8'
+                  strokeWeight: '2'
+                  geodesic: false
+                  polygon: true
+                  fillColor: '#FF0000'
+                  fillOpacity: '0.35'
+                enabled: false
+              control_fullscreen:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                  behavior: default
+                enabled: false
+              control_geocoder:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                  geocoder: google_geocoding_api
+                  settings:
+                    label: Address
+                    description: 'Enter an address to be localized.'
+                    autocomplete_min_length: 1
+                    component_restrictions:
+                      route: ''
+                      country: ''
+                      administrative_area: ''
+                      locality: ''
+                      postal_code: ''
+                    boundary_restriction:
+                      south: ''
+                      west: ''
+                      north: ''
+                      east: ''
+                enabled: false
+              control_loading_indicator:
+                weight: 0
+                settings:
+                  position: TOP_LEFT
+                  loading_label: Loading
+                enabled: false
+              google_maps_layer_transit:
+                weight: 0
+                enabled: false
+            type: SATELLITE
+            zoom: 15
+            minZoom: 0
+            maxZoom: 20
+            height: 400px
+            width: 100%
+            gestureHandling: auto
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_bh_coordinates'
+  block_1:
+    id: block_1
+    display_title: Map
+    display_plugin: block
+    position: 1
+    display_options:
+      fields:
+        field_bh_coordinates:
+          id: field_bh_coordinates
+          table: node__field_bh_coordinates
+          field: field_bh_coordinates
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: geolocation_field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: ''
+          type: geolocation_latlng
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      defaults:
+        fields: false
+      display_description: ''
+      display_extenders: {  }
+      allow:
+        items_per_page: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_bh_coordinates'

@@ -1,0 +1,15 @@
+uuid: aade035b-28dc-4654-95b9-6c52b6be4636
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'An Election Card component'
+id: node.election_card
+label: 'Election Card'
+description: ''
+targetEntityType: node
+cache: true

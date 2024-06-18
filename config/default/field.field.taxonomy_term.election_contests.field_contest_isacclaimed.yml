@@ -1,0 +1,23 @@
+uuid: 43ada761-ede9-42f5-a992-3414339d31b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_contest_isacclaimed
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests.field_contest_isacclaimed
+field_name: field_contest_isacclaimed
+entity_type: taxonomy_term
+bundle: election_contests
+label: 'is Acclaimed'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 1
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,32 @@
+uuid: f0713d2d-0121-4740-8b09-5ffac716f2f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_featured_post
+    - node.type.post
+    - paragraphs.paragraphs_type.news_and_announcements
+_core:
+  default_config_hash: fk2p9e9PVREKej36Zw11eyixRS6sn8_sm5uhnjbBudM
+id: paragraph.news_and_announcements.field_featured_post
+field_name: field_featured_post
+entity_type: paragraph
+bundle: news_and_announcements
+label: 'Featured Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      post: post
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

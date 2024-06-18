@@ -1,0 +1,21 @@
+uuid: 6527005f-71c5-43c3-8828-d106bd8ac6bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_last_name
+    - paragraphs.paragraphs_type.quote
+_core:
+  default_config_hash: rUmLPrqUbASaGaIRbmm5Wk1Z7ELS9Ihmg-3uLXpYWhM
+id: paragraph.quote.field_last_name
+field_name: field_last_name
+entity_type: paragraph
+bundle: quote
+label: 'Last Name'
+description: 'Enter the last name of the person quoted. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,58 @@
+uuid: f023152e-4c72-4910-a156-9384e0c20af2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_type
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: '-mnKdxJPlo8pAK3k82GESTIAvM6tR3T1bxnv-wLKrRE'
+id: taxonomy_term.bid_type.default
+targetEntityType: taxonomy_term
+bundle: bid_type
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

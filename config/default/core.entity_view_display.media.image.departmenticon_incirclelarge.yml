@@ -1,0 +1,48 @@
+uuid: e854fc7f-d241-45f7-b9a0-e910587eb8f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.departmenticon_incirclelarge
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - media.type.image
+  module:
+    - fences
+    - svg_image
+_core:
+  default_config_hash: VLDxfMVPTkd2xvOjFMCh3kWmaOYnd03zggFXuUXQVEY
+id: media.image.departmenticon_incirclelarge
+targetEntityType: media
+bundle: image
+mode: departmenticon_incirclelarge
+content:
+  image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: false
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,144 @@
+uuid: 0c3f54d5-2e64-4f17-9f10-9b58bf0e34f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_of_links_list.field_component_theme
+    - field.field.paragraph.group_of_links_list.field_component_title
+    - field.field.paragraph.group_of_links_list.field_contact
+    - field.field.paragraph.group_of_links_list.field_description
+    - field.field.paragraph.group_of_links_list.field_hide_title_bar
+    - field.field.paragraph.group_of_links_list.field_link
+    - field.field.paragraph.group_of_links_list.field_list_links
+    - field.field.paragraph.group_of_links_list.field_short_title
+    - field.field.paragraph.group_of_links_list.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_list
+  module:
+    - entity_reference_revisions
+    - fences
+    - text
+_core:
+  default_config_hash: kCKxGuEH6TkghucXJoK7HKn6-UsrSzQNtskOiEDaFHA
+id: paragraph.group_of_links_list.default
+targetEntityType: paragraph
+bundle: group_of_links_list
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_contact:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_hide_title_bar:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 7
+    region: content
+  field_list_links:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_subheader:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 5
+    region: content
+hidden:
+  field_component_theme: true

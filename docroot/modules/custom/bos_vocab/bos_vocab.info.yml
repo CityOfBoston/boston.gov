@@ -1,0 +1,26 @@
+name: " BOSTON VOCABULARY"
+type: module
+description: "<span style='color:blue;font-weight:bold'>Master module containing modules enabling vocabulary (taxonomy) required for site.</span>"
+package: "City of Boston (taxonomy)"
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - taxonomy
+  - datetime
+  - path
+  - text
+
+config_devel:
+  - core.entity_view_mode.taxonomy_term.department_listing
+  - core.entity_view_mode.taxonomy_term.full
+  - core.entity_view_mode.taxonomy_term.icon_popup
+  - core.entity_view_mode.taxonomy_term.popup_icon
+  - core.entity_view_mode.taxonomy_term.published_by
+  - core.entity_view_mode.taxonomy_term.token
+  - field.field.taxonomy_term.holidays.field_date
+  - field.storage.taxonomy_term.field_commission_id
+  - field.storage.taxonomy_term.field_date
+  - field.storage.taxonomy_term.field_department_legacy_id
+  - field.storage.taxonomy_term.field_department_profile
+  - field.storage.taxonomy_term.field_external_link
+  - field.storage.taxonomy_term.field_icon
+  - field.storage.taxonomy_term.field_id

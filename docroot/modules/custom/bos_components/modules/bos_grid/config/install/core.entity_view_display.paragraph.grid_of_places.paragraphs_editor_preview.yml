@@ -1,0 +1,22 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.grid_of_places.field_component_theme
+    - field.field.paragraph.grid_of_places.field_component_title
+    - field.field.paragraph.grid_of_places.field_contact
+    - field.field.paragraph.grid_of_places.field_place
+    - field.field.paragraph.grid_of_places.field_short_title
+    - paragraphs.paragraphs_type.grid_of_places
+id: paragraph.grid_of_places.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: grid_of_places
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_place: true
+  field_short_title: true

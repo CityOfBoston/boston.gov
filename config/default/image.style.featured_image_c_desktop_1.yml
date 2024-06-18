@@ -1,0 +1,15 @@
+uuid: 8d82e454-ee27-4b90-afc8-8a3616a8dce7
+langcode: und
+status: true
+dependencies: {  }
+name: featured_image_c_desktop_1
+label: 'Featured image c-desktop 1x (671x388)'
+effects:
+  171e4161-393a-4cda-b837-dabec4b65e80:
+    uuid: 171e4161-393a-4cda-b837-dabec4b65e80
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 671
+      height: 388
+      anchor: center-center

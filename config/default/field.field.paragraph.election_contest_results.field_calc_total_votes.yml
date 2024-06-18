@@ -1,0 +1,25 @@
+uuid: 43d8b06c-80c9-4b0f-98dc-1306ca3a8b7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_calc_total_votes
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_calc_total_votes
+field_name: field_calc_total_votes
+entity_type: paragraph
+bundle: election_contest_results
+label: 'Total Votes'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

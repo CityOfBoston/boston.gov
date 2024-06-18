@@ -1,0 +1,94 @@
+uuid: c1adb168-17f7-452e-959e-26018849e1e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_entity_browser
+    - field.field.paragraph.map.field_component_title
+    - field.field.paragraph.map.field_extra_info
+    - field.field.paragraph.map.field_hide_title_bar
+    - field.field.paragraph.map.field_image
+    - field.field.paragraph.map.field_map_config_json
+    - field.field.paragraph.map.field_map_inline
+    - field.field.paragraph.map.field_short_title
+    - paragraphs.paragraphs_type.map
+  module:
+    - entity_browser
+_core:
+  default_config_hash: sHahhnH0KMi6HSbtWDt3rmw3hnHf9TKWodTcR-c7G4U
+id: paragraph.map.default
+targetEntityType: paragraph
+bundle: map
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_extra_info:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_image:
+    type: entity_browser_entity_reference
+    weight: 4
+    region: content
+    settings:
+      entity_browser: image_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings:
+        view_mode: thumbnail
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_map_config_json:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_map_inline:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

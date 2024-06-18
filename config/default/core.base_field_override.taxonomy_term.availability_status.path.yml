@@ -1,0 +1,20 @@
+uuid: 63f4adc3-5944-455d-9ae0-fd7b7d39fee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.availability_status
+  module:
+    - path
+id: taxonomy_term.availability_status.path
+field_name: path
+entity_type: taxonomy_term
+bundle: availability_status
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

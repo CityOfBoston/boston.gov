@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * The install file for bos_messages module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function bos_messages_uninstall() {
+  if (function_exists("_bos_core_uninstall_boston")) {
+    _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function bos_messages_install() {
+  // Copy icons into expected location.
+  _bos_core_install_icons(basename(__FILE__, ".install"));
+}
+
+/**
+ * Imports interface translations.
+ */
+function bos_messages_update_9003() {
+  Drupal::moduleHandler()->loadInclude('locale', 'compare.inc');
+  locale_translation_check_projects_local(['bos_messages']);
+}

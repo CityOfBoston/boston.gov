@@ -1,0 +1,5 @@
+bos_geocoder.GeocoderConfigForm:
+  title: 'Geocoder Service'
+  route_name: bos_geocoder.GeocoderConfigForm
+  base_route: bos_core.admin
+  weight: 2   # TODO: Alter as needed

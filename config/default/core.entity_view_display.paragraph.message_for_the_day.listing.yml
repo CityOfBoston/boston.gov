@@ -1,0 +1,95 @@
+uuid: ed3b6a00-be63-48a2-b738-419684a4f38c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.date_format.date_format_normal_date
+    - core.entity_view_mode.paragraph.listing
+    - field.field.paragraph.message_for_the_day.field_enabled
+    - field.field.paragraph.message_for_the_day.field_link
+    - field.field.paragraph.message_for_the_day.field_message
+    - field.field.paragraph.message_for_the_day.field_message_link
+    - field.field.paragraph.message_for_the_day.field_message_link_url
+    - field.field.paragraph.message_for_the_day.field_recurrence
+    - field.field.paragraph.message_for_the_day.field_short_description
+    - field.field.paragraph.message_for_the_day.field_use_alert
+    - paragraphs.paragraphs_type.message_for_the_day
+  module:
+    - date_recur
+    - entity_reference_revisions
+    - fences
+    - text
+_core:
+  default_config_hash: uTDy0Z5e39gsZUjNPxXvJdwJVOcSnQnSf2k4X5mxejw
+id: paragraph.message_for_the_day.listing
+targetEntityType: paragraph
+bundle: message_for_the_day
+mode: listing
+content:
+  field_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_message:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_recurrence:
+    type: date_recur_basic_formatter
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: date_format_normal_date
+      separator: '-'
+      show_next: 100
+      count_per_item: true
+      occurrence_format_type: date_format_normal_date
+      same_end_date_format_type: date_format_normal_date
+      interpreter: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_use_alert:
+    type: boolean
+    label: hidden
+    settings:
+      format: true-false
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  field_enabled: true
+  field_message_link: true
+  field_message_link_url: true
+  field_short_description: true

@@ -1,0 +1,20 @@
+uuid: 73050b86-f9ac-454a-a5f5-bfdfeaad1d1e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_contest_overvotes
+field_name: field_contest_overvotes
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

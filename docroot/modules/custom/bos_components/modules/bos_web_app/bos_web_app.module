@@ -1,0 +1,117 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_mnl module.
+ */
+
+use Drupal\Core\Render\Markup;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_web_app_theme() {
+  $theme['paragraph__web_app'] = [
+    'base hook' => 'paragraph',
+    'path' =>\Drupal::service('extension.path.resolver')->getPath('module', 'bos_web_app') . '/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Assigns library file.
+ */
+function bos_web_app_preprocess_paragraph__web_app(array &$vars) {
+  if (!empty($vars['paragraph'])) {
+
+    // Include a library for the bos_web_app module itself.
+    $vars['#attached']['library'][] = 'bos_web_app/bos_web_app';
+
+    // Set some default classes for the webapp wrapper div.
+    $vars['attributes']->addClass('container content entity entity-paragraphs-item paragraphs-item-text component-section');
+
+    // Legacy, include a library ref for the app name which is defined in the
+    // bos_web_app module.
+    // NOTE: Library inclusion should be handled in the apps own module.
+    $paragraph = $vars['paragraph'];
+    if ($paragraph->hasField('field_app_name') && $paragraph->get('field_app_name')->value) {
+      $libraryDiscovery = \Drupal::service('library.discovery');
+      $libraries = $libraryDiscovery->getLibrariesByExtension("bos_web_app");
+      // TODO: Eventually we can remove field_app_name as embedded apps get
+      //   migrated into field_webapp_name.
+      $app_name = strtolower($paragraph->get('field_app_name')->value);
+      $app_name = str_replace(' ', '_', $app_name);
+      if (isset($libraries[$app_name])) {
+        $vars['#attached']['library'][] = 'bos_web_app/' . $app_name;
+      }
+    }
+    $vars['module_path'] = \Drupal::service('module_handler')->getModule('bos_web_app')->getPath();
+
+    if (!isset($vars["webapp_anchor"])) {
+      $vars["webapp_anchor"] = new Drupal\Core\Template\Attribute();
+    }
+
+    // Reset the JS app anchor id so that it can correctly embed itself.
+    if (!empty($paragraph->get('field_anchor_custom_id')->value)) {
+      $vars["webapp_anchor"]->setAttribute("id", $paragraph->get('field_anchor_custom_id')->value);
+    }
+    // Add and css classes.
+    if (!empty($paragraph->get('field_anchor_custom_css')->value)) {
+      $vars["webapp_anchor"]->addClass($paragraph->get('field_anchor_custom_css')->value);
+    }
+    // Add any additional attributes.
+    if (!empty($paragraph->get('field_anchor_custom_attributes')->value)) {
+      $attributes = explode("\r\n", $paragraph->get('field_anchor_custom_attributes')->value);
+      foreach ($attributes as $attribute) {
+        $bits = explode(":", $attribute, 2);
+        $vars["webapp_anchor"]->setAttribute($bits[0], $bits[1] ?: "");
+      }
+    }
+    // Add any additional scripting.
+    if (!empty($paragraph->get('field_component_launch_script')->value)) {
+      $vars["autorun"] = "{$paragraph->get('field_component_launch_script')->value}";
+    }
+
+  }
+}
+
+/**
+ * Discover webapps.
+ *
+ * @return string[]
+ */
+function bos_web_app_allowed_webapps() {
+
+  $filtered_modules = [];
+//  $filtered_modules["_none"] = ["- Select WebApp to embed -"];
+  // Get an array of all installed modules.
+  $module_handler = \Drupal::service('module_handler');
+  $modules = $module_handler->getModuleList();
+
+  foreach ($modules as $module) {
+    // This will 'discover' modules which are in the bos_web_app module.
+    if ($module->getName() != "bos_web_app" && str_contains($module->getPath(), "bos_web_app")) {
+      $info_file = $module->getPath() . '/' . $module->getName(). '.info.yml';
+      $info = Yaml::parseFile($info_file);
+      $filtered_modules[ $module->getName()] = $info['name'] ?: $module->getName();
+    }
+  }
+  return $filtered_modules;
+
+}
+
+/**
+ * Implements hook_paragraph_hook_summary_alter().
+ */
+function bos_web_app_paragraph_web_app_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  return [
+    'attributes' => $attributes,
+    'content' => [
+      Markup::create($para["entity"]->get("field_component_title")->value ?? "webapp"),
+      Markup::create($para["entity"]->get("field_webapp_name")[0]->value ?? "")
+    ],
+  ];
+}

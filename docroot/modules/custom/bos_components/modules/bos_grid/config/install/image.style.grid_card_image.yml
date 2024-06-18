@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: grid_card_image
+label: 'Grid Card Image'
+effects:
+  4a5600d6-7615-4a27-9bf2-f8fac285b640:
+    uuid: 4a5600d6-7615-4a27-9bf2-f8fac285b640
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 300
+      anchor: center-center

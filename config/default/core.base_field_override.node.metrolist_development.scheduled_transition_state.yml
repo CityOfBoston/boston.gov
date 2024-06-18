@@ -1,0 +1,18 @@
+uuid: 7ae68147-b26a-443d-90f3-95150f0243a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: metrolist_development
+label: 'Scheduled transition state'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

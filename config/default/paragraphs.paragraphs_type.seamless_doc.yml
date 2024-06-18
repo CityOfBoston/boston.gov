@@ -1,0 +1,13 @@
+uuid: 3d81de2a-4e97-497d-818d-6d2bc7acb184
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: by0AKv-PDJUDTxXnS4o2swSkR6cVfYEnNTKF9hZjUXY
+id: seamless_doc
+label: 'Seamless Doc'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Seamless Doc'
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.list.field_component_theme
+    - field.field.paragraph.list.field_component_title
+    - field.field.paragraph.list.field_contact
+    - field.field.paragraph.list.field_short_title
+    - paragraphs.paragraphs_type.list
+id: paragraph.list.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: list
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_list: true
+  field_short_title: true

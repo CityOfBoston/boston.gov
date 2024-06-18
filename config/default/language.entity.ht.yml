@@ -1,0 +1,9 @@
+uuid: fc69b683-a843-4203-a858-402aebee012d
+langcode: en
+status: true
+dependencies: {  }
+id: ht
+label: 'Haitian Creole'
+direction: ltr
+weight: 6
+locked: false

@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Default template to format a HTML email using the Mime Mail module.
+ *
+ * Copy this file in your default theme folder to create a custom themed email.
+ * If you modify this template you MUST be sure to keep the html, body, and
+ * header tags. This template should produce a fully-formed HTML document.
+ * Failure to include these will result in a malformed email and possibly
+ * errors shown to the user when sending email.
+ *
+ * To override this template for all emails sent by a given module,
+ * rename this template to mimemail-messages--[module].html.twig.
+ *
+ * To override this template for a specific email sent by a given module,
+ * rename this template to mimemail-messages--[module]--[key].html.twig.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the body element of the message.
+ * - key: The message identifier.
+ * - module: The machine name of the sending module.
+ * - css: Internal style sheets.
+ * - recipient: The recipient of the message.
+ * - subject: The message subject.
+ * - body: The message body.
+ *
+ * @see template_preprocess_mimemail_message()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set classes = module ? (key ? module ~ '-' ~ key) %}
+
+<!DOCTYPE html PUBLIC "-/W3C/DTD XHTML 1.0 Transitional/EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {% include '@bos_email/includes/standard_head.html.twig' %}
+    {% if css %}
+      <style>
+        <!-- {{ css }} -->
+      </style>
+    {% endif %}
+  </head>
+
+  <body id="mimemail-body"{{ attributes.addClass(classes) }}>
+    <div id="center">
+      <div id="main">
+        <!-- Email Body -->
+        <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; margin: 0; padding: 0; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+          <tbody><tr>
+            <td class="email-masthead" width="570" cellpadding="0" cellspacing="0" style="font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; width: 100%; margin: 0; padding: 0; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+              <!-- Body header -->
+              {% include '@bos_email/includes/standard_masthead.html.twig' %}
+            </td>
+            <td class="email-body" width="570" cellpadding="0" cellspacing="0" style="font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; width: 100%; margin: 0; padding: 0; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+              <!-- Body content -->
+              {{ body }}
+            </td>
+            <td class="email-footer" width="570" cellpadding="0" cellspacing="0" style="font-family: 'Nunito Sans', Helvetica, Arial, sans-serif; font-size: 16px; width: 100%; margin: 0; padding: 0; -premailer-width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0;">
+              <!-- Body footer -->
+              {% include '@bos_email/includes/standard_footer.html.twig' %}
+            </td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,18 @@
+uuid: 7bf123f6-831a-4b27-a854-36eff0e7bbe6
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.procurement_type
+target_entity_type_id: taxonomy_term
+target_bundle: procurement_type
+default_langcode: site_default
+language_alterable: false

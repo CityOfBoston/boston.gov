@@ -1,0 +1,23 @@
+uuid: 39a92569-dad6-4262-929d-a63655d87b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.events_and_notices
+id: paragraph.events_and_notices.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: events_and_notices
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

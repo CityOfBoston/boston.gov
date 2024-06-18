@@ -1,0 +1,22 @@
+uuid: caaa65a4-aee0-40ec-b73d-de218fbb3bbd
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.tabbed_content_tab
+id: paragraph.tabbed_content_tab.status
+field_name: status
+entity_type: paragraph
+bundle: tabbed_content_tab
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

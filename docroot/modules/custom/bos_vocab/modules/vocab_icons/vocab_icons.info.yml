@@ -1,0 +1,14 @@
+name: Icons Vocabulary
+description: "Adds taxonomy for Icons."
+package: "City of Boston (taxonomy)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+
+dependencies:
+  - bos_vocab
+  - taxonomy
+
+config_devel:
+  - language.content_settings.taxonomy_term.icons
+  - taxonomy.vocabulary.icons

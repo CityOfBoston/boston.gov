@@ -1,0 +1,49 @@
+uuid: cf8ac41f-24f6-495b-a7dd-cc73e90696d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.colorbox
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.image
+    - image.style.card_grid_2w_vertical_1x
+    - image.style.large
+    - media.type.image
+  module:
+    - colorbox
+    - fences
+_core:
+  default_config_hash: VLDxfMVPTkd2xvOjFMCh3kWmaOYnd03zggFXuUXQVEY
+id: media.image.colorbox
+targetEntityType: media
+bundle: image
+mode: colorbox
+content:
+  image:
+    type: colorbox
+    label: hidden
+    settings:
+      colorbox_node_style: card_grid_2w_vertical_1x
+      colorbox_node_style_first: card_grid_2w_vertical_1x
+      colorbox_image_style: large
+      colorbox_gallery: page
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_in_library: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

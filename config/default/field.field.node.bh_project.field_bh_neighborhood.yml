@@ -1,0 +1,29 @@
+uuid: 24e9f5ac-c1db-4314-9166-ae7968f70a78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_neighborhood
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_neighborhood
+id: node.bh_project.field_bh_neighborhood
+field_name: field_bh_neighborhood
+entity_type: node
+bundle: bh_project
+label: Neighborhood
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_neighborhood: bh_neighborhood
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 75cd8234-ebdb-412b-85b7-8cb81ee2cd36
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+_core:
+  default_config_hash: cYMleatzJ2jIfWB4WR9qinLG2AbOmylCxC_EYVDpHrM
+id: node.script_page.metatag
+field_name: metatag
+entity_type: node
+bundle: script_page
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

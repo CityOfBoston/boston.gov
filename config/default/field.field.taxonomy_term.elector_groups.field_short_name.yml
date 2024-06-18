@@ -1,0 +1,19 @@
+uuid: 04d51fe8-7f12-4d8f-aff2-e11e53c8a810
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_short_name
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.elector_groups.field_short_name
+field_name: field_short_name
+entity_type: taxonomy_term
+bundle: elector_groups
+label: 'Elector Group Short Name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

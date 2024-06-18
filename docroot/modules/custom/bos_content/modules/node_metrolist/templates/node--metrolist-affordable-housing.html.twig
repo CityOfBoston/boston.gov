@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a metrolist affordable housing entity.
+ *
+ * This template is used when viewing a registered metrolist affordable housing's page,
+ * e.g., /admin/content/metrolist-affordable-housing)/123. 123 being the metrolist affordable housing's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_metrolist_affordable_housing()
+ */
+#}
+
+<div class="brc--wh" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+
+<article{{ attributes }}>
+
+  {% if (title_prefix or title_suffix or display_submitted or unpublished or preview or (not page)) and title %}
+    <header>
+
+      {{  title_prefix  }}
+
+      {% if (not page) and title %}
+        <h2{{ title_attributes  }}><a href="{{ node_url }}">{{ title }}</a></h2>
+      {% endif %}
+
+      {{ title_suffix  }}
+
+    </header>
+  {% endif %}
+
+  {{ elements }}
+
+</article>

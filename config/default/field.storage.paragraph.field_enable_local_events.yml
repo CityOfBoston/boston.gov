@@ -1,0 +1,18 @@
+uuid: d860a518-e47c-4819-b22a-f12ef097275d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_enable_local_events
+field_name: field_enable_local_events
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

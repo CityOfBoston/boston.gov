@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="Layer_1" data-name="Layer 1" viewBox="0 0 144 144" version="1.1" sodipodi:docname="election_candidate_results.svg" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata id="metadata31">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs29" />
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="702" inkscape:window-height="480" id="namedview27" showgrid="false" inkscape:zoom="1.6388889" inkscape:cx="72" inkscape:cy="72" inkscape:window-x="2506" inkscape:window-y="539" inkscape:window-maximized="0" inkscape:current-layer="Layer_1" />
+  <polygon points="92.39 64.64 69.78 64.64 53.71 76.79 53.71 118.52 108.33 118.52 108.33 77.26 92.39 64.64" fill="#fff" id="polygon2" />
+  <path d="M109.83,120H52.21V76L69.27,63.15H92.91l16.92,13.38Zm-54.62-3h51.62V78l-15-11.83H70.28L55.21,77.54Z" fill="#0f1f2d" id="path4" />
+  <circle cx="80.54" cy="39.93" r="14.5" fill="#fff" id="circle6" />
+  <path d="M80.54,55.93a16,16,0,1,1,16-16A16,16,0,0,1,80.54,55.93Zm0-29a13,13,0,1,0,13,13A13,13,0,0,0,80.54,26.93Z" fill="#0f1f2d" id="path8" />
+  <rect x="35.67" y="79.98" width="50.88" height="5.89" fill="#fff" id="rect10" />
+  <path d="M88.05,87.37H34.17V78.48H88.05Zm-50.88-3H85.05V81.48H37.17Z" fill="#0d202e" id="path12" />
+  <rect x="35.67" y="86.43" width="50.88" height="32.13" fill="#fff" id="rect14" />
+  <path d="M88.05,120.07H34.17V84.93H88.05Zm-50.88-3H85.05V87.93H37.17Z" fill="#0d202e" id="path16" />
+  <path d="M48.22,106.62,45,98.44h2.22l2.09,6,2.09-6h2.14l-3.21,8.18Z" fill="#0f1f2d" id="path18" />
+  <path d="M62.67,102.52a4.43,4.43,0,1,1-4.43-4.15A4.22,4.22,0,0,1,62.67,102.52Zm-6.72,0A2.38,2.38,0,0,0,58.27,105a2.44,2.44,0,0,0,0-4.86A2.36,2.36,0,0,0,56,102.53Z" fill="#0f1f2d" id="path20" />
+  <path d="M67.29,100.11v6.51H65.21v-6.51H62.77V98.43h7v1.68Z" fill="#0f1f2d" id="path22" />
+  <path d="M72.72,100.08v1.62h3.9v1.64h-3.9V105h4.45v1.64H70.64V98.44H77v1.64Z" fill="#0f1f2d" id="path24" />
+</svg>

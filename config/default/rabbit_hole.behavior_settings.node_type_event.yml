@@ -1,0 +1,14 @@
+uuid: 2a263aec-0cc6-4890-8955-1442dd965b79
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event
+id: node_type_event
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

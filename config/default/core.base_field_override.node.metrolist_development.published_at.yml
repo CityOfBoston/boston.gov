@@ -1,0 +1,20 @@
+uuid: 9a62c69d-bedb-456c-a46e-f76c11a4f4de
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+  module:
+    - publication_date
+id: node.metrolist_development.published_at
+field_name: published_at
+entity_type: node
+bundle: metrolist_development
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

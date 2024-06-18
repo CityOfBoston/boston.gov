@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:a919034b-8be7-419f-852f-df1c392d84fd'
+id: group_of_links_grid
+label: 'Group of Links - Grid'
+icon_uuid: a919034b-8be7-419f-852f-df1c392d84fd
+icon_default: null
+description: 'Migrated from paragraph bundle Group of Links - Grid'
+behavior_plugins: {  }

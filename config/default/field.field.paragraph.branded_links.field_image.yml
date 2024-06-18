@@ -1,0 +1,32 @@
+uuid: 92e75383-7f66-4333-920a-251f726adc48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.icon
+    - media.type.image
+    - paragraphs.paragraphs_type.branded_links
+_core:
+  default_config_hash: FEHoVGeB7gcDiGh7WYbY4_CoAtcgDXYjaD4hAYdOk-w
+id: paragraph.branded_links.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: branded_links
+label: 'Brand Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      icon: icon
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: 905583cd-12e3-4f29-bf46-b39fd94c840b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.election_contests
+id: taxonomy_term.election_contests
+target_entity_type_id: taxonomy_term
+target_bundle: election_contests
+default_langcode: site_default
+language_alterable: false

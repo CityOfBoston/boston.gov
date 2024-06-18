@@ -1,0 +1,18 @@
+uuid: ada5b953-d880-4d72-aebb-a75cda685f5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_show_banner
+field_name: field_show_banner
+entity_type: taxonomy_term
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

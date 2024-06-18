@@ -1,0 +1,167 @@
+
+/* Update link styles. */
+a:hover {
+  text-decoration: none;
+  color: #fb4d42;
+}
+/* Set pop-up styles. */
+.dl-d {
+  clear: none;
+  width: 25%;
+}
+.dl-t {
+  clear: none;
+  width: 75%;
+}
+.dl-i {
+  padding: 0.2rem !important;
+}
+/* Select form control styles */
+.form-control {
+  border: 2px solid #091f2f;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  border-radius: 0px;
+}
+.sel-c:after {
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+}
+@media only screen and (max-width: 500px) {
+  .mapboxgl-popup-tip {
+    visibility: hidden;
+  }
+  .mapboxgl-popup-content {
+    visibility: hidden;
+  }
+  #popupTable {
+    display: block;
+  }
+}
+/* Set geocoder style. */
+.mapboxgl-ctrl-geocoder input {
+  background-image: url(https://patterns.boston.gov/images/public/icons/search.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: right;
+  background-size: 20px 20px;
+  position: relative;
+  height: auto;
+  border: none;
+  border-bottom: 2px solid #091f2f;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 16px;
+  min-width: 100%;
+}
+.mapboxgl-ctrl-geocoder--button {
+  display: none !important;
+}
+.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-loading {
+  display: none;
+}
+.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
+  display: none;
+}
+.geocoder-icon {
+  visibility: hidden;
+}
+.suggestions {
+  font-family: Lora;
+  font-style: italic;
+  position: absolute;
+  z-index: 10000;
+  background-color: white;
+  border: 1px solid #091f2f;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+.suggestions li {
+  list-style-type: none;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 5px;
+}
+.suggestions li:hover {
+  background-color: #e0e0e0;
+}
+/* Set parcel search styles. */
+#parcelIdSearch {
+  background-color: transparent;
+  background-position: right;
+  background-size: 20px 20px;
+  position: relative;
+  height: auto;
+  border: none;
+  border-bottom: 2px solid #091f2f;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 16px;
+  padding: 0px;
+}
+/* Set button styles. */
+.btn {
+  border-radius: 0px;
+}
+.btn-secondary {
+  background-color: #288be4;
+  border-color: #288be4;
+}
+.btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 139, 228, 0.5);
+}
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background-color: #288be4;
+  border-color: #288be4;
+}
+.btn:hover:not(:disabled) {
+  border-color: #fb4d42;
+} 
+
+/*New styles for web-app*/
+#web-app .abutters {
+  padding:50px 0;
+}
+#web-app .abutters p {
+  line-height:normal;
+}
+#web-app .abutters input {
+  width:100%;
+  border:2px solid #000;
+}
+#web-app .abutters h6 {
+  margin-bottom:0;
+}
+#web-app .btn {
+  display:block;
+  width:100%;
+  margin:10px 0;
+}
+#web-app .abutters .item{
+  float:left;
+}
+#web-app .abutters .left-item{
+  max-width:25%;
+}
+#web-app .abutters .right-item{
+  width:75%;
+  padding-left:50px;
+}
+
+#web-app .mapboxgl-canvas{
+  position:relative !important;
+}
+
+@media only screen and (max-width: 840px) {
+  #web-app .abutters .item {
+    width:100%;
+    max-width:100%;
+    padding:0;
+  }
+
+}

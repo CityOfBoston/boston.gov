@@ -1,0 +1,62 @@
+uuid: 44fc8a41-1615-41d3-b1ec-86f5175a9b53
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bh_meeting.body
+    - field.field.node.bh_meeting.field_address
+    - field.field.node.bh_meeting.field_bh_contact_person_sfid
+    - field.field.node.bh_meeting.field_bh_event_ref
+    - field.field.node.bh_meeting.field_bh_host_organization
+    - field.field.node.bh_meeting.field_bh_languages_supported
+    - field.field.node.bh_meeting.field_bh_meeting_contact_email
+    - field.field.node.bh_meeting.field_bh_meeting_end_time
+    - field.field.node.bh_meeting.field_bh_meeting_goal
+    - field.field.node.bh_meeting.field_bh_meeting_recording_pass
+    - field.field.node.bh_meeting.field_bh_meeting_start_time
+    - field.field.node.bh_meeting.field_bh_number_of_attendees
+    - field.field.node.bh_meeting.field_bh_post_meeting_notes
+    - field.field.node.bh_meeting.field_bh_post_meeting_recording
+    - field.field.node.bh_meeting.field_bh_update_ref
+    - field.field.node.bh_meeting.field_bh_virt_meeting_web_addr
+    - node.type.bh_meeting
+  module:
+    - text
+    - user
+id: node.bh_meeting.teaser
+targetEntityType: node
+bundle: bh_meeting
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_address: true
+  field_bh_contact_person_sfid: true
+  field_bh_event_ref: true
+  field_bh_host_organization: true
+  field_bh_languages_supported: true
+  field_bh_meeting_contact_email: true
+  field_bh_meeting_end_time: true
+  field_bh_meeting_goal: true
+  field_bh_meeting_recording_pass: true
+  field_bh_meeting_start_time: true
+  field_bh_number_of_attendees: true
+  field_bh_post_meeting_notes: true
+  field_bh_post_meeting_recording: true
+  field_bh_update_ref: true
+  field_bh_virt_meeting_web_addr: true
+  langcode: true
+  published_at: true

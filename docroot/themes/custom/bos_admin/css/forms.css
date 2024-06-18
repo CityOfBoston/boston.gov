@@ -1,0 +1,13 @@
+tr.odd .form-item, tr.even .form-item {
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: normal;
+}
+
+.form-item-field-event-dates-en-0-show-todate label:after,
+.form-item-field-public-notice-date-en-0-show-todate label:after,
+.form-item-field-event-dates-und-0-show-todate label:after,
+.form-item-field-public-notice-date-und-0-show-todate label:after {
+  display: inline;
+  content: 'and Time';
+}

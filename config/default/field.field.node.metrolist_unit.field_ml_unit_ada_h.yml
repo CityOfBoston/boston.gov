@@ -1,0 +1,23 @@
+uuid: c75e6a68-5312-4015-9874-0519b0c56d13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_ada_h
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_ada_h
+field_name: field_ml_unit_ada_h
+entity_type: node
+bundle: metrolist_unit
+label: 'Unit(s) built out for deaf/hard of hearing'
+description: ADA-H
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

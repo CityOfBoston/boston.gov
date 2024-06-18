@@ -1,0 +1,15 @@
+uuid: 83764faf-d5ef-4ace-aec4-0efe11fa3edb
+langcode: und
+status: true
+dependencies: {  }
+name: featured_image_d_full_1x
+label: 'Featured image d-full 1x (586x388)'
+effects:
+  171e4161-393a-4cda-b837-dabec4b65e80:
+    uuid: 171e4161-393a-4cda-b837-dabec4b65e80
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 586
+      height: 388
+      anchor: center-center

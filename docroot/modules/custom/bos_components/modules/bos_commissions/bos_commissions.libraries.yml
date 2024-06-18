@@ -1,0 +1,7 @@
+bos_commissions_search:
+  version: 1.0
+  js:
+    js/settings.js: {minified: true}
+    https://apps.boston.gov/commissions-search/static/js/main.js: {type: external, minified: true}
+  dependencies:
+    - core/drupalSettings

@@ -1,0 +1,127 @@
+uuid: 2727bc62-16ff-4c1a-b789-756d5ab8e4d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.department_profile
+    - node.type.emergency_alert
+    - node.type.event
+    - node.type.how_to
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.person_profile
+    - node.type.place_profile
+    - node.type.post
+    - node.type.procurement_advertisement
+    - node.type.program_initiative_profile
+    - node.type.public_notice
+    - node.type.script_page
+    - node.type.site_alert
+    - node.type.status_item
+    - node.type.tabbed_content
+    - node.type.topic_page
+    - node.type.transaction
+  module:
+    - content_moderation
+id: city_of_boston_workflows
+label: 'City of Boston Workflows'
+type: content_moderation
+type_settings:
+  states:
+    archive:
+      label: Archive
+      weight: 3
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: 0
+      published: false
+      default_revision: false
+    needs_review:
+      label: 'Needs Review'
+      weight: 2
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 1
+      published: true
+      default_revision: true
+  transitions:
+    archived:
+      label: 'Archive Content'
+      from:
+        - published
+      to: archive
+      weight: -1
+    draft_from_archived:
+      label: 'Draft from Archived'
+      from:
+        - archive
+      to: draft
+      weight: 0
+    draft_from_published:
+      label: 'New Draft'
+      from:
+        - published
+      to: draft
+      weight: -3
+    publish:
+      label: Publish
+      from:
+        - needs_review
+      to: published
+      weight: 2
+    publish_new_content:
+      label: 'Publish new content'
+      from:
+        - draft
+      to: published
+      weight: 6
+    reject:
+      label: 'Reject Draft'
+      from:
+        - needs_review
+      to: draft
+      weight: 1
+    submit_for_review:
+      label: 'Submit for Review'
+      from:
+        - draft
+      to: needs_review
+      weight: -2
+    update_draft:
+      label: 'Update Draft'
+      from:
+        - draft
+      to: draft
+      weight: 3
+    update_published:
+      label: 'Update Published'
+      from:
+        - published
+      to: published
+      weight: 5
+  entity_types:
+    node:
+      - article
+      - department_profile
+      - emergency_alert
+      - event
+      - how_to
+      - landing_page
+      - listing_page
+      - person_profile
+      - place_profile
+      - post
+      - procurement_advertisement
+      - program_initiative_profile
+      - public_notice
+      - script_page
+      - site_alert
+      - status_item
+      - tabbed_content
+      - topic_page
+      - transaction

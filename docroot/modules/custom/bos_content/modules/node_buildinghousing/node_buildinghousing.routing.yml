@@ -1,0 +1,8 @@
+salesforce.admin_config_boston:
+  path: '/admin/config/salesforce/boston'
+  defaults:
+    _form: '\Drupal\node_buildinghousing\Form\SalesforceSyncSettings'
+    _title: 'City of Boston: Building Housing SF Utilities'
+  requirements:
+    _permission: 'View Salesforce mapping'
+

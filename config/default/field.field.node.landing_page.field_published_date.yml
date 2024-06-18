@@ -1,0 +1,23 @@
+uuid: 6a88a73a-d13e-4c89-b8ab-48f66746fd73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.landing_page
+  module:
+    - datetime
+_core:
+  default_config_hash: UXTfGx3RcB0xPTGl_-YSONBwKj1i9Ne19GKDLbz6J6k
+id: node.landing_page.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: landing_page
+label: 'Published Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

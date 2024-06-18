@@ -1,0 +1,39 @@
+uuid: c50f21fa-0df3-42ae-87e3-4912109d0bc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_topics
+    - field.field.node.landing_page.field_components
+    - field.field.node.landing_page.field_contacts
+    - field.field.node.landing_page.field_manual_date
+    - field.field.node.landing_page.field_meta_tags
+    - field.field.node.landing_page.field_published_date
+    - field.field.node.landing_page.field_updated_date
+    - node.type.landing_page
+  module:
+    - user
+_core:
+  default_config_hash: cNBzGMnkCApcEs9gI8HjTwaeaJcWuRrrPR_RpUiTuWY
+id: node.landing_page.featured_topics
+targetEntityType: node
+bundle: landing_page
+mode: featured_topics
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_contacts: true
+  field_manual_date: true
+  field_meta_tags: true
+  field_published_date: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

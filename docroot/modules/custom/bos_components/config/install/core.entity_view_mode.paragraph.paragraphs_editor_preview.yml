@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.paragraphs_editor_preview
+label: 'Paragraphs Editor Preview'
+targetEntityType: paragraph
+cache: true

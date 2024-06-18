@@ -1,0 +1,21 @@
+uuid: b1ad2dd9-2858-45b5-9252-833a566d4241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: cpthr2UoLQ90u7X7yU8eg2SQYSDSM32DXOyhYRnGtVs
+id: paragraph.card.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: card
+label: 'Short Description'
+description: 'A brief description of the card. <strong>Display is limited to 140 characters.</strong>'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

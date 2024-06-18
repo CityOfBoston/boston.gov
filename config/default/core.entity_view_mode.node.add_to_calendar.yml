@@ -1,0 +1,15 @@
+uuid: 37287d76-bde4-4efa-863f-28f566c24c95
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: ''
+id: node.add_to_calendar
+label: 'Add to Calendar'
+description: ''
+targetEntityType: node
+cache: true

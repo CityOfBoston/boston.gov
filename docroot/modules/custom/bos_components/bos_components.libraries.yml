@@ -1,0 +1,8 @@
+field.style:
+  css:
+    theme:
+      css/field.css: {}
+component_theme.style:
+  css:
+    theme:
+      css/component-theme.css: {}

@@ -1,0 +1,95 @@
+uuid: cf8f8dbd-f0a8-4b7d-a27d-a3e08ee196c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.transaction_grid.field_component_theme
+    - field.field.paragraph.transaction_grid.field_component_title
+    - field.field.paragraph.transaction_grid.field_contact
+    - field.field.paragraph.transaction_grid.field_hide_title_bar
+    - field.field.paragraph.transaction_grid.field_short_title
+    - field.field.paragraph.transaction_grid.field_transactions
+    - paragraphs.paragraphs_type.transaction_grid
+  module:
+    - entity_reference_revisions
+    - fences
+_core:
+  default_config_hash: 0Ig3F0Qvo2T8GDdN8HE75NrA0mWfYz-nbhYLqNpPtsU
+id: paragraph.transaction_grid.default
+targetEntityType: paragraph
+bundle: transaction_grid
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_contact:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_hide_title_bar:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_transactions:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  field_component_theme: true

@@ -1,0 +1,8 @@
+uuid: 2e57957d-bdcc-419b-995d-d9878356a31d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Public Stage (BH)'
+vid: bh_public_stage
+description: 'Building Housing: Public Stage'
+weight: 0

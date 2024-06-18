@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ *   Template for contact info in the sidebar area of a content type.
+ */
+#}
+{% if display_field_tag %}
+    <{{ field_tag|default('div') }}{{ attributes.addClass(classes, 'field__items') }}>
+{% endif %}
+
+    {% if not label_hidden and display_label_tag %}
+        <{{ label_tag|default('div') }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ label_tag|default('div') }}>
+    {% endif %}
+
+<div class="detail-item__{{ field_name }}">
+        <img src="https://patterns.boston.gov/images/global/icons/icon-location.svg" class="icon icon-location sb-ic" alt="" />
+    {% for item in items %}
+        {% if display_item_tag %}
+            <{{ field_item_tag|default('div') }}{{ item.attributes.addClass('field__item') }}>
+        {% endif %}
+          <div class="detail-item__body--secondary sb-d">
+              <div class="addressfield-container-inline name-block">
+                <div class="name-block">{{ item.content.given_name }}{{ item.content.family_name }}</div>
+              </div>
+              <div class="street-block">
+                  <div class="thoroughfare">{{ item.content.address_line1 }}</div>
+              </div>
+              {% if item.content.address_line2 %}
+                  <div class="street-block">
+                      <div class="premise">{{ item.content.address_line2 }}</div>
+                  </div>
+              {% endif %}
+              <div class="addressfield-container-inline locality-block country-US">
+                  <span class="locality">{{ item.content.locality['#value'] }},</span>&nbsp;<span class="state">{{ item.content.administrative_area }}</span><span class="postal-code">{{ item.content.postal_code }}</span>
+              </div>
+          </div>
+        {% if display_item_tag %}
+            </{{ field_item_tag|default('div') }}>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% if display_field_tag %}
+    </{{ field_tag|default('div') }}>
+{% endif %}
+

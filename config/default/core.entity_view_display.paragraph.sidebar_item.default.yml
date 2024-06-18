@@ -1,0 +1,48 @@
+uuid: 62d3f47f-2d09-4756-87ef-92af85f9d30d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_item.field_sidebar_text
+    - field.field.paragraph.sidebar_item.field_title
+    - paragraphs.paragraphs_type.sidebar_item
+  module:
+    - fences
+    - text
+_core:
+  default_config_hash: 85TCVguQ7DrM33BV36DnPkIAUEccjgRRZWx9UuR1FA4
+id: paragraph.sidebar_item.default
+targetEntityType: paragraph
+bundle: sidebar_item
+mode: default
+content:
+  field_sidebar_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,15 @@
+uuid: ad6d6666-28e2-47b9-bfed-0fdc39135d50
+langcode: und
+status: true
+dependencies: {  }
+name: hero_fixed_c_desktop_1x
+label: 'Hero fixed c-desktop 1x (1440x460)'
+effects:
+  4bc95871-fea9-4373-9b94-250c4b44fa98:
+    uuid: 4bc95871-fea9-4373-9b94-250c4b44fa98
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 460
+      anchor: center-bottom

@@ -1,0 +1,21 @@
+uuid: 91701b77-cc72-4bbf-91e9-bc920ec6e6ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.event
+_core:
+  default_config_hash: t4k7BVE2Hasc5sw7tPyQHPtfwh3JjY-45jj6Gxiua94
+id: node.event.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: event
+label: 'Phone Number'
+description: '(Optional) A phone number for constituents to call to get more info about this event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

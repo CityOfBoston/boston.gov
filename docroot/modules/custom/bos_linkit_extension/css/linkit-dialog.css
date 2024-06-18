@@ -1,0 +1,57 @@
+
+.horizontal-tabs {
+  margin: 0;
+  border:1px solid #cccccc;
+  border: none;
+}
+.horizontal-tabs .horizontal-tabs-list {
+  background-color: transparent;
+  border-right: none;
+  margin-bottom: -7px;
+}
+.horizontal-tabs .cob-details-wrapper {
+  border: none;
+  border-radius: unset;
+}
+.horizontal-tabs-panes {
+  border: 1px solid #ccc;
+}
+.horizontal-tabs-pane {
+  padding: 0;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.horizontal-tabs .horizontal-tab-button {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+}
+.horizontal-tabs .horizontal-tab-button.selected {
+  border-bottom: 1px solid transparent;
+}
+.horizontal-tabs .horizontal-tab-button.first{
+  border-left: 1px solid #dedede;
+}
+.cob-radio-wrapper .form-radios {
+  display: flex;
+  flex-flow: row;
+}
+.cob-radio-wrapper .form-type-radio:nth-child(n+2) {
+  margin-left: 10px;
+}
+.cob-radio-frameset {
+  display: none;
+}
+.cob-spinner {
+  z-index: 10001;
+  background-image: url(/core/misc/loading-small.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}

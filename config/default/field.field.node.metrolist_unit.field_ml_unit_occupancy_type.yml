@@ -1,0 +1,29 @@
+uuid: 68d530fb-2880-446f-94d4-544d007dce0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_occupancy_type
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.ml_occupancy_type
+id: node.metrolist_unit.field_ml_unit_occupancy_type
+field_name: field_ml_unit_occupancy_type
+entity_type: node
+bundle: metrolist_unit
+label: 'Occupancy Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ml_occupancy_type: ml_occupancy_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

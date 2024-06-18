@@ -1,0 +1,20 @@
+uuid: 2ff7af5e-1a63-4372-aafa-1bfb3cf93957
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_status
+  module:
+    - path
+id: taxonomy_term.bh_project_status.path
+field_name: path
+entity_type: taxonomy_term
+bundle: bh_project_status
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

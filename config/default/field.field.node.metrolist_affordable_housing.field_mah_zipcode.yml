@@ -1,0 +1,21 @@
+uuid: fd6b746c-30f5-4ea1-9648-14c48d3b6e6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_zipcode
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: ddnVjXQIX5P-Z2KntBuHrlHlcv5OkvameNJrlzZKz5I
+id: node.metrolist_affordable_housing.field_mah_zipcode
+field_name: field_mah_zipcode
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Zipcode
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

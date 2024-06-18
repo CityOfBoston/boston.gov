@@ -1,0 +1,13 @@
+uuid: 47b95b9f-23c2-4a34-8acc-c60ba7ae5959
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: o2HJ3Ef6TXVbVAY5U_4W-gvQTXgJ6etSqnrmaFZvWFU
+id: node.popup_icon
+label: 'Popup Icon'
+description: ''
+targetEntityType: node
+cache: true

@@ -1,0 +1,45 @@
+name: Sidebar Component
+description: "Provides theming for the boston website sidebar."
+package: "City of Boston (components)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_components
+  - paragraphs
+  - text
+  - link
+config_devel:
+  - core.entity_form_display.paragraph.sidebar_item.default
+  - core.entity_form_display.paragraph.sidebar_item_w_icon.default
+  - core.entity_form_display.paragraph.social_media_links.default
+  - core.entity_form_display.paragraph.social_networking.default
+  - core.entity_view_display.paragraph.sidebar_item.default
+  - core.entity_view_display.paragraph.sidebar_item.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.sidebar_item.separated_title
+  - core.entity_view_display.paragraph.sidebar_item_w_icon.default
+  - core.entity_view_display.paragraph.sidebar_item_w_icon.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.sidebar_item_w_icon.separated_title
+  - core.entity_view_display.paragraph.social_media_links.default
+  - core.entity_view_display.paragraph.social_media_links.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.social_media_links.separated_title
+  - core.entity_view_display.paragraph.social_networking.default
+  - core.entity_view_display.paragraph.social_networking.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.social_networking.separated_title
+  - core.entity_view_mode.paragraph.sidebar
+  - field.field.paragraph.sidebar_item.field_sidebar_text
+  - field.field.paragraph.sidebar_item.field_title
+  - field.field.paragraph.sidebar_item_w_icon.field_sidebar_icon
+  - field.field.paragraph.sidebar_item_w_icon.field_sidebar_text
+  - field.field.paragraph.sidebar_item_w_icon.field_title
+  - field.field.paragraph.social_media_links.field_social_media_link
+  - field.field.paragraph.social_networking.field_external_link
+  - field.field.paragraph.social_networking.field_social_icon
+  - language.content_settings.paragraph.sidebar_item_w_icon
+  - language.content_settings.paragraph.sidebar_item
+  - language.content_settings.paragraph.social_media_links
+  - language.content_settings.paragraph.social_networking
+  - paragraphs.paragraphs_type.sidebar_item_w_icon
+  - paragraphs.paragraphs_type.sidebar_item
+  - paragraphs.paragraphs_type.social_media_links
+  - paragraphs.paragraphs_type.social_networking

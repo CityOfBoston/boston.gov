@@ -1,0 +1,23 @@
+uuid: 52268819-c3f2-42c0-83f1-91bcd95a337f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_candidate_vot
+    - paragraphs.paragraphs_type.election_candidate_results
+id: paragraph.election_candidate_results.field_candidate_vot
+field_name: field_candidate_vot
+entity_type: paragraph
+bundle: election_candidate_results
+label: Votes
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

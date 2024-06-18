@@ -1,0 +1,19 @@
+uuid: 3471d8b0-f7cd-428c-ab9e-c742ebc62097
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_title
+    - taxonomy.vocabulary.bh_public_stage
+id: taxonomy_term.bh_public_stage.field_display_title
+field_name: field_display_title
+entity_type: taxonomy_term
+bundle: bh_public_stage
+label: 'Display Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

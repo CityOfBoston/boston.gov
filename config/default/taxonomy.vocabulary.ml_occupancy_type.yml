@@ -1,0 +1,8 @@
+uuid: 823e1838-4f0b-4f54-910f-522b075ecbdc
+langcode: en
+status: true
+dependencies: {  }
+name: 'Occupancy Type'
+vid: ml_occupancy_type
+description: 'MetroList: Occupancy Type'
+weight: 0

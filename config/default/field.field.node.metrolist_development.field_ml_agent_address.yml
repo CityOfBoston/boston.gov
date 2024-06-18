@@ -1,0 +1,19 @@
+uuid: 40b3a01d-0698-445f-b622-12381b29d65c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_agent_address
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_agent_address
+field_name: field_ml_agent_address
+entity_type: node
+bundle: metrolist_development
+label: 'Agent Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

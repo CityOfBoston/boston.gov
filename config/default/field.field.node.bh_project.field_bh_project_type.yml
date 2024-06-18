@@ -1,0 +1,29 @@
+uuid: 0b56b5c7-1a54-4c07-8051-09fd62b78e00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_project_type
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_project_type
+id: node.bh_project.field_bh_project_type
+field_name: field_bh_project_type
+entity_type: node
+bundle: bh_project
+label: 'Project Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_project_type: bh_project_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,48 @@
+_core:
+  default_config_hash: 7LkiviGITIpniIOOIzpuxR7r4XzqqYN_cwu0fb0kx1M
+content_access_roles_gids:
+  administrator: 0
+  anonymous: 1
+  authenticated: 2
+  content_author: 3
+  content_editor: 4
+  developer: 5
+  site_administrator: 6
+  content_reviewer: 7
+  metrolist_editor: 8
+  election_editor: 9
+  city_clerk_editor: 10
+content_access_node_type:
+  test_component_page: 'a:2:{s:4:"view";a:1:{i:0;s:13:"authenticated";}s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  department_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  article: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  event: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_event: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_article: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_department_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_landing_page: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_emergency_alert: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  status_item: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_status_item: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  listing_page: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_listing_page: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  tabbed_content: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_tabbed_content: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  metrolist_affordable_housing: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_metrolist: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  person_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_person_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_place_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_transaction: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  post: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_post: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  public_notice: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_public_notice: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  program_initiative_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_program_initiative_profile: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  topic_page: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_script_page: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_emergency_alert_new: 'a:1:{s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  node_neighborhood_lookup: 'a:2:{s:4:"view";a:1:{i:0;s:13:"authenticated";}s:8:"view own";a:1:{i:0;s:13:"authenticated";}}'
+  election_report: 'a:2:{s:8:"view_own";a:4:{i:0;s:9:"anonymous";i:1;s:13:"authenticated";i:2;s:13:"administrator";i:3;s:18:"site_administrator";}s:4:"view";a:4:{i:0;s:9:"anonymous";i:1;s:13:"authenticated";i:2;s:13:"administrator";i:3;s:18:"site_administrator";}}'
+  roll_call_dockets: 'a:2:{s:8:"view_own";a:3:{i:0;s:17:"city_clerk_editor";i:1;s:13:"administrator";i:2;s:18:"site_administrator";}s:4:"view";a:3:{i:0;s:17:"city_clerk_editor";i:1;s:13:"administrator";i:2;s:18:"site_administrator";}}'

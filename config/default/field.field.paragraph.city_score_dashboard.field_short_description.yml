@@ -1,0 +1,23 @@
+uuid: e59e0c79-5dd7-4808-8a75-d971c2ca1a1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.city_score_dashboard
+_core:
+  default_config_hash: O3C8FAuQSP1I52QlBXF_Zo-o49oI8YKe84FahNYovJg
+id: paragraph.city_score_dashboard.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: city_score_dashboard
+label: 'Text for Greater Than'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Scores above 1 indicate that performance is exceeding the target.'
+default_value_callback: ''
+settings: {  }
+field_type: string

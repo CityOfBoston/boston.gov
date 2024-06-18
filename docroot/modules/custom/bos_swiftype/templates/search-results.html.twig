@@ -1,0 +1,206 @@
+{#
+   @file
+   Library for connecting to Swiftype.
+#}
+<div class="breadcrumb" data-swiftype-index="false">
+  {{ drupal_block('system_breadcrumb_block') }}
+</div>
+<form id="searchForm" class="m-t700" action="{{ bos_search_url }}" accept-charset="UTF-8" method="get">
+  <input name="utf8" type="hidden" value="✓">
+  <div class="b b--fw">
+    <div class="b-c b-c--ntp" style="margin-top: -25px">
+      <div class="sf">
+        <div class="sf-i">
+          <input type="text" name="query" id="query" class="sf-i-f" value="{{ search_term }}" placeholder="Search" autofocus>
+          <label for="query" class="sf-i-l">Search</label>
+          <button class="sf-i-b">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if has_results %}
+    <div class="b b--fw b--g">
+      <div class="b-c b-c--smv">
+        <div class="g m-t000">
+            {% if facets %}
+              <div class="g--3">
+                <div class="co">
+                  <input id="collapsible" type="checkbox" class="co-f d-n" aria-hidden="true">
+                  <label for="collapsible" class="co-t">Filter</label>
+                  <div class="co-b co-b--pl">
+                    <div class="t--intro m-b200">Filter by type</div>
+
+                    <div class="m-b300">
+                      {% for key,facet in facets %}
+                        <label class="cb" for="check_{{ key }}">
+                          <input type="checkbox" name="facet[]" id="check_{{ key }}" value="{{ key }}" class="cb-f"{{ facets_extra[facet].selected }}>
+                          <span class="cb-l">{{ facets_extra[facet].facet_type }} ({{ facet }})</span>
+                        </label>
+                      {% endfor %}
+                    </div>
+
+                    <button type="submit" class="btn btn--sb">Apply</button>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+            <div class="g--9">
+              <ul class="m-a000 p-a000">
+                {% for key,record in records %}
+                  <li class="n-li">
+                    <a class="n-li-b n-li-b--r n-li-b--fw n-li--in g g--mt0" href="{{ record.url }}">
+                      <div class="n-li-t g--8">{{ record.clean }}</div>
+                      <div class="n-li-ty n-li-ty--r g--44 ta--r">{{ record.facet_type }}</div>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if info.page.num_pages > 1 %}
+                <ul class="pg">
+                  <li class="pg-li">
+                    {% if info.page.current_page > 1 %}
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="{{ info.start_pager.url }}">
+                        <span class="pg-li-i-h">&lt; previous</span>
+                      </a>
+                    {% else %}
+                      <span class="pg-li-i">&lt; previous</span>
+                    {% endif %}
+                  </li>
+                  {% for number in range %}
+                    <li class="pg-li">
+                      <a class="pg-li-i pg-li-i--link{% if number.id == info.page.current_page %} pg-li-i--a{% endif %}" href="{{ number.url }}">{{ number.id }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  <li class="pg-li">
+                    {% if info.page.current_page == info.page.num_pages %}
+                      <span class="pg-li-i">next &gt;</span>
+                    {% else %}
+                      <a class="pg-li-i pg-li-i--a pg-li-i--link" href="{{ info.end_pager.url }}">
+                        <span class="pg-li-i-h">next &gt;</span>
+                      </a>
+                    {% endif %}
+                  </li>
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+      </div>
+    </div>
+  {% elseif no_search %}
+    <div class="b b--fw b--g">
+      <div class="b-c">
+        <h2 class="h2 m-t000 m-b300">Search Boston.gov</h2>
+        <div class="intro-text supporting-text lh--200">To search the City of Boston's website, type out a keyword or phrase and click enter.</div>
+      </div>
+    </div>
+    <!-- More Resources -->
+    <div class="entity entity-paragraphs-item component-section paragraphs-item-transaction-grid b b--g b--fw">
+      <div class="b-c">
+        <div class="sh">
+          <h2 class="sh-title">More resources</h2>
+        </div>
+        <div class="g">
+          <a href="https://www.boston.gov/news" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+            <div class="lwi-ic">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><polygon points="106.3 117.98 32.9 117.98 32.9 22.01 82.06 22.01 106.3 43.92 106.3 117.98" fill="#fff" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></polygon><line x1="45.12" y1="58.94" x2="94.08" y2="58.94" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="70.03" x2="94.08" y2="70.03" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="82.96" x2="94.08" y2="82.96" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="94.05" x2="94.08" y2="94.05" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><polyline points="82.06 22.01 82.06 43.92 106.3 43.92" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></polyline></svg>
+            </div>
+            <div class="lwi-t">
+              City of Boston News
+            </div>
+          </a>
+          <a href="https://www.boston.gov/events" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+            <div class="lwi-ic">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><rect x="28.4" y="36.55" width="87.2" height="81.92" fill="#fff" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><line x1="28.4" y1="50.44" x2="115.6" y2="50.44" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></line><rect x="34.65" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="95.68" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="34.65" y="76.88" width="13.68" height="13.68" fill="#0c1f2e" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="76.88" width="13.68" height="13.68" fill="#0c1f2e" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="76.88" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="95.68" y="76.88" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="34.65" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="53.83" y="25.53" width="5.68" height="17.98" fill="#fff" stroke="#0f1f2d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></rect><rect x="84.5" y="25.53" width="5.68" height="17.98" fill="#fff" stroke="#0f1f2d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></rect></svg>
+            </div>
+            <div class="lwi-t">
+              City of Boston Events
+            </div>
+          </a>
+          <a href="https://www.boston.gov/public-notices" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+            <div class="lwi-ic">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><circle cx="73.23" cy="43.09" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="93.39 70.02 93.39 101.81 53.08 101.81 53.08 70.02 64.33 61.5 82.13 61.5 93.39 70.02" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon><rect x="42.81" y="99.71" width="60.85" height="11.57" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></rect><circle cx="114.45" cy="52.56" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="134.61 79.5 134.61 111.28 94.3 111.28 94.3 79.5 105.55 70.97 123.35 70.97 134.61 79.5" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon><circle cx="32.92" cy="52.56" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="53.08 79.5 53.08 111.28 12.77 111.28 12.77 79.5 24.02 70.97 41.82 70.97 53.08 79.5" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon></svg>
+            </div>
+            <div class="lwi-t">
+              Notices for Public Hearings and Meetings
+            </div>
+          </a>
+          <a href="https://www.boston.gov/bid-listings" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+            <div class="lwi-ic">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><rect x="17.28" y="31.82" width="109.45" height="80.36" transform="translate(144 0) rotate(90)" fill="#fff"></rect><path d="M113.68,128.22H30.32V15.78h83.36Zm-80.36-3h77.36V18.78H33.32Z" fill="#0d202e"></path><rect x="48.89" y="63.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="75.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="87.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="99.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="111.18" width="47" height="3" fill="#0d202e"></rect><path d="M83.91,42.67a4.93,4.93,0,0,0-.94,3A4.09,4.09,0,0,0,85.7,44.5a4.86,4.86,0,0,0,1-3A4.09,4.09,0,0,0,83.91,42.67Z" fill="#0d202e"></path><path d="M81.7,42.91A4.53,4.53,0,0,0,83,45.71a4.81,4.81,0,0,0,1.21-2.9A4.57,4.57,0,0,0,82.91,40,4.81,4.81,0,0,0,81.7,42.91Z" fill="#0d202e"></path><path d="M80.8,48a5.08,5.08,0,0,0-2.43,2.36,4.24,4.24,0,0,0,3.16.41A5.09,5.09,0,0,0,84,48.41,4.21,4.21,0,0,0,80.8,48Z" fill="#0d202e"></path><path d="M78.61,47a5.19,5.19,0,0,0-.23,3.42A4.91,4.91,0,0,0,81,48.29a5.22,5.22,0,0,0,.23-3.43A5,5,0,0,0,78.61,47Z" fill="#0d202e"></path><path d="M76,51.56a4.88,4.88,0,0,0-3.28,1.2A4.75,4.75,0,0,0,75.6,54.7a4.84,4.84,0,0,0,3.28-1.19A4.76,4.76,0,0,0,76,51.56Z" fill="#0d202e"></path><path d="M74.32,49.48a5.65,5.65,0,0,0-1.6,3.32A4.7,4.7,0,0,0,76.08,52a5.69,5.69,0,0,0,1.6-3.33A4.68,4.68,0,0,0,74.32,49.48Z" fill="#0d202e"></path><path d="M84.19,36.84a4.62,4.62,0,0,0,.45,3A4.39,4.39,0,0,0,86.5,37.5a4.61,4.61,0,0,0-.44-3A4.44,4.44,0,0,0,84.19,36.84Z" fill="#0d202e"></path><path d="M82.39,38.13a4,4,0,0,0,2.29,1.73,4.71,4.71,0,0,0-.18-3,3.89,3.89,0,0,0-2.28-1.73A4.68,4.68,0,0,0,82.39,38.13Z" fill="#0d202e"></path><path d="M82.75,32.44a3.28,3.28,0,0,0,1.67,1.66,3.85,3.85,0,0,0,.15-2.48A3.28,3.28,0,0,0,82.9,30,3.84,3.84,0,0,0,82.75,32.44Z" fill="#0d202e"></path><path d="M82.21,34.19a3.09,3.09,0,0,0,2.29-.12A3.4,3.4,0,0,0,83,32.24a3.09,3.09,0,0,0-2.29.12A3.37,3.37,0,0,0,82.21,34.19Z" fill="#0d202e"></path><path d="M79.22,29.25a3.35,3.35,0,0,0,2.08,1.14A3.9,3.9,0,0,0,80.73,28a3.35,3.35,0,0,0-2.08-1.14A3.9,3.9,0,0,0,79.22,29.25Z" fill="#0d202e"></path><path d="M79.2,31.09a3.07,3.07,0,0,0,2.16-.75,3.44,3.44,0,0,0-2-1.35,3,3,0,0,0-2.16.75A3.49,3.49,0,0,0,79.2,31.09Z" fill="#0d202e"></path><path d="M76.15,27.88a2.2,2.2,0,0,0,1.67,0,2.62,2.62,0,0,0-1.1-1.39,2.23,2.23,0,0,0-1.68,0A2.67,2.67,0,0,0,76.15,27.88Z" fill="#0d202e"></path><path d="M60.09,43.13a4.9,4.9,0,0,1,.94,3A4.05,4.05,0,0,1,58.3,45a4.87,4.87,0,0,1-.95-3A4.09,4.09,0,0,1,60.09,43.13Z" fill="#0d202e"></path><path d="M62.3,43.36A4.57,4.57,0,0,1,61,46.17a4.81,4.81,0,0,1-1.21-2.91,4.53,4.53,0,0,1,1.29-2.8A4.81,4.81,0,0,1,62.3,43.36Z" fill="#0d202e"></path><path d="M63.2,48.11a5.08,5.08,0,0,1,2.43,2.36,4.24,4.24,0,0,1-3.16.41,5.09,5.09,0,0,1-2.42-2.36A4.21,4.21,0,0,1,63.2,48.11Z" fill="#0d202e"></path><path d="M65.39,47.09a5.27,5.27,0,0,1,.23,3.42A4.91,4.91,0,0,1,63,48.4,5.23,5.23,0,0,1,62.77,45,4.92,4.92,0,0,1,65.39,47.09Z" fill="#0d202e"></path><path d="M68,51.68a4.87,4.87,0,0,1,3.28,1.19,4.8,4.8,0,0,1-2.87,2,4.88,4.88,0,0,1-3.28-1.2A4.72,4.72,0,0,1,68,51.68Z" fill="#0d202e"></path><path d="M69.68,49.59a5.65,5.65,0,0,1,1.6,3.32,4.7,4.7,0,0,1-3.36-.85,5.67,5.67,0,0,1-1.6-3.33A4.73,4.73,0,0,1,69.68,49.59Z" fill="#0d202e"></path><path d="M59.81,37.29a4.62,4.62,0,0,1-.45,3A4.39,4.39,0,0,1,57.5,38a4.58,4.58,0,0,1,.44-3A4.44,4.44,0,0,1,59.81,37.29Z" fill="#0d202e"></path><path d="M61.61,38.58a3.94,3.94,0,0,1-2.29,1.74,4.71,4.71,0,0,1,.18-3,3.89,3.89,0,0,1,2.28-1.73A4.65,4.65,0,0,1,61.61,38.58Z" fill="#0d202e"></path><path d="M61.25,32.89a3.24,3.24,0,0,1-1.67,1.66,3.82,3.82,0,0,1-.15-2.47,3.28,3.28,0,0,1,1.67-1.67A3.85,3.85,0,0,1,61.25,32.89Z" fill="#0d202e"></path><path d="M61.79,34.65a3.07,3.07,0,0,1-2.29-.13A3.4,3.4,0,0,1,61,32.69a3.07,3.07,0,0,1,2.29.13A3.4,3.4,0,0,1,61.79,34.65Z" fill="#0d202e"></path><path d="M64.78,29.7a3.3,3.3,0,0,1-2.08,1.14,3.87,3.87,0,0,1,.57-2.42,3.3,3.3,0,0,1,2.08-1.14A3.87,3.87,0,0,1,64.78,29.7Z" fill="#0d202e"></path><path d="M64.8,31.54a3,3,0,0,1-2.16-.75,3.49,3.49,0,0,1,2-1.35,3.07,3.07,0,0,1,2.16.75A3.44,3.44,0,0,1,64.8,31.54Z" fill="#0d202e"></path><path d="M67.85,28.33a2.2,2.2,0,0,1-1.67,0,2.62,2.62,0,0,1,1.1-1.39,2.28,2.28,0,0,1,1.68,0A2.63,2.63,0,0,1,67.85,28.33Z" fill="#0d202e"></path><path d="M67.34,32.78h4.9a12.09,12.09,0,0,1,3.3.3,3.13,3.13,0,0,1,2,4.16A3.1,3.1,0,0,1,75,38.93,4,4,0,0,1,77.52,40a2.84,2.84,0,0,1,.69,1.9A3.38,3.38,0,0,1,76.12,45a8.48,8.48,0,0,1-3.43.46H67.34Zm3,2.36v2.64h2.38c.72,0,1.89-.05,1.89-1.36S73.57,35.14,73,35.14Zm0,4.94v3.07h2.2c1.06,0,2.44-.06,2.44-1.51s-1.25-1.54-1.9-1.56Z" fill="#0d202e"></path></svg>
+            </div>
+            <div class="lwi-t">
+              Bids and RFPs
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="b b--fw b--g">
+      <div class="b-c b-c--smv">
+        <h2 class="h2 m-t000 m-b300">No Results Found</h2>
+        <div class="intro-text supporting-text lh--200">Your search returned no results. Please try searching again with a different keyword or phrase, and make sure to check for typos.</div>
+      </div>
+    </div>
+  {% endif %}
+</form>
+
+{% if not no_search %}
+  <!-- More Resources -->
+  <div class="entity entity-paragraphs-item component-section paragraphs-item-transaction-grid b b--g b--fw">
+    <div class="b-c">
+      <div class="sh">
+        <h2 class="sh-title">More resources</h2>
+      </div>
+      <div class="g">
+        <a href="https://www.boston.gov/news" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+          <div class="lwi-ic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><polygon points="106.3 117.98 32.9 117.98 32.9 22.01 82.06 22.01 106.3 43.92 106.3 117.98" fill="#fff" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></polygon><line x1="45.12" y1="58.94" x2="94.08" y2="58.94" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="70.03" x2="94.08" y2="70.03" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="82.96" x2="94.08" y2="82.96" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="45.12" y1="94.05" x2="94.08" y2="94.05" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><polyline points="82.06 22.01 82.06 43.92 106.3 43.92" fill="none" stroke="#121f2c" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></polyline></svg>
+          </div>
+          <div class="lwi-t">
+            City of Boston News
+          </div>
+        </a>
+        <a href="https://www.boston.gov/events" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+          <div class="lwi-ic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><rect x="28.4" y="36.55" width="87.2" height="81.92" fill="#fff" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><line x1="28.4" y1="50.44" x2="115.6" y2="50.44" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></line><rect x="34.65" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="95.68" y="57.23" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="34.65" y="76.88" width="13.68" height="13.68" fill="#0c1f2e" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="76.88" width="13.68" height="13.68" fill="#0c1f2e" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="76.88" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="95.68" y="76.88" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="34.65" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="54.99" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="75.33" y="96.53" width="13.68" height="13.68" fill="none" stroke="#0c1f2e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2.87"></rect><rect x="53.83" y="25.53" width="5.68" height="17.98" fill="#fff" stroke="#0f1f2d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></rect><rect x="84.5" y="25.53" width="5.68" height="17.98" fill="#fff" stroke="#0f1f2d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></rect></svg>
+          </div>
+          <div class="lwi-t">
+            City of Boston Events
+          </div>
+        </a>
+        <a href="https://www.boston.gov/public-notices" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+          <div class="lwi-ic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><circle cx="73.23" cy="43.09" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="93.39 70.02 93.39 101.81 53.08 101.81 53.08 70.02 64.33 61.5 82.13 61.5 93.39 70.02" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon><rect x="42.81" y="99.71" width="60.85" height="11.57" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></rect><circle cx="114.45" cy="52.56" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="134.61 79.5 134.61 111.28 94.3 111.28 94.3 79.5 105.55 70.97 123.35 70.97 134.61 79.5" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon><circle cx="32.92" cy="52.56" r="10.37" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></circle><polygon points="53.08 79.5 53.08 111.28 12.77 111.28 12.77 79.5 24.02 70.97 41.82 70.97 53.08 79.5" fill="#fff" stroke="#0f1f2d" stroke-miterlimit="10" stroke-width="3"></polygon></svg>
+          </div>
+          <div class="lwi-t">
+            Notices for Public Hearings and Meetings
+          </div>
+        </a>
+        <a href="https://www.boston.gov/bid-listings" class="contextual-region entity entity-paragraphs-item component-section paragraphs-item-transactions lwi g--3 g--3--sl m-t200 m-t500--m" target="_blank" tabindex="-1">
+          <div class="lwi-ic">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144"><rect x="17.28" y="31.82" width="109.45" height="80.36" transform="translate(144 0) rotate(90)" fill="#fff"></rect><path d="M113.68,128.22H30.32V15.78h83.36Zm-80.36-3h77.36V18.78H33.32Z" fill="#0d202e"></path><rect x="48.89" y="63.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="75.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="87.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="99.18" width="47" height="3" fill="#0d202e"></rect><rect x="48.89" y="111.18" width="47" height="3" fill="#0d202e"></rect><path d="M83.91,42.67a4.93,4.93,0,0,0-.94,3A4.09,4.09,0,0,0,85.7,44.5a4.86,4.86,0,0,0,1-3A4.09,4.09,0,0,0,83.91,42.67Z" fill="#0d202e"></path><path d="M81.7,42.91A4.53,4.53,0,0,0,83,45.71a4.81,4.81,0,0,0,1.21-2.9A4.57,4.57,0,0,0,82.91,40,4.81,4.81,0,0,0,81.7,42.91Z" fill="#0d202e"></path><path d="M80.8,48a5.08,5.08,0,0,0-2.43,2.36,4.24,4.24,0,0,0,3.16.41A5.09,5.09,0,0,0,84,48.41,4.21,4.21,0,0,0,80.8,48Z" fill="#0d202e"></path><path d="M78.61,47a5.19,5.19,0,0,0-.23,3.42A4.91,4.91,0,0,0,81,48.29a5.22,5.22,0,0,0,.23-3.43A5,5,0,0,0,78.61,47Z" fill="#0d202e"></path><path d="M76,51.56a4.88,4.88,0,0,0-3.28,1.2A4.75,4.75,0,0,0,75.6,54.7a4.84,4.84,0,0,0,3.28-1.19A4.76,4.76,0,0,0,76,51.56Z" fill="#0d202e"></path><path d="M74.32,49.48a5.65,5.65,0,0,0-1.6,3.32A4.7,4.7,0,0,0,76.08,52a5.69,5.69,0,0,0,1.6-3.33A4.68,4.68,0,0,0,74.32,49.48Z" fill="#0d202e"></path><path d="M84.19,36.84a4.62,4.62,0,0,0,.45,3A4.39,4.39,0,0,0,86.5,37.5a4.61,4.61,0,0,0-.44-3A4.44,4.44,0,0,0,84.19,36.84Z" fill="#0d202e"></path><path d="M82.39,38.13a4,4,0,0,0,2.29,1.73,4.71,4.71,0,0,0-.18-3,3.89,3.89,0,0,0-2.28-1.73A4.68,4.68,0,0,0,82.39,38.13Z" fill="#0d202e"></path><path d="M82.75,32.44a3.28,3.28,0,0,0,1.67,1.66,3.85,3.85,0,0,0,.15-2.48A3.28,3.28,0,0,0,82.9,30,3.84,3.84,0,0,0,82.75,32.44Z" fill="#0d202e"></path><path d="M82.21,34.19a3.09,3.09,0,0,0,2.29-.12A3.4,3.4,0,0,0,83,32.24a3.09,3.09,0,0,0-2.29.12A3.37,3.37,0,0,0,82.21,34.19Z" fill="#0d202e"></path><path d="M79.22,29.25a3.35,3.35,0,0,0,2.08,1.14A3.9,3.9,0,0,0,80.73,28a3.35,3.35,0,0,0-2.08-1.14A3.9,3.9,0,0,0,79.22,29.25Z" fill="#0d202e"></path><path d="M79.2,31.09a3.07,3.07,0,0,0,2.16-.75,3.44,3.44,0,0,0-2-1.35,3,3,0,0,0-2.16.75A3.49,3.49,0,0,0,79.2,31.09Z" fill="#0d202e"></path><path d="M76.15,27.88a2.2,2.2,0,0,0,1.67,0,2.62,2.62,0,0,0-1.1-1.39,2.23,2.23,0,0,0-1.68,0A2.67,2.67,0,0,0,76.15,27.88Z" fill="#0d202e"></path><path d="M60.09,43.13a4.9,4.9,0,0,1,.94,3A4.05,4.05,0,0,1,58.3,45a4.87,4.87,0,0,1-.95-3A4.09,4.09,0,0,1,60.09,43.13Z" fill="#0d202e"></path><path d="M62.3,43.36A4.57,4.57,0,0,1,61,46.17a4.81,4.81,0,0,1-1.21-2.91,4.53,4.53,0,0,1,1.29-2.8A4.81,4.81,0,0,1,62.3,43.36Z" fill="#0d202e"></path><path d="M63.2,48.11a5.08,5.08,0,0,1,2.43,2.36,4.24,4.24,0,0,1-3.16.41,5.09,5.09,0,0,1-2.42-2.36A4.21,4.21,0,0,1,63.2,48.11Z" fill="#0d202e"></path><path d="M65.39,47.09a5.27,5.27,0,0,1,.23,3.42A4.91,4.91,0,0,1,63,48.4,5.23,5.23,0,0,1,62.77,45,4.92,4.92,0,0,1,65.39,47.09Z" fill="#0d202e"></path><path d="M68,51.68a4.87,4.87,0,0,1,3.28,1.19,4.8,4.8,0,0,1-2.87,2,4.88,4.88,0,0,1-3.28-1.2A4.72,4.72,0,0,1,68,51.68Z" fill="#0d202e"></path><path d="M69.68,49.59a5.65,5.65,0,0,1,1.6,3.32,4.7,4.7,0,0,1-3.36-.85,5.67,5.67,0,0,1-1.6-3.33A4.73,4.73,0,0,1,69.68,49.59Z" fill="#0d202e"></path><path d="M59.81,37.29a4.62,4.62,0,0,1-.45,3A4.39,4.39,0,0,1,57.5,38a4.58,4.58,0,0,1,.44-3A4.44,4.44,0,0,1,59.81,37.29Z" fill="#0d202e"></path><path d="M61.61,38.58a3.94,3.94,0,0,1-2.29,1.74,4.71,4.71,0,0,1,.18-3,3.89,3.89,0,0,1,2.28-1.73A4.65,4.65,0,0,1,61.61,38.58Z" fill="#0d202e"></path><path d="M61.25,32.89a3.24,3.24,0,0,1-1.67,1.66,3.82,3.82,0,0,1-.15-2.47,3.28,3.28,0,0,1,1.67-1.67A3.85,3.85,0,0,1,61.25,32.89Z" fill="#0d202e"></path><path d="M61.79,34.65a3.07,3.07,0,0,1-2.29-.13A3.4,3.4,0,0,1,61,32.69a3.07,3.07,0,0,1,2.29.13A3.4,3.4,0,0,1,61.79,34.65Z" fill="#0d202e"></path><path d="M64.78,29.7a3.3,3.3,0,0,1-2.08,1.14,3.87,3.87,0,0,1,.57-2.42,3.3,3.3,0,0,1,2.08-1.14A3.87,3.87,0,0,1,64.78,29.7Z" fill="#0d202e"></path><path d="M64.8,31.54a3,3,0,0,1-2.16-.75,3.49,3.49,0,0,1,2-1.35,3.07,3.07,0,0,1,2.16.75A3.44,3.44,0,0,1,64.8,31.54Z" fill="#0d202e"></path><path d="M67.85,28.33a2.2,2.2,0,0,1-1.67,0,2.62,2.62,0,0,1,1.1-1.39,2.28,2.28,0,0,1,1.68,0A2.63,2.63,0,0,1,67.85,28.33Z" fill="#0d202e"></path><path d="M67.34,32.78h4.9a12.09,12.09,0,0,1,3.3.3,3.13,3.13,0,0,1,2,4.16A3.1,3.1,0,0,1,75,38.93,4,4,0,0,1,77.52,40a2.84,2.84,0,0,1,.69,1.9A3.38,3.38,0,0,1,76.12,45a8.48,8.48,0,0,1-3.43.46H67.34Zm3,2.36v2.64h2.38c.72,0,1.89-.05,1.89-1.36S73.57,35.14,73,35.14Zm0,4.94v3.07h2.2c1.06,0,2.44-.06,2.44-1.51s-1.25-1.54-1.9-1.56Z" fill="#0d202e"></path></svg>
+          </div>
+          <div class="lwi-t">
+            Bids and RFPs
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="b">
+  <div class="b-c">
+{#    <div class="h2 tt-u ta-c p-h300">Can't find what you're looking for?</div>#}
+{#    <hr class="hr hr--sq m-h300 m-v500">#}
+    <div class="ta-c p-h200 t--intro">
+      If you still can't find what you're looking for, our 311 operators are available 24/7 to help point you in the right direction. Call <a href="tel:311">311</a>, or <a href="tel:617-635-4500">617-635-4500</a>.
+    </div>
+  </div>
+</div>
+{% endif %}

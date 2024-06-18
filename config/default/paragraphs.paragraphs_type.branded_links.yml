@@ -1,0 +1,17 @@
+uuid: 6c04620f-b898-45bd-a6d8-b224c7d6d5c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+_core:
+  default_config_hash: u2yPjYe3qBh-WW9Zqlwt7SCVHqOkMHfVM_xQ8NSsW3k
+id: branded_links
+label: 'Branded Links'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Cards'
+behavior_plugins: {  }

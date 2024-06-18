@@ -1,0 +1,19 @@
+uuid: 84caf06b-9569-4dc8-af7b-f7547e62004c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_agent_email
+    - node.type.metrolist_development
+id: node.metrolist_development.field_ml_agent_email
+field_name: field_ml_agent_email
+entity_type: node
+bundle: metrolist_development
+label: 'Agent Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

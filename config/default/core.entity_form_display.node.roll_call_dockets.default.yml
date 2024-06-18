@@ -1,0 +1,133 @@
+uuid: a54a2432-0677-41f0-9b3a-a89fd253f52f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.roll_call_dockets.body
+    - field.field.node.roll_call_dockets.field_components
+    - field.field.node.roll_call_dockets.field_meeting_date
+    - node.type.roll_call_dockets
+    - workflows.workflow.managed_workflow
+  module:
+    - content_moderation
+    - datetime
+    - field_group
+    - paragraphs
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_council_meeting:
+      children:
+        - group_docket
+      label: 'Council Meeting'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: vertical
+        width_breakpoint: 640
+    group_docket:
+      children:
+        - title
+        - field_meeting_date
+        - body
+        - field_components
+      label: Docket
+      region: content
+      parent_name: group_council_meeting
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.roll_call_dockets.default
+targetEntityType: node
+bundle: roll_call_dockets
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_components:
+    type: entity_reference_paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: 'Roll Call Vote'
+      title_plural: 'Roll Call Votes'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: roll_call_vote
+    third_party_settings: {  }
+  field_meeting_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  promote: true
+  sticky: true
+  url_redirects: true

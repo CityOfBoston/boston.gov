@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.group_of_links
+    - field.field.paragraph.transactions.field_grid_link
+    - field.field.paragraph.transactions.field_icon
+    - image.style.transaction_icon_180x100
+    - paragraphs.paragraphs_type.transactions
+  module:
+    - entity_reference_revisions
+    - fences
+    - svg_image
+id: paragraph.transactions.group_of_links
+targetEntityType: paragraph
+bundle: transactions
+mode: group_of_links
+content:
+  field_grid_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: transaction_icon_180x100
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+hidden: {  }

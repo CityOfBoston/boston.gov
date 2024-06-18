@@ -1,0 +1,18 @@
+uuid: 227bd884-9a9b-44ec-929c-29193f8dc65d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.how_to
+id: node.how_to.created
+field_name: created
+entity_type: node
+bundle: how_to
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,19 @@
+uuid: 95936f55-6d71-47b1-8411-7c6276919635
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.grid_of_quotes
+id: paragraph.grid_of_quotes.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: grid_of_quotes
+label: Title
+description: 'Enter the title of the component. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

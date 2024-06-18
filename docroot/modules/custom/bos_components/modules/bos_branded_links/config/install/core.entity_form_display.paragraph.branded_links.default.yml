@@ -1,0 +1,82 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.branded_links.field_component_theme
+    - field.field.paragraph.branded_links.field_component_title
+    - field.field.paragraph.branded_links.field_contact
+    - field.field.paragraph.branded_links.field_image
+    - field.field.paragraph.branded_links.field_links
+    - field.field.paragraph.branded_links.field_short_title
+    - paragraphs.paragraphs_type.branded_links
+  module:
+    - media_library
+    - paragraphs
+id: paragraph.branded_links.default
+targetEntityType: paragraph
+bundle: branded_links
+mode: default
+content:
+  field_component_theme:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_component_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_contact:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_image:
+    weight: 4
+    settings:
+      media_types:
+        - image
+        - icon
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_links:
+    weight: 5
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_short_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,20 @@
+uuid: 9e1ebe51-19ff-4566-a6da-6f2be4f883ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_update
+  module:
+    - publication_date
+id: node.bh_update.published_at
+field_name: published_at
+entity_type: node
+bundle: bh_update
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

@@ -1,0 +1,18 @@
+uuid: b00edd2d-3090-47c5-98e8-b8738934f47c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_rent_type
+id: taxonomy_term.ml_rent_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: ml_rent_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

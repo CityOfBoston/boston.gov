@@ -1,0 +1,15 @@
+uuid: 300c2b0f-f490-4b91-8755-c2eb017d22b5
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Image sitting at top of column. Used in 3col-with-image.'
+id: media.columns
+label: 'Columns (resp)'
+description: ''
+targetEntityType: media
+cache: true

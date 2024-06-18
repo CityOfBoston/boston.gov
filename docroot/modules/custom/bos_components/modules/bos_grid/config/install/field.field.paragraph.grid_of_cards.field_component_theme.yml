@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_cards
+  module:
+    - options
+id: paragraph.grid_of_cards.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_cards
+label: 'Component Theme'
+description: 'This will change the colors output for the component. This component defaults to the grey theme, but supports white, or blue.'
+required: true
+translatable: false
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

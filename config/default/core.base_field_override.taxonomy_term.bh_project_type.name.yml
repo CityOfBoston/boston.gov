@@ -1,0 +1,18 @@
+uuid: 236f7385-ac8f-4518-b9b8-ee5fd5d00127
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_type
+id: taxonomy_term.bh_project_type.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bh_project_type
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

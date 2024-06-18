@@ -1,0 +1,22 @@
+uuid: f7bfe62c-4726-4517-bc05-5a2ac8f7a31a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+  module:
+    - publication_date
+_core:
+  default_config_hash: ob6FZA1sXRY7h-UkiPLz58bJTeajA9HWs_x3aItAGz0
+id: node.script_page.published_at
+field_name: published_at
+entity_type: node
+bundle: script_page
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

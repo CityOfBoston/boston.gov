@@ -1,0 +1,18 @@
+uuid: e75afdbd-5a9c-4e3e-a760-1a69b834afa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_property_type
+id: taxonomy_term.bh_property_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: bh_property_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

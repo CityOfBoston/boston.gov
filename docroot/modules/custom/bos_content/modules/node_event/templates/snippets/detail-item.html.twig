@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Default theme implementation for detail item.
+ *
+ * Available variables:
+ * - label: The label value of the detail item.
+ * - body: The content value of the detail item.
+ * - phone: The phone number value of the detail item.
+ * - image: The image value of the detail item.
+ * - classes: Array of classes to be applied to detail, icon, label, and body
+ *   elements.
+ */
+#}
+
+{% if classes.icon %}
+  {% set left_content = '<img src="https://patterns.boston.gov/images/global/icons/' ~ classes.icon ~ '.svg" class="icon ' ~ classes.icon ~ '" alt="' ~ classes.icon ~ '" />' %}
+{% elseif label and 'detail-item--secondary' in default_classes.detail %}
+  {% set left_content = "<div>" ~ label ~ "</div>" %}
+{% elseif label and 'detail-item--secondary' in classes.detail %}
+  {% set left_content = "<div>" ~ label ~ "</div>" %}
+{% elseif image %}
+  {% set left_content = "<div>" ~ image ~ "</div>" %}
+{% endif %}
+
+<div{{ create_attribute({'class': ['detail-item', classes.detail]}) }}>
+  {% if left_content %}
+    <div class="detail-item__left">
+      {{ left_content|raw }}
+    </div>
+  {% endif %}
+  <div class="detail-item__content">
+    {% if label and 'detail-item--secondary' in classes.label %}
+      <div{{ create_attribute({'class': ['detail-item__label', classes.label]}) }}>
+        {{ label }}
+      </div>
+    {% endif %}
+    {% if body %}
+      <div{{ create_attribute({'class': ['detail-item__body', classes.body]}) }}>
+        {% if phone %}
+          <a href="tel:{{ body }}">
+            {{ body }}
+          </a>
+        {% else %}
+          {{ body }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

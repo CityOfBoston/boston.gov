@@ -1,0 +1,34 @@
+uuid: 3b8dd321-bd1e-4815-9043-2d3ec0c87735
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.transaction_grid.field_component_theme
+    - field.field.paragraph.transaction_grid.field_component_title
+    - field.field.paragraph.transaction_grid.field_contact
+    - field.field.paragraph.transaction_grid.field_hide_title_bar
+    - field.field.paragraph.transaction_grid.field_short_title
+    - field.field.paragraph.transaction_grid.field_transactions
+    - paragraphs.paragraphs_type.transaction_grid
+_core:
+  default_config_hash: TOsT6VkBcPuqxrxLmXmHtQpOLXqsVZeCV0RXg-M_uzk
+id: paragraph.transaction_grid.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: transaction_grid
+mode: paragraphs_editor_preview
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_component_theme: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true
+  field_transactions: true

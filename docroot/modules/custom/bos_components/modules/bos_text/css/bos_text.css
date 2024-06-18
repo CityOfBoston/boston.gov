@@ -1,0 +1,310 @@
+.timeline-step-wrapper .timeline-number {
+  font-size: 30px;
+  line-height: 27px;
+  font-size: 1.66667rem;
+  line-height: 1.5rem;
+  margin-top: 29.25px;
+  margin-top: 1.625rem;
+  margin-bottom: 29.25px;
+  margin-bottom: 1.625rem;
+  font-weight: 700;
+  font-family: Montserrat,sans-serif;
+  color: #091f2f;
+}
+@media (min-width: 980px) {
+  .timeline-step-wrapper .timeline-number {
+    font-size: 75px;
+    line-height: 67px;
+    font-size: 4.16667rem;
+    line-height: 3.72222rem;
+    margin-top: 39px;
+    margin-top: 2.16667rem;
+    margin-bottom: 39px;
+    margin-bottom: 2.16667rem;
+  }
+}
+.timeline-step-wrapper .step-text,
+.timeline-step-wrapper .step-title {
+  font-size: 16px;
+  line-height: 22px;
+  font-size: 0.88889rem;
+  line-height: 1.22222rem;
+  margin-top: 39px;
+  margin-top: 2.16667rem;
+  margin-bottom: 8.97px;
+  margin-bottom: 0.49833rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: Montserrat,sans-serif;
+  color: #091f2f;
+  text-transform: uppercase;
+}
+.paragraphs-item-cabinet .cabinet-contacts .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .paragraphs-item-cabinet .cabinet-contacts .step-text,
+.paragraphs-item-cabinet .cabinet-contacts .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .paragraphs-item-cabinet .cabinet-contacts .step-title {
+  margin-top: 7px;
+}
+.paragraphs-item-group-of-links-grid .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .paragraphs-item-group-of-links-grid .step-text,
+.paragraphs-item-group-of-links-grid .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .paragraphs-item-group-of-links-grid .step-title,
+.paragraphs-item-group-of-links-list .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .paragraphs-item-group-of-links-list .step-text,
+.paragraphs-item-group-of-links-list .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .paragraphs-item-group-of-links-list .step-title,
+.view-transactions-main-transactions .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .view-transactions-main-transactions .step-text,
+.view-transactions-main-transactions .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .view-transactions-main-transactions .step-title {
+  margin-top: 0;
+  font-size: 14px;
+}
+.modal-overlay .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .modal-overlay .step-text,
+.modal-overlay .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .modal-overlay .step-title {
+  margin: 0;
+  line-height: 18px;
+}
+.modal-overlay .timeline-step-wrapper .step-text a,
+.timeline-step-wrapper .modal-overlay .step-text a,
+.modal-overlay .timeline-step-wrapper .step-title a,
+.timeline-step-wrapper .modal-overlay .step-title a {
+  font-size: inherit;
+}
+.timeline-step-wrapper .title-with-hero.timeline-number {
+  width: 100%;
+  color: #ffffff;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: block;
+}
+body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.timeline-number,
+.timeline-step-wrapper body:not(.node-type-tabbed-content) .title-with-hero.timeline-number {
+  font-size: 45px;
+  line-height: 45px;
+  font-size: 2.5rem;
+  line-height: 2.5rem
+}
+@media (min-width: 768px) {
+  body:not(.node-type-tabbed-content) .timeline-step-wrapper .title-with-hero.timeline-number,
+  .timeline-step-wrapper body:not(.node-type-tabbed-content) .title-with-hero.timeline-number {
+    font-size: 75px;
+    line-height: 75px;
+    font-size: 4.16667rem;
+    line-height: 4.16667rem;
+  }
+}
+.node-type-landing-page .landing-hero .timeline-step-wrapper .timeline-number,
+.timeline-step-wrapper .node-type-landing-page .landing-hero .timeline-number {
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  padding: 0 20px;
+  font-size: 36px;
+  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.22222rem;
+}
+@media (min-width: 768px) {
+  .node-type-landing-page .landing-hero .timeline-step-wrapper .timeline-number,
+  .timeline-step-wrapper .node-type-landing-page .landing-hero .timeline-number {
+    font-size: 75px;
+    line-height: 67px;
+    font-size: 4.16667rem;
+    line-height: 3.72222rem;
+  }
+}
+@media (min-width: 980px) {
+  .node-type-landing-page .landing-hero .timeline-step-wrapper .timeline-number,
+  .timeline-step-wrapper .node-type-landing-page .landing-hero .timeline-number {
+    font-size: 90px;
+    line-height: 85px;
+    font-size: 5rem;
+    line-height: 4.72222rem;
+    padding: 0;
+  }
+}
+.paragraphs-item-header-text .timeline-step-wrapper .timeline-number,
+.timeline-step-wrapper .paragraphs-item-header-text .timeline-number {
+  margin-top: .75rem;
+  margin-bottom: 0;
+}
+.paragraphs-item-featured-item .timeline-step-wrapper .title.featured-title.timeline-number,
+.timeline-step-wrapper .paragraphs-item-featured-item .title.featured-title.timeline-number {
+  margin: 0 0 39px;
+}
+.node-script-page .timeline-step-wrapper .contact-title.step-text,
+.timeline-step-wrapper .node-script-page .contact-title.step-text,
+.node-script-page .timeline-step-wrapper .contact-title.step-title,
+.timeline-step-wrapper .node-script-page .contact-title.step-title {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+  margin: 0 0 20px;
+}
+.node-type-article .timeline-step-wrapper .contact-title.step-text,
+.timeline-step-wrapper .node-type-article .contact-title.step-text,
+.node-type-article .timeline-step-wrapper .contact-title.step-title,
+.timeline-step-wrapper .node-type-article .contact-title.step-title,
+.node-type-how-to .timeline-step-wrapper .contact-title.step-text,
+.timeline-step-wrapper .node-type-how-to .contact-title.step-text,
+.node-type-how-to .timeline-step-wrapper .contact-title.step-title,
+.timeline-step-wrapper .node-type-how-to .contact-title.step-title {
+  border-bottom: 1px dashed lightgray;
+  padding-bottom: 10px;
+  margin: 0 0 20px;
+}
+.node-type-department-profile .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-department-profile .title.timeline-number {
+  text-align: center;
+}
+@media (min-width: 980px) {
+  .node-type-department-profile .timeline-step-wrapper .title.timeline-number,
+  .timeline-step-wrapper .node-type-department-profile .title.timeline-number {
+    text-align: left;
+  }
+}
+.node-type-department-profile .timeline-step-wrapper .contact-title.step-text,
+.timeline-step-wrapper .node-type-department-profile .contact-title.step-text,
+.node-type-department-profile .timeline-step-wrapper .contact-title.step-title,
+.timeline-step-wrapper .node-type-department-profile .contact-title.step-title {
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px;
+  border-left: 0;
+  border-style: dashed;
+  border-color: #e0e0e0;
+  padding-bottom: 10px;
+  margin: 20px 0 20px;
+}
+.node-type-department-profile .with-hero .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-department-profile .with-hero .title.timeline-number,
+.node-type-department-profile .node-public-notice .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-department-profile .node-public-notice .title.timeline-number,
+.node-type-article .with-hero .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-article .with-hero .title.timeline-number,
+.node-type-article .node-public-notice .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-article .node-public-notice .title.timeline-number,
+.node-type-post .with-hero .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-post .with-hero .title.timeline-number,
+.node-type-post .node-public-notice .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-post .node-public-notice .title.timeline-number,
+.node-type-event .with-hero .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-event .with-hero .title.timeline-number,
+.node-type-event .node-public-notice .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-event .node-public-notice .title.timeline-number,
+.node-type-public-notice .with-hero .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-public-notice .with-hero .title.timeline-number,
+.node-type-public-notice .node-public-notice .timeline-step-wrapper .title.timeline-number,
+.timeline-step-wrapper .node-type-public-notice .node-public-notice .title.timeline-number {
+  margin-top: 0;
+}
+.place-did-you-know .timeline-step-wrapper .step-text,
+.timeline-step-wrapper .place-did-you-know .step-text,
+.place-did-you-know .timeline-step-wrapper .step-title,
+.timeline-step-wrapper .place-did-you-know .step-title {
+  color: red;
+}
+section.timeline {
+  margin: 0 0 60px 0;
+  text-align: center;
+}
+.timeline-step-wrapper {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  margin-bottom: 20px;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .timeline-step-wrapper {
+    width: 49%;
+    padding: 0 20px;
+  }
+}
+@media (min-width: 980px) {
+  .timeline-step-wrapper {
+    width: calc(16.222% - 40px);
+    margin: 0 20px;
+    padding: 0 10px;
+  }
+}
+@media (min-width: 980px) {
+  .timeline-step-wrapper .timeline-step {
+    width: 130px;
+  }
+}
+.timeline-step-wrapper .step-text {
+  color: #58585b;
+  margin: 0 0 10px 0
+}
+.timeline-step-wrapper .timeline-number {
+  font-size: 60px;
+  line-height: 60px;
+  font-size: 3.33333rem;
+  line-height: 3.33333rem;
+  border-bottom: 3px solid #d22d23;
+  margin: 0 0 20px 0;
+  padding-bottom: 8px;
+}
+.timeline-step-wrapper .completed .timeline-number {
+  background: url("https://patterns.boston.gov/images/public/icons/check.svg") no-repeat right 42px transparent;
+}
+.timeline-step-wrapper .pending .timeline-number {
+  color: #58585b;
+  border-color: #d2d2d2;
+}
+.timeline-step-wrapper .step-title {
+  margin: 0 0 10px 0;
+}
+.timeline-step-wrapper .pending .step-title {
+  color: #58585b;
+}
+.node-type-topic-page .intro-title-wrapper .timeline-step-wrapper .timeline-number,
+.timeline-step-wrapper .node-type-topic-page .intro-title-wrapper .timeline-number {
+  font-size: 36px;
+  line-height: 40px;
+  font-size: 2rem;
+  line-height: 2.22222rem;
+  color: #ffffff;
+  max-width: 80%;
+  margin: 0 auto .25em;
+}
+@media (min-width: 768px) {
+  .node-type-topic-page .intro-title-wrapper .timeline-step-wrapper .timeline-number,
+  .timeline-step-wrapper .node-type-topic-page .intro-title-wrapper .timeline-number {
+    font-size: 75px;
+    line-height: 67px;
+    font-size: 4.16667rem;
+    line-height: 3.72222rem;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+error-text h1,
+.error-text .timeline-step-wrapper .timeline-number,
+.timeline-step-wrapper .error-text .timeline-number {
+  border-bottom: 5px solid;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  font-size: 30px;
+  font-size: 1.66667rem;
+}
+@media (min-width: 980px) {
+  .error-text h1,
+  .error-text .timeline-step-wrapper .timeline-number,
+  .timeline-step-wrapper .error-text .timeline-number {
+    padding: 3rem 0 0 0;
+    font-size: 45px;
+    font-size: 2.5rem;
+  }
+}
+.denied-text {
+  color: #ffffff;
+  text-shadow: 0 0 5px #091f2f
+}
+.denied-text h1,
+.denied-text .timeline-step-wrapper .timeline-number,
+.timeline-step-wrapper .denied-text .timeline-number {
+  color: #ffffff;
+}

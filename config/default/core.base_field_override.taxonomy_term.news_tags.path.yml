@@ -1,0 +1,20 @@
+uuid: 1e4ea7e5-1c16-4b74-9590-8fcdfd1ce954
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_tags
+  module:
+    - path
+id: taxonomy_term.news_tags.path
+field_name: path
+entity_type: taxonomy_term
+bundle: news_tags
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

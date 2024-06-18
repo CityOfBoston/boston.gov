@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_import_date
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.field_import_date
+field_name: field_import_date
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Import Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

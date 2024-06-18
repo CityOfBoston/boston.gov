@@ -1,0 +1,21 @@
+uuid: a24e4fe5-8099-448f-a5fd-e8d823e8a4c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - salesforce_mapping
+_core:
+  default_config_hash: xALHLumFiu5YxA1VMCDWqoCTMXLnYcGkoZCtpj8Ye5Q
+id: node.field_salesforce_record
+field_name: field_salesforce_record
+entity_type: node
+type: salesforce_link
+settings: {  }
+module: salesforce_mapping
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

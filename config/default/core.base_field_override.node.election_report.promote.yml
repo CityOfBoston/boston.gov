@@ -1,0 +1,22 @@
+uuid: 119d428e-3a7c-4cd3-ae90-5b452d31f070
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.election_report
+id: node.election_report.promote
+field_name: promote
+entity_type: node
+bundle: election_report
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

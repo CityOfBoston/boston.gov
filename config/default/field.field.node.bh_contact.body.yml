@@ -1,0 +1,25 @@
+uuid: 193309e2-7a2b-4b7e-828c-3ca1dbe19f48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.bh_contact
+  module:
+    - text
+_core:
+  default_config_hash: _QO_4i7StWtvvf0Vtk3h-LYozLSocMYDHd4DhJTnCmw
+id: node.bh_contact.body
+field_name: body
+entity_type: node
+bundle: bh_contact
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

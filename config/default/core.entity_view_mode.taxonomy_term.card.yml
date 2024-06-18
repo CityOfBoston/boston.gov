@@ -1,0 +1,15 @@
+uuid: 3b259c66-1f77-44c3-a48f-cee2b81aace5
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: 'Creates a card-like display.'
+id: taxonomy_term.card
+label: Card
+description: ''
+targetEntityType: taxonomy_term
+cache: true

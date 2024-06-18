@@ -1,0 +1,8 @@
+uuid: 054ff2e5-5e54-489b-bf7f-7195f29d7abb
+langcode: en
+status: true
+dependencies: {  }
+id: boston_long_format
+label: 'Boston Long'
+locked: false
+pattern: 'F d, Y, g:i A - g:i A'

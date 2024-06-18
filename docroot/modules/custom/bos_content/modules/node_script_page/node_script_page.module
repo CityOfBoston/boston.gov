@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Provides an script_page entity type.
+ */
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function node_script_page_theme() {
+  $theme['node__script_page'] = [
+    'base hook' => 'node',
+    'path' => 'modules/custom/bos_content/modules/node_script_page/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_script_page_preprocess_page(&$variables) {
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "script_page") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_script_page_preprocess_node__script_page(&$variables) {
+  _bos_content_fix_attributes($variables);
+  if (isset($variables['content_attributes']) && $variables['content_attributes'] instanceof Attribute) {
+    $variables['content_attributes']->addClass("desktop-100");
+    $variables['content_attributes']->addClass("script-page-components");
+  }
+}

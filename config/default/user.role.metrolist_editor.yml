@@ -1,0 +1,196 @@
+uuid: ec474f51-9574-4e19-a824-930c1522f85b
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.article
+    - node.type.bh_account
+    - node.type.bh_contact
+    - node.type.bh_meeting
+    - node.type.bh_parcel
+    - node.type.bh_parcel_project_assoc
+    - node.type.bh_project
+    - node.type.bh_update
+    - node.type.metrolist_affordable_housing
+    - node.type.metrolist_development
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.availability_status
+    - taxonomy.vocabulary.bh_disposition_type
+    - taxonomy.vocabulary.bh_funding_stage
+    - taxonomy.vocabulary.bh_neighborhood
+    - taxonomy.vocabulary.bh_project_stage
+    - taxonomy.vocabulary.bh_project_status
+    - taxonomy.vocabulary.bh_project_type
+    - taxonomy.vocabulary.bh_project_update_type
+    - taxonomy.vocabulary.bh_property_type
+    - taxonomy.vocabulary.bh_public_stage
+    - taxonomy.vocabulary.bh_record_type
+    - taxonomy.vocabulary.city
+    - taxonomy.vocabulary.due_at_signing
+    - taxonomy.vocabulary.metrolist_user_guide_type
+    - taxonomy.vocabulary.ml_features
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+    - taxonomy.vocabulary.ml_neighborhood
+    - taxonomy.vocabulary.ml_occupancy_type
+    - taxonomy.vocabulary.ml_rent_type
+    - taxonomy.vocabulary.project_banner_bh_
+    - taxonomy.vocabulary.region
+    - taxonomy.vocabulary.unit_type
+    - taxonomy.vocabulary.utilities_included
+  module:
+    - lightning_core
+    - node
+    - publication_date
+    - salesforce_mapping
+    - system
+    - taxonomy
+    - toolbar
+    - webform
+third_party_settings:
+  lightning_core:
+    description: 'This role is able to edit metrolist nodes (imported by salesforce)'
+id: metrolist_editor
+label: 'Housing Editor'
+weight: -2
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'access own webform configuration'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer webform element access'
+  - 'administer webform submission'
+  - 'create terms in availability_status'
+  - 'create terms in bh_disposition_type'
+  - 'create terms in bh_funding_stage'
+  - 'create terms in bh_neighborhood'
+  - 'create terms in bh_project_stage'
+  - 'create terms in bh_project_status'
+  - 'create terms in bh_project_type'
+  - 'create terms in bh_project_update_type'
+  - 'create terms in bh_property_type'
+  - 'create terms in bh_public_stage'
+  - 'create terms in bh_record_type'
+  - 'create terms in city'
+  - 'create terms in due_at_signing'
+  - 'create terms in metrolist_user_guide_type'
+  - 'create terms in ml_features'
+  - 'create terms in ml_income_eligibility_ami_thold'
+  - 'create terms in ml_neighborhood'
+  - 'create terms in ml_occupancy_type'
+  - 'create terms in ml_rent_type'
+  - 'create terms in project_banner_bh_'
+  - 'create terms in region'
+  - 'create terms in unit_type'
+  - 'create terms in utilities_included'
+  - 'delete any bh_account content'
+  - 'delete any bh_contact content'
+  - 'delete any bh_meeting content'
+  - 'delete any bh_parcel content'
+  - 'delete any bh_parcel_project_assoc content'
+  - 'delete any bh_project content'
+  - 'delete any bh_update content'
+  - 'delete any metrolist_affordable_housing content'
+  - 'delete any metrolist_development content'
+  - 'delete any metrolist_unit content'
+  - 'delete article revisions'
+  - 'delete bh_account revisions'
+  - 'delete bh_contact revisions'
+  - 'delete bh_meeting revisions'
+  - 'delete bh_parcel revisions'
+  - 'delete bh_parcel_project_assoc revisions'
+  - 'delete metrolist_affordable_housing revisions'
+  - 'delete metrolist_development revisions'
+  - 'delete metrolist_unit revisions'
+  - 'delete own bh_account content'
+  - 'delete own bh_contact content'
+  - 'delete own bh_meeting content'
+  - 'delete own bh_parcel content'
+  - 'delete own bh_parcel_project_assoc content'
+  - 'delete own bh_project content'
+  - 'delete own bh_update content'
+  - 'delete own metrolist_affordable_housing content'
+  - 'delete own metrolist_development content'
+  - 'delete own metrolist_unit content'
+  - 'edit any bh_account content'
+  - 'edit any bh_contact content'
+  - 'edit any bh_meeting content'
+  - 'edit any bh_parcel content'
+  - 'edit any bh_parcel_project_assoc content'
+  - 'edit any bh_project content'
+  - 'edit any bh_update content'
+  - 'edit any metrolist_affordable_housing content'
+  - 'edit any metrolist_development content'
+  - 'edit any metrolist_unit content'
+  - 'edit any webform'
+  - 'edit any webform submission'
+  - 'edit own bh_account content'
+  - 'edit own bh_contact content'
+  - 'edit own bh_meeting content'
+  - 'edit own bh_parcel content'
+  - 'edit own bh_parcel_project_assoc content'
+  - 'edit own bh_project content'
+  - 'edit own bh_update content'
+  - 'edit own metrolist_affordable_housing content'
+  - 'edit own metrolist_development content'
+  - 'edit own metrolist_unit content'
+  - 'edit terms in availability_status'
+  - 'edit terms in bh_disposition_type'
+  - 'edit terms in bh_funding_stage'
+  - 'edit terms in bh_neighborhood'
+  - 'edit terms in bh_project_stage'
+  - 'edit terms in bh_project_status'
+  - 'edit terms in bh_project_type'
+  - 'edit terms in bh_project_update_type'
+  - 'edit terms in bh_property_type'
+  - 'edit terms in bh_public_stage'
+  - 'edit terms in bh_record_type'
+  - 'edit terms in city'
+  - 'edit terms in due_at_signing'
+  - 'edit terms in metrolist_user_guide_type'
+  - 'edit terms in ml_features'
+  - 'edit terms in ml_income_eligibility_ami_thold'
+  - 'edit terms in ml_neighborhood'
+  - 'edit terms in ml_occupancy_type'
+  - 'edit terms in ml_rent_type'
+  - 'edit terms in project_banner_bh_'
+  - 'edit terms in region'
+  - 'edit terms in unit_type'
+  - 'edit terms in utilities_included'
+  - 'edit webform assets'
+  - 'revert bh_account revisions'
+  - 'revert bh_contact revisions'
+  - 'revert bh_meeting revisions'
+  - 'revert bh_parcel revisions'
+  - 'revert bh_parcel_project_assoc revisions'
+  - 'revert bh_project revisions'
+  - 'revert bh_update revisions'
+  - 'revert metrolist_affordable_housing revisions'
+  - 'revert metrolist_development revisions'
+  - 'revert metrolist_unit revisions'
+  - 'set bh_account published on date'
+  - 'set bh_contact published on date'
+  - 'set bh_meeting published on date'
+  - 'set bh_parcel published on date'
+  - 'set bh_parcel_project_assoc published on date'
+  - 'set bh_project published on date'
+  - 'set bh_update published on date'
+  - 'set metrolist_affordable_housing published on date'
+  - 'set metrolist_development published on date'
+  - 'set metrolist_unit published on date'
+  - 'view any webform submission'
+  - 'view bh_account revisions'
+  - 'view bh_contact revisions'
+  - 'view bh_meeting revisions'
+  - 'view bh_parcel revisions'
+  - 'view bh_parcel_project_assoc revisions'
+  - 'view bh_project revisions'
+  - 'view bh_update revisions'
+  - 'view metrolist_affordable_housing revisions'
+  - 'view metrolist_development revisions'
+  - 'view metrolist_unit revisions'
+  - 'view own unpublished content'
+  - 'view salesforce mapping'

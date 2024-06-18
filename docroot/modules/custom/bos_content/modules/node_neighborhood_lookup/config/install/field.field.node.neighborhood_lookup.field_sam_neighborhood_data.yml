@@ -1,0 +1,18 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sam_neighborhood_data
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.field_sam_neighborhood_data
+field_name: field_sam_neighborhood_data
+entity_type: node
+bundle: neighborhood_lookup
+label: 'SAM Neighborhood Data'
+description: 'Data string formatted in JSON including all geo and sam related data items. (councilor, district, libray, etc)'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

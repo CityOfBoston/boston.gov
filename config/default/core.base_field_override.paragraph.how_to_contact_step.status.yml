@@ -1,0 +1,24 @@
+uuid: 6320c3d9-bf25-47f5-b695-4edae6135b75
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.how_to_contact_step
+_core:
+  default_config_hash: aYoceCMK6kI9BZgK53ZQ5hh26eEYcl-ifqZmXBeCaA8
+id: paragraph.how_to_contact_step.status
+field_name: status
+entity_type: paragraph
+bundle: how_to_contact_step
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

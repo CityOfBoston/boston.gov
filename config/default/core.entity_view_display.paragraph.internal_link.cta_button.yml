@@ -1,0 +1,38 @@
+uuid: 7f613dc7-fa7f-4f25-a471-bbf679146993
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.cta_button
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - fences
+    - link
+_core:
+  default_config_hash: Xpvkyld8hO3SPUVb-mjF4q5gamhn4kAqZB0TvJ_sp10
+id: paragraph.internal_link.cta_button
+targetEntityType: paragraph
+bundle: internal_link
+mode: cta_button
+content:
+  field_internal_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

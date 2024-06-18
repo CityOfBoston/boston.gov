@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default implementation for profile address.
+ *
+ * Available variables:
+ * - $address: An address array with street, city, state and zip
+ * - $address_type: A string for the address title, 'home' or 'mailing' etc.
+ *                  If NULL do not print out the Title and do not include the
+ *                  surrounding div as the address is probably in another
+ *                  element.
+ */
+#}
+{% if address_type %}
+  <div class="user-profile-{{ address_type|lower|trim }}-address">
+    <h2>{{ address_type }} Address</h2>
+{% endif %}
+
+    <div class="profile-address flex-at-md">
+      <div class="address-first-line flex-width-md">
+        <div class="street">
+          <label>Street Address</label>
+          <div class="field-output">{{ address.street }}</div>
+          {% if address.location %}
+            <div class="field-output address-line2">{{ address.location }}</div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="address-second-line flex-at-sm">
+        <div class="city">
+          <label>City</label>
+          <div class="field-output">{{ address.city }}</div>
+        </div>
+        <div class="state">
+          <label>State</label>
+          <div class="field-output">{{ address.state }}</div>
+        </div>
+        <div class="zip">
+          <label>Zip</label>
+          <div class="field-output">{{ address.zip }}</div>
+        </div>
+      </div>
+    </div>
+
+
+{% if address_type %}
+  </div>
+{%  endif %}

@@ -1,0 +1,20 @@
+uuid: 3c3d3f97-c56a-4617-a47d-ae9cc0adc4bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_feed
+  module:
+    - text
+id: taxonomy_term.content_feed.description
+field_name: description
+entity_type: taxonomy_term
+bundle: content_feed
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

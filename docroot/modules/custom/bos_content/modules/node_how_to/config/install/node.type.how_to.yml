@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    parent: 'main-menu:0:'
+name: How-To
+type: how_to
+description: 'Add a how-to content item.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,18 @@
+uuid: dcee5ad0-7536-4c3b-9f2d-6a3733011e47
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.place_type
+id: taxonomy_term.place_type.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: place_type
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

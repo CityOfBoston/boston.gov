@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_icon
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_text
+    - field.field.paragraph.sidebar_item_w_icon.field_title
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_sidebar_item_w_icon:
+      children:
+        - field_sidebar_icon
+        - field_sidebar_text
+        - field_title
+      label: 'Sidebar Item w/ Icon'
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.sidebar_item_w_icon.default
+targetEntityType: paragraph
+bundle: sidebar_item_w_icon
+mode: default
+content:
+  field_sidebar_icon:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_sidebar_text:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

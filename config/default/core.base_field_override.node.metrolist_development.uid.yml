@@ -1,0 +1,20 @@
+uuid: 166df43e-b976-498a-8e5b-8b33c232c5fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.uid
+field_name: uid
+entity_type: node
+bundle: metrolist_development
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

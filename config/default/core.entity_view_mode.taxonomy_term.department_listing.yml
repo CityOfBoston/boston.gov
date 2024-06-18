@@ -1,0 +1,13 @@
+uuid: 413455de-890e-4796-811e-08b3ac783ed4
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: 79-gKCK0Qpg8q8sxfaqNIm7KRLQqAyP4U7t4Wzs30wA
+id: taxonomy_term.department_listing
+label: 'Department Listing'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

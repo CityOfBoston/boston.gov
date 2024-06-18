@@ -1,0 +1,23 @@
+uuid: c0e11554-4b52-41ca-b407-3ea25a172e68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_step_details
+    - paragraphs.paragraphs_type.how_to_text_step
+  module:
+    - text
+_core:
+  default_config_hash: jTGETE5IqL0Pm121Da7xsWTLBa6L8IkvKWq7cwTl-pk
+id: paragraph.how_to_text_step.field_step_details
+field_name: field_step_details
+entity_type: paragraph
+bundle: how_to_text_step
+label: 'Step Details'
+description: 'Fill in step details.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:30fb433e-08a2-40ce-b34a-49e476b82a1b'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'Records the status of a Bid for City of Boston service provision.'
+    image_path: sites/default/files/paragraphs_type_icon/bid_icon.svg
+id: bid
+label: Bid
+icon_uuid: 30fb433e-08a2-40ce-b34a-49e476b82a1b
+icon_default: null
+description: 'Records the status of a Bid for City of Boston service provision.'
+behavior_plugins: {  }

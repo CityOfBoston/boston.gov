@@ -1,0 +1,62 @@
+name: Roll Call Vote
+type: module
+description: 'Manages the Roll Call Vote data input, search and display.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_content
+config_devel:
+  - taxonomy.vocabulary.city_council_districts
+  - core.entity_view_display.taxonomy_term.city_council_districts.default
+  - core.entity_form_display.taxonomy_term.city_council_districts.default
+  - core.entity_view_display.taxonomy_term.city_council_districts.roll_call_search
+  - taxonomy.vocabulary.vocab_votes
+  - field.storage.taxonomy_term.field_first_name
+  - field.storage.taxonomy_term.field_email
+  - field.storage.taxonomy_term.field_district
+  - taxonomy.vocabulary.vocab_city_councillors
+  - field.field.taxonomy_term.vocab_city_councillors.field_first_name
+  - field.field.taxonomy_term.vocab_city_councillors.field_email
+  - field.field.taxonomy_term.vocab_city_councillors.field_district
+  - core.entity_view_display.taxonomy_term.vocab_city_councillors.default
+  - core.entity_form_display.taxonomy_term.vocab_city_councillors.default
+  - core.entity_view_display.taxonomy_term.vocab_city_councillors.roll_call_search
+  - core.entity_view_mode.taxonomy_term.roll_call_search
+  - core.entity_view_mode.node.roll_call_search
+  - node.type.roll_call_dockets
+  - language.content_settings.node.roll_call_dockets
+  - field.storage.node.field_meeting_date
+  - field.field.node.roll_call_dockets.field_meeting_date
+  - field.field.node.roll_call_dockets.field_components
+  - core.base_field_override.node.roll_call_dockets.title
+  - core.base_field_override.node.roll_call_dockets.promote
+  - rabbit_hole.behavior_settings.node_type_roll_call_dockets
+  - field.field.node.roll_call_dockets.body
+  - core.entity_form_display.node.roll_call_dockets.default
+  - core.entity_view_display.node.roll_call_dockets.roll_call_search
+  - core.entity_view_display.node.roll_call_dockets.default
+  - core.entity_view_mode.paragraph.roll_call_search
+  - paragraphs.paragraphs_type.roll_call_vote
+  - field.storage.paragraph.field_vote
+  - field.storage.paragraph.field_councillor
+  - field.field.paragraph.roll_call_vote.field_councillor
+  - field.field.paragraph.roll_call_vote.field_vote
+  - core.entity_view_display.paragraph.roll_call_vote.roll_call_search
+  - core.entity_view_display.paragraph.roll_call_vote.default
+  - core.entity_form_display.paragraph.roll_call_vote.default
+  - system.action.user_remove_role_action.city_clerk_editor
+  - system.action.user_add_role_action.city_clerk_editor
+  - field.storage.paragraph.field_node_search
+  - field.field.paragraph.bos_node_search.field_node_search
+  - core.entity_view_display.paragraph.bos_node_search.default
+  - core.entity_form_display.paragraph.bos_node_search.default
+  - paragraphs.paragraphs_type.bos_node_search
+  - field.storage.paragraph.field_search_results
+  - field.field.paragraph.bos_node_search.field_title
+  - field.field.paragraph.bos_node_search.field_short_title
+  - field.field.paragraph.bos_node_search.field_search_results
+  - field.field.paragraph.bos_node_search.field_component_title
+  - views.view.roll_call_taxonomy
+  - views.view.roll_call_dockets
+  - workflows.workflow.managed_workflow
+  - user.role.city_clerk_editor

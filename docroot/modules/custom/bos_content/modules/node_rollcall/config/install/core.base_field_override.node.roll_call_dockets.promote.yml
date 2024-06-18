@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.roll_call_dockets
+id: node.roll_call_dockets.promote
+field_name: promote
+entity_type: node
+bundle: roll_call_dockets
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

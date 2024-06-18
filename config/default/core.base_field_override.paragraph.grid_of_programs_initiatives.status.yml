@@ -1,0 +1,24 @@
+uuid: 9c54fe17-7537-44bb-8bac-a599f70be94c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+_core:
+  default_config_hash: 189lsiLlnb7XGDbva3veG8P6piVp-ogidx9_uD0Bmrw
+id: paragraph.grid_of_programs_initiatives.status
+field_name: status
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

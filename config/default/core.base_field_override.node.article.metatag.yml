@@ -1,0 +1,18 @@
+uuid: e1f59616-7a06-4f0b-b273-2e8a8565c8ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+id: node.article.metatag
+field_name: metatag
+entity_type: node
+bundle: article
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

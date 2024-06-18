@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:2b5abd91-13c0-47e2-8df4-2064709f9414'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: grid_of_places
+label: 'Grid of Places'
+icon_uuid: 2b5abd91-13c0-47e2-8df4-2064709f9414
+icon_default: null
+description: 'Migrated from paragraph bundle Grid of Places'
+behavior_plugins: {  }

@@ -1,0 +1,8 @@
+uuid: e048cf40-b242-4b76-9219-d474c6fc637b
+langcode: en
+status: true
+dependencies: {  }
+name: 'Rent Type'
+vid: ml_rent_type
+description: 'MetroList: Rent Type'
+weight: 0

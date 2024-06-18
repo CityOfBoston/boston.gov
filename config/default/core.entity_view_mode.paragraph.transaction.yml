@@ -1,0 +1,11 @@
+uuid: c50739ef-7b83-4277-b73a-68c1ef8881e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.transaction
+label: Transaction
+description: ''
+targetEntityType: paragraph
+cache: true

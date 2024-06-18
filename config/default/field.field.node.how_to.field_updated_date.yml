@@ -1,0 +1,26 @@
+uuid: 5e88f23b-fd7a-4e95-a250-69fc45f2268d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.how_to
+  module:
+    - datetime
+_core:
+  default_config_hash: leQlk8swUE-iL-1xxZpNmv7g4YQAZTrsCkMfdQZtuTI
+id: node.how_to.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: how_to
+label: 'Updated Date'
+description: 'Enter the last time this content was effectively updated at.'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

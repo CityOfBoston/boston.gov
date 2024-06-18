@@ -1,0 +1,27 @@
+uuid: f98392cd-d7d7-4145-adf3-be0e53e8ef21
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.grid_of_people.field_component_theme
+    - field.field.paragraph.grid_of_people.field_component_title
+    - field.field.paragraph.grid_of_people.field_contact
+    - field.field.paragraph.grid_of_people.field_hide_title_bar
+    - field.field.paragraph.grid_of_people.field_people
+    - field.field.paragraph.grid_of_people.field_short_title
+    - paragraphs.paragraphs_type.grid_of_people
+_core:
+  default_config_hash: aRJ-9BkblsotEw35i3C8gqLY523JTXZxcA40NOkJJGM
+id: paragraph.grid_of_people.separated_title
+targetEntityType: paragraph
+bundle: grid_of_people
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_people: true
+  field_short_title: true

@@ -1,0 +1,20 @@
+uuid: 7ffdc87a-7efc-4934-bb86-b97717e63a46
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: 88QJCTGpgsPm_u-W8AQVjVfQp5eKg5IlDRow6JxpxJ0
+id: paragraph.card.created
+field_name: created
+entity_type: paragraph
+bundle: card
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

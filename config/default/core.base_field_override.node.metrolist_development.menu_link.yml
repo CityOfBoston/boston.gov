@@ -1,0 +1,20 @@
+uuid: 549adbdd-a894-41e0-ba6d-dd63eb8daa97
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_development
+id: node.metrolist_development.menu_link
+field_name: menu_link
+entity_type: node
+bundle: metrolist_development
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

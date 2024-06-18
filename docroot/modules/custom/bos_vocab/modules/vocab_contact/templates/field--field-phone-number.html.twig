@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ *   Template for contact info in the sidebar area of a content type.
+ */
+#}
+{% if display_field_tag %}
+    <{{ field_tag|default('div') }}{{ attributes.addClass(classes, 'field__items') }}>
+{% endif %}
+
+    {% if not label_hidden and display_label_tag %}
+        <{{ label_tag|default('div') }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ label_tag|default('div') }}>
+    {% endif %}
+
+<div class="detail-item__{{ field_name }}">
+  <img src="https://patterns.boston.gov/images/global/icons/icon-phone.svg"  class="icon icon-phone sb-ic" alt="" />
+
+    {% for item in items %}
+        {% if display_item_tag %}
+            <{{ field_item_tag|default('div') }}{{ item.attributes.addClass('field__item') }}>
+        {% endif %}
+  <div class="detail-item__body--secondary">
+    <span class="sb-d"><a href="tel:{{ item.phone }}">{{ item.content }}</a></span>
+  </div>
+        {% if display_item_tag %}
+            </{{ field_item_tag|default('div') }}>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% if display_field_tag %}
+    </{{ field_tag|default('div') }}>
+{% endif %}

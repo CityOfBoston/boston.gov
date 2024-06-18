@@ -1,0 +1,30 @@
+uuid: 19ea6df7-01f0-4823-9124-fd71414fbd53
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.massachusetts_general_law
+  module:
+    - fences
+    - text
+id: taxonomy_term.massachusetts_general_law.default
+targetEntityType: taxonomy_term
+bundle: massachusetts_general_law
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.fyi
+id: paragraph.fyi.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: fyi
+label: 'FYI Title'
+description: 'The title doesn’t have to be the name of a department (“Leaf and Yard Waste Collection”), but it might be (“Public Works”). Limited to 30 characters.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,13 @@
+uuid: 6c3cd949-7407-44f8-a34f-83fee49fd41c
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: LUsNVvq4uYxO_VCQiGvhG9e9AHsw_Nc8sv-Z7lDy3KY
+id: group_of_links_quick_links
+label: 'Group of Links - Quick Links'
+icon_uuid: null
+icon_default: null
+description: 'Quick Links as part of enhanced site alerts.'
+behavior_plugins: {  }

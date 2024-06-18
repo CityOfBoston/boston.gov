@@ -1,0 +1,21 @@
+uuid: 36ff0487-0f01-4c3c-b8bb-ffdc1df1b77b
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - taxonomy
+id: taxonomy_term.field_ml_learn_content
+field_name: field_ml_learn_content
+entity_type: taxonomy_term
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

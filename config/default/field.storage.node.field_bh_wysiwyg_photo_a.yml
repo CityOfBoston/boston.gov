@@ -1,0 +1,19 @@
+uuid: 2f2e089b-827c-4a4f-9676-a35c3b0c3abb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_bh_wysiwyg_photo_a
+field_name: field_bh_wysiwyg_photo_a
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

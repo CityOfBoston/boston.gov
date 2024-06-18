@@ -1,0 +1,52 @@
+// <Unit />
+@import '@globals';
+
+.ml-unit {
+  & + & .ml-unit__cell-inner {
+    padding-top: $table-cell-spacing--big;
+  }
+  @include media-breakpoint-up( large ) {
+    & + & .ml-unit__cell-inner {
+      padding-top: $table-cell-spacing--big-large;
+    }
+  }
+}
+  .ml-unit__cell {
+    // padding: $table-cell-spacing;
+    width: 33.333333%;
+    line-height: 1;
+  }
+  .ml-unit__size {
+    text-align: left;
+  }
+  .ml-unit__income-limit {
+    text-align: center;
+  }
+  .ml-unit__price {
+    text-align: right;
+  }
+  .ml-unit__shorthand,
+  .ml-unit__shorthand[title] {
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  .ml-unit__cell-inner {
+    // max-height: 100px;
+    padding: $table-cell-spacing;
+    // transition: max-height 0.6s, padding 0.6s, border-bottom-color .6s linear;
+    border-bottom: 1px solid #D8D8D8;
+  }
+  @include media-breakpoint-up( large ) {
+    .ml-unit__cell-inner {
+      padding: $table-cell-spacing--large;
+    }
+  }
+
+  // .ml-unit.ml-unit--hidden .ml-unit__cell-inner {
+  //   max-height: 0;
+  //   overflow: hidden;
+  //   transition: max-height 0.3s, padding 0.3s, border-bottom-color .3s linear;
+  //   padding: 0 $table-cell-spacing--large;
+  //   border-bottom: 1px solid transparent;
+  // }

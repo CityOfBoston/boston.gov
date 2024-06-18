@@ -1,0 +1,21 @@
+uuid: 006fbf74-7377-4fc0-8c19-c5ce0fe77346
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.grid_of_cards
+_core:
+  default_config_hash: X0IhJ3GvqeGCFhzAANAG7QVeWsHnQk-HAjHNnTPqY2k
+id: paragraph.grid_of_cards.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: grid_of_cards
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

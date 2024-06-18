@@ -1,0 +1,20 @@
+uuid: 20c98855-3f1b-4570-8505-11f32c435896
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_utilities_included
+field_name: field_ml_utilities_included
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

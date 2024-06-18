@@ -1,0 +1,17 @@
+uuid: 14f4b2c2-d5ac-4272-b7c6-adc178cce9f5
+langcode: en
+status: false
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    internal: true
+_core:
+  default_config_hash: BPyCLPiE1eNblB7nXD5q_0cxGHz8U1RwangH9uN4qUs
+id: node.rss
+label: RSS
+description: ''
+targetEntityType: node
+cache: true

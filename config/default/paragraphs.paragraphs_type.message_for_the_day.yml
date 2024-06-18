@@ -1,0 +1,13 @@
+uuid: 705f621a-4229-42ef-b095-d5c4e455e400
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: RY2Afv1fV3xhBNIvjk_to8d6xRmx5RSqpTgLu6Ji9QI
+id: message_for_the_day
+label: 'Message for the Day'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Message for the Day'
+behavior_plugins: {  }

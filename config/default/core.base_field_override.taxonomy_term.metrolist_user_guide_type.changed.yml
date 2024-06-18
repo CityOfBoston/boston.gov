@@ -1,0 +1,18 @@
+uuid: f237d112-ed0d-49db-9fba-6c099db8e15c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.metrolist_user_guide_type
+id: taxonomy_term.metrolist_user_guide_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: metrolist_user_guide_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

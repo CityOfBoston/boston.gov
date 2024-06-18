@@ -1,0 +1,25 @@
+uuid: dbfd0432-4bfc-4300-9e88-7d28df0f8604
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_title_bar
+    - paragraphs.paragraphs_type.text
+_core:
+  default_config_hash: HSHMBAAewL_Luj02S2g1BjzmlI5U5mhWRk35ktSGG44
+id: paragraph.text.field_hide_title_bar
+field_name: field_hide_title_bar
+entity_type: paragraph
+bundle: text
+label: 'Hide Title Bar'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

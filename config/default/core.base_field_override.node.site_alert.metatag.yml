@@ -1,0 +1,18 @@
+uuid: 67f6dbc9-ab95-401c-af4c-a595503de9b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.site_alert
+id: node.site_alert.metatag
+field_name: metatag
+entity_type: node
+bundle: site_alert
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_program_initiative
+    - node.type.program_initiative_profile
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+id: paragraph.grid_of_programs_initiatives.field_program_initiative
+field_name: field_program_initiative
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: Program/Initiative
+description: 'Add the Programs/Initiatives for this Grid.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      program_initiative_profile: program_initiative_profile
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

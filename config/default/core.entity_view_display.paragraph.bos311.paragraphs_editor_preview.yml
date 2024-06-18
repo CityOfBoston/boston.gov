@@ -1,0 +1,21 @@
+uuid: f2c551a8-cc88-42b0-bc8d-687df08d1087
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.bos311.field_311_request
+    - field.field.paragraph.bos311.field_component_title
+    - field.field.paragraph.bos311.field_short_title
+    - paragraphs.paragraphs_type.bos311
+_core:
+  default_config_hash: wlA8XuEAXeqz_GK--qK6r5NOqvtVB8FUig_k9rIIkA8
+id: paragraph.bos311.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: bos311
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_311_request: true
+  field_component_title: true
+  field_short_title: true

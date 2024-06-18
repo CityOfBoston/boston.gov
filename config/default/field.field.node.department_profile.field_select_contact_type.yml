@@ -1,0 +1,21 @@
+uuid: 0854a6df-c025-4c30-899e-7da5d3990f65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_select_contact_type
+    - node.type.department_profile
+  module:
+    - options
+id: node.department_profile.field_select_contact_type
+field_name: field_select_contact_type
+entity_type: node
+bundle: department_profile
+label: 'Select Contact Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: b44b59c9-c2e7-4832-ad5b-eede4204c6fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_candidate_wrind
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_term.election_candidates.field_candidate_wrind
+field_name: field_candidate_wrind
+entity_type: taxonomy_term
+bundle: election_candidates
+label: WrInd
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

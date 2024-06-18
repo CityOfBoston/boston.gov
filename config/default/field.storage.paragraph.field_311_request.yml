@@ -1,0 +1,20 @@
+uuid: aaecbd7e-1847-458d-83ab-f4ea63a2f7cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_311_request
+field_name: field_311_request
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 9
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

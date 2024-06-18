@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_icon
+    - field.field.paragraph.sidebar_item_w_icon.field_sidebar_text
+    - field.field.paragraph.sidebar_item_w_icon.field_title
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+id: paragraph.sidebar_item_w_icon.separated_title
+targetEntityType: paragraph
+bundle: sidebar_item_w_icon
+mode: separated_title
+content: {  }
+hidden:
+  field_sidebar_icon: true
+  field_sidebar_text: true
+  field_title: true

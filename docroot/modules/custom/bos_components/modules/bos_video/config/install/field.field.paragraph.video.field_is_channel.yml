@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_is_channel
+    - paragraphs.paragraphs_type.video
+  module:
+    - options
+id: paragraph.video.field_is_channel
+field_name: field_is_channel
+entity_type: paragraph
+bundle: video
+label: 'Is a Youtube channel?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

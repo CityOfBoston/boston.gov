@@ -1,0 +1,8 @@
+uuid: c1697793-2216-4c2a-a07d-061ba1987e69
+langcode: en
+status: true
+dependencies: {  }
+name: 'Disposition Type (BH)'
+vid: bh_disposition_type
+description: 'Building Housing: Disposition Type'
+weight: 0

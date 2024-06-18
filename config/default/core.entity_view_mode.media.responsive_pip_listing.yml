@@ -1,0 +1,15 @@
+uuid: 36fd444f-155b-4bf2-a2d2-fa8abba91e0a
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'For use in PIP Listing in grid of PIP.'
+id: media.responsive_pip_listing
+label: 'PIP Listing (resp)'
+description: ''
+targetEntityType: media
+cache: true

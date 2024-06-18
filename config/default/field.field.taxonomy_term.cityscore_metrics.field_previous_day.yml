@@ -1,0 +1,25 @@
+uuid: 8c53d9cc-2eb9-48aa-99cf-545c890ad60e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_previous_day
+    - taxonomy.vocabulary.cityscore_metrics
+_core:
+  default_config_hash: yStRcDlwB3smIhAdt-ChJfyEB22bQ49cgsnPRNT7TnU
+id: taxonomy_term.cityscore_metrics.field_previous_day
+field_name: field_previous_day
+entity_type: taxonomy_term
+bundle: cityscore_metrics
+label: 'Previous Day'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 5.0
+  prefix: ''
+  suffix: ''
+field_type: decimal

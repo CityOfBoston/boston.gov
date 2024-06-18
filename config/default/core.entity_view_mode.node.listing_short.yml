@@ -1,0 +1,13 @@
+uuid: 169c3331-6548-4efb-8ec3-fe197957d0b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: H6207yshfKXjdCEqv_xIvGcImlyPXoIjysC7PDxC4IM
+id: node.listing_short
+label: 'Listing Short'
+description: ''
+targetEntityType: node
+cache: true

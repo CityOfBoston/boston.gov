@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.message_for_the_day
+id: paragraph.message_for_the_day.created
+field_name: created
+entity_type: paragraph
+bundle: message_for_the_day
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

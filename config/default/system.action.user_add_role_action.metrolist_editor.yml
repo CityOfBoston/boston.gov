@@ -1,0 +1,14 @@
+uuid: e0c36714-c019-439d-a5da-932506954e28
+langcode: und
+status: true
+dependencies:
+  config:
+    - user.role.metrolist_editor
+  module:
+    - user
+id: user_add_role_action.metrolist_editor
+label: 'Add the Metrolist Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: metrolist_editor

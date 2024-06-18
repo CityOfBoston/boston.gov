@@ -1,0 +1,10 @@
+uuid: 764f1999-17bc-482e-b36a-a639386d5c7a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: DmKgNxHIi9Cr7wne41KCNLK-uv_gLexmNvzrA911SMQ
+name: 'News Tags'
+vid: news_tags
+description: 'Tags to be used to group Posts'
+weight: 0

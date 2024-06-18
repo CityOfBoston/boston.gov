@@ -1,0 +1,22 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_manual_date
+    - node.type.tabbed_content
+id: node.tabbed_content.field_manual_date
+field_name: field_manual_date
+entity_type: node
+bundle: tabbed_content
+label: 'Manual Date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Manual
+  off_label: Automatic
+field_type: boolean

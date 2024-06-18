@@ -1,0 +1,8 @@
+name: bos_email
+type: module
+description: 'Endpoints leveraging Postmark and Upaknee APIs to send emails and manage newsletters signups.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+
+

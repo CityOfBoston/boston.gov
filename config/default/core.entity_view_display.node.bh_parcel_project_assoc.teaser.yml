@@ -1,0 +1,25 @@
+uuid: 7bfd66f8-8240-4420-8912-800d152feb67
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bh_parcel_project_assoc.field_bh_parcel_ref
+    - field.field.node.bh_parcel_project_assoc.field_bh_project_ref
+    - node.type.bh_parcel_project_assoc
+  module:
+    - user
+id: node.bh_parcel_project_assoc.teaser
+targetEntityType: node
+bundle: bh_parcel_project_assoc
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_bh_parcel_ref: true
+  field_bh_project_ref: true
+  langcode: true
+  published_at: true

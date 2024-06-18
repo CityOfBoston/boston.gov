@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.bh_parcel_project_assoc.body
+        - node.type.bh_parcel_project_assoc
+    module:
+        - text
+        - user
+id: node.bh_parcel_project_assoc.default
+targetEntityType: node
+bundle: bh_parcel_project_assoc
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_default
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }

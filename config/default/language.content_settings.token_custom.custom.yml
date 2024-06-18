@@ -1,0 +1,18 @@
+uuid: ccd9ddcf-16bf-4e69-b001-25d48e990542
+langcode: en
+status: true
+dependencies:
+  config:
+    - token_custom.type.custom
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: token_custom.custom
+target_entity_type_id: token_custom
+target_bundle: custom
+default_langcode: site_default
+language_alterable: false

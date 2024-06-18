@@ -1,0 +1,21 @@
+uuid: bb25c55a-8086-4c7d-b0cf-65f985d0ebfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.how_to_contact_step
+_core:
+  default_config_hash: LUB3E950iSpD9LxOs2MqtB9LdRbpnIZ1HnSZjxdC04g
+id: paragraph.how_to_contact_step.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: how_to_contact_step
+label: 'Step Label'
+description: 'Enter the step label.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

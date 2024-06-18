@@ -1,0 +1,22 @@
+uuid: f3e4e4eb-e56b-4538-856d-1e79e798224f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.commissions
+  module:
+    - text
+_core:
+  default_config_hash: I2rUk-weP5QB69UryJ4F0By2ek7AmXAwfAbEN-VOfYU
+id: taxonomy_term.commissions.description
+field_name: description
+entity_type: taxonomy_term
+bundle: commissions
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

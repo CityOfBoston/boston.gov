@@ -1,0 +1,11 @@
+uuid: 40b135c9-abe4-42cc-a973-8a6f940b6f8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_banner_bh_
+id: taxonomy_term.project_banner_bh_
+target_entity_type_id: taxonomy_term
+target_bundle: project_banner_bh_
+default_langcode: site_default
+language_alterable: false

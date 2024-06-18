@@ -1,0 +1,22 @@
+uuid: dc3d3482-c289-4ae6-b8f6-41650c142804
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.public_notice
+id: node.public_notice.status
+field_name: status
+entity_type: node
+bundle: public_notice
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

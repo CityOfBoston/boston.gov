@@ -1,0 +1,18 @@
+uuid: 18e2f6ff-65bc-48de-aeed-a57299b8b3b1
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+id: node.program_initiative_profile.metatag
+field_name: metatag
+entity_type: node
+bundle: program_initiative_profile
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

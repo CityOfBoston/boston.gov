@@ -1,0 +1,18 @@
+uuid: 5e7ca333-ef1b-44d0-9404-deb9ae8e4166
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.metatag
+field_name: metatag
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

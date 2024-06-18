@@ -1,0 +1,20 @@
+uuid: 61c1e36c-2f04-4d06-bda6-dc0652c89abe
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.fyi
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: T5GPWdg8wbxoZCW6FlxzhO76CB0k0ij5d8KkSWhfQSE
+id: paragraph.fyi
+target_entity_type_id: paragraph
+target_bundle: fyi
+default_langcode: site_default
+language_alterable: false

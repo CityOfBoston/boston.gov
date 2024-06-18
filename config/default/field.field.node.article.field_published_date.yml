@@ -1,0 +1,23 @@
+uuid: 4967616d-ac77-4bad-a19f-c8524ba927f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_published_date
+    - node.type.article
+  module:
+    - datetime
+_core:
+  default_config_hash: bT8UPOKQYvnLTAd1rQy_jU-lI01ASUwZ0yOQBTL5j40
+id: node.article.field_published_date
+field_name: field_published_date
+entity_type: node
+bundle: article
+label: 'Published Date'
+description: 'This field tracks the date the Article was first published.  It is not displayed to the user audience.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,18 @@
+uuid: 0eb22b6f-2d93-4955-95d3-1fc0cb6a4998
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.newsletters
+id: taxonomy_term.newsletters.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: newsletters
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

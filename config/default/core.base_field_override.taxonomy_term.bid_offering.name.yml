@@ -1,0 +1,18 @@
+uuid: 179a48c6-b52f-40fe-8b0a-7a08566a59c7
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_offering
+id: taxonomy_term.bid_offering.name
+field_name: name
+entity_type: taxonomy_term
+bundle: bid_offering
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

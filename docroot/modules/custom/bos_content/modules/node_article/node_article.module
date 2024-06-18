@@ -1,0 +1,176 @@
+<?php
+
+/**
+ * @file
+ * Provides an article entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\editor\Entity\Editor;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function node_article_theme() {
+  return [
+    'article' => [
+      'render element' => 'elements',
+    ],
+
+    'region__no_wrapper' => [
+      'base_hook' => 'region',
+      'path' => 'themes/custom/bos_theme/templates/layout',
+    ],
+    'node__article' => [
+      'render element' => 'elements',
+      'base_hook' => 'node',
+    ],
+    'node__department_profile__article' => [
+      'render element' => 'elements',
+      'base_hook' => 'node',
+    ],
+    'field__node__body__article' => [
+      'base_hook' => 'field',
+      'path' => 'modules/custom/bos_content/modules/node_article/templates',
+    ],
+    'field__node__field_contact__article' => [
+      'base_hook' => 'field',
+      'path' => 'modules/custom/bos_content/modules/node_article/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_article_preprocess_page(&$variables) {
+  $variables['hide_page_title'] = TRUE;
+
+  if (NULL != ($node = $variables["node"] ?? NULL)) {
+    if (is_numeric($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    if ($node->bundle() == "article") {
+      // Determine if this is an edit page or a display page.
+      $pathinfo = Drupal::request()->getPathInfo();
+      $pathinfo = explode("/", $pathinfo);
+      if (end($pathinfo) != "edit" && end($pathinfo) != "revisions") {
+        _bos_content_fix_attributes($variables);
+        // Start by adding id page to all nodes.
+        $variables["attributes"]->setAttribute("id", "page");
+        // Make responsive to menu appearing on right by adding class mn.
+        $variables["attributes"]->addClass("mn");
+        $variables["attributes"]->addClass("page--wa");
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_article_form_node_article_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Add styles for the CKEditor boxes on the admin forms.
+  _bos_admin_add_ckeditor_classes($form, [
+    "field_intro_text" => [
+      "html" => "department-info-wrapper 6",
+      "body" => "intro-text supporting-text squiggle-border-bottom column",
+    ],
+    "body" => [
+      "html" => "department-info-wrapper",
+      "body" => "body",
+    ],
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_article_preprocess_node__article(&$variables) {
+  _bos_content_fix_attributes($variables);
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function node_article_ckeditor_css_alter(array &$css, Editor $editor) {
+  if (\Drupal::routeMatch()->getParameters()->has("node")
+    && \Drupal::routeMatch()->getParameters()->get("node")->getType() == "article") {
+    $css[] =\Drupal::service('extension.path.resolver')->getPath("module", "node_article") . "/css/ckeditor.boston.article.css";
+  }
+}
+
+/**
+ * Prepares variables for test component page templates.
+ *
+ * Default template: test-component-page.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the test component page
+ *     information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_node__article(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // Add the RDF mappings for this template as needed.
+  $variables['attributes']['typeof'][] = "sioc:Item";
+  $variables['attributes']['typeof'][] = "foaf:Document";
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_article_preprocess_field(&$variables) {
+  if (!isset($variables["element"]['#bundle']) || $variables["element"]['#bundle'] != 'article') {
+    return;
+  }
+
+  // Force-hide the label for entity revision types.
+  if ($variables["field_type"] == "entity_reference_revisions") {
+    $variables["label_hidden"] = TRUE;
+  }
+
+  // Addresses twig issue in field--field-intro-text.html.twig where the
+  // twig parser cannot process an attribute where attribute->storage is
+  // empty.
+  if ($variables['field_name'] == "field_intro_text" && count($variables["items"][0]["attributes"]->storage()) == 0) {
+    unset($variables["items"][0]['attributes']);
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_article_preprocess_field__field_components(&$variables) {
+
+  $variables['#attached']['library'][] = "bos_components/field.style";
+  $variables["attributes"]["class"][] = "paragraphs-items-field-components";
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function node_article_theme_suggestions_region_alter(array &$suggestions, array $variables) {
+  if ($variables["elements"]["#region"] == "content") {
+    $active_theme = \Drupal::service('theme.manager')->getActiveTheme();
+    if ($active_theme->getName() == "bos_theme") {
+      $suggestions[] = "region__no_wrapper";
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function node_article_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables["elements"]["#id"]) && $variables["elements"]["#id"] == "mainpagecontent") {
+    $suggestions[] = "block__no_wrapper";
+  }
+}

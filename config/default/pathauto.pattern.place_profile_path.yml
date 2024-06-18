@@ -1,0 +1,22 @@
+uuid: 911d0551-cbc2-4345-9294-f9cb1e791e52
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: place_profile_path
+label: 'Place-Profile Path'
+type: 'canonical_entities:node'
+pattern: '[node:field_place_type]/[node:title]'
+selection_criteria:
+  1987b98d-e1b9-488c-8979-0a395797f7b4:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 1987b98d-e1b9-488c-8979-0a395797f7b4
+    context_mapping:
+      node: node
+    bundles:
+      place_profile: place_profile
+selection_logic: and
+weight: -5
+relationships: {  }

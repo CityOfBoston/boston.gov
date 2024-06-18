@@ -1,0 +1,23 @@
+uuid: 1bce71a5-ed32-4c7c-a1bc-6a0d19d56331
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_new_bid_amount
+    - paragraphs.paragraphs_type.bid
+id: paragraph.bid.field_new_bid_amount
+field_name: field_new_bid_amount
+entity_type: paragraph
+bundle: bid
+label: 'Bid Amount'
+description: 'Leave blank to not display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

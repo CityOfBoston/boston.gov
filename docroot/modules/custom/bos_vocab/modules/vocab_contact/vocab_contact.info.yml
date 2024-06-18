@@ -1,0 +1,23 @@
+name: Contact Vocabulary
+description: "Adds taxonomy for contacts."
+package: "City of Boston (taxonomy)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_vocab
+  - taxonomy
+  - node_department_profile
+config_devel:
+  - core.entity_form_display.taxonomy_term.contact.default
+  - core.entity_view_display.taxonomy_term.contact.contact
+  - core.entity_view_display.taxonomy_term.contact.card
+  - core.entity_view_display.taxonomy_term.contact.default
+  - core.entity_view_display.taxonomy_term.contact.link
+  - core.entity_view_display.taxonomy_term.contact.published_by
+  - core.entity_view_mode.taxonomy_term.contact
+  - core.entity_view_mode.taxonomy_term.link
+  - field.field.taxonomy_term.contact.field_department_legacy_id
+  - field.field.taxonomy_term.contact.field_department_profile
+  - language.content_settings.taxonomy_term.contact
+  - taxonomy.vocabulary.contact

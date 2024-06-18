@@ -1,0 +1,10 @@
+uuid: b04e8d3f-5b2a-4a3a-bba3-0e945e9099fc
+langcode: en
+status: true
+dependencies: {  }
+id: election_results
+label: 'Election Results'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Election Results'
+behavior_plugins: {  }

@@ -1,0 +1,20 @@
+uuid: 13d11175-ab47-4df6-ae0a-a8850ef5a9e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_tags
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: XuZKQ7iwnBLXCBAFvlml5cN3BFDN-EmAkSHxUdVKGvo
+id: taxonomy_term.news_tags
+target_entity_type_id: taxonomy_term
+target_bundle: news_tags
+default_langcode: site_default
+language_alterable: false

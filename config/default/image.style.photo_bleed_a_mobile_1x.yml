@@ -1,0 +1,15 @@
+uuid: 54799359-aabc-4404-946e-ba65209d15b4
+langcode: und
+status: true
+dependencies: {  }
+name: photo_bleed_a_mobile_1x
+label: 'Photo bleed a-mobile 1x (420x250)'
+effects:
+  592ef9b6-1587-4f3e-bb34-489ce335070b:
+    uuid: 592ef9b6-1587-4f3e-bb34-489ce335070b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 420
+      height: 250
+      anchor: center-center

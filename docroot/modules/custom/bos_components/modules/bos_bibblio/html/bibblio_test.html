@@ -1,0 +1,53 @@
+<html>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+const postData = {
+          "operation" : "create",
+          "fields" : 
+          	{
+          	"url": "https://www.boston.gov/test/testing-url-here-5",
+	          "name": "Test Insert",
+	          "text": "ipsum lorem jkjfner ipsum lorem wjnewjdn",
+	          "description": "ipsum lorem jkjfner ipsum lorem wjnewjdn",
+	          "customUniqueIdentifier": "https://www.boston.gov/test/testing-url-here-5",
+	          "catalogueId" : "ea9dbde3-dac4-4c1a-b887-55843fd8ed2f"
+          	} 
+        };
+jQuery.ajax({
+        method: "POST",
+        contentType: "application/json",
+        url: "https://boston.lndo.site:3443/rest/bibblio",
+        data: JSON.stringify(postData),
+        success: function (res){
+          resJSON = JSON.parse(res);
+          if(resJSON.status == 200 || resJSON.status == 201){
+            console.log('success re-ingest : ' +  resJSON.response);
+            $("#test").html('success');
+          }else{
+            console.log('error re-ingest : ' + resJSON.response);
+          }
+        },
+        error: function (res){
+          resJSON = JSON.parse(res);
+          console.log('error re-ingest : ' + resJSON.response);
+        }
+      });
+
+</script>
+<div id="test">Loading ...</div>
+</html>
+
+<!--
+
+to delete ...
+
+8cebbc82-19ec-4acb-92f0-de5253a305bb
+
+2643c941-5043-46d8-a0ad-50502fd1c4a4
+
+2734b991-1b64-4283-be7d-6645ff48c087
+
+-->

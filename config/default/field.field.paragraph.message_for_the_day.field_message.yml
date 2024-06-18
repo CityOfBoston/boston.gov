@@ -1,0 +1,23 @@
+uuid: 4407c0f8-a3b9-4f63-9636-1ae1054888e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_message
+    - paragraphs.paragraphs_type.message_for_the_day
+  module:
+    - text
+_core:
+  default_config_hash: YHp5o9xx8ql033wDslw7d70ow3c_YqAz0RDenuFMc3A
+id: paragraph.message_for_the_day.field_message
+field_name: field_message
+entity_type: paragraph
+bundle: message_for_the_day
+label: Message
+description: 'Set the message text relative to the date configuration.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

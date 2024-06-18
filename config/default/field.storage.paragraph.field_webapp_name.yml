@@ -1,0 +1,24 @@
+uuid: a3069d04-e096-4ba7-bdcb-744caefce6f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_webapp_name
+field_name: field_webapp_name
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: void
+      label: void
+  allowed_values_function: bos_web_app_allowed_webapps
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,24 @@
+uuid: cd71ff22-0319-4cb3-b2a9-e77afb5c2071
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.seamless_doc
+_core:
+  default_config_hash: 1DODyjOExc3go72xI4tdoGg2MIXj8k7pqz2w0tBBkeU
+id: paragraph.seamless_doc.status
+field_name: status
+entity_type: paragraph
+bundle: seamless_doc
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

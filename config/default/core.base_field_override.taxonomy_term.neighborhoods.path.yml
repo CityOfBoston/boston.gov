@@ -1,0 +1,20 @@
+uuid: a8822120-5313-4e8c-8ea4-20572fb0605f
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.neighborhoods
+  module:
+    - path
+id: taxonomy_term.neighborhoods.path
+field_name: path
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

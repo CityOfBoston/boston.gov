@@ -1,0 +1,25 @@
+uuid: e3b665e0-77bb-4704-883e-5d80ea747c80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_awarded
+    - paragraphs.paragraphs_type.bid
+_core:
+  default_config_hash: Rpny7Eng1yGAn3jLRffpQgdyB_FldYJgP__xBA15wGI
+id: paragraph.bid.field_awarded
+field_name: field_awarded
+entity_type: paragraph
+bundle: bid
+label: Awarded
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

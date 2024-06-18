@@ -1,0 +1,74 @@
+uuid: 53977eb6-bae5-4247-a28f-489a2710a4a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_embed
+    - linkit
+    - shortcode
+    - token_filter
+name: 'HTML Email'
+format: html_email
+weight: 0
+filters:
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 100
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -10
+    settings:
+      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: 9
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 150
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
+  shortcode:
+    id: shortcode
+    provider: shortcode
+    status: false
+    weight: 0
+    settings:
+      form: '1'
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: 0
+    settings:
+      replace_empty: '1'

@@ -1,0 +1,14 @@
+uuid: a69fffc7-24bf-4a0a-8540-aab16a7eb764
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node_type_listing_page
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

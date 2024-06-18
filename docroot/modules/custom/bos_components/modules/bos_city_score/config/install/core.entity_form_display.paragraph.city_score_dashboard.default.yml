@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.city_score_dashboard.field_component_title
+    - field.field.paragraph.city_score_dashboard.field_extra_info
+    - field.field.paragraph.city_score_dashboard.field_main_table
+    - field.field.paragraph.city_score_dashboard.field_short_description
+    - field.field.paragraph.city_score_dashboard.field_short_title
+    - paragraphs.paragraphs_type.city_score_dashboard
+  module:
+    - viewfield
+id: paragraph.city_score_dashboard.default
+targetEntityType: paragraph
+bundle: city_score_dashboard
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_extra_info:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_main_table:
+    type: viewfield_select
+    weight: 101
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_short_description:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

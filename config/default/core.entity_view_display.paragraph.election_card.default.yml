@@ -1,0 +1,56 @@
+uuid: f05ceb7d-76e3-4e0f-a7d5-9ff6c8c16445
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_card.field_election_disclaimer
+    - field.field.paragraph.election_card.field_short_title
+    - field.field.paragraph.election_card.field_unoffical_election_results
+    - paragraphs.paragraphs_type.election_card
+  module:
+    - fences
+    - text
+id: paragraph.election_card.default
+targetEntityType: paragraph
+bundle: election_card
+mode: default
+content:
+  field_election_disclaimer:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_short_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_unoffical_election_results:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: election_card
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

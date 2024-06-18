@@ -1,0 +1,15 @@
+uuid: 863978ac-afbd-43c5-b2be-4dd6429d4bda
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: ''
+id: taxonomy_term.teaser
+label: Teaser
+description: ''
+targetEntityType: taxonomy_term
+cache: true

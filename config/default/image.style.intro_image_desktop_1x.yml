@@ -1,0 +1,15 @@
+uuid: 9d6985f2-8a3d-4adb-a93f-5e385ad19cd2
+langcode: en
+status: true
+dependencies: {  }
+name: intro_image_desktop_1x
+label: 'Intro image c-desktop 1x (1440x396)'
+effects:
+  8a791aa7-f52a-416b-852e-58d6d57637b0:
+    uuid: 8a791aa7-f52a-416b-852e-58d6d57637b0
+    id: image_scale_and_crop
+    weight: 3
+    data:
+      width: 1440
+      height: 396
+      anchor: center-bottom

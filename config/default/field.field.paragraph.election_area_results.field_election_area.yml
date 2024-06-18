@@ -1,0 +1,25 @@
+uuid: 62b081cd-9e45-43db-a74a-535c28a2d32a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_election_area
+    - paragraphs.paragraphs_type.election_area_results
+id: paragraph.election_area_results.field_election_area
+field_name: field_election_area
+entity_type: paragraph
+bundle: election_area_results
+label: 'Election Area'
+description: 'The Election Area for these results.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: election_reports_2022
+      display_name: election_area_autocomplete
+      arguments: {  }
+field_type: entity_reference

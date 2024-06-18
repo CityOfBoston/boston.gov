@@ -1,0 +1,56 @@
+uuid: 57692f5e-e59f-4d2f-96f9-a9ee8206d010
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_members.field_commission
+    - field.field.paragraph.commission_members.field_component_title
+    - field.field.paragraph.commission_members.field_hide_title_bar
+    - field.field.paragraph.commission_members.field_short_title
+    - paragraphs.paragraphs_type.commission_members
+_core:
+  default_config_hash: DKBapPlwwUT2m1So_2_vINuNcqUYQ3hk5P3Zyi676DI
+id: paragraph.commission_members.default
+targetEntityType: paragraph
+bundle: commission_members
+mode: default
+content:
+  field_commission:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

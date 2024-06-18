@@ -1,0 +1,25 @@
+uuid: b4194bc5-c3ea-41ab-976c-0bff9bb5f54a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_sponsored
+    - node.type.event
+_core:
+  default_config_hash: qkV-50W6NprjqclQ6-ixr4zijsvqcu98agBHYAkIgzk
+id: node.event.field_city_sponsored
+field_name: field_city_sponsored
+entity_type: node
+bundle: event
+label: 'Event not sponsored by the City'
+description: 'Check this box if the event is <strong>NOT</strong> sponsored by the City, or should <strong>NOT</strong> show up in the Boston.gov calendar for any reason. This event will still be added to the events feed for consumption by other sites or applications.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,76 @@
+uuid: 9d74eba1-5717-431e-adf7-ba41f7d87c50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.iframe.field_component_title
+    - field.field.paragraph.iframe.field_contact
+    - field.field.paragraph.iframe.field_hide_title_bar
+    - field.field.paragraph.iframe.field_iframe_size
+    - field.field.paragraph.iframe.field_short_title
+    - field.field.paragraph.iframe.field_source_url
+    - paragraphs.paragraphs_type.iframe
+_core:
+  default_config_hash: d9o8dpIIywt-IZjWwig63HTr21AqodCgOX_csX3ROFQ
+id: paragraph.iframe.default
+targetEntityType: paragraph
+bundle: iframe
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_iframe_size:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_source_url:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 100
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

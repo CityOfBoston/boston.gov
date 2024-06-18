@@ -1,0 +1,21 @@
+uuid: 3ff22848-a66f-4365-ac81-aa28e603bb60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.cabinet
+_core:
+  default_config_hash: ITJ_Ad18DGw0FPwYfl1mCNORrEaTAhjYctFkysVmoGs
+id: paragraph.cabinet.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: cabinet
+label: 'Cabinet Name'
+description: 'Enter the name of this Cabinet.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

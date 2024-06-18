@@ -1,0 +1,25 @@
+uuid: b2ca97be-c241-461e-a121-bc8e9800eb8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_election_candidate
+    - paragraphs.paragraphs_type.election_candidate_results
+id: paragraph.election_candidate_results.field_election_candidate
+field_name: field_election_candidate
+entity_type: paragraph
+bundle: election_candidate_results
+label: 'Election Candidate'
+description: 'The Election Candidate these results are for.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: election_reports_2022
+      display_name: election_candidate_autocomplete
+      arguments: {  }
+field_type: entity_reference

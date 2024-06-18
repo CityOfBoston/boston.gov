@@ -1,0 +1,23 @@
+uuid: 2c6a0c29-0c19-4c60-a448-c3aecf79fa5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_num_of_bathrooms
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_num_of_bathrooms
+field_name: field_ml_unit_num_of_bathrooms
+entity_type: node
+bundle: metrolist_unit
+label: 'Number of Bathrooms'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 99
+  prefix: ''
+  suffix: Bathroom|Bathrooms
+field_type: integer

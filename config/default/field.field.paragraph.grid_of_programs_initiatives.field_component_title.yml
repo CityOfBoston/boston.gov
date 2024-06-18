@@ -1,0 +1,21 @@
+uuid: cf36819e-34c7-416f-8f79-8ac167626d52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title
+    - paragraphs.paragraphs_type.grid_of_programs_initiatives
+_core:
+  default_config_hash: e5XAUHm2AK-76QUMys6A4kgb9A1TQ0uftbdE0J3qH1I
+id: paragraph.grid_of_programs_initiatives.field_component_title
+field_name: field_component_title
+entity_type: paragraph
+bundle: grid_of_programs_initiatives
+label: Title
+description: 'Please enter the title for this component here.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

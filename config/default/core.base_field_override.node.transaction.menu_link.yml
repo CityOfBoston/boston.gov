@@ -1,0 +1,20 @@
+uuid: 420bb399-df2f-4d9a-8253-5bebf3e8f9d5
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+id: node.transaction.menu_link
+field_name: menu_link
+entity_type: node
+bundle: transaction
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

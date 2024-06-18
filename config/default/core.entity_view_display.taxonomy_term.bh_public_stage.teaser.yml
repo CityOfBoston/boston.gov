@@ -1,0 +1,33 @@
+uuid: 89cc21ab-3d08-4b65-ad38-2f3556b89cc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.teaser
+    - field.field.taxonomy_term.bh_public_stage.field_display_title
+    - field.field.taxonomy_term.bh_public_stage.field_icon
+    - taxonomy.vocabulary.bh_public_stage
+id: taxonomy_term.bh_public_stage.teaser
+targetEntityType: taxonomy_term
+bundle: bh_public_stage
+mode: teaser
+content:
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: m-t200
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_icon: true
+  langcode: true

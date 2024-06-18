@@ -1,0 +1,96 @@
+uuid: 9de22163-f97b-4c12-a80f-fae4d7bc9b00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_meetings
+    - node.type.bh_project
+    - views.view.building_housing
+  module:
+    - viewfield
+id: node.bh_project.field_bh_meetings
+field_name: field_bh_meetings
+entity_type: node
+bundle: bh_project
+label: Meetings
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: a35d55dd-d1f9-42b9-be51-0e2611b430ad
+    display_id: embed_bh_project_meeting_reg
+    arguments: ''
+    items_to_display: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: true
+  allowed_views:
+    building_housing: building_housing
+    bids_rfps: '0'
+    bhmaps: '0'
+    building_housing_updates: '0'
+    calendar: '0'
+    change: '0'
+    cityscore: '0'
+    content: '0'
+    block_content: '0'
+    departments_listing: '0'
+    document_entity_browser_file_: '0'
+    emergency_alerts: '0'
+    entity_reference_filters: '0'
+    events_and_notices: '0'
+    file_entity_files: '0'
+    frontpage: '0'
+    poll_list: '0'
+    media_cob: '0'
+    media_entity_browser: '0'
+    media_library: '0'
+    message_for_the_day: '0'
+    metrolist: '0'
+    metrolist_ami: '0'
+    metrolist_affordable_housing: '0'
+    news_and_announcements: '0'
+    news_landing: '0'
+    paragraphs_library: '0'
+    paragraphs_library_browser: '0'
+    user_admin_people: '0'
+    places: '0'
+    poll_admin: '0'
+    profiles: '0'
+    public_notice: '0'
+    content_recent: '0'
+    redirect: '0'
+    rss_feeds: '0'
+    salesforce_mapped_objects: '0'
+    site_alerts: '0'
+    status_items: '0'
+    taxonomy_term: '0'
+    topic_landing_page: '0'
+    transactions: '0'
+    watchdog: '0'
+    webform_submissions: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+    workbench_current_user: '0'
+    workbench_edited: '0'
+    workbench_my_edits: '0'
+    workbench_needs_review_cob: '0'
+    workbench_recent_content: '0'
+    wysiwyg_entity_browser: '0'
+  allowed_display_types:
+    embed: embed
+    attachment: '0'
+    block: '0'
+    entity_browser: '0'
+    entity_reference: '0'
+    feed: '0'
+    geolocation_layer: '0'
+    default: '0'
+    page: '0'
+    rest_export: '0'
+    rest_export_nested: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

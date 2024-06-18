@@ -1,0 +1,28 @@
+uuid: 13974415-64f5-4333-983c-adbbce27ccc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_project_ref
+    - node.type.bh_parcel_project_assoc
+    - node.type.bh_project
+id: node.bh_parcel_project_assoc.field_bh_project_ref
+field_name: field_bh_project_ref
+entity_type: node
+bundle: bh_parcel_project_assoc
+label: Project
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      bh_project: bh_project
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

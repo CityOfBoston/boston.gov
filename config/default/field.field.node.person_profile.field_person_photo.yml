@@ -1,0 +1,31 @@
+uuid: 5bd0217d-d397-49dc-b594-af3bbd6a8ba6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_photo
+    - media.type.image
+    - node.type.person_profile
+_core:
+  default_config_hash: RGRpunVbFYVIFslvQEjg7PV6d9Bnk0aZh8GDwe-sauQ
+id: node.person_profile.field_person_photo
+field_name: field_person_photo
+entity_type: node
+bundle: person_profile
+label: Photo
+description: 'Please supply a photo, required for elected officials.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

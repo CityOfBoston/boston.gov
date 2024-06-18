@@ -1,0 +1,10 @@
+uuid: 5b024530-860c-4275-ad92-744c386f0ca0
+langcode: en
+status: true
+dependencies: {  }
+id: election_card
+label: 'Election Card'
+icon_uuid: null
+icon_default: null
+description: 'Used to add an election card to a page'
+behavior_plugins: {  }

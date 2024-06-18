@@ -1,0 +1,20 @@
+uuid: 55fe7108-dcdf-464a-80c8-f7dd9f36cf51
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.uid
+field_name: uid
+entity_type: node
+bundle: bh_contact
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

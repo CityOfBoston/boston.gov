@@ -1,0 +1,20 @@
+uuid: 2008d839-3050-4b39-b3c9-2348baf8dbcd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.department_profile
+id: node.department_profile.menu_link
+field_name: menu_link
+entity_type: node
+bundle: department_profile
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

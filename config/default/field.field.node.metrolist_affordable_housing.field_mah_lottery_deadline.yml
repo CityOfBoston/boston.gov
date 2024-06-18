@@ -1,0 +1,23 @@
+uuid: dfd88521-4bb4-44e0-9ab6-88742758e642
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_lottery_deadline
+    - node.type.metrolist_affordable_housing
+  module:
+    - datetime
+_core:
+  default_config_hash: obi-tXNrFwSMlWJufpF2P5UxWZt_PVLNTtQqz41QSBQ
+id: node.metrolist_affordable_housing.field_mah_lottery_deadline
+field_name: field_mah_lottery_deadline
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Lottery Application Deadline'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

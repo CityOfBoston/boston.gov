@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.site_alert.field_excluded_nodes
+    - field.field.node.site_alert.field_extra_info
+    - field.field.node.site_alert.field_icon
+    - field.field.node.site_alert.field_link
+    - field.field.node.site_alert.field_theme
+    - field.field.node.site_alert.title_field
+    - node.type.site_alert
+  module:
+    - user
+id: node.site_alert.teaser
+targetEntityType: node
+bundle: site_alert
+mode: teaser
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_date_range: true
+  field_excluded_nodes: true
+  field_extra_info: true
+  field_icon: true
+  field_link: true
+  field_theme: true
+  langcode: true
+  links: true
+  published_at: true
+  title_field: true

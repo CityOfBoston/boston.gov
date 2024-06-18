@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.date_format.date_format_normal_date
+id: default_interpreter
+label: 'Default Interpreter'
+plugin: rl
+settings:
+  show_start_date: true
+  show_until: true
+  date_format: date_format_normal_date
+  show_infinite: true

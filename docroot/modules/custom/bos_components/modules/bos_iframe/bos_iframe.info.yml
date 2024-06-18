@@ -1,0 +1,22 @@
+name: Iframe
+type: module
+description: 'Provides theming and configuration for bos_iframe.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.iframe.created
+  - core.base_field_override.paragraph.iframe.status
+  - core.entity_form_display.paragraph.iframe.default
+  - core.entity_view_display.paragraph.iframe.default
+  - core.entity_view_display.paragraph.iframe.paragraphs_editor_preview
+  - field.field.paragraph.iframe.field_component_title
+  - field.field.paragraph.iframe.field_contact
+  - field.field.paragraph.iframe.field_iframe_size
+  - field.field.paragraph.iframe.field_short_title
+  - field.field.paragraph.iframe.field_source_url
+  - language.content_settings.paragraph.iframe
+  - paragraphs.paragraphs_type.iframe

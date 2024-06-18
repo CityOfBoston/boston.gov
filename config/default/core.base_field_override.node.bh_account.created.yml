@@ -1,0 +1,18 @@
+uuid: 80f75914-342f-4bbc-b687-7c79eb21eaff
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.created
+field_name: created
+entity_type: node
+bundle: bh_account
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

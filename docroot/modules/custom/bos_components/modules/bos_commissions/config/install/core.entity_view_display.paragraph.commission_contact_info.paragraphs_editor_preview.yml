@@ -1,0 +1,14 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.commission_contact_info.field_commission
+    - paragraphs.paragraphs_type.commission_contact_info
+id: paragraph.commission_contact_info.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: commission_contact_info
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_commission: true

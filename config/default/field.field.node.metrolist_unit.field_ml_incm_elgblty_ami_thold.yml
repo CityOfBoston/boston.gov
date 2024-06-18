@@ -1,0 +1,29 @@
+uuid: 93f760cb-67c5-43eb-8fc5-699366849aab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_incm_elgblty_ami_thold
+    - node.type.metrolist_unit
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: node.metrolist_unit.field_ml_incm_elgblty_ami_thold
+field_name: field_ml_incm_elgblty_ami_thold
+entity_type: node
+bundle: metrolist_unit
+label: 'Income Eligibility AMI Threshold'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      ml_income_eligibility_ami_thold: ml_income_eligibility_ami_thold
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

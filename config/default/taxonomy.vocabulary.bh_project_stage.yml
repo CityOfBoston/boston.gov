@@ -1,0 +1,8 @@
+uuid: b1b35679-f60d-4dc8-884e-3ad5d54733de
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Stage (BH)'
+vid: bh_project_stage
+description: 'Building Housing: Project Stage'
+weight: 0

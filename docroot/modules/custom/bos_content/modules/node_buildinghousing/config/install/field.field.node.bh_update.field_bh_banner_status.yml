@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_banner_status
+    - node.type.bh_update
+    - taxonomy.vocabulary.project_banner_bh_
+  content:
+    - 'taxonomy_term:project_banner_bh_:058f00a5-9cd5-46ba-a75a-208d0fd9f97f'
+id: node.bh_update.field_bh_banner_status
+field_name: field_bh_banner_status
+entity_type: node
+bundle: bh_update
+label: 'Banner Status'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 058f00a5-9cd5-46ba-a75a-208d0fd9f97f
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_banner_bh_: project_banner_bh_
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

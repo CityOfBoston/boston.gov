@@ -1,0 +1,14 @@
+uuid: 2ed6c7f7-2703-4f3b-b7bd-e8774b715557
+langcode: en
+status: true
+dependencies:
+  config:
+    - key.key.salesforce_sandbox_oauth_consumer_key
+    - salesforce.salesforce_auth.moh_sandbox
+id: sf_oauth_consumer_key
+label: 'SF OAuth Consumer Key'
+config_type: salesforce_auth
+config_prefix: salesforce.salesforce_auth
+config_name: moh_sandbox
+config_item: provider_settings.consumer_key
+key_id: salesforce_sandbox_oauth_consumer_key

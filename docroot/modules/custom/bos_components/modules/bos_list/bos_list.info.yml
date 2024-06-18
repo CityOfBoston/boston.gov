@@ -1,0 +1,32 @@
+name: bos_list
+type: module
+description: 'Provides theming and configuration for bos_list.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.list.created
+  - core.base_field_override.paragraph.list.status
+  - core.entity_form_display.paragraph.list.default
+  - core.entity_view_display.paragraph.list.default
+  - core.entity_view_display.paragraph.list.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.list.separated_title
+  - field.field.paragraph.list.field_component_theme
+  - field.field.paragraph.list.field_component_title
+  - field.field.paragraph.list.field_contact
+  - field.field.paragraph.list.field_list
+  - field.field.paragraph.list.field_short_title
+  - language.content_settings.paragraph.list
+  - paragraphs.paragraphs_type.list
+  - views.view.bids_rfps
+  - views.view.departments_listing
+  - views.view.news_landing
+  - views.view.calendar
+  - views.view.places
+  - views.view.public_notice
+  - views.view.transactions
+  - views.view.metrolist_affordable_housing
+  - views.view.status_items
+  - views.view.topic_landing_page

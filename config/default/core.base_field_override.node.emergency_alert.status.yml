@@ -1,0 +1,22 @@
+uuid: 06dcb9e6-9a86-411f-a887-5734667f9d33
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.status
+field_name: status
+entity_type: node
+bundle: emergency_alert
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

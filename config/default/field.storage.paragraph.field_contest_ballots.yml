@@ -1,0 +1,20 @@
+uuid: 7388e8e1-3b00-431f-a085-3f36cb83b201
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_contest_ballots
+field_name: field_contest_ballots
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

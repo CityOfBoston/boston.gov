@@ -1,0 +1,20 @@
+uuid: 57c62552-8dbb-436d-bb55-3ddf4bb0c39b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+  module:
+    - publication_date
+id: node.neighborhood_lookup.published_at
+field_name: published_at
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

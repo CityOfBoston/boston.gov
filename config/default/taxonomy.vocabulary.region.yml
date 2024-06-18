@@ -1,0 +1,8 @@
+uuid: 7dad62c4-7097-463e-859d-9ada839f1fc3
+langcode: en
+status: true
+dependencies: {  }
+name: Region
+vid: region
+description: 'MetroList: Region'
+weight: 0

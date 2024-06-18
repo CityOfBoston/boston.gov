@@ -1,0 +1,11 @@
+uuid: c9e14ee3-6379-4879-aad3-d0de386dc271
+langcode: und
+status: true
+dependencies: {  }
+id: oauth_default
+label: 'OAuth Default'
+provider: oauth
+provider_settings:
+  consumer_key: .
+  consumer_secret: .
+  login_url: 'https://login.salesforce.com'

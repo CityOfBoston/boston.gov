@@ -1,0 +1,21 @@
+name:  BOS311 Component
+type: module
+description: Provides theming for lists of 311 services.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+  - link
+  - vocab_311
+  - content_translation
+config_devel:
+  - core.entity_form_display.paragraph.bos311.default
+  - core.entity_view_display.paragraph.bos311.default
+  - core.entity_view_display.paragraph.bos311.paragraphs_editor_preview
+  - field.field.paragraph.bos311.field_311_request
+  - field.field.paragraph.bos311.field_component_title
+  - field.field.paragraph.bos311.field_short_title
+  - language.content_settings.paragraph.bos311
+  - paragraphs.paragraphs_type.bos311

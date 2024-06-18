@@ -1,0 +1,12 @@
+uuid: 0c718a55-5b7e-41dd-a753-e2e6eed609e9
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_contact
+entity_type_id: null
+entity_id: null
+action: page_redirect
+allow_override: 1
+redirect: '[term:field_department_profile]'
+redirect_code: 301
+redirect_fallback_action: null

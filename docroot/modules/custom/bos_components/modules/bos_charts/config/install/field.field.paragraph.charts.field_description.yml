@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - filter.format.filtered_html
+    - paragraphs.paragraphs_type.charts
+  module:
+    - text
+id: paragraph.charts.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: charts
+label: 'Introduction Text'
+description: '[Optional] This text is displayed below the section/component title and the charts columns. <br>This is best used to provide a short introductory narrative around a set of charts.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - filtered_html
+field_type: text_long

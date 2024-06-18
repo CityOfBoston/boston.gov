@@ -1,0 +1,18 @@
+uuid: 286f361a-b1df-4f76-b1f8-596153007da4
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.procurement_type
+id: taxonomy_term.procurement_type.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: procurement_type
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,27 @@
+uuid: 3632a616-e548-490f-980c-5f8fbb1e3ed0
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.group_of_links_mini_grid.field_component_theme
+    - field.field.paragraph.group_of_links_mini_grid.field_component_title
+    - field.field.paragraph.group_of_links_mini_grid.field_contact
+    - field.field.paragraph.group_of_links_mini_grid.field_hide_title_bar
+    - field.field.paragraph.group_of_links_mini_grid.field_links
+    - field.field.paragraph.group_of_links_mini_grid.field_short_title
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+_core:
+  default_config_hash: aUTgeiQFADJc-2aBf7mSPI3YwjrsD4uPBb5Z_M_3E30
+id: paragraph.group_of_links_mini_grid.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: group_of_links_mini_grid
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_links: true
+  field_short_title: true

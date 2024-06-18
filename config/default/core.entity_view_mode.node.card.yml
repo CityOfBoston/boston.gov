@@ -1,0 +1,15 @@
+uuid: d199a71b-3be8-4c14-b5af-dd20280b382b
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - node
+third_party_settings:
+  lightning_core:
+    description: 'Creates a single card for the node.'
+id: node.card
+label: Card
+description: ''
+targetEntityType: node
+cache: true

@@ -1,0 +1,1802 @@
+uuid: 3bc9413d-93e1-4567-9a72-727919777491
+langcode: en
+status: open
+dependencies:
+  module:
+    - bos_metrolist
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: metrolist_listing
+title: 'MetroList Listing'
+description: ''
+categories: {  }
+elements: |-
+  your_contact_information:
+    '#type': webform_wizard_page
+    '#title': 'Select Contact'
+    select_contact_section_desc:
+      '#type': processed_text
+      '#text': |
+        <p>Thanks for using Metrolist to market your affordable housing opportunities! By filling out this form with correct contact, building, and unit information, you can expect your listing to be live on our site within 1 business day.</p>
+      '#format': filtered_html
+    select_contact:
+      '#type': select
+      '#title': 'Select Your Contact Information'
+      '#options': sf_contacts
+      '#required': true
+      '#default_value': new
+      '#wrapper_attributes':
+        class:
+          - sel
+      '#attributes':
+        class:
+          - sel-f
+      '#label_attributes':
+        class:
+          - sel-l
+    update_my_contact_information:
+      '#type': checkbox
+      '#title': 'Update my contact information'
+      '#help': '<span style="font-size:11pt; font-variant-east-asian:normal; font-variant-ligatures:normal; font-variant-position:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please check this box if you need to give us an updated phone, email, or mailing address to reach you.</span></span></span></span></span></span>'
+      '#help_display': element_before
+      '#default_value': true
+      '#access': false
+      '#attributes':
+        class:
+          - cb-f
+  update_contact_information:
+    '#type': webform_wizard_page
+    '#title': 'Contact Information'
+    '#states':
+      visible:
+        - ':input[name="update_my_contact_information"]':
+            checked: true
+        - or
+        - ':input[name="select_contact"]':
+            value: new
+    your_contact_information_fieldset:
+      '#type': fieldset
+      '#title': 'Your Contact Information'
+      '#attributes':
+        class:
+          - ml-contact-info
+      flexbox_a:
+        '#type': webform_flexbox
+        '#align_items': center
+        contact_name:
+          '#type': textfield
+          '#title': 'Contact Name'
+          '#placeholder': 'Firstname Lastname'
+          '#required': true
+          '#required_error': 'Your name is needed to keep track of your Listing'
+          '#pattern': '.*\s.*'
+          '#pattern_error': 'Please enter a firstname and lastname'
+          '#format_items': comma
+        contact_company:
+          '#type': textfield
+          '#title': 'Contact Company'
+          '#placeholder': 'Company name'
+          '#required': true
+          '#format_items': comma
+      flexbox_01:
+        '#type': webform_flexbox
+        '#align_items': center
+        contact_email:
+          '#type': email
+          '#title': 'Contact Email'
+          '#placeholder': 'Email address'
+          '#readonly': true
+          '#prepopulate': true
+          '#format_items': comma
+        contact_phone:
+          '#type': textfield
+          '#title': 'Contact Phone'
+          '#input_mask': '(999) 999-9999'
+          '#required': true
+          '#pattern': '[\(]?[0-9]{3}[\)\-\s]*[0-9]{3}[\s\-]?[0-9]{4}'
+          '#pattern_error': 'US phone number must have 10 digits.'
+          '#format_items': comma
+      contact_address:
+        '#type': webform_address
+        '#title': 'Contact Address'
+        '#format_items': ol
+        '#address__title': 'Contact Address'
+        '#address_2__access': false
+        '#state_province__placeholder': MA
+        '#state_province__type': textfield
+        '#country__access': false
+        '#required': true
+  select_building:
+    '#type': webform_wizard_page
+    '#title': 'Select Building'
+    select_development:
+      '#type': select
+      '#title': 'Select Building'
+      '#help': '<div style="list-style-type:lower-alpha"><span style="font-size:11pt; font-variant-east-asian:normal; font-variant-ligatures:normal; font-variant-position:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please choose the building you are looking to market. If you are marketing a new building, please select &ldquo;New Building&rdquo;</span></span></span></span></span></span></div>'
+      '#options': sf_developments
+      '#required': true
+      '#default_value': new
+      '#wrapper_attributes':
+        class:
+          - sel
+      '#attributes':
+        class:
+          - sel-f
+      '#label_attributes':
+        class:
+          - sel-l
+    update_building_information:
+      '#type': checkbox
+      '#title': 'Update building information'
+      '#states':
+        visible:
+          - ':input[name="select_development"]':
+              '!value': new
+          - xor
+          - ':input[name="select_development"]':
+              empty: true
+      '#default_value': true
+      '#wrapper_attributes':
+        class:
+          - m-t300
+      '#attributes':
+        class:
+          - cb-f
+    add_additional_units:
+      '#type': checkbox
+      '#title': 'Add additional Units'
+      '#states':
+        visible:
+          - ':input[name="select_development"]':
+              '!value': new
+          - xor
+          - ':input[name="select_development"]':
+              empty: true
+      '#wrapper_attributes':
+        class:
+          - m-t300
+      '#attributes':
+        class:
+          - cb-f
+    update_unit_information:
+      '#type': checkbox
+      '#title': 'Update current Units'
+      '#states':
+        visible:
+          - ':input[name="select_development"]':
+              '!value': new
+          - xor
+          - ':input[name="select_development"]':
+              empty: true
+      '#wrapper_attributes':
+        class:
+          - m-t300
+      '#attributes':
+        class:
+          - cb-f
+    update_public_listing_information:
+      '#type': checkbox
+      '#title': 'Update public listing information'
+      '#states':
+        visible:
+          ':input[name="select_development"]':
+            '!value': new
+      '#states_clear': false
+      '#default_value': true
+      '#wrapper_attributes':
+        class:
+          - m-t300
+        style: 'display:none'
+      '#attributes':
+        class:
+          - cb-f
+  property_information:
+    '#type': webform_wizard_page
+    '#title': 'Building Information'
+    '#states':
+      visible:
+        - ':input[name="select_development"]':
+            value: new
+        - or
+        - ':input[name="update_building_information"]':
+            checked: true
+    '#states_clear': false
+    flexbox_04:
+      '#type': webform_flexbox
+      '#states':
+        visible:
+          ':input[name="select_development"]':
+            value: new
+      '#states_clear': false
+      building_in_boston:
+        '#type': select
+        '#title': 'Is your Building in Boston?'
+        '#options':
+          'yes': 'Yes'
+          'no': 'No'
+        '#required': true
+        '#flex': 0
+        '#states_clear': false
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+      neighborhood:
+        '#type': select
+        '#title': Neighborhood
+        '#options': neighborhoods
+        '#flex': 0
+        '#states':
+          visible:
+            ':input[name="building_in_boston"]':
+              value: 'yes'
+          required:
+            ':input[name="building_in_boston"]':
+              value: 'yes'
+        '#states_clear': false
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+      region:
+        '#type': select
+        '#title': Region
+        '#options':
+          'South of Boston': 'South of Boston'
+          'North of Boston': 'North of Boston'
+          'West of Boston': 'West of Boston'
+          Boston: Boston
+        '#empty_value': Boston
+        '#flex': 0
+        '#states':
+          visible:
+            ':input[name="building_in_boston"]':
+              value: 'no'
+          required:
+            ':input[name="building_in_boston"]':
+              value: 'no'
+        '#states_clear': false
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+      city:
+        '#type': select
+        '#title': City
+        '#options': cities
+        '#flex': 0
+        '#states':
+          visible:
+            ':input[name="building_in_boston"]':
+              value: 'no'
+          required:
+            ':input[name="building_in_boston"]':
+              value: 'no'
+        '#states_clear': false
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+    flexbox_07:
+      '#type': webform_flexbox
+      '#states':
+        visible:
+          - ':input[name="request_type"]':
+              value: 'New Listing'
+          - or
+          - ':input[name="request_type"]':
+              value: 'Listing Update'
+      '#states_clear': false
+      property_name:
+        '#type': textfield
+        '#title': 'Property Name'
+        '#placeholder': 'Enter name of building here'
+        '#required': true
+        '#flex': 2
+        '#states_clear': false
+        '#label_attributes':
+          class:
+            - txt-l
+        '#format_items': comma
+      street_address:
+        '#type': textfield
+        '#title': 'Street Address'
+        '#flex': 2
+        '#label_attributes':
+          class:
+            - txt-l
+        '#format_items': comma
+        '#required': true
+      zip_code:
+        '#type': textfield
+        '#title': 'ZIP Code'
+        '#input_mask': '99999[-9999]'
+        '#required': true
+        '#states_clear': false
+        '#label_attributes':
+          class:
+            - txt-l
+        '#format_items': comma
+    wheelchair_accessible:
+      '#type': checkbox
+      '#title': 'Is your Building wheelchair accessible?'
+      '#states_clear': false
+      '#default_value': true
+      '#attributes':
+        class:
+          - cb-f
+    amenities_fees:
+      '#type': fieldset
+      '#title': 'Amenities & Fees'
+      flexbox_02:
+        '#type': webform_flexbox
+        '#attributes':
+          style: 'height: 12rem;'
+        upfront_fees:
+          '#type': checkboxes
+          '#title': 'What fees will be due upfront?'
+          '#options': ml_upfront_fees
+          '#options_display': two_columns
+          '#flex': 2
+          '#wrapper_type': form_element
+          '#attributes':
+            class:
+              - cb-f
+          '#label_attributes':
+            class:
+              - cb-l
+        utilities_included:
+          '#type': checkboxes
+          '#title': 'Utilities Included in Rent'
+          '#options': ml_utilities_included
+          '#options_display': two_columns
+          '#flex': 2
+          '#wrapper_type': form_element
+          '#attributes':
+            class:
+              - cb-f
+          '#label_attributes':
+            class:
+              - cb-l
+      amenities_features:
+        '#type': checkboxes
+        '#title': 'Amenities & Features'
+        '#options': ml_amenities_features
+        '#options_display': three_columns
+        '#flex': 3
+        '#wrapper_type': form_element
+        '#wrapper_attributes':
+          style: 'height: 13.25rem;'
+        '#attributes':
+          class:
+            - cb-f
+        '#label_attributes':
+          class:
+            - cb-l
+    horizontal_rule_03:
+      '#type': webform_horizontal_rule
+  unit_information:
+    '#type': webform_wizard_page
+    '#title': 'Unit Details'
+    '#states':
+      visible:
+        - ':input[name="select_development"]':
+            value: new
+        - or
+        - ':input[name="update_unit_information"]':
+            checked: true
+        - or
+        - ':input[name="add_additional_units"]':
+            checked: true
+    unit_detail_help_text:
+      '#type': processed_text
+      '#wrapper_attributes':
+        style: 'margin-bottom: -2rem;'
+      '#text': |
+        <p>Please enter details for every type of unit you would like to market on Metrolist. For example if you have three 1-bedroom units at restricted 60% AMI, one of which is built out for those who are hearing impaired, your entry would look like this:</p>
+      '#format': full_html
+    unit_detail_help_img:
+      '#type': webform_more
+      '#more_title': 'View Screenshot'
+      '#more': '<div style="text-align:center"><img alt="" src="/modules/custom/bos_content/modules/bos_metrolist/img/metrolist_form_screenshot.png" width="1150" /></div>'
+    horizontal_rule_04:
+      '#type': webform_horizontal_rule
+    current_units_fieldset:
+      '#type': fieldset
+      '#title': 'Current Units'
+      '#description': '<span style="font-size:11pt; font-variant-east-asian:normal; font-variant-ligatures:normal; font-variant-position:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">These are the units in our inventory currently. To re-market, please select the units available and update the rental price if applicable.</span></span></span></span></span></span>'
+      '#description_display': before
+      '#states':
+        visible:
+          ':input[name="select_development"]':
+            '!value': new
+          ':input[name="update_unit_information"]':
+            checked: true
+      current_units:
+        '#type': webform_custom_composite
+        '#title': 'Current Units'
+        '#title_display': invisible
+        '#description_display': before
+        '#required': true
+        '#states_clear': false
+        '#multiple__header': false
+        '#multiple__item_label': unit
+        '#multiple__min_items': 1
+        '#multiple__empty_items': 0
+        '#multiple__sorting': false
+        '#multiple__operations': false
+        '#multiple__add_more': false
+        '#multiple__add_more_input': false
+        '#multiple__add_more_input_label': 'more Units'
+        '#format_items': table
+        '#format_attributes':
+          style: 'text-align: center;'
+        '#element':
+          relist_unit:
+            '#type': checkbox
+            '#title': 'Active Listing'
+            '#help': 'This Unit will be re-listed as a "First Come, First Served"'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'margin-top: 1.8rem;'
+                - 'clear:both;'
+            '#label_attributes':
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+              class:
+                - cb-f
+                - cb-f-wf
+          ami:
+            '#type': textfield
+            '#title': 'AMI %'
+            '#readonly': true
+            '#access': false
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'display:none;'
+            '#attributes':
+              class:
+                - sel-f
+              style:
+                - 'width: 7rem;'
+                - 'border: none;'
+                - 'text-align: center;'
+                - 'background: none;'
+          bedrooms:
+            '#type': textfield
+            '#title': Bedrooms
+            '#readonly': true
+            '#access': false
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'display:none;'
+            '#attributes':
+              class:
+                - sel-f
+              style:
+                - 'width: 4rem;'
+                - 'border: none;'
+                - 'text-align: center;'
+                - 'background: none;'
+          ada:
+            '#type': textarea
+            '#title': ADA
+            '#help': 'This Unit has been built to be ADA compliant.'
+            '#readonly': true
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+              style:
+                - 'margin-top:1.5em;'
+            '#attributes':
+              style:
+                - 'border: none;'
+                - 'resize: none;'
+                - 'line-height: 1.2rem;'
+                - 'background: none;'
+            '#cols': 15
+            '#rows': 3
+          summary:
+            '#type': textarea
+            '#title': Summary
+            '#readonly': true
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+            '#attributes':
+              style:
+                - 'border: none;'
+                - 'resize: none;'
+                - 'line-height: 1.2rem;'
+                - 'background: none;'
+            '#cols': 15
+            '#rows': 4
+          rental_type:
+            '#type': checkbox
+            '#title': 'Project-Based Voucher'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'margin-top: 1.6rem;'
+            '#label_attributes':
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+              class:
+                - cb-f
+                - cb-f-wf
+          price:
+            '#type': textfield
+            '#title': Price
+            '#help': 'Please enter Sale price or Rental price per month.'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+            '#attributes':
+              style:
+                - 'width: 12rem;'
+            '#input_mask': "'alias':  'currency','digits':'0'"
+          minimum_income_threshold:
+            '#type': textfield
+            '#title': 'Minimum Income'
+            '#help': 'Please enter the minimum annual salary you require for applicants. (This field can be left empty or 0)'
+            '#wrapper_attributes':
+              class:
+                - g--2
+                - m-b300
+              style:
+                - 'float:left;'
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+            '#attributes':
+              style:
+                - 'width: 12rem;'
+            '#input_mask': "'alias':  'currency','digits':'0'"
+          status:
+            '#type': textfield
+            '#title': '&nbsp;'
+            '#placeholder': Status
+            '#readonly': true
+            '#access': false
+            '#attributes':
+              style:
+                - 'width: 7rem;'
+                - 'border: none;'
+                - 'display:none;'
+          pending:
+            '#type': textarea
+            '#title': pending
+            '#readonly': true
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'clear:both;'
+            '#label_attributes':
+              style:
+                - 'display:none;'
+            '#attributes':
+              style:
+                - 'border: none;'
+                - 'resize: none;'
+                - 'line-height: 1.2rem;'
+                - 'background: none;'
+                - 'text-align: center;'
+            '#rows': 1
+            '#cols': 90
+          note:
+            '#type': textarea
+            '#title': notes
+            '#readonly': true
+            '#wrapper_attributes':
+              class:
+                - g--8
+              style:
+                - 'float:left;'
+            '#label_attributes':
+              style:
+                - 'display:none;'
+            '#attributes':
+              style:
+                - 'border: none;'
+                - 'resize: none;'
+                - 'line-height: 1.2rem;'
+                - 'background: none;'
+            '#rows': 1
+            '#cols': 90
+          sfid:
+            '#type': textfield
+            '#title': '&nbsp;'
+            '#readonly': true
+            '#access': true
+            '#attributes':
+              style: 'display:none;'
+    flexbox_22:
+      '#type': webform_flexbox
+      '#states':
+        visible:
+          - ':input[name="select_development"]':
+              value: new
+          - xor
+          - ':input[name="add_additional_units"]':
+              checked: true
+      type_of_listing:
+        '#type': select
+        '#title': 'Rental or Ownership?'
+        '#options':
+          rental: Rental
+          ownership: Ownership
+        '#empty_option': 'Type of Listing'
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+        '#required': true
+    units_fieldset:
+      '#type': fieldset
+      '#title': 'Additional Units'
+      '#description': '<span style="font-size:11pt; font-variant-east-asian:normal; font-variant-ligatures:normal; font-variant-position:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Need to add units to our inventory for this building? Please enter unit details below.</span></span></span></span></span></span>'
+      '#description_display': before
+      '#states':
+        visible:
+          - ':input[name="select_development"]':
+              value: new
+          - xor
+          - ':input[name="add_additional_units"]':
+              checked: true
+      '#attributes':
+        class:
+          - m-t300
+      units:
+        '#type': webform_custom_composite
+        '#title': Units
+        '#title_display': invisible
+        '#description_display': before
+        '#required': true
+        '#multiple__header': false
+        '#multiple__sorting': false
+        '#multiple__add_more_input_label': 'more Units'
+        '#format_items': table
+        '#format_attributes':
+          style: 'text-align: center;'
+        '#element':
+          unit_count:
+            '#type': number
+            '#required': true
+            '#title': Number
+            '#help': 'How many units with this AMI, Bedroom count at this price point do you have available?'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'margin-top: 0.25rem;'
+            '#label_attributes':
+              style:
+                - 'min-height: 18px;'
+              class:
+                - m-t300
+                - m-b200
+            '#attributes':
+              min: 0
+              style:
+                - 'min-height: 68px;'
+          ami:
+            '#type': select
+            '#options':
+              market: N/A
+              20: 20%
+              30: 30%
+              40: 40%
+              50: 50%
+              60: 60%
+              70: 70%
+              80: 80%
+              90: 90%
+              100: 100%
+              110: 110%
+              120: 120%
+              130: 130%
+              140: 140%
+              150: 150%
+              160: 160%
+              165: 165%
+              170: 170%
+              180: 180%
+              190: 190%
+              200: 200%
+            '#required': true
+            '#title': 'AMI %'
+            '#empty_option': '--'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'margin-top: 0.2rem;'
+            '#attributes':
+              class:
+                - sel-f
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+                - l-wf
+          bedrooms:
+            '#type': select
+            '#options':
+              - '0'
+              - '1'
+              - '2'
+              - '3'
+              - '4'
+              - '5'
+              - '6'
+            '#required': true
+            '#title': Bedrooms
+            '#empty_option': '--'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'margin-top: 0.2rem;'
+                - 'float:left;'
+            '#attributes':
+              class:
+                - sel-f
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+                - l-wf
+          bathrooms:
+            '#type': select
+            '#options':
+              0: 0
+              '0.5': 0.5
+              1: 1
+              '1.5': 1.5
+              2: 2
+              '2.5': 2.5
+              3: 3
+              '3.5': 3.5
+              4: 4
+            '#title': Bathrooms
+            '#empty_option': '--'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'margin-top: 0.2rem;'
+                - 'float:left;'
+            '#attributes':
+              class:
+                - sel-f
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+                - l-wf
+          ada_m:
+            '#type': checkbox
+            '#title': ADA<br>Mobility
+            '#wrapper_attributes':
+              style:
+                - 'float:left;'
+                - 'margin-top: 1.2rem;'
+            '#label_attributes':
+              class:
+                - cb-dh
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse;'
+                - 'line-height: 1rem;'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+              class:
+                - cb-f
+                - cb-f-wf
+          ada_v:
+            '#type': checkbox
+            '#title': ADA<br>Vision
+            '#wrapper_attributes':
+              style:
+                - 'float:left;'
+                - 'margin-top: 1.2rem;'
+            '#label_attributes':
+              class:
+                - cb-dh
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse;'
+                - 'line-height: 1rem;'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+              class:
+                - cb-f
+                - cb-f-wf
+          ada_h:
+            '#type': checkbox
+            '#title': ADA<br>Hearing
+            '#wrapper_attributes':
+              style:
+                - 'float:left;'
+                - 'margin-top: 1.2rem;'
+            '#label_attributes':
+              class:
+                - cb-dh
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse;'
+                - 'line-height: 1rem;'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+                - 'min-width: 42px;'
+              class:
+                - cb-f
+                - cb-f-wf
+          rental_type:
+            '#type': checkbox
+            '#title': 'Project-Based<br>Voucher'
+            '#wrapper_attributes':
+              class:
+                - g--2
+              style:
+                - 'float:left;'
+                - 'clear:both;'
+                - 'margin-top: 1.2rem;'
+            '#label_attributes':
+              class:
+                - cb-dh
+              style:
+                - 'float:right;'
+                - 'flex-direction: column-reverse;'
+                - 'line-height: 1rem;'
+            '#attributes':
+              style:
+                - 'margin: 0 auto;'
+                - 'min-width: 42px;'
+              class:
+                - cb-f
+                - cb-f-wf
+          price:
+            '#type': textfield
+            '#title': Price
+            '#help': 'Please enter Sale price or Rental price per month.'
+            '#wrapper_attributes':
+              class:
+                - g--4
+              style:
+                - 'float:left;'
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+            '#input_mask': "'alias':  'currency', 'digits':'0'"
+          minimum_income_threshold:
+            '#type': textfield
+            '#title': 'Minimum Income Threshold'
+            '#help': 'Please enter the minimum annual salary you require for applicants. (This field can be left empty or 0)'
+            '#wrapper_attributes':
+              class:
+                - g--4
+                - m-b300
+              style:
+                - 'float:left;'
+                - 'margin-left: 1.5rem;'
+            '#label_attributes':
+              class:
+                - m-t300
+                - m-b200
+            '#input_mask': "'alias':  'currency', 'digits':'0'"
+    scriptblock:
+      '#type': processed_text
+      '#text': |-
+        <script>
+        (function ($, window, document) {
+        function runcode(elem) {
+          if ($(elem).attr("id") && $(elem).attr("id").indexOf("rental-type") >= 0) {
+            var elemParent = $(elem).parentsUntil("td");
+            var elemPriceDiv = elemParent.next("[class*=item--price]");
+            var val;
+            if (elemPriceDiv) {
+              var elemPriceInput = elemPriceDiv.find("input");
+              if (elemPriceInput && (elem.checked || $(elem).prop("checked"))) {
+                elemPriceDiv.children().attr("disabled", "true");
+                val = elemPriceInput.val();
+                elemPriceInput.prop("old_val", val).val(0);
+              }
+              else if (elemPriceInput && !elem.checked && !$(elem).prop("checked")) {
+                elemPriceDiv.children().removeAttr("disabled");
+                if (val = elemPriceInput.prop("old_val")) {
+                  elemPriceInput.val(val);
+                }
+              }
+            }
+          }
+          else if ($(elem).attr("id") && $(elem).attr("id").indexOf("relist-unit") >= 0) {
+            var elemParent = $(elem).parentsUntil("tr").last();
+            if (!elem.checked) {
+              elemParent.children("div").find("input").attr("disabled", "true");
+            }
+            else {
+              elemParent.children("div").find("input").removeAttr("disabled");
+              runcode(elemParent.find("input[id*=rental-type]"));
+            }
+            elemParent.find("input[id*=sfid]").removeAttr("disabled");
+            $(elem).removeAttr("disabled");
+          }
+        }
+        $(document)
+          .ready(function () {
+            $("#current_units_table, #units_table")
+              .on("click", "input", function (e) {
+                runcode(e.target);
+              });
+            $("[id*=relist-unit]")
+              .each(function (key, elem) {
+                runcode(elem);
+              });
+            $("[data-webform-wizard-current-page=unit_information]input[id*=edit-actions-preview-next]")
+              .on("click", function () {
+                $("#current_units_table, #units_table").children("div").find("input").removeAttr("disabled");
+              });
+          });
+        })(jQuery, this, this.document);
+        </script>
+      '#format': json_friendly
+  public_listing_information:
+    '#type': webform_wizard_page
+    '#title': 'Availability Information'
+    '#states':
+      visible:
+        - ':input[name="select_development"]':
+            value: new
+        - or
+        - ':input[name="add_additional_units"]':
+            checked: true
+        - or
+        - ':input[name="update_public_listing_information"]':
+            checked: true
+    public_contact_information_fieldset:
+      '#type': fieldset
+      '#title': 'Who should the public contact for information?'
+      '#attributes':
+        class:
+          - ml-contact-info
+      same_as_above_contact_info:
+        '#type': checkbox
+        '#title': 'Same as my Contact Information'
+        '#attributes':
+          class:
+            - cb-f
+      my_contact_information:
+        '#type': processed_text
+        '#states':
+          visible:
+            ':input[name="same_as_above_contact_info"]':
+              checked: true
+        '#text': |
+          <p>[webform_submission:values:contact_name]<br />
+          [webform_submission:values:contact_company]<br />
+          [webform_submission:values:contact_email]<br />
+          [webform_submission:values:contact_phone]<br />
+          [webform_submission:values:contact_address]</p>
+        '#format': full_html
+      flexbox_05:
+        '#type': webform_flexbox
+        public_contact_name:
+          '#type': textfield
+          '#title': 'Public Contact Name'
+          '#placeholder': 'Full name'
+          '#states':
+            invisible:
+              ':input[name="same_as_above_contact_info"]':
+                checked: true
+            required:
+              ':input[name="same_as_above_contact_info"]':
+                unchecked: true
+          '#format_items': comma
+        property_management_company:
+          '#type': textfield
+          '#title': 'Property Management Company'
+          '#placeholder': 'Company name'
+          '#states':
+            invisible:
+              ':input[name="same_as_above_contact_info"]':
+                checked: true
+            required:
+              ':input[name="same_as_above_contact_info"]':
+                unchecked: true
+          '#format_items': comma
+      flexbox_06:
+        '#type': webform_flexbox
+        public_contact_email:
+          '#type': email
+          '#title': 'Public Contact Email'
+          '#states':
+            invisible:
+              ':input[name="same_as_above_contact_info"]':
+                checked: true
+            required:
+              ':input[name="same_as_above_contact_info"]':
+                unchecked: true
+          '#format_items': comma
+        public_contact_phone:
+          '#type': textfield
+          '#title': 'Public Contact Phone'
+          '#input_mask': '(999) 999-9999'
+          '#states':
+            invisible:
+              ':input[name="same_as_above_contact_info"]':
+                checked: true
+            required:
+              ':input[name="same_as_above_contact_info"]':
+                unchecked: true
+          '#format_items': comma
+      public_contact_address:
+        '#type': webform_address
+        '#title': 'Public Contact Mailing Address'
+        '#states':
+          invisible:
+            ':input[name="same_as_above_contact_info"]':
+              checked: true
+          required:
+            ':input[name="same_as_above_contact_info"]':
+              unchecked: true
+        '#format_items': ol
+        '#address__title': 'Public Contact Address'
+        '#address_2__access': false
+        '#state_province__placeholder': MA
+        '#state_province__type': textfield
+        '#state_province__options': state_province_codes
+        '#country__access': false
+    flexbox_03:
+      '#type': webform_flexbox
+      units_income_restricted:
+        '#type': select
+        '#title': 'Are the units Income-restricted?'
+        '#options': yes_no
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+        '#required': true
+      waitlist_open:
+        '#type': select
+        '#title': 'Waitlist Only?'
+        '#help_title': ' '
+        '#help': 'Select &quot;Yes&quot; if there are no available units and you are advertising a Waitlist opportunity. Otherwise, if there are units available now, select &quot;No'
+        '#options': yes_no
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+      available_how:
+        '#type': select
+        '#title': 'Available how?'
+        '#options':
+          lottery: Lottery
+          first_come_first_serve: ' First Come, First Serve'
+        '#wrapper_attributes':
+          class:
+            - sel
+        '#attributes':
+          class:
+            - sel-f
+        '#label_attributes':
+          class:
+            - sel-l
+        '#required': true
+    flexbox_09:
+      '#type': webform_flexbox
+      '#align_items': center
+      posted_to_metrolist_date:
+        '#type': date
+        '#title': 'Available On'
+        '#required': true
+        '#wrapper_attributes':
+          style: 'width:250px;'
+        '#label_attributes':
+          class:
+            - txt-l
+        '#format_items': comma
+        '#datepicker': true
+      application_deadline_datetime:
+        '#type': datetime
+        '#title': 'When is the application deadline?'
+        '#states':
+          required:
+            ':input[name="available_how"]':
+              value: lottery
+        '#default_value': '11:45 PM'
+        '#label_attributes':
+          class:
+            - txt-l
+        '#format_items': comma
+        '#date_year_range': '0:+3'
+        '#date_time_step': '900'
+        '#datepicker': true
+        '#step': ''
+      remove_posting_date:
+        '#type': date
+        '#title': 'Remove Posting Date'
+        '#wrapper_attributes':
+          style: 'width:250px;'
+        '#label_attributes':
+          class:
+            - txt-l
+        '#datepicker': true
+    where_would_you_like_visitors_to_be_directed:
+      '#type': fieldset
+      '#title': 'Where would you like housing seekers to be directed from the Metrolist?'
+      link_info_desc:
+        '#type': processed_text
+        '#text': |
+          <p>Please only link to materials relating to affordable units in your property. Market rate information will not be posted on Metrolist.</p>
+        '#format': filtered_html
+      flexbox_23:
+        '#type': webform_flexbox
+        direct_visitors:
+          '#type': select
+          '#title': 'Website or PDF?'
+          '#options':
+            website: Website
+            pdf: PDF
+          '#flex': 0
+          '#wrapper_attributes':
+            class:
+              - sel
+          '#attributes':
+            class:
+              - sel-f
+          '#label_attributes':
+            class:
+              - sel-l
+        website_link:
+          '#type': url
+          '#title': 'Website link'
+          '#help_title': ' '
+          '#help': '<span style="font-size:12pt; font-variant-caps:normal; font-variant-east-asian:normal; font-variant-ligatures:normal; font-variant-position:normal; white-space:pre-wrap"><span style="font-family:Lora,serif"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Please copy and paste the entire URL for your site, including https://</span></span></span></span></span></span>'
+          '#placeholder': 'https://example.com/my-property'
+          '#flex': 0
+          '#states':
+            visible:
+              ':input[name="direct_visitors"]':
+                value: website
+            required:
+              ':input[name="direct_visitors"]':
+                value: website
+          '#label_attributes':
+            class:
+              - txt-l
+          '#format_items': comma
+        pdf_upload:
+          '#type': webform_document_file
+          '#title': 'PDF upload'
+          '#title_display': invisible
+          '#flex': 0
+          '#states':
+            visible:
+              ':input[name="direct_visitors"]':
+                value: pdf
+            required:
+              ':input[name="direct_visitors"]':
+                value: pdf
+          '#wrapper_attributes':
+            style: 'margin-top: 3.25rem;'
+          '#label_attributes':
+            class:
+              - txt-l
+          '#format_items': comma
+          '#uri_scheme': public
+          '#max_filesize': '25'
+          '#file_extensions': pdf
+          '#sanitize': true
+          '#button': true
+          '#upload_location': 'public://metrolist_pdf/2020/07'
+  i_agree:
+    '#type': checkbox
+    '#title': 'I Agree'
+    '#description': 'By Checking this box, you agree not to discriminate or permit discrimination, upon the basis or race, color, religious creed, marital status, sex, age, ancestry, sexual preference, sexual orientation, military status, disability, national origin, gender identity, source of income, or the presence of children, in the rental or sale of this property'
+    '#title_display': none
+    '#description_display': before
+    '#states_clear': false
+    '#wrapper_attributes':
+      class:
+        - hide-till-confirm
+    '#format': custom
+    '#format_html': |-
+      <div class="webform-element webform-element-type-checkbox js-form-item form-item js-form-type-item form-item-i-agree js-form-item-i-agree" id="metrolist_listing--i_agree">
+            <label>I Agree</label>
+              <div data-webform-states-no-clear="" class="js-form-item form-item js-form-type-checkbox form-item-i-agree js-form-item-i-agree form-no-label">
+        <div class="description">
+          <div id="edit-i-agree--description" class="webform-element-description">
+          By Checking this box, you agree not to discriminate or permit discrimination, upon the basis or race, color, religious creed, marital status, sex, age, ancestry, sexual preference, sexual orientation, military status, disability, national origin, gender identity, source of income, or the presence of children, in the rental or sale of this property
+          </div>
+        </div>
+        <label class="cb" for="edit-i-agree" style="display:flex;margin:20px 0;">
+          <input class="cofirm-ctr cb-f form-checkbox" data-drupal-selector="edit-i-agree" aria-describedby="edit-i-agree--description" type="checkbox" id="edit-i-agree" name="i_agree" value="1" tabindex="-1">
+          <span class="cb-l">I Agree</span>
+        </label>
+      </div>
+              </div>
+  contactsfid:
+    '#type': value
+    '#title': contactSFID
+  accountsfid:
+    '#type': value
+    '#title': accountSFID
+  developmentsfid:
+    '#type': value
+    '#title': developmentSFID
+  unitssfid:
+    '#type': value
+    '#title': unitsSFID
+  formerrors:
+    '#type': value
+    '#title': formErrors
+    '#value': '0'
+  actions_01:
+    '#type': webform_actions
+    '#title': submit
+    '#states':
+      disabled:
+        ':input[name^="i_agree"]':
+          unchecked: true
+    '#states_clear': false
+    '#submit__label': 'Submit for Review'
+    '#submit__attributes':
+      class:
+        - m-v600
+        - submit-confirmed
+    '#draft_hide': true
+    '#update_hide': true
+    '#wizard_prev_hide': true
+    '#wizard_next_hide': true
+    '#preview_prev_hide': true
+    '#preview_next_hide': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#attributes':
+      class:
+        - m-t300
+        - m-b300
+    '#access_update_roles':
+      - administrator
+      - site_administrator
+      - developer
+      - metrolist_editor
+    '#access_view_roles': {  }
+    '#submit_hide': true
+    '#submit__label': 'Submit for Review'
+    '#draft_hide': true
+    '#update_hide': true
+    '#wizard_prev__attributes':
+      class:
+        - m-v600
+      style: 'margin-bottom:1rem;'
+    '#wizard_next__label': 'Next Page >'
+    '#wizard_next__attributes':
+      class:
+        - m-v600
+      style: 'float:right;margin-bottom:1rem;'
+    '#preview_prev__label': '< Previous Page'
+    '#preview_prev__attributes':
+      class:
+        - m-v600
+      style: 'margin-bottom:1rem;'
+    '#preview_next__label': 'Next Page >'
+    '#preview_next__attributes':
+      class:
+        - m-v600
+      style: 'float:right;margin-bottom:1rem;'
+css: "#seal {\r\n  display:none;\r\n}\r\n\r\n.webform-submission-form .sel-c {\r\n  display: block; \r\n}\r\n.webform-submission-form .webform-multiple-table td {\r\n  border-bottom: solid 3px;\r\n  padding-left: 1.5rem;\r\n}\r\n\r\n.webform-submission-form .form-checkboxes .js-form-type-checkbox {\r\n  -webkit-box-align: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  -js-display: flex;\r\n  display: flex;\r\n  margin: 0;\r\n  position: relative;\r\n}\r\n\r\n.webform-submission-form .form-checkboxes .js-form-type-checkbox:not(:last-child) {\r\n  margin: 0 0 8px;\r\n  margin: 0 0 .5rem;\r\n}\r\n\r\n.webform-submission-form .form-checkboxes .js-form-type-checkbox label {\r\n  color: #091f2f;\r\n  font-family: Lora,Georgia,serif;\r\n  font-size: calc(16px + 4 * ((100vw - 480px) / 960));\r\n  line-height: 1.2;\r\n  margin: 0 7px;\r\n  width: calc(100% - 42px);\r\n  text-transform: none;\r\n}\r\n\r\n.webform-submission-form .ml-contact-info .js-form-type-email label,\r\n.webform-submission-form .ml-contact-info .js-form-type-textfield label,\r\n.webform-submission-form .js-form-type-checkboxes label.cb-l, \r\n.webform-submission-form .fieldset-legend {\r\n  color: #091f2f;\r\n  font-family: Montserrat,Arial,sans-serif;\r\n  font-size: calc(14px + 2 * ((100vw - 480px) / 960));\r\n  font-weight: 700;\r\n  line-height: 1.4;\r\n  letter-spacing: 1px;\r\n  text-transform: uppercase;\r\n  display: block; \r\n}\r\n.webform-submission-form ul li {\r\n  background: none;\r\n}\r\n.webform-submission-form .js-webform-multiple-add {\r\n  margin: 1.5rem;\r\n}\r\n\r\n.webform-submission-form .js-webform-multiple-add .form-number {\r\n padding-top: 0; \r\n}\r\n\r\n.webform-submission-form  .webform-options-display-three-columns {\r\n height: 11rem; \r\n}\r\n\r\n.webform-submission-form select.error {\r\n border-color: #d22d23; \r\n}\r\n\r\n.webform-submission-data--view-mode-preview #metrolist_listing--your_contact_information summary,\r\n.webform-submission-data--view-mode-preview  #metrolist_listing--select_building summary {\r\n  display:none;\r\n}\r\n\r\n.hide-till-confirm {\r\n  display: none;\r\n}\r\n\r\n[data-webform-wizard-current-page=\"webform_preview\"] .hide-till-confirm {\r\n  display: block;\r\n}\r\n\r\n@media screen and (max-width: 767px){\r\n .webform-submission-form .form-checkboxes .js-form-type-checkbox label {\r\n margin: 0 1rem;\r\n }\r\n .webform-submission-form {\r\n min-height:600px;\r\n }\r\n}\r\n\r\n@media screen and (min-width: 768px){\r\n  .webform-submission-form .form-checkboxes .js-form-type-checkbox label {\r\n    margin: 0 1rem;\r\n }\r\n .webform-submission-form {\r\n min-height:530px;\r\n  }\r\n}\r\n\r\n@media screen and (min-width: 1440px){\r\n  .webform-submission-form .form-checkboxes .js-form-type-checkbox label {\r\n    font-size: 20px;\r\n  }\r\n\r\n  .webform-submission-form .ml-contact-info .js-form-type-email label,\r\n  .webform-submission-form .ml-contact-info .js-form-type-textfield label,\r\n  .webform-submission-form .js-form-type-checkboxes label.cb-l, \r\n  .webform-submission-form .fieldset-legend { \r\n    font-size: 16px;\r\n  }\r\n}\r\n\r\n@media screen {\r\n  .webform-submission-metrolist-listing-form .form-actions {\r\n    margin-bottom: 1rem;\r\n    margin-top: 1rem;\r\n  }\r\n  details.webform-submission-information {\r\n    border: 1px solid darkgray;\r\n    padding: 0 8px;\r\n  }\r\n  .webform-submission-information summary {\r\n    color: #1871bd;\r\n  }\r\n  input.webform-button--submit[value=Save] {\r\n    display: none;\r\n  }\r\n  form:not(#webform-submission-metrolist-listing-edit-form) .webform-submission-information summary::before {\r\n    content: \"This form has been submitted.\";\r\n    color: #d22d23;\r\n    font-family: Lora,serif;\r\n    display: block;\r\n  } \r\n  form:not(#webform-submission-metrolist-listing-edit-form) .webform-submission-information summary::after {\r\n    content: \"Please request a new form to edit this property or add a new property.\";\r\n    color: #58585b;\r\n    font-family: Lora,serif;\r\n    display: block;\r\n  } \r\n  form:not(#webform-submission-metrolist-listing-edit-form) .webform-submission-information span.summary::after {\r\n    content: \" (click for details)\";\r\n    font-size: 75%;\r\n    font-family: Lora,serif;\r\n    color: initial;\r\n    font-style: italic;\r\n  } \r\n}\r\ndiv[id^=\"metrolist_listing--i_agree2\"],\r\ninput[id^=\"edit-select-building\"],\r\ninput[id^=\"edit-your-contact-information\"],\r\ndiv[id^=\"metrolist_listing--i_agree\"] label {\r\n  display:none;\r\n}\r\n\r\nlabel[for=\"edit-i-agree-agree\"] {\r\n margin: 20px 0;\r\n}\r\n\r\n#edit-i-agree--description {\r\n  line-height: 35px;\r\n}\r\n\r\n#edit-actions-01 {\r\n  margin-top: -3px;\r\n}\r\n\r\n.form-item-update-public-listing-information {\r\n  display: none !important;\r\n}\r\n\r\n#edit-actions-01-submit {\r\n  position: relative;\r\n  float: right;\r\n}\r\n\r\n.webform-submission-metrolist-listing-form {\r\n  display: block !important\r\n}\r\n.cb-f-wf {\r\n  margin-top: 1.5rem !important;\r\n      \r\n}\r\n.cb-f-wf::before {\r\n  position:relative !important;\r\n  top: -3px !important;\r\n  left: -3px !important;\r\n}\r\n.l-wf {\r\n  min-height: 18px;\r\n  padding-top: 10px;\r\n}\r\n.cb-l-ws {\r\n  margin: 0 10px;\r\n  height: 0px;\r\n  text-align: center;\r\n}\r\n.cb-dh .cb-l-ws {\r\n  height: 14px;\r\n}"
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: form
+  ajax_progress_type: fullscreen
+  ajax_effect: slide
+  ajax_speed: 500
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: true
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: true
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: true
+  wizard_progress_states: true
+  wizard_start_label: ''
+  wizard_preview_link: true
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: name
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 2
+  preview_label: 'Submission Review'
+  preview_title: 'Submission Review'
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements:
+    select_contact_section_desc: select_contact_section_desc
+    select_contact: select_contact
+    update_my_contact_information: update_my_contact_information
+    select_development: select_development
+    update_building_information: update_building_information
+    add_additional_units: add_additional_units
+    update_unit_information: update_unit_information
+    update_public_listing_information: update_public_listing_information
+    horizontal_rule_03: horizontal_rule_03
+    unit_detail_help_text: unit_detail_help_text
+    unit_detail_help_img: unit_detail_help_img
+    horizontal_rule_04: horizontal_rule_04
+    link_info_desc: link_info_desc
+    contactsfid: contactsfid
+    accountsfid: accountsfid
+    developmentsfid: developmentsfid
+    unitssfid: unitssfid
+    formerrors: formerrors
+  preview_exclude_empty: false
+  preview_exclude_empty_checkbox: false
+  draft: all
+  draft_multiple: false
+  draft_auto_save: true
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: url_message
+  confirmation_url: metrolist/listing-request
+  confirmation_title: 'Thank you for your submission.'
+  confirmation_message: "Thank you for listing your property with Metrolist!<br />\r\nIf there are any issues posting your listing, our Program Manager will be in touch soon.&nbsp;\r\n<p data-renderer-start-pos=\"470\">If you have questions, contact us at <a data-renderer-mark=\"true\" href=\"mailto:metrolist@boston.gov\" title=\"mailto:metrolist@boston.gov\">metrolist@boston.gov</a></p>\r\n\r\n<p data-renderer-start-pos=\"627\">- City of Boston Mayor&#39;s Office of Housing</p>"
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: 'Submit another Listing'
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: draft
+  purge_days: 2
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: true
+  token_update: true
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: 'Send email to digital on errors'
+    status: true
+    conditions:
+      disabled:
+        ':input[name="formerrors"]':
+          value: '0'
+    weight: -47
+    settings:
+      states:
+        - completed
+      to_mail: david.upton@boston.gov
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: no-reply@boston.gov
+      from_options: {  }
+      from_name: 'Metrolist Listing'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: 'Metrolist Listing Form submission error'
+      body: "<p>The following submission had errors.</p>\r\n<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission, [], options) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission, [], options) }}</p>\r\n<p>Submission Link:\r\n{{ webform_token('[webform_submission:token-view-url]', webform_submission, [], options) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission, [], options) }}\r\n"
+      excluded_elements:
+        select_contact_section_desc: select_contact_section_desc
+        select_contact: select_contact
+        update_my_contact_information: update_my_contact_information
+        select_development: select_development
+        update_building_information: update_building_information
+        add_additional_units: add_additional_units
+        update_unit_information: update_unit_information
+        update_public_listing_information: update_public_listing_information
+        horizontal_rule_03: horizontal_rule_03
+        unit_detail_help_text: unit_detail_help_text
+        unit_detail_help_img: unit_detail_help_img
+        horizontal_rule_04: horizontal_rule_04
+        same_as_above_contact_info: same_as_above_contact_info
+        my_contact_information: my_contact_information
+        link_info_desc: link_info_desc
+      ignore_access: false
+      exclude_empty: false
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: true
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  confirmation_to_submitter:
+    id: remote_post
+    handler_id: confirmation_to_submitter
+    label: 'Confirmation to Submitter'
+    notes: 'Send a confirmation email to the form submitter.'
+    status: true
+    conditions:
+      disabled:
+        ':input[name="formerrors"]':
+          '!value': '0'
+    weight: -49
+    settings:
+      method: POST
+      type: x-www-form-urlencoded
+      excluded_data:
+        uuid: uuid
+        uri: uri
+        created: created
+        completed: completed
+        changed: changed
+        in_draft: in_draft
+        current_page: current_page
+        remote_addr: remote_addr
+        uid: uid
+        langcode: langcode
+        webform_id: webform_id
+        entity_type: entity_type
+        entity_id: entity_id
+        locked: locked
+        sticky: sticky
+        notes: notes
+        select_contact: select_contact
+        update_my_contact_information: update_my_contact_information
+        contact_name: contact_name
+        contact_company: contact_company
+        contact_email: contact_email
+        contact_phone: contact_phone
+        contact_address: contact_address
+        update_building_information: update_building_information
+        update_public_listing_information: update_public_listing_information
+        building_in_boston: building_in_boston
+        neighborhood: neighborhood
+        region: region
+        city: city
+        street_address: street_address
+        zip_code: zip_code
+        wheelchair_accessible: wheelchair_accessible
+        upfront_fees: upfront_fees
+        utilities_included: utilities_included
+        amenities_features: amenities_features
+        type_of_listing: type_of_listing
+        same_as_above_contact_info: same_as_above_contact_info
+        public_contact_name: public_contact_name
+        property_management_company: property_management_company
+        public_contact_email: public_contact_email
+        public_contact_phone: public_contact_phone
+        public_contact_address: public_contact_address
+        units_income_restricted: units_income_restricted
+        waitlist_open: waitlist_open
+        available_how: available_how
+        posted_to_metrolist_date: posted_to_metrolist_date
+        application_deadline_datetime: application_deadline_datetime
+        direct_visitors: direct_visitors
+        website_link: website_link
+        pdf_upload: pdf_upload
+        contactsfid: contactsfid
+        accountsfid: accountsfid
+        developmentsfid: developmentsfid
+        unitssfid: unitssfid
+      custom_data: ''
+      custom_options: "\"headers\": {\r\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\r\n    \"Authorization\": \"Token c43517a240ee61898c00600eaa775aa0d0e639322c3f275b780f66062f69\"\r\n  }"
+      file_data: true
+      cast: false
+      debug: false
+      completed_url: '[site:url]rest/email/MetrolistListingConfirmation'
+      completed_custom_data: "{\"email[name]\": \"[webform_submission:values:contact_name]\",\r\n\"email[url]\": \"[current-page:url]\",\r\n\"email[from_address]\": \"noreply@boston.gov\",\r\n\"email[sender]\": \"Metrolist Listing\",\r\n\"email[to_address]\": \"[webform_submission:values:contact_email]\",\r\n\"email[message]\": \"dummy\",\r\n\"email[useHtml]\": \"1\",\r\n\"email[subject]\": \"Metrolist Submission Confirmation\"}"
+      updated_url: ''
+      updated_custom_data: ''
+      deleted_url: ''
+      deleted_custom_data: ''
+      draft_created_url: ''
+      draft_created_custom_data: ''
+      draft_updated_url: ''
+      draft_updated_custom_data: ''
+      converted_url: ''
+      converted_custom_data: ''
+      message: ''
+      messages: {  }
+      error_url: ''
+  notification_to_moh:
+    id: remote_post
+    handler_id: notification_to_moh
+    label: 'Notification to MOH'
+    notes: 'Send a notification email to MOH after submission.'
+    status: true
+    conditions:
+      disabled:
+        ':input[name="formerrors"]':
+          '!value': '0'
+    weight: -48
+    settings:
+      method: POST
+      type: x-www-form-urlencoded
+      excluded_data:
+        uuid: uuid
+        token: token
+        uri: uri
+        created: created
+        changed: changed
+        in_draft: in_draft
+        current_page: current_page
+        remote_addr: remote_addr
+        uid: uid
+        langcode: langcode
+        webform_id: webform_id
+        entity_type: entity_type
+        entity_id: entity_id
+        locked: locked
+        sticky: sticky
+        notes: notes
+        contact_address: contact_address
+        building_in_boston: building_in_boston
+        neighborhood: neighborhood
+        region: region
+        wheelchair_accessible: wheelchair_accessible
+        upfront_fees: upfront_fees
+        utilities_included: utilities_included
+        amenities_features: amenities_features
+        type_of_listing: type_of_listing
+        current_units: current_units
+        units: units
+        same_as_above_contact_info: same_as_above_contact_info
+        public_contact_name: public_contact_name
+        property_management_company: property_management_company
+        public_contact_email: public_contact_email
+        public_contact_phone: public_contact_phone
+        public_contact_address: public_contact_address
+        units_income_restricted: units_income_restricted
+        waitlist_open: waitlist_open
+        available_how: available_how
+        posted_to_metrolist_date: posted_to_metrolist_date
+        application_deadline_datetime: application_deadline_datetime
+        direct_visitors: direct_visitors
+        pdf_upload: pdf_upload
+      custom_data: ''
+      custom_options: "\"headers\": {\r\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\r\n    \"Authorization\": \"Token c43517a240ee61898c00600eaa775aa0d0e639322c3f275b780f66062f69\"\r\n  }"
+      file_data: true
+      cast: false
+      debug: false
+      completed_url: '[site:url]rest/email/MetrolistListingNotification'
+      completed_custom_data: "{\"email[name]\": \"[webform_submission:values:contact_name]\",\r\n\"email[url]\": \"[current-page:url]\",\r\n\"email[from_address]\": \"noreply@boston.gov\",\r\n\"email[sender]\": \"Metrolist Listing\",\r\n\"email[to_address]\": \"metrolist@boston.gov\",\r\n\"email[message]\": \"dummy\",\r\n\"email[useHtml]\": \"1\",\r\n\"email[subject]\": \"Metrolist Submission Notification\"}"
+      updated_url: ''
+      updated_custom_data: ''
+      deleted_url: ''
+      deleted_custom_data: ''
+      draft_created_url: ''
+      draft_created_custom_data: ''
+      draft_updated_url: ''
+      draft_updated_custom_data: ''
+      converted_url: ''
+      converted_custom_data: ''
+      message: ''
+      messages: {  }
+      error_url: ''
+  manage_and_post_a_submission:
+    id: post_metrolist_listing_submission
+    handler_id: manage_and_post_a_submission
+    label: 'Manage and post a Submission'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -50
+    settings: {  }
+variants: {  }

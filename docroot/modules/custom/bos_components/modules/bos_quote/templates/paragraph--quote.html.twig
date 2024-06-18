@@ -1,0 +1,57 @@
+{#
+ * @file
+ * Default theme implementation for a single paragraph item.
+ *
+ * Available variables:
+ * - $content: An array of content items. Use render($content) to print them
+ *   all, or print a subset such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. By default the following classes are available, where
+ *   the parts enclosed by {} are replaced by the appropriate values:
+ *   - entity
+ *   - entity-paragraphs-item
+ *   - paragraphs-item-{bundle}
+ *
+ * Other variables:
+ * - $classes_array: Array of html class attribute values. It is flattened into
+ *   a string within the variable $classes.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_entity()
+ * @see template_process()
+ #}
+
+  <div class="goq g--3 g--3--sl m-t500 m-b300" {{ attributes }}>
+  {% if content.field_quote %}
+    <div class="goq-quote-text">
+      "{{ content.field_quote }}"
+    </div>
+  {% endif %}
+  <div class="goq-quote-details">
+    <div class="goq-quote-photo">
+      {% if fallback_image_url %}
+        <img src="{{ fallback_image_url }}" alt="No picture available">
+      {% else %}
+        {{ content.field_person_photo }}
+      {% endif %}
+    </div>
+    {% if content.field_single_neighborhood or content.field_first_name or content.field_last_name %}
+      <div class="goq-quote-person-details">
+        {% if content.field_first_name or content.field_last_name %}
+          <div class="goq-quote-name">
+            {{ content.field_first_name }}
+            {{ content.field_last_name[0]['#context']['value'] }}
+          </div>
+        {% endif %}
+        {% if content.field_single_neighborhood %}
+            <div class="goq-quote-location">
+              {{ content.field_single_neighborhood }}
+            </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

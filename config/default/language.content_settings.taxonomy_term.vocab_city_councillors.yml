@@ -1,0 +1,11 @@
+uuid: 399c64f9-308c-4edb-88da-cc12ea7c1c44
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.vocab_city_councillors
+id: taxonomy_term.vocab_city_councillors
+target_entity_type_id: taxonomy_term
+target_bundle: vocab_city_councillors
+default_langcode: site_default
+language_alterable: false

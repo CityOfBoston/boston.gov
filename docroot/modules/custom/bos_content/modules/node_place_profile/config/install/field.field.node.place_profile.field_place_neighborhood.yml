@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_neighborhood
+    - node.type.place_profile
+id: node.place_profile.field_place_neighborhood
+field_name: field_place_neighborhood
+entity_type: node
+bundle: place_profile
+label: Neighborhood
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

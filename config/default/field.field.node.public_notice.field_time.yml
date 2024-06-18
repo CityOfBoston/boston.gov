@@ -1,0 +1,23 @@
+uuid: 0d4fe611-c953-4725-8253-c277baf9b9b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.public_notice
+  module:
+    - datetime
+_core:
+  default_config_hash: 7DV9wZGRLqm5mlm42nvNqbc6tq-QsgC2qohd6VH4mP8
+id: node.public_notice.field_time
+field_name: field_time
+entity_type: node
+bundle: public_notice
+label: 'Time public testimony begins'
+description: 'The expected time that the public testimony will begin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.roll_call_vote.field_councillor
+    - field.field.paragraph.roll_call_vote.field_vote
+    - paragraphs.paragraphs_type.roll_call_vote
+  module:
+    - dynamic_entity_reference
+    - fences
+id: paragraph.roll_call_vote.default
+targetEntityType: paragraph
+bundle: roll_call_vote
+mode: default
+content:
+  field_councillor:
+    type: dynamic_entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: g--4
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_vote:
+    type: dynamic_entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: g--8
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,10 @@
+uuid: 0a66b593-e62a-477c-ae47-50735ca98606
+langcode: en
+status: true
+dependencies: {  }
+id: election_contest_results
+label: 'Election Contest Results'
+icon_uuid: null
+icon_default: null
+description: 'Unofficial Results for an Election Contest'
+behavior_plugins: {  }

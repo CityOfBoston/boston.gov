@@ -1,0 +1,21 @@
+uuid: 5916451d-20f0-4a00-a4f2-78ac3595bf95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.place_profile
+_core:
+  default_config_hash: yYqnn3IJVQpS_u08YBjGFr_gLrt6wP2YI27XLLQTmJo
+id: node.place_profile.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: place_profile
+label: 'Phone Number'
+description: 'Please provide a phone number where people can contact for more information on this place. Ex. 617-555-5555'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

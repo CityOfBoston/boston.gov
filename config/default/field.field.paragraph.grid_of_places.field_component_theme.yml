@@ -1,0 +1,25 @@
+uuid: 62a9a402-195c-400d-9efb-73653e10a609
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.grid_of_places
+  module:
+    - options
+_core:
+  default_config_hash: v0D8HyBhb-VCvCLBSrsB1CPNZz5B5KzCVVGdVyhyaYk
+id: paragraph.grid_of_places.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: grid_of_places
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,8 @@
+uuid: eb139485-71a2-4afe-86f4-358ca2d4dee0
+langcode: en
+status: true
+dependencies: {  }
+id: anonymousform
+label: AnonymousForm
+threshold: 0.5
+challenge: recaptcha/reCAPTCHA

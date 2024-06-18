@@ -1,0 +1,42 @@
+name: bos_commissions
+type: module
+description: 'Provides theming and configuration for bos_commissions.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.commission_contact_info.created
+  - core.base_field_override.paragraph.commission_contact_info.status
+  - core.base_field_override.paragraph.commission_members.created
+  - core.base_field_override.paragraph.commission_members.status
+  - core.base_field_override.paragraph.commission_summary.created
+  - core.base_field_override.paragraph.commission_summary.status
+  - core.entity_form_display.paragraph.commission_contact_info.default
+  - core.entity_form_display.paragraph.commission_members.default
+  - core.entity_form_display.paragraph.commission_summary.default
+  - core.entity_view_display.paragraph.commission_contact_info.default
+  - core.entity_view_display.paragraph.commission_contact_info.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.commission_members.default
+  - core.entity_view_display.paragraph.commission_members.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.commission_members.preview
+  - core.entity_view_display.paragraph.commission_members.teaser
+  - core.entity_view_display.paragraph.commission_members.wysiwyg
+  - core.entity_view_display.paragraph.commission_summary.default
+  - core.entity_view_display.paragraph.commission_summary.paragraphs_editor_preview
+  - field.field.paragraph.commission_contact_info.field_commission
+  - field.field.paragraph.commission_members.field_commission
+  - field.field.paragraph.commission_members.field_component_title
+  - field.field.paragraph.commission_members.field_short_title
+  - field.field.paragraph.commission_summary.field_commission
+  - field.field.paragraph.commission_summary.field_component_title
+  - field.field.paragraph.commission_summary.field_short_title
+  - language.content_settings.paragraph.commission_contact_info
+  - language.content_settings.paragraph.commission_members
+  - language.content_settings.paragraph.commission_summary
+  - paragraphs.paragraphs_type.commission_contact_info
+  - paragraphs.paragraphs_type.commission_members
+  - paragraphs.paragraphs_type.commission_search
+  - paragraphs.paragraphs_type.commission_summary

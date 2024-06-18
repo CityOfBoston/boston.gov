@@ -1,0 +1,23 @@
+uuid: 1eeb6884-4ed4-442d-ab12-58655ad32d3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_payment_info
+    - node.type.how_to
+  module:
+    - text
+_core:
+  default_config_hash: sMqvK533sMjCq4xOMXdXliNvt_NnsNyD9V0y_lHi-8s
+id: node.how_to.field_payment_info
+field_name: field_payment_info
+entity_type: node
+bundle: how_to
+label: 'Payment Info'
+description: 'Enter payment info associated with this how-to here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

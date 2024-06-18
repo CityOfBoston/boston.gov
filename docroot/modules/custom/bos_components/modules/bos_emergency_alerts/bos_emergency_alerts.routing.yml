@@ -1,0 +1,15 @@
+signup.endpoint:
+  path: '/rest/emergency_alerts/{action}'
+  methods: [POST,GET]
+  defaults:
+    _controller: '\Drupal\bos_emergency_alerts\Controller\ApiRouter::route'
+  requirements:
+    _permission: 'access content'
+
+emergency_alerts.admin:
+  path: '/admin/config/system/boston/emergencyalerts'
+  defaults:
+    _title: 'Emergency Alerts'
+    _form: '\Drupal\bos_emergency_alerts\Form\EmergencyAlertsSettingsForm'
+  requirements:
+    _permission: 'administer boston'

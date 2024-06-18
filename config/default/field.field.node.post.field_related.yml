@@ -1,0 +1,25 @@
+uuid: bba8219d-2c8b-435a-b613-dfacc9d39a23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.post
+id: node.post.field_related
+field_name: field_related
+entity_type: node
+bundle: post
+label: Related
+description: 'Please enter pages you would like this post to appear on the its News and Announcements component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: entity_reference_filters
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

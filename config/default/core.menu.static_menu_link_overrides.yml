@@ -1,0 +1,27 @@
+_core:
+  default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM
+definitions:
+  contact__site_page:
+    menu_name: footer
+    parent: ''
+    weight: 0
+    expanded: false
+    enabled: true
+  node__add_page:
+    menu_name: tools
+    parent: ''
+    weight: 0
+    expanded: false
+    enabled: false
+  user__logout:
+    menu_name: account
+    parent: ''
+    weight: 10
+    expanded: false
+    enabled: false
+  samlauth__saml_controller_logout__logout:
+    menu_name: account
+    parent: ''
+    weight: 10
+    expanded: false
+    enabled: true

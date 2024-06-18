@@ -1,0 +1,28 @@
+uuid: bdb175a4-22cf-49fc-9cd0-b9696289ab37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_parcel_ref
+    - node.type.bh_parcel
+    - node.type.bh_parcel_project_assoc
+id: node.bh_parcel_project_assoc.field_bh_parcel_ref
+field_name: field_bh_parcel_ref
+entity_type: node
+bundle: bh_parcel_project_assoc
+label: Parcel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      bh_parcel: bh_parcel
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

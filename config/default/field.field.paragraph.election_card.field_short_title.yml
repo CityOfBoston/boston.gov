@@ -1,0 +1,19 @@
+uuid: f7cd9cc5-8f5a-4c6c-8d09-71ee886633a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_title
+    - paragraphs.paragraphs_type.election_card
+id: paragraph.election_card.field_short_title
+field_name: field_short_title
+entity_type: paragraph
+bundle: election_card
+label: 'Navigation Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 06231a11-fe68-41bc-9997-dde6f3c407bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.how_to_text_step
+_core:
+  default_config_hash: s9LqSEpFya4ucRkvCvQczKUNH5PA74dRKDVg3Gw5exk
+id: paragraph.how_to_text_step.created
+field_name: created
+entity_type: paragraph
+bundle: how_to_text_step
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

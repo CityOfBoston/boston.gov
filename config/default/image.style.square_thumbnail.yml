@@ -1,0 +1,7 @@
+uuid: f20c55f2-2efe-4f93-902c-a4a843d84933
+langcode: en
+status: true
+dependencies: {  }
+name: square_thumbnail
+label: square_thumbnail
+effects: {  }

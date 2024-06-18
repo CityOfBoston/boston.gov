@@ -1,0 +1,128 @@
+uuid: 73499cbd-b6b7-43e3-b151-58918e57b5bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.group_of_links_list.field_component_theme
+    - field.field.paragraph.group_of_links_list.field_component_title
+    - field.field.paragraph.group_of_links_list.field_contact
+    - field.field.paragraph.group_of_links_list.field_description
+    - field.field.paragraph.group_of_links_list.field_hide_title_bar
+    - field.field.paragraph.group_of_links_list.field_link
+    - field.field.paragraph.group_of_links_list.field_list_links
+    - field.field.paragraph.group_of_links_list.field_short_title
+    - field.field.paragraph.group_of_links_list.field_subheader
+    - paragraphs.paragraphs_type.group_of_links_list
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: Oh99eQaduvIK2BmTfJ4oAA3tvmfH239t6OrhTaeA95c
+id: paragraph.group_of_links_list.default
+targetEntityType: paragraph
+bundle: group_of_links_list
+mode: default
+content:
+  field_component_theme:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_contact:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_link:
+    type: paragraphs
+    weight: 7
+    region: content
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_list_links:
+    type: paragraphs
+    weight: 8
+    region: content
+    settings:
+      title: Link
+      title_plural: LInks
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: select
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subheader:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

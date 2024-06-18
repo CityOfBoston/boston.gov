@@ -1,0 +1,24 @@
+uuid: 33e637f1-2418-40bd-a16e-40ec65a97b85
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.vocab_votes
+id: taxonomy_term.vocab_votes.default
+targetEntityType: taxonomy_term
+bundle: vocab_votes
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

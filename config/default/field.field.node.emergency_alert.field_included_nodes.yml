@@ -1,0 +1,56 @@
+uuid: 08fe55f4-1ef9-4b0d-aabd-ebfe325b177a
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_included_nodes
+    - node.type.article
+    - node.type.department_profile
+    - node.type.emergency_alert
+    - node.type.event
+    - node.type.how_to
+    - node.type.landing_page
+    - node.type.listing_page
+    - node.type.metrolist_affordable_housing
+    - node.type.person_profile
+    - node.type.place_profile
+    - node.type.post
+    - node.type.program_initiative_profile
+    - node.type.public_notice
+    - node.type.script_page
+    - node.type.tabbed_content
+    - node.type.topic_page
+id: node.emergency_alert.field_included_nodes
+field_name: field_included_nodes
+entity_type: node
+bundle: emergency_alert
+label: 'Show on Pages'
+description: "Emergency Alerts always show in the homepage.<br>\r\nAdd other pages here to show the emergency alert on."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      department_profile: department_profile
+      event: event
+      topic_page: topic_page
+      how_to: how_to
+      landing_page: landing_page
+      listing_page: listing_page
+      metrolist_affordable_housing: metrolist_affordable_housing
+      person_profile: person_profile
+      place_profile: place_profile
+      post: post
+      program_initiative_profile: program_initiative_profile
+      public_notice: public_notice
+      script_page: script_page
+      tabbed_content: tabbed_content
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

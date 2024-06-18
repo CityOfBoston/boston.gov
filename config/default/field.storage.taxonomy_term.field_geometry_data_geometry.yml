@@ -1,0 +1,24 @@
+uuid: 7a622555-52e4-4b6c-b12f-32bf87616450
+langcode: en
+status: true
+dependencies:
+  module:
+    - geolocation_geometry
+    - taxonomy
+  enforced:
+    module:
+      - geolocation_geometry_data
+_core:
+  default_config_hash: pqdfzVSU7bFY0WSB4DwpTVBaHpimqasHbmD0Lon1Cv0
+id: taxonomy_term.field_geometry_data_geometry
+field_name: field_geometry_data_geometry
+entity_type: taxonomy_term
+type: geolocation_geometry_geometry
+settings: {  }
+module: geolocation_geometry
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: true
+custom_storage: false

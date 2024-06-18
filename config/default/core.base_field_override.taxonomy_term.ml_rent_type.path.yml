@@ -1,0 +1,20 @@
+uuid: b848b69b-9fe1-4dc9-b993-286a0fbefd89
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_rent_type
+  module:
+    - path
+id: taxonomy_term.ml_rent_type.path
+field_name: path
+entity_type: taxonomy_term
+bundle: ml_rent_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

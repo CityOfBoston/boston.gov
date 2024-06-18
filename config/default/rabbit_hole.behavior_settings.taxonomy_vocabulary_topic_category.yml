@@ -1,0 +1,12 @@
+uuid: d1186339-f7bc-4f2c-bc71-9685c7f3707e
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_topic_category
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

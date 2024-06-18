@@ -1,0 +1,24 @@
+uuid: fb75ff7d-6289-43a5-a968-b43aa3e0bc47
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+_core:
+  default_config_hash: 3c4IoydpazHjfYJTOJ5pzVQim1QvwULP0ZCWuJPpTAw
+id: node.script_page.status
+field_name: status
+entity_type: node
+bundle: script_page
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

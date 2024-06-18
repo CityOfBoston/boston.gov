@@ -1,0 +1,61 @@
+uuid: 2bb3ff5d-e4a1-47ba-90a4-2a835b6f418b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.election_report
+    - taxonomy.vocabulary.election_areas
+    - taxonomy.vocabulary.election_candidates
+    - taxonomy.vocabulary.election_contests
+    - taxonomy.vocabulary.elections
+  module:
+    - lightning_core
+    - node
+    - paragraphs_type_permissions
+    - publication_date
+    - rabbit_hole
+    - taxonomy
+third_party_settings:
+  lightning_core:
+    description: 'Restricted role allowing user to import, view and update election data.'
+id: election_editor
+label: 'Election Editor'
+weight: -1
+is_admin: null
+permissions:
+  - 'create election_report content'
+  - 'create paragraph content election_area_results'
+  - 'create paragraph content election_candidate_results'
+  - 'create paragraph content election_card'
+  - 'create paragraph content election_contest_results'
+  - 'create paragraph content election_results'
+  - 'create terms in election_areas'
+  - 'create terms in election_candidates'
+  - 'create terms in election_contests'
+  - 'create terms in elections'
+  - 'delete any election_report content'
+  - 'delete own election_report content'
+  - 'delete terms in election_areas'
+  - 'delete terms in election_candidates'
+  - 'delete terms in election_contests'
+  - 'delete terms in elections'
+  - 'edit any election_report content'
+  - 'edit own election_report content'
+  - 'edit terms in election_areas'
+  - 'edit terms in election_candidates'
+  - 'edit terms in election_contests'
+  - 'edit terms in elections'
+  - 'rabbit hole bypass node'
+  - 'revert election_report revisions'
+  - 'set election_report published on date'
+  - 'update paragraph content election_area_results'
+  - 'update paragraph content election_candidate_results'
+  - 'update paragraph content election_card'
+  - 'update paragraph content election_contest_results'
+  - 'update paragraph content election_results'
+  - 'view election_report revisions'
+  - 'view paragraph content election_area_results'
+  - 'view paragraph content election_candidate_results'
+  - 'view paragraph content election_card'
+  - 'view paragraph content election_contest_results'
+  - 'view paragraph content election_results'

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bid_amount
+    - paragraphs.paragraphs_type.bid
+id: paragraph.bid.field_bid_amount
+field_name: field_bid_amount
+entity_type: paragraph
+bundle: bid
+label: 'xxBid Amount'
+description: 'Leave blank to not display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: null
+  prefix: $
+  suffix: ''
+field_type: float

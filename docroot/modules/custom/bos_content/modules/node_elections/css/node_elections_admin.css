@@ -1,0 +1,31 @@
+fieldset.flex .fieldset-wrapper,
+section.flex {
+  display: flex;
+  border: 1px solid silver;
+  background-color: aliceblue;
+  padding: 10px;
+}
+fieldset.flex .form-item,
+section.flex .form-item {
+  margin-left: 10px;
+}
+td.result {
+  text-shadow: 0 1px hsl(0deg 0% 0% / 50%);
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+}
+td.success {
+  color: #fff;
+  border-color: #1e9042;
+  background-color: #00b80f;
+  background-image: -webkit-linear-gradient(top, #1e9042, #00b80f);
+  background-image: linear-gradient(to top, #1e9042, #00b80f);
+}
+td.failed {
+  color: #fff;
+  border-color: #901e1e;
+  background-color: #b80000;
+  background-image: -webkit-linear-gradient(top, #901e1e, #b80000);
+  background-image: linear-gradient(to top, #901e1e, #b80000);
+
+}

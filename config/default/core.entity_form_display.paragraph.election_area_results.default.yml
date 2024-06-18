@@ -1,0 +1,87 @@
+uuid: b4e554b8-9e90-410e-abb9-80392690d634
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_area_results.field_election_area
+    - field.field.paragraph.election_area_results.field_election_contest_results
+    - field.field.paragraph.election_area_results.field_precincts_reported
+    - field.field.paragraph.election_area_results.field_precincts_total
+    - paragraphs.paragraphs_type.election_area_results
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_data:
+      children:
+        - field_precincts_reported
+        - field_precincts_total
+      label: 'Voting Progress for Area:'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: flex
+        show_empty_fields: false
+        id: ''
+        element: section
+        show_label: true
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+id: paragraph.election_area_results.default
+targetEntityType: paragraph
+bundle: election_area_results
+mode: default
+content:
+  field_election_area:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_election_contest_results:
+    type: paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Contest
+      title_plural: Contests
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_precincts_reported:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_precincts_total:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

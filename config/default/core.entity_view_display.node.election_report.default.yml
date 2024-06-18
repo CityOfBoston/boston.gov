@@ -1,0 +1,153 @@
+uuid: e65cb4bc-9049-46a5-8e3d-98c6b12aa0ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.election_report.field_area_results
+    - field.field.node.election_report.field_election
+    - field.field.node.election_report.field_election_isofficial
+    - field.field.node.election_report.field_source_file
+    - field.field.node.election_report.field_updated_date
+    - node.type.election_report
+  module:
+    - datetime
+    - entity_reference_revisions
+    - fences
+    - field_group
+    - link
+    - user
+third_party_settings:
+  field_group:
+    group_fileset:
+      children:
+        - published_at
+        - field_source_file
+        - field_election_isofficial
+        - field_updated_date
+      label: 'Imported Report Metadata'
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        description: ''
+id: node.election_report.default
+targetEntityType: node
+bundle: election_report
+mode: default
+content:
+  field_area_results:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: election_card
+      link: ''
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: area-results-all
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_election:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_election_isofficial:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_source_file:
+    type: link
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: _blank
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 4
+    region: content
+  field_updated_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: America/New_York
+      format_type: date_format_long
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 6
+    region: content
+  published_at:
+    type: timestamp
+    label: inline
+    settings:
+      date_format: long
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: span
+        fences_label_classes: ''
+    weight: 3
+    region: content
+hidden:
+  langcode: true
+  links: true

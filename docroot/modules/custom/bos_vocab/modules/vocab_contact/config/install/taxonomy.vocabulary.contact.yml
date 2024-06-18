@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Contact
+vid: contact
+description: 'Contact classification mechanism.'
+weight: 0

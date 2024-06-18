@@ -1,0 +1,8 @@
+name: 'Metrolist Search'
+type: module
+description: 'React app hosted on Boston.gov allowing residents to filter and search current metrolist listings.'
+core_version_requirement: ^10
+package: 'bos_web_app'
+dependencies:
+  - bos_web_app
+config_devel: { }

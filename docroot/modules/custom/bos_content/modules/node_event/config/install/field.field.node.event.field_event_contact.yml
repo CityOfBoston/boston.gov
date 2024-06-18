@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_contact
+    - node.type.event
+id: node.event.field_event_contact
+field_name: field_event_contact
+entity_type: node
+bundle: event
+label: Contact
+description: 'The name or email address of the contact for this event.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

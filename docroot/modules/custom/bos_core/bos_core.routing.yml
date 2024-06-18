@@ -1,0 +1,42 @@
+bos_core.linkit_media_upload:
+  path: '/admin/content/linkit-media-upload'
+  defaults:
+    _form: '\Drupal\bos_core\Form\LinkitMediaUploadForm'
+  requirements:
+    _custom_access: '\Drupal\bos_core\Form\LinkitMediaUploadForm::access'
+
+bos_core.admin:
+  path: '/admin/config/system/boston'
+  defaults:
+    _title: 'Boston Core Settings'
+    _form: '\Drupal\bos_core\Form\BosCoreSettingsForm'
+  requirements:
+    _permission: 'administer boston'
+
+bos_core.admin.query:
+  path: '/admin/config/system/boston/query'
+  defaults:
+    _title: 'Query Content'
+    _form: '\Drupal\bos_core\Form\QueryForm'
+  requirements:
+    _permission: 'admin_search_boston'
+
+bos_core.content_moderation.list:
+  path: '/admin/content/needs_review'
+  defaults:
+    _entity_list: 'content_moderation'
+    _title: 'Needs Review'
+  requirements:
+    _permission: 'access content'
+
+bos_core.set_content_moderation:
+  path: '/bos_core/set/{entity_type}/{entity}/{language}/{state}'
+  defaults:
+    _controller: '\Drupal\bos_core\Controllers\Moderation\ContentModeration::setModeration'
+  requirements:
+    _permission: 'use moderation sidebar'
+    _entity_access: 'entity.view'
+  options:
+    parameters:
+      entity:
+        type: entity:{entity_type}

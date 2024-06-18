@@ -1,0 +1,23 @@
+uuid: a65a3a3b-9d6f-4d04-b8c4-299658e11db9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_ada_v
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_ada_v
+field_name: field_ml_unit_ada_v
+entity_type: node
+bundle: metrolist_unit
+label: 'Unit(s) built out for persons with vision impairments'
+description: ADA-V
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

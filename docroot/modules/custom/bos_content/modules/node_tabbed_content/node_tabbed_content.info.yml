@@ -1,0 +1,29 @@
+name: Tabbed Content
+type: module
+description: 'Provides a tabbed content entity and paragraph.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+  - paragraphs
+config_devel:
+  - core.base_field_override.node.tabbed_content.promote
+  - core.base_field_override.node.tabbed_content.status
+  - core.entity_form_display.node.tabbed_content.default
+  - core.entity_form_display.paragraph.tabbed_content_tab.default
+  - core.entity_view_display.node.tabbed_content.default
+  - core.entity_view_display.paragraph.tabbed_content_tab.default
+  - core.entity_view_display.paragraph.tabbed_content_tab.paragraphs_editor_preview
+  - field.field.node.tabbed_content.field_intro_image
+  - field.field.node.tabbed_content.field_intro_text
+  - field.field.node.tabbed_content.field_manual_date
+  - field.field.node.tabbed_content.field_published_date
+  - field.field.node.tabbed_content.field_tabbed_content
+  - field.field.node.tabbed_content.field_updated_date
+  - field.field.paragraph.tabbed_content_tab.field_component_title
+  - field.field.paragraph.tabbed_content_tab.field_components
+  - language.content_settings.node.tabbed_content
+  - language.content_settings.paragraph.tabbed_content_tab
+  - node.type.tabbed_content
+  - paragraphs.paragraphs_type.tabbed_content_tab

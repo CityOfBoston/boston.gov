@@ -1,0 +1,23 @@
+uuid: 9be42c95-1dc3-427f-b525-e5c3bee9cced
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_total_num_units
+    - node.type.bh_project
+id: node.bh_project.field_bh_total_num_units
+field_name: field_bh_total_num_units
+entity_type: node
+bundle: bh_project
+label: 'Total Number of Units'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: Units
+field_type: integer

@@ -1,0 +1,20 @@
+uuid: 4ca4e29d-d3ae-46db-ba62-49e49d6a333c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+  module:
+    - datetime
+id: node.neighborhood_lookup.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Scheduled transition date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

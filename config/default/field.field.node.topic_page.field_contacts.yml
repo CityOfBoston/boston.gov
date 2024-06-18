@@ -1,0 +1,31 @@
+uuid: 113a6a35-38a1-4633-ac90-0f3d076828a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contacts
+    - node.type.topic_page
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: 2c8Z8Njp38AQxvP0QF1SwCS-lz2Od5jHGEfqxB_mg1k
+id: node.topic_page.field_contacts
+field_name: field_contacts
+entity_type: node
+bundle: topic_page
+label: 'Contact Departments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

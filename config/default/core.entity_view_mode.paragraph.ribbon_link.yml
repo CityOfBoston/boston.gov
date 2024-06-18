@@ -1,0 +1,11 @@
+uuid: 4339fe1b-3473-44f5-8deb-17fe49fb3024
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.ribbon_link
+label: ribbon_link
+description: ''
+targetEntityType: paragraph
+cache: true

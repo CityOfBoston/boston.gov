@@ -1,0 +1,20 @@
+uuid: c20504d4-0cf6-4fab-83fc-8c591ab50876
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bid_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: _AjDAEUiWoBRXHLrUBUwdKjxWvGeuvE6G95PZgcuRzg
+id: taxonomy_term.bid_type
+target_entity_type_id: taxonomy_term
+target_bundle: bid_type
+default_langcode: site_default
+language_alterable: false

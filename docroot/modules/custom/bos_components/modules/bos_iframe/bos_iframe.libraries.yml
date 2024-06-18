@@ -1,0 +1,6 @@
+bos_iframe_js:
+  version: v4.2.11
+  js:
+    /themes/custom/bos_theme/dist/js/resizer.js: {}
+  dependencies:
+    - core/drupalSettings

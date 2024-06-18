@@ -1,0 +1,16 @@
+{#
+ * @file
+ * Default simple view template to display a list of rows
+ *
+ * @ingroup views_templates
+ #}
+
+<div class="b b--g b--fw events-notices">
+  <div class="b-c">
+    <div class="g">
+      {% for id,row in rows %}
+        {{ row.content }}
+      {% endfor %}
+    </div>
+  </div>
+</div>

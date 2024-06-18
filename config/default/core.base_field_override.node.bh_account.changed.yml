@@ -1,0 +1,18 @@
+uuid: b3f15d40-aadf-4aea-97c7-10ec46481c90
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_account
+id: node.bh_account.changed
+field_name: changed
+entity_type: node
+bundle: bh_account
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,7 @@
+alternatives: "<front>\r\n/metrolist/lottery-and-resale\r\n/metrolist/search\r\n/metrolist/search/*"
+exclusions: "/cityscore/totals/latest.json\r\n/api/v2/public-notices\r\n/rest/recollect\r\n/rest/mnl/*\r\n/mnl/*\r\n/metrolist/api/*"
+lifetime:
+  alternatives: 300
+  301: 2592000
+  302: 86400
+  404: 10800

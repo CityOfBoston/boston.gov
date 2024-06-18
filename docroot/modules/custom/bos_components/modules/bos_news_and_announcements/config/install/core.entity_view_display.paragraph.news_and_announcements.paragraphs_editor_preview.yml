@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.news_and_announcements.field_component_title
+    - field.field.paragraph.news_and_announcements.field_featured_post
+    - field.field.paragraph.news_and_announcements.field_link
+    - field.field.paragraph.news_and_announcements.field_short_title
+    - paragraphs.paragraphs_type.news_and_announcements
+id: paragraph.news_and_announcements.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: news_and_announcements
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_title: true
+  field_featured_post: true
+  field_link: true
+  field_short_title: true

@@ -1,0 +1,32 @@
+uuid: c52387c2-af6c-4ad8-a0d6-58aa659915f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_type
+    - node.type.place_profile
+    - taxonomy.vocabulary.place_type
+_core:
+  default_config_hash: 2K3ZdkUNjBbpYMAUKoZOFxWDqj_MCZN4NQSb8jQcp4o
+id: node.place_profile.field_place_type
+field_name: field_place_type
+entity_type: node
+bundle: place_profile
+label: 'Place Type'
+description: 'Please select the place type for this page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      place_type: place_type
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

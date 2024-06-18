@@ -1,0 +1,15 @@
+uuid: 1cadb367-0b5e-4878-8247-46fbab272b2d
+langcode: en
+status: true
+dependencies: {  }
+name: med_small_square__200x200_
+label: 'Med Small Square (200x200)'
+effects:
+  076afc7f-bbec-43e9-9150-550006498cbb:
+    uuid: 076afc7f-bbec-43e9-9150-550006498cbb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      anchor: center-center

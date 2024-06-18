@@ -1,0 +1,25 @@
+uuid: 0f6c3513-a041-46a2-8157-77d5110de426
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.newsletter
+  module:
+    - options
+_core:
+  default_config_hash: EcsuYPuQc5yuxOfBp_ec2200HGQ7SIXdWSfdTEpTqMQ
+id: paragraph.newsletter.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: newsletter
+label: 'Component Theme'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: g
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: a8be7732-7103-4f9e-9205-f8d62e27a14c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_rent_or_sale_price
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_rent_or_sale_price
+field_name: field_ml_unit_rent_or_sale_price
+entity_type: node
+bundle: metrolist_unit
+label: 'Rent or Sale Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: 9999999.0
+  prefix: $
+  suffix: ''
+field_type: decimal

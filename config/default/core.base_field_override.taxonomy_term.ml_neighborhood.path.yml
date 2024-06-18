@@ -1,0 +1,20 @@
+uuid: 21cc45ca-d67d-4005-8219-75a19107c9c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_neighborhood
+  module:
+    - path
+id: taxonomy_term.ml_neighborhood.path
+field_name: path
+entity_type: taxonomy_term
+bundle: ml_neighborhood
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

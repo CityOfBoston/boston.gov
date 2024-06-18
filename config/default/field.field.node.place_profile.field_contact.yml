@@ -1,0 +1,32 @@
+uuid: b23f6a87-36d2-46b8-b91b-7aa70e821c82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.place_profile
+    - taxonomy.vocabulary.contact
+_core:
+  default_config_hash: iIP8Hj9KI7A0HTRWm-5QABHLWIXLGu7CNi5o5Y7dhwQ
+id: node.place_profile.field_contact
+field_name: field_contact
+entity_type: node
+bundle: place_profile
+label: Contact
+description: 'Please select the Contact who owns this content.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

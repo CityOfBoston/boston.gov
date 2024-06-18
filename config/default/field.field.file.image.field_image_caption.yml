@@ -1,0 +1,19 @@
+uuid: cfe02198-957e-498d-ad66-8bce25ac6366
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_image_caption
+    - file_entity.type.image
+id: file.image.field_image_caption
+field_name: field_image_caption
+entity_type: file
+bundle: image
+label: Caption
+description: 'Set a caption to be displayed on images embedded in WYSIWYG fields.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

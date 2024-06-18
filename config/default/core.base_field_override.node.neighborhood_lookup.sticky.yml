@@ -1,0 +1,22 @@
+uuid: c376e3f0-9a0e-4020-82b3-2e22eac53ee1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.sticky
+field_name: sticky
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

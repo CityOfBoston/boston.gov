@@ -1,0 +1,24 @@
+uuid: a6ec31b2-380f-423e-9810-2ac2428d0ca1
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.fyi
+_core:
+  default_config_hash: yYPZDarTjqLDSGgDYNAruHgB79FfCNzBCmiMm6Jtgz4
+id: paragraph.fyi.status
+field_name: status
+entity_type: paragraph
+bundle: fyi
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,29 @@
+uuid: dd290216-4b83-4eba-9f48-5d50447d9494
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.text.field_background_image
+    - field.field.paragraph.text.field_component_theme
+    - field.field.paragraph.text.field_component_title
+    - field.field.paragraph.text.field_contact
+    - field.field.paragraph.text.field_hide_title_bar
+    - field.field.paragraph.text.field_short_title
+    - field.field.paragraph.text.field_text_blocks
+    - paragraphs.paragraphs_type.text
+_core:
+  default_config_hash: 5Xn1sUesYek5s2aLvtA4Jv90PepveBJDIHJkO4nVMu0
+id: paragraph.text.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: text
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_background_image: true
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_short_title: true
+  field_text_blocks: true

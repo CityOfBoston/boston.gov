@@ -1,0 +1,27 @@
+uuid: 003768a0-7942-47cd-80b1-29e0f9eedd14
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.paragraphs_editor_preview
+    - field.field.paragraph.drawers.field_component_theme
+    - field.field.paragraph.drawers.field_component_title
+    - field.field.paragraph.drawers.field_contact
+    - field.field.paragraph.drawers.field_drawer
+    - field.field.paragraph.drawers.field_hide_title_bar
+    - field.field.paragraph.drawers.field_short_title
+    - paragraphs.paragraphs_type.drawers
+_core:
+  default_config_hash: eZX1TIp_5Qm1uNUZgYOVWpTrpqoTyf0EiOblpeQJIgc
+id: paragraph.drawers.paragraphs_editor_preview
+targetEntityType: paragraph
+bundle: drawers
+mode: paragraphs_editor_preview
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_drawer: true
+  field_hide_title_bar: true
+  field_short_title: true

@@ -1,0 +1,7 @@
+node_rollcall_css:
+  version: 1.x
+  css:
+    theme:
+      css/roll_call.css: { }
+  dependencies:
+    - core/drupalSettings

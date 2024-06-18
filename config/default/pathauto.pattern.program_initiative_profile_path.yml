@@ -1,0 +1,22 @@
+uuid: 26754c23-f044-4534-8143-e92ee0b73630
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: program_initiative_profile_path
+label: 'Program Initiative Profile Path'
+type: 'canonical_entities:node'
+pattern: 'departments/[node:field_contacts:0]/[node:title]'
+selection_criteria:
+  e115bd7d-0bf6-4795-94d1-bebbac73b713:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e115bd7d-0bf6-4795-94d1-bebbac73b713
+    context_mapping:
+      node: node
+    bundles:
+      program_initiative_profile: program_initiative_profile
+selection_logic: and
+weight: -5
+relationships: {  }

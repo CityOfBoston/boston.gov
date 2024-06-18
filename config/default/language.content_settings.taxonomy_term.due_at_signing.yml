@@ -1,0 +1,18 @@
+uuid: 93344a33-78b0-4631-88ce-97f99e4b14b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.due_at_signing
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.due_at_signing
+target_entity_type_id: taxonomy_term
+target_bundle: due_at_signing
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,113 @@
+uuid: 388d80b1-8372-4553-8642-a52ae21a2e81
+langcode: en
+status: true
+dependencies:
+  module:
+    - bos_text_editor
+    - editor
+    - entity_embed
+    - linkit
+    - media
+    - shortcode
+    - token_filter
+name: 'Filtered HTML'
+format: filtered_html
+weight: -10
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: -42
+    settings: {  }
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 0
+    settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: -45
+    settings: {  }
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: -46
+    settings: {  }
+  filter_bos_text_editor_tables:
+    id: filter_bos_text_editor_tables
+    provider: bos_text_editor
+    status: true
+    weight: 0
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: -41
+    settings: {  }
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -50
+    settings:
+      allowed_html: '<a href hreflang target title rel name class data-entity-substitution data-entity-type data-entity-uuid> <em> <i> <strong> <b> <s> <sub> <sup> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <address> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid width height title> <p align class> <div align> <br> <hr> <pre> <code> <span class> <footer> <q> <section> <iframe width height frameborder scrolling src allowfullscreen> <ul> <ol> <li> <dl> <dt> <dd> <table width cellpadding cellspacing border summary class> <colgroup> <col> <picture> <source media srcset> <tr align valign rowspan> <td align valign width colspan data-label> <th align valign width> <tbody> <thead> <tfoot> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button alt title class height width>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: -43
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: -38
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: -44
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: -47
+    settings:
+      filter_url_length: 72
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: -40
+    settings:
+      title: true
+  shortcode:
+    id: shortcode
+    provider: shortcode
+    status: true
+    weight: -49
+    settings:
+      form: '1'
+  shortcode_corrector:
+    id: shortcode_corrector
+    provider: shortcode
+    status: true
+    weight: -39
+    settings: {  }
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: -48
+    settings:
+      replace_empty: '1'

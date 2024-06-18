@@ -1,0 +1,23 @@
+uuid: 4c3542bc-7d08-40d8-aeff-bae8b356d6ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contest_ballots
+    - paragraphs.paragraphs_type.election_contest_results
+id: paragraph.election_contest_results.field_contest_ballots
+field_name: field_contest_ballots
+entity_type: paragraph
+bundle: election_contest_results
+label: Ballots
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

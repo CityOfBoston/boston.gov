@@ -1,0 +1,80 @@
+<?php
+
+/**
+ * @file
+ * Module file for bos_emergency_alerts.
+ */
+
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_emergency_alerts_theme() {
+  $theme['paragraph__bos_signup_emergency_alerts'] = [
+    'base hook' => 'paragraph',
+    'path' => 'modules/custom/bos_components/modules/bos_emergency_alerts/templates',
+  ];
+  $theme['field__paragraph__field_intro_text__bos_signup_emergency_alerts'] = [
+    'base hook' => 'field',
+    'path' => 'modules/custom/bos_components/modules/bos_emergency_alerts/templates',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_emergency_alerts_preprocess_paragraph(&$variables) {
+  if ($variables["paragraph"]->bundle() != "bos_signup_emergency_alerts") {
+    return;
+  }
+  $variables['#attached']['library'][] = "bos_emergency_alerts/signup.alerts";
+  $variables['emergency_alerts_url'] = '/rest/emergency_alerts/subscribe';
+  if (!empty($variables['paragraph']) && $variables['paragraph']->hasField('field_component_theme')) {
+    $component_theme = $variables['paragraph']->get('field_component_theme')->getValue()['0']['value'];
+    $variables['component_theme'] = $component_theme;
+    $section_header_theme = ($component_theme == 'b' ? 'sh--w' : '');
+    $variables['section_header_theme'] = $section_header_theme;
+  }
+  if ($variables["paragraph"]->bundle() == "bos_signup_emergency_alerts" && isset($variables['content']['field_hide_title_bar']['#items'])) {
+    $variables['hideTitle'] = $variables['content']['field_hide_title_bar']['#items']->value;
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function bos_emergency_alerts_mail($key, &$message, $params) {
+  if ($key == "subscribe_error") {
+    $message['from'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = "Emergency Alerts Subscription Error.";
+    $message['body'][] = "<p>There was an issue with a user subscribing to Everbridge Emergency Alerts from boston.gov.</p>";
+    $message['body'][] = "<p>The subscription came from a form on: " . \Drupal::request()->server->get("HTTP_REFERER") . "</p>";
+    $message['body'][] = "<p>The user was located at: " . \Drupal::request()->getClientIp() ?? "--" . "</p>";
+    $message['body'][] = "<p>The error reported was: " . $params["message"]["error"] ?? "--" . "</p>";
+    $message['body'][] = "<p>The information completed on the form was:<br/>";
+    $message['body'][] = "<pre>" . print_r($params["message"]["form"] ?? [], TRUE) . "</pre>";
+    $message['body'][] = "</p>";
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_signup_emergency_alerts_paragraph_bos_signup_emergency_alerts_summary_alter(array $form_widget, array $para, array $attributes) {
+  // Add attributes to the summary area.
+  // Set the summary content.
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact = $para["entity"]->get("field_contact")->target_id;
+    $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact);
+    $markup[] = Markup::create("<span class='contact'>Contact: </span>" . $contact->name->value);
+  }
+  $markup[] = Markup::create("<span class='body-text'>" . strip_tags($para["entity"]->get("field_intro_text")[0]->value) . "</span>");
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}

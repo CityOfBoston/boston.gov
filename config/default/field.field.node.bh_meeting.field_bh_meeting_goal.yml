@@ -1,0 +1,19 @@
+uuid: 318c355d-da2b-4538-ad74-dc5930d02657
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_meeting_goal
+    - node.type.bh_meeting
+id: node.bh_meeting.field_bh_meeting_goal
+field_name: field_bh_meeting_goal
+entity_type: node
+bundle: bh_meeting
+label: 'Meeting Goal'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

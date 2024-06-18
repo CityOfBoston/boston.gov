@@ -1,0 +1,20 @@
+uuid: da65dd52-efd6-47aa-93bb-67ce16516a53
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.transaction_grid
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: bO7zjkDg7pfOgM6ec-ssSzJEiQ-LrYL0vBokZREfpyY
+id: paragraph.transaction_grid
+target_entity_type_id: paragraph
+target_bundle: transaction_grid
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,21 @@
+uuid: bf06dfb8-c10f-406b-8fbe-2008a8f83cbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_data_type
+    - paragraphs.paragraphs_type.bos_chart
+  module:
+    - options
+id: paragraph.bos_chart.field_component_data_type
+field_name: field_component_data_type
+entity_type: paragraph
+bundle: bos_chart
+label: 'Chart Data Type'
+description: 'Select the data type you will be inserting'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

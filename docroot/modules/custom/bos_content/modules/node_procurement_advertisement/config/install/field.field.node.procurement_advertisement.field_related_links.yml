@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_links
+    - node.type.procurement_advertisement
+  module:
+    - link
+id: node.procurement_advertisement.field_related_links
+field_name: field_related_links
+entity_type: node
+bundle: procurement_advertisement
+label: 'Related Links'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/procurement'
+    title: 'Procurement Department'
+    options: {  }
+  -
+    attributes: {  }
+    uri: 'https://www.govdeals.com/'
+    title: Govdeals
+    options: {  }
+  -
+    attributes: {  }
+    uri: 'https://www.commbuys.com/bso'
+    title: Commbuys
+    options: {  }
+  -
+    attributes: {  }
+    uri: 'https://procurement.cityofboston.gov/psp/prdsp/SUPPLIER/ERP/h/?tab=DEFAULT'
+    title: 'Supplier Portal '
+    options: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

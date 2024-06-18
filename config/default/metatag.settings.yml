@@ -1,0 +1,91 @@
+entity_type_groups:
+  node:
+    article:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_article: schema_article
+      schema_image_object: schema_image_object
+    department_profile:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_organization: schema_organization
+    event:
+      basic: basic
+      advanced: advanced
+      twitter_cards: twitter_cards
+      schema_event: schema_event
+      schema_image_object: schema_image_object
+    how_to:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_how_to: schema_how_to
+      schema_image_object: schema_image_object
+    landing_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_web_site: schema_web_site
+    listing_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_web_page: schema_web_page
+    person_profile:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_person: schema_person
+    place_profile:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_web_page: schema_web_page
+    post:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_article: schema_article
+      schema_image_object: schema_image_object
+    procurement_advertisement:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_web_page: schema_web_page
+    program_initiative_profile:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_organization: schema_organization
+      schema_web_page: schema_web_page
+    public_notice:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_event: schema_event
+    topic_page:
+      basic: basic
+      advanced: advanced
+      open_graph: open_graph
+      twitter_cards: twitter_cards
+      schema_image_object: schema_image_object
+      schema_web_page: schema_web_page

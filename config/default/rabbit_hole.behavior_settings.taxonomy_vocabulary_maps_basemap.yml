@@ -1,0 +1,12 @@
+uuid: b596b26c-7c7f-449f-8bdf-51b80bb97268
+langcode: en
+status: true
+dependencies: {  }
+id: taxonomy_vocabulary_maps_basemap
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

@@ -1,0 +1,130 @@
+/*
+  David:
+  Where: Admin pages using Paragraphs EXPERIEMENTAL
+  What: Enhances or fades summary field.
+ */
+
+/* Provides better column layout on editor pages. */
+.bos_admin .layout-region-node-secondary {
+  margin-top: 10px;
+  position: absolute;
+  right: 35px;
+}
+.bos_admin .layout-region-node-secondary.fixed {
+  position: fixed;
+  top: 90px;
+}
+
+@media screen and (min-width: 780px), (min-device-height: 780px) and (orientation: landscape) {
+  .bos_admin .layout-region-node-main,
+  .layout-region-node-footer {
+    width: 100%;
+    padding-right: 305px;
+  }
+  .bos_admin .layout-region-node-secondary {
+    width: 290px;
+  }
+}
+
+.bos_admin .layout-region-node-secondary .entity-meta__header {
+  background-color: #d2e4fb;
+}
+
+/* Makes icons a bit bigger than default. */
+.js .bos_admin .paragraph-type-icon {
+  height: 30px;
+  width: 30px;
+}
+
+@media (min-width: 780px) {
+  .js .bos_admin.paragraph-top {
+    -ms-grid-columns: 170px auto 1fr auto;
+    grid-template-columns: 170px auto 1fr auto;
+  }
+}
+
+.js .bos_admin .paragraph-top .paragraph-type {
+  font-weight: bold;
+  color: #1871bd;
+  /*color: #0074bd;*/
+}
+@media (min-width: 780px) {
+  .js .bos_admin .paragraph-top {
+    -ms-grid-columns: 180px auto 1fr auto;
+    grid-template-columns: 180px auto 1fr auto;
+  }
+}
+@media (min-width: 992px) {
+  .js .bos_admin .paragraph-top {
+    -ms-grid-columns: 200px auto 1fr auto;
+    grid-template-columns: 200px auto 1fr auto;
+  }
+}
+
+.cob-para .paragraphs-description .summary-content {
+  font-weight: normal;
+  color: #555;
+}
+.cob-para-enabled .paragraphs-description .summary-content:first-child::before {
+  content: "\2713 ";
+  color: green;
+  font-size: 150%;
+}
+.cob-para-disabled .paragraphs-description .summary-content{
+  font-weight: normal;
+  color: #999;
+}
+.cob-para-disabled .paragraphs-description .summary-content::before {
+  content: "\2715  ";
+  color: red;
+  font-size: 140%;
+  font-weight: bold;
+}
+
+.cob-para .paragraphs-content-wrapper .summary-content:first-child {
+  color: #458820;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.cob-para .paragraphs-content-wrapper .summary-content:nth-child(2) {
+}
+.cob-para .paragraphs-content-wrapper .summary-content:nth-child(3) {
+  font-style: italic;
+}
+.cob-para .paragraphs-content-wrapper .summary-content:nth-child(4) {
+  font-style: italic;
+}
+
+/* Special summary field types. */
+.cob-para .paragraphs-content-wrapper .summary-content span.contact::before {
+  content: "Contact: ";
+  font-weight: bold;
+}
+.cob-para .paragraphs-content-wrapper .summary-content span.info,
+.cob-para .paragraphs-content-wrapper .summary-content span.body-text {
+  font-size: 90%;
+  font-style: italic;
+  opacity: 0.90;
+}
+.cob-para .paragraphs-content-wrapper .summary-content span.document::before {
+  content: "File: ";
+}
+.cob-para .paragraphs-content-wrapper .summary-content span.image-name::before {
+  content: "Image Name: ";
+}
+.cob-para .paragraphs-content-wrapper .summary-content span.link::before {
+  content: "Link: ";
+  text-decoration: none;
+  color: #555;
+}
+
+/* Remove the icon indicating # of children. */
+.paragraphs-badge {
+  display:none;
+}
+/* Used for status items when message is showing today */
+.paragraphs-icon-today::before {
+  content: "\2794";
+  font-size: 150%;
+  color: maroon;
+}

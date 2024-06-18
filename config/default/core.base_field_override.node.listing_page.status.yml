@@ -1,0 +1,22 @@
+uuid: 07556aca-eaf1-45aa-8464-072d484126f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_page
+id: node.listing_page.status
+field_name: status
+entity_type: node
+bundle: listing_page
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,28 @@
+uuid: 87d0429f-caec-4b9d-bb78-40b55edd7306
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_attachments
+    - media.type.document
+    - node.type.bh_project
+id: node.bh_project.field_bh_attachments
+field_name: field_bh_attachments
+entity_type: node
+bundle: bh_project
+label: 'BH Attachments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

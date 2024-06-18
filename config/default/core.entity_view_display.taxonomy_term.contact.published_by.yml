@@ -1,0 +1,38 @@
+uuid: 8ac41e85-4dc1-48ba-a4be-0b8858c205a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.published_by
+    - field.field.taxonomy_term.contact.field_department_legacy_id
+    - field.field.taxonomy_term.contact.field_department_profile
+    - taxonomy.vocabulary.contact
+  module:
+    - fences
+_core:
+  default_config_hash: FR9mlBQFNjy3S0Y7MMix0OfRwOqTlaTmsTkFnHsQ9KU
+id: taxonomy_term.contact.published_by
+targetEntityType: taxonomy_term
+bundle: contact
+mode: published_by
+content:
+  field_department_profile:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: published_by
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  description: true
+  field_department_legacy_id: true
+  langcode: true

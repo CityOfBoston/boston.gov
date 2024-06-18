@@ -1,0 +1,142 @@
+<?php
+
+/**
+ * @file
+ * Main file for the bos_content module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function bos_content_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == "node_event_form" || $form_id == "node_event_edit_form"
+      || $form_id == "node_public_notice" || $form_id == "node_public_notice_edit_form") {
+    $form["field_city_hall"]["widget"]["value"]["#ajax"] = [
+      'callback' => '_city_hall_ajax_callback',
+      'event' => 'change',
+      'wrapper' => 'edit-field-address-wrapper',
+      'progress' => [
+        'type' => 'throbber',
+        'message' => t('Updating...'),
+      ],
+    ];
+
+    // Adds a flag used in datetime-wrapper.html.twig.
+    $form["field_public_notice_date"]["widget"][0]["end_value"]["#show_checkbox"] = TRUE;
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_status_item_preprocess_views_view(&$variables) {
+  // Adding this class to the media entity causes the display to compress on
+  // the widget.
+  $view = $variables["view"];
+  if ($view->id() == "media_library" && $view->current_display == "widget"
+    && in_array($view->getRequest()->query->get("media_library_widget_id"), ["field_icon-"])) {
+    // Add class which sets panels to be 100px x 100px.
+    $variables["attributes"]["class"][] = "media_svg_only";
+    // Add class to hide the "Add Media" button.
+    $variables["header"]["add_media"]["#attributes"]["class"][] = "hide-media";
+  }
+}
+
+/**
+ * Ensures the attributes element of a preprocess_hook is an attributes object.
+ *
+ * @param array $variables
+ *   The variables object from a preprocess hook.
+ * @param string $check_field
+ *   The attribute field.
+ */
+function _bos_content_fix_attributes(array &$variables, string $check_field = "attributes") {
+  if (function_exists("_bos_core_fix_attributes")) {
+    _bos_core_fix_attributes($variables, $check_field);
+  }
+}
+
+/**
+ * Callback when clicking the "Event is at City Hall checkbox".
+ *
+ * @param array $form
+ *   The form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form_state.
+ *
+ * @return mixed
+ *   The location element.
+ */
+function _city_hall_ajax_callback(array &$form, FormStateInterface $form_state) {
+  $city_hall = [
+    "address_line1" => "1 City Hall Square",
+    "address_line2" => "",
+    "locality" => "Boston",
+    "state" => "Massachusetts",
+    "state_code" => "MA",
+    "postal_code" => "02201-2006",
+    "country" => "US",
+  ];
+  $elem = $form["field_address"];
+  $elem["#id"] = $elem["#wrapper_id"] = "edit-field-address-wrapper";
+  $history = [];
+  if ($form_state->getValue("field_city_hall")["value"]) {
+    if (!empty($form_state->getValue("field_address")[0]["address"]["address_line1"])) {
+      $history["address_line1"] = $form_state->getValue("field_address")[0]["address"]["address_line1"];
+      $history["address_line2"] = $form_state->getValue("field_address")[0]["address"]["address_line2"];
+      $history["locality"] = $form_state->getValue("field_address")[0]["address"]["locality"];
+      $history["administrative_area"] = $form_state->getValue("field_address")[0]["address"]["administrative_area"];
+      $history["postal_code"] = $form_state->getValue("field_address")[0]["address"]["postal_code"];
+      $elem["cob_history"] = [
+        "#id" => "cob_history",
+        "#attributes" => ["id" => "cob_history", "name" => "cob_history"],
+        "#type" => "hidden",
+        "#value" => json_encode($history),
+      ];
+    }
+    $elem["widget"][0]["address"]["address_line1"]["#value"] = $city_hall["address_line1"];
+    $elem["widget"][0]["address"]["address_line2"]["#value"] = $city_hall["address_line2"];
+    $elem["widget"][0]["address"]["locality"]["#value"] = $city_hall["locality"];
+    $elem["widget"][0]["address"]["administrative_area"]["#value"] = $city_hall["state_code"];
+    $elem["widget"][0]["address"]["postal_code"]["#value"] = $city_hall["postal_code"];
+    $elem["widget"][0]["address"]["country_code"]["#value"] = $city_hall["country"];
+  }
+  else {
+    // Restore saved values.
+    if (NULL != Drupal::request()->request) {
+      if (NULL != $history = Drupal::request()->request->get("cob_history")) {
+        $history = (array) json_decode($history);
+        $elem["widget"][0]["address"]["address_line1"]["#value"] = $history["address_line1"];
+        $elem["widget"][0]["address"]["address_line2"]["#value"] = $history["address_line2"];
+        $elem["widget"][0]["address"]["locality"]["#value"] = $history["locality"];
+        $elem["widget"][0]["address"]["administrative_area"]["#value"] = $history["administrative_area"];
+        $elem["widget"][0]["address"]["postal_code"]["#value"] = $history["postal_code"];
+      }
+    }
+    else {
+      $elem["widget"][0]["address"]["country_code"]["#value"] = "US";
+      $elem["widget"][0]["address"]["administrative_area"]["#value"] = "MA";
+    }
+    if (isset($elem["cob_history"])) {
+      unset($elem["cob_history"]);
+    }
+  }
+  return $elem;
+}
+
+/**
+ * Runs an iteration over all custom modules and exports configs (drush cde).
+ */
+function _bos_content_update_all_configs() {
+  require_once "/app/docroot/modules/contrib/config_devel/drush/config_devel.drush.inc";
+  $modules = \Drupal::service('extension.list.module')->getAllInstalledInfo();
+  foreach ($modules as $moduleName => $module) {
+    if (preg_match("/^(node_)/", $moduleName)) {
+      drush_config_devel_export($moduleName);
+    }
+  }
+  drush_config_devel_export("bos_content");
+}

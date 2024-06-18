@@ -1,0 +1,21 @@
+uuid: 7f006feb-20ee-4111-ab08-2602497d11b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.drawer
+_core:
+  default_config_hash: 7TmbOKfToF4Af1Zj3quV9ONbQSrzv6FS20LDAUwNRK0
+id: paragraph.drawer.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: drawer
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

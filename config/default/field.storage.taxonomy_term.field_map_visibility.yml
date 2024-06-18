@@ -1,0 +1,30 @@
+uuid: 3ff5651a-9c6b-4523-9708-de74e5f72b09
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_map_visibility
+field_name: field_map_visibility
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: active
+      label: Active
+    -
+      value: inactive
+      label: Inactive
+    -
+      value: hidden
+      label: Hidden
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

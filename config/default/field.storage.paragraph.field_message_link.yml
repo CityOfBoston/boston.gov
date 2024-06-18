@@ -1,0 +1,30 @@
+uuid: 184248a3-ae31-4c21-9ed9-a918c219e078
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_message_link
+field_name: field_message_link
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: none
+    -
+      value: 'More Information'
+      label: 'More Information (generic landing page)'
+    -
+      value: 'Status Information'
+      label: 'Status Information (specific page about message)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

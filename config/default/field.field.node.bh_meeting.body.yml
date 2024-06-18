@@ -1,0 +1,23 @@
+uuid: 446b6d2a-bbbe-4003-9ea5-4db00fba3fbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.bh_meeting
+  module:
+    - text
+id: node.bh_meeting.body
+field_name: body
+entity_type: node
+bundle: bh_meeting
+label: 'Meeting Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

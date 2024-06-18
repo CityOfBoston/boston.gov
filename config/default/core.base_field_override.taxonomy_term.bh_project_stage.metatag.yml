@@ -1,0 +1,18 @@
+uuid: 4508a674-ad86-4f0f-9e1d-4be4ce495d04
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_project_stage
+id: taxonomy_term.bh_project_stage.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: bh_project_stage
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

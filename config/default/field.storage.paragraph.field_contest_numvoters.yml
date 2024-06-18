@@ -1,0 +1,20 @@
+uuid: b1aa421b-85cb-4ca7-b4e7-5de25e7d032b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_contest_numvoters
+field_name: field_contest_numvoters
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

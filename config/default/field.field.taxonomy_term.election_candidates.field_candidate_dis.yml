@@ -1,0 +1,23 @@
+uuid: 88119e5f-55dc-4021-871e-905ee7d2f47d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_candidate_dis
+    - taxonomy.vocabulary.election_candidates
+id: taxonomy_term.election_candidates.field_candidate_dis
+field_name: field_candidate_dis
+entity_type: taxonomy_term
+bundle: election_candidates
+label: Dis
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

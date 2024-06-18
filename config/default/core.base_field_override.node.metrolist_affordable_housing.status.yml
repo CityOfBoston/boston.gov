@@ -1,0 +1,22 @@
+uuid: c7005eec-5d60-4c11-86e5-a32b0daa217f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+id: node.metrolist_affordable_housing.status
+field_name: status
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

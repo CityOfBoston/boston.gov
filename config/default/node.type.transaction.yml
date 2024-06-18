@@ -1,0 +1,19 @@
+uuid: 2df20143-4689-4b4f-a168-c0fe7c171593
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: Qriz_S-j7-QyrOa6oW--RoLRSZRI-BV2woMGSg2xtaw
+name: Transaction
+type: transaction
+description: 'Add a transaction element to the system. These are used to generate the transaction landing page.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

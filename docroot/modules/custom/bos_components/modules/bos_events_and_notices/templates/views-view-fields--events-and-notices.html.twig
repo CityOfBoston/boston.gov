@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<a href="{{ event_link }}" class="{{ type_class }} evt m-t500 g--4 g--4--sl" title="{{ event_link }}" aria-label="{{ fields.title.content.value }}">
+  <div class="evt-c">
+    <div class="evt-t">
+      {{ fields.title.content }}
+    </div>
+  </div>
+  <svg class="svg-date-flag evt-date-flag" style="width:90px;" title="On {{ date_recur }}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.08 44.31"><title>On {{ date_recur }}</title><path d="M32.26,42.16l-15.3-7-15.3,7v-40h30.6Z" fill="#288be4" stroke="#000" stroke-miterlimit="10"/></svg>
+  <p class="svg-date-flag evt-date-flag date-flag-text">{{ date_recur }}</p>
+</a>

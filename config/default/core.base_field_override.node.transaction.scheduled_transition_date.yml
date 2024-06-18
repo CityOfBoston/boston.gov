@@ -1,0 +1,20 @@
+uuid: 057d8c50-954b-4a14-9ba3-2818d80ddf44
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.transaction
+  module:
+    - datetime
+id: node.transaction.scheduled_transition_date
+field_name: scheduled_transition_date
+entity_type: node
+bundle: transaction
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

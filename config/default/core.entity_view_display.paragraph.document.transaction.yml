@@ -1,0 +1,59 @@
+uuid: e2076874-316b-4696-b239-a074e20a2b75
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.transaction
+    - field.field.paragraph.document.field_document
+    - field.field.paragraph.document.field_title
+    - paragraphs.paragraphs_type.document
+  module:
+    - fences
+    - file
+    - smart_trim
+id: paragraph.document.transaction
+targetEntityType: paragraph
+bundle: document
+mode: transaction
+content:
+  field_document:
+    type: file_url_plain
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+  field_title:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 80
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden: {  }

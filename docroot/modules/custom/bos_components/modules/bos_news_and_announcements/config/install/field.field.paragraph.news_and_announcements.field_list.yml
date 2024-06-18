@@ -1,0 +1,77 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_list
+    - paragraphs.paragraphs_type.news_and_announcements
+    - views.view.news_and_announcements
+  module:
+    - viewfield
+id: paragraph.news_and_announcements.field_list
+field_name: field_list
+entity_type: paragraph
+bundle: news_and_announcements
+label: List
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 3c1c73e3-dac9-4cd4-aa22-090aa02db695
+    display_id: block_1
+    arguments: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    news_and_announcements: news_and_announcements
+    calendar: '0'
+    cityscore: '0'
+    comment: '0'
+    content: '0'
+    block_content: '0'
+    departments_listing: '0'
+    entity_reference_filters: '0'
+    file_entity_files: '0'
+    frontpage: '0'
+    poll_list: '0'
+    media: '0'
+    media_entity_browser: '0'
+    media_library: '0'
+    migrate_paragraphs: '0'
+    migrate_taxonomy: '0'
+    news_landing: '0'
+    paragraphs_library: '0'
+    paragraphs_library_browser: '0'
+    user_admin_people: '0'
+    places: '0'
+    poll_admin: '0'
+    profiles: '0'
+    public_notice: '0'
+    comments_recent: '0'
+    content_recent: '0'
+    redirect: '0'
+    related_events: '0'
+    salesforce_mapped_objects: '0'
+    taxonomy_term: '0'
+    transactions: '0'
+    watchdog: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+    workbench_current_user: '0'
+    workbench_edited: '0'
+    workbench_recent_content: '0'
+  allowed_display_types:
+    block: block
+    attachment: '0'
+    embed: '0'
+    entity_browser: '0'
+    entity_reference: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+    rest_export: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

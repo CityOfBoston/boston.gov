@@ -1,0 +1,18 @@
+uuid: 23683ab2-b2b9-446a-aa9a-40a72752b5bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_public_stage
+id: taxonomy_term.bh_public_stage.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: bh_public_stage
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

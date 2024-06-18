@@ -1,0 +1,15 @@
+uuid: 2b506747-f4db-44ee-aa5d-eab070cab6a7
+langcode: en
+status: true
+dependencies: {  }
+name: wide_2000x460
+label: wide_2000x460
+effects:
+  1dcb3625-fe3b-43c4-944b-19c91a91fe89:
+    uuid: 1dcb3625-fe3b-43c4-944b-19c91a91fe89
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2000
+      height: 460
+      anchor: center-center

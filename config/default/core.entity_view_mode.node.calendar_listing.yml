@@ -1,0 +1,13 @@
+uuid: a17fa0f0-3712-4f1b-af33-47d18619b7a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: H55vimLqokT6x77i2Bcy8nH1tauEdvGEMjTJxoBgTY8
+id: node.calendar_listing
+label: 'Calendar Listing'
+description: ''
+targetEntityType: node
+cache: true

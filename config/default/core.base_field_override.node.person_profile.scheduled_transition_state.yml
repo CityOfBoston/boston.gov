@@ -1,0 +1,18 @@
+uuid: a90fc0f9-228f-42e0-8e5b-6b9696e8d5b5
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.person_profile
+id: node.person_profile.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: person_profile
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

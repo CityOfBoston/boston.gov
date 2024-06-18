@@ -1,0 +1,14 @@
+uuid: 05f66926-86cb-4fba-a9f5-eb63ed034294
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel_project_assoc
+id: node_type_bh_parcel_project_assoc
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

@@ -1,0 +1,18 @@
+uuid: 4121b129-30ae-443c-ab2d-fa6e86657f03
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_project
+id: node.bh_project.created
+field_name: created
+entity_type: node
+bundle: bh_project
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

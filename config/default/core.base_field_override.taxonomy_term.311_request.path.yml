@@ -1,0 +1,20 @@
+uuid: 7d8a51aa-7cde-4395-bd94-2f59fc95ea93
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.311_request
+  module:
+    - path
+id: taxonomy_term.311_request.path
+field_name: path
+entity_type: taxonomy_term
+bundle: 311_request
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

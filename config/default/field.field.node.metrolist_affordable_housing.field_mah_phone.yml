@@ -1,0 +1,21 @@
+uuid: a8960961-a0bd-4a2c-8392-624d5135c37a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_phone
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: 71rbWQk4wAfczIzXXQ-QWnoLcryDbKTmsSR8kM2B3sc
+id: node.metrolist_affordable_housing.field_mah_phone
+field_name: field_mah_phone
+entity_type: node
+bundle: metrolist_affordable_housing
+label: Phone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

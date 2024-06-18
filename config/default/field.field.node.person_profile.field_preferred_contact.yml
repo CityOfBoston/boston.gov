@@ -1,0 +1,25 @@
+uuid: d419c75f-1919-4bed-8d48-455d754cfdb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preferred_contact
+    - node.type.person_profile
+  module:
+    - options
+_core:
+  default_config_hash: 1J6UnnHhwQUaOih38_aNziY0xbxeMy2YJAh92i0dMIk
+id: node.person_profile.field_preferred_contact
+field_name: field_preferred_contact
+entity_type: node
+bundle: person_profile
+label: 'Preferred Contact'
+description: 'Please indicate the preferred contact method for this person.'
+required: false
+translatable: false
+default_value:
+  -
+    value: phone
+default_value_callback: ''
+settings: {  }
+field_type: list_string

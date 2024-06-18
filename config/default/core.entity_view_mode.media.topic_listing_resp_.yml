@@ -1,0 +1,15 @@
+uuid: 9190bd02-7b16-4c0c-a88d-743f9f699a79
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - media
+third_party_settings:
+  lightning_core:
+    description: 'Used for the Grid of Guides.'
+id: media.topic_listing_resp_
+label: 'Topic Listing (resp)'
+description: ''
+targetEntityType: media
+cache: true

@@ -1,0 +1,21 @@
+uuid: a63a2b8a-eece-4156-8ac0-b5f591ae2347
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_date
+    - node.type.election_report
+  module:
+    - datetime
+id: node.election_report.field_updated_date
+field_name: field_updated_date
+entity_type: node
+bundle: election_report
+label: 'Reported Date'
+description: 'The datetime of the timestamp within the imported file.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

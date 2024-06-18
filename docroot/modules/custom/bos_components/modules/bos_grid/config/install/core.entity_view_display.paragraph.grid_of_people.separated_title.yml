@@ -1,0 +1,22 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.grid_of_people.field_component_theme
+    - field.field.paragraph.grid_of_people.field_component_title
+    - field.field.paragraph.grid_of_people.field_contact
+    - field.field.paragraph.grid_of_people.field_people
+    - field.field.paragraph.grid_of_people.field_short_title
+    - paragraphs.paragraphs_type.grid_of_people
+id: paragraph.grid_of_people.separated_title
+targetEntityType: paragraph
+bundle: grid_of_people
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_people: true
+  field_short_title: true

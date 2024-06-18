@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:10204b2c-03ff-4d9e-88df-0b61e9b3c2e4'
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: commission_search
+label: 'Commission Search'
+icon_uuid: 10204b2c-03ff-4d9e-88df-0b61e9b3c2e4
+icon_default: null
+description: 'Adds a search component for commissions.'
+behavior_plugins: {  }

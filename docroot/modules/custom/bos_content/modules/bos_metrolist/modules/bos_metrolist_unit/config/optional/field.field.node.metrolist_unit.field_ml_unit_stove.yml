@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_stove
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_stove
+field_name: field_ml_unit_stove
+entity_type: node
+bundle: metrolist_unit
+label: Stove
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

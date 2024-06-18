@@ -1,0 +1,94 @@
+// Colors
+
+// Some variables have been copied from `patterns/stylesheets/variables/_colors.styl`, translated to SCSS, and BEM-ified.
+// TODO: A system should be developed to keep changes to that file in sync with this one.
+
+// --- Blues --- //
+
+$color-charles-blue: #091F2F;
+$color-dark-blue: $color-charles-blue;
+
+$color-optimistic-blue: #288BE4;
+$color-blue: $color-optimistic-blue;
+
+$color-optimistic-blue--a11y: #1871BD;
+$color-blue--a11y: $color-optimistic-blue--a11y;
+
+$color-optimistic-blue--hover: #175182;
+$color-blue--hover: $color-optimistic-blue--hover;
+
+//  Supporting Blues
+$color-supporting-blue-darkest: #061622;
+$color-supporting-blue-darker: #0C2639;
+$color-supporting-blue-dark: #45789C;
+$color-supporting-blue: #51ACFF;
+
+// --- End Blues --- //
+
+// --- Reds --- //
+
+$color-freedom-trail-red: #FB4D42;
+$color-freedom-trail-red--a11y: #D22D23;
+
+$color-red: $color-freedom-trail-red;
+$color-red--a11y: $color-freedom-trail-red--a11y;
+
+// --- End Reds --- //
+
+// --- Greens --- //
+// --- End Greens --- //
+
+// --- Yellows --- //
+
+$color-yellow: #fcb61a;
+$color-yellow--hover: darken( $color-yellow, 20% );
+
+// --- End Yellows --- //
+
+// --- Monochrome --- //
+
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+// Supporting Grays
+$color-supporting-gray-darkest: #58585B;
+$color-supporting-gray-darker: #D2D2D2;
+$color-supporting-gray-dark: #E0E0E0;
+$color-supporting-gray: #F2F2F2;
+
+// Numbered Grays
+$color-gray-000: #f3f3f3;
+$color-gray-100: #e0e0e0;
+$color-gray-200: #C8C8C8;
+$color-gray-300: #828282;
+
+// --- End Monochrome --- //
+
+// --- Site-wide --- //
+
+$color-body-text: #58585b;
+$color-focus-indicator: $color-optimistic-blue;
+$color-error-border: $color-freedom-trail-red;
+$color-error-text: $color-freedom-trail-red;
+
+// --- End Site-wide --- //
+
+// --- Metrolist --- //
+
+// Search Page
+
+// Homes
+$color-metrolist-home-title: #191919;
+$color-metrolist-text-blue: #0A1F2F;
+$color-filters-radio-group-border: #C9C9C9;
+$color-filters-callout-border: #D9D9D9;
+$color-metrolist-green: #478033;
+$color-homes-just-listed: $color-metrolist-green;
+
+// AMI Calculator
+$color-metrolist-ami-estimator-button-secondary-text: #979797;
+$color-metrolist-ami-estimator-footer-text: #909090;
+$color-metrolist-ami-estimator-footer-text--a11y: #767676;
+$color-metrolist-ami-estimator-footer-link: #54a6ff;
+$color-metrolist-ami-estimator-footer-link--a11y: #2577d0;
+// --- End Metrolist -- //

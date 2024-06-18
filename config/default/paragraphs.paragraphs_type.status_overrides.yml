@@ -1,0 +1,11 @@
+uuid: f5562070-caac-4dff-bd55-36f97d7cc648
+langcode: und
+status: true
+dependencies:
+  content: {  }
+id: status_overrides
+label: 'Status Overrides'
+icon_uuid: null
+icon_default: null
+description: 'Allows status overriding for emergency alerts.'
+behavior_plugins: {  }

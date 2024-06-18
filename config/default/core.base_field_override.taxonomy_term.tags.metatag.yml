@@ -1,0 +1,18 @@
+uuid: caf359b5-e20b-4b27-9066-0506ed5070be
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.tags
+id: taxonomy_term.tags.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: tags
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

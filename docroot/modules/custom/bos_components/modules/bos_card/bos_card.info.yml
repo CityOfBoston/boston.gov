@@ -1,0 +1,24 @@
+name:  BOS Card Component
+type: module
+description: Provides theming and config for card components.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+  - content_translation
+  - bos_lightbox
+config_devel:
+  - core.base_field_override.paragraph.card.created
+  - core.base_field_override.paragraph.card.status
+  - core.entity_form_display.paragraph.card.default
+  - core.entity_view_display.paragraph.card.default
+  - core.entity_view_display.paragraph.card.paragraphs_editor_preview
+  - field.field.paragraph.card.field_link
+  - field.field.paragraph.card.field_short_description
+  - field.field.paragraph.card.field_subheader
+  - field.field.paragraph.card.field_thumbnail
+  - field.field.paragraph.card.field_title
+  - language.content_settings.paragraph.card
+  - paragraphs.paragraphs_type.card

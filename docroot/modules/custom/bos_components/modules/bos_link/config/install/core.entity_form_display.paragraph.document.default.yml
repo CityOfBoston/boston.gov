@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.document_entity_browser
+    - field.field.paragraph.document.field_document
+    - field.field.paragraph.document.field_title
+    - paragraphs.paragraphs_type.document
+  module:
+    - entity_browser
+id: paragraph.document.default
+targetEntityType: paragraph
+bundle: document
+mode: default
+content:
+  field_document:
+    type: entity_browser_file
+    weight: 2
+    region: content
+    settings:
+      entity_browser: document_entity_browser
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      selection_mode: selection_append
+      view_mode: thumbnail
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: d507a94c-ef75-4add-afa3-c92e943b464d
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_enabled
+    - node.type.status_item
+id: node.status_item.field_enabled
+field_name: field_enabled
+entity_type: node
+bundle: status_item
+label: Active
+description: 'When active, this status item will appear in status lists.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Active
+  off_label: Hidden
+field_type: boolean

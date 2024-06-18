@@ -1,0 +1,9 @@
+// <Required />
+@import '@globals';
+
+.ml-required {
+  display: inline-block;
+  margin-left: .25rem;
+  color: $color-freedom-trail-red--a11y;
+  cursor: help;
+}

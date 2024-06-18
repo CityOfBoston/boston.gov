@@ -1,0 +1,81 @@
+name:  Text Components
+type: module
+description: Provides text component and one, two and three column text layouts.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.entity_form_display.paragraph.text.default
+  - core.entity_form_display.paragraph.text_one_column.default
+  - core.entity_form_display.paragraph.text_three_column.default
+  - core.entity_form_display.paragraph.text_two_column.default
+  - core.entity_view_display.paragraph.text.default
+  - core.entity_view_display.paragraph.text_one_column.default
+  - core.entity_view_display.paragraph.text_one_column.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.text_one_column.separated_title
+  - core.entity_view_display.paragraph.text.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.text.separated_title
+  - core.entity_view_display.paragraph.text_three_column.default
+  - core.entity_view_display.paragraph.text_three_column.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.text_three_column.separated_title
+  - core.entity_view_display.paragraph.text_two_column.default
+  - core.entity_view_display.paragraph.text_two_column.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.text_two_column.separated_title
+  - field.field.paragraph.text.field_background_image
+  - field.field.paragraph.text.field_component_title
+  - field.field.paragraph.text.field_contact
+  - field.field.paragraph.text.field_hide_title_bar
+  - field.field.paragraph.text.field_short_title
+  - field.field.paragraph.text.field_text_blocks
+  - field.field.paragraph.text_one_column.field_middle_column
+  - field.field.paragraph.text_three_column.field_left_column
+  - field.field.paragraph.text_three_column.field_middle_column
+  - field.field.paragraph.text_three_column.field_right_column
+  - field.field.paragraph.text_three_column.field_short_title
+  - field.field.paragraph.text_two_column.field_column_configuration
+  - field.field.paragraph.text_two_column.field_left_column
+  - field.field.paragraph.text_two_column.field_right_column
+  - language.content_settings.paragraph.text_one_column
+  - language.content_settings.paragraph.text_three_column
+  - language.content_settings.paragraph.text_two_column
+  - language.content_settings.paragraph.text
+  - paragraphs.paragraphs_type.text_one_column
+  - paragraphs.paragraphs_type.text_three_column
+  - paragraphs.paragraphs_type.text_two_column
+  - paragraphs.paragraphs_type.text
+  - core.base_field_override.paragraph.columns.created
+  - core.base_field_override.paragraph.columns.status
+  - core.entity_form_display.paragraph.columns.default
+  - field.field.paragraph.columns.field_column_description
+  - field.field.paragraph.columns.field_column_title
+  - field.field.paragraph.columns.field_image
+  - field.field.paragraph.columns.field_link
+  - core.entity_view_display.paragraph.columns.default
+  - core.entity_view_display.paragraph.columns.group_of_links
+  - language.content_settings.paragraph.columns
+  - paragraphs.paragraphs_type.columns
+  - core.base_field_override.paragraph.3_column_w_image.created
+  - core.base_field_override.paragraph.3_column_w_image.status
+  - core.entity_form_display.paragraph.3_column_w_image.default
+  - core.entity_view_display.paragraph.3_column_w_image.default
+  - core.entity_view_display.paragraph.3_column_w_image.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.3_column_w_image.separated_title
+  - field.field.paragraph.3_column_w_image.field_columns
+  - field.field.paragraph.3_column_w_image.field_component_title
+  - field.field.paragraph.3_column_w_image.field_contact
+  - field.field.paragraph.3_column_w_image.field_short_title
+  - language.content_settings.paragraph.3_column_w_image
+  - paragraphs.paragraphs_type.3_column_w_image
+  - core.base_field_override.paragraph.header_text.created
+  - core.base_field_override.paragraph.header_text.status
+  - core.entity_form_display.paragraph.header_text.default
+  - core.entity_view_display.paragraph.header_text.default
+  - core.entity_view_display.paragraph.header_text.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.header_text.separated_title
+  - field.field.paragraph.header_text.field_contact
+  - language.content_settings.paragraph.header_text
+  - paragraphs.paragraphs_type.header_text
+  - field.field.paragraph.header_text.field_intro_text

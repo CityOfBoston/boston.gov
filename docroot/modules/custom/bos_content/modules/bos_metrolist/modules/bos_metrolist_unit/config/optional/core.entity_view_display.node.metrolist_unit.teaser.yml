@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.metrolist_unit.body
+    - field.field.node.metrolist_unit.field_ml_development
+    - field.field.node.metrolist_unit.field_ml_unit_air_conditioning
+    - field.field.node.metrolist_unit.field_ml_unit_bicycle_storage
+    - field.field.node.metrolist_unit.field_ml_unit_broker_s_fee
+    - field.field.node.metrolist_unit.field_ml_unit_cable
+    - field.field.node.metrolist_unit.field_ml_unit_cats_allowed
+    - field.field.node.metrolist_unit.field_ml_unit_dishwasher
+    - field.field.node.metrolist_unit.field_ml_unit_dogs_allowed
+    - field.field.node.metrolist_unit.field_ml_unit_electric
+    - field.field.node.metrolist_unit.field_ml_unit_elevator
+    - field.field.node.metrolist_unit.field_ml_unit_first_month_s_rent
+    - field.field.node.metrolist_unit.field_ml_unit_garbage_disposal
+    - field.field.node.metrolist_unit.field_ml_unit_gas
+    - field.field.node.metrolist_unit.field_ml_unit_grab_bar_handrails
+    - field.field.node.metrolist_unit.field_ml_unit_gym_fitness_area
+    - field.field.node.metrolist_unit.field_ml_unit_heat_hot_water
+    - field.field.node.metrolist_unit.field_ml_unit_internet
+    - field.field.node.metrolist_unit.field_ml_unit_last_month_s_rent
+    - field.field.node.metrolist_unit.field_ml_unit_laundry_building
+    - field.field.node.metrolist_unit.field_ml_unit_laundry_in_unit
+    - field.field.node.metrolist_unit.field_ml_unit_off_street_parking
+    - field.field.node.metrolist_unit.field_ml_unit_refrigerator
+    - field.field.node.metrolist_unit.field_ml_unit_security_deposit
+    - field.field.node.metrolist_unit.field_ml_unit_smoke_free
+    - field.field.node.metrolist_unit.field_ml_unit_stove
+    - field.field.node.metrolist_unit.field_ml_unit_street_parking
+    - field.field.node.metrolist_unit.field_ml_unit_water_sewer
+    - field.field.node.metrolist_unit.field_ml_unit_wide_doorways
+    - field.field.node.metrolist_unit.field_ml_unit_wide_hallways
+    - node.type.metrolist_unit
+  module:
+    - text
+    - user
+id: node.metrolist_unit.teaser
+targetEntityType: node
+bundle: metrolist_unit
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_ml_development: true
+  field_ml_unit_air_conditioning: true
+  field_ml_unit_bicycle_storage: true
+  field_ml_unit_broker_s_fee: true
+  field_ml_unit_cable: true
+  field_ml_unit_cats_allowed: true
+  field_ml_unit_dishwasher: true
+  field_ml_unit_dogs_allowed: true
+  field_ml_unit_electric: true
+  field_ml_unit_elevator: true
+  field_ml_unit_first_month_s_rent: true
+  field_ml_unit_garbage_disposal: true
+  field_ml_unit_gas: true
+  field_ml_unit_grab_bar_handrails: true
+  field_ml_unit_gym_fitness_area: true
+  field_ml_unit_heat_hot_water: true
+  field_ml_unit_internet: true
+  field_ml_unit_last_month_s_rent: true
+  field_ml_unit_laundry_building: true
+  field_ml_unit_laundry_in_unit: true
+  field_ml_unit_off_street_parking: true
+  field_ml_unit_refrigerator: true
+  field_ml_unit_security_deposit: true
+  field_ml_unit_smoke_free: true
+  field_ml_unit_stove: true
+  field_ml_unit_street_parking: true
+  field_ml_unit_water_sewer: true
+  field_ml_unit_wide_doorways: true
+  field_ml_unit_wide_hallways: true
+  langcode: true
+  published_at: true

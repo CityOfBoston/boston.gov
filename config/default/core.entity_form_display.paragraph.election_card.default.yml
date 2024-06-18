@@ -1,0 +1,45 @@
+uuid: 43ccee6d-b053-4c00-8ab6-63c3576599c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.election_card.field_election_disclaimer
+    - field.field.paragraph.election_card.field_short_title
+    - field.field.paragraph.election_card.field_unoffical_election_results
+    - paragraphs.paragraphs_type.election_card
+  module:
+    - text
+id: paragraph.election_card.default
+targetEntityType: paragraph
+bundle: election_card
+mode: default
+content:
+  field_election_disclaimer:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_unoffical_election_results:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

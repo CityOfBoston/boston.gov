@@ -1,0 +1,7 @@
+uuid: a6bae5f3-df19-4334-9d77-d23e9723a49b
+langcode: en
+status: false
+dependencies: {  }
+formId: node_transaction_form
+captchaType: default
+label: node_transaction_form

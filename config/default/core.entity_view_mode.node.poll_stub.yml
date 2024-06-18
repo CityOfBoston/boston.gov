@@ -1,0 +1,13 @@
+uuid: 357d084f-d896-4803-82e4-cf74a5e4340e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: aCGVNcPGh_xomhY_LXXFYnny2mARQpXhF63IVlJTeUU
+id: node.poll_stub
+label: 'Poll Stub'
+description: ''
+targetEntityType: node
+cache: true

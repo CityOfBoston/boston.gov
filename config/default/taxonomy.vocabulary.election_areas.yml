@@ -1,0 +1,8 @@
+uuid: 281f8ad1-6017-4b39-8155-05c92fb8e72c
+langcode: en
+status: true
+dependencies: {  }
+name: 'Election Areas'
+vid: election_areas
+description: 'Voting Areas for an Election. (e.g. Voting Districts)'
+weight: 0

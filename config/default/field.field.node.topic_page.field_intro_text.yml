@@ -1,0 +1,21 @@
+uuid: f1faabc5-0ead-4a73-b5de-d024fe7b30c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.topic_page
+  module:
+    - text
+id: node.topic_page.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: topic_page
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

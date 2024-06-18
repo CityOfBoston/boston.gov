@@ -1,0 +1,15 @@
+buildinghousing_views:
+  version: "0.1"
+  css:
+    component:
+      css/views_bh_listings.css: {}
+buildinghousing_project:
+  version: "0.1"
+  css:
+    component:
+      css/node_bh_project.css: {}
+buildinghousing_landing_page:
+  version: "0.1"
+  css:
+    component:
+      css/node_bh_landing_page.css: {}

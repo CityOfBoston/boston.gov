@@ -1,0 +1,23 @@
+uuid: 0567d059-e151-4187-9d08-2fa11b9de1ff
+langcode: und
+status: true
+dependencies: {  }
+name: media_fixed_width_250px
+label: 'Media Fixed Width (250px)'
+effects:
+  4912a4bc-c33d-415a-8e39-f9fb10a0e5f6:
+    uuid: 4912a4bc-c33d-415a-8e39-f9fb10a0e5f6
+    id: image_scale
+    weight: 1
+    data:
+      width: 350
+      height: null
+      upscale: false
+  8e41af18-2b4e-4fc3-bd5b-e52a4c0e9576:
+    uuid: 8e41af18-2b4e-4fc3-bd5b-e52a4c0e9576
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 250
+      height: 100
+      anchor: center-center

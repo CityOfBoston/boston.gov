@@ -1,0 +1,8 @@
+uuid: 095a61e2-229d-4ca5-8a87-451a9fefb979
+langcode: en
+status: true
+dependencies: {  }
+name: Features
+vid: features
+description: 'Features for Place Profile'
+weight: 0

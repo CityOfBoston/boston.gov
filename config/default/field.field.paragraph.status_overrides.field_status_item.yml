@@ -1,0 +1,28 @@
+uuid: 8d65498b-db8d-43a9-ba04-c52f708512f3
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_status_item
+    - node.type.status_item
+    - paragraphs.paragraphs_type.status_overrides
+id: paragraph.status_overrides.field_status_item
+field_name: field_status_item
+entity_type: paragraph
+bundle: status_overrides
+label: 'Status Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      status_item: status_item
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

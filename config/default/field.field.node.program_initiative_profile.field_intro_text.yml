@@ -1,0 +1,21 @@
+uuid: b69a6354-035b-441a-9f78-21757e210d10
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.program_initiative_profile
+  module:
+    - text
+id: node.program_initiative_profile.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: program_initiative_profile
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

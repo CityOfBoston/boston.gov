@@ -1,0 +1,25 @@
+uuid: b4224f62-c918-47b0-acc8-76fb9b66d071
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_geometry_data_geometry
+    - taxonomy.vocabulary.election_areas
+  module:
+    - field_display_label
+    - geolocation_geometry
+third_party_settings:
+  field_display_label:
+    display_label: 'GIS Data'
+id: taxonomy_term.election_areas.field_geometry_data_geometry
+field_name: field_geometry_data_geometry
+entity_type: taxonomy_term
+bundle: election_areas
+label: 'GIS Data'
+description: 'GIS data for the Area/District ** Not used at the moment - this is a possible future feature'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation_geometry_geometry

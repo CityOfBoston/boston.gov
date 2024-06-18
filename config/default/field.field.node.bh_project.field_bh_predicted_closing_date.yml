@@ -1,0 +1,21 @@
+uuid: fd30cf64-e8de-49f1-9ac8-073af303f44b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_predicted_closing_date
+    - node.type.bh_project
+  module:
+    - datetime
+id: node.bh_project.field_bh_predicted_closing_date
+field_name: field_bh_predicted_closing_date
+entity_type: node
+bundle: bh_project
+label: 'Predicted Closing Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

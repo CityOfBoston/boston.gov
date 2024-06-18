@@ -1,0 +1,10 @@
+uuid: 5a144993-3b9d-42fd-9c42-329d0500f625
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 23R8e64QglOZ-rgKLUb8iY2yUVVilyGFyffHrm3b74U
+name: Icons
+vid: icons
+description: ''
+weight: 0

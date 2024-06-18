@@ -1,0 +1,40 @@
+uuid: 9689bf3b-87b2-4abc-9eea-4df800ba4ac7
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.media.image
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: Ud5z7uQa7-_i1Tz0lEJ4ynuFzlyBSdaeTvyIUlktgfM
+id: media.image.image
+field_name: image
+entity_type: media
+bundle: image
+label: Image
+description: 'Add an image to the site media library.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'img/library/photos/[current-date:html_year]/[current-date:html_month_bare]'
+  file_extensions: 'jpg jpeg png svg gif tif'
+  max_filesize: '8 MB'
+  max_resolution: 2400x2400
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

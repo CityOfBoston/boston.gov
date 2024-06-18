@@ -1,0 +1,24 @@
+uuid: 894c8b14-1c4f-4c04-a605-5bcc8ae22dd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+_core:
+  default_config_hash: lueHSKjSFiwuDPAZCQVZKK4nNB_sZcLEJRI_OJ6veGc
+id: paragraph.group_of_links_mini_grid.status
+field_name: status
+entity_type: paragraph
+bundle: group_of_links_mini_grid
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

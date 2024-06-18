@@ -1,0 +1,22 @@
+uuid: 86c2848b-bae3-42a2-b2ca-25b831ddd9c4
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.transactions
+id: paragraph.transactions.status
+field_name: status
+entity_type: paragraph
+bundle: transactions
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

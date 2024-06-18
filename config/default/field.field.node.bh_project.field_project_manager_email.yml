@@ -1,0 +1,19 @@
+uuid: 3e35c7e5-b36c-4941-ac51-6e34691377f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_manager_email
+    - node.type.bh_project
+id: node.bh_project.field_project_manager_email
+field_name: field_project_manager_email
+entity_type: node
+bundle: bh_project
+label: 'Project Manager Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,56 @@
+uuid: 28993163-ec9a-4fc2-9e09-140fdf085fe9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_summary.field_commission
+    - field.field.paragraph.commission_summary.field_component_title
+    - field.field.paragraph.commission_summary.field_hide_title_bar
+    - field.field.paragraph.commission_summary.field_short_title
+    - paragraphs.paragraphs_type.commission_summary
+_core:
+  default_config_hash: 4RYWXHF1xxRKt5pZhAFTAlm7N6QNpq16wwP1HAsduSk
+id: paragraph.commission_summary.default
+targetEntityType: paragraph
+bundle: commission_summary
+mode: default
+content:
+  field_commission:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_component_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_title_bar:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

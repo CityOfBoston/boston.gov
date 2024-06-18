@@ -1,0 +1,76 @@
+uuid: 792c5361-8398-4fc5-9909-27dbf18f07ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.entity_browser_icon
+    - field.field.file.image.field_file_image_alt_text
+    - field.field.file.image.field_file_image_title_text
+    - field.field.file.image.field_icon_category
+    - field.field.file.image.field_image_caption
+    - file_entity.type.image
+    - image.style.media_fixed_height_100px_
+  module:
+    - fences
+    - file_entity
+    - smart_trim
+_core:
+  default_config_hash: _Bf428kqU4oErwcNNTL2Wj4HQfES94Bs4usKnK3iL2Q
+id: file.image.entity_browser_icon
+targetEntityType: file
+bundle: image
+mode: entity_browser_icon
+content:
+  filename:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 30
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      summary_handler: full
+      trim_options:
+        text: false
+        trim_zero: false
+      more_link: false
+      more_class: more-link
+      more_text: More
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  uri:
+    type: file_image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: media_fixed_height_100px_
+      title: _none
+      alt: _none
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  field_file_image_alt_text: true
+  field_file_image_title_text: true
+  field_icon_category: true
+  field_image_caption: true
+  filemime: true
+  filesize: true
+  langcode: true
+  uid: true

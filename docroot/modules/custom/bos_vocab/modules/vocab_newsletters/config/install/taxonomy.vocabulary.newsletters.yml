@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Newsletters
+vid: newsletters
+description: ''
+weight: 0

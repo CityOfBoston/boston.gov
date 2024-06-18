@@ -1,0 +1,18 @@
+uuid: cfc16999-0e73-41db-8aff-6f1c2dbc1134
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_income_eligibility_ami_thold
+id: taxonomy_term.ml_income_eligibility_ami_thold.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: ml_income_eligibility_ami_thold
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

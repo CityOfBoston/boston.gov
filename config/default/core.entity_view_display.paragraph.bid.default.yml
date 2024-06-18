@@ -1,0 +1,57 @@
+uuid: 2b45c7ee-f3d5-4ef8-bb1a-3af97f05774f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bid.field_awarded
+    - field.field.paragraph.bid.field_bid_amount
+    - field.field.paragraph.bid.field_company_name
+    - field.field.paragraph.bid.field_new_bid_amount
+    - paragraphs.paragraphs_type.bid
+  module:
+    - fences
+_core:
+  default_config_hash: gb9eh5raPg3p6r4D6HfpPgxuBsuguz9g1mQMkqZaAuI
+id: paragraph.bid.default
+targetEntityType: paragraph
+bundle: bid
+mode: default
+content:
+  field_awarded:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_company_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_new_bid_amount:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ','
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  field_bid_amount: true

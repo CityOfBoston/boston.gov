@@ -1,0 +1,30 @@
+name: Person Profile
+type: module
+description: 'Provides a person profile entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.entity_form_display.node.person_profile.default
+  - core.entity_view_display.node.person_profile.default
+  - core.entity_view_display.node.person_profile.embed
+  - core.entity_view_display.node.person_profile.listing
+  - field.field.node.person_profile.field_components
+  - field.field.node.person_profile.field_contact
+  - field.field.node.person_profile.field_email
+  - field.field.node.person_profile.field_first_name
+  - field.field.node.person_profile.field_last_name
+  - field.field.node.person_profile.field_person_photo
+  - field.field.node.person_profile.field_phone_number
+  - field.field.node.person_profile.field_political_party
+  - field.field.node.person_profile.field_position_title
+  - field.field.node.person_profile.field_preferred_contact
+  - field.field.node.person_profile.field_profile_type
+  - field.field.node.person_profile.field_sidebar_components
+  - field.field.node.person_profile.field_year_elected
+  - language.content_settings.node.person_profile
+  - node.type.person_profile
+  - xmlsitemap.settings.node.person_profile
+  - image.style.person_profile_card_173x173_

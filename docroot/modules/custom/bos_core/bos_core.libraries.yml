@@ -1,0 +1,5 @@
+moderation_sidebar:
+  js:
+    js/bos_core_mod_sidebar.js: {attributes: {id: "mod_sidebar_code"}}
+  dependencies:
+    - core/jquery

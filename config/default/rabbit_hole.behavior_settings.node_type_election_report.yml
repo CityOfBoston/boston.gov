@@ -1,0 +1,14 @@
+uuid: 41933eab-1dcc-4e44-99d0-aeaa9d8db239
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.election_report
+id: node_type_election_report
+entity_type_id: node_type
+entity_id: election_report
+action: page_redirect
+allow_override: 0
+redirect: /departments/elections/unofficial-election-results
+redirect_code: 301
+redirect_fallback_action: page_not_found

@@ -1,0 +1,20 @@
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_public_notice_date
+    - node.type.public_notice
+  module:
+    - datetime_range
+id: node.public_notice.field_public_notice_date
+field_name: field_public_notice_date
+entity_type: node
+bundle: public_notice
+label: Date
+description: 'The date and time when the Meeting / Hearing / Working Session is happening. Enter an end time if known.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

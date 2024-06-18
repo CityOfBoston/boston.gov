@@ -1,0 +1,21 @@
+uuid: 00020ce3-3d9e-4a8c-a7aa-fcf8412317ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_income_restricted
+    - node.type.metrolist_unit
+  module:
+    - options
+id: node.metrolist_unit.field_ml_unit_income_restricted
+field_name: field_ml_unit_income_restricted
+entity_type: node
+bundle: metrolist_unit
+label: Income-Restricted
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

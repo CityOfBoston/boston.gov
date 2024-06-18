@@ -1,0 +1,4 @@
+hero_image.call:
+  css:
+    theme:
+      css/hero_image.boston.css: {}

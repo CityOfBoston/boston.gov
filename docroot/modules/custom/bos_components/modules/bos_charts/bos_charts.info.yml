@@ -1,0 +1,37 @@
+name: 'bos_charts'
+type: module
+description: 'Adds VegaLite Charts to boston.gov'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies: { }
+config_devel:
+  - field.storage.paragraph.field_chart_text_layout
+  - field.storage.paragraph.field_anchor_custom_id
+  - field.storage.paragraph.field_anchor_custom_css
+  - field.storage.paragraph.field_anchor_custom_attributes
+  - field.storage.paragraph.field_component_launch_script
+  - field.storage.paragraph.field_component_data
+  - field.storage.paragraph.field_component_css
+  - field.field.paragraph.bos_chart.field_title
+  - field.field.paragraph.bos_chart.field_link
+  - field.field.paragraph.bos_chart.field_chart_text_layout
+  - field.field.paragraph.bos_chart.field_anchor_custom_css
+  - field.field.paragraph.bos_chart.field_anchor_custom_attributes
+  - field.field.paragraph.bos_chart.field_component_launch_script
+  - field.field.paragraph.bos_chart.field_component_data
+  - field.field.paragraph.bos_chart.field_component_css
+  - field.field.paragraph.bos_chart.field_middle_column
+  - field.field.paragraph.bos_chart.field_left_column
+  - field.field.paragraph.bos_chart.field_column_description
+  - field.field.paragraph.charts.field_description
+  - field.field.paragraph.charts.field_short_title
+  - field.field.paragraph.charts.field_hide_title_bar
+  - field.field.paragraph.charts.field_component_title
+  - field.field.paragraph.charts.field_component_theme
+  - field.field.paragraph.charts.field_components
+  - core.entity_view_display.paragraph.charts.default
+  - core.entity_form_display.paragraph.charts.default
+  - core.entity_view_display.paragraph.bos_chart.default
+  - core.entity_form_display.paragraph.bos_chart.default
+  - paragraphs.paragraphs_type.bos_chart
+  - paragraphs.paragraphs_type.charts

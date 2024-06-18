@@ -1,0 +1,20 @@
+uuid: b1806ff2-19eb-4d22-b3aa-46e221c1408d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.daily_hours
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: 8iBo3FsO3SjcJpbviIbViUnZt_PSr238Hu3GN00XT7w
+id: paragraph.daily_hours
+target_entity_type_id: paragraph
+target_bundle: daily_hours
+default_langcode: site_default
+language_alterable: false

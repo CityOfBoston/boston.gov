@@ -1,0 +1,14 @@
+name: Place Types Vocabulary
+description: "Adds taxonomy for Place Types."
+package: "City of Boston (taxonomy)"
+type: module
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+
+dependencies:
+  - bos_vocab
+  - taxonomy
+
+config_devel:
+  - language.content_settings.taxonomy_term.place_type
+  - taxonomy.vocabulary.place_type

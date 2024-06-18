@@ -1,0 +1,20 @@
+uuid: a747f28b-054d-4400-8a1c-c0715500bfe4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_affordable_housing
+  module:
+    - publication_date
+id: node.metrolist_affordable_housing.published_at
+field_name: published_at
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

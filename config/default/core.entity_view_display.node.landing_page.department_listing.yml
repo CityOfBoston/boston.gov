@@ -1,0 +1,39 @@
+uuid: ce5fa4b8-e186-40aa-94b5-73f53852cad7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.department_listing
+    - field.field.node.landing_page.field_components
+    - field.field.node.landing_page.field_contacts
+    - field.field.node.landing_page.field_manual_date
+    - field.field.node.landing_page.field_meta_tags
+    - field.field.node.landing_page.field_published_date
+    - field.field.node.landing_page.field_updated_date
+    - node.type.landing_page
+  module:
+    - user
+_core:
+  default_config_hash: v7dX_3xuMsmUFFJqledoNrCpcUuev23KJpJqPCs85VQ
+id: node.landing_page.department_listing
+targetEntityType: node
+bundle: landing_page
+mode: department_listing
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_components: true
+  field_contacts: true
+  field_manual_date: true
+  field_meta_tags: true
+  field_published_date: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

@@ -1,0 +1,18 @@
+uuid: a19eca03-edd0-4985-802e-171e281bae2a
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.emergency_alert
+id: node.emergency_alert.scheduled_transition_state
+field_name: scheduled_transition_state
+entity_type: node
+bundle: emergency_alert
+label: null
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

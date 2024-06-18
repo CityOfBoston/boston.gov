@@ -1,0 +1,18 @@
+uuid: ac477239-5f99-430e-a643-51ef8836751e
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.tabbed_content_tab
+id: paragraph.tabbed_content_tab.created
+field_name: created
+entity_type: paragraph
+bundle: tabbed_content_tab
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

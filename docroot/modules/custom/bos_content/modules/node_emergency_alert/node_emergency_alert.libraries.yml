@@ -1,0 +1,8 @@
+emergency_alert.call:
+  css:
+    theme:
+      css/emergency_alert.boston.css: {}
+  js:
+    js/emergency_alert.boston.js: {attributes: {id: "emergency_alert_script"}}
+  dependencies:
+    - core/jquery

@@ -1,0 +1,23 @@
+uuid: 1edd3f29-6ed6-4e06-9af3-060662ef0a28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_units_to_own
+    - node.type.bh_project
+id: node.bh_project.field_bh_units_to_own
+field_name: field_bh_units_to_own
+entity_type: node
+bundle: bh_project
+label: 'Units to Own'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,34 @@
+uuid: 4d8c7159-a036-42c1-bcdc-5d9de154d073
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - node.type.topic_page
+    - paragraphs.paragraphs_type.featured_topics
+_core:
+  default_config_hash: tDWKGn5SJrWxeKeWfpLHMAR2XePZWAG5NQlvCL19udY
+id: paragraph.featured_topics.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: featured_topics
+label: Guides
+description: 'Control + Click to select multiple (CMD+Click on a Mac)'
+required: false
+translatable: false
+default_value:
+  -
+    target_id: '1'
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      topic_page: topic_page
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

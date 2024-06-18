@@ -1,0 +1,16 @@
+uuid: 834f9336-3596-4162-80f3-a1dbdf0e4dd7
+langcode: en
+status: true
+dependencies:
+  module:
+    - lightning_core
+third_party_settings:
+  lightning_core:
+    description: 'Users with complete access to all site config and content functions.'
+_core:
+  default_config_hash: Om6FEO7vZZMkPIbVvfxtdkWerQ2PvQM4sWUd6Q3ZnfI
+id: administrator
+label: administrator
+weight: -8
+is_admin: true
+permissions: {  }

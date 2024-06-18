@@ -1,0 +1,38 @@
+name: Transaction
+type: module
+description: 'Provides a transaction entity.'
+package: City of Boston (content)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_content
+config_devel:
+  - core.base_field_override.node.transaction.status
+  - core.base_field_override.node.transaction.promote
+  - core.entity_form_display.node.transaction.default
+  - core.entity_form_display.paragraph.transaction_grid.default
+  - core.entity_form_display.paragraph.transactions.default
+  - core.entity_view_display.node.transaction.default
+  - core.entity_view_display.node.transaction.listing
+  - core.entity_view_display.paragraph.transaction_grid.default
+  - core.entity_view_display.paragraph.transaction_grid.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.transaction_grid.separated_title
+  - core.entity_view_display.paragraph.transactions.default
+  - core.entity_view_display.paragraph.transactions.group_of_links
+  - field.field.node.transaction.field_link
+  - field.field.node.transaction.field_sticky
+  - field.field.paragraph.transaction_grid.field_component_title
+  - field.field.paragraph.transaction_grid.field_contact
+  - field.field.paragraph.transaction_grid.field_short_title
+  - field.field.paragraph.transaction_grid.field_transactions
+  - field.field.paragraph.transactions.field_grid_link
+  - field.field.paragraph.transactions.field_icon
+  - language.content_settings.node.transaction
+  - language.content_settings.paragraph.transaction_grid
+  - language.content_settings.paragraph.transactions
+  - node.type.transaction
+  - paragraphs.paragraphs_type.transaction_grid
+  - paragraphs.paragraphs_type.transactions
+  - rabbit_hole.behavior_settings.node_type_transaction
+  - views.view.transactions
+  - xmlsitemap.settings.node.transaction

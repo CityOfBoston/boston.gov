@@ -1,0 +1,9 @@
+<?php
+
+/*
+  Main Drupal module for bos_geocoder
+
+  david 02 2024
+  @file docroot/modules/custom/bos_components/modules/bos_emergency_alerts/src/Controller/bos_geocoder/bos_geocoder.module
+
+*/

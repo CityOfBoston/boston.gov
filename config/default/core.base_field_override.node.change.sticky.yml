@@ -1,0 +1,22 @@
+uuid: 36265efb-e46b-4d8e-8933-dd6e5aadff31
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.change
+id: node.change.sticky
+field_name: sticky
+entity_type: node
+bundle: change
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,39 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 144 144">
+  <title>bar graph</title>
+  <rect x="54.35" y="68.78" width="15.93" height="50.67" fill="#fff"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <rect x="80.37" y="94.11" width="15.93" height="25.33" fill="#fff"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <rect x="108.11" y="49.89" width="15.93" height="69.56" fill="#fff"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <line x1="22.49" y1="38.73" x2="30.72" y2="38.73" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="47.76" x2="38.95" y2="47.76" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="56.79" x2="30.72" y2="56.79" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="65.82" x2="38.95" y2="65.82" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="74.84" x2="30.72" y2="74.84" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="83.87" x2="38.95" y2="83.87" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="92.9" x2="30.72" y2="92.9" fill="none" stroke="#0d202e"
+        stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+  <line x1="22.49" y1="101.92" x2="38.95" y2="101.92" fill="none"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <line x1="22.49" y1="110.95" x2="30.72" y2="110.95" fill="none"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <line x1="22.49" y1="119.98" x2="126.17" y2="119.98" fill="none"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+  <line x1="22.49" y1="36.33" x2="22.49" y2="119.29" fill="none"
+        stroke="#0d202e" stroke-linecap="round" stroke-miterlimit="10"
+        stroke-width="3"/>
+</svg>

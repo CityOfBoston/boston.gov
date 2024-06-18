@@ -1,0 +1,22 @@
+uuid: 79d9f16d-f630-4371-a46d-efc1c6105540
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.metrolist_unit
+id: node.metrolist_unit.promote
+field_name: promote
+entity_type: node
+bundle: metrolist_unit
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

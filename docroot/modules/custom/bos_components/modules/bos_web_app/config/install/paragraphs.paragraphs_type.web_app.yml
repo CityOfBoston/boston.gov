@@ -1,0 +1,9 @@
+langcode: und
+status: true
+dependencies: {  }
+id: web_app
+label: 'Web App'
+icon_uuid: null
+icon_default: null
+description: 'Creates a component that loads a <b>web-application</b> (e.g. React, Agile or ThirdParty Library)'
+behavior_plugins: {  }

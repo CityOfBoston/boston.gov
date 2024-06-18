@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * The Base module file for bos_photo module.
+ */
+
+use Drupal\bos_core\BackgroundResponsiveImage;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Markup;
+use Drupal\media\Entity\Media;
+use Drupal\paragraphs\Entity\Paragraph;
+
+/**
+ * Implements hook_theme().
+ */
+function bos_photo_theme() {
+  $theme['paragraph__photo'] = [
+    'base hook' => 'paragraph',
+  ];
+  $theme['field__paragraph__field_image__photo'] = [
+    'base hook' => 'field',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_photo_preprocess_paragraph__photo(&$variables) {
+  if (!empty($variables['paragraph'])) {
+    $paragraph = $variables['paragraph'];
+    if (!$paragraph->get('field_link')->isEmpty()) {
+      $cta = _bos_core_paragraph_extract_link(
+        $paragraph->get('field_link')->getValue(),
+        ['class' => 'btn']
+      );
+      if (!empty($cta['link'])) {
+        $variables['cta'] = $cta['link'];
+      }
+    }
+
+    if ($paragraph->hasField('field_image') && $paragraph->get('field_image')->count()) {
+      $nestedElement = [
+        ["div" => "ph-p " . $variables['photo_id']],
+      ];
+      $variables["content"]["display_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+    }
+
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function bos_photo_preprocess_field(&$vars) {
+  switch ($vars['field_name']) {
+    case 'field_photo_credit':
+      $vars['label'] .= ':';
+      break;
+  }
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function bos_photo_paragraph_photo_summary_alter(array $form_widget, array $para, array $attributes) {
+  $markup[] = Markup::create($para["entity"]->get("field_component_title")->value);
+  if ($para["entity"]->hasField("field_image")) {
+    $mid = $para["entity"]->get("field_image")[0]->target_id;
+    if ($media = Media::load($mid)) {
+      $markup[] = Markup::create("<span class='image-name'></span>" . $media->name->value);
+    }
+  }
+  if ($para["entity"]->hasField("field_contact")) {
+    $contact_id = $para["entity"]->get("field_contact")->target_id;
+    if ($contact_id && $contact = \Drupal::entityTypeManager()->getStorage("taxonomy_term")->load($contact_id)) {
+      $markup[] = Markup::create("<span class='contact'></spanb>" . $contact->name->value);
+    }
+  }
+  if ($para["entity"]->hasField("field_link") && count($para["entity"]->get("field_link"))) {
+    $card = Paragraph::load($para["entity"]->get("field_link")->target_id);
+    $markup[] = Markup::create("<span class='info'>has " . $card->bundle() . " CTA.</span>");
+  }
+  else {
+    $markup[] = Markup::create("<span class='info'>has no CTA.</span>");
+  }
+
+  return [
+    'attributes' => $attributes,
+    'content' => $markup,
+  ];
+}
+
+/**
+ * Prepares variables for post templates.
+ *
+ * Default template: post.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the post information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ *
+ * @throws \Exception
+ */
+function template_preprocess_paragraph__photo(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // Assign a unique id to this photo for the page.
+  if (!empty($variables['paragraph'])) {
+    $photo_id = Html::getUniqueId('ph-p--1');
+    $variables['paragraph']->_photo_id = $photo_id;
+    $variables['photo_id'] = $photo_id;
+  }
+
+  // Handle field_image if present.
+  // Has to happen in this template_preprocess_hook or does not #attach(ed).
+  if ($variables['paragraph']->hasField('field_image')) {
+    $background_image = $variables["elements"]["field_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "photo_bleed_images";
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $anchor_class = "." . $variables["photo_id"];
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, $anchor_class);
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        'photo-image-css-' . $variables["photo_id"],
+      ];
+    }
+  }
+
+}

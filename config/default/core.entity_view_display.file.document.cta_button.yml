@@ -1,0 +1,39 @@
+uuid: 63c6f0d8-b693-4a6e-b3b8-f2a7433a4785
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.cta_button
+    - field.field.file.document.field_updated_date
+    - file_entity.type.document
+  module:
+    - fences
+    - file
+id: file.document.cta_button
+targetEntityType: file
+bundle: document
+mode: cta_button
+content:
+  uri:
+    type: file_uri
+    label: hidden
+    settings:
+      link_to_file: true
+      file_download_path: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+hidden:
+  field_updated_date: true
+  filemime: true
+  filename: true
+  filesize: true
+  langcode: true
+  uid: true

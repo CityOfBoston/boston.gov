@@ -1,0 +1,14 @@
+uuid: d807e67a-5d39-4c42-a9c9-63312bc1f43b
+langcode: und
+status: true
+dependencies:
+  config:
+    - node.type.program_initiative_profile
+id: node_type_program_initiative_profile
+entity_type_id: null
+entity_id: null
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: null

@@ -1,0 +1,19 @@
+uuid: 7c6c85b5-d1b2-4159-8019-19252276598b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+id: node.field_ml_agent_phone
+field_name: field_ml_agent_phone
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

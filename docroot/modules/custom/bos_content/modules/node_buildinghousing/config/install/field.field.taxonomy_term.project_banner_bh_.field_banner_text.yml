@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_banner_text
+    - filter.format.filtered_html
+    - taxonomy.vocabulary.project_banner_bh_
+  module:
+    - text
+id: taxonomy_term.project_banner_bh_.field_banner_text
+field_name: field_banner_text
+entity_type: taxonomy_term
+bundle: project_banner_bh_
+label: 'Banner Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - filtered_html
+field_type: text

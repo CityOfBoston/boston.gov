@@ -1,0 +1,18 @@
+uuid: 6591e6a6-c2c5-41de-938f-95a489ac4d3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_parcel
+id: node.bh_parcel.moderation_state
+field_name: moderation_state
+entity_type: node
+bundle: bh_parcel
+label: 'Moderation state'
+description: 'The moderation state of this piece of content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

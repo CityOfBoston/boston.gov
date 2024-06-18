@@ -1,0 +1,21 @@
+uuid: cc45042c-a71a-4395-9552-30f831136ff4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.transaction_grid
+  module:
+    - options
+id: paragraph.transaction_grid.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: transaction_grid
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

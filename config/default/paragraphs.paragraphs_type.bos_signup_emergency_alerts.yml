@@ -1,0 +1,13 @@
+uuid: b29f2b54-4d1e-466b-bafb-d2de10a84c65
+langcode: en
+status: true
+dependencies:
+  content: {  }
+_core:
+  default_config_hash: FRwfWA4jOn1R8cXWiulpwf7fbQdTI6f6Oikj9KcpUdY
+id: bos_signup_emergency_alerts
+label: 'Signup Emergency Alerts'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Signup Emergency Alerts'
+behavior_plugins: {  }

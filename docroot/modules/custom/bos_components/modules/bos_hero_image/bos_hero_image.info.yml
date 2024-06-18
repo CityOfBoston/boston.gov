@@ -1,0 +1,23 @@
+name: bos_hero_image
+type: module
+description: 'Provides theming and configuration for bos_hero_image.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.hero_image.created
+  - core.base_field_override.paragraph.hero_image.status
+  - core.entity_form_display.paragraph.hero_image.default
+  - core.entity_view_display.paragraph.hero_image.default
+  - core.entity_view_display.paragraph.hero_image.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.hero_image.separated_title
+  - field.field.paragraph.hero_image.field_grid_link
+  - field.field.paragraph.hero_image.field_header
+  - field.field.paragraph.hero_image.field_image
+  - field.field.paragraph.hero_image.field_short_title
+  - field.field.paragraph.hero_image.field_subheader
+  - language.content_settings.paragraph.hero_image
+  - paragraphs.paragraphs_type.hero_image

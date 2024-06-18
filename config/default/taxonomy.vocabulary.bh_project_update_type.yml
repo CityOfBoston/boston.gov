@@ -1,0 +1,8 @@
+uuid: 424bfe7f-106a-4475-9ecd-d4eab91aae53
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Update Type (BH)'
+vid: bh_project_update_type
+description: 'Building Housing: Project Update Type'
+weight: 0

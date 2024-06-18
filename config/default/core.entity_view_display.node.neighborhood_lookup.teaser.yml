@@ -1,0 +1,36 @@
+uuid: 5ed97c68-b2fa-4023-9605-8af8da9ef789
+langcode: und
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.neighborhood_lookup.field_checksum
+    - field.field.node.neighborhood_lookup.field_import_date
+    - field.field.node.neighborhood_lookup.field_sam_address
+    - field.field.node.neighborhood_lookup.field_sam_id
+    - field.field.node.neighborhood_lookup.field_sam_neighborhood_data
+    - field.field.node.neighborhood_lookup.field_updated_date
+    - node.type.neighborhood_lookup
+  module:
+    - user
+_core:
+  default_config_hash: oJZfahTXKn1LUBPvCgSmdHmGQTsyOE2KUa72nxRIOIs
+id: node.neighborhood_lookup.teaser
+targetEntityType: node
+bundle: neighborhood_lookup
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_checksum: true
+  field_import_date: true
+  field_sam_address: true
+  field_sam_id: true
+  field_sam_neighborhood_data: true
+  field_updated_date: true
+  langcode: true
+  published_at: true

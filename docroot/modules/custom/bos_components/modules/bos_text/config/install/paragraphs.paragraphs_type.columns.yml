@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:85a5f32d-d85c-496b-80d0-72da8e3621f9'
+id: columns
+label: 'Text w/ Image'
+icon_uuid: 85a5f32d-d85c-496b-80d0-72da8e3621f9
+icon_default: null
+description: 'Creates a single column with an image centered at top.'
+behavior_plugins: {  }

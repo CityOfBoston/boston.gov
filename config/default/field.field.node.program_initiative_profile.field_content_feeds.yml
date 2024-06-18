@@ -1,0 +1,29 @@
+uuid: e197008f-9ab0-48dc-a298-10c36c91b0cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_feeds
+    - node.type.program_initiative_profile
+    - taxonomy.vocabulary.content_feed
+id: node.program_initiative_profile.field_content_feeds
+field_name: field_content_feeds
+entity_type: node
+bundle: program_initiative_profile
+label: 'Content Feeds'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_feed: content_feed
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

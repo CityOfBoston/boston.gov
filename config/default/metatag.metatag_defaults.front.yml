@@ -1,0 +1,18 @@
+uuid: 40efbc9a-0524-4e20-881d-0de46198f8f6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: 'Front page'
+tags:
+  title: '[site:name]'
+  schema_organization_logo: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}'
+  schema_organization_id: 'https://www.boston.gov'
+  schema_organization_url: 'https://www.boston.gov'
+  schema_organization_name: 'Boston City Hall'
+  schema_organization_address: 'a:6:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:18:"1 City Hall Square";s:15:"addressLocality";s:6:"Boston";s:13:"addressRegion";s:2:"MA";s:10:"postalCode";s:5:"02201";s:14:"addressCountry";s:3:"USA";}'
+  schema_organization_opening_hours_specification: 'a:4:{s:5:"@type";s:25:"OpeningHoursSpecification";s:9:"dayOfWeek";s:23:"Tuesday,Thursday,Friday";s:5:"opens";s:26:"09:00:00,09:00:00,09:00:00";s:6:"closes";s:27:"17:00:00,17:00:00,17:00:00,";}'
+  schema_organization_image: 'a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:64:"https://patterns.boston.gov/images/global/icons/b-logo-large.png";}'
+  schema_organization_type: GovernmentOffice

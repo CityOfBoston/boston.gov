@@ -1,0 +1,28 @@
+uuid: 2a5375d8-1f07-4d73-b421-d5fc9d055074
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.thumbnail
+    - file_entity.type.audio
+_core:
+  default_config_hash: 3JiAy0mwynmWPj9NTujj1zJk81Eq8lnG5DAOGrgM5u0
+id: file.audio.thumbnail
+targetEntityType: file
+bundle: audio
+mode: thumbnail
+content:
+  filename:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  filemime: true
+  filesize: true
+  langcode: true
+  uid: true
+  uri: true

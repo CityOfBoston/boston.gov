@@ -1,0 +1,7 @@
+langcode: und
+status: true
+dependencies: {  }
+name: 'Procurement Type'
+vid: procurement_type
+description: ''
+weight: 0

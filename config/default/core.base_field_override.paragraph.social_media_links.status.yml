@@ -1,0 +1,22 @@
+uuid: 8ef7412c-4879-47f2-9b67-b3db33ea1698
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.social_media_links
+id: paragraph.social_media_links.status
+field_name: status
+entity_type: paragraph
+bundle: social_media_links
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

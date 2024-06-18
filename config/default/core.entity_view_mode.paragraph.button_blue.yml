@@ -1,0 +1,15 @@
+uuid: 41928532-4acc-4fa6-9377-f79e4f80912e
+langcode: und
+status: true
+dependencies:
+  module:
+    - lightning_core
+    - paragraphs
+third_party_settings:
+  lightning_core:
+    description: 'Renders a link as a blue button.'
+id: paragraph.button_blue
+label: button-blue
+description: ''
+targetEntityType: paragraph
+cache: true

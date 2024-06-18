@@ -1,0 +1,21 @@
+uuid: 2f153180-5aed-4932-a519-a12c6ff9a371
+langcode: en
+status: true
+dependencies:
+  module:
+    - metatag
+    - node
+_core:
+  default_config_hash: toqvFhfgG3CpkhzHPz_gW5KwBaCstfihpup6v3aX1AI
+id: node.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+type: metatag
+settings: {  }
+module: metatag
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

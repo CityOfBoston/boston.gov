@@ -1,0 +1,29 @@
+uuid: 4d3be758-2787-42ed-baf8-717238466069
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_elector_group
+    - taxonomy.vocabulary.election_contests
+    - taxonomy.vocabulary.elector_groups
+id: taxonomy_term.election_contests.field_elector_group
+field_name: field_elector_group
+entity_type: taxonomy_term
+bundle: election_contests
+label: 'Elector Group'
+description: 'Select the Group this contest is relevant for (set to default for general and municipal elections)'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      elector_groups: elector_groups
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

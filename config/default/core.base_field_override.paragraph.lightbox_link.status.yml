@@ -1,0 +1,24 @@
+uuid: 67f505cf-c1fa-445d-9ccd-62f5045718be
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lightbox_link
+_core:
+  default_config_hash: ZC4ExY8L6D5rq0Tcr5tCosoXdR3oPKzBxPAbWJVk_nc
+id: paragraph.lightbox_link.status
+field_name: status
+entity_type: paragraph
+bundle: lightbox_link
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

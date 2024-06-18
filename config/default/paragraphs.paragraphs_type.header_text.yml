@@ -1,0 +1,16 @@
+uuid: 7f59bcb7-a1f6-4ef9-80e9-24400bccc36f
+langcode: en
+status: true
+dependencies:
+  content: {  }
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: header_text
+label: 'Header Text'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from paragraph bundle Header Text'
+behavior_plugins: {  }

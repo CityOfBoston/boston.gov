@@ -1,0 +1,19 @@
+uuid: 354bee9a-ad1a-41a7-8a3e-4c28a04fa902
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_developer_website
+    - node.type.bh_update
+id: node.bh_update.field_bh_developer_website
+field_name: field_bh_developer_website
+entity_type: node
+bundle: bh_update
+label: 'Developer Website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

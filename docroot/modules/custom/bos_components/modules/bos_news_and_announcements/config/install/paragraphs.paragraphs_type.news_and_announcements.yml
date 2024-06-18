@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:8b9acdc3-98a8-4524-a52c-0db4d201f697'
+id: news_and_announcements
+label: 'News & Announcements'
+icon_uuid: 8b9acdc3-98a8-4524-a52c-0db4d201f697
+icon_default: null
+description: 'Migrated from paragraph bundle News & Announcements'
+behavior_plugins: {  }

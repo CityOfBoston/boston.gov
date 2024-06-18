@@ -1,0 +1,15 @@
+uuid: 1bcee836-98ae-4adb-9fd7-36abbd086c52
+langcode: und
+status: true
+dependencies: {  }
+name: hero_fixed_e_oversize_1x
+label: 'Hero fixed e-oversize 1x (2400x460)'
+effects:
+  4bc95871-fea9-4373-9b94-250c4b44fa98:
+    uuid: 4bc95871-fea9-4373-9b94-250c4b44fa98
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2400
+      height: 460
+      anchor: center-bottom

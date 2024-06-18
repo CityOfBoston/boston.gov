@@ -1,0 +1,10 @@
+uuid: 211b800c-5aa2-47e1-9ca2-3b05595fb716
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9aOU5chcNLwZy_XI7q6nzBOIDmot1n1GtshKIOdfrmY
+name: Newsletters
+vid: newsletters
+description: ''
+weight: 0

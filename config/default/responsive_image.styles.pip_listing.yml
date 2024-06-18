@@ -1,0 +1,44 @@
+uuid: e1399be5-5b58-4368-ba24-15a8a1af8b2a
+langcode: und
+status: true
+dependencies:
+  config:
+    - image.style.pip_image_desktop
+    - image.style.pip_image_tablet
+  theme:
+    - bos_theme
+id: pip_listing
+label: 'PIP Listing'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_tablet
+    breakpoint_id: boston.card.mobile
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_tablet
+    breakpoint_id: boston.card.tablet
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_tablet
+    breakpoint_id: boston.card.desktop-small
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_tablet
+    breakpoint_id: boston.card.desktop-normal
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_desktop
+    breakpoint_id: boston.card.large
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: pip_image_desktop
+    breakpoint_id: boston.card.oversize
+    multiplier: 1x
+breakpoint_group: card
+fallback_image_style: pip_image_desktop

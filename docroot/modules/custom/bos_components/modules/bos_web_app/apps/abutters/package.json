@@ -1,0 +1,39 @@
+{
+  "name": "abutters",
+  "version": "0.0.0",
+  "description": "",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.5.1",
+    "@turf/buffer": "^4.7.3",
+    "bootstrap": "^4.3.1",
+    "date-fns": "^1.30.1",
+    "esri-leaflet": "^2.3.0",
+    "esri-leaflet-gp": "^2.0.3",
+    "font-awesome": "^4.7.0",
+    "glyphicons": "^0.2.0",
+    "leaflet": "^1.5.1",
+    "mapbox-gl": "^0.47.0",
+    "react-csv": "^1.1.2",
+    "react-fontawesome": "^1.6.1",
+    "react-leaflet": "^1.9.1",
+    "reactstrap": "^6.5.0"
+  },
+  "devDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "autoprefixer": "^9.7.0",
+    "cssnano": "^4.1.10",
+    "glob": "^7.1.6",
+    "webpack-stream": "^6.1.1"
+  }
+}

@@ -1,0 +1,9 @@
+name: Boston Swiftype
+type: module
+description: 'Connects Boston.gov to Swiftype'
+package: City of Boston
+version: 8.x.1.0
+core_version_requirement: ^8 || ^9 || ^10
+
+config_devel:
+  - bos_swiftype.settings

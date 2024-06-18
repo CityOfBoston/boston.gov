@@ -1,0 +1,7 @@
+name: 'City of Boston: Metrolist - Development'
+type: module
+description: 'MetroList Development features'
+core_version_requirement: ^8 || ^9 || ^10
+package: MetroList
+dependencies:
+  - menu_ui

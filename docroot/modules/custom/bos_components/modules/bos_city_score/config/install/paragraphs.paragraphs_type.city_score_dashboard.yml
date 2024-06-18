@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'file:image:cd3bccb1-f1b4-4a2e-8452-6a07d244a2b6'
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    description: 'City score metrics for the city.'
+id: city_score_dashboard
+label: 'City Score Dashboard'
+icon_uuid: cd3bccb1-f1b4-4a2e-8452-6a07d244a2b6
+icon_default: null
+description: 'Migrated from paragraph bundle City Score Dashboard'
+behavior_plugins: {  }

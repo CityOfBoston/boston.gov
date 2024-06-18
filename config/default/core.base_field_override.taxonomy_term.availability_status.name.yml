@@ -1,0 +1,18 @@
+uuid: 868a1e82-02ad-49fd-a1b0-6a0efdd5c2ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.availability_status
+id: taxonomy_term.availability_status.name
+field_name: name
+entity_type: taxonomy_term
+bundle: availability_status
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

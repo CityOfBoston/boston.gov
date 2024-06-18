@@ -1,0 +1,20 @@
+uuid: 5a27f83a-ee21-467b-88d3-bb64d4a322ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.bh_funding_stage
+  module:
+    - text
+id: taxonomy_term.bh_funding_stage.description
+field_name: description
+entity_type: taxonomy_term
+bundle: bh_funding_stage
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

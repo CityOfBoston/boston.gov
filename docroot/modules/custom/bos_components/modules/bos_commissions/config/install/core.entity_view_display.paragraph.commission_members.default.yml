@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.commission_members.field_commission
+    - field.field.paragraph.commission_members.field_component_title
+    - field.field.paragraph.commission_members.field_short_title
+    - paragraphs.paragraphs_type.commission_members
+id: paragraph.commission_members.default
+targetEntityType: paragraph
+bundle: commission_members
+mode: default
+content:
+  field_component_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_short_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_commission: true

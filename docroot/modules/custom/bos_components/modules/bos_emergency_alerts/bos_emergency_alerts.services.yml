@@ -1,0 +1,11 @@
+services:
+
+  everbridge_subscriber:
+    class: Drupal\bos_emergency_alerts\Controller\EverbridgeSubscriber
+    tags:
+      - { name: 'event_subscriber' }
+
+  genasys_subscriber:
+    class: Drupal\bos_emergency_alerts\Controller\GenasysSubscriber
+    tags:
+      - { name: 'event_subscriber' }

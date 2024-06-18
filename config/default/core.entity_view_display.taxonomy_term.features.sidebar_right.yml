@@ -1,0 +1,50 @@
+uuid: 5415cbb0-26ce-420f-9aa5-cbdab71d0021
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.sidebar_right
+    - field.field.taxonomy_term.features.field_icon
+    - image.style.square_icon_56px
+    - taxonomy.vocabulary.features
+  module:
+    - fences
+    - media
+    - text
+id: taxonomy_term.features.sidebar_right
+targetEntityType: taxonomy_term
+bundle: features
+mode: sidebar_right
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 0
+    region: content
+  field_icon:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: square_icon_56px
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: detail-item_left
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  langcode: true

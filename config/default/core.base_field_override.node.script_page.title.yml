@@ -1,0 +1,20 @@
+uuid: 26b9c28c-647c-4ce5-97ab-fb46df6c5023
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.script_page
+_core:
+  default_config_hash: v3pO8FjeYlaY9bMA9NwxXYqMEMzJEp37WmF7ZeDZhUM
+id: node.script_page.title
+field_name: title
+entity_type: node
+bundle: script_page
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

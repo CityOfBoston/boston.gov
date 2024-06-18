@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - node
+label: bos_settings_linkit_editor
+id: bos_settings_linkit_editor
+description: 'A content editor profile has the ability to search for and link to internal content in the WYSIWYG w/o having to copy paste the URL in.'
+matchers:
+  6f045b0d-fa16-4539-ae6a-5630cda3f12a:
+    id: 'entity:node'
+    uuid: 6f045b0d-fa16-4539-ae6a-5630cda3f12a
+    settings:
+      metadata: 'by: [node:author] - published: [node:field_published_date]'
+      bundles:
+        article: article
+        change: change
+        department_profile: department_profile
+        event: event
+        how_to: how_to
+        landing_page: landing_page
+        listing_page: listing_page
+        metrolist_affordable_housing: metrolist_affordable_housing
+        person_profile: person_profile
+        place_profile: place_profile
+        post: post
+        procurement_advertisement: procurement_advertisement
+        program_initiative_profile: program_initiative_profile
+        public_notice: public_notice
+        script_page: script_page
+        tabbed_content: tabbed_content
+        topic_page: topic_page
+      group_by_bundle: true
+      substitution_type: canonical
+      limit: 100
+      include_unpublished: false
+    weight: 0
+  77400cf0-d8f8-4590-ba16-9865901d9062:
+    id: 'entity:file'
+    uuid: 77400cf0-d8f8-4590-ba16-9865901d9062
+    settings:
+      metadata: '[file:extension]:[file:size] - by [file:owner] on [file:changed]'
+      bundles:
+        document: document
+      group_by_bundle: true
+      substitution_type: file
+      limit: 50
+      file_extensions: 'pdf doc xls xlsx'
+      file_status: 1
+      images:
+        show_dimensions: false
+        show_thumbnail: false
+        thumbnail_image_style: null
+    weight: 0

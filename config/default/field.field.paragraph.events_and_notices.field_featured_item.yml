@@ -1,0 +1,27 @@
+uuid: a702fe06-8a27-4907-9b84-9c8ccef58138
+langcode: und
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_featured_item
+    - paragraphs.paragraphs_type.events_and_notices
+_core:
+  default_config_hash: nFVOYPda31MeA4FHK_lqUuJspKo555lLxQ7omLejqeA
+id: paragraph.events_and_notices.field_featured_item
+field_name: field_featured_item
+entity_type: paragraph
+bundle: events_and_notices
+label: 'Featured Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: entity_reference_filters
+      display_name: entity_reference_2
+      arguments: {  }
+field_type: entity_reference

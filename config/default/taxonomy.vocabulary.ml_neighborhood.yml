@@ -1,0 +1,8 @@
+uuid: 209a11e1-e9f7-48f2-803f-6acfc996d746
+langcode: en
+status: true
+dependencies: {  }
+name: 'Neighborhoods (MetroList)'
+vid: ml_neighborhood
+description: 'MetroList: Neighborhood'
+weight: 0

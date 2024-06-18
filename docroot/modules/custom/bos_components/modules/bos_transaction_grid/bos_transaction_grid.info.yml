@@ -1,0 +1,28 @@
+name: Transaction Grid Components
+type: module
+description: Provides Transaction Grid component.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+config_devel:
+  - core.entity_form_display.paragraph.transactions.default
+  - core.entity_view_display.paragraph.transactions.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.transaction_grid.default
+  - core.entity_view_display.paragraph.transaction_grid.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.transaction_grid.separated_title
+  - core.entity_view_display.paragraph.transactions.default
+  - core.entity_view_display.paragraph.transactions.transaction
+  - core.entity_view_display.paragraph.transactions.group_of_links
+  - field.field.paragraph.transaction_grid.field_component_title
+  - field.field.paragraph.transaction_grid.field_contact
+  - field.field.paragraph.transaction_grid.field_short_title
+  - field.field.paragraph.transaction_grid.field_transactions
+  - field.field.paragraph.transactions.field_grid_link
+  - field.field.paragraph.transactions.field_icon
+  - language.content_settings.paragraph.transaction_grid
+  - language.content_settings.paragraph.transactions
+  - paragraphs.paragraphs_type.transaction_grid
+  - paragraphs.paragraphs_type.transactions
+  - views.view.transactions

@@ -1,0 +1,21 @@
+uuid: 414b7033-8bce-41b2-b130-577de61a397d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_outer_location
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: 3T3RJCCXeYmB67v4fqAw4B7xVApJEkPLH3epmEkWv4g
+id: node.metrolist_affordable_housing.field_mah_outer_location
+field_name: field_mah_outer_location
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Outer Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 4b73b29f-750a-4f2c-9a58-70036c5ba4cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bh_contact
+id: node.bh_contact.menu_link
+field_name: menu_link
+entity_type: node
+bundle: bh_contact
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

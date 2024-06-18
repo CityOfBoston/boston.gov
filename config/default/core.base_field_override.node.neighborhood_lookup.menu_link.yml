@@ -1,0 +1,20 @@
+uuid: 43b615f7-b75a-45fc-bdcb-2be85008d300
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.neighborhood_lookup
+id: node.neighborhood_lookup.menu_link
+field_name: menu_link
+entity_type: node
+bundle: neighborhood_lookup
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

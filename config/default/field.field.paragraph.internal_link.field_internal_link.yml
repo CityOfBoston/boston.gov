@@ -1,0 +1,23 @@
+uuid: 42c2af1e-fac7-4a2f-b925-4cb2ff7e7fd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - link
+id: paragraph.internal_link.field_internal_link
+field_name: field_internal_link
+entity_type: paragraph
+bundle: internal_link
+label: 'Internal Link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 1
+field_type: link

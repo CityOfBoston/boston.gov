@@ -1,0 +1,33 @@
+uuid: 4f5f5a76-eaae-43d6-a280-bacd5aaff9b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.holidays.field_date
+    - taxonomy.vocabulary.holidays
+  module:
+    - datetime
+    - text
+id: taxonomy_term.holidays.default
+targetEntityType: taxonomy_term
+bundle: holidays
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

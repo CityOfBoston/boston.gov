@@ -1,0 +1,23 @@
+uuid: 6adfce1e-fac1-45a5-bfcb-fc621fe763ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contract_length
+    - node.type.procurement_advertisement
+id: node.procurement_advertisement.field_contract_length
+field_name: field_contract_length
+entity_type: node
+bundle: procurement_advertisement
+label: 'Contract Length'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: years
+field_type: integer

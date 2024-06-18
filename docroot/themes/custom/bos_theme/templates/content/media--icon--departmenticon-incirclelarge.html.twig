@@ -1,0 +1,13 @@
+{# This logic block adds classes for the media icon. #}
+{% set media_attributes = create_attribute() %}
+{% set classes = ["di", "di--c", "di--c--l"] %}
+{# Checks for any theme setting applied on the form. #}
+{% if globals.paragraph.component_theme == "b" %}
+  {% set classes = classes|merge(["di--c--w"]) %}
+{% endif %}
+
+<div {{ media_attributes.addClass(classes) }}>
+  <div class="di-ic">
+    {{ content.image.0|without("#item_attributes") }}
+  </div>
+</div>

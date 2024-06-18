@@ -1,0 +1,27 @@
+uuid: 8dc785d9-6ee6-45a6-af59-cc24d5d040ea
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.grid_of_places.field_component_theme
+    - field.field.paragraph.grid_of_places.field_component_title
+    - field.field.paragraph.grid_of_places.field_contact
+    - field.field.paragraph.grid_of_places.field_hide_title_bar
+    - field.field.paragraph.grid_of_places.field_place
+    - field.field.paragraph.grid_of_places.field_short_title
+    - paragraphs.paragraphs_type.grid_of_places
+_core:
+  default_config_hash: u3dHFWOAaqOThmlT6N9ZBVJlYUoNTMPwW_ps7sG4ydw
+id: paragraph.grid_of_places.separated_title
+targetEntityType: paragraph
+bundle: grid_of_places
+mode: separated_title
+content: {  }
+hidden:
+  field_component_theme: true
+  field_component_title: true
+  field_contact: true
+  field_hide_title_bar: true
+  field_place: true
+  field_short_title: true

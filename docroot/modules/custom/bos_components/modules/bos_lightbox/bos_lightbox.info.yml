@@ -1,0 +1,18 @@
+name:  Lightbox link component
+type: module
+description: Provides theming and config for lightbox link component.
+package: City of Boston (components)
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.lightbox_link.created
+  - core.base_field_override.paragraph.lightbox_link.status
+  - core.entity_form_display.paragraph.lightbox_link.default
+  - core.entity_view_display.paragraph.lightbox_link.default
+  - core.entity_view_display.paragraph.lightbox_link.paragraphs_editor_preview
+  - field.field.paragraph.lightbox_link.field_lightbox_link
+  - language.content_settings.paragraph.lightbox_link
+  - paragraphs.paragraphs_type.lightbox_link

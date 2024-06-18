@@ -1,0 +1,14 @@
+uuid: 509e6dc8-b5e5-4814-8385-47ba4ddf60a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.content_author
+  module:
+    - user
+id: user_remove_role_action.content_author
+label: 'Remove the Content Author role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: content_author

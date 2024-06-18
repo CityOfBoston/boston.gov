@@ -1,0 +1,99 @@
+uuid: a6663f9a-089d-486a-82e0-7f0cabf58e20
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.election_card
+    - field.field.taxonomy_term.elector_groups.field_display_title
+    - field.field.taxonomy_term.elector_groups.field_election
+    - field.field.taxonomy_term.elector_groups.field_is_top
+    - field.field.taxonomy_term.elector_groups.field_original_id
+    - field.field.taxonomy_term.elector_groups.field_short_name
+    - taxonomy.vocabulary.elector_groups
+  module:
+    - fences
+id: taxonomy_term.elector_groups.election_card
+targetEntityType: taxonomy_term
+bundle: elector_groups
+mode: election_card
+content:
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: 't--ob t--s500'
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
+    region: content
+  field_election:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 5
+    region: content
+  field_is_top:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 8
+    region: content
+  field_original_id:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 7
+    region: content
+  field_short_name:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: label
+        fences_label_classes: ''
+    weight: 4
+    region: content
+hidden:
+  description: true
+  langcode: true

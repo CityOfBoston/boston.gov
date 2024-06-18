@@ -1,0 +1,20 @@
+uuid: 309bd89b-3e35-4b1d-929a-23b1fb5621f7
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.icons
+  module:
+    - path
+id: taxonomy_term.icons.path
+field_name: path
+entity_type: taxonomy_term
+bundle: icons
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,8 @@
+uuid: d749cb14-ba71-409d-b71a-c23c146f28ec
+langcode: en
+status: true
+dependencies: {  }
+name: 'Political Party'
+vid: political_party
+description: ''
+weight: 0

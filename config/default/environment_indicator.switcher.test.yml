@@ -1,0 +1,12 @@
+uuid: 6ff08640-0b33-4b0c-adc3-fa39583b2e4d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dPqnhpZa8_WIK2jkW3wWegtQ3AMwb4zaBiIcrFzBsIA
+machine: test
+description: null
+name: 'Acquia TEST'
+url: 'https://d8-stg.boston.gov'
+fg_color: '#ffffff'
+bg_color: '#b15306'

@@ -1,0 +1,21 @@
+uuid: afeaa16c-86e7-4ef2-8ecf-2e601fe43a9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.group_of_links_mini_grid
+  module:
+    - options
+id: paragraph.group_of_links_mini_grid.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: group_of_links_mini_grid
+label: 'Component Theme'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

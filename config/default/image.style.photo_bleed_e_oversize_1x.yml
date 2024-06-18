@@ -1,0 +1,15 @@
+uuid: def245a0-a6e1-4a9f-9c8b-3396d72c6827
+langcode: und
+status: true
+dependencies: {  }
+name: photo_bleed_e_oversize_1x
+label: 'Photo bleed e-oversize 1x (2400x800)'
+effects:
+  592ef9b6-1587-4f3e-bb34-489ce335070b:
+    uuid: 592ef9b6-1587-4f3e-bb34-489ce335070b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2400
+      height: 800
+      anchor: center-center

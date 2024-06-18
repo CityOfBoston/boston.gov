@@ -1,0 +1,22 @@
+uuid: a36fa188-c66b-40c2-a74a-1628d522e633
+langcode: und
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.sidebar_item_w_icon
+id: paragraph.sidebar_item_w_icon.status
+field_name: status
+entity_type: paragraph
+bundle: sidebar_item_w_icon
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

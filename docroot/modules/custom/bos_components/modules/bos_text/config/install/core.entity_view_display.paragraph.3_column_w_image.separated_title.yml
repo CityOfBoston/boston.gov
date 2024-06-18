@@ -1,0 +1,20 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.3_column_w_image.field_columns
+    - field.field.paragraph.3_column_w_image.field_component_title
+    - field.field.paragraph.3_column_w_image.field_contact
+    - field.field.paragraph.3_column_w_image.field_short_title
+    - paragraphs.paragraphs_type.3_column_w_image
+id: paragraph.3_column_w_image.separated_title
+targetEntityType: paragraph
+bundle: 3_column_w_image
+mode: separated_title
+content: {  }
+hidden:
+  field_columns: true
+  field_component_title: true
+  field_contact: true
+  field_short_title: true

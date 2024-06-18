@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a project banner item.
+ *
+ * Available variables:
+ * - showBanner: should the banner be shown?
+ * - title: The banner title.
+ * - text: The text display for the banner.
+ * - icon: A link to an icon for the banner.
+ */
+#}
+{% if showBanner %}
+
+<div class="b--fw" id="bh-project-banner-wrapper">
+  <div class="b b--b" id="bh-project-banner">
+    <div class="b-c--smv b-c">
+      <div class="fyi-c">
+
+        {% if icon %}
+          <div class="fyi-i" id="bh-project-banner-icon"><img src="{{ icon }}" alt="Icon for project status {{ title }}"></div>
+        {% endif %}
+
+        {% if title %}
+          <div class="fyi-t" id="bh-project-banner-title">{{ title }}</div>
+        {% endif %}
+
+        {% if slash %}
+          <div class="fyi-s" id="bh-project-banner-slash"></div>
+        {% endif %}
+
+        {% if text %}
+          <div class="fyi-d" id="bh-project-banner-description">{{ text }}</div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+

@@ -1,0 +1,18 @@
+uuid: 554c46f0-6a93-41f8-9c6c-1955b9e4b799
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.ml_occupancy_type
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.ml_occupancy_type
+target_entity_type_id: taxonomy_term
+target_bundle: ml_occupancy_type
+default_langcode: site_default
+language_alterable: false

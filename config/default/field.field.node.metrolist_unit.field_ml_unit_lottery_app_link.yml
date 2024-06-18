@@ -1,0 +1,19 @@
+uuid: eee9b9f1-0d27-4173-a535-1875140fde5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ml_unit_lottery_app_link
+    - node.type.metrolist_unit
+id: node.metrolist_unit.field_ml_unit_lottery_app_link
+field_name: field_ml_unit_lottery_app_link
+entity_type: node
+bundle: metrolist_unit
+label: 'Lottery Application Website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

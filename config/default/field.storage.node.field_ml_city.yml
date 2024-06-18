@@ -1,0 +1,20 @@
+uuid: 1f92f5ad-72a8-485d-91cb-c819c3c0c3f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_ml_city
+field_name: field_ml_city
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

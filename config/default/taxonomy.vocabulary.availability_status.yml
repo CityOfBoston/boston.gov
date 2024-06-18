@@ -1,0 +1,8 @@
+uuid: 7d74e68a-dc7d-4601-b32d-518a4b82a15f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Availability Status'
+vid: availability_status
+description: 'MetroList: Availability Status'
+weight: 0

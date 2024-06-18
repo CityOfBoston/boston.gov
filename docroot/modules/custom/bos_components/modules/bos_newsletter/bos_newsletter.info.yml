@@ -1,0 +1,24 @@
+name: bos_newsletter
+type: module
+description: 'Provides theming and configuration for bos_newsletter.'
+package: 'City of Boston (components)'
+core_version_requirement: ^8 || ^9 || ^10
+version: 8.x.1.0
+dependencies:
+  - bos_components
+  - paragraphs
+config_devel:
+  - core.base_field_override.paragraph.newsletter.created
+  - core.base_field_override.paragraph.newsletter.status
+  - core.entity_form_display.paragraph.newsletter.default
+  - core.entity_view_display.paragraph.newsletter.default
+  - core.entity_view_display.paragraph.newsletter.paragraphs_editor_preview
+  - core.entity_view_display.paragraph.newsletter.sidebar
+  - field.field.paragraph.newsletter.field_component_theme
+  - field.field.paragraph.newsletter.field_component_title
+  - field.field.paragraph.newsletter.field_contact
+  - field.field.paragraph.newsletter.field_description
+  - field.field.paragraph.newsletter.field_newsletter
+  - field.field.paragraph.newsletter.field_short_title
+  - language.content_settings.paragraph.newsletter
+  - paragraphs.paragraphs_type.newsletter

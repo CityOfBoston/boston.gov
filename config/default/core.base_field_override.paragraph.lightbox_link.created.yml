@@ -1,0 +1,20 @@
+uuid: 8e983062-368c-43a8-a6ab-ee720d986ae5
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lightbox_link
+_core:
+  default_config_hash: 9iDd7aU55n3aDuUpTyNSMa36XJLJRh99uVwLb0kcGTU
+id: paragraph.lightbox_link.created
+field_name: created
+entity_type: paragraph
+bundle: lightbox_link
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

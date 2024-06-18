@@ -1,0 +1,49 @@
+_core:
+  default_config_hash: D0RcOA_aIiwSPXOZSHQOTm5FXzziEsJHdfXGaF4nhIQ
+local_task_enabled_entity_types:
+  - entity_browser
+  - file
+  - media
+  - node
+  - paragraphs_library_item
+  - profile
+  - taxonomy_term
+track_enabled_source_entity_types:
+  - block_content
+  - media
+  - node
+  - paragraphs_library_item
+  - profile
+  - taxonomy_term
+  - taxonomy_vocabulary
+  - user
+  - paragraph
+track_enabled_target_entity_types:
+  - field_storage_config
+  - file
+  - media
+  - node
+  - paragraphs_library_item
+  - salesforce_mapping
+  - taxonomy_term
+  - taxonomy_vocabulary
+  - token_custom
+  - view
+  - paragraph
+track_enabled_plugins:
+  - block_field
+  - entity_reference
+  - entity_embed
+  - link
+  - html_link
+  - linkit
+  - dynamic_entity_reference
+track_enabled_base_fields: false
+site_domains: {  }
+edit_warning_message_entity_types:
+  - file
+  - media
+delete_warning_message_entity_types:
+  - file
+  - media
+usage_controller_items_per_page: 25

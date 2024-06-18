@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a transaction entity.
+ *
+ * This template is used when viewing a registered transaction's page,
+ * e.g., /admin/content/transaction)/123. 123 being the transaction's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.title'.
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_transaction()
+ */
+#}
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if elements %}
+    {{ elements|without("uid","created") }}
+  {% endif %}
+</article>

@@ -1,0 +1,14 @@
+uuid: 05668a16-4005-4000-bb75-355652b72d7e
+langcode: und
+status: true
+dependencies:
+  config:
+    - user.role.metrolist_editor
+  module:
+    - user
+id: user_remove_role_action.metrolist_editor
+label: 'Remove the Metrolist Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: metrolist_editor

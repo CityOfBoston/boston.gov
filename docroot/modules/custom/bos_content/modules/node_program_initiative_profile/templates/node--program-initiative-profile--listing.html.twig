@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+#}
+{% set vars = {
+  'link': url,
+  'title': title_raw,
+  'classes': 'desktop-3-col tablet-2-col mobile-1-col'
+} %}
+
+{% if content.field_intro_text['#items'].getValue() %}
+  {% set vars = vars|merge({'description': content.field_intro_text}) %}
+{% endif %}
+
+{% if image %}
+  {% set vars = vars|merge({'image': image}) %}
+{% endif %}
+
+{% include '@bos_theme/snippets/grid-card.html.twig' with vars %}

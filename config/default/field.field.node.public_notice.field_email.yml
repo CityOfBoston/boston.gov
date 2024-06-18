@@ -1,0 +1,21 @@
+uuid: a4c6b6d9-9fb7-42e0-bef9-e226549830ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.public_notice
+_core:
+  default_config_hash: z69OFAn5kogiI1mgnxHdzpLQ7_CajKtGNE4BKNaX2Jk
+id: node.public_notice.field_email
+field_name: field_email
+entity_type: node
+bundle: public_notice
+label: 'Contact Email'
+description: 'The email that should be used to request information about this notice.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: 246c113a-d23c-4e3d-9c89-6ee9951521ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_precincts_reported
+    - paragraphs.paragraphs_type.election_area_results
+id: paragraph.election_area_results.field_precincts_reported
+field_name: field_precincts_reported
+entity_type: paragraph
+bundle: election_area_results
+label: 'Precincts Reported'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

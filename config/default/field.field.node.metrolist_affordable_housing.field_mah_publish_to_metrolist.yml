@@ -1,0 +1,25 @@
+uuid: 2c9dd2e2-cfc1-4743-8dab-d33cd9608c12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mah_publish_to_metrolist
+    - node.type.metrolist_affordable_housing
+_core:
+  default_config_hash: bFOhPV3E14MDlfz0s5yNX1h7Z9pcTpkCO2xepGusv9c
+id: node.metrolist_affordable_housing.field_mah_publish_to_metrolist
+field_name: field_mah_publish_to_metrolist
+entity_type: node
+bundle: metrolist_affordable_housing
+label: 'Publish to Metrolist'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

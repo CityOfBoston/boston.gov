@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for bos_components module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bos_time_theme() {
+  return [
+    'paragraph__custom_hours_text' => [
+      'base hook' => 'node',
+      'path' => 'modules/custom/bos_components/modules/bos_time/templates',
+      'template' => 'paragraph--custom-hours-text',
+    ],
+  ];
+}

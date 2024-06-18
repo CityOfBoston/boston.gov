@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bos_node_search.field_component_title
+    - field.field.paragraph.bos_node_search.field_node_search
+    - field.field.paragraph.bos_node_search.field_search_results
+    - field.field.paragraph.bos_node_search.field_short_title
+    - field.field.paragraph.bos_node_search.field_title
+    - paragraphs.paragraphs_type.bos_node_search
+  module:
+    - viewfield
+id: paragraph.bos_node_search.default
+targetEntityType: paragraph
+bundle: bos_node_search
+mode: default
+content:
+  field_component_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_node_search:
+    type: viewfield_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_search_results:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,20 @@
+uuid: a6ee97cb-eba7-4244-aeb7-15684e76e02d
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.grid_of_cards
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: wPlkQvEob996eHni026yXDw24H1bIg3sjXKukWxvikk
+id: paragraph.grid_of_cards
+target_entity_type_id: paragraph
+target_bundle: grid_of_cards
+default_langcode: site_default
+language_alterable: false

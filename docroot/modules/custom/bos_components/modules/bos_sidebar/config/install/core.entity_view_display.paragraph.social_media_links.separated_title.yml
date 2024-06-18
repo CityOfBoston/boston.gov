@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.separated_title
+    - field.field.paragraph.social_media_links.field_social_media_link
+    - paragraphs.paragraphs_type.social_media_links
+id: paragraph.social_media_links.separated_title
+targetEntityType: paragraph
+bundle: social_media_links
+mode: separated_title
+content: {  }
+hidden:
+  field_social_media_link: true

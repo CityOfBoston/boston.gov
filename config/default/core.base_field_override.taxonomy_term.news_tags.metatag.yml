@@ -1,0 +1,18 @@
+uuid: fedb1d1f-aa08-48cb-bcbe-8cab2f539bcb
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_tags
+id: taxonomy_term.news_tags.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: news_tags
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,29 @@
+uuid: 3bd0c442-58b0-45f4-8861-aedb27415b8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bh_funding_stage
+    - node.type.bh_project
+    - taxonomy.vocabulary.bh_funding_stage
+id: node.bh_project.field_bh_funding_stage
+field_name: field_bh_funding_stage
+entity_type: node
+bundle: bh_project
+label: 'Funding Stage'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      bh_funding_stage: bh_funding_stage
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

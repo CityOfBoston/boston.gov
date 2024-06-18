@@ -1,0 +1,18 @@
+uuid: 8228dbf8-5848-4230-bb23-44808cba7207
+langcode: und
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.topic_category
+id: taxonomy_term.topic_category.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: topic_category
+label: Metatags
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

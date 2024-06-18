@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_custom_css
+    - paragraphs.paragraphs_type.bos_chart
+id: paragraph.bos_chart.field_anchor_custom_css
+field_name: field_anchor_custom_css
+entity_type: paragraph
+bundle: bos_chart
+label: 'Additional Anchor Classes'
+description: 'You can add additional CSS classes to the wrapper for this chart component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
