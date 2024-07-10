@@ -32,9 +32,11 @@ complete_list:
   - bos_theme.settings
   - config_ignore.settings
   - google_tag.container.default_gtm
+  - google_tag.settings
   - key.config_override.sf_oauth_consumer_key
   - key.config_override.sf_oauth_consumer_secret
   - key.key.iam_dir_sso_prod_
+  - key.key.iam_dir_sso_test
   - key.key.salesforce_oauth_consumer_key
   - key.key.salesforce_oauth_consumer_secret
   - mailsystem.settings

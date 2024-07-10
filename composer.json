@@ -111,7 +111,7 @@
         "drupal/file_entity": "^2.x-dev",
         "drupal/file_mdm": "^2.2.0",
         "drupal/geolocation": "3.12",
-        "drupal/google_tag": "^1.0",
+        "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
         "drupal/image_url_formatter": "^1.0",
         "drupal/image_widget_crop": "^2.4",
