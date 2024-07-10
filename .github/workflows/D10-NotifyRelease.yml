@@ -1,0 +1,25 @@
+# Attached resources:
+# - GitHub SECRETS:
+#     -> global: SLACK_WEBHOOK_URL -> Webhook URL for posting messages to slack
+# - GitHub VARIABLES:
+#     -> local.SLACK_RELEASE_CHANNEL -> Notify people that release is ready.
+
+name: Broadcast Release Notes
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+      - name: Release Notes
+        uses: act10ns/slack@v2.0.0
+        with:
+          status: ${{ job.status }}
+          channel: ${{ vars.SLACK_RELEASE_CHANNEL }}
+          config: .github/config/releaseNotesConfig.yml
