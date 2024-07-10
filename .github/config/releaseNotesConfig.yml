@@ -1,0 +1,53 @@
+username: 'Digital Team Notices'
+icon_url: https://boston.gov/digitalteamicon.png
+
+pretext: A boston.gov deployment has been completed and release notes have been published.
+title: <{{payload.release.html_url}}|Code Release>
+title_link: {{payload.release.html_url}}
+
+text: |
+ A new release has been made for <{{payload.repository.homepage}}|{{payload.repository.name}}>.
+  _{{payload.repository.description}}_
+  <{{payload.release.html_url}}|Click here> to see the Release Notes.
+
+fallback: |-
+  [GitHub] {{payload.release.name}} is released for {{repositoryName}}
+
+blocks:
+  - type: "divider"
+  - type: "header"
+    text:
+      type: "plain_text"
+      text: "Release Information"
+  - type: section
+    fields:
+    - type: mrkdwn
+      text: "Release Title\n<{{payload.release.html_url}}|{{payload.release.name}}>"
+    - type: mrkdwn
+      text: "Repository Tag\n{{payload.release.tag_name}}"
+    - type: mrkdwn
+      text: "Release Date\n{{truncate payload.release.created_at 10}}"
+  - type: context
+    elements:
+      - type: image
+        image_url: "{{payload.release.author.avatar_url}}"
+        alt_text: "{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}"
+      - type: mrkdwn
+        text: "Released By <{{payload.release.author.html_url}}|{{#if (payload.release.author.name)}}{{payload.release.author.name}}{{else}}{{payload.release.author.login}}{{/if}}>"
+  - type: "divider"
+
+footer: >-
+  {{payload.enterprise.name}}, <{{payload.repository.homepage}}|{{payload.repository.name}}> <{{payload.release.html_url}}|code release>
+
+colors:
+  success: '#5DADE2'
+  failure: '#884EA0'
+  cancelled: '#A569BD'
+  default: '#7D3C98'
+
+icons:
+  success: ':white_check_mark:'
+  failure: ':grimacing:'
+  cancelled: ':x:'
+  skipped: ':heavy_minus_sign:'
+  default: ':interrobang:'
