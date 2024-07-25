@@ -1,17 +1,15 @@
 [![Build Status](https://travis-ci.org/CityOfBoston/boston.gov-d8.png)](https://travis-ci.org/CityOfBoston/boston.gov-d8) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-# Boston.gov-d8.
+# City of Boston Drupal Website
+This repository maintains an up-to-date copy of the custom code used by City of Boston
+to extend its Drupal website.
 
-[Refer to Wiki](https://github.com/CityOfBoston/boston.gov-d8/wiki)
+## Drupal Dependency
+**This codebase currently requires Drupal 10**
 
-## Shortcuts: ##
-
-* [Install Instructions](https://github.com/CityOfBoston/boston.gov-d8/wiki/Installation-Instructions)
-* [On-demand (terraform) Instances](https://github.com/CityOfBoston/boston.gov-d8/wiki/Terraform)
-
-**04/11/2002: Migrated to travis-ci.com**
-*Archived build info found at: https://travis-ci.org/github/CityOfBoston/boston.gov-d8*
-
+Please check the release history or contact the [Digital Team](mailto:digital@boston.gov)
+if you wish to access legacy versions of code - we may be able to supply some modules
+compatible with earlier Drupal versions.
 
 ---
 ## Public domain ##

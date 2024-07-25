@@ -294,11 +294,10 @@
                 "3449033. Enable Google Enterprise Cloud. DIG-4455 - DU June 2024": "https://www.drupal.org/files/issues/2024-06-03/recaptcha-enterprise-3449033-2.patch"
             },
             "drupal/core": {
-                "CoB patch - Fix original node is null on migration.": "patches/cob_migration_missing_original_001.patch",
-                "Optional end-date in date_range field type": "https://www.drupal.org/files/issues/2020-08-09/2794481-109.patch",
-                "Title is a render array - Fixes media library ajax popup.": "https://www.drupal.org/files/issues/2019-10-21/2663316-76.drupal.Broken-title-in-modal-dialog-when-title-is-a-render-array.patch",
-                "Simple decimals fail to pass validation (https://www.drupal.org/project/drupal/issues/2230909) - DU 03-11-2020 & 01-25-2024": "https://www.drupal.org/files/issues/2023-12-21/2230909-309.patch",
-                "TODO CHECK - ALLOW TO FAIL: Multi-language paragraphs du - 05/2022 https://www.drupal.org/project/drupal/issues/3025039": "https://www.drupal.org/files/issues/2022-05-10/3025039-68.patch"
+                "Optional end-date in date_range field type - https://www.drupal.org/project/drupal/issues/2794481": "https://www.drupal.org/files/issues/2024-06-26/2794481-262.patch",
+                "Simple decimals fail to pass validation (https://www.drupal.org/project/drupal/issues/2230909) - DU": "https://www.drupal.org/files/issues/2024-06-04/2230909-325.patch",
+                "Patch on patch (https://www.drupal.org/project/drupal/issues/2230909) - DU": "patches/core_2230909_updatehook.patch",
+                "TODO CHECK - ALLOW TO FAIL: Multi-language paragraphs du - 05/2022 https://www.drupal.org/project/drupal/issues/3025039": "https://www.drupal.org/files/issues/2024-05-01/3025039-94.patch"
             },
             "gasparesganga/php-shapefile": {
                 "Patch for PHP8 compatibility for Drupal 10": "patches/php-shapefile-php8-compat.patch"
@@ -308,11 +307,7 @@
                 "CoB patch - Reverts extension change for drupal < 8.7": "patches/fixes_unsupported_ConfigurableInterface_extension_001.patch"
             },
             "drupal/viewfield": {
-                "https://www.drupal.org/project/viewfield/issues/2860523": "https://www.drupal.org/files/issues/2018-06-08/d7_upgrade_path-2860523-6.patch",
-                "Fix Undefined array key 'items_to_display' - DU Jan 2024": "https://www.drupal.org/files/issues/2023-08-21/viewfield-undefined-array-key-3267240-6.patch"
-            },
-            "drupal/entity_clone": {
-                "resolves memory issue when cloning - du July/2023": "https://www.drupal.org/files/issues/2023-06-23/entity_clone-avoid_unnecessary_recursion_3010626-16.patch"
+                "https://www.drupal.org/project/viewfield/issues/2860523": "https://www.drupal.org/files/issues/2018-06-08/d7_upgrade_path-2860523-6.patch"
             },
             "drupal/media_entity_browser": {
                 "CoB patch - Skip confirmation step": "./patches/media_entity_browser__skip_confirmation.patch"
@@ -345,7 +340,9 @@
                 "2878684 - Use String.match to correlate regions when switching Layouts in Panels IPE": "https://www.drupal.org/files/issues/panels-ipe-2878684-3.patch"
             },
             "drupal/lightning_workflow": {
-                "COB Patch: Deprecated drupal_get_path for seven theme - DIG-3336: DU Oct 2023": "patches/lightning_scheduler.patch"
+                "COB Patch: Deprecated drupal_get_path for seven theme - DIG-3336: DU Oct 2023": "patches/lightning_scheduler.patch",
+                "Circular reference detected for service cache.backend.database: DU July 2024": "https://www.drupal.org/files/issues/2024-07-01/fix-circular-reference-3457016-11.patch",
+                "taxonomy_term__scheduled_transition_date does not exist https://www.drupal.org/project/lightning_workflow/issues/3459341 DU": "https://www.drupal.org/files/issues/2024-07-05/add-base-fields-to-new-content-types-supported-by-content-moderation-3459341-2.patch"
             },
             "drupal/lightning_core": {
                 "Fatal error in lightning_workflow when move to core v10.2+ (https://www.drupal.org/project/lightning_core/issues/3408813)": "https://www.drupal.org/files/issues/2023-12-18/3408813_fatal_type_declaration_0.patch"

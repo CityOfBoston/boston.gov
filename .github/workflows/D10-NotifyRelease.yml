@@ -12,13 +12,13 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v4
       - name: Release Notes
         uses: act10ns/slack@v2.0.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           status: ${{ job.status }}
           channel: ${{ vars.SLACK_RELEASE_CHANNEL }}

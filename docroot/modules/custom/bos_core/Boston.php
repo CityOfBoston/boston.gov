@@ -40,7 +40,8 @@ class Boston {
     else {
 
       if (file_exists('/app/docroot')
-        || str_contains($_SERVER["HTTP_HOST"], static::LOCAL_DEVELOPMENT_DOMAIN)) {
+        || file_exists('/opt/project')
+        || str_contains($_SERVER["HTTP_HOST"] ?: "", static::LOCAL_DEVELOPMENT_DOMAIN)) {
         $env = "local";
       }
 

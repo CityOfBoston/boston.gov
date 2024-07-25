@@ -324,4 +324,178 @@ class BosCoreCommands extends DrushCommands {
 
   }
 
+  /**
+   *
+   * Scans Staged Files in public:// (typically docroot/sites/default/files)
+   * folders and identifies those which are not referenced by File Entities.
+   * Using --archive causes these files to be relocated and then they can be
+   * manually copied to an archive location (e.g. s3).
+   *
+   * @param array $options
+   *   Additional options for the command.
+   *
+   * @return string
+   *   Stdout to console.
+   *
+   * @validate-module-enabled bos_core
+   *
+   * @command bos:media_services_stagedfiles
+   * @option archive Files will be archived into sites/default/files/media_service_archive retaining their directory structure for easy de-archival.
+   * @option file_extensions Comma seperated list of extensions to scan/check. default = "jpg,jpeg,png,gif,pdf"
+   * @option excluded_paths Comma seperated list of subdirectories (and filenames) to ignore. default = "private,styles,tmp,pdf_templates,election_results". Note: The archive folder is always ignored.
+   * @option count The number of files to read from the system (i.e. for testing)
+   *
+   * @usage drush bos:mssf
+   *    Dry run for all files using default settings - generates report
+   * @usage drush bos:mssf --archive
+   *    Archives all files using default settings
+   * @usage drush bos:mssf --count=100
+   *    Scans the first 100 files and generates report
+   * @usage drush bos:mssf --file_extensions=jpg,jpeg
+   *    Scans site/default/files looking for jpg/jpeg images only
+   * @usage drush bos:mssf --excluded_paths=tmp,styles,deadpool.jpg
+   *    Scans site/default/files ignoring files found in .../styles/.. and .../tmp/.. folders, and also ignores .../deadpool.jpg
+   *
+   * @aliases bos:mssf
+   */
+  public function cleanStagedFiles(array $options = ['file_extensions' => '', 'excluded_paths' => '', 'count' => 0, 'archive' => false]) {
+    $file_ext = $options["file_extensions"] ?: "";
+    $exclude_paths = $options["excluded_paths"] ?: "";
+    $count = $options["count"] ?: 0;
+    $archive = !empty($options["archive"]);
+
+    if ($archive) {
+      $opts = "This will archive files which do not have associated File Entities in Drupal.\nAre you sure you wish to archive files?:\n";
+      $opts .= " [y/n]";
+      $ord = $this->io()->ask($opts, "n");
+
+      if (strtolower($ord) !== 'y') {
+        $this->output()->writeln("Cancelled.");
+        return;
+      }
+    }
+
+    \Drupal::service("bos_core.media_services")->CheckStagedFiles($archive, $file_ext, $exclude_paths, $count, FALSE);
+
+    $res = "Success: Check the file 'sites/default/files/StagedFiles_FileList.txt', and";
+    $this->output()->writeln($res);
+    $res = "         sites/default/files/StagedFiles_Stats.json' for outputs.";
+    $this->output()->writeln($res);
+    if ($archive) {
+      $res = "Check 'sites/default/files/media_service_archive' for archived files.";
+    }
+    else {
+      $res = "No files were altered.";
+    }
+    $this->output()->writeln($res);
+  }
+
+  /**
+   *
+   * Scans File Entity objects in Drupal and identifies those which do not
+   * reference a physical file in the file system.
+   * Using --cleanup causes these File Entities to be deleted and is irreversible.
+   *
+   * @param array $options
+   *   Additional options for the command.
+   *
+   * @return string
+   *   Stdout to console.
+   *
+   * @validate-module-enabled bos_core
+   *
+   * @command bos:media_services_fileentities
+   * @option cleanup File Entities with no physical files will be removed.
+   * @option count The number of File Entities to read from the system (i.e. for testing)
+   *
+   * @usage drush bos:msfe
+   *    Dry run for all Files Entities using default settings - generates report
+   * @usage drush bos:msfe --cleanup
+   *    Removes File Entities - if ommitted nothing is removed, just reported.
+   * @usage drush bos:msfe --count=100
+   *    Scans the first 100 File Entities and generates report
+   *
+   * @aliases bos:msfe
+   */
+  public function FileEntityCheck(array $options = ['cleanup' => FALSE, 'count' => 0]) {
+    $count = $options["count"] ?: 0;
+    $cleanup = !empty($options["cleanup"]);
+
+    if ($cleanup) {
+      $opts = "This will remove File Entities which do not have associated physical files.\nAre you sure you wish to cleanup?:\n";
+      $opts .= " [y/n]";
+      $ord = $this->io()->ask($opts, "n");
+
+      if (strtolower($ord) !== 'y') {
+        $this->output()->writeln("Cancelled.");
+        return;
+      }
+    }
+
+    \Drupal::service("bos_core.media_services")->FileEntityIntegrityCheck($cleanup, $count, TRUE);
+
+    $res = "Success: Check the file 'sites/default/files/FileEntity_FileList.txt', and";
+    $this->output()->writeln($res);
+    $res = "         sites/default/files/FileEntity_Stats.json' for outputs.";
+    $this->output()->writeln($res);
+    if (!$cleanup) {
+      $res = "No Entities were altered.";
+      $this->output()->writeln($res);
+    }
+  }
+
+  /**
+   *
+   * Scans Media Entity objects in Drupal and identifies those which do not
+   * reference a valid File Entity.
+   * Using --cleanup causes these Media Entities to be deleted and is irreversible.
+   *
+   * @param array $options
+   *   Additional options for the command.
+   *
+   * @return string
+   *   Stdout to console.
+   *
+   * @validate-module-enabled bos_core
+   *
+   * @command bos:media_services_mediaentities
+   * @option cleanup Media Entities with no File Entities will be removed.
+   * @option count The number of Media Entities to read from the system (i.e. for testing)
+   *
+   * @usage drush bos:msme
+   *    Dry run for all Media Entities using default settings - generates report
+   * @usage drush bos:msme --cleanup
+   *    Removes File Entities - if ommitted nothing is removed, just reported.
+   * @usage drush bos:msme --count=100
+   *    Scans the first 100 Media Entities and generates report
+   *
+   * @aliases bos:msme
+   */
+  public function MediaEntityCheck(array $options = ['cleanup' => FALSE, 'count' => 0]) {
+    $count = $options["count"] ?: 0;
+    $cleanup = !empty($options["cleanup"]);
+
+    if ($cleanup) {
+      $opts = "This will remove Media Entities which do not have associated File Entities.\nAre you sure you wish to cleanup?:\n";
+      $opts .= " [y/n]";
+      $ord = $this->io()->ask($opts, "n");
+
+      if (strtolower($ord) !== 'y') {
+        $this->output()->writeln("Cancelled.");
+        return;
+      }
+    }
+
+    \Drupal::service("bos_core.media_services")->MediaEntityIntergityCheck($cleanup, $count, TRUE);
+
+    $res = "Success: Check the file 'sites/default/files/MediaEntity_List.txt', and";
+    $this->output()->writeln($res);
+    $res = "         sites/default/files/MediaEntity_Stats.json' for outputs.";
+    $this->output()->writeln($res);
+    if (!$cleanup) {
+      $res = "No Entities were altered.";
+      $this->output()->writeln($res);
+    }
+  }
+
 }

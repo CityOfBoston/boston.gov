@@ -45,3 +45,7 @@ services:
       - { name: cache.bin }
     factory: [ '@cache_factory', 'get' ]
     arguments: [ 'icon_manifest' ]
+
+  bos_core.media_services:
+    class: Drupal\bos_core\Services\BosCoreMediaServices
+    arguments: ['@logger.factory', '@config.factory', '@file.usage', '@file_system']
