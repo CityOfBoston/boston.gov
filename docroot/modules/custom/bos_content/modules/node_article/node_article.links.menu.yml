@@ -1,0 +1,7 @@
+node_article.workbench_create:
+  title: 'Create Article'
+  description: 'Create a new Article'
+  route_name: node_article.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

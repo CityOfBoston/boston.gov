@@ -1,0 +1,15 @@
+node_tabbed_content.entity_form:
+  path: '/node/add/tabbed_content'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'tabbed_content'
+  requirements:
+    _permission: 'create tabbed_content content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

@@ -49,3 +49,4 @@ config_devel:
   - field.storage.node.field_procurement_footer
   - language.content_settings.node.procurement_advertisement
   - node.type.procurement_advertisement
+  - views.view.bos_dashboards

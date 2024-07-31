@@ -1,0 +1,7 @@
+node_how_to.workbench_create:
+  title: 'Create How-To'
+  description: 'Create a new How-To Page'
+  route_name: node_how_to.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

@@ -3,3 +3,11 @@ node_elections.admin:
   description: 'Manage election results'
   parent: system.admin_content
   route_name: node_elections.admin
+
+node_election.workbench_create:
+  title: 'Create Election'
+  description: 'Create a new Election Results Entry'
+  route_name: node_election.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

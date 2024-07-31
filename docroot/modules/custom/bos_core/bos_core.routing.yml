@@ -40,3 +40,11 @@ bos_core.set_content_moderation:
     parameters:
       entity:
         type: entity:{entity_type}
+
+bos_core.workbench_create_content:
+  path: '/admin/workbench/add'
+  defaults:
+    _controller: '\Drupal\bos_core\Controllers\Workbench\WorkbenchController::createContent'
+    _title: 'Add Content'
+  requirements:
+    _permission: 'access administration pages'

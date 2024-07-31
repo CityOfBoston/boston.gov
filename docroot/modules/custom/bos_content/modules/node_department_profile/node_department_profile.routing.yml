@@ -1,0 +1,15 @@
+node_department_profile.entity_form:
+  path: '/node/add/department_profile'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'department_profile'
+  requirements:
+    _permission: 'create department_profile content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

@@ -1,0 +1,7 @@
+node_procurement_advertisement.workbench_create:
+  title: 'Create Procurement Advertisement'
+  description: 'Create a new Procurement Advertisement'
+  route_name: node_procurement_advertisement.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

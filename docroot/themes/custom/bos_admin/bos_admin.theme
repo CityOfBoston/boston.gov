@@ -54,13 +54,7 @@ function bos_admin_preprocess_html(&$variables) {
     && isset($node->hasField['moderation_state'])) {
     $variables['attributes']['class'][] = "node-" . $node->get('moderation_state')->getString();
   }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function bos_admin_preprocess_page__admin__workbench(array &$variables) {
-  if ($variables["page"]["#title"]->__toString() == "My Workbench") {
+  if (in_array("adminimal-admin-toolbar", $variables["attributes"]["class"])) {
     $variables['#attached']['library'][] = "bos_admin/workbench";
   }
 }

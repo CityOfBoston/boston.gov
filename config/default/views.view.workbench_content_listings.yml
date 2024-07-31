@@ -1,33 +1,37 @@
-uuid: cd1e2aad-e1dd-42ec-9616-025e0bc47c9a
+uuid: e5bb2cb3-8e5e-4eed-8663-52403ce2bb40
 langcode: und
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.listing
-    - field.storage.node.field_award_date
-    - field.storage.node.field_awarded_by
-    - field.storage.node.field_bid
-    - field.storage.node.field_bid_type
+    - field.storage.node.body
+    - field.storage.node.field_cancelled
     - field.storage.node.field_contact
-    - field.storage.node.field_date_range
-    - field.storage.node.field_event_project_number
-    - field.storage.node.field_unspsc
+    - field.storage.node.field_meeting_date
+    - field.storage.node.field_public_notice_date
+    - field.storage.node.field_time
     - node.type.procurement_advertisement
+    - node.type.public_notice
+    - node.type.roll_call_dockets
     - system.menu.workbench
-    - taxonomy.vocabulary.bid_type
     - taxonomy.vocabulary.contact
+    - user.role.administrator
+    - user.role.city_clerk_editor
+    - user.role.content_editor
+    - user.role.developer
+    - user.role.site_administrator
   module:
     - better_exposed_filters
     - datetime
     - datetime_range
     - node
-    - paragraphs
     - taxonomy
+    - text
     - user
 _core:
   default_config_hash: ytRCa2Q_BiyWfNaMGDIasJ8BSZldFozQa2m4aqSNUys
-id: bos_dashboards
-label: 'BOS Dashboards'
+id: workbench_content_listings
+label: 'Workbench: Content Listings'
 module: views
 description: ''
 tag: ''
@@ -170,9 +174,14 @@ display:
                 rewrite:
                   filter_rewrite_values: ''
       access:
-        type: perm
+        type: role
         options:
-          perm: 'edit any procurement_advertisement content'
+          role:
+            administrator: administrator
+            site_administrator: site_administrator
+            developer: developer
+            content_editor: content_editor
+            city_clerk_editor: city_clerk_editor
       cache:
         type: none
         options: {  }
@@ -566,29 +575,29 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
-  rfp_dashboard:
-    id: rfp_dashboard
-    display_title: 'Bids & RFPs Dashboard'
+  public_notice_listing:
+    id: public_notice_listing
+    display_title: 'Public Notice Listing'
     display_plugin: page
     position: 3
     display_options:
-      title: 'Procurement Advertisement Dashboard'
+      title: 'Public Notice Listing and Filtering'
       fields:
-        field_date_range_1:
-          id: field_date_range_1
-          table: node__field_date_range
-          field: field_date_range
+        field_cancelled:
+          id: field_cancelled
+          table: node__field_cancelled
+          field: field_cancelled
           relationship: none
           group_type: group
-          admin_label: Status
+          admin_label: ''
           plugin_id: field
-          label: Status
+          label: Canceled
           exclude: false
           alter:
-            alter_text: true
-            text: "{% if date(field_date_range_1__end_value) < date() %}\r\n<span class=\"\">Closed ({{ field_date_range_1__end_value|date(\"m/d/Y\") }})</span>\r\n{% else %}\r\nOpen\r\n{% endif %}"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -625,13 +634,13 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: end_value
-          type: daterange_default
+          click_sort_column: value
+          type: boolean
           settings:
-            timezone_override: ''
-            format_type: html_datetime
-            separator: '-'
-          group_column: entity_id
+            format: yes-no
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -651,7 +660,7 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-          label: Title
+          label: 'Notice Title'
           exclude: false
           alter:
             alter_text: false
@@ -696,69 +705,6 @@ display:
           type: string
           settings:
             link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_event_project_number:
-          id: field_event_project_number
-          table: node__field_event_project_number
-          field: field_event_project_number
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: 'Event No.'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -833,73 +779,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        delta:
-          id: delta
-          table: node__field_bid
-          field: delta
-          relationship: none
-          group_type: count_distinct
-          admin_label: ''
-          plugin_id: numeric
-          label: 'No. Bids'
-          exclude: false
-          alter:
-            alter_text: false
-            text: '{{ delta + 1}}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: 'No Bids'
-          hide_empty: false
-          empty_zero: true
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ''
-          format_plural: false
-          format_plural_string: !!binary MQNAY291bnQ=
-          prefix: ''
-          suffix: ''
-        field_unspsc:
-          id: field_unspsc
-          table: node__field_unspsc
-          field: field_unspsc
+        field_public_notice_date:
+          id: field_public_notice_date
+          table: node__field_public_notice_date
+          field: field_public_notice_date
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: UNSPSC
-          exclude: true
+          label: Date
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -940,11 +829,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: number_integer
+          type: daterange_default
           settings:
-            thousand_separator: ''
-            prefix_suffix: false
-          group_column: entity_id
+            timezone_override: ''
+            format_type: date_format_normal_date
+            separator: '-'
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -954,16 +844,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_award_date:
-          id: field_award_date
-          table: node__field_award_date
-          field: field_award_date
+        field_public_notice_date_1:
+          id: field_public_notice_date_1
+          table: node__field_public_notice_date
+          field: field_public_notice_date
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Awarded
-          exclude: true
+          label: 'Start Time'
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -999,7 +889,72 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: 'Not Awarded'
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: date_format_calendar_time
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_time:
+          id: field_time
+          table: node__field_time
+          field: field_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Time public testimony begins'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -1007,7 +962,7 @@ display:
           type: datetime_default
           settings:
             timezone_override: ''
-            format_type: date_format_normal_date
+            format_type: date_format_calendar_time
           group_column: entity_id
           group_columns: {  }
           group_rows: true
@@ -1018,78 +973,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_awarded_by:
-          id: field_awarded_by
-          table: node__field_awarded_by
-          field: field_awarded_by
+        revision_timestamp:
+          id: revision_timestamp
+          table: node_revision
+          field: revision_timestamp
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: revision_timestamp
           plugin_id: field
-          label: 'Awarded By'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: entity_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_bid_type:
-          id: field_bid_type
-          table: node__field_bid_type
-          field: field_bid_type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: 'Bid Type'
+          label: Posted
           exclude: false
           alter:
             alter_text: false
@@ -1130,147 +1024,30 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: timestamp
           settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_date_range:
-          id: field_date_range
-          table: node__field_date_range
-          field: field_date_range
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: 'Bid Date'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: end_value
-          type: daterange_default
-          settings:
-            timezone_override: ''
-            format_type: date_format_boston_short
-            separator: '-'
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+            tooltip:
+              date_format: long
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
+              description: ''
           group_column: value
-          group_columns:
-            value: value
-            end_value: end_value
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_bid:
-          id: field_bid
-          table: node__field_bid
-          field: field_bid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Bid
-          exclude: true
-          alter:
-            alter_text: false
-            text: '{{ field_bid|length }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: None
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: paragraph_summary
-          settings: {  }
-          group_column: entity_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
           delta_offset: 0
           delta_reversed: false
           delta_first_last: false
-          multi_type: ul
+          multi_type: separator
           separator: ', '
           field_api_classes: false
         operations:
@@ -1343,9 +1120,10 @@ display:
               autosubmit_textfield_delay: 500
               autosubmit_hide: true
               input_required: false
-              allow_secondary: true
+              allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
+              reset_button_always_show: false
             pager:
               plugin_id: default
               advanced:
@@ -1354,34 +1132,40 @@ display:
               title:
                 plugin_id: default
                 advanced:
+                  placeholder_text: ''
                   collapsible: false
-                  is_secondary: true
-              field_event_project_number_value_1:
-                plugin_id: default
-                advanced:
-                  collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: true
               field_contact_target_id:
                 plugin_id: default
                 advanced:
+                  placeholder_text: ''
                   rewrite:
                     filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
                   collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: true
-              delta:
-                plugin_id: default
+              field_public_notice_date_value:
+                plugin_id: bef_datepicker
                 advanced:
-                  rewrite:
-                    filter_rewrite_values: ''
                   collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: false
-              field_bid_type_target_id:
-                plugin_id: default
-                advanced:
-                  rewrite:
-                    filter_rewrite_values: ''
-                  collapsible: false
-                  is_secondary: false
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: ''
+            format: full_html
+          tokenize: false
       filters:
         type:
           id: type
@@ -1395,7 +1179,651 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            procurement_advertisement: procurement_advertisement
+            public_notice: public_notice
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            argument: null
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Notice Title'
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+              metrolist_editor: '0'
+              election_editor: '0'
+              city_clerk_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: Title
+            description: null
+            identifier: title
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+        field_contact_target_id:
+          id: field_contact_target_id
+          table: node__field_contact
+          field: field_contact_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_contact_target_id_op
+            label: Department
+            description: ''
+            use_operator: false
+            operator: field_contact_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_contact_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_administrator: '0'
+              developer: '0'
+              content_editor: '0'
+              content_reviewer: '0'
+              content_author: '0'
+              metrolist_editor: '0'
+              election_editor: '0'
+              city_clerk_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: contact
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+          columns:
+            field_cancelled: field_cancelled
+            title: title
+            field_contact: field_contact
+            field_public_notice_date: field_public_notice_date
+            field_public_notice_date_1: field_public_notice_date_1
+            field_time: field_time
+            revision_timestamp: revision_timestamp
+            operations: operations
+          default: revision_timestamp
+          info:
+            field_cancelled:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contact:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_public_notice_date:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_public_notice_date_1:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_time:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            revision_timestamp:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: listing
+      defaults:
+        empty: false
+        title: false
+        exposed_form: false
+        group_by: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+        header: false
+      group_by: true
+      display_description: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: 'Displaying @start - @end of @total'
+      display_extenders: {  }
+      path: admin/content/public_notice_listing
+      menu:
+        type: normal
+        title: 'Public Notice Listing'
+        description: 'Public Notice Listing and Filtering'
+        weight: 14
+        expanded: false
+        menu_name: workbench
+        parent: bos_core.workbench_content_listing_menu
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_cancelled'
+        - 'config:field.storage.node.field_contact'
+        - 'config:field.storage.node.field_public_notice_date'
+        - 'config:field.storage.node.field_time'
+  rollcall_docket_listing:
+    id: rollcall_docket_listing
+    display_title: 'Rollcall Docket Listing'
+    display_plugin: page
+    position: 3
+    display_options:
+      title: 'Rollcall Docket Listing and Filtering'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: 'Docket #'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_meeting_date:
+          id: field_meeting_date
+          table: node__field_meeting_date
+          field: field_meeting_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Meeting Date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: medium
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Docket
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_summary_or_trimmed
+          settings:
+            trim_length: 150
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        operations:
+          id: operations
+          table: node
+          field: operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_operations
+          label: Actions
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: false
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: filtered_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            pager:
+              plugin_id: default
+              advanced:
+                is_secondary: true
+            filter:
+              title:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: true
+              field_contact_target_id:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: true
+              field_public_notice_date_value:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: ''
+            format: full_html
+          tokenize: false
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            roll_call_dockets: roll_call_dockets
           group: 1
           exposed: false
           expose:
@@ -1518,225 +1946,6 @@ display:
               1: {  }
               2: {  }
               3: {  }
-        field_event_project_number_value_1:
-          id: field_event_project_number_value_1
-          table: node__field_event_project_number
-          field: field_event_project_number_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_event_project_number_value_1_op
-            label: 'Event/Project Number'
-            description: ''
-            use_operator: false
-            operator: field_event_project_number_value_1_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_event_project_number_value_1
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_administrator: '0'
-              developer: '0'
-              content_editor: '0'
-              content_reviewer: '0'
-              content_author: '0'
-              metrolist_editor: '0'
-            placeholder: 'Project Number'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        field_contact_target_id:
-          id: field_contact_target_id
-          table: node__field_contact
-          field: field_contact_target_id
-          relationship: none
-          group_type: group
-          admin_label: Department
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_contact_target_id_op
-            label: 'Filter by Department'
-            description: ''
-            use_operator: false
-            operator: field_contact_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_contact_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_administrator: '0'
-              developer: '0'
-              content_editor: '0'
-              content_reviewer: '0'
-              content_author: '0'
-              metrolist_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: contact
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
-        delta:
-          id: delta
-          table: node__field_bid
-          field: delta
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: numeric
-          operator: empty
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: delta_op
-            label: 'Bid (field_bid:delta)'
-            description: ''
-            use_operator: false
-            operator: delta_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: delta
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_administrator: '0'
-              developer: '0'
-              content_editor: '0'
-              content_reviewer: '0'
-              content_author: '0'
-              metrolist_editor: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: true
-          group_info:
-            label: 'Has Bids'
-            description: ''
-            identifier: bid_delta
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: 'No'
-                operator: empty
-                value:
-                  min: ''
-                  max: ''
-                  value: ''
-              2:
-                title: 'Yes'
-                operator: 'not empty'
-                value:
-                  min: ''
-                  max: ''
-                  value: ''
-        field_bid_type_target_id:
-          id: field_bid_type_target_id
-          table: node__field_bid_type
-          field: field_bid_type_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_bid_type_target_id_op
-            label: 'Bid Type'
-            description: ''
-            use_operator: false
-            operator: field_bid_type_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_bid_type_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_administrator: '0'
-              developer: '0'
-              content_editor: '0'
-              content_reviewer: '0'
-              content_author: '0'
-              metrolist_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: bid_type
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -1748,91 +1957,29 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            field_date_range_1: field_date_range_1
             title: title
-            field_event_project_number: field_event_project_number
-            field_contact: field_contact
-            delta: delta
-            field_unspsc: field_unspsc
-            field_award_date: field_award_date
-            field_awarded_by: field_awarded_by
-            field_bid_type: field_bid_type
-            field_date_range: field_date_range
-            field_bid: field_bid
+            field_meeting_date: field_meeting_date
+            body: body
             operations: operations
-          default: field_date_range_1
+          default: field_meeting_date
           info:
-            field_date_range_1:
+            title:
               sortable: true
               default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            title:
+            field_meeting_date:
               sortable: true
-              default_sort_order: asc
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_event_project_number:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_contact:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            delta:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_unspsc:
+            body:
               sortable: false
               default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_award_date:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_awarded_by:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_bid_type:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_date_range:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_bid:
               align: ''
               separator: ''
               empty_column: false
@@ -1854,6 +2001,7 @@ display:
           relationship: none
           view_mode: listing
       defaults:
+        empty: false
         title: false
         exposed_form: false
         group_by: false
@@ -1877,13 +2025,13 @@ display:
           empty: false
           content: 'Displaying @start - @end of @total'
       display_extenders: {  }
-      path: admin/content/bids-rfps
+      path: admin/content/roll_call_listing
       menu:
         type: normal
-        title: 'Bids & RFP Listings'
-        description: 'Procurement Advertisement Dashboard'
-        weight: -45
-        expanded: false
+        title: 'Roll Call Docket Listing'
+        description: 'Rollcall Docket Listing and Filtering'
+        weight: 15
+        expanded: true
         menu_name: workbench
         parent: bos_core.workbench_content_listing_menu
         context: '0'
@@ -1895,13 +2043,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:field.storage.node.field_award_date'
-        - 'config:field.storage.node.field_awarded_by'
-        - 'config:field.storage.node.field_bid'
-        - 'config:field.storage.node.field_bid_type'
-        - 'config:field.storage.node.field_contact'
-        - 'config:field.storage.node.field_date_range'
-        - 'config:field.storage.node.field_event_project_number'
-        - 'config:field.storage.node.field_unspsc'
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_meeting_date'

@@ -16,3 +16,10 @@ bos_core.content_moderation.list:
   route_name: bos_core.content_moderation.list
   parent: system.admin_content
   description: 'View content which needs review.'
+
+bos_core.workbench_content_listing_menu:
+  title: 'Content Listings'
+  description: 'View content in convenient filter-able and sort-able listing page.'
+  route_name: bos_core.workbench_create_content
+  menu_name: workbench
+  weight: 11

@@ -600,8 +600,9 @@ edit forms
 }
 
 .bos_admin .toolbar .toolbar-bar {
-  background-color: #2D2D2D;
-  box-shadow: -2px 2px 12px rgba(0,0,0,0.85);
+  /* background-color: #2D2D2D; */
+  /* box-shadow: -2px 2px 12px rgba(0,0,0,0.85); */
+  /* border-bottom: 1px solid grey; */
 }
 
 .bos_admin .toolbar .toolbar-menu {
@@ -626,17 +627,19 @@ edit forms
 }
 
 .bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:hover {
-  background-image: none;
-  background-color: #2D2D2D;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.125) 20%, transparent 200%);
   color: #fff;
   text-decoration: none;
 }
 
 .bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active,
 .bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:focus {
-  background-image: none;
-  background-color: #333;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.125) 20%, transparent 200%);
   text-decoration: none;
+  filter: none;
+  color: #EEEEEE;
+  opacity: 0.8;
+  border-bottom: none;
 }
 
 .bos_admin .toolbar .toolbar-tray-horizontal .menu-item + .menu-item,
@@ -648,11 +651,23 @@ edit forms
 
 .bos_admin .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
 .bos_admin .toolbar .toolbar-tray a.is-active {
-  color: #bbb;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
+  background-color: rgba(0, 132, 215, 0.7);
+  filter: none;
 }
 
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:hover,
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:active,
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:focus,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded a:hover,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded  a:active,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded  a:focus {
+  background-color: rgba(0, 132, 215, 0.45);
+  color: #d8d8d8;
+  text-decoration: none;
+}
 .bos_admin .toolbar .toolbar-tray-vertical .menu-item + .menu-item {
   border: 0 none;
 }

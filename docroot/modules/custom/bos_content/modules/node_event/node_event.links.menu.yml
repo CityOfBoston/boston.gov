@@ -1,0 +1,7 @@
+node_event.workbench_create:
+  title: 'Create Event'
+  description: 'Create a new Event'
+  route_name: node_event.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

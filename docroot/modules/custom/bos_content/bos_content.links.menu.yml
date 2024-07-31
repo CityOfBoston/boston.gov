@@ -1,0 +1,7 @@
+bos_content.workbench_create:
+  title: 'All Content'
+  description: 'See a list of all content types you can create.'
+  route_name: workbench.create_content
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 10

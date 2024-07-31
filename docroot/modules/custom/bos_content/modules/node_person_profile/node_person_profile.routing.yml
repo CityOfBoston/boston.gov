@@ -1,0 +1,15 @@
+node_person_profile.entity_form:
+  path: '/node/add/person_profile'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'person_profile'
+  requirements:
+    _permission: 'create person_profile content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

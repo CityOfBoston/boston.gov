@@ -1,0 +1,15 @@
+node_procurement_advertisement.entity_form:
+  path: '/node/add/procurement_advertisement'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'procurement_advertisement'
+  requirements:
+    _permission: 'create procurement_advertisement content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

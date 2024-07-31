@@ -1001,3 +1001,15 @@ function bos_core_node_presave(EntityInterface $entity): void {
 function bos_core_preprocess_username(&$variables) {
   realname_extension_preprocess_username($variables);
 }
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function bos_core_toolbar_alter(&$items) {
+  // REPLACE the existing toolbar renderer:
+  // \Drupal\workbench\Render\Element\WorkbenchToolbar::preRenderTray()
+  $items["workbench"]["tray"]["workbench_toolbar"]["#pre_render"] = [[
+    "\Drupal\bos_core\Render\Element\WorkbenchToolbarOverride",
+    "preRenderTray",
+  ]];
+}

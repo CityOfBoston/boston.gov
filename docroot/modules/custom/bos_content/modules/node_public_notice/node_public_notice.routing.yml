@@ -1,0 +1,15 @@
+node_public_notice.entity_form:
+  path: '/node/add/public_notice'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'public_notice'
+  requirements:
+    _permission: 'create public_notice content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

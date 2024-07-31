@@ -1,0 +1,7 @@
+node_post.workbench_create:
+  title: 'Create Post'
+  description: 'Create a new Post'
+  route_name: node_post.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

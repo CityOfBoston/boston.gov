@@ -1,0 +1,7 @@
+node_person_profile.workbench_create:
+  title: 'Create Person Profile'
+  description: 'Create a new Person Profile'
+  route_name: node_person_profile.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

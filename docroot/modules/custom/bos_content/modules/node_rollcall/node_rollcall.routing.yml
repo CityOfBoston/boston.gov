@@ -13,3 +13,18 @@ node_rollcall.summarizer_api:
   methods: [GET]
   requirements:
     _access: 'TRUE'
+
+node_rollcall.entity_form:
+  path: '/node/add/roll_call_dockets'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'roll_call_dockets'
+  requirements:
+    _permission: 'create roll_call_dockets content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE

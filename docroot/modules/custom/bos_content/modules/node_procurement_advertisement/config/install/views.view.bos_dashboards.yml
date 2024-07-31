@@ -565,6 +565,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -1880,12 +1881,12 @@ display:
       path: admin/content/bids-rfps
       menu:
         type: normal
-        title: 'Bids & RFP Listings'
+        title: 'Bids & RFPs'
         description: 'Procurement Advertisement Dashboard'
-        weight: -45
+        weight: 10
         expanded: false
         menu_name: workbench
-        parent: bos_core.workbench_content_listing_menu
+        parent: ''
         context: '0'
     cache_metadata:
       max-age: -1
@@ -1894,6 +1895,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

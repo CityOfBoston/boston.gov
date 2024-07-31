@@ -64,3 +64,9 @@ div.admin.my-workbench .workbench-full {
 .view .view-footer a {
   font-weight: bold;
 }
+/**
+ * Workbench Toolbar
+ */
+.toolbar-icon-bos-core-workbench-content-listing-menu:before {
+  background-image: url("../images/workbench/787878/iconmonstr-task-1.svg");
+}

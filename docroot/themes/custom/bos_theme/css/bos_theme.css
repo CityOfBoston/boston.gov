@@ -1,3 +1,44 @@
 /*
 For use when no external patterns libraries are available.
 */
+.toolbar-icon-bos-core-workbench-content-listing-menu:before {
+  background-image: url("../images/workbench/787878/iconmonstr-task-1.svg");
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar a.toolbar-item:hover  {
+  text-decoration: none;
+}
+.adminimal-admin-toolbar .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
+  background-color: rgba(255, 255, 255, .15);
+  color: #fff;
+  text-decoration: none;
+}
+
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active,
+.bos_admin .toolbar .toolbar-bar .toolbar-tab > .toolbar-item:focus {
+  background-color: rgba(255, 255, 255, .15);
+  text-decoration: none;
+  filter: none;
+  color: #EEEEEE;
+  opacity: 0.8;
+  border-bottom: none;
+}
+
+.bos_admin .toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.bos_admin .toolbar .toolbar-tray a.is-active {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: rgba(0, 132, 215, 0.7);
+  filter: none;
+}
+
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:hover,
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:active,
+.adminimal-admin-toolbar .toolbar-tray-horizontal a:focus,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded a:hover,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded  a:active,
+.adminimal-admin-toolbar .toolbar-tray-horizontal .menu-item--expanded  a:focus {
+  background-color: rgba(0, 132, 215, 0.45);
+  color: #d8d8d8;
+  text-decoration: none;
+}

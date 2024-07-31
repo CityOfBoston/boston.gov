@@ -1,0 +1,7 @@
+node_listing_page.workbench_create:
+  title: 'Create Listing Page'
+  description: 'Create a new Listing Page'
+  route_name: node_listing_page.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

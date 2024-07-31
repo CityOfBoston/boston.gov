@@ -1,0 +1,7 @@
+node_department_profile.workbench_create:
+  title: 'Create Department Profile'
+  description: 'Create a new Department Profile'
+  route_name: node_department_profile.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

@@ -1,0 +1,7 @@
+node_place_profile.workbench_create:
+  title: 'Create Place Profile'
+  description: 'Create a new Place Profile'
+  route_name: node_place_profile.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

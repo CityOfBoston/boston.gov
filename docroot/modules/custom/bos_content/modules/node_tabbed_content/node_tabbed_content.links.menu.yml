@@ -1,0 +1,7 @@
+node_tabbed_content.workbench_create:
+  title: 'Create Tabbed Content Page'
+  description: 'Create a new Tabbed Content Page'
+  route_name: node_tabbed_content.entity_form
+  parent: workbench.create_content
+  menu_name: workbench
+  weight: 0

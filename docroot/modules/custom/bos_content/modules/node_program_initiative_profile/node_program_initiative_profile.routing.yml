@@ -1,0 +1,15 @@
+node_program_initiative_profile.entity_form:
+  path: '/node/add/program_initiative_profile'
+  defaults:
+    _entity_form: 'node.default'
+    _title_callback: '\Drupal\node\Controller\NodeController::addPageTitle'
+    node_type: 'program_initiative_profile'
+  requirements:
+    _permission: 'create program_initiative_profile content'
+  options:
+    _node_operation_route: TRUE
+    parameters:
+      node_type:
+        type: 'entity:node_type'
+        with_config_overrides: TRUE
+

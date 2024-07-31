@@ -139,6 +139,7 @@ page.assets:
   css:
     theme:
       css/bos_theme_overrides.css: {}
+      css/bos_theme.css: {}
 
 page.tabbed_page:
   js:

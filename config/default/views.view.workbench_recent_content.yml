@@ -29,6 +29,7 @@ dependencies:
     - node.type.procurement_advertisement
     - node.type.program_initiative_profile
     - node.type.public_notice
+    - node.type.roll_call_dockets
     - node.type.script_page
     - node.type.site_alert
     - node.type.status_item
@@ -1814,6 +1815,7 @@ display:
             procurement_advertisement: procurement_advertisement
             program_initiative_profile: program_initiative_profile
             public_notice: public_notice
+            roll_call_dockets: roll_call_dockets
             script_page: script_page
             site_alert: site_alert
             status_item: status_item
@@ -1843,6 +1845,8 @@ display:
               content_reviewer: '0'
               content_author: '0'
               metrolist_editor: '0'
+              election_editor: '0'
+              city_clerk_editor: '0'
             argument: ''
             reduce: true
           is_grouped: false
