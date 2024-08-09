@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Political Party'
 vid: political_party
-description: ''
+description: null
 weight: 0
+new_revision: false

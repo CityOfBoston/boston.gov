@@ -264,6 +264,7 @@ content:
     settings:
       timezone_override: ''
       format_type: date_format_normal_date
+      from_to: both
       separator: '-'
     third_party_settings:
       fences:

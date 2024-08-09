@@ -8,3 +8,4 @@ name: 'Boards and Commissions'
 vid: commissions
 description: 'References boards and commissions from the City Clerk database'
 weight: 0
+new_revision: false

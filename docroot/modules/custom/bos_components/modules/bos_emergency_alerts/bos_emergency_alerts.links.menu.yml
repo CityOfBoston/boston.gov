@@ -1,5 +1,5 @@
 emergency_alerts.admin:
   title: 'Emergency Alerts Subscription'
   description: 'Settings for Emergency Alerts subscription form.'
-  parent: system.admin_config_services
+  parent: bos_core.webservices
   route_name: emergency_alerts.admin

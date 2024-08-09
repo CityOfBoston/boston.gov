@@ -11,7 +11,7 @@ third_party_settings:
 name: 'Procurement Advertisement'
 type: procurement_advertisement
 description: 'A Content Type for displaying Bids and RFPs'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

@@ -6,3 +6,4 @@ name: 'Election Contests'
 vid: election_contests
 description: 'Contests between Candidates within an Area for an Election'
 weight: 0
+new_revision: false

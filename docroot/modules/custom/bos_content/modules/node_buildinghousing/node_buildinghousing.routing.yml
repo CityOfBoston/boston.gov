@@ -4,5 +4,5 @@ salesforce.admin_config_boston:
     _form: '\Drupal\node_buildinghousing\Form\SalesforceSyncSettings'
     _title: 'City of Boston: Building Housing SF Utilities'
   requirements:
-    _permission: 'View Salesforce mapping'
+    _permission: 'edit any bh_project content'
 

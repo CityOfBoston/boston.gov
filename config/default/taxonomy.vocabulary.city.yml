@@ -6,3 +6,4 @@ name: City
 vid: city
 description: 'MetroList: City'
 weight: 0
+new_revision: false

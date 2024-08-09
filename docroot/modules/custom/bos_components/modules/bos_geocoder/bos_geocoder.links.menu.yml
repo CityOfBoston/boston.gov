@@ -3,4 +3,3 @@ bos_geocoder.GeocoderConfigForm:
   description: 'Configuration form for bos_geocoder'
   parent: bos_core.admin
   route_name: bos_geocoder.GeocoderConfigForm
-  weight: 0   # TODO: Alter to set position on COB menu

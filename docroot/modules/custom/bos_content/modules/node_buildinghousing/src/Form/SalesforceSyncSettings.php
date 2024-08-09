@@ -103,6 +103,9 @@ class SalesforceSyncSettings extends ConfigFormBase {
      * @var $queue_manager \Drupal\bos_mnl\Plugin\QueueWorker\MNLProcessImport
      */
     $config = $this->config('node_buildinghousing.settings');
+    $form_enabled = TRUE;
+    $sf_issue_text = "<span class='admin-missing'>Current Salesforce connectivity issues prevent this action.</span>";
+    $perm_issue_text_bhp = "<span class='admin-missing'>You do not have permission to edit bh_project content.</span>";
 
     $query =  new SelectQuery('Project__c');
     $query->fields = [
@@ -111,22 +114,42 @@ class SalesforceSyncSettings extends ConfigFormBase {
     ];
     $query->addCondition("RecordTypeID", "('0120y0000007rw7', '012C0000000Hqw0')", "IN");
     $query->order = ["Name"=>"ASC"];
-    $results = \Drupal::service('salesforce.client')->query($query);
-    $sfoptions = ["" => "Select Project"];
-    foreach ($results->records() as $sfid => $data) {
-      $sfoptions[$sfid] = $data->field("Name");
+    try {
+      $results = \Drupal::service('salesforce.client')->query($query);
+      $sfoptions = ["" => "Select Project"];
+      foreach ($results->records() as $sfid => $data) {
+        $sfoptions[$sfid] = $data->field("Name");
+      }
+      unset($results);
     }
-    unset($results);
+    catch (\Exception $e) {
+      $form_enabled = FALSE;
+    }
 
     $logfile = \Drupal::service('file_url_generator')->generateAbsoluteString("public://buildinghousing/cleanup.log");
 
+    $current_user = \Drupal::currentUser();
+    $can_edit_project = $current_user->hasPermission('delete any bh_project content');
+
     $form = [
+      'warning' => [
+        '#type' => 'fieldset',
+        '#attributes' => [
+          'class' => 'entity-meta heading-c panel',
+        ],
+        '#title' => 'WARNING:',
+        '#description' => "<span class='admin-missing cds-t'>-- The Salesforce Provider is not connected --</span>",
+        '#description_display' => "before",
+        "msg" => [
+          '#markup' => "Please check the provider settings at <a href = '/admin/config/salesforce/authorize/list'>/admin/config/salesforce/authorize/list</a>"
+        ],
+      ],
       'pm' => [
         '#type' => 'fieldset',
         '#title' => 'Project Management',
 
         'explanation' => [
-          '#markup' => "<div class='form-item'>The Salesforce synchronization polls Salesforce every
+          '#markup' => "<div class='form-item t--subinfo seven-details__wrapper'>The Salesforce synchronization polls Salesforce every
             few minutes and copies newly added, changed or updated Building
             Housing Project records from Salesforce to Drupal.<br>
             Some information (chatter messages and attachments) are not directly
@@ -192,7 +215,6 @@ class SalesforceSyncSettings extends ConfigFormBase {
         'del' => [
           "#type" => "button",
           "#value" => "Reset Logfile",
-          "#disabled" => !\Drupal::currentUser()->hasPermission('Administer Salesforce mapping'),
           '#attributes' => [
             'class' => ['button--danger'],
             'title' => "This will Erase the contents of the logfile."
@@ -260,7 +282,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
             'remove' => [
               '#type' => 'button',
               "#value" => "Remove Project",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('View Salesforce mapping'),
+              '#access' => $can_edit_project,
               '#attributes' => [
                 'class' => ['button', 'button--primary', "form-item"],
                 'title' => "This will remove the Project selected from the website, along with its updates, meetings and documents."
@@ -276,6 +298,10 @@ class SalesforceSyncSettings extends ConfigFormBase {
                 ]
               ],
             ],
+          ],
+          'remove-warning1' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project,
           ],
           'remove-result' => [
             '#markup' => "<div id='remove-result' class='js-hide'></div>",
@@ -296,15 +322,19 @@ class SalesforceSyncSettings extends ConfigFormBase {
             'remove' => [
               '#type' => 'submit',
               "#value" => "Remove All",
-              "#disabled" => !\Drupal::currentUser()->hasPermission('Administer Salesforce mapping'),
+              '#access' => $can_edit_project,
               '#attributes' => [
                 'class' => ['button', 'button--primary', "form-item"],
                 'title' => "This will remove all Building Housing records, updates, meetings and documents from the website."
               ],
             ],
           ],
+          'remove-warning1' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project,
+          ],
           'remove-all-result' => [
-            '#markup' => "<div class='js-hide'></div>",
+            '#markup' => "<div id='remove-all-result'  class='js-hide'></div>",
           ],
         ],
 
@@ -320,6 +350,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
               "class" => "layout-container container-inline",
               "style" => ["display: inline-flex;", "align-items: flex-end; column-gap: 20px;"]
             ],
+            '#access' => $form_enabled && $can_edit_project,
 
             'update-project' => [
               '#type' => "entity_autocomplete",
@@ -336,7 +367,6 @@ class SalesforceSyncSettings extends ConfigFormBase {
             'update' => [
               '#type' => 'button',
               "#value" => "Update Project",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('View Salesforce mapping'),
               '#attributes' => [
                 'class' => ['button', 'button--primary', "form-item"],
                 'title' => "This will sync the Project selected in Drupal with its most recent values from Salesforce, along with new updates, meetings and documents.",
@@ -352,6 +382,14 @@ class SalesforceSyncSettings extends ConfigFormBase {
               ],
             ],
           ],
+          'update-warning1' => [
+            '#markup' => $sf_issue_text,
+            '#access' => !$form_enabled,
+          ],
+          'update-warning2' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project
+          ],
           'update-result' => [
             '#markup' => "<div id='update-result' class='js-hide'></div>",
           ],
@@ -365,6 +403,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
 
           'select-container--overwrite' => [
             "#type" => "container",
+            '#access' => $form_enabled && $can_edit_project,
             '#attributes' => [
               "class" => "layout-container container-inline",
               "style" => ["display: inline-flex;", "align-items: flex-end; column-gap: 20px;"]
@@ -375,12 +414,11 @@ class SalesforceSyncSettings extends ConfigFormBase {
                 'onclick' => "javascript: jQuery('#overwrite-result').html('');"
               ],
               "#title" => "Select Salesforce Project",
-              '#options' => $sfoptions,
+              '#options' => $sfoptions ?? [],
             ],
             'overwrite' => [
               '#type' => 'button',
               "#value" => "Overwite Project",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('View Salesforce mapping'),
               '#attributes' => [
                 'class' => ['button', 'button--primary', 'form-item'],
                 'title' => "This will preform a full re-import the Selected SF Project, along with its updates, meetings and documents (replacing the existing data in Drupal)."
@@ -397,6 +435,14 @@ class SalesforceSyncSettings extends ConfigFormBase {
               ],
             ],
           ],
+          'overwrite-warning1' => [
+            '#markup' => $sf_issue_text,
+            '#access' => !$form_enabled,
+          ],
+          'overwrite-warning2' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project
+          ],
           'overwrite-result' => [
             '#markup' => "<div id='overwrite-result' class='js-hide'></div>",
           ],
@@ -406,62 +452,80 @@ class SalesforceSyncSettings extends ConfigFormBase {
           '#title' => 'Overwrite All BH Projects',
           '#description' => "Overwrite (delete then re-import) ALL Building Housing Projects from Salesforce.",
           '#description_display' => "before",
+
           'select-container--overwrite-all' => [
             "#type" => "container",
             '#attributes' => [
               "class" => "layout-container container-inline",
               "style" => ["display: inline-flex;", "align-items: flex-end; column-gap: 20px;"]
             ],
+            '#access' => $form_enabled && $can_edit_project,
             'overwrite' => [
 
               '#type' => 'submit',
 
               "#value" => "Overwrite All",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('Administer Salesforce mapping'),
               '#attributes' => [
                 'class' => ['button', 'button--primary', 'form-item'],
                 'title' => "This will preform a full re-import for all SF Projects, along with updates, meetings and documents (replacing the existing data in Drupal)."
               ],
             ],
           ],
+          'overwrite-all-warning1' => [
+            '#markup' => $sf_issue_text,
+            '#access' => !$form_enabled,
+          ],
+          'overwrite-all-warning2' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project
+          ],
           'overwrite-all-result' => [
             '#markup' => "<div class='js-hide'></div>",
           ],
         ],
-
-        'orphans' => [
+      ],
+      'orphans' => [
           '#type' => 'fieldset',
           '#title' => 'Remove Orphaned Entities',
           '#description' => "Remove Projects, Updates, Meetings, Parcels and Project-Parcel Associations which are not in Salesforce or are not linked back to a Project.",
           '#description_display' => "before",
+
           'select-container--orphans' => [
             "#type" => "container",
             '#attributes' => [
               "class" => "layout-container container-inline",
               "style" => ["display: inline-flex;", "align-items: flex-end; column-gap: 20px;"]
             ],
+            '#access' => $form_enabled && $can_edit_project,
             'orphans-button' => [
               '#type' => 'submit',
               "#value" => "Remove Orphans",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('Administer Salesforce mapping'),
               '#attributes' => [
                 'class' => ['button', 'button--primary', 'form-item'],
                 'title' => "This removes entities from Drupal.\nFirst it finds entities in Drupal which are not in Salesforce, then it finds entities which are not linked to a Project in Drupal."
               ],
             ],
           ],
+          'orphans-warning1' => [
+            '#markup' => $sf_issue_text,
+            '#access' => !$form_enabled,
+          ],
+          'orphans-warning2' => [
+            '#markup' => $perm_issue_text_bhp,
+            '#access' => !$can_edit_project
+          ],
           'orphans-result' => [
             '#markup' => "<div class='js-hide'></div>",
           ],
         ],
 
-        'pull-management' => [
+      'pull-management' => [
           '#type' => 'fieldset',
           '#title' => 'Salesforce Pull Management',
           '#description' => "Allows some control over the last updated date for sync's.",
           '#description_display' => "before",
 
-          'current' => [$this->makeSFTable()],
+          'current' => [$this->makeSFTable($form_enabled)],
 
           'select-container--pull-management' => [
             "#type" => "container",
@@ -482,7 +546,6 @@ class SalesforceSyncSettings extends ConfigFormBase {
             'reset' => [
               '#type' => 'button',
               "#value" => "Set Last Run Time",
-              "#disabled" =>  !\Drupal::currentUser()->hasPermission('View Salesforce mapping'),
               '#attributes' => [
                 'class' => ['button', 'button--primary', "form-item"],
                 'title' => "This will set the Last Run Date (high water mark) for the mapping.<br>The next sync of this mapping will only import records updated after this date."
@@ -503,7 +566,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
             '#markup' => "<div class='js-hide'></div>",
           ],
         ],
-      ],
+
     ];
 
     if (\Drupal::service('queue')
@@ -1166,7 +1229,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
         </div>")];
     }
 
-    $form["pm"]["pull-management"]["current"] = $this->makeSFTable();
+    $form["pm"]["pull-management"]["current"] = $this->makeSFTable(TRUE);
     $form["pm"]["pull-management"]["select-container--overwrite"]["mapping"]["#value"] = "";
     $form["pm"]["pull-management"]["select-container--overwrite"]["time"]["#value"] =  date("Y-m-d H:i:s", strtotime("now"));
     $form["pm"]["pull-management"]["#id"] = "edit-pull-management";
@@ -1414,7 +1477,10 @@ class SalesforceSyncSettings extends ConfigFormBase {
 
   }
 
-  private function makeSFTable() {
+  private function makeSFTable(bool $form_enabled) {
+
+    $current_user = \Drupal::currentUser();
+
     $mappings = \Drupal::entityTypeManager()->getStorage("salesforce_mapping")->loadMultiple();
     $currentTable = [
       '#type' => 'table',
@@ -1446,6 +1512,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
         "launch" => ["#plain_text" => $mode],
         "sync" => [
           '#type' => 'actions',
+          '#access' => $form_enabled && $current_user->hasPermission('edit any ' . $mapping->getDrupalBundle() . ' content'),
           'submit' => [
             '#type' => 'submit',
             '#name' => $mapping->id(),
@@ -1510,6 +1577,8 @@ class SalesforceSyncSettings extends ConfigFormBase {
       ],
     ];
 
+    $current_user = \Drupal::currentUser();
+
     if ($queue->numberOfItems() > 0) {
 
       $db = \Drupal::database();
@@ -1534,7 +1603,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
                 '#type' => 'submit',
                 '#name' => $mapping->id(),
                 '#value' => "Process Queue Objects",
-                '#access' => ($result != 0),
+                '#access' => ($result != 0) && $current_user->hasPermission("edit any {$mapping->getDrupalBundle()} content"),
                 '#attributes' => [
                   "id" => $mapping->id(),
                   "class" => ["button", "button--primary", "button--small"],
@@ -1544,7 +1613,7 @@ class SalesforceSyncSettings extends ConfigFormBase {
                 '#type' => 'submit',
                 '#name' => $mapping->id(),
                 '#value' => "Clear Queue Objects",
-                '#access' => ($result != 0),
+                '#access' => ($result != 0) ,
                 '#attributes' => [
                   "id" => $mapping->id(),
                   "class" => ["button", "button--danger", "button--small"],
@@ -1572,8 +1641,11 @@ class SalesforceSyncSettings extends ConfigFormBase {
       ->getStorage("salesforce_mapping")
       ->loadMultiple();
     $sort = [];
+    $current_user = \Drupal::currentUser();
     foreach ($mappings as $key => $mapping) {
-      $sort[$mapping->weight] = $mapping;
+      if ($current_user->hasPermission("edit any {$mapping->getDrupalBundle()} content")) {
+        $sort[$mapping->weight] = $mapping;
+      }
     }
     ksort($sort);
 

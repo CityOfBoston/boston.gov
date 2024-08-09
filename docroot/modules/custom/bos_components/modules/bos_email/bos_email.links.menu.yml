@@ -3,4 +3,3 @@ bos_email.admin.services:
   description: 'Manage Email Services via boston.gov'
   parent: bos_core.admin
   route_name: bos_email.admin.services
-  weight: 1

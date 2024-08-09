@@ -6,3 +6,4 @@ name: Region
 vid: region
 description: 'MetroList: Region'
 weight: 0
+new_revision: false

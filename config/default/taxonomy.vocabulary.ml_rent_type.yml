@@ -6,3 +6,4 @@ name: 'Rent Type'
 vid: ml_rent_type
 description: 'MetroList: Rent Type'
 weight: 0
+new_revision: false

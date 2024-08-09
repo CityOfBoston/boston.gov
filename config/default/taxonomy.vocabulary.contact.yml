@@ -8,3 +8,4 @@ name: Contact
 vid: contact
 description: 'Contact classification mechanism.'
 weight: 0
+new_revision: false

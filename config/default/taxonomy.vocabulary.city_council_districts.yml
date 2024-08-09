@@ -6,3 +6,4 @@ name: 'City Council Districts'
 vid: city_council_districts
 description: 'RollCall: City Council representative Districts'
 weight: 0
+new_revision: false

@@ -6,3 +6,4 @@ name: Holidays
 vid: holidays
 description: 'A collection of string/date pairs indicating city holidays or special events.'
 weight: 0
+new_revision: false

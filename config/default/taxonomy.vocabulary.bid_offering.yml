@@ -6,5 +6,6 @@ _core:
   default_config_hash: 4zj7odo3yRV6YLrR0B7Jat3lw7NY1LjHcGuIGpe-ksU
 name: 'Bid Offering'
 vid: bid_offering
-description: ''
+description: null
 weight: 0
+new_revision: false

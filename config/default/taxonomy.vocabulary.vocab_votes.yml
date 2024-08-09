@@ -6,3 +6,4 @@ name: 'Vote Types'
 vid: vocab_votes
 description: 'RollCall: The types of vote (on a Docket) recorded during a Council Meeting.'
 weight: 0
+new_revision: false

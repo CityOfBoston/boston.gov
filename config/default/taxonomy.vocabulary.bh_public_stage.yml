@@ -6,3 +6,4 @@ name: 'Public Stage (BH)'
 vid: bh_public_stage
 description: 'Building Housing: Public Stage'
 weight: 0
+new_revision: false

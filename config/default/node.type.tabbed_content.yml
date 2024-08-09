@@ -15,7 +15,7 @@ _core:
 name: 'Tabbed Content'
 type: tabbed_content
 description: 'A page with a tabbed interface.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

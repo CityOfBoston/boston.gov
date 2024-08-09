@@ -6,3 +6,4 @@ name: Elections
 vid: elections
 description: 'Election Events with unofficial result reported by City of Boston'
 weight: 0
+new_revision: false

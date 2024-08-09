@@ -6,3 +6,4 @@ name: 'Project Update Type (BH)'
 vid: bh_project_update_type
 description: 'Building Housing: Project Update Type'
 weight: 0
+new_revision: false

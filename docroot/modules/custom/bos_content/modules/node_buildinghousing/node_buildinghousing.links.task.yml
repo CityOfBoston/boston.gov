@@ -1,0 +1,4 @@
+salesforce.admin_config_boston:
+  title: 'Building Housing Management'
+  route_name: salesforce.admin_config_boston
+  base_route: bos_core.admin

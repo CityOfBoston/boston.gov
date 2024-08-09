@@ -1,5 +1,5 @@
 cityscore.admin:
   title: 'Cityscore endpoint'
   description: 'Administer the cityscore endpoint module'
-  parent: system.admin_config_services
+  parent: bos_core.webservices
   route_name: cityscore.admin

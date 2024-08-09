@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Procurement Type'
 vid: procurement_type
-description: ''
+description: null
 weight: 0
+new_revision: false

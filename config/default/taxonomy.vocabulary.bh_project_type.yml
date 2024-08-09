@@ -6,3 +6,4 @@ name: 'Project Type (BH)'
 vid: bh_project_type
 description: 'Building Housing: Disposition Type'
 weight: 0
+new_revision: false

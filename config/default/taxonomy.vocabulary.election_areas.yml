@@ -6,3 +6,4 @@ name: 'Election Areas'
 vid: election_areas
 description: 'Voting Areas for an Election. (e.g. Voting Districts)'
 weight: 0
+new_revision: false

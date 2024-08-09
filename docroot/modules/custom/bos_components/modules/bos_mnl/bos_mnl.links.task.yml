@@ -1,0 +1,4 @@
+bos_mnl.admin:
+  title: 'MNL Management'
+  route_name: bos_mnl.admin
+  base_route: bos_core.admin

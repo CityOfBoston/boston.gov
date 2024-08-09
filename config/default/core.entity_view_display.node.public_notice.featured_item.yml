@@ -264,6 +264,7 @@ content:
     settings:
       timezone_override: ''
       format_type: medium
+      from_to: both
       separator: '-'
     third_party_settings: {  }
     weight: 16

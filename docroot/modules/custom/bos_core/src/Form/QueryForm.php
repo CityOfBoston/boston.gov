@@ -488,7 +488,7 @@ class QueryForm extends ConfigFormBase {
           'media' grp
           , content_type
           , '' alias
-          , (SELECT count(*) FROM drupal.file_usage where fid = outs2.nid) mod_state
+          , (SELECT count(*) FROM file_usage where fid = outs2.nid) mod_state
           , component
           , result
           , nid

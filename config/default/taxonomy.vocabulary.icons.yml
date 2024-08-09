@@ -6,5 +6,6 @@ _core:
   default_config_hash: 23R8e64QglOZ-rgKLUb8iY2yUVVilyGFyffHrm3b74U
 name: Icons
 vid: icons
-description: ''
+description: null
 weight: 0
+new_revision: false

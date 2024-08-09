@@ -125,6 +125,7 @@ content:
     settings:
       timezone_override: America/New_York
       format_type: date_format_short
+      from_to: both
       separator: '-'
     third_party_settings:
       fences:

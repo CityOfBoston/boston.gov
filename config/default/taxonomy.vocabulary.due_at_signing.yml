@@ -6,3 +6,4 @@ name: 'Due at signing'
 vid: due_at_signing
 description: 'MetroList: Due at signing'
 weight: 0
+new_revision: false

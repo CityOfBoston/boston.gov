@@ -6,3 +6,4 @@ name: 'Elector Groups'
 vid: elector_groups
 description: 'Elector Groups for an Election.'
 weight: 0
+new_revision: false

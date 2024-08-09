@@ -84,4 +84,4 @@ bos_email.admin.services:
     _title: 'Email Services'
     _form: '\Drupal\bos_email\Form\ConfigForm'
   requirements:
-    _role: "site_administrator"
+    _permission: "administer mailsystem"

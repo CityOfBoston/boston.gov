@@ -6,3 +6,4 @@ name: 'Project Banner (BH)'
 vid: project_banner_bh_
 description: "Controls the Property's visibility and banner on boston.gov."
 weight: 0
+new_revision: false

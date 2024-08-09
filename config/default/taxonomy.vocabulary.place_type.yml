@@ -8,3 +8,4 @@ name: 'Place Type'
 vid: place_type
 description: 'A descriptive type for a place, like "Parks"'
 weight: 0
+new_revision: false

@@ -14,7 +14,7 @@ _core:
 name: Post
 type: post
 description: 'A full body text and image(s)/video(s) of the press release or storytelling piece.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -6,3 +6,4 @@ name: Features
 vid: features
 description: 'Features for Place Profile'
 weight: 0
+new_revision: false

@@ -14,7 +14,7 @@ _core:
 name: Guide
 type: topic_page
 description: 'Guides are the primary navigation pages for the website. Topic pages aggregate information about a topic to let a user know what information is here.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

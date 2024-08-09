@@ -14,7 +14,7 @@ _core:
 name: 'Emergency Alert'
 type: emergency_alert
 description: 'Emergency alerts augment the homepage status component with emergency information when an emergency is active.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

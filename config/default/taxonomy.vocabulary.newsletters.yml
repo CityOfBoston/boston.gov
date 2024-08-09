@@ -6,5 +6,6 @@ _core:
   default_config_hash: 9aOU5chcNLwZy_XI7q6nzBOIDmot1n1GtshKIOdfrmY
 name: Newsletters
 vid: newsletters
-description: ''
+description: null
 weight: 0
+new_revision: false

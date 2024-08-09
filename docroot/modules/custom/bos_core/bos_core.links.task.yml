@@ -7,9 +7,9 @@ bos_core.admin:
   title: 'Boston Configurations'
   route_name: bos_core.admin
   base_route: bos_core.admin
-  weight: 0
+  weight: -100
+
 bos_core.admin.query:
   title: 'Query Site Content'
   route_name: bos_core.admin.query
   base_route: bos_core.admin
-  weight: 1

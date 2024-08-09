@@ -9,7 +9,6 @@ bos_core.admin.query:
   description: 'Run a search for content across all components'
   parent: bos_core.admin
   route_name: bos_core.admin.query
-  weight: 1
 
 bos_core.content_moderation.list:
   title: 'Needs Review'
@@ -23,3 +22,9 @@ bos_core.workbench_content_listing_menu:
   route_name: bos_core.workbench_create_content
   menu_name: workbench
   weight: 11
+
+bos_core.webservices:
+  title: 'Webservice Endpoints'
+  description: 'Administration pages for endpoints exposed by custom modules and services.'
+  route_name: <nolink>
+  parent: bos_core.admin

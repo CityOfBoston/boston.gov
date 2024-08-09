@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Content Feed'
 vid: content_feed
-description: ''
+description: null
 weight: 0
+new_revision: false

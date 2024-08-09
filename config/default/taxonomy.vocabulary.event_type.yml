@@ -8,3 +8,4 @@ name: 'Event Type'
 vid: event_type
 description: 'Event classification mechanism.'
 weight: 0
+new_revision: false

@@ -6,3 +6,4 @@ name: 'Record Type (BH)'
 vid: bh_record_type
 description: 'Building Housing: Record Type'
 weight: 0
+new_revision: false

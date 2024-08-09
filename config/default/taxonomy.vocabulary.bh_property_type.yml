@@ -6,3 +6,4 @@ name: 'Property Type (BH)'
 vid: bh_property_type
 description: 'Building Housing: Property Type'
 weight: 0
+new_revision: false

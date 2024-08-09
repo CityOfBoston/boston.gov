@@ -8,3 +8,4 @@ name: Neighborhoods
 vid: neighborhoods
 description: 'Boston area neighborhoods'
 weight: 0
+new_revision: false

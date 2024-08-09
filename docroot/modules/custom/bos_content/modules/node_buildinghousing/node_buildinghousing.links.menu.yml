@@ -1,6 +1,5 @@
 salesforce.admin_config_boston:
   route_name: salesforce.admin_config_boston
-  parent: salesforce.admin_config_salesforce
-  title: Building Housing Utilities
-  description: 'City of Boston for Building Housing integration of Salesforce Suite.'
-  weight: -100
+  parent: bos_core.admin
+  title: 'Building Housing Management'
+  description: 'Manage the Building Housing integration with Salesforce.'

@@ -12,7 +12,7 @@ third_party_settings:
 name: 'Election Report'
 type: election_report
 description: 'Unofficial reporting of an Election.  There will be multiple reports per election as votes are counted.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 0
 display_submitted: true

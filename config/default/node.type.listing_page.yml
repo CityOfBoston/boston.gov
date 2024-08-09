@@ -15,7 +15,7 @@ _core:
 name: 'Listing Page'
 type: listing_page
 description: 'If you need to add a listing page, utilize this content type to do so.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

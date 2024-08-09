@@ -6,3 +6,4 @@ name: 'Availability Status'
 vid: availability_status
 description: 'MetroList: Availability Status'
 weight: 0
+new_revision: false

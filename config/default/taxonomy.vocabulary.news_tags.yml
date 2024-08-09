@@ -8,3 +8,4 @@ name: 'News Tags'
 vid: news_tags
 description: 'Tags to be used to group Posts'
 weight: 0
+new_revision: false

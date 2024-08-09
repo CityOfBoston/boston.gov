@@ -8,3 +8,4 @@ name: 'Cityscore Metrics'
 vid: cityscore_metrics
 description: 'Database for City Score Metrics'
 weight: 0
+new_revision: false
