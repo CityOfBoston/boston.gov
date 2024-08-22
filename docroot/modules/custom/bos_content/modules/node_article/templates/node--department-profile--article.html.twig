@@ -85,9 +85,16 @@
         {{ elements.field_phone_number|raw }}
       </li>
     {% endif %}
-    {% if elements.field_email %}
-      <li class="sb-i">
-        {{ elements.field_email }}
+    {% if node.field_select_contact_type.0.value == "url_link" %}
+      <li class="sb-i evt-sb-i">
+        <img src="https://patterns.boston.gov/images/global/icons/icon-form.svg" class="icon icon-form sb-ic">
+        <span class="sb-d">
+          {{ content.field_link_url }}
+        </span>
+      </li>
+    {% else %}
+      <li class="sb-i evt-sb-i">
+        {{ content.field_email }}
       </li>
     {% endif %}
     {% if elements.field_address %}

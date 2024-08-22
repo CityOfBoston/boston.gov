@@ -144,7 +144,7 @@ content:
     region: content
   field_link_url:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false

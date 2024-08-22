@@ -103,7 +103,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 14
+    weight: 15
     region: content
   field_icon:
     type: entity_reference_entity_view
@@ -137,14 +137,21 @@ content:
     region: content
   field_link_url:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: div
+        fences_field_item_classes: ''
+        fences_label_tag: div
+        fences_label_classes: ''
     weight: 8
     region: content
   field_operation_hours:
@@ -187,6 +194,13 @@ content:
         fences_label_classes: ''
     weight: 12
     region: content
+  field_select_contact_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
   field_sidebar_components:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -210,7 +224,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 13
+    weight: 14
     region: content
   langcode:
     type: language
@@ -224,6 +238,5 @@ content:
 hidden:
   field_manual_date: true
   field_metatags: true
-  field_select_contact_type: true
   links: true
   published_at: true
