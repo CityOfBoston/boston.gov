@@ -7,7 +7,7 @@ _core:
 id: global
 label: Global
 tags:
-  generator: 'Drupal 9 (http://drupal.org)'
+  generator: 'Drupal 10 (http://drupal.org)'
   canonical_url: '[current-page:url:absolute]'
   title: '[current-page:title] | [current-page:pager][site:name]'
   shortlink: '[current-page:url:unaliased]'

@@ -7,20 +7,22 @@ _core:
 id: node
 label: Content
 tags:
+  article_modified_time: '[node:changed:html_datetime]'
+  article_published_time: '[node:published:html_datetime]'
   canonical_url: '[node:url]'
   description: '[node:summary]'
-  title: '[node:title] | [site:name]'
   og_description: '[node:summary]'
-  og_updated_time: '[node:changed:custom:c]'
-  article_modified_time: '[node:created:custom:c]'
-  article_published_time: '[node:created:custom:c]'
-  og_url: '[current-page:url:absolute]'
   og_image: 'https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png'
   og_title: '[node:title]'
-  twitter_cards_description: '[node:summary]'
+  og_updated_time: '[node:changed:html_datetime]'
+  og_url: '[current-page:url:absolute]'
+  schema_article_date_modified: '[node:changed:html_datetime]'
+  schema_article_date_published: '[node:published:html_datetime]'
+  title: '[node:title] | [site:name]'
   twitter_cards_creator: '@CityOfBoston'
-  twitter_cards_type: summary
   twitter_cards_creator_id: '124455872'
+  twitter_cards_description: '[node:summary]'
   twitter_cards_site: '@CityOfBoston'
   twitter_cards_site_id: '124455872'
   twitter_cards_title: '[node:title]'
+  twitter_cards_type: summary

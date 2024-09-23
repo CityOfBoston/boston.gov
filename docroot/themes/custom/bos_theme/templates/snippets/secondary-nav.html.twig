@@ -32,7 +32,7 @@
       Where: Secondary Menu.
       What: New Google Translate.
       Note: Dropdown of languages #}
-        <li id="targetLanguage" class="nv-h-l-i translate">
+        <li id="targetLanguage" class="nv-h-l-i translate" data-nosnippet>
           <a id="cob_translate" href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k translate-link">
             <span>English</span>
             <span>Español</span>
@@ -41,8 +41,8 @@
             <span>français</span>
             <span>简体中文</span>
           </a>
-          <div id="overlay" class="translate-overlay"></div>
-          <div id="overlay-background" class="translate-overlay-background"></div>
+          <div id="overlay" class="translate-overlay" data-nosnippet></div>
+          <div id="overlay-background" class="translate-overlay-background" data-nosnippet></div>
         </li>
       {% if search %}
         <li class="nv-h-l-i">
