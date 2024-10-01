@@ -1,11 +1,12 @@
 metrolist:
-  version: 4.1.448743700
+  version: 4.2.202409260926
   js:
-    dist/index.bundle.js: { preprocess: false, attributes: {type: text/javascript }}
-    dist/0.index.bundle.js: { preprocess: false, attributes: { type: text/javascript } }
+    dist/index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/1.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/2.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/3.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/4.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
+    dist/5.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
+    dist/6.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
   dependencies:
     - core/drupalSettings

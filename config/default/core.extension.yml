@@ -170,6 +170,7 @@ module:
   sophron: 0
   sophron_guesser: 0
   svg_image: 0
+  syslog: 0
   system: 0
   taxonomy: 0
   telephone: 0

@@ -30,6 +30,9 @@ const globalThis = getGlobalThis();
 const apiEndpoint = getDevelopmentsApiEndpoint();
 
 const defaultFilters = {
+  "propertyName": {
+    "keyphrase": "",
+  },
   "offer": {
     "rent": true,
     "sale": false,
@@ -205,6 +208,9 @@ function Search( props ) {
     // “quantum entanglement” bug in React where `defaultFilters`
     // is modified along with `filters`, even if it was frozen beforehand.
     const resetFilters = {
+      "propertyName": {
+        "keyphrase": "",
+      },
       "offer": {
         "rent": true,
         "sale": false,

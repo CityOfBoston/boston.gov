@@ -59,7 +59,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "drupal/acquia_connector": "^4.0",
         "drupal/acquia_purge": "^1.0",
-        "drupal/address": "^1.4",
+        "drupal/address": "^2.0",
         "drupal/addtocal": "^3.0@beta",
         "drupal/admin_toolbar": "^3.1",
         "drupal/adminimal_admin_toolbar": "^2.0",

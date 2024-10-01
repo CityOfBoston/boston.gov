@@ -1,5 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { hasOwnProperty } from '@util/objects';
+import levenshtein from 'js-levenshtein';
+import { filter } from 'lodash';
 
 // https://stackoverflow.com/a/11764168/214325
 export function paginate( homes, homesPerPage = 8 ) {
@@ -34,6 +36,30 @@ export function filterHomes( {
 } ) {
   const matchingHomes = homesToFilter
     .filter( ( home ) => {
+      let keyphrase = filtersToApply.propertyName.keyphrase;
+      function isMatch(target) {
+        const FUZZY_SEARCH_THRESHOLD = 3
+        const FUZZY_SEARCH_LENIENCE = 1
+        const FUZZY_SEARCH_DIFF_MULTIPLIER = 4
+        if (!target) {
+          return false
+        } else {
+          let isIncludedInTarget = target.toLowerCase().includes(keyphrase.toLowerCase());
+          let levDistance = levenshtein(target.toLowerCase(), keyphrase.toLowerCase());
+          let wordCountDiff = Math.max((target.length - keyphrase.length), (keyphrase.length - target.length)) / target.length * FUZZY_SEARCH_DIFF_MULTIPLIER;
+          return (isIncludedInTarget || ((FUZZY_SEARCH_THRESHOLD < keyphrase.length) && (levDistance <= wordCountDiff + FUZZY_SEARCH_LENIENCE)))
+        }
+      }
+
+      let matchesPropertyName = (
+        !keyphrase ||
+        (
+          isMatch(home.title) ||
+          isMatch(home.city) ||
+          isMatch(home.neighborhood)
+        )
+      );
+
       let matchesOffer = (
         (
           ( filtersToApply.offer.rent !== false )
@@ -144,7 +170,8 @@ export function filterHomes( {
       }
 
       return (
-        matchesOffer
+        matchesPropertyName
+        && matchesOffer
         && matchesBroadLocation
         && matchesNarrowLocation
         && matchesBedrooms
@@ -276,7 +303,6 @@ export function getNewFilters( event, filters ) {
       newValue = $input.checked;
       valueAsKey = true;
       break;
-
     default:
       newValue = $input.value;
   }

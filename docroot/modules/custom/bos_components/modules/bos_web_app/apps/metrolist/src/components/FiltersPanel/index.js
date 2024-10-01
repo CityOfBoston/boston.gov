@@ -13,6 +13,7 @@ import FilterLabel from '@components/FilterLabel';
 import Checkbox from '@components/Checkbox';
 import Range from '@components/Range';
 import RangeManual from '@components/RangeManual';
+import SearchBar from '@components/SearchBar';
 import Icon from '@components/Icon';
 // import Inset from '@components/Inset';
 import Row from '@components/Row';
@@ -113,6 +114,7 @@ function FiltersPanel( props ) {
     location,
     bedrooms,
     amiQualification,
+    propertyName,
     rentalPrice,
   } = props.filters;
   const { listingCounts } = props;
@@ -161,6 +163,13 @@ function FiltersPanel( props ) {
       } }
     >
     <div className="ml-filters-panel__menu">
+      <FilterGroup criterion="propertyName">
+        <FilterGroup.Label>Search Property Name</FilterGroup.Label>
+        <SearchBar
+          criterion="propertyName"
+          keyphrase={propertyName.keyphrase}
+        />
+      </FilterGroup>
       <FilterGroup criterion="offer">
         <FilterGroup.Label>Offer Type</FilterGroup.Label>
         <select
@@ -250,7 +259,6 @@ function FiltersPanel( props ) {
               />
             </li>
           </menu>
-
           <FilterGroup criterion="rentalPrice">
             <FilterGroup.Label>Price</FilterGroup.Label>
             <RangeManual

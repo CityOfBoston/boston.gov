@@ -2,6 +2,6 @@ _core:
   default_config_hash: cufENE0oxs6iqDK4ygjKRjgR7TljgtrB1U-O03lBmgY
 engines:
   bing: '0'
-  google: '0'
+  google: google
 custom_urls: ''
-minimum_lifetime: 86400
+minimum_lifetime: 10800
