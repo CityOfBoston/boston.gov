@@ -1197,15 +1197,7 @@ What: Helper for status_display preview - restricts icon sizing.
   margin-right: 0;
   margin-left: auto;
 }
-@media screen and (min-width: 840px)
-.g--6:last-child {
-  margin-right: 0;
-}
-@media screen and (min-width: 840px)
-.g--6:nth-child(1n) {
-  margin-right: 1.5rem;
-  margin-left: 0;
-}
+@media screen and (min-width: 840px) {
 .g--6:last-child {
   margin-right: 0;
 }
@@ -1214,7 +1206,6 @@ What: Helper for status_display preview - restricts icon sizing.
   margin-right: 1.5rem;
   margin-left: 0;
 }
-@media screen and (min-width: 840px)
 .g--6 {
   -webkit-box-flex: 0;
   -ms-flex-positive: 0;
@@ -1225,6 +1216,7 @@ What: Helper for status_display preview - restricts icon sizing.
   flex-basis: calc(99.9% * 6/12 - 0.75rem);
   max-width: calc(99.9% * 6/12 - 0.75rem);
   width: calc(99.9% * 6/12 - 0.75rem);
+}
 }
 .cds-l {
   background-color: #fff;
@@ -1580,6 +1572,9 @@ Hide default contact info
   display: inline-block;
   width: 48%;
   vertical-align: sub;
+}
+.js-form-item-field-event-date-recur-0-ends-mode.form-item-field-event-date-recur-0-ends-mode {
+  display: none;
 }
 @media screen and (max-width: 1300px) {
   .field-group-html-element .field--name-field-contact {

@@ -752,12 +752,16 @@ function bos_theme_preprocess_image(&$variables) {
       $path = \Drupal::request()->getSchemeAndHttpHost();
       $variables['uri'] = str_replace("https://assets.boston.gov/icons", $path . "/themes/custom/patterns/assets/icons", $variables['uri']);
     }
+    $variables['attributes']->addClass("svg-icon");
+    /*
+     * TODO: Review if the rest of the code in that hook is still actually required.
+     */
     // Load the icon.
-    $icon = file_get_contents($variables['uri']);
+    //$icon = file_get_contents($variables['uri']);
     // If the icon is in the format //domain/file then add scheme.
-    $icon = preg_replace(['/<\?xml.*\?>/i', '/<!DOCTYPE((.|\n|\r)*?)">/i'], '', $icon);
-    $variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
-    $variables['attributes']->removeAttribute("src");
+    /*$icon = preg_replace(['/<\?xml.*\?>/i', '/<!DOCTYPE((.|\n|\r)*?)">/i'], '', $icon);*/
+    //$variables['icon'] = Xss::filter($icon, explode(' ', BOS_CORE_SVG_ELEMENTS));
+    //$variables['attributes']->removeAttribute("src");
   }
 
 }

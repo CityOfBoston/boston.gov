@@ -588,6 +588,19 @@ What:  Now using svg image we cannot add a class to the <img> tag.  So set css o
   max-width: 85%;
   width: 100px;
 }
+@media screen and (max-width: 767px) {
+  .paragraphs-item-transaction-grid img.svg-icon {
+    max-height: 55px;
+    display: block;
+    max-width: 85%;
+    width: 75px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .paragraphs-item-transaction-grid img.svg-icon {
+    width: 55px;
+  }
+}
 
 /*
 David:  D8 Issue#408.
@@ -709,9 +722,13 @@ a .cdd-ic {
   min-width: 95px;
   max-width: 95px;
 }
-a .cdd-c svg {
+a .cdd-c svg, a .cdd-c img.svg-icon {
   height: 56px;
   width: 56px;
+}
+.department-icon img.svg-icon {
+  height: 76px;
+  width: 76px;
 }
 
 /*
@@ -775,11 +792,6 @@ David:
 Where: node--department-profile.html.twig
 What: Fixes the department icon to be 100px square. (Iterators issue #39)
 */
-@media screen and  (min-width: 980px) {
-  .node-type-department-profile .department-icon {
-    padding: 13px 0 0 15px;
-  }
-}
 .node-department-profile .department-icon svg {
   height: 76px;
   width: 76px;

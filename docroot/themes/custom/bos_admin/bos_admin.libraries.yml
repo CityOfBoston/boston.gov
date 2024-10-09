@@ -2,8 +2,8 @@ global-styling:
   version: VERSION
   css:
     theme:
-      css/bos_admin.css: {weight: 300}
-      css/bos_admin.media.css: {weight: 301}
+      css/bos_admin.css: {weight: 302}
+      css/bos_admin.media.css: {weight: 303}
 
 workbench:
   version: VERSION

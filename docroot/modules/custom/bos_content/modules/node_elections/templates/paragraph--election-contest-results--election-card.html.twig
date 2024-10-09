@@ -47,56 +47,56 @@
           <caption class="visually-hidden">Unofficail election results total ballots and votes</caption>
           <thead>
           <tr>
-            <th>Ballots Cast:
+            <th class="bos-contest-results-ballotscast">Ballots Cast:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots cast represents the amount of people that cast a ballot."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <th>Total Votes:
+            <th class="bos-contest-results-totalvotes">Total Votes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Total votes represents the total amount of votes for all candidates, including write-in votes."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <th>Undervotes:
+{#             <th class="bos-contest-results-undervotes">Undervotes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots not counted because of unclear marking by voters."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <th>Overvotes:
+            <th class="bos-contest-results-overvotes">Overvotes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots where a voter selected more candidates than the number of candidates you are permitted to vote for in that particular office race."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
-            </th>
+            </th>   #}
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td data-label="ballots">{{ content.field_contest_ballots }}</td>
-            <td data-label="total Votes">{{ content.field_calc_total_votes }}</td>
-            <td data-label="undervotes">{{ content.field_contest_undervotes }}</td>
-            <td data-label="overvotes">{{ content.field_contest_overvotes }}</td>
+            <td data-label="ballots" class="contest-results-ballotscast">{{ content.field_contest_ballots }}</td>
+            <td data-label="total Votes" class="contest-results-totalvotes">{{ content.field_calc_total_votes }}</td>
+{#             <td data-label="undervotes" class="contest-results-undervotes">{{ content.field_contest_undervotes }}</td>
+            <td data-label="overvotes" class="contest-results-overvotes">{{ content.field_contest_overvotes }}</td> #}
           </tr>
           </tbody>
         </table>
         <table class="vertical-responsive-table table-mobile">
-          <caption class="visually-hidden">Unofficail election results total ballots and votes</caption>
+          <caption class="visually-hidden">Unofficial election results total ballots and votes</caption>
           <tbody>
           <tr>
-            <th>Ballots Cast:
+            <th class="contest-results-ballotscast">Ballots Cast:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots cast represents the amount of people that cast a ballot."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <td>{{ content.field_contest_ballots }}</td>
+            <td class="contest-results-ballotscast">{{ content.field_contest_ballots }}</td>
           </tr>
           <tr>
-            <th>Total Votes:
+            <th class="contest-results-totalvotes">Total Votes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Total votes represents the total amount of votes for all candidates, including write-in votes."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <td>{{ content.field_calc_total_votes }}</td>
+            <td class="contest-results-totalvotes">{{ content.field_calc_total_votes }}</td>
           </tr>
-          <tr>
-            <th>Undervotes:
+{#           <tr>
+            <th class="contest-results-undervotes">Undervotes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots not counted because of unclear marking by voters."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <td>{{ content.field_contest_undervotes }}</td>
+            <td class="contest-results-undervotes">{{ content.field_contest_undervotes }}</td>
           </tr>
           <tr>
-            <th>Overvotes:
+            <th class="contest-results-overvotes">Overvotes:
               <span tabindex="0" class="di-tt di-tt-data-tooltip explainer-icon" data-tooltip="Ballots where a voter selected more candidates than the number of candidates you are permitted to vote for in that particular office race."><svg class="explainer-icon" title="explainer icon" width="17" style="width:17px;display: inline-block;" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><circle id="b" cx="8.5" cy="8.5" r="8.5" fill="#fff"/><g id="c" transform="translate(1 1)" isolation="isolate"><g isolation="isolate"><path d="M9.47,6.99c0-.59-.52-.96-1.3-.96s-1.35,.34-1.74,.89l-1.45-.85c.65-.98,1.78-1.61,3.39-1.61,1.8,0,3.05,.8,3.05,2.22,0,1.92-2.02,2.13-2.02,3.41h-1.81c0-1.68,1.87-2.05,1.87-3.1Zm-2.11,5.01c0-.61,.48-1.07,1.15-1.07s1.15,.46,1.15,1.07-.48,1.09-1.15,1.09-1.15-.49-1.15-1.09Z" fill="#0c1f2e"/></g></g></svg></span>
             </th>
-            <td>{{ content.field_contest_overvotes }}</td>
-          </tr>
+            <td class="contest-results-overvotes">{{ content.field_contest_overvotes }}</td>
+          </tr> #}
           </tbody>
         </table>
       </div>

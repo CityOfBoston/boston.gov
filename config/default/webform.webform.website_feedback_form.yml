@@ -60,7 +60,6 @@ elements: |-
         captcha:
           '#type': captcha
           '#captcha_type': recaptcha/reCAPTCHA
-          '#captcha_admin_mode': true
         actions:
           '#type': webform_actions
           '#title': 'Submit button(s)'
