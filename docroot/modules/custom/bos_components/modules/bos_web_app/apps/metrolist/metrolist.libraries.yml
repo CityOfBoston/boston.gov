@@ -1,5 +1,5 @@
 metrolist:
-  version: 4.2.202409260926
+  version: 4.5.202410161413
   js:
     dist/index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/1.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
@@ -10,3 +10,4 @@ metrolist:
     dist/6.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
   dependencies:
     - core/drupalSettings
+

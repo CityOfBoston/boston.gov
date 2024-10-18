@@ -9,10 +9,10 @@ import {
 } from '@util/translation';
 import { filtersObject, homeObject } from '@util/validation';
 import { getGlobalThis, hasOwnProperty, isPlainObject } from '@util/objects';
-import { useHistory } from 'react-router-dom';
-
 import Callout from '@components/Callout';
 import FiltersPanel from '@components/FiltersPanel';
+import { useHistory } from 'react-router-dom';
+
 import Inset from '@components/Inset';
 import PropTypes from 'prop-types';
 import ResultsPanel from '@components/ResultsPanel';
@@ -21,9 +21,11 @@ import Stack from '@components/Stack';
 import { getDevelopmentsApiEndpoint } from '@util/dev';
 import SearchPreferences from './_SearchPreferences';
 import SearchPagination from './_SearchPagination';
+import ReactToPrint from "react-to-print";
+import Button from '@components/Button';
 
 import {
-  paginate, useQuery, getPage, filterHomes, getNewFilters,
+  paginate, useQuery, getPage, filterHomes, getNewFilters, filterHomesWithoutCounter
 } from './methods';
 
 const globalThis = getGlobalThis();
@@ -38,16 +40,12 @@ const defaultFilters = {
     "sale": false,
   },
   "location": {
-    "city": {
+    "cityType": {
       "boston": false,
       "beyondBoston": false,
     },
-    "neighborhood": {},
-    "cardinalDirection": {
-      "west": false,
-      "north": false,
-      "south": false,
-    },
+    "neighborhoodsInBoston": {},
+    "citiesOutsideBoston": {}
   },
   "bedrooms": {
     "0br": false,
@@ -81,12 +79,19 @@ if ( savedFilters ) {
         delete savedFilters[errantKey];
       } );
 
-    const savedNeighborhoods = savedFilters.location.neighborhood;
+    let savedNeighborhoods;
+    
+    if (savedFilters.location.neighborhood) {
+      savedNeighborhoods = savedFilters.location.neighborhood;
+    } else {
+      savedNeighborhoods = savedFilters.location.neighborhoodsInBoston;
+    }
+    
     let savedNeighborhoodKeys = Object.keys( savedNeighborhoods );
-    savedFilters.location.neighborhood = {};
+    savedFilters.location.neighborhoodsInBoston = {};
 
     savedNeighborhoodKeys
-      .filter( ( nb ) => hasOwnProperty( defaultFilters.location.neighborhood, nb ) )
+      .filter((nb) => hasOwnProperty(defaultFilters.location.neighborhoodsInBoston, nb ) )
       .forEach( ( unavailableNeighborhood ) => {
         delete savedNeighborhoods[unavailableNeighborhood];
       } );
@@ -95,7 +100,7 @@ if ( savedFilters ) {
     savedNeighborhoodKeys
       .sort()
       .forEach( ( nb ) => {
-        savedFilters.location.neighborhood[nb] = savedNeighborhoods[nb];
+        savedFilters.location.neighborhoodsInBoston[nb] = savedNeighborhoods[nb];
       } );
 
     if ( hasOwnProperty( savedFilters.bedrooms, '0' ) ) {
@@ -147,7 +152,10 @@ if ( useAmiRecommendationAsLowerBound ) {
 }
 
 function Search( props ) {
+  const printRef = useRef();
   const [filters, setFilters] = useState( props.filters );
+  const [filteredAllHomes, setFilteredAllHomes] = useState(Object.freeze(props.homes));
+  const [homesPerPage, setHomesPerPage] = useState(localStorage.getItem('homesPerPage') ? localStorage.getItem('homesPerPage') : 10)
   const [paginatedHomes, setPaginatedHomes] = useState( paginate( Object.freeze( props.homes ) ) );
   const [filteredHomes, setFilteredHomes] = useState( Object.freeze( props.homes ) );
   const [currentPage, setCurrentPage] = useState( 1 );
@@ -165,24 +173,20 @@ function Search( props ) {
   const relativeAmiEstimatorUrl = '/metrolist/ami-estimator';
   const absoluteAmiEstimatorUrl = `${baseUrl}${relativeAmiEstimatorUrl}`;
   const amiEstimatorUrl = ( isBeingTranslated ? copyGoogleTranslateParametersToNewUrl( absoluteAmiEstimatorUrl ) : relativeAmiEstimatorUrl );
-  let listingCounts = {
+  const [listingCounts, setListingCounts] = useState({
     "offer": {
       "rent": 0,
       "sale": 0,
     },
     "location": {
-      "city": {
+      "cityType": {
         "boston": 0,
         "beyondBoston": 0,
       },
-      "neighborhood": {},
-      "cardinalDirection": {
-        "west": 0,
-        "north": 0,
-        "south": 0,
-      },
+      "neighborhoodsInBoston": {},
+      "citiesOutsideBoston": {}
     },
-  };
+  });
 
   history.listen( ( newLocation ) => {
     const requestedPage = getPage( newLocation );
@@ -196,12 +200,19 @@ function Search( props ) {
 
   const clearFilters = () => {
     const resetNeighborhoods = {};
+    const resetCities = {}
 
-    Object.keys( filters.location.neighborhood )
+    Object.keys(filters.location.neighborhoodsInBoston )
       .sort()
       .forEach( ( nb ) => {
         resetNeighborhoods[nb] = false;
       } );
+    
+    Object.keys(filters.location.citiesOutsideBoston)
+      .sort()
+      .forEach((nb) => {
+        resetCities[nb] = false;
+      });
 
     // Unfortunately we have to do this manually rather than
     // doing `setFilters( defaultFilters )` because of a
@@ -216,17 +227,15 @@ function Search( props ) {
         "sale": false,
       },
       "location": {
-        "city": {
+        "cityType": {
           "boston": false,
           "beyondBoston": false,
         },
-        "neighborhood": {
+        "neighborhoodsInBoston": {
           ...resetNeighborhoods,
         },
-        "cardinalDirection": {
-          "west": false,
-          "north": false,
-          "south": false,
+        "citiesOutsideBoston": {
+          ...resetCities,
         },
       },
       "bedrooms": {
@@ -276,74 +285,53 @@ function Search( props ) {
     localStorage.removeItem( 'useHouseholdIncomeAsIncomeQualificationFilter--undo' );
   };
 
-  const clearListingCounts = () => {
-    listingCounts = {
-      "offer": {
-        "rent": 0,
-        "sale": 0,
-      },
-      "location": {
-        "city": {
-          "boston": 0,
-          "beyondBoston": 0,
-        },
-        "neighborhood": {},
-        "cardinalDirection": {
-          "west": 0,
-          "north": 0,
-          "south": 0,
-        },
-      },
-      "rentalPrice": {
-        "lowerBound": 0,
-        "upperBound": 0,
-      },
-    };
-  };
-
   const populateListingCounts = ( homes ) => {
-    clearListingCounts();
+    const emptyListingCount =  {
+        "offer": {
+          "rent": 0,
+          "sale": 0,
+        },
+        "location": {
+          "cityType": {
+            "boston": 0,
+            "beyondBoston": 0,
+          },
+          "neighborhoodsInBoston": {},
+          "citiesOutsideBoston": {}
+        },
+        "rentalPrice": {
+          "lowerBound": 0,
+          "upperBound": 0,
+        },
+    };
+    let updatedListingCounts = emptyListingCount;
 
     homes.forEach( ( home ) => {
       if ( home.offer === 'sale' ) {
-        listingCounts.offer.sale++;
+        updatedListingCounts.offer.sale++;
       } else if ( home.offer === 'rent' ) {
-        listingCounts.offer.rent++;
+        updatedListingCounts.offer.rent++;
       }
-
-      if ( home.city ) {
-        if ( home.city.toLowerCase() === 'boston' ) {
-          listingCounts.location.city.boston++;
-        } else {
-          listingCounts.location.city.beyondBoston++;
-        }
-      }
-
-      if ( home.neighborhood ) {
+      if (home.city.toLowerCase() == 'boston' ) {
         // const neighborhoodKey = camelCase( home.neighborhood );
         const neighborhoodKey = home.neighborhood;
-
-        if ( hasOwnProperty( listingCounts.location.neighborhood, neighborhoodKey ) ) {
-          listingCounts.location.neighborhood[neighborhoodKey]++;
+        updatedListingCounts.location.cityType.boston++;
+        if (hasOwnProperty(updatedListingCounts.location.neighborhoodsInBoston, neighborhoodKey ) ) {
+          updatedListingCounts.location.neighborhoodsInBoston[neighborhoodKey]++;
         } else {
-          listingCounts.location.neighborhood[neighborhoodKey] = 1;
+          updatedListingCounts.location.neighborhoodsInBoston[neighborhoodKey] = 1;
         }
-      } else if ( home.cardinalDirection ) {
-        listingCounts.location.cardinalDirection[home.cardinalDirection]++;
+      } else if (home.city.toLowerCase() != 'boston') {
+        const cityKey = home.city
+        updatedListingCounts.location.cityType.beyondBoston++;
+        if (hasOwnProperty(updatedListingCounts.location.citiesOutsideBoston, cityKey)) {
+          updatedListingCounts.location.citiesOutsideBoston[cityKey]++;
+        } else {
+          updatedListingCounts.location.citiesOutsideBoston[cityKey] = 1;
+        }
       }
-
-      // if ( Array.isArray( home.units ) ) {
-      //   home.units.forEach( ( unit ) => {
-      //     if ( home.offer === 'rent' ) {
-      //       // Not extracting lowest rent since we can just default to $0 and let the user adjust
-
-      //       if ( unit.price > listingCounts.rentalPrice.upperBound ) {
-      //         listingCounts.rentalPrice.upperBound = unit.price;
-      //       }
-      //     }
-      //   } );
-      // }
     } );
+    setListingCounts(updatedListingCounts)
   };
 
   const getAllHomes = () => {
@@ -355,8 +343,7 @@ function Search( props ) {
   };
 
   const loadData = ( newHomes ) => {
-    const paginatedNewHomes = paginate( newHomes );
-    populateListingCounts( newHomes );
+    const paginatedNewHomes = paginate( newHomes, homesPerPage );
     const existingFilters = localStorage.getItem( 'filters' );
     const requestedPage = parseInt( query.get( 'page' ), 10 );
     let newFilters;
@@ -373,7 +360,7 @@ function Search( props ) {
 
     if ( existingFilters ) {
       newFilters = { ...JSON.parse( existingFilters ) };
-    } else {
+    } else {      
       newFilters = { ...filters };
     }
 
@@ -382,28 +369,67 @@ function Search( props ) {
       localStorage.setItem( 'useAmiRecommendationAsLowerBound', 'false' )
     }
 
-    Object.keys( listingCounts.location.neighborhood )
+    Object.keys(listingCounts.location.neighborhoodsInBoston )
       .sort()
       .forEach( ( nb ) => {
-        newFilters.location.neighborhood[nb] = ( newFilters.location.neighborhood[nb] || false );
-        defaultFilters.location.neighborhood[nb] = false;
+        newFilters.location.neighborhoodsInBoston[nb] = (newFilters.location.neighborhoodsInBoston[nb] || false );
+        defaultFilters.location.neighborhoodsInBoston[nb] = false;
       } );
 
-    Object.keys( listingCounts.location.cardinalDirection ).forEach( ( cd ) => {
-      newFilters.location.cardinalDirection[cd] = ( newFilters.location.cardinalDirection[cd] || false );
-      defaultFilters.location.cardinalDirection[cd] = false;
-    } );
+    Object.keys(listingCounts.location.citiesOutsideBoston)
+      .sort()
+      .forEach((nb) => {
+        newFilters.location.citiesOutsideBoston[nb] = (newFilters.location.citiesOutsideBoston[nb] || false);
+        defaultFilters.location.citiesOutsideBoston[nb] = false;
+      });
 
     if (
       hasOwnProperty( savedFilters, 'location' )
       && hasOwnProperty( savedFilters.location, 'neighborhood' )
     ) {
-      Object.keys( savedFilters.location.neighborhood )
+      Object.keys(savedFilters.location.neighborhoodsInBoston )
         .forEach( ( nb ) => {
-          if ( !hasOwnProperty( defaultFilters.location.neighborhood, nb ) ) {
-            delete savedFilters.location.neighborhood[nb];
+          if (!hasOwnProperty(defaultFilters.location.neighborhoodsInBoston, nb ) ) {
+            delete savedFilters.location.neighborhoodsInBoston[nb];
           }
         } );
+    }
+
+    if (
+      hasOwnProperty(savedFilters, 'location')
+      && hasOwnProperty(savedFilters.location, 'cityType')
+    ) {
+      Object.keys(savedFilters.location.citiesOutsideBoston)
+        .forEach((nb) => {
+          if (!hasOwnProperty(defaultFilters.location.citiesOutsideBoston, nb)) {
+            delete savedFilters.location.citiesOutsideBoston[nb];
+          }
+        });
+    }
+
+    if (Object.keys(newFilters.location.neighborhoodsInBoston).length===0) {
+      const neighborhoods = [...new Set(newHomes
+        .filter(listing => listing.city === "Boston")
+        .map(listing => listing.neighborhood)
+        .filter(Boolean))];
+
+      const neighborhoodsInBoston = neighborhoods.reduce((acc, neighborhood) => {
+        acc[neighborhood] = false;
+        return acc;
+      }, {});
+      newFilters.location.neighborhoodsInBoston = neighborhoodsInBoston
+    }
+
+      if (Object.keys(newFilters.location.citiesOutsideBoston).length===0) {
+      const cities = [...new Set(newHomes
+        .filter(listing => listing.city !== "Boston")
+        .map(listing => listing.city)
+        .filter(Boolean))]
+      const citiesOutsideBoston = cities.reduce((acc, city) => {
+        acc[city] = false;
+        return acc;
+      }, {})
+        newFilters.location.citiesOutsideBoston = citiesOutsideBoston
     }
 
     setFilters( newFilters );
@@ -440,6 +466,13 @@ function Search( props ) {
       updateHeight();
     }
   };
+
+  const updateHomesPerPage = (event) => {
+    const newHomesPerPage = event.target.value
+    setHomesPerPage(newHomesPerPage)
+    window.location.href = `?page=${Math.max(Math.round((currentPage - 1) * homesPerPage / newHomesPerPage), 1)}`;
+    localStorage.setItem('homesPerPage', newHomesPerPage);
+  }
 
   useEffect( () => {
     const allHomes = getAllHomes();
@@ -495,14 +528,21 @@ function Search( props ) {
       "filtersToApply": filters,
       defaultFilters,
     } );
-    const paginatedFilteredHomes = paginate( filteredAllHomes );
+    const filteredAllHomeWithoutCounter = filterHomesWithoutCounter({
+      "homesToFilter": allHomes,
+      "filtersToApply": filters,
+      defaultFilters,
+    })
+    const paginatedFilteredHomes = paginate( filteredAllHomes, homesPerPage );
     const currentPageFilteredHomes = paginatedFilteredHomes[currentPage - 1];
 
     setFilteredHomes( currentPageFilteredHomes );
+    setFilteredAllHomes( filteredAllHomes );
     setTotalPages( paginatedFilteredHomes.length );
+    populateListingCounts(filteredAllHomeWithoutCounter);
 
     localStorage.setItem( 'filters', JSON.stringify( filters ) );
-  }, [paginatedHomes, filters, currentPage] );
+  }, [paginatedHomes, filters, currentPage, homesPerPage] );
 
   useEffect( () => {
     setPages( Array.from( { "length": totalPages }, ( v, k ) => k + 1 ) );
@@ -510,8 +550,6 @@ function Search( props ) {
 
   const supportsSvg = ( typeof SVGRect !== "undefined" );
   const FiltersPanelUi = () => {
-    populateListingCounts( getAllHomes() );
-
     return (
       <FiltersPanel
         key="filters-panel"
@@ -568,21 +606,71 @@ function Search( props ) {
   const SidebarUi = [CalloutUi, FiltersPanelUi()];
 
   return (
-    <article className={ `ml-search${props.className ? ` ${props.className}` : ''}` }>
+    <article className={`ml-search${props.className ? ` ${props.className}` : ''}`}>
       <h2 className="sr-only">Search</h2>
-      <SearchPreferences filters={ filters } setFilters={ setFilters } />
       <Row space="panel" stackUntil="large">
         <Stack data-column-width="1/3" space="panel">
+          <Row space="panel" stackUntil="small">
+            <Stack data-column-width="1/3" space="panel">
+              <SearchPreferences className="price-filter" filters={filters} setFilters={setFilters} />
+            </Stack>
+          </Row>
           { isDesktop ? SidebarUi : SidebarUi }
         </Stack>
-        <ResultsPanel
-          className="ml-search__results"
-          columnWidth="2/3"
-          filters={ filters }
-          homes={ filteredHomes }
-          homesHaveLoaded={ homesHaveLoaded }
-        />
+        <Stack data-column-width="2/3" space="panel">
+          <Row space="panel">
+            <Stack data-column-width="2/3" className="ml-homes-per-page-stack" space="panel">
+              <Row space="panel">
+                <span className="ml-homes-per-page-label">
+                  Homes Per Page: 
+                </span>
+                <select
+                  id="homes-per-page-select"
+                  name="select homes per page"
+                  className="ml-filters-offer-type-select"
+                  onChange={updateHomesPerPage}
+                  value={homesPerPage}
+                >
+                  <option value={10}>{10}</option>
+                  <option value={20}>{20}</option>
+                  <option value={50}>{50}</option>
+                  <option value={100}>{100}</option>
+                  <option value={1000}>Show All Results</option>
+                </select>
+              </Row>
+            </Stack>
+            <Stack data-column-width="1/3" className="ml-print-button-stack" space="panel">
+              <ReactToPrint
+                trigger={() =>
+                  <div className="print-button">
+                    <Button variant="primary">Print Results</Button>
+                  </div>}
+                content={() => printRef.current} />
+            </Stack>
+          </Row>
+          <ResultsPanel
+            className="ml-search__results"
+            columnWidth="2/3"
+            filters={filters}
+            homes={filteredHomes}
+            homesHaveLoaded={homesHaveLoaded}
+          />
+        </Stack>
       </Row>
+
+      {/* Hidden on screen but used for printing with allHomes */}
+      <div className="print-only" ref={printRef}>
+        <Row space="panel" stackUntil="large">
+          <ResultsPanel
+            className="ml-search__results"
+            columnWidth="2/3"
+            filters={filters}
+            homes={filteredAllHomes}
+            homesHaveLoaded={homesHaveLoaded}
+          />
+        </Row>
+      </div>
+
       <nav>
         <h3 className="sr-only">Pages</h3>
         <SearchPagination pages={ pages } currentPage={ currentPage } />

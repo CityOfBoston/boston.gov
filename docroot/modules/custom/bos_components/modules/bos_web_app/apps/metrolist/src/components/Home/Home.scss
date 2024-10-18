@@ -20,6 +20,19 @@ $padding-home-horizontal--large: rem( 26px );
   //   margin-top: 0;
   // }
 }
+
+@media print {
+
+  // Target all anchor elements to remove URL visibility in print
+  a[href]:after {
+    content: none !important; // Prevent showing the URL in print
+  }
+
+  .ml-home-footer__more-info-link {
+    text-decoration: none; // Optional: to remove underline if desired
+  }
+}
+
   @include media-breakpoint-up( large ) {
     .ml-home {
       // margin: $panel-spacing--large;

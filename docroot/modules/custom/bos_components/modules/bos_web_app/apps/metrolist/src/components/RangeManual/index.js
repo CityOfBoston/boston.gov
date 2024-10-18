@@ -103,7 +103,7 @@ function RangeManual( props ) {
         <input
             className={ `ml-manual_range__input${outOfBounds ? ` ml-range__input--inverted` : ''}` }
             type="text"
-            id="lower-bound"
+            id="lower-bound-manual"
             name="lowerBound"
             min={ min }
             value={ lowerBound || min }
@@ -115,7 +115,7 @@ function RangeManual( props ) {
           <input
             className={ `ml-manual_range__input${outOfBounds ? ` ml-range__input--inverted` : ''}` }
             type="text"
-            id="upper-bound"
+            id="upper-bound-manual"
             name="upperBound"
             min={ min }
             value={ upperBound || max }

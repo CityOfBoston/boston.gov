@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Stack from '@components/Stack';
+import { formatIncome } from '@util/strings';
 import { getGlobalThis } from '@util/objects';
 
 const globalThis = getGlobalThis();
@@ -52,6 +53,7 @@ function SearchBar( props ) {
             onChange={ handleInput }
             placeholder= "Property Name"
             data-testid={ `${props.criterion}Keyphrase` }
+            aria-label='Enter Property Name'
           />
         </p>
       </Stack>

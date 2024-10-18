@@ -2,6 +2,53 @@
 @import '@globals';
 @import '@globals/typography/filters';
 
+.ml-print-button-stack {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.ml-homes-per-page-stack {
+  display: flex;
+  align-items: center;
+}
+
+.ml-homes-per-page-label {
+  display: flex;
+  align-items: center;
+}
+
+.ml-filters-offer-type-select {
+  display: block;
+}
+
+.price-filter {
+  padding: 5px;
+  display: flex;
+  justify-content: flex;
+  width: 100%;
+}
+
+.print-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block;
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+
   .ml-search {
     width: 100%;
     // margin: rem( 10px ) auto 0;

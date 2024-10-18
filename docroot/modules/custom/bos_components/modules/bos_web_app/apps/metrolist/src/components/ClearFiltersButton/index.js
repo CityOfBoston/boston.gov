@@ -38,22 +38,29 @@ function ClearFiltersButton( props ) {
 
   return (
     <Button
-      ref={ $self }
+      ref={$self}
       type="submit"
       data-testid="ml-clear-filters-button"
-      className={ `ml-clear-filters-button${
-        props.className ? ` ${props.className}` : ''
-      }${
-        ( props.hasInteractedWithFilters || props.showClearFiltersInitially ) ? ' ml-clear-filters-button--has-interacted-with-filters' : ''
-      }` }
-      onClick={ handleClick }
-      aria-hidden={ ( !props.hasInteractedWithFilters ).toString() }
-      aria-expanded={ props.hasInteractedWithFilters.toString() }
+      className={`ml-clear-filters-button${props.className ? ` ${props.className}` : ''
+        }${(props.hasInteractedWithFilters || props.showClearFiltersInitially)
+          ? ' ml-clear-filters-button--has-interacted-with-filters'
+          : ''
+        }`}
+      onClick={handleClick}
+      aria-hidden={(!props.hasInteractedWithFilters).toString()}
+      aria-expanded={props.hasInteractedWithFilters.toString()}
       aria-live="assertive"
+      tabIndex={props.hasInteractedWithFilters ? 0 : -1}
     >
-      <span className="ml-clear-filters-button__icon" aria-hidden="true">&times;</span>{ ' ' }
-      { !showUndo && <span className="ml-clear-filters-button__text">Clear filters</span> }
-      { showUndo && <span className="ml-clear-filters-button__text">Clear filters</span> }
+      <span
+        className="ml-clear-filters-button__icon"
+        aria-hidden="true"
+      >
+        &times;
+      </span>{' '}
+      <span className="ml-clear-filters-button__text">
+        Clear filters
+      </span>
     </Button>
   );
 }

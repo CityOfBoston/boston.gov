@@ -80,7 +80,7 @@ function Home( props ) {
           <header className="ml-home__header">
             <Stack space="home-header">
               <Row>
-                <h4 className="ml-home__title" data-column-width="3/4">{ title }</h4>
+                <h1 className="ml-home__title" data-column-width="3/4">{ title }</h1>
                 { renderJustListed( listingDate ) }
               </Row>
               <p className="ml-home__byline">{

@@ -13,7 +13,6 @@ import {
   TransitionGroup,
   CSSTransition,
 } from "react-transition-group";
-// import { pascalCase } from 'change-case';
 
 import { hasOwnProperty, getGlobalThis } from '@util/objects';
 import { slugify, uncapitalize, componentCase } from '@util/strings';
@@ -28,7 +27,6 @@ import Button from '@components/Button';
 import ProgressBar from '@components/ProgressBar';
 import Row from '@components/Row';
 import Stack from '@components/Stack';
-// import Alert from '@components/Alert';
 
 import HouseholdSize from './_AmiEstimatorHouseholdSize';
 import HouseholdIncome from './_AmiEstimatorHouseholdIncome';

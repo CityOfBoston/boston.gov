@@ -1,34 +1,20 @@
-// <Reveal />
-@import '@globals';
+.ml-reveal__content {
+  overflow: hidden;
+  transition: max-height 0.3s ease; // Smooth transition for expansion and collapse
+}
 
-// .ml-reveal {}
-  .ml-reveal__content {
-    overflow: hidden;
-    transition: max-height .125s ease;
-    max-height: ( rem( 47px ) * 3 ); // 3 = number of children to show at first
+.ml-reveal__more-button {
+  font: inherit;
+  text-decoration: underline;
+  border: 0;
+  appearance: none;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
   }
-  .ml-reveal__more-button {
-    font: inherit;
-    // font-size: rem( 21px );
-    // font-style: italic;
-    text-decoration: underline;
-    border: 0;
-    appearance: none;
-    text-align: left;
-    width: 5rem;
-    padding: 0;
-    // line-height: 1.4;
-    letter-spacing: normal;
-
-    &,
-    &:hover,
-    &:focus {
-      color: inherit;
-      background-color: transparent;
-    }
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
-  }
+}

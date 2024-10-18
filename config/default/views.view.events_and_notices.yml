@@ -5594,7 +5594,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 0
+          items_per_page: 6
       sorts: {  }
       arguments:
         nid:

@@ -1,4 +1,7 @@
+// <Range />
 @import '@globals';
-    .property-name-search-bar-input{
-        width: 100%;
-    }
+@import '@globals/typography/filters';
+
+.property-name-search-bar-input{
+    width: 100%;
+}

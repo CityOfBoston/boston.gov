@@ -310,7 +310,7 @@ function bos_events_and_notices_views_query_alter(ViewExecutable $view, Sql $que
     }
   }
 }
-
+/* Leaving this code for you to see when you approve PR
 function bos_events_and_notices_views_post_execute(ViewExecutable $view) {
   if ($view->getTitle() == "Related" && $view->current_display == "related") {
 
@@ -344,3 +344,4 @@ function bos_events_and_notices_views_post_execute(ViewExecutable $view) {
     $view->total_rows = count($newResults);
   }
 }
+*/
