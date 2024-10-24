@@ -13,7 +13,7 @@ _core:
   default_config_hash: VvMp2CNpvBrHWNY8moc07ZB6xIUihIhpQ5YSlj85rWE
 name: Post
 type: post
-description: 'A full body text and image(s)/video(s) of the press release or storytelling piece.'
+description: 'A page that appears in the City news section and in our news and announcement components, including press releases and blog posts.'
 help: null
 new_revision: true
 preview_mode: 1

@@ -12,7 +12,7 @@ _core:
   default_config_hash: nPQP1_TFpsgPKh2eW7zQ-fcqoko0ps0OvypO6YafbHo
 name: Article
 type: article
-description: 'A text-heavy page for long-form, evergreen content.'
+description: 'A text-heavy page for evergreen and explainer content.'
 help: null
 new_revision: true
 preview_mode: 1

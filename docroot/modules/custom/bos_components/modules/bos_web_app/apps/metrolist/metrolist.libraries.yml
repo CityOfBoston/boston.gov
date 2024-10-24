@@ -1,5 +1,5 @@
 metrolist:
-  version: 4.5.202410161413
+  version: 4.6.202410241142
   js:
     dist/index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}
     dist/1.index.bundle.js: { preprocess: false, attributes: {type: text/javascript}}

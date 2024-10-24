@@ -13,7 +13,7 @@ _core:
   default_config_hash: EJxAXDSH00X5r0a1DfQvmBC7UuRaigjqDBHEhjpkz0E
 name: 'Person Profile'
 type: person_profile
-description: 'Creates a profile page for key City staff members.'
+description: 'A profile for an individual that can be added to a Grid of People component.'
 help: null
 new_revision: true
 preview_mode: 1

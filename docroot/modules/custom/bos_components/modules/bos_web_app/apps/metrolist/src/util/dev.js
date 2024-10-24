@@ -48,11 +48,9 @@ export function getApiDomain() {
 }
 
 export function getDevelopmentsApiEndpoint() {
-  return `https://www.boston.gov/metrolist/api/v1/developments?_format=json`;
-  // return `${getApiDomain()}/metrolist/api/v1/developments?_format=json`;
+  return `${getApiDomain()}/metrolist/api/v1/developments?_format=json`;
 }
 
 export function getAmiApiEndpoint() {
-  return `https://www.boston.gov/metrolist/api/v1/ami/hud/base?_format=json`;
-  // return `${getApiDomain()}/metrolist/api/v1/ami/hud/base?_format=json`;
+  return `${getApiDomain()}/metrolist/api/v1/ami/hud/base?_format=json`;
 }

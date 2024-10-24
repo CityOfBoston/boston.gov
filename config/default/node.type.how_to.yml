@@ -6,12 +6,14 @@ dependencies:
     - menu_ui
 third_party_settings:
   menu_ui:
-    parent: 'main-menu:0:'
+    available_menus:
+      - main
+    parent: 'main:'
 _core:
   default_config_hash: tY8ABy2rTfo_7wgQGbmow8oHNF_UzrRfsZ6NWMim8p8
 name: How-To
 type: how_to
-description: 'How To Page.'
+description: 'A step-by-step walkthrough of a City process.'
 help: null
 new_revision: true
 preview_mode: 1

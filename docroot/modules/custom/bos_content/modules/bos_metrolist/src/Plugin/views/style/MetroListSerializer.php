@@ -38,7 +38,8 @@ class MetroListSerializer extends Serializer {
       }
       $row = $this->view->rowPlugin->render($row);
 
-      // Loop through the rows fields and if the string value is a number then set as an int value.
+      // Loop through the rows fields and if the string value is a number then
+      // set as an int value.
       foreach ($row as $fieldName => $field) {
 
         if ($fieldName == 'units') {

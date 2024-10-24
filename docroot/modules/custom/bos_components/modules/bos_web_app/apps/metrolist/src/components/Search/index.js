@@ -27,6 +27,7 @@ import Button from '@components/Button';
 import {
   paginate, useQuery, getPage, filterHomes, getNewFilters, filterHomesWithoutCounter
 } from './methods';
+import { filter } from 'lodash';
 
 const globalThis = getGlobalThis();
 const apiEndpoint = getDevelopmentsApiEndpoint();
@@ -53,6 +54,11 @@ const defaultFilters = {
     "2br": false,
     "3+br": false,
   },
+  "ada": {
+    "ada-m": false,
+    "ada-h": false,
+  },
+  "amenities": {},
   "amiQualification": {
     "lowerBound": 0,
     "upperBound": 200,
@@ -64,6 +70,11 @@ const defaultFilters = {
     "lowerBound": 0,
     "upperBound": null,
   },
+  "appType": {
+    "first": false,
+    "lottery": false,
+    "waitlist": false
+  }
 };
 const defaultFilterKeys = Object.keys( defaultFilters );
 
@@ -132,7 +143,6 @@ if ( savedFilters ) {
 
     localStorage.setItem( 'filters', JSON.stringify( savedFilters ) );
   } else {
-    console.log( 'isNotPlainObject' );
     savedFilters = {};
   }
 } else {
@@ -201,6 +211,7 @@ function Search( props ) {
   const clearFilters = () => {
     const resetNeighborhoods = {};
     const resetCities = {}
+    const resetAmenities = {}
 
     Object.keys(filters.location.neighborhoodsInBoston )
       .sort()
@@ -212,6 +223,12 @@ function Search( props ) {
       .sort()
       .forEach((nb) => {
         resetCities[nb] = false;
+      });
+    
+    Object.keys(filters.amenities)
+      .sort()
+      .forEach((amenity) => {
+        resetAmenities[amenity] = false;
       });
 
     // Unfortunately we have to do this manually rather than
@@ -244,6 +261,11 @@ function Search( props ) {
         "2br": false,
         "3+br": false,
       },
+      "ada": {
+        "ada-m": false,
+        "ada-h": false,
+      },
+      "amenities": {...resetAmenities},
       "amiQualification": {
         "lowerBound": 0,
         "upperBound": 200,
@@ -255,6 +277,11 @@ function Search( props ) {
         "lowerBound": 0,
         "upperBound": null,
       },
+      "appType": {
+        "first": false,
+        "lottery": false,
+        "waitlist": false
+      }
     };
 
     // Save current filter state for undo functionality
@@ -385,7 +412,7 @@ function Search( props ) {
 
     if (
       hasOwnProperty( savedFilters, 'location' )
-      && hasOwnProperty( savedFilters.location, 'neighborhood' )
+      && hasOwnProperty( savedFilters.location, 'neighborhoodsInBoston' )
     ) {
       Object.keys(savedFilters.location.neighborhoodsInBoston )
         .forEach( ( nb ) => {
@@ -397,7 +424,7 @@ function Search( props ) {
 
     if (
       hasOwnProperty(savedFilters, 'location')
-      && hasOwnProperty(savedFilters.location, 'cityType')
+      && hasOwnProperty(savedFilters.location, 'citiesOutsideBoston')
     ) {
       Object.keys(savedFilters.location.citiesOutsideBoston)
         .forEach((nb) => {
@@ -420,7 +447,7 @@ function Search( props ) {
       newFilters.location.neighborhoodsInBoston = neighborhoodsInBoston
     }
 
-      if (Object.keys(newFilters.location.citiesOutsideBoston).length===0) {
+    if (Object.keys(newFilters.location.citiesOutsideBoston).length===0) {
       const cities = [...new Set(newHomes
         .filter(listing => listing.city !== "Boston")
         .map(listing => listing.city)
@@ -430,6 +457,20 @@ function Search( props ) {
         return acc;
       }, {})
         newFilters.location.citiesOutsideBoston = citiesOutsideBoston
+    }
+
+    if (Object.keys(newFilters.amenities).length === 0) {
+      const features = [...new Set(newHomes
+        .flatMap(listing => 
+          listing.features
+            .split(",") // Split by comma
+            .map(feature => feature.trim()) // Trim each element
+        ))]
+      const amenities = features.reduce((acc, amenity) => {
+        acc[amenity] = false;
+        return acc;
+      }, {})
+        newFilters.amenities = amenities
     }
 
     setFilters( newFilters );

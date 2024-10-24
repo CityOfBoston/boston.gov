@@ -241,7 +241,8 @@
             "oomphinc/composer-installers-extender": true,
             "simplesamlphp/composer-module-installer": false,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "tbachert/spi": true
         }
     },
     "autoload": {

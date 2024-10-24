@@ -27,266 +27,222 @@ export function getPage( location ) {
   return parseInt( getQuery( location ).get( 'page' ), 10 );
 }
 
-export function filterHomes( {
+// Helper function for fuzzy search match
+function isMatch(target, keyphrase) {
+  const FUZZY_SEARCH_THRESHOLD = 3;
+  const FUZZY_SEARCH_LENIENCE = 2;
+  const FUZZY_SEARCH_DIFF_MULTIPLIER = 3;
+
+  if (!target) return false;
+
+  const lowerTarget = target.toLowerCase();
+  const lowerKeyphrase = keyphrase.toLowerCase();
+
+  let isIncludedInTarget = lowerTarget.includes(lowerKeyphrase);
+  let levDistance = levenshtein(lowerTarget, lowerKeyphrase);
+  let wordCountDiff = Math.abs(target.length - keyphrase.length) / target.length * FUZZY_SEARCH_DIFF_MULTIPLIER;
+
+  return isIncludedInTarget || (
+    FUZZY_SEARCH_THRESHOLD < keyphrase.length &&
+    FUZZY_SEARCH_THRESHOLD < target.length &&
+    levDistance <= wordCountDiff + FUZZY_SEARCH_LENIENCE
+  );
+}
+
+// Match property name
+function matchPropertyName(home, filtersToApply, isNoneSelected) {
+  const keyphrase = filtersToApply.propertyName.keyphrase;
+  return !keyphrase || isMatch(home.title, keyphrase) || isMatch(home.city, keyphrase) || isMatch(home.neighborhood, keyphrase);
+}
+
+// Match offer type (rent/sale)
+function matchOffer(home, filtersToApply, isNoneSelected) {
+  if (isNoneSelected && !filtersToApply.offer.rent && !filtersToApply.offer.sale) return true;
+
+  return (
+    (filtersToApply.offer.rent !== false && home.offer === 'rent') ||
+    (filtersToApply.offer.sale !== false && home.offer === 'sale')
+  );
+}
+
+// Match broad and narrow locations
+function matchLocation(home, filtersToApply, isNoneSelected) {
+  if (isNoneSelected && !filtersToApply.location.cityType.boston && !filtersToApply.location.cityType.beyondBoston) return true;
+
+  let matchesBroadLocation = (
+    (filtersToApply.location.cityType.boston !== false && home.city.toLowerCase() === 'boston') ||
+    (filtersToApply.location.cityType.beyondBoston !== false && home.city.toLowerCase() !== 'boston')
+  );
+
+  const matchesNarrowLocation = home.city.toLowerCase() === 'boston' ?
+    hasOwnProperty(filtersToApply.location.neighborhoodsInBoston, home.neighborhood) && filtersToApply.location.neighborhoodsInBoston[home.neighborhood] === true :
+    hasOwnProperty(filtersToApply.location.citiesOutsideBoston, home.city) && filtersToApply.location.citiesOutsideBoston[home.city] === true;
+
+  return matchesBroadLocation && matchesNarrowLocation;
+}
+
+// Match bedrooms
+function matchBedrooms(home, filtersToApply, isNoneSelected) {
+  if (isNoneSelected && !filtersToApply.bedrooms['0'] && !filtersToApply.bedrooms['1'] && !filtersToApply.bedrooms['2'] && !filtersToApply.bedrooms['3+']) return true; 
+  const unitBedroomSizes = home.units.filter(unit => unit && unit.bedrooms).map(unit => unit.bedrooms).sort();
+  return unitBedroomSizes.length && (
+    (filtersToApply.bedrooms['0'] === true && unitBedroomSizes.indexOf(0) !== -1) ||
+    (filtersToApply.bedrooms['1'] === true && unitBedroomSizes.indexOf(1) !== -1) ||
+    (filtersToApply.bedrooms['2'] === true && unitBedroomSizes.indexOf(2) !== -1) ||
+    (filtersToApply.bedrooms['3+'] === true && unitBedroomSizes[unitBedroomSizes.length - 1] >= 3)
+  );
+}
+
+// Match ADA accessibility
+function matchAda(home, filtersToApply, isNoneSelected) {
+  if (isNoneSelected && !filtersToApply.ada['ada-m'] && !filtersToApply.ada['ada-h']) return true;
+  const unitAdaMInfo = home.units.some(unit => unit && unit["ada-m"] === 'true');
+  const unitAdaHInfo = home.units.some(unit => unit && unit["ada-h"] === 'true');
+
+  return (!filtersToApply.ada["ada-m"] || unitAdaMInfo) 
+        && (!filtersToApply.ada["ada-h"] || unitAdaHInfo);
+}
+
+// Match amenities
+function matchAmenities(home, filtersToApply, isNoneSelected) {
+  const allAmenitiesFalse = Object.values(filtersToApply.amenities).every(value => value === false);
+  if (isNoneSelected && allAmenitiesFalse) return true;
+  const features = String(home.features).split(",").map(feature => feature.trim());
+  return features.length 
+    && Object.keys(filtersToApply.amenities)
+      .filter(amenity => filtersToApply.amenities[amenity])
+      .every(amenity => features.includes(amenity));
+}
+
+// Match AMI qualifications
+function matchAmiQualification(home, filtersToApply, isNoneSelected) {
+  const dedupedAmi = new Set(home.units.filter(unit => unit && unit.amiQualification).map(unit => unit.amiQualification));
+  const unitAmiQualifications = Array.from(dedupedAmi);
+
+  if (!home.incomeRestricted || !unitAmiQualifications.length) return true;
+
+  return unitAmiQualifications.some(amiQualification => {
+    if (amiQualification === null) return true;
+
+    if (filtersToApply.amiQualification.lowerBound <= filtersToApply.amiQualification.upperBound) {
+      return amiQualification >= filtersToApply.amiQualification.lowerBound &&
+             amiQualification <= filtersToApply.amiQualification.upperBound;
+    } else {
+      return amiQualification >= filtersToApply.amiQualification.upperBound &&
+             amiQualification <= filtersToApply.amiQualification.lowerBound;
+    }
+  });
+}
+
+// Match App Type
+function matchAppType(home, filtersToApply, isNoneSelected) {
+  if (isNoneSelected && !filtersToApply.appType.first && !filtersToApply.appType.lottery && !filtersToApply.appType.waitlist) return true;
+
+  return (
+    (filtersToApply.appType.first !== false && home.assignment === 'first') ||
+    (filtersToApply.appType.lottery !== false && home.assignment === 'lottery') ||
+    (filtersToApply.appType.waitlist !== false && home.assignment === 'waitlist')
+  );
+}
+
+
+// Helper function to match unit rental price
+function unitMatchesRentalPrice(unit, filtersToApply) {
+  const rentalPriceLowerBound = filtersToApply.rentalPrice.lowerBound || 0;
+  const rentalPriceUpperBound = filtersToApply.rentalPrice.upperBound || 10000000;
+
+  return unit.price >= rentalPriceLowerBound && unit.price <= rentalPriceUpperBound;
+}
+
+// Helper function to match unit bedrooms
+function unitMatchesBedrooms(unit, filtersToApply, matchOnNoneSelected) {
+  let matchesBedrooms = (
+    (filtersToApply.bedrooms['0br'] && unit.bedrooms === 0) ||
+    (filtersToApply.bedrooms['1br'] && unit.bedrooms === 1) ||
+    (filtersToApply.bedrooms['2br'] && unit.bedrooms === 2) ||
+    (filtersToApply.bedrooms['3+br'] && unit.bedrooms >= 3)
+  );
+
+  if (matchOnNoneSelected) {
+    if (!filtersToApply.bedrooms['0br'] && !filtersToApply.bedrooms['1br'] && !filtersToApply.bedrooms['2br'] && !filtersToApply.bedrooms['3+br']) {
+      matchesBedrooms = true;
+    }
+  }
+
+  return matchesBedrooms;
+}
+
+// Helper function to match unit ADA accessibility
+function unitMatchesAda(unit, filtersToApply, matchOnNoneSelected) {
+  if (matchOnNoneSelected && !filtersToApply.ada["ada-m"] && !filtersToApply.ada["ada-h"]) {
+    return true
+  }
+  return (!filtersToApply.ada["ada-m"] || unit["ada-m"] === "true") 
+        && (!filtersToApply.ada["ada-h"] || unit["ada-h"] === "true");
+}
+
+// Helper function to match unit AMI qualification
+function unitMatchesAmiQualification(unit, home, filtersToApply) {
+  return matchAmiQualification(home, filtersToApply);
+}
+
+// Helper function to match unit income qualification
+function unitMatchesIncomeQualification(unit, filtersToApply) {
+  return unit.incomeQualification === null ||
+    filtersToApply.incomeQualification.upperBound === null ||
+    unit.incomeQualification <= filtersToApply.incomeQualification.upperBound;
+}
+
+// Helper function to filter each unit within a home
+function filterUnits(home, filtersToApply, matchOnNoneSelected) {
+  return home.units.filter(unit => {
+    let matchesRentalPrice = unitMatchesRentalPrice(unit, filtersToApply);
+    let matchesBedrooms = unitMatchesBedrooms(unit, filtersToApply, matchOnNoneSelected);
+    let matchesAda = unitMatchesAda(unit, filtersToApply, matchOnNoneSelected);
+    let matchesAmiQualification = unitMatchesAmiQualification(unit, home, filtersToApply);
+    let matchesIncomeQualification = unitMatchesIncomeQualification(unit, filtersToApply);
+
+    return matchesRentalPrice && matchesBedrooms && matchesAda && matchesAmiQualification && matchesIncomeQualification;
+  });
+}
+
+// Main filterHomes function
+export function filterHomes({
   homesToFilter,
   filtersToApply,
   defaultFilters,
   matchOnNoneSelected = true,
-} ) {
+}) {
   const matchingHomes = homesToFilter
-    .filter( ( home ) => {
-      let keyphrase = filtersToApply.propertyName.keyphrase;
-      function isMatch(target) {
-        const FUZZY_SEARCH_THRESHOLD = 3
-        const FUZZY_SEARCH_LENIENCE = 2
-        const FUZZY_SEARCH_DIFF_MULTIPLIER = 3
-        if (!target) {
-          return false
-        } else {
-          let isIncludedInTarget = target.toLowerCase().includes(keyphrase.toLowerCase());
-          let levDistance = levenshtein(target.toLowerCase(), keyphrase.toLowerCase());
-          let wordCountDiff = Math.max((target.length - keyphrase.length), (keyphrase.length - target.length)) / target.length * FUZZY_SEARCH_DIFF_MULTIPLIER;
-          return (isIncludedInTarget || ((FUZZY_SEARCH_THRESHOLD < keyphrase.length) && (FUZZY_SEARCH_THRESHOLD < target.length) && (levDistance <= wordCountDiff + FUZZY_SEARCH_LENIENCE)))
-        }
-      }
-
-      let matchesPropertyName = (
-        !keyphrase ||
-        (
-          isMatch(home.title) ||
-          isMatch(home.city) ||
-          isMatch(home.neighborhood)
-        )
-      );
-
-      let matchesOffer = (
-        (
-          ( filtersToApply.offer.rent !== false )
-          && ( home.offer === 'rent' )
-        )
-        || (
-          ( filtersToApply.offer.sale !== false )
-          && ( home.offer === 'sale' )
-        )
-      );
-
-      let matchesBroadLocation = (
-        (
-          (filtersToApply.location.cityType.boston !== false )
-          && ( home.city.toLowerCase() === 'boston' )
-        )
-        || (
-          (filtersToApply.location.cityType.beyondBoston !== false )
-          && ( home.city.toLowerCase() !== 'boston' )
-        )
-      );
-
-      const neighborhoodInBostonIsPresentInFilters = (
-        hasOwnProperty(filtersToApply.location.neighborhoodsInBoston, home.neighborhood )
-        && (filtersToApply.location.neighborhoodsInBoston[home.neighborhood] === true )
-      );
-      const cityOutsideBostonIsPresentInFilters = (
-        hasOwnProperty(filtersToApply.location.citiesOutsideBoston, home.city )
-        && (filtersToApply.location.citiesOutsideBoston[home.city] === true )
-      );
-      
-      let matchesNarrowLocation = ( home.city.toLowerCase() == 'boston' ) ? neighborhoodInBostonIsPresentInFilters : cityOutsideBostonIsPresentInFilters;
-
-      const unitBedroomSizes = home.units.filter( ( unit ) => unit && unit.bedrooms ).map( ( unit ) => unit.bedrooms ).sort();
-      let matchesBedrooms = unitBedroomSizes.length && (
-        (
-          ( filtersToApply.bedrooms['0'] === true )
-          && ( unitBedroomSizes.indexOf( 0 ) !== -1 )
-        )
-        || (
-          ( filtersToApply.bedrooms['1'] === true )
-          && ( unitBedroomSizes.indexOf( 1 ) !== -1 )
-        )
-        || (
-          ( filtersToApply.bedrooms['2'] === true )
-          && ( unitBedroomSizes.indexOf( 2 ) !== -1 )
-        )
-        || (
-          ( filtersToApply.bedrooms['3+'] === true )
-          && ( unitBedroomSizes[unitBedroomSizes.length - 1] >= 3 )
-        )
-      );
-
-      const dedupedAmi = new Set( home.units.filter( ( unit ) => unit && unit.amiQualification ).map( ( unit ) => unit.amiQualification ) );
-      const unitAmiQualifications = Array.from( dedupedAmi );
-      let matchesAmiQualification;
-
-      if (
-        ( home.incomeRestricted === false )
-        || ( !unitAmiQualifications.length )
-      ) {
-        matchesAmiQualification = true;
-      } else {
-        for ( let index = 0; index < unitAmiQualifications.length; index++ ) {
-          const amiQualification = ( unitAmiQualifications[index] || null );
-
-          if ( amiQualification === null ) {
-            matchesAmiQualification = true;
-            break;
-          }
-
-          if ( filtersToApply.amiQualification.lowerBound <= filtersToApply.amiQualification.upperBound ) {
-            matchesAmiQualification = (
-              ( amiQualification >= filtersToApply.amiQualification.lowerBound )
-              && ( amiQualification <= filtersToApply.amiQualification.upperBound )
-            );
-          // These values can be switched in the UI causing the names to no longer be semantic
-          } else if ( filtersToApply.amiQualification.lowerBound > filtersToApply.amiQualification.upperBound ) {
-            matchesAmiQualification = (
-              ( amiQualification >= filtersToApply.amiQualification.upperBound )
-              && ( amiQualification <= filtersToApply.amiQualification.lowerBound )
-            );
-          }
-
-          if ( matchesAmiQualification ) {
-            break;
-          }
-        }
-      }
-
-      if ( matchOnNoneSelected ) {
-        if ( !filtersToApply.offer.rent && !filtersToApply.offer.sale ) {
-          matchesOffer = true;
-        }
-
-        if (!filtersToApply.location.cityType.boston && !filtersToApply.location.cityType.beyondBoston ) {
-          matchesBroadLocation = true;
-          matchesNarrowLocation = true;
-        }
-
-        if (
-          !filtersToApply.bedrooms['0']
-          && !filtersToApply.bedrooms['1']
-          && !filtersToApply.bedrooms['2']
-          && !filtersToApply.bedrooms['3+']
-        ) {
-          matchesBedrooms = true;
-        }
-      }
-
+    .filter(home => {
+      let propertyMatches = matchPropertyName(home, filtersToApply, matchOnNoneSelected);
+      let offerMatches = matchOffer(home, filtersToApply, matchOnNoneSelected);
+      let locationMatches = matchLocation(home, filtersToApply, matchOnNoneSelected);
+      let bedroomsMatch = matchBedrooms(home, filtersToApply, matchOnNoneSelected);
+      let adaMatches = matchAda(home, filtersToApply, matchOnNoneSelected);
+      let amenitiesMatch = matchAmenities(home, filtersToApply, matchOnNoneSelected);
+      let amiQualificationMatches = matchAmiQualification(home, filtersToApply, matchOnNoneSelected);
+      let appTypeMatches = matchAppType(home, filtersToApply, matchOnNoneSelected);
       return (
-        matchesPropertyName
-        && matchesOffer
-        && matchesBroadLocation
-        && matchesNarrowLocation
-        && matchesBedrooms
-        && matchesAmiQualification
+        propertyMatches &&
+        offerMatches &&
+        locationMatches &&
+        bedroomsMatch &&
+        adaMatches &&
+        amenitiesMatch &&
+        amiQualificationMatches &&
+        appTypeMatches
       );
-    } )
-    .map( ( home ) => {
-      const newUnits = home.units
-        .filter( ( unit ) => unit ) // Remove undefined, null, etc.
-        .filter( ( unit ) => {
-            let unitMatchesRentalPrice;
-            let rentalPriceLowerBound;
-            let rentalPriceUpperBound;
-
-            // console.log('filtersToApply.rentalPrice.lowerBound', filtersToApply.rentalPrice.lowerBound);
-            // console.log('filtersToApply.rentalPrice.upperBound', filtersToApply.rentalPrice.upperBound);
-
-            if (isNaN(filtersToApply.rentalPrice.lowerBound) || filtersToApply.rentalPrice.lowerBound == null) {
-              rentalPriceLowerBound = 0;
-            } else {
-              rentalPriceLowerBound = filtersToApply.rentalPrice.lowerBound;
-            }
-
-            if (isNaN(filtersToApply.rentalPrice.upperBound) || filtersToApply.rentalPrice.upperBound == null) {
-              rentalPriceUpperBound = 10000000;
-            } else {
-              rentalPriceUpperBound = filtersToApply.rentalPrice.upperBound;
-            }
-
-            // @@Debugging - print comparing variables
-            // console.log('rentalPriceLowerBound)',rentalPriceLowerBound);
-            // console.log('unit.price',unit.price);
-            // console.log('rentalPriceUpperBound',rentalPriceUpperBound);
-
-            if ((unit.price >= rentalPriceLowerBound)  && (unit.price <= rentalPriceUpperBound) ) {
-              unitMatchesRentalPrice = true;
-            } else {
-              unitMatchesRentalPrice = false;
-            }
-            //console.log('unitMatchesRentalPrice', unitMatchesRentalPrice);
-
-          let unitMatchesBedrooms = (
-            (
-              filtersToApply.bedrooms['0br']
-              && ( unit.bedrooms === 0 )
-            )
-            || (
-              filtersToApply.bedrooms['1br']
-              && ( unit.bedrooms === 1 )
-            )
-            || (
-              filtersToApply.bedrooms['2br']
-              && ( unit.bedrooms === 2 )
-            )
-            || (
-              filtersToApply.bedrooms['3+br']
-              && ( unit.bedrooms >= 3 )
-            )
-          );
-
-          if ( matchOnNoneSelected ) {
-            if (
-              !filtersToApply.bedrooms['0br']
-              && !filtersToApply.bedrooms['1br']
-              && !filtersToApply.bedrooms['2br']
-              && !filtersToApply.bedrooms['3+br']
-            ) {
-              unitMatchesBedrooms = true;
-            }
-          }
-
-          // TODO: Maybe exit early if we already know it is not a match?
-          // if ( !unitMatchesBedrooms ) {
-          //   return false;
-          // }
-
-          let unitMatchesAmiQualification;
-          const unitAmiQualification = ( unit.amiQualification || null );
-
-          if ( unitAmiQualification === null ) {
-            unitMatchesAmiQualification = true;
-          } else if ( filtersToApply.amiQualification.lowerBound <= filtersToApply.amiQualification.upperBound ) {
-            unitMatchesAmiQualification = (
-              ( unitAmiQualification >= filtersToApply.amiQualification.lowerBound )
-              && ( unitAmiQualification <= filtersToApply.amiQualification.upperBound )
-            );
-          // These values can be switched in the UI causing the names to no longer be semantic
-          } else if ( filtersToApply.amiQualification.lowerBound > filtersToApply.amiQualification.upperBound ) {
-            unitMatchesAmiQualification = (
-              ( unitAmiQualification >= filtersToApply.amiQualification.upperBound )
-              && ( unitAmiQualification <= filtersToApply.amiQualification.lowerBound )
-            );
-          }
-
-          let unitMatchesIncomeQualification;
-          const unitIncomeQualification = ( unit.incomeQualification || null );
-
-          if ( ( unitIncomeQualification === null ) || !filtersToApply.incomeQualification.upperBound ) {
-            unitMatchesIncomeQualification = true;
-          } else {
-            unitMatchesIncomeQualification = ( unitIncomeQualification <= filtersToApply.incomeQualification.upperBound );
-          }
-
-          return ( unitMatchesRentalPrice && unitMatchesBedrooms && unitMatchesAmiQualification && unitMatchesIncomeQualification );
-        } );
-
-      return {
-        ...home,
-        "units": newUnits,
-      };
-    } )
-    .filter( ( home ) => !!home.units.length );
+    })
+    .map(home => {
+      const newUnits = filterUnits(home, filtersToApply, matchOnNoneSelected);
+      return { ...home, units: newUnits };
+    })
+    .filter(home => !!home.units.length);
 
   return matchingHomes;
 }
+
 
 export function filterHomesWithoutCounter({
   homesToFilter,
@@ -295,227 +251,29 @@ export function filterHomesWithoutCounter({
   matchOnNoneSelected = true,
 }) {
   const matchingHomes = homesToFilter
-    .filter((home) => {
-      let keyphrase = filtersToApply.propertyName.keyphrase;
-      function isMatch(target) {
-        const FUZZY_SEARCH_THRESHOLD = 3
-        const FUZZY_SEARCH_LENIENCE = 2
-        const FUZZY_SEARCH_DIFF_MULTIPLIER = 3
-        if (!target) {
-          return false
-        } else {
-          let isIncludedInTarget = target.toLowerCase().includes(keyphrase.toLowerCase());
-          let levDistance = levenshtein(target.toLowerCase(), keyphrase.toLowerCase());
-          let wordCountDiff = Math.max((target.length - keyphrase.length), (keyphrase.length - target.length)) / target.length * FUZZY_SEARCH_DIFF_MULTIPLIER;
-          return (isIncludedInTarget || ((FUZZY_SEARCH_THRESHOLD < keyphrase.length) && (FUZZY_SEARCH_THRESHOLD < target.length) && (levDistance <= wordCountDiff + FUZZY_SEARCH_LENIENCE)))
-        }
-      }
-
-      let matchesPropertyName = (
-        !keyphrase ||
-        (
-          isMatch(home.title) ||
-          isMatch(home.city) ||
-          isMatch(home.neighborhood)
-        )
-      );
-
-      let matchesOffer = (
-        (
-          (filtersToApply.offer.rent !== false)
-          && (home.offer === 'rent')
-        )
-        || (
-          (filtersToApply.offer.sale !== false)
-          && (home.offer === 'sale')
-        )
-      );
-
-      const unitBedroomSizes = home.units.filter((unit) => unit && unit.bedrooms).map((unit) => unit.bedrooms).sort();
-      let matchesBedrooms = unitBedroomSizes.length && (
-        (
-          (filtersToApply.bedrooms['0'] === true)
-          && (unitBedroomSizes.indexOf(0) !== -1)
-        )
-        || (
-          (filtersToApply.bedrooms['1'] === true)
-          && (unitBedroomSizes.indexOf(1) !== -1)
-        )
-        || (
-          (filtersToApply.bedrooms['2'] === true)
-          && (unitBedroomSizes.indexOf(2) !== -1)
-        )
-        || (
-          (filtersToApply.bedrooms['3+'] === true)
-          && (unitBedroomSizes[unitBedroomSizes.length - 1] >= 3)
-        )
-      );
-
-      const dedupedAmi = new Set(home.units.filter((unit) => unit && unit.amiQualification).map((unit) => unit.amiQualification));
-      const unitAmiQualifications = Array.from(dedupedAmi);
-      let matchesAmiQualification;
-
-      if (
-        (home.incomeRestricted === false)
-        || (!unitAmiQualifications.length)
-      ) {
-        matchesAmiQualification = true;
-      } else {
-        for (let index = 0; index < unitAmiQualifications.length; index++) {
-          const amiQualification = (unitAmiQualifications[index] || null);
-
-          if (amiQualification === null) {
-            matchesAmiQualification = true;
-            break;
-          }
-
-          if (filtersToApply.amiQualification.lowerBound <= filtersToApply.amiQualification.upperBound) {
-            matchesAmiQualification = (
-              (amiQualification >= filtersToApply.amiQualification.lowerBound)
-              && (amiQualification <= filtersToApply.amiQualification.upperBound)
-            );
-            // These values can be switched in the UI causing the names to no longer be semantic
-          } else if (filtersToApply.amiQualification.lowerBound > filtersToApply.amiQualification.upperBound) {
-            matchesAmiQualification = (
-              (amiQualification >= filtersToApply.amiQualification.upperBound)
-              && (amiQualification <= filtersToApply.amiQualification.lowerBound)
-            );
-          }
-
-          if (matchesAmiQualification) {
-            break;
-          }
-        }
-      }
-
-      if (matchOnNoneSelected) {
-        if (!filtersToApply.offer.rent && !filtersToApply.offer.sale) {
-          matchesOffer = true;
-        }
-
-        if (
-          !filtersToApply.bedrooms['0']
-          && !filtersToApply.bedrooms['1']
-          && !filtersToApply.bedrooms['2']
-          && !filtersToApply.bedrooms['3+']
-        ) {
-          matchesBedrooms = true;
-        }
-      }
-
+    .filter(home => {
+      let propertyMatches = matchPropertyName(home, filtersToApply, matchOnNoneSelected);
+      let offerMatches = matchOffer(home, filtersToApply, matchOnNoneSelected);
+      let bedroomsMatch = matchBedrooms(home, filtersToApply, matchOnNoneSelected);
+      let adaMatches = matchAda(home, filtersToApply, matchOnNoneSelected);
+      let amenitiesMatch = matchAmenities(home, filtersToApply, matchOnNoneSelected);
+      let amiQualificationMatches = matchAmiQualification(home, filtersToApply, matchOnNoneSelected);
+      let appTypeMatches = matchAppType(home, filtersToApply, matchOnNoneSelected);
       return (
-        matchesPropertyName
-        && matchesOffer
-        && matchesBedrooms
-        && matchesAmiQualification
+        propertyMatches &&
+        offerMatches &&
+        bedroomsMatch &&
+        adaMatches &&
+        amenitiesMatch &&
+        amiQualificationMatches &&
+        appTypeMatches
       );
     })
-    .map((home) => {
-      const newUnits = home.units
-        .filter((unit) => unit) // Remove undefined, null, etc.
-        .filter((unit) => {
-          let unitMatchesRentalPrice;
-          let rentalPriceLowerBound;
-          let rentalPriceUpperBound;
-
-          // console.log('filtersToApply.rentalPrice.lowerBound', filtersToApply.rentalPrice.lowerBound);
-          // console.log('filtersToApply.rentalPrice.upperBound', filtersToApply.rentalPrice.upperBound);
-
-          if (isNaN(filtersToApply.rentalPrice.lowerBound) || filtersToApply.rentalPrice.lowerBound == null) {
-            rentalPriceLowerBound = 0;
-          } else {
-            rentalPriceLowerBound = filtersToApply.rentalPrice.lowerBound;
-          }
-
-          if (isNaN(filtersToApply.rentalPrice.upperBound) || filtersToApply.rentalPrice.upperBound == null) {
-            rentalPriceUpperBound = 10000000;
-          } else {
-            rentalPriceUpperBound = filtersToApply.rentalPrice.upperBound;
-          }
-
-          // @@Debugging - print comparing variables
-          // console.log('rentalPriceLowerBound)',rentalPriceLowerBound);
-          // console.log('unit.price',unit.price);
-          // console.log('rentalPriceUpperBound',rentalPriceUpperBound);
-
-          if ((unit.price >= rentalPriceLowerBound) && (unit.price <= rentalPriceUpperBound)) {
-            unitMatchesRentalPrice = true;
-          } else {
-            unitMatchesRentalPrice = false;
-          }
-          //console.log('unitMatchesRentalPrice', unitMatchesRentalPrice);
-
-          let unitMatchesBedrooms = (
-            (
-              filtersToApply.bedrooms['0br']
-              && (unit.bedrooms === 0)
-            )
-            || (
-              filtersToApply.bedrooms['1br']
-              && (unit.bedrooms === 1)
-            )
-            || (
-              filtersToApply.bedrooms['2br']
-              && (unit.bedrooms === 2)
-            )
-            || (
-              filtersToApply.bedrooms['3+br']
-              && (unit.bedrooms >= 3)
-            )
-          );
-
-          if (matchOnNoneSelected) {
-            if (
-              !filtersToApply.bedrooms['0br']
-              && !filtersToApply.bedrooms['1br']
-              && !filtersToApply.bedrooms['2br']
-              && !filtersToApply.bedrooms['3+br']
-            ) {
-              unitMatchesBedrooms = true;
-            }
-          }
-
-          // TODO: Maybe exit early if we already know it is not a match?
-          // if ( !unitMatchesBedrooms ) {
-          //   return false;
-          // }
-
-          let unitMatchesAmiQualification;
-          const unitAmiQualification = (unit.amiQualification || null);
-
-          if (unitAmiQualification === null) {
-            unitMatchesAmiQualification = true;
-          } else if (filtersToApply.amiQualification.lowerBound <= filtersToApply.amiQualification.upperBound) {
-            unitMatchesAmiQualification = (
-              (unitAmiQualification >= filtersToApply.amiQualification.lowerBound)
-              && (unitAmiQualification <= filtersToApply.amiQualification.upperBound)
-            );
-            // These values can be switched in the UI causing the names to no longer be semantic
-          } else if (filtersToApply.amiQualification.lowerBound > filtersToApply.amiQualification.upperBound) {
-            unitMatchesAmiQualification = (
-              (unitAmiQualification >= filtersToApply.amiQualification.upperBound)
-              && (unitAmiQualification <= filtersToApply.amiQualification.lowerBound)
-            );
-          }
-
-          let unitMatchesIncomeQualification;
-          const unitIncomeQualification = (unit.incomeQualification || null);
-
-          if ((unitIncomeQualification === null) || !filtersToApply.incomeQualification.upperBound) {
-            unitMatchesIncomeQualification = true;
-          } else {
-            unitMatchesIncomeQualification = (unitIncomeQualification <= filtersToApply.incomeQualification.upperBound);
-          }
-
-          return (unitMatchesRentalPrice && unitMatchesBedrooms && unitMatchesAmiQualification && unitMatchesIncomeQualification);
-        });
-
-      return {
-        ...home,
-        "units": newUnits,
-      };
+    .map(home => {
+      const newUnits = filterUnits(home, filtersToApply, matchOnNoneSelected);
+      return { ...home, units: newUnits };
     })
-    .filter((home) => !!home.units.length);
+    .filter(home => !!home.units.length);
 
   return matchingHomes;
 }
@@ -543,6 +301,9 @@ export function getNewFilters( event, filters ) {
     if ( hasOwnProperty( event.metrolist, 'parentCriterion' ) ) {
       parentCriterion = event.metrolist.parentCriterion;
       switch ( parentCriterion ) { // eslint-disable-line default-case
+        case 'amenities':
+          valueAsKey = false;
+          break;
         case 'amiQualification':
         case 'rentalPrice':
           isNumeric = true;
@@ -558,6 +319,16 @@ export function getNewFilters( event, filters ) {
           specialCase = true;
           parent = newFilters[parentCriterion][$input.name];
           parent[$input.value] = newValue;
+          if (Object.values(parent).every(value => !value)) {
+            switch ($input.name) {
+              case 'citiesOutsideBoston':
+                filters.location.cityType.beyondBoston = false
+                break;
+              case 'neighborhoodsInBoston':
+                filters.location.cityType.boston = false
+                break;
+            }
+          }
         } else {
           specialCase = true;
           parent = newFilters[parentCriterion];
@@ -568,9 +339,17 @@ export function getNewFilters( event, filters ) {
   }
 
   if ( !specialCase ) {
-    // console.log( '!specialCase' );
-    parent = newFilters[$input.name];
-    parent[$input.value] = newValue;
+    switch ($input.name) {
+      case 'lowerBound':
+      case 'upperBound':
+        parent = newFilters.amiQualification[$input.name] = Number.parseInt(newValue, 10)
+        break;
+      default:
+      parent = newFilters[$input.name];
+      parent[$input.value] = newValue;
+      break;
+        
+    }
   }
 
   switch ( $input.name ) {
@@ -588,6 +367,14 @@ export function getNewFilters( event, filters ) {
 
     case 'bedrooms':
       newFilters.bedrooms[$input.value] = newValue;
+      break;
+    
+    case 'ada':
+      newFilters.ada[$input.value] = newValue;
+      break;
+    
+    case 'appType':
+      newFilters.appType[$input.value] = newValue;
       break;
 
     default:

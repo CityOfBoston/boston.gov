@@ -203,7 +203,7 @@ class BuildingHousingUtils {
       unset($publicStages[$key]);
     }
 
-    $projectCompeteDate = $entity->get('field_bh_project_complete_date')->value ?? NULL;
+    $projectCompleteDate = $entity->get('field_bh_project_complete_date')->value ?? NULL;
 
     $publicStage = NULL;
 
@@ -284,7 +284,7 @@ class BuildingHousingUtils {
     if (in_array($projectRecordType, ['Disposition'])
       && in_array($projectStatus, ['Completed'])
       // @TODO: ? What if the ProjectCompleteDate is null?
-      && strtotime($projectCompeteDate) >= strtotime('-1 year')
+      && strtotime($projectCompleteDate??"-18 months") >= strtotime('-1 year')
     ) {
       $publicStage = 'Project Completed';
     }
@@ -322,7 +322,7 @@ class BuildingHousingUtils {
     // Rule M.
     if (in_array($projectRecordType, ['NHD Development'])
       && in_array($projectStatus, ['Completed'])
-      && strtotime($projectCompeteDate) >= strtotime('-1 year')
+      && strtotime($projectCompleteDate??"-18 Months") >= strtotime('-1 year')
     ) {
       $publicStage = 'Project Completed';
     }

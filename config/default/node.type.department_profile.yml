@@ -13,7 +13,7 @@ _core:
   default_config_hash: enujm5g8N9ReUlveUY9z1QLPxM2tPUU5xyo8gjiYQmY
 name: 'Department Profile'
 type: department_profile
-description: 'Profile pages for City Departments.'
+description: 'A landing page for City Departments and Cabinets.'
 help: 'The full name of the department without abbreviations.'
 new_revision: true
 preview_mode: 1
