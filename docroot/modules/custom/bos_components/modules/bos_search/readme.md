@@ -1,0 +1,2 @@
+lando drush pmu bos_search bos_gc_aisearch_plugin bos_aws_services
+lando drush en bos_search bos_gc_aisearch_plugin bos_aws_services

@@ -1,0 +1,31 @@
+uuid: 7cb0ed9c-1a5d-4a8e-b644-4ba29e006c28
+langcode: en
+status: true
+dependencies:
+  module:
+    - bos_search
+    - system
+  theme:
+    - bos_theme
+id: bos_theme_aienabledsearchbutton
+theme: bos_theme
+region: content
+weight: -2
+provider: null
+plugin: Ai-enabled-search-button
+settings:
+  id: Ai-enabled-search-button
+  label: 'Beta Search'
+  label_display: '0'
+  provider: bos_search
+  search_button_title: 'Try AI Search'
+  search_button_css: ''
+  aisearch_config_preset: vertex_search
+  aisearch_config_display: '1'
+  aisearch_config_searchpage: /search-beta-page
+  search_block_text: 'Through our AI search, you can quickly find semantic answers to your questions related to Office of Economic Opportunity and Inclusion services.'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /ai-search

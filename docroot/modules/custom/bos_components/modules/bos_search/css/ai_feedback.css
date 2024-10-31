@@ -1,0 +1,222 @@
+.ai-feedback-wrapper {
+  color: #58585B;
+}
+.ai-feedback-buttons {
+  display: flex;
+  gap:  16px;
+  align-items: center;
+  padding: 16px 16px 16px 8px;
+  border: 1px solid #C4C1C1;
+}
+.ai-feedback-buttons .thumbsdown,
+.ai-feedback-buttons .thumbsup {
+  max-height: 20px;
+}
+.ai-feedback-item.speaker {
+  margin-right:32px;
+}
+.ai-feedback-item {
+  cursor: pointer;
+  line-height:  32px;
+  padding:8px;
+}
+.ai-feedback-item .ai-feedback-svg {
+  fill: #091f2f;
+}
+.ai-feedback-item:active .ai-feedback-svg {
+  fill: #FFFFFF;
+}
+.ai-feedback-item:focus .ai-feedback-svg,
+.ai-feedback-item:hover .ai-feedback-svg {
+  fill: #288BE4;
+}
+.ai-feedback-item:hover:not(:disabled), .button:focus:not(:disabled), .button.ai-feedback-item {
+  background-color: transparent;
+}
+.ai-feedback-item:active {
+  background-color: #288be4;
+}
+.ai-feedback-text {display: block;}
+.ai-feedback-confirm {
+  display: none;
+  font-family: 'Lora', 'Georgia', serif;
+  font-size:  1em;
+  line-height: 1.75em;
+  color:  #58585B;
+  font-weight:  700;
+  background-color: rgb(40,139,228,0.10);
+  width: fit-content;
+  padding: 16px 32px 16px 16px;
+  border-radius: 4px;
+}
+.feedback-dialog .ui-dialog-titlebar {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+}
+.feedback-dialog {
+  font-size: 16px;
+  line-height: 25px;
+  font-family: 'Lora', 'Georgia', serif;
+  letter-spacing: 0.5px;
+  color: #58585B;
+}
+.feedback-dialog #drupal-modal.ui-dialog-content {
+    padding: 0 16px;
+    margin-top: 32px;
+}
+.feedback-dialog .ui-dialog-title {display:none;}
+.feedback-dialog .ui-dialog-titlebar-close {
+  border:none;
+  background-color:  transparent;
+  width: 36px;
+  height: 36px;
+  margin: 4px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.feedback-dialog .ui-dialog-titlebar-close:active,
+.feedback-dialog .ui-dialog-titlebar-close:hover {
+}
+.feedback-dialog .ui-icon-closethick,
+.feedback-dialog .ui-icon-closethick:active,
+.feedback-dialog .ui-icon-closethick:hover {
+  background-image: url(../img/x.svg);
+  background-position: 0;
+  background-size: 13px;
+}
+.feedback-dialog .ui-button:hover .ui-icon, 
+.feedback-dialog .ui-button:focus .ui-icon {
+  background-image:  url(../img/x.svg);
+}
+.feedback-dialog .fieldgroup legend {
+  margin-bottom: 16px;
+}
+.feedback-dialog legend .fieldset-legend {
+  font-size: calc(1em + 2px);
+  line-height: calc((1em + 2px) * 1.5);
+  font-weight:  700;
+  font-family:  Montserrat, Arial, sans-serif;
+  color: #091f2f;
+}
+.feedback-dialog .form-item.checkboxes--wrapper {
+  height: fit-content;
+}
+.feedback-dialog  .form-type-checkbox {
+  margin: 0 12px 16px 0;
+  padding: 0;
+  max-height: 32px;
+}
+.feedback-dialog .form-type-checkbox.form-item label {
+  display: initial;
+  top: -9px;
+  line-height: 50px;
+  font-size: 1em;
+  text-transform: none;
+  font-weight:  400;
+  font-family: inherit;
+  color: #58585B;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+.feedback-dialog .form-type-checkbox.form-item input[type=checkbox] {
+  display: initial;
+  width: 32px;
+  margin: 0 10px 0 0;
+  max-height: 32px;
+}
+.feedback-dialog .form-type-textarea.form-item label {
+  display: initial;
+  line-height: 50px;
+  font-size: calc(1em + 2px);
+  font-weight:  700;
+  font-family:  Montserrat, Arial, sans-serif;
+  color: #091f2f;
+  text-transform: none;
+}
+.feedback-dialog .form-type-textarea.form-item textarea {
+  font-size: 1em;
+  line-height: 25px;
+  font-family: 'Lora', 'Georgia', serif;
+  letter-spacing: 0.5px;
+  padding: 8px;
+}
+.feedback-dialog .webform-element-help {
+  color: #ffffff;
+  background-color: #091f2f;
+  border-color: #091f2f;
+  font-weight: bold;
+  font-family:  Montserrat, Arial, sans-serif;
+  position: relative;
+}
+.feedback-dialog .form-item .tippy-box {
+  background-color: #f6f6f6;
+}
+.feedback-dialog .form-item .tippy-box .tippy-content {}
+.feedback-dialog .form-item .tippy-box .webform-element-help--title {
+  color: #288BE4;
+}
+.feedback-dialog .form-item .tippy-box .webform-element-help--content {
+  text-transform: none;
+  color: #58585B;
+}
+.feedback-dialog .text-count-message {
+  font-style: italic;
+  color: #58585B;
+  font-weight: 400;
+}
+.feedback-dialog .ui-dialog-buttonpane {
+  border: 0;
+  padding: 12px 16px;
+}
+.feedback-dialog .ui-dialog-buttonpane .form-actions {float: none;width: 100%;}
+.feedback-dialog .ui-dialog-buttonpane .webform-button--submit {
+  width: 100%;
+  font-family:  Montserrat, Arial, sans-serif;
+  letter-spacing: 2px;
+}
+.feedback-dialog  .ui-dialog-buttonpane .webform-button--submit:focus,
+.feedback-dialog  .ui-dialog-buttonpane .webform-button--submit:hover,
+.feedback-dialog  .ui-dialog-buttonpane .webform-button--submit:active {
+  border: 0;
+  font-weight:  bold;
+  background-color: #fb4d42;
+  color: #fff;
+}
+.feedback-dialog form .b--p300 {padding: 0;margin: 0;width: 100%;}
+.feedback-dialog #system-messages .messages__icon {display:none;}
+.feedback-dialog #system-messages {padding: 16px;margin-bottom: 20px;}
+.feedback-dialog #system-messages .messages--item {
+  font-size: 1em;
+  line-height: 25px;
+  font-family: 'Lora', 'Georgia', serif;
+}
+.feedback-dialog #system-messages .message--button {position: absolute;right: 16px;top: 16px;}
+
+.feedback-dialog .webform-actions .ajax-progress {
+  display:none;
+}
+
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+@media screen and (min-width: 480px) {
+  .ai-feedback-wrapper {
+  }
+  .feedback-dialog {
+    max-width: 410px;
+    width: 410px !important;
+    left: calc((100vw / 2) - 205px) !important;
+  }
+  .feedback-dialog #drupal-modal.ui-dialog-content {
+    padding: 0 42px;
+  }
+  .feedback-dialog .ui-dialog-buttonpane {
+    border: 0;
+    margin: 12px 0 12px 0;
+    padding: 0 42px;
+  }
+}
+

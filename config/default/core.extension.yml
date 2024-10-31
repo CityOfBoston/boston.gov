@@ -15,7 +15,6 @@ module:
   big_pipe: 0
   block: 0
   block_content: 0
-  bos_charts: 0
   breakpoint: 0
   captcha: 0
   chosen_lib: 0
@@ -245,11 +244,13 @@ module:
   node_transaction: 2
   bos_311: 3
   bos_assessing: 3
+  bos_aws_services: 3
   bos_bibblio: 3
   bos_bid: 3
   bos_branded_links: 3
   bos_cabinet: 3
   bos_card: 3
+  bos_charts: 3
   bos_city_score: 3
   bos_commissions: 3
   bos_components: 3
@@ -266,6 +267,7 @@ module:
   bos_fyi: 3
   bos_geocoder: 3
   bos_google_cloud: 3
+  bos_gc_aisearch_plugin: 3
   bos_grid: 3
   bos_hero_image: 3
   bos_iframe: 3
@@ -285,6 +287,7 @@ module:
   bos_photo: 3
   bos_quote: 3
   bos_seamless_doc: 3
+  bos_search: 3
   bos_shortcodes: 3
   bos_sidebar: 3
   bos_sql: 3

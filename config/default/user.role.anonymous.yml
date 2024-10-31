@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - bos_search
     - file_entity
     - lightning_core
     - media
@@ -20,6 +21,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'download any document files'
+  - 'view ai-enabled search permission'
   - 'view files'
   - 'view media'
   - 'view paragraph content 3_column_w_image'

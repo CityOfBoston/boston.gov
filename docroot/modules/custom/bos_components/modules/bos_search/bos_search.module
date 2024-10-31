@@ -1,0 +1,67 @@
+<?php
+
+/*
+  Main Drupal module for bos_search
+
+  david 06 2024
+  @file docroot/modules/custom/bos_components/modules/bos_search/bos_search.module
+
+*/
+
+use Drupal\bos_search\AiSearch;
+
+require_once("includes/aisearch_form_theme.inc");
+require_once("includes/bos_theme_theme.inc");
+
+/**
+ * Implements hook_theme().
+ */
+function bos_search_theme($existing, $type, $theme, $path):array  {
+
+  /**
+   * This defines the ai-enabled search button.
+   */
+  $output = [
+    'form_element__bos_search__disclaimer__webform_checkbox' => [
+      'base hook' => 'form',
+      'template' => 'form-element--webform-checkbox',
+    ],
+    'aisearch_button' => [
+      'template' => 'snippets/aisearch-button',
+      'variables' => [
+        'search_form_url' => '/search',
+        'button_title' => '',
+        'button_css' => '',
+        'preset' => '',
+        'preset_theme' => '',
+        'display' => '',
+        'body' => '',
+      ],
+    ],
+
+  ];
+
+  // Discover dynamic aisearch templates and themes from this module
+  _bos_search_autodiscover_theme($output);
+  _bos_search_snippet_theme($output);
+
+  // Load component themes.
+  // TODO: This should be moved to the themes hook_theme function.
+  _load_component_definitions($output);
+
+  return $output;
+
+}
+
+function bos_search_theme_suggestions_alter(array &$suggestions, array &$variables, $hook):void  {
+  if (AiSearch::isBosSearchThemed()) {
+    _search_form_suggestions($suggestions, $variables, $hook);
+  }
+  if ($hook == "form_element" && in_array("form_element__webform_checkbox",$suggestions)) {
+    $suggestions[] = "form_element__bos_search__disclaimer__webform_checkbox";
+  }
+}
+
+function bos_search_preprocess_search_bar(&$variables):void  {
+  _bos_search_preprocess_search_bar($variables);
+}

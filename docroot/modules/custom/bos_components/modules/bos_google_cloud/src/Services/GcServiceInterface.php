@@ -4,6 +4,11 @@ namespace Drupal\bos_google_cloud\Services;
 
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Interface GcServiceInterface.
+ *
+ * Provides methods to interact with a Google Cloud service.
+ */
 interface GcServiceInterface {
 
   /**
@@ -18,14 +23,14 @@ interface GcServiceInterface {
    *
    * @params string $parameters An array of parameters for this service.
    *
-   * @return string The output from the service.
+   * @return string|mixed The output from the service.
    *
    * @description    Typically:
    *       $parameters["text"] - The text string to process
    *       $parameters["prompt"] - The prompt to use during processing
    *
    */
-  public function execute(array $parameters = []): string;
+  public function execute(array $parameters = []): object|string|FALSE;
 
   /**
    * Build the section on the Goggle Cloud Confrm form for this service.
@@ -78,5 +83,36 @@ interface GcServiceInterface {
    * @throws \Exception
    */
   public function setServiceAccount(string $service_account):GcServiceInterface;
+
+  /**
+   * Flag whether the service supports an ongoing conversation.
+   *
+   * @return bool TRUE is conversation supported.
+   */
+  public function hasFollowup():bool;
+
+  /**
+   * Return the Google Cloud config for this service.
+   *
+   * @return array
+   */
+  public function getSettings():array;
+
+  /**
+   * Provides a means to test connectivity to this service. Used by the config form.
+   *
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *
+   * @return array Render array for forms API - message back based on test result.
+   */
+  public static function ajaxTestService(array &$form, FormStateInterface $form_state): array;
+
+  /**
+   * Returns a list of prompts which can be used by this service.
+   *
+   * @return array
+   */
+  public function availablePrompts(): array ;
 
 }

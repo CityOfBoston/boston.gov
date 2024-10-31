@@ -1,0 +1,5 @@
+bos_search.AiSearchConfigForm:
+  title: 'AI-enabled Search'
+  route_name: bos_search.AiSearchConfigForm
+  base_route: bos_core.admin
+  weight: 2

@@ -1,0 +1,87 @@
+core:
+  css:
+    theme:
+      css/bos_search.css: {}
+  js:
+    js/bos_search.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+component.search_bar:
+  css:
+    theme:
+      css/search_bar.css: { }
+
+component.card:
+  css:
+    theme:
+      css/card.css: { }
+
+component.quote_card:
+  css:
+    theme:
+      css/quote_card.css: { }
+
+component.grid_of_cards:
+  css:
+    theme:
+      css/grid_of_cards.css: { }
+
+snippet.modal_close:
+  css:
+    theme:
+      css/modal_close.css: { }
+  js:
+    js/modal_close.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+snippet.search_feedback:
+  css:
+    theme:
+      css/ai_feedback.css: { }
+  js:
+    js/ai_feedback.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+    - core/drupal.ajax
+    - webform/webform.ajax
+
+snippet.search_button:
+  css:
+    theme:
+      css/ai_searchbutton.css: { }
+  js:
+    js/ai_searchbutton.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+dynamic-loader:
+  js:
+    js/dynamic_loader.js: { }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
+disclaimer:
+  version: 1.0
+  css:
+    theme:
+      css/disclaimer.css: { }
+  js:
+    js/disclaimer.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery
+    - core/drupal.dialog
+    - core/drupal.dialog.ajax

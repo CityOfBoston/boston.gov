@@ -1,0 +1,27 @@
+uuid: 838600a1-c35e-4157-b1a9-30b2fa5ad3ca
+langcode: en
+status: true
+dependencies:
+  module:
+    - bos_search
+    - system
+  theme:
+    - bos_theme
+id: bos_theme_aienabledsearchform
+theme: bos_theme
+region: content
+weight: 0
+provider: null
+plugin: Ai-enabled-search-form
+settings:
+  id: Ai-enabled-search-form
+  label: 'AI Enabled Search Form'
+  label_display: '0'
+  provider: bos_search
+  search_form_title: null
+  aisearch_config_preset: vertex_search
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search-beta-page

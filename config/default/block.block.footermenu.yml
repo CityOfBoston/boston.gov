@@ -27,6 +27,8 @@ settings:
   depth: 0
   expand_all_items: false
   parent: 'menu-footer-menu:'
+  render_parent: false
   suggestion: menu_footer_menu
+  hide_on_nonactive: false
   expand: 0
 visibility: {  }

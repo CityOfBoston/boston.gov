@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{%
+  set wrapper_classes = [
+    "search-bar-wrapper"
+  ]
+%}
+{%
+  set classes = [
+    "search-bar"
+  ]
+%}
+{%
+  set title_classes = [
+    "search-bar-title",
+    "txt-l"
+  ]
+%}
+
+{{  attach_library("bos_search/component.search_bar") }}
+
+<div{{ wrapper_attributes.addClass(wrapper_classes) }}>
+
+  {% if title %}
+
+    {% if title_prefix %}
+      {{ title_prefix }}
+    {% endif %}
+
+      <label{{ title_attributes.addClass(title_classes) }}>{{ title }}</label>
+
+    {% if title_suffix %}
+      {{ title_suffix }}
+    {% endif %}
+
+  {% endif %}
+
+  <div class="search-bar-input-wrapper">
+
+    {% if description and description_display == "before" %}
+      <div class="search-bar-description">{{ description }}</div>
+    {% endif %}
+
+    <div class="search-bar-input">
+      <input{{ attributes.addclass(classes) }}>{{ value }}</input>
+      {% if audio_search_input %}
+        <div id="search-bar-microphone" class="button search-bar-microphone"></div>
+      {% endif %}
+      <div id="search-bar-submit" class="button search-bar-submit" style="background-image: url('{{ icon }}')"></div>
+    </div>
+
+    {% if description and description_display == "after" %}
+      <div class="search-bar-description">{{ description }}</div>
+    {% endif %}
+
+  </div>
+
+</div>

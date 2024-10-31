@@ -4,7 +4,9 @@ namespace Drupal\bos_google_cloud\Form;
 
 use Drupal\bos_google_cloud\GcGenerationPrompt;
 use Drupal\bos_google_cloud\Services\GcCacheAI;
+use Drupal\bos_google_cloud\Services\GcConversation;
 use Drupal\bos_google_cloud\Services\GcTextSummarizer;
+use Drupal\bos_google_cloud\Services\GcTranslation;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
@@ -31,6 +33,7 @@ class PromptTesterForm extends FormBase {
     "summarizer" => "Summarize",
     "rewriter" => "Rewrite",
     "translation" => "Translate",
+    "conversation" => 'Conversation',
   ];
 
   /**
@@ -67,6 +70,7 @@ class PromptTesterForm extends FormBase {
             'rewriter' => 'Rewrite',
             'summarizer' => 'Summarize',
             'translation' => 'Translate',
+            'conversation' => 'Conversation',
           ],
           '#default_value' => $type??"select",
           '#ajax' => [
@@ -170,11 +174,30 @@ class PromptTesterForm extends FormBase {
 
       case "translation":
         /**
-         * @var \Drupal\bos_google_cloud\Services\GcTranslation $processor
+         * @var GcTranslation $processor
          */
         $processor = \Drupal::service("bos_google_cloud.GcTranslate");
         $processor->setExpiry(GcCacheAI::CACHE_EXPIRY_NO_CACHE);
         $result = $processor->execute(["text"=>$values["text"], "lang"=>$values["prompt"], "prompt"=>"default"]);
+        break;
+
+      case "conversation":
+        /**
+         * @var GcConversation $processor
+         */
+        $processor = \Drupal::service("bos_google_cloud.GcConversation");
+        $result = $processor->execute([
+          "text"=>$values["text"],
+          "lang"=>$values["prompt"],
+          "prompt"=>$values["prompt"],
+          "extra_prompt" => 'If you cannot understand the question or the question cannot be answered, respond with the text "No Results"',
+          "metadata" => 1,
+          "num_results" => 5,
+          "include_citations" => 1,
+          "safe_search" => 1,
+          "semantic_chunks" => 1,
+        ]);
+//        $result = $result->render();
         break;
     }
 
@@ -183,61 +206,99 @@ class PromptTesterForm extends FormBase {
     $result = $result ?? "No result from google_cloud (Vertex)";
     $response = $processor->response();
     $request = $processor->request();
-    $fullprompt = $request["body"]["contents"][0]["parts"];
-    $prompt = array_pop($fullprompt)["text"];
-    $fullprompt = implode("<br> - ", array_column($fullprompt, "text"));
+    switch($type) {
+      case 'conversation':
+        $fullprompt = $request["body"]["summarySpec"]["modelPromptSpec"]["preamble"];
+        $form["PromptTesterForm"]["testdata"]["testresults"] = [
+          "#type" => "container",
+          '#attributes' => ['id' => ['edit-testresults']],
+          "output" => [
+            "#type" => "fieldset",
+            "#title" => Markup::create("$type_label results"),
+            "outputtext" => [
+              "#markup" => Markup::create($result)
+            ],
+            "citations" => [
+              '#type' => 'details',
+              '#title' => 'Citations',
+              "items" => $this->formatCitations($processor)
+            ],
+            "search_results" => [
+              '#type' => 'details',
+              '#title' => 'Search Results',
+              "items" => $this->formatResults($processor)
+            ],
+            "moreinfo" => [
+              "#type" => "details",
+              "#title" => "More Information",
+              "info" => [
+                "#markup" => "<table>
+  <tr><td><b>Action</b></td><td>$type_label</td></tr>
+  <tr><td><b>Prompt ID</b></td><td>{$values['prompt']}</td></tr>
+  <tr><td><b>Full Prompt</b></td><td>$fullprompt</td></tr>
+</table>",
+              ]
+            ]
+          ]
+        ];
 
-    $ai_engine = $response["ai_engine"] ?? "gemini-pro";
+        break;
+      default:
+        $fullprompt = $request["body"]["contents"][0]["parts"];
+        $prompt = array_pop($fullprompt)["text"];
+        $fullprompt = implode("<br> - ", array_column($fullprompt, "text"));
 
-    $requestSafety = [];
-    foreach($request["body"]["safetySettings"] as $safe) {
-      $requestSafety[] = "{$safe["category"]} threshold: {$safe["threshold"]}";
-    }
-    $requestSafety = implode("<br>", $requestSafety);
+        $ai_engine = $response["ai_engine"] ?? "gemini-pro";
 
-    $responseSafety = [];
-    foreach($response[$ai_engine]["ratings"] as $safety) {
-      if (!empty($safety["category"])) {
-        $responseSafety[] = "{$safety["category"]} probability: {$safety["probabilityScore"]} ({$safety["probability"]})";
-        $responseSafety[] = "{$safety["category"]} severity: {$safety["severityScore"]} ({$safety["severity"]})";
-      }
-      else {
-        $responseSafety[] = "OVERALL probability: {$safety["probabilityScore"]} ({$safety["probability"]})";
-        $responseSafety[] = "OVERALL severity: {$safety["severityScore"]} ({$safety["severity"]})";
-      }
-    }
-    $responseSafety = implode("<br>", $responseSafety);
+        $requestSafety = [];
+        foreach($request["body"]["safetySettings"] as $safe) {
+          $requestSafety[] = "{$safe["category"]} threshold: {$safe["threshold"]}";
+        }
+        $requestSafety = implode("<br>", $requestSafety);
 
-    $responseMetadata = [];
-    if ($response[$ai_engine]["usageMetadata"]) {
-      $responseMetadata[] = "Prompt Token Count: " . $response[$ai_engine]["usageMetadata"]["promptTokenCount"] ?? "N/A";
-      $responseMetadata[] = "Candidates Token Count: " . $response[$ai_engine]["usageMetadata"]["candidatesTokenCount"] ?? "N/A";
-      $responseMetadata[] = "Total Token Count: " . $response[$ai_engine]["usageMetadata"]["totalTokenCount"] ?? "N/A";
-    }
-    $responseMetadata[] = "Analysis time: " . (intval(($response["elapsedTime"] ?? 0) * 10000) / 10000) . " sec";
-    $responseMetadata = implode("<br>", $responseMetadata);
+        $responseSafety = [];
+        foreach($response[$ai_engine]["ratings"] as $safety) {
+          if (!empty($safety["category"])) {
+            $responseSafety[] = "{$safety["category"]} probability: {$safety["probabilityScore"]} ({$safety["probability"]})";
+            $responseSafety[] = "{$safety["category"]} severity: {$safety["severityScore"]} ({$safety["severity"]})";
+          }
+          else {
+            $responseSafety[] = "OVERALL probability: {$safety["probabilityScore"]} ({$safety["probability"]})";
+            $responseSafety[] = "OVERALL severity: {$safety["severityScore"]} ({$safety["severity"]})";
+          }
+        }
+        $responseSafety = implode("<br>", $responseSafety);
 
-    $engineConfig = [];
-    $engineConfig[] = "Temperature: {$request["body"]["generationConfig"]["temperature"]}";
-    $engineConfig[] = "Max Tokens: {$request["body"]["generationConfig"]["maxOutputTokens"]}";
-    $engineConfig[] = "TopK: {$request["body"]["generationConfig"]["topK"]}";
-    $engineConfig[] = "TopP: {$request["body"]["generationConfig"]["topP"]}";
-    $engineConfig = implode("<br>", $engineConfig);
+        $responseMetadata = [];
+        if ($response[$ai_engine]["usageMetadata"]) {
+          $responseMetadata[] = "Prompt Token Count: " . $response[$ai_engine]["usageMetadata"]["promptTokenCount"] ?? "N/A";
+          $responseMetadata[] = "Candidates Token Count: " . $response[$ai_engine]["usageMetadata"]["candidatesTokenCount"] ?? "N/A";
+          $responseMetadata[] = "Total Token Count: " . $response[$ai_engine]["usageMetadata"]["totalTokenCount"] ?? "N/A";
+        }
+        $responseMetadata[] = "Analysis time: " . (intval(($response["elapsedTime"] ?? 0) * 10000) / 10000) . " sec";
+        $responseMetadata = implode("<br>", $responseMetadata);
 
-    $form["PromptTesterForm"]["testdata"]["testresults"] = [
-      "#type" => "container",
-      '#attributes' => ['id' => ['edit-testresults']],
-      "output" => [
-        "#type" => "fieldset",
-        "#title" => Markup::create("$type_label results"),
-        "outputtext" => [
-          "#markup" => Markup::create($result)
-        ],
-        "moreinfo" => [
-          "#type" => "details",
-          "#title" => "More Information",
-          "info" => [
-            "#markup" => "<table>
+        $engineConfig = [];
+        $engineConfig[] = "Temperature: {$request["body"]["generationConfig"]["temperature"]}";
+        $engineConfig[] = "Max Tokens: {$request["body"]["generationConfig"]["maxOutputTokens"]}";
+        $engineConfig[] = "TopK: {$request["body"]["generationConfig"]["topK"]}";
+        $engineConfig[] = "TopP: {$request["body"]["generationConfig"]["topP"]}";
+        $engineConfig = implode("<br>", $engineConfig);
+
+        $form["PromptTesterForm"]["testdata"]["testresults"] = [
+          "#type" => "container",
+          '#attributes' => ['id' => ['edit-testresults']],
+          "output" => [
+            "#type" => "fieldset",
+            "#title" => Markup::create("$type_label results"),
+            "outputtext" => [
+              "#markup" => Markup::create($result)
+            ],
+            "moreinfo" => [
+              "#type" => "details",
+              "#title" => "More Information",
+              "info" => [
+                "#markup" => "<table>
   <tr><td><b>Action</b></td><td>$type_label</td></tr>
   <tr><td><b>Full Prompt</b></td><td>$fullprompt</td></tr>
   <tr><td><b>AI Engine</b></td><td>$ai_engine (<i>{$request["endpoint"]}</i>)</td></tr>
@@ -246,11 +307,13 @@ class PromptTesterForm extends FormBase {
   <tr><td><b>Safety Parameters</b></td><td>" . ($requestSafety??"N/a") . "</td></tr>
   <tr><td><b>Reported Safety</b></td><td>" . ($responseSafety??"N/a") . "</td></tr>
 </table>",
+              ]
+            ]
           ]
-        ]
-      ]
-    ];
+        ];
 
+
+    }
     return $form["PromptTesterForm"]["testdata"]["testresults"];
   }
 
@@ -270,6 +333,49 @@ class PromptTesterForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Not required for this test form.
+  }
+
+  private function formatCitations($processor) {
+    $output = [];
+    $citations = $processor->getResults()["citations"] ?? [];
+    foreach($citations as $citation) {
+      $output[] = [
+        '#type' => "fieldset",
+        'citation' => [
+          '#markup' => Markup::create(
+            "<table>
+  <tr><td><b>title</b></td><td>{$citation['title']}</td></tr>
+  <tr><td><b>doc</b></td><td>{$citation['ref']}</td></tr>
+  <tr><td><b>link</b></td><td>{$citation['uri']}</td></tr>
+</table>"
+          )
+        ],
+      ];
+    }
+    return $output;
+  }
+  private function formatResults($processor) {
+    $output = [];
+    $results = $processor->getResults()["search_results"] ?? [];
+    foreach($results as $result) {
+      $output[] = [
+        '#type' => "fieldset",
+        'result' => [
+          '#markup' => Markup::create(
+            "<table>
+  <tr><td><b>title</b></td><td>{$result['title']}</td></tr>
+  <tr><td><b>doc</b></td><td>{$result['ref']}</td></tr>
+  <tr><td><b>link</b></td><td>{$result['link']}</td></tr>
+  <tr><td><b>content</b></td><td>{$result['content']}</td></tr>
+  <tr><td><b>description</b></td><td>{$result['description']}</td></tr>
+  <tr><td><b>snippet</b></td><td>{$result['snippet']}</td></tr>
+</table>"
+          )
+        ],
+      ];
+    }
+    return $output;
+
   }
 
 }

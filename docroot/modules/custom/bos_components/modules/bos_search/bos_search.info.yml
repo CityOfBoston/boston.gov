@@ -1,0 +1,8 @@
+name: 'AI-enabled Search'
+type: module
+description: 'AI-enabled Search front end component for boston.gov.'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - bos_google_cloud
+config_devel: { }

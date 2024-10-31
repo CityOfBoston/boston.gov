@@ -127,6 +127,7 @@ permissions:
   - 'access toolbar'
   - 'access user profiles'
   - 'administer account settings'
+  - 'administer ai-enabled search permission'
   - 'administer boston'
   - 'administer content moderation notifications'
   - 'administer content types'
@@ -298,3 +299,4 @@ permissions:
   - 'view latest version'
   - 'view private files'
   - 'view salesforce mapping'
+  - 'administer ai-enabled search permission'

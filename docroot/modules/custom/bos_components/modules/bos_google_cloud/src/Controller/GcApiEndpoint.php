@@ -78,7 +78,7 @@ class GcApiEndpoint extends ControllerBase {
    * AI Conversation of boston.gov endpoint.
    *
    * Requires an array with "text" and optionally "prompt" in its JSON payload,
-   * and possibly a conversation_id to continue a previous conversation.
+   * and possibly a session_id to continue a previous conversation.
    *
    * @param array $payload
    *
@@ -86,7 +86,7 @@ class GcApiEndpoint extends ControllerBase {
    */
   private function converse(array $payload): CacheableJsonResponse {
 
-    if ($payload["conversation_id"]) {
+    if ($payload["session_id"]) {
       $payload["allow_conversation"] = TRUE;
     }
 
@@ -99,7 +99,7 @@ class GcApiEndpoint extends ControllerBase {
 
     $response = $converse->response();
     if ($payload["allow_conversation"]) {
-      return $this->output($result . "\r\nid: " . $response["conversation_id"], $response["http_code"]);
+      return $this->output($result . "\r\nid: " . $response["session_id"], $response["http_code"]);
     }
     return $this->output($result, $response["http_code"]);
 

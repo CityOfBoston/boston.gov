@@ -1,0 +1,26 @@
+.goc-grid .card {}
+.goc-grid  .card-wrapper {
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: none;
+}
+.goc-grid .card-wrapper {
+  border: none;
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 1rem;
+  height: fit-content;
+}
+.goc-grid .card-title {}
+.goc-grid .card-subtitle {}
+.goc-grid .card-wrapper div.card-content-wrapper {
+  padding: 0;
+  height: 120px;
+  text-align: center;
+  border: none;
+}
+.goc-grid .card-wrapper .card-content-wrapper div.card-content {
+  color: #091f2f; /* Charles Blue */
+  margin: auto 20px;
+  line-height: 1.2rem;
+}
+.goc-grid .card-image {}

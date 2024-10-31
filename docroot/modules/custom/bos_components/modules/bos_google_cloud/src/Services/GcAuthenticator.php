@@ -440,4 +440,33 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
     throw new Exception($this->error());
   }
 
+  /**
+   * @inheritDoc
+   */
+  public function hasFollowup(): bool {
+    return FALSE;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getSettings(): array {
+    return [];
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function availablePrompts(): array {
+    return [];
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public static function ajaxTestService(array &$form, FormStateInterface $form_state): array {
+    // not required.
+    return [];
+  }
+
 }

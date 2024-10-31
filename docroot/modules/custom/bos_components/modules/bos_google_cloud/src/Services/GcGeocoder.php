@@ -385,7 +385,7 @@ class GcGeocoder extends BosGeoCoderBase implements GcServiceInterface {
    *
    * @return array
    */
-  public static function ajaxTestService(array $form, FormStateInterface $form_state): array {
+  public static function ajaxTestService(array &$form, FormStateInterface $form_state): array {
 
     $address = new BosGeoAddress();
     $address->setSingleLineAddress("1 Cityhall plaza, Boston, MA");
@@ -447,6 +447,29 @@ class GcGeocoder extends BosGeoCoderBase implements GcServiceInterface {
    */
   public function setServiceAccount(string $service_account): GcServiceInterface {
     throw new Exception("There is no service account conmcept for geocoder");
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function hasFollowup(): bool {
+    // Not applicable
+    return FALSE;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getSettings(): array {
+    return $this->settings[$this->id()];
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function availablePrompts(): array {
+    // Not implemented
+    return [];
   }
 
 }

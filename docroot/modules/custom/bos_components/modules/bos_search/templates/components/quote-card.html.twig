@@ -1,0 +1,64 @@
+{#
+/**
+ * @file components/quote-card.html.twig
+ * Theme for a grid of cards
+ * @see https://patterns.boston.gov/components/detail/quote-card--default.html
+ *
+ * Variables which can be used are:
+ *  attributes - an array of attributes for the outside wrapper around the
+ *               card component.
+ *  quote_text - The actual quote body.
+ *  picture - A URL for an image to be shown above the persons name.
+ *  show_quotes - boolean flag for whether quotes image should be shown.
+ *                Note: defaults to FALSE if picture has a value.
+ *  link - A URL link which apoears above the persons name.
+ *  link_text - The text for the link.
+ *  location - A location printed below the persons name.
+*/
+#}
+
+{%
+  set classes = [
+    "goq",
+    "g--3",
+    "g--3--sl",
+    "m-t500",
+    "m-b300"
+  ]
+%}
+
+{{  attach_library("bos_search/component.quote_card") }}
+
+<div {{ attributes.addClass(classes) }}>
+
+  <div class="goq-quote-text">"{{ content }}"</div>
+
+  <div class="goq-quote-details">
+
+    {% if picture or show_quotes %}
+      <div class="goq-quote-photo">
+        {% if not picture and show_quotes %}
+          <img src="https://patterns.boston.gov/images/global/icons/quote.svg" alt="No picture available">
+        {% endif %}
+        {% if picture %}
+          <img src="{{ picture }}" alt="No picture available">
+        {% endif %}
+        {% if link %}
+          <a href="{{ link }}" hreflang="und">{{ link_text }}</a>
+        {% endif  %}
+      </div>
+    {% endif %}
+
+    {% if person or location %}
+      <div class="goq-quote-person-details">
+        {% if person %}
+          <div class="goq-quote-name">{{ person }}</div>
+        {% endif %}
+        {% if location %}
+          <div class="goq-quote-location">{{ location }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>

@@ -80,7 +80,7 @@ class BosCurlControllerBase {
    * @return CurlHandle
    * @throws Exception
    */
-  public function makeCurl(string $post_url, array|string $post_fields, array $headers = [], string $type = "POST", bool $insecure = FALSE): CurlHandle {
+  public function makeCurl(string $post_url, array|string|NULL $post_fields, array $headers = [], string $type = "POST", bool $insecure = FALSE): CurlHandle {
 
     // Merge and encode the headers for CuRL.
     // Any supplied headers will overwrite the defaults headers.
@@ -126,7 +126,9 @@ class BosCurlControllerBase {
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
       curl_setopt($ch, CURLOPT_URL, $post_url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+      if ($type == "POST") {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+      }
       curl_setopt($ch, CURLOPT_HTTPHEADER, $_headers);
       curl_setopt($ch, CURLOPT_HEADER, $this->get_response_headers);
       curl_setopt($ch, CURLINFO_HEADER_OUT, $this->get_response_headers);
@@ -334,6 +336,16 @@ class BosCurlControllerBase {
 
   }
 
+  public function get(string $post_url, NULL|array|string $post_fields, array $headers = []): array|bool {
+    try {
+      $this->makeCurl($post_url, $post_fields, $headers, "GET", FALSE);
+      return $this->executeCurl(FALSE);
+    }
+    catch (Exception $e) {
+      return FALSE;
+    }
+
+  }
   /**
    * Errors from most recent CuRL operation.
    *

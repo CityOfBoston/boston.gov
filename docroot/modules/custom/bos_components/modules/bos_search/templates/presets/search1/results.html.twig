@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Template for the Search Results Output.
+ *
+ * Available variables:
+ * - content: The question prompting this response.
+ * - response: The AI generated response as text.
+ * - items: An array of serach results, each element has
+ *      - "content" => Extract from page defined by "link"
+ *      - "id" => A unique id for the result
+ *      - "link" => A link to the page result
+ *      - "link_title" => A title for the page result, usually to the canonical homepage
+ *      - "ref" => The reference to the result from the AI Model
+ *      - "summary" => A summary of the page result
+ *      - "title" => A title for the page result
+ * - metadata: An array with metadata returned by the AI Model.
+ * - references: An array with references returned by the AI Model.
+ * - citations: An array with citations returned by the AI Model.
+ * - id: The conversation ID for persistence.
+ */
+#}
+<article class="search-results-outer-wrapper">
+
+  <div class="search-request-wrapper">
+    <div class="search-request">{{ content }}</div>
+  </div>
+
+  <div class="search-response-wrapper">
+    {% if response %}
+      <div class="search-response">
+        {{ response }}
+
+{#      <div class="ai-feedback-item speaker"></div>#}
+
+        {{ feedback }}
+
+        {% if citations %}
+          <div class="search-citations-wrapper">
+            {% for key,citation in citations %}
+              {%  if citation %}
+                <div class="search-citation search-citation-{{ key }}">{{ key }}:{{ citation.title }}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="search-results-wrapper">
+      <div class="txt-l">Useful Links</div>
+      <ol>
+        {% for key,item in items %}
+        <div class="search-result-wrapper search-result-{{ key }}">
+          <li>
+            <span class="search-result-title"><a href="{{ item.link }}">{{ item.title }}</a></span>
+            <div class="search-result">{{ item.summary|raw }}</div>
+            <a class="search-result-link" href="{{ item.link }}">{{ item.link }}</a>
+            <a class="search-result-link-mobile" href="{{ item.link }}">Page Link</a>
+          </li>
+        </div>
+      {% endfor %}
+      </ol>
+    </div>
+
+    {% if metadata %}
+      <div class="search-metadata-wrapper">
+        <h2>MetaData</h2>
+        {% for key,meta in metadata %}
+          <div class="search-metadata-set-wrapper">
+            <div class="h3">{{ key }}</div>
+              <table>
+                {% for title,value in meta %}
+                  <tr><td class="search-metadata search-metadata-{{ value.key }}">{{ title }}</td><td>{{ value.value }}</td></tr>
+                {% endfor %}
+              </table>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+
+</article>

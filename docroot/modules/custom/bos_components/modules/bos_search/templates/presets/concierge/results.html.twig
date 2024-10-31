@@ -1,0 +1,143 @@
+{#
+/**
+ * @file
+ * Template for the Search Results Output.
+ *
+ * Available variables:
+ * - content: The question prompting this response.
+ * - response: The AI generated response as text.
+ * - items: An array of serach results, each element has
+ *      - "content" => Extract from page defined by "link"
+ *      - "id" => A unique id for the result
+ *      - "link" => A link to the page result
+ *      - "link_title" => A title for the page result, usually to the canonical homepage
+ *      - "ref" => The reference to the result from the AI Model
+ *      - "summary" => An annotated summary of the page result
+ *      - "body" => A plain text summary of the page result
+ *      - "title" => A title for the page result
+ * - metadata: An array with metadata returned by the AI Model.
+ * - references: An array with references returned by the AI Model.
+ * - citations: An array with citations returned by the AI Model.
+ * - id: The conversation ID for persistence.
+ */
+#}
+
+{% set ran = random(0,10000000) %}
+  <div class="search-response-wrapper">
+    {% if response %}
+      <div class="search-response">
+        <div class="search-response-title">SUMMARY</div>
+        <div class="search-response-text">{{ response|raw }}</div>
+{#        <div class="ai-feedback-item speaker"></div>#}
+      </div>
+
+      <div class="search-citations-wrapper{{ citations ? "" : " hide-citation" }}">
+        {% if citations %}
+
+          <div class="search-citations-title">SOURCE LINKS</div>
+          <div class="search-citations-drawer dr">
+            <input type="checkbox" id="dr-tr1" class="dr-tr a11y--h">
+            <label for="dr-tr1" class="dr-h">
+              <div class="dr-ic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 8.5 18 25">
+                  <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+                </svg>
+              </div>
+              <div class="dr-t">View source links</div>
+            </label>
+
+            <div class="dr-c">
+              {% for key,citation in citations %}
+                {%  if citation %}
+                  <a class="search-citation search-citation-{{ key }}" href="{{ citation.uri }}" target="_blank" rel="noopener noreferrer">[{{ citation.seq }}] {{ citation.title }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="search-citation-more-wrapper">
+              <a class="search-citation search-citation-more button btn--b" tabindex="0">Show All</a>
+            </div>
+
+          </div>
+
+        {% endif %}
+      </div>
+
+      {% if feedback %}
+        {{ feedback }}
+      {% endif %}
+
+    {% endif %}
+  </div>
+
+  <div class="clearfix"></div>
+  {% if items %}
+  <div class="search-results-wrapper">
+    <div class="results-title txt-l">ADDITIONAL RESOURCES</div>
+    {% for key,item in items %}
+      <div class="search-result-wrapper search-result-{{ key }}">
+        <a class="search-result-anchor search-anchor-{{ key }}" href="{{ item.link }}" target="_blank"  rel="noopener noreferrer">
+          <div>
+            <span class="search-result-title">{{ item.title }}</span>
+
+            {# If the content field has non-english chars, then do not print.  #}
+            {% if not item.content|raw|has_non_english_chars %}
+              <div class="search-result">{{ item.content|raw|smart_trim_words(75, " ...") }}</div>
+            {% endif %}
+
+            <div class="search-result-sub">{{ item.summary|raw}}</div>
+            <div class="search-result-link">{{ item.link }}</div>
+            <div class="search-result-link-mobile">Page Link</div>
+          </div>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if metadata %}
+
+    <div class="search-metadata-wrapper dr">
+      <input type="checkbox" id="dr-md-{{ ran }}" class="dr-tr a11y--h">
+      <label for="dr-md-{{ ran }}" class="dr-h">
+        <div class="dr-ic">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-2 8.5 18 25">
+            <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+          </svg>
+        </div>
+        <div class="dr-t">METADATA</div>
+      </label>
+
+      <div class="dr-c">
+        {% for key,meta in metadata %}
+          <div class="search-metadata-set-wrapper">
+
+            {% set ran2 = random(0,10000000) %}
+
+            <div class="search-metadata-wrapper dr">
+              <input type="checkbox" id="dr-md-{{ ran2 }}" class="dr-tr a11y--h">
+              <label for="dr-md-{{ ran2 }}" class="dr-h">
+                <div class="dr-ic">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="-2 8.5 18 25">
+                    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+                  </svg>
+                </div>
+                <div class="dr-t">{{ key }}</div>
+              </label>
+
+              <div class="dr-c">
+                <table>
+                  {% for title,value in meta %}
+                    <tr><td class="search-metadata-title search-metadata-{{ value.key }}-title">{{ title|raw }}</td>
+                      <td class="search-metadata-value search-metadata-{{ value.key }}-value">{{ value.value|raw }}</td></tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+    <div class="clearfix"></div>
+  {% endif %}

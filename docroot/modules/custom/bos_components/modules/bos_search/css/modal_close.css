@@ -1,0 +1,97 @@
+.modal-close-wrapper {
+  display:none;
+  flex-direction: row;
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  position: sticky;
+  min-height: 72px;
+  background-color: #ffffff;
+  z-index: 10;
+  color: #58585b;
+}
+.aienabledsearchform.has-results .modal-close-wrapper {
+  display:flex;
+  background-color: #ffffff;
+}
+
+.modal-close-wrapper .ai-form-reset {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  margin-top: 25px;
+}
+.modal-close-wrapper .ai-reset-button {
+  padding: 8px 22px 8px 16px;
+  display: block;
+  max-height: 44px;
+  line-height: calc(1em + 10px);
+  border-radius: 4px;
+  font-size: calc(1em - 2px);
+}
+.modal-close-wrapper .ai-form-reset{
+  background: rgba(40, 139, 228, 0.10);
+}
+.modal-close-wrapper .ai-form-reset:hover{
+  background: rgba(40, 139, 228, 0.20);
+}
+.modal-close-wrapper .ai-form-reset:active{
+  background: rgba(40, 139, 228, 0.40);
+}
+
+.modal-close-wrapper .ai-reset-button:after {
+  content: "Reset Search";
+  margin: 0 0 0 28px;
+  width: max-content;
+  display: block;
+}
+.modal-close-wrapper .ai-reset-button:before {
+  content: "";
+  background-image: url("../img/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  border: none;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 20px;
+  width: 20px;
+  margin-left: 16px;
+  margin-right: 8px;
+  background-size: 20px;
+  display: block;
+}
+.modal-close-wrapper .modal-close {
+  background-image: url("../img/modal_close.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  right: 24px;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  top: 37px;
+}
+.modal-close-wrapper .ai-form-reset:hover,
+.modal-close-wrapper .modal-close:hover {
+  cursor: pointer;
+}
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+
+@media screen and (min-width: 480px) {
+
+  .modal-close-wrapper {}
+  .ai-form-reset {  }
+  .ai-form-reset .ai-reset-button {  }
+
+  .ai-form-reset .ai-reset-button .ai-reset-icon:before {
+    scale: 100%;
+    top: 26px;
+    margin-left: 10px;
+  }
+}

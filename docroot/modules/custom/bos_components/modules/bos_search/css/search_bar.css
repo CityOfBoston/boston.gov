@@ -1,0 +1,117 @@
+
+div.search-bar-wrapper {
+  font-family: 'Lora', 'Georgia', serif;
+  color: #091F2F;    /* Charles Blue */
+  width: 100%;
+  margin: 0 auto 0 auto;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+div.search-bar-title {
+  margin: 0 auto;
+  width: 80%;
+}
+div.search-bar-input-wrapper {
+  position: relative;
+}
+div.search-bar-input {
+  background-color: rgba(40, 139, 228, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(40, 139, 228, 1);
+  padding: 2px;
+  font-size: calc(1em - 2px);
+  margin: 0;
+}
+div.search-bar-input:focus,
+div.search-bar-input:focus-within,
+div.search-bar-input:hover,
+div.search-bar-input:active {
+  border: 3px solid rgba(40, 139, 228, 1);
+  padding: 0;
+}
+
+div.search-bar-submit {
+  background-position: center;
+  background-color: rgba(24, 113, 189, 0.8);
+  background-repeat: no-repeat;
+  border: 1px solid rgba(24, 113, 189, 0.5); /* Optimistic Blue 50% */
+  border-radius: 8px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  height: 44px;
+  width: 44px;
+  font-size: inherit;
+}
+div.search-bar-submit:hover,
+div.search-bar-submit:hover:not(:disabled),
+div.search-bar-submit:active {
+  background-color: rgba(24, 113, 189, 1);
+}
+div.search-bar-microphone {
+  background-image: url("../img/microphone.svg");
+  background-position: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 8px;
+  position: absolute;
+  right: 72px;
+}
+div.search-bar-microphone:hover,
+div.search-bar-microphone:hover:not(:disabled),
+div.search-bar-microphone:active{
+  background-color: rgba(24, 113, 189, 0.5);
+}
+input.search-bar {
+  color: #091f2f; /* Charles Blue */
+  line-height: calc(48px * 1.2);
+  background-color: transparent;
+  border:0;
+  height: 44px;
+  margin: 8px 0 8px 0;
+  padding: 0 12px 0 24px;
+  font-size: calc(1em + 2px);
+  width: calc(100% - 70px);
+  outline: none;
+}
+.search-bar:focus-visible {
+}
+input.search-bar.searching,
+.search-bar::placeholder {
+  color: rgba(9, 31, 47, 0.5); /* Charles Blue 50% */
+  font-style: normal;
+  font-size: 1em;
+}
+div.search-bar-description {
+  text-align: center;
+  color: #555;
+  margin: 3px auto 0 auto;
+  font-size: calc(1em - 4px);
+  line-height: 14px;
+}
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+
+@media screen and (min-width: 480px) {
+  input.search-bar {
+    height: 48px;
+  }
+  div.search-bar-submit {
+    height: 48px;
+    width: 48px;
+  }
+  div.search-bar-input-wrapper {
+    width: 100%;
+    margin: 5px auto 0 auto;
+  }
+  div.search-bar-description {
+    font-size: calc(1em + -2px);
+    padding: 8px 0 8px 0;
+  }
+  div.search-bar-input {
+    font-size: calc(1em + 2px);
+  }
+}

@@ -1,0 +1,43 @@
+{#
+  /**
+   * @file components/grid-of-cards.html.twig
+   * Theme for a grid of cards
+   * @see https://patterns.boston.gov/components/detail/card--grid.html
+   *
+   * Variables which can be used are:
+   *  attributes - an array of attributes for the outside wrapper around the
+   *               grid component.
+   *  title - a title for the grid.
+   *  attributes - an array of attributes for the title.
+   *  cards - an array of cards.
+  */
+#}
+{%
+  set classes = [
+    "b--w",
+    "b--fw",
+    "grid-of-cards"
+  ]
+%}
+{%
+  set title_classes = [
+    "txt-l",
+    "goc-title"
+  ]
+%}
+
+{{  attach_library("bos_search/component.grid_of_cards") }}
+
+<div {{ attributes.addClass(classes) }}>
+  <div class="b-c goc-wrapper">
+
+    {% if title %}
+      <div {{ title_attributes.addClass(title_classes) }}>{{ title }}</div>
+    {% endif %}
+
+    <div class="g goc-grid">
+      {{ cards }}
+    </div>
+
+  </div>
+</div>

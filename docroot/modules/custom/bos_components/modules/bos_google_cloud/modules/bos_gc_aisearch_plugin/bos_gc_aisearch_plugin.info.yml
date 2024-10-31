@@ -1,0 +1,8 @@
+name: 'Google Cloud AiSearch Plugin'
+type: module
+description: 'Plugin so that AiSearch (bos_search) can use google_cloud services.'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - bos_search
+config_devel: { }

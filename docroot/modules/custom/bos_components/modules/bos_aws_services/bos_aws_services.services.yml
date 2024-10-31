@@ -1,0 +1,4 @@
+services:
+  bos_aws_services.kendra:
+    class: Drupal\bos_aws_services\Services\AwsKendraService
+    arguments: ['@logger.factory', '@config.factory']

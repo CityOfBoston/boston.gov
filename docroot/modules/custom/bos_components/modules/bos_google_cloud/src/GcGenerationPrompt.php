@@ -3,6 +3,7 @@
 namespace Drupal\bos_google_cloud;
 
 use Drupal;
+use Drupal\bos_google_cloud\Services\GcConversation;
 use Drupal\bos_google_cloud\Services\GcSearch;
 use Drupal\bos_google_cloud\Services\GcTextRewriter;
 use Drupal\bos_google_cloud\Services\GcTextSummarizer;
@@ -74,12 +75,18 @@ class GcGenerationPrompt {
    */
   public static function getPrompts(string $config_key): array {
 
+    // Search and conversation use shared prompts.
+    if ($config_key == GcConversation::id()) {
+      $config_key = GcSearch::id();
+    }
+
     $config = Drupal::config("bos_google_cloud.prompts")->get($config_key) ?? "";
 
     switch ($config_key) {
       case "base": $defaults = self::BASE_PROMPTS; break;
       case GcTextSummarizer::id(): $defaults = self::SUMMARIZE_PROMPTS; break;
       case GcTextRewriter::id(): $defaults = self::REWRITE_PROMPTS; break;
+      case GcConversation::id():
       case GcSearch::id(): $defaults = self::SEARCH_CONVERSATION_PROMPTS; break;
       case GcTranslation::id(): $defaults = self::TRANSLATION_LANGUAGES; break;
       default: return [];
@@ -155,12 +162,12 @@ class GcGenerationPrompt {
       'search_wrapper' => [
         '#type' => 'details',
         '#title' => t('Search Prompts'),
-        "search" => [
+        GcSearch::id() => [
           '#type' => 'textarea',
           '#title' => t('Prompts used by Search and Conversation'),
           '#description' => $description,
-          '#default_value' => self::stringifyPrompts(self::getPrompts("search")),
-          '#rows' => count(self::getPrompts("search"))+2,
+          '#default_value' => self::stringifyPrompts(self::getPrompts(GcSearch::id())),
+          '#rows' => count(self::getPrompts(GcSearch::id()))+2,
           '#required' => TRUE,
         ],
       ],

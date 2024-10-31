@@ -1,0 +1,15 @@
+{{ attach_library("bos_search/snippet.search_button") }}
+
+{% if display == "modal" %}
+  {% set query = "?preset=#{ preset }&title=#{ button_title }&display=#{ display }" %}
+  {% set button_css = button_css ~ ' use-ajax'  %}
+{% else %}
+  {% set query = "?preset=#{ preset }&display=#{ display }" %}
+{% endif %}
+
+<div class="aienabledsearchbutton g preset-theme-{{ preset_theme }}">
+  <a class="button {{ button_css }}" href="{{ search_form_url }}{{ query }}">{{ button_title }}</a>
+  {% if body %}
+    <legend class="legend">{{ body|raw }}</legend>
+  {% endif %}
+</div>

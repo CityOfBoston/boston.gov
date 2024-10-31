@@ -1,0 +1,73 @@
+{#
+/**
+ * @file components/card.html.twig
+ * Theme for a grid of cards
+ * @see https://patterns.boston.gov/components/detail/quote-card--default.html
+ *
+ * Variables which can be used are:
+ *  attributes - an array of attributes for the outside wrapper around the
+ *               card component.
+ *  quote_text - The actual quote body.
+ *  picture - A URL for an image to be shown above the persons name.
+ *  show_quotes - boolean flag for whether quotes image should be shown.
+ *                Note: defaults to FALSE if picture has a value.
+ *  link - A URL link which apoears above the persons name.
+ *  link_text - The text for the link.
+ *  location - A location printed below the persons name.
+*/
+#}
+
+{%
+  set classes = [
+    "cd",
+    "m-t500",
+    "g--4",
+    "g--4--sl",
+    "card",
+    "card-wrapper"
+  ]
+%}
+{%
+  set title_classes = [
+    "cd-t",
+    "card-title"
+  ]
+%}
+{%
+  set subtitle_classes = [
+    "t--upper",
+    "t--subtitle",
+    "cd-st",
+    "card-subtitle"
+  ]
+%}
+{%
+  set content_classes = [
+  "cd-d",
+  "card-content"
+]
+%}
+
+{{  attach_library("bos_search/component.card") }}
+
+<a {{ attributes.addClass(classes) }} href="{{ link ? link : "#" }}">
+
+  {% if image %}
+    <div class="cd-ic card-image" style="background-image: url({{ image }})"></div>
+  {% endif %}
+
+  <div class="cd-c card-content-wrapper">
+
+    {% if title %}
+      <div{{ title_attributes.addClass(title_classes) }}>{{ title }}</div>
+    {% endif %}
+
+    {% if subtitle %}
+      <div{{ subtitle_attributes.addClass(subtitle_classes) }}>{{ subtitle }}</div>
+    {% endif %}
+
+    <div{{ content_attributes.addClass(content_classes) }}>{{ content }}</div>
+
+  </div>
+
+</a>

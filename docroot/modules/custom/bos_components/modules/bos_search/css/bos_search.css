@@ -1,0 +1,528 @@
+/**
+ * OVERLAY
+ */
+.ui-widget-overlay.ui-front {
+  background-color: #1871bd;
+  opacity: .5;
+}
+
+/***
+ * MOBILE FIRST CSS.
+ */
+
+/**
+ * GENERAL FORM SETTINGS
+ *  .aienabledsearchform is the outermost dimension of the search form = container
+ *  .aisearch-modal-form (on .aienabledsearchform) means in a modal dialog window
+ *  Rules apply to all screen sizes with @media (min-width: 480px) denoting breakpoint for (responsive) desktop
+ */
+.aienabledsearchform {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+/**
+ * MODAL DIALOG WINDOW
+ */
+.aienabledsearchform.aisearch-modal-form {
+  left: 1% !important;
+  top: 5px !important;
+  width: 98% !important;
+  z-index: 550 !important;
+}
+#drupal-modal {
+  padding: 0;
+}
+.aisearch-modal-form.ui-dialog.ui-corner-all {
+  /* place border around the modal dialog */
+  border-radius: 10px;
+  padding-bottom: 0;
+}
+
+/**
+ * MODAL DIALOG TITLEBAR
+ */
+.aisearch-modal-form .ui-dialog-titlebar {
+}
+.aisearch-modal-form .ui-titlebar-hidden {
+  display:none;
+}
+.aisearch-modal-form .ui-dialog-titlebar .ui-dialog-title {}
+.aisearch-modal-form .ui-dialog-titlebar .ui-dialog-titlebar-close {}
+.aisearch-modal-form .ui-dialog-titlebar .ui-icon-closethick {}
+
+/**
+ * Set modal window button states
+ */
+.aisearch-modal-form .ai-form-reset {
+}
+.aisearch-modal-form .ai-reset-button {
+  background-color: rgba(40, 139, 228, 0.1);
+  border-radius: 10px
+}
+.aisearch-modal-form .ai-reset-button:hover {
+  background-color: rgba(40, 139, 228, 0.2);
+}
+.aisearch-modal-form .ai-reset-button:active {
+  background-color: rgba(40, 139, 228, 0.4);
+}
+
+/**
+ * FORM MAIN CONTENT
+ */
+/**
+ *  Cards
+ */
+#welcome-cards #edit-cards {
+  margin-top: 0;
+  font-size: 16px;
+}
+#welcome-cards #edit-cards .goc-wrapper {
+  margin-bottom: 16px;
+}
+#welcome-cards #edit-cards .goc-grid {
+  margin-top: 31px;
+}
+#welcome-cards #edit-cards .goc-title {
+  font-size: calc(1em - 2px);
+}
+/**
+ * Search Results area
+ */
+.bos-search-aisearchform #edit-searchresults {margin: 50px 0;}
+.bos-search-aisearchform .search-results-outer-wrapper {
+  margin-top:  36px;
+  padding: 0 10px;
+}
+#drupal-modal.no-welcome #edit-welcome {
+  display:none;
+}
+
+/**
+ * Original Question
+ */
+.bos-search-aisearchform .search-request-wrapper {
+  margin: 78px 0 24px 0;
+  width: 100%;
+}
+.bos-search-aisearchform .search-request {
+  background-color: rgba(24, 113, 189, 0.1); /* Optimistic Blue 10% */
+  border: 1px solid rgba(24, 113, 189, 0.7);  /* Optimistic Blue 70% */
+  border-radius: 12px 0 12px 12px;
+  color: #091f2f;   /* Charles Blue */
+  padding: 16px 8px;
+  font-style: normal;
+  text-align: right;
+  margin: 0 0 0 0;
+  max-width: 85%;
+  float: right;
+  overflow-wrap: anywhere;
+}
+.bos-search-aisearchform .search-request-progress-wrapper {
+  padding-top: 32px;
+}
+.bos-search-aisearchform .search-request-progress:last-child {
+  display: none;
+}
+
+.aienabledsearchform #search-conversation-wrapper .search-request-wrapper .search-request-progress {
+  background-image: url(../img/loading1_550.gif);
+  width: 100%;
+  background-size: 100% 75%;
+  background-repeat: no-repeat;
+  height: calc(80vw * 300 / 550);
+  opacity:  0.2;
+}
+
+/**
+ * Long Answer
+ */
+.bos-search-aisearchform .search-response-wrapper {
+  margin: 24px 0;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 0 0 0;
+  display: flex;
+  flex-flow: column;
+}
+.bos-search-aisearchform .search-response {
+  padding: 0;
+  color: #585858;
+  font-size: 1em;
+  margin-bottom: 24px;
+}
+.bos-search-aisearchform .search-response-title {
+  padding-left: 42px;
+  margin-bottom: 24px;
+  font-size: calc(1em + 2px);
+  font-family:  Montserrat, Arial, sans-serif;
+  font-weight: 700;
+  color: #091F2F;
+  letter-spacing: 1px;
+  padding-top: 12px;
+}
+.bos-search-aisearchform .search-response-title:before {
+  content: "";
+  background-image: url('../img/twinkle.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  margin-left: -42px;
+  margin-top: -8px;
+}
+/**
+ * Citations
+ */
+.aienabledsearchform .search-citations-title {
+  display:none;
+  color:  #091f2f;
+}
+.aienabledsearchform .search-citations-drawer .dr-c {
+  margin: 0;
+  padding: 16px 0;
+}
+.aienabledsearchform .search-citations-drawer .search-citation {
+  margin: 0 0 2px 0;
+  display: block;
+  font-size: 1em;
+  font-family: 'Lora', 'Georgia', serif;
+  line-height: calc(1em  * 1.3);
+  text-decoration: underline;
+  -webkit-box-orient: vertical;
+  color: #58585b;
+  padding: 16px;
+}
+.aienabledsearchform .search-citations-drawer.show-more .search-citation:hover {
+  color: #1871bd;
+  background-color: #F2F2F2;
+  border-radius:  2px;
+}
+.aienabledsearchform .search-citations-drawer.show-more .search-citation:focus,
+.aienabledsearchform .search-citations-drawer.show-more .search-citation:active {
+  color: #175182;
+  background-color: #f2f2f2;
+  border-radius:  2px;
+}
+/**
+ * List of links
+ */
+.bos-search-aisearchform .search-results-wrapper {
+    margin-top: 24px;
+    padding: 0 0 0 0;
+    margin-bottom: 24px;
+}
+.bos-search-aisearchform .search-results-wrapper .results-title {
+  font-size: calc(1em + 2px);
+  line-height: calc((1em + 2px) * 1.3);
+  margin-bottom: 24px;
+}
+.bos-search-aisearchform .search-result-wrapper {
+  padding: 16px 12px 16px 0;
+  max-width: 100%;
+  width: 100%;
+}
+.bos-search-aisearchform .search-result-wrapper:hover {
+  background-color: #F2F2F2;
+  margin-left: -12px;
+  padding-left: 12px;
+  width: calc(100% + 12px);
+  max-width:  calc(100% + 12px);
+}
+.bos-search-aisearchform .search-result-wrapper:active {
+  background-color: rgba(40,139,228,0.10);
+}
+.bos-search-aisearchform .search-result-wrapper:visited {}
+.bos-search-aisearchform .search-result-title {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: calc(1em + 2px);
+  line-height: calc((1em + 2px) * 1.2);
+  font-weight:  700;
+  margin-bottom: 12px;
+}
+.bos-search-aisearchform .search-result-title {
+  color: #1871bd; /* Charles Blue */
+  height: 100%;
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+.bos-search-aisearchform .search-result-sub,
+.bos-search-aisearchform .search-result {
+  font-size: 1em;
+  line-height: 1.75em;
+  color: #58585B;
+  margin-bottom: 12px;
+}
+.bos-search-aisearchform .search-result-sub {
+  font-size: calc(1em - 2px);
+}
+.bos-search-aisearchform .search-result-link-mobile {
+  display: none;
+  text-decoration: underline;
+  color: #58585b;
+}
+.bos-search-aisearchform .search-result-link {
+  display: block;
+  color: #58585B;
+  text-decoration: underline;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.bos-search-aisearchform .ajax-progress {
+  margin-left: 10%;
+}
+/**
+ * GENERAL
+ */
+.bos-search-aisearchform .br--4 {
+  border-radius: 4px;
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper {
+  padding: 12px;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper.bg--lb {
+  background-color: rgba(40, 139, 228, 0.1);
+  border: 0 solid rgba(40,139,228,0.1);
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper.bg--lb:focus-visible,
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper.bg--lb:focus,
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper.bg--lb:hover {
+  background-color: rgba(40, 139, 228, 0.2);
+  border: 0px solid rgba(40,139,228,0.2);
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper.bg--lb:active {
+  background-color: rgba(40, 139, 228, 0.4);
+  border: 0px solid rgba(40, 139, 228, 0.4);
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-content-wrapper {
+  padding: 0;
+  margin: auto 0;
+  height: max-content;
+  height: auto;
+  width: 100%;
+}
+.bos-search-aisearchform #welcome-cards #edit-cards .card-content {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.bos-search-aisearchform #welcome-copy {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 35px;
+}
+.bos-search-aisearchform #welcome-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 0;
+  color: #091f2f;
+  font-weight: 600;
+  font-size: calc(1em + 14px);
+  line-height: calc(1em + 14px);
+}
+.bos-search-aisearchform #welcome-body {
+  font-size: 1em;
+  margin-top: 31px;
+  margin-bottom: 31px;
+}
+.bos-search-aisearchform .ajax-progress .message {
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 1px;
+  color: #989898;
+  font-size: calc(1em + 2px);
+}
+.bos-search-aisearchform .ajax-progress-throbber .throbber {
+  background-size: 24px;
+  padding-right: 18px;
+}
+
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+
+@media screen and (min-width: 480px) {
+  .bos-search-aisearchform {
+  }
+  #drupal-modal {
+    padding: .5em 1em;
+  }
+  .aienabledsearchform #search-conversation-wrapper .search-request-wrapper div.search-request {
+    max-width: 60%;
+    margin: 0;
+    width: fit-content;
+    float: right;
+    position: relative;
+    /* z-index: 11; */
+  }
+  .aienabledsearchform #search-conversation-wrapper .search-request-wrapper .search-request {
+    width: 100%;
+    margin: 0 0 0 10%;
+  }
+  .aienabledsearchform #search-conversation-wrapper .search-request-wrapper .search-request-progress {
+    background-image: url(../img/loading1_550.gif);
+    width: 50%;
+    background-size: 97% 75%;
+    background-repeat: no-repeat;
+    height: calc(.67 * 300px);
+    clear: both;
+    opacity: .2;
+  }
+  .bos-search-aisearchform .search-response {
+  flex-basis: 60%;
+  padding-right: 40px;
+  flex-grow: 0;
+  }
+  .bos-search-aisearchform .search-response:before {
+    left: revert;
+    margin-top: -48px;
+    padding-left: calc(32px + 16px);
+  }
+  .bos-search-aisearchform #edit-welcome {
+  }
+  .bos-search-aisearchform #welcome-copy {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .bos-search-aisearchform #welcome-title {
+    margin: 0 0 48px 0;
+    padding: 0;
+    font-size: calc(1em + 30px);
+    line-height: normal;
+  }
+  .bos-search-aisearchform #welcome-body {
+    font-size: calc(1em + 2px);
+    margin: 0;
+    padding: 0;
+  }
+  .bos-search-aisearchform #welcome-cards {
+    margin: 24px 0 0 0;
+    padding: 0;
+  }
+  .bos-search-aisearchform .search-results-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+  .bos-search-aisearchform .search-result-wrapper {
+    padding: 12px 12px 12px 0;
+    margin-bottom: 22px;
+    margin-top: 22px;
+  }
+  .bos-search-aisearchform .search-result-title a {
+    margin-bottom: 0;
+  }
+  .bos-search-aisearchform .search-result-sub,
+  .bos-search-aisearchform .search-result {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+  .bos-search-aisearchform .search-result-link-mobile {
+    display: none;
+  }
+  .bos-search-aisearchform .search-result-link {
+    display: block;
+  }
+  .bos-search-aisearchform .ajax-progress {
+    margin-left: 10%;
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards .goc-grid {
+    column-gap: 30px;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+  .bos-search-aisearchform  .bos-search-aisearchform #welcome-cards #edit-cards .card-wrapper {
+    padding: 12px 16px;
+    margin: 0 0 0 0;
+  }
+
+  .bos-search-aisearchform  #welcome-cards #edit-cards .card-content-wrapper {
+    margin: 0;
+    padding: 0 4px;
+    display: block;
+  }
+
+  .bos-search-aisearchform #welcome-cards #edit-cards .card-content {
+    padding: 26px 0;
+    text-align: left;
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards .goc-wrapper {
+    margin-bottom: 132px;
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards .goc-title {
+    font-size: calc(1em);
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards .grid-of-cards, .grid-of-cards.b--fw {
+    margin:0;
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards {
+    width: 100%;
+    margin-top: 13px;
+  }
+  .bos-search-aisearchform  #welcome-cards #edit-cards .card-wrapper {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bos-search-aisearchform .search-request-wrapper {
+    width: 100%;
+  }
+  .bos-search-aisearchform .search-request-progress-wrapper {
+    display: flex;
+    flex-flow: row;
+    align-items: stretch;
+    padding-top: 48px;
+  }
+  .bos-search-aisearchform .search-request-progress:last-child {
+    display: block;
+  }
+  .aienabledsearchform .search-response-wrapper {
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 0;
+    font-size: calc(1em + 2px);
+    line-height: calc((1em + 2px)* 1.5);
+    margin-top: 36px;
+  }
+  .aienabledsearchform .search-citations-wrapper {
+    flex-basis: 40%;
+    flex-grow: 0;
+    background-color: #f9f9f9;
+  }
+  .aienabledsearchform .search-citations-wrapper.hide-citation {
+    background-color: transparent;
+  }
+  .aienabledsearchform .search-citations-wrapper:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .aienabledsearchform .search-citations-title {
+    display:block;
+    font-size: calc(1em + 2px);
+    font-weight:  700;
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 1px;
+    padding: 16px;
+    border-bottom: 2px solid #d2d2d2;
+  }
+  .aienabledsearchform .search-citations-drawer .dr-c,
+  .aienabledsearchform .search-citations-drawer {
+    background: initial;
+  }
+  .aienabledsearchform .search-citations-drawer label  {
+    display:none;
+  }
+  .aienabledsearchform .search-citations-drawer .dr-c  {
+    display:block;
+    padding: 16px 0 16px 0;
+  }
+}

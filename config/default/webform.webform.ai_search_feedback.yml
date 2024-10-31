@@ -1,0 +1,295 @@
+uuid: 81d75a42-403a-4f5f-bf57-af02f384feb1
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: ai_search_feedback
+title: 'AI Search Feedback'
+description: 'Feedback for the search AI form'
+categories: {  }
+elements: |-
+  happy:
+    '#type': checkbox
+    '#title': Happy
+    '#access': false
+  thumbsup:
+    '#type': webform_section
+    '#title': thumbsup
+    '#title_display': invisible
+    '#description_display': invisible
+    '#title_tag': ''
+    '#states':
+      visible:
+        ':input[name="happy"]':
+          checked: true
+    '#states_clear': false
+    what_went_well:
+      '#type': checkboxes
+      '#title': 'What went well?'
+      '#options':
+        correct: 'Correct Information -- The search returned information that is factually correct and useful to me.'
+        coherent: 'Easy to understand -- The search returned information that I found easy to understand and use.'
+      '#options_description_display': help
+      '#other__type': textarea
+      '#other__option_label': 'Tell us more'
+      '#other__placeholder': 'Share additional comments'
+      '#other__counter_type': character
+      '#other__counter_minimum': '1'
+      '#other__counter_maximum': '200'
+      '#other__counter_maximum_message': '200 characters allowed'
+  thumbsdown:
+    '#type': webform_section
+    '#title': thumbsdown
+    '#title_display': invisible
+    '#description_display': invisible
+    '#title_tag': ''
+    '#states':
+      visible:
+        ':input[name="happy"]':
+          unchecked: true
+    '#states_clear': false
+    what_went_wrong:
+      '#type': checkboxes
+      '#title': 'What went wrong?'
+      '#options':
+        hallucination: 'Incorrect Information -- The search returned information that is factually incorrect.'
+        outdated: 'Outdated Information -- The search returned information that was correct in the past, but is now out of date'
+        incoherent: 'Difficult to understand -- The search summary did not make sense, or was hard to understand.'
+        irrelevant: 'Not relevant to my query -- The search returned was not relevant to my query.<br>TIP, you can always re-frame your query and try again.'
+      '#options_description_display': help
+      '#other__type': textarea
+      '#other__option_label': 'Tell us more'
+      '#other__placeholder': 'Share additional comments'
+      '#other__counter_type': character
+      '#other__counter_minimum': '1'
+      '#other__counter_maximum': '200'
+      '#other__counter_maximum_message': '200 characters allowed'
+  tell_us_more:
+    '#type': textarea
+    '#title': 'Tell us more'
+    '#placeholder': 'Share additional comments'
+    '#autocomplete': ''
+    '#counter_type': character
+    '#counter_minimum': 10
+    '#counter_maximum': 200
+    '#counter_maximum_message': '200 characters allowed'
+  searchquestion:
+    '#type': hidden
+    '#title': SearchQuestion
+    '#attributes':
+      class:
+        - search-question
+  searchsummary:
+    '#type': hidden
+    '#title': SearchSummary
+    '#attributes':
+      class:
+        - search-summary
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#update_hide': true
+css: ''
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: slide
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: true
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements:
+    happy: happy
+  submission_exclude_empty: true
+  submission_exclude_empty_checkbox: true
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: 'Thank you for your feedback !'
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  post_to_bigquery:
+    id: bigquery_form_handler
+    handler_id: post_to_bigquery
+    label: 'Post to BigQuery'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      service_account: '1'
+      project: '738313172788'
+      dataset: ai-search-boston-gov-91793.AISearchFeedback
+      table: mytesttable
+variants: {  }

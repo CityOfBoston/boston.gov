@@ -1,0 +1,9 @@
+'view ai-enabled search permission':
+  title: 'View AI-Enabled Search Component'
+  description: 'Use the AI-enabled search to search the site content.'
+  restrict access: false
+
+'administer ai-enabled search permission':
+  title: 'Administer AI-Enabled Search Component'
+  description: 'Administer the AI-enabled search component.'
+  restrict access: true

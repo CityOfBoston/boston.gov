@@ -1,0 +1,31 @@
+uuid: 9f83fc29-e8dc-40c9-bba5-799b507f8d90
+langcode: en
+status: false
+dependencies:
+  module:
+    - bos_search
+    - system
+  theme:
+    - bos_theme
+id: bos_theme_aienabledsearchbutton_2
+theme: bos_theme
+region: content
+weight: -1
+provider: null
+plugin: Ai-enabled-search-button
+settings:
+  id: Ai-enabled-search-button
+  label: 'Modal Search Button'
+  label_display: visible
+  provider: bos_search
+  search_button_title: 'Search Modal'
+  search_button_css: ''
+  aisearch_config_preset: vertex_conversation
+  aisearch_config_display: '0'
+  aisearch_config_searchpage: ''
+  search_block_text: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /ai-search

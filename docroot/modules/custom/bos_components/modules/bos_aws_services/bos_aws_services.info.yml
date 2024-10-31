@@ -1,0 +1,8 @@
+name: 'AWS GenAI Services Integration'
+type: module
+description: 'Adds plugins and Drupal API for AWS-Kendra GenAI applications.'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - bos_search
+config_devel: { }

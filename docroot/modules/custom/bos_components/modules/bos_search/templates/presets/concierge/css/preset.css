@@ -1,0 +1,164 @@
+/* Locks the Searchbar to the bottom of the wrapper */
+.aienabledsearchform.aisearch-modal-form div.search-bar-wrapper,
+.aienabledsearchform.block-aisearchform div.search-bar-wrapper {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  padding-top: 4px;
+}
+
+.bos-search-aisearchform .search-request {
+  border: none;
+  text-align: left;
+}
+
+  /* Vertically locates the welcome area in the center of the window */
+.aienabledsearchform #bos-search-aisearchform #edit-searchresults #edit-welcome {
+}
+.aienabledsearchform .search-citations-wrapper {
+  margin-bottom: 24px;
+}
+.aienabledsearchform .search-citations-wrapper.hide-citation {
+  margin-bottom: 0;
+}
+.aienabledsearchform .search-citations-drawer .search-citation-more {
+  display:none;
+}
+.aienabledsearchform .search-citations-drawer {
+  margin: 0;
+  min-height:  44px;
+}
+
+.aienabledsearchform .search-citations-drawer label {
+  padding: 8px 53px 8px 16px;
+  width: 100%;
+  font-size: 1em;
+  line-height:  28px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.aienabledsearchform .search-citations-drawer label:hover {
+  background-color: #288be4;
+  color: #fff;
+}
+.aienabledsearchform .search-citations-drawer label:active {
+  background-color: #091f2f;
+  color: #fff;
+}
+.aienabledsearchform .search-citations-drawer .dr-ic {
+  right: 16px;
+  top: 22px;
+  height: 20px;
+  margin: 0;
+  width: 20px;
+  padding-top: 0px;
+  padding-right: 0px;
+  /* width: 24px; */
+}
+.aienabledsearchform .search-citations-drawer .dr-tr:checked~.dr-h .dr-ic {
+  margin-top: 0;
+}
+.aienabledsearchform .search-citations-drawer .dr-ic svg {
+}
+.aienabledsearchform .search-citations-drawer .dr-t {
+  line-height: 48px;
+}
+.block .aienabledsearchbutton {
+  display: flex;
+  flex-flow: column-reverse;
+}
+.block .aienabledsearchbutton .button {
+}
+.block .aienabledsearchbutton legend {
+}
+.block-aisearchform .modal-close-wrapper {
+  position: fixed;
+  width:100%;
+
+}
+.block-aisearchform .ai-form-reset {
+}
+.block-aisearchform .ai-reset-button:after {
+  content: "New Search";
+}
+.block-aisearchform .modal-close {
+  display: none;
+}
+.goc-grid .card-wrapper div.card-content-wrapper {
+  text-align: left;
+}
+.bos-search-aisearchform .search-request-wrapper:first-of-type {
+  margin-top: 100px;
+}
+.bos-search-aisearchform .search-metadata-set-wrapper table {
+  border-collapse: initial;
+  /* border-spacing: 8px; */
+}
+.bos-search-aisearchform .search-metadata-title {
+  vertical-align: middle;
+  width: 33%;
+  max-width: 40%;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  padding: 8px 8px;
+}
+.bos-search-aisearchform .search-metadata-value {
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+  padding: 8px;
+}
+.bos-search-aisearchform .search-metadata-wrapper {
+  background-color: #f3f3f3;
+}
+.bos-search-aisearchform .search-metadata-set-wrapper tbody tr:nth-child(even) td {
+  background-color: #f3f3f3;
+}
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+
+@media screen and (min-width: 480px) {
+  .aienabledsearchform.aisearch-modal-form div.search-bar-wrapper,
+  .aienabledsearchform.block-aisearchform div.search-bar-wrapper {
+    bottom: 0;
+    margin-left: -12px;
+    width: calc(100% + 12px);
+  }
+
+  .aienabledsearchform .search-bar-input-wrapper {
+    margin: 5px auto 0 12px;
+  }
+
+  .aienabledsearchform .search-citations-drawer.show-more .search-citation-more-wrapper {
+  background-color: #f9f9f9;
+  padding: 16px;
+  }
+  .aienabledsearchform #bos-search-aisearchform #edit-searchresults #edit-welcome {}
+  .aienabledsearchform .search-citations-drawer.show-more .search-citation-more {
+    display:block;
+    color: #1871bd;
+    background-color: #f2f2f2;
+    text-decoration: none;
+    font-size: calc(1em + 2px);
+    font-family: Montserrat, Arial, sans-serif;
+    margin-top: -16px;
+    border-radius:  2px;
+  }
+  .aienabledsearchform .search-citations-drawer.show-more .search-citation-more:hover,
+  .aienabledsearchform .search-citations-drawer.show-more .search-citation-more:focus,
+  .aienabledsearchform .search-citations-drawer.show-more .search-citation-more:active {
+    background-color: rgba(40, 139, 228, 0.10);
+  }
+  .block-aisearchform .modal-close-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    height: 80px;
+  }
+  .adminimal-admin-toolbar .block-aisearchform .modal-close-wrapper {
+    top: 120px;
+  }
+}

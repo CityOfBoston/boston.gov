@@ -1,0 +1,9 @@
+<?php
+
+/*
+  Main Drupal module for bos_gc_aisearch_plugin
+
+  david 07 2024
+  @file docroot/modules/custom/bos_components/modules/bos_google_cloud/modules/bos_gc_aisearch_plugin/bos_gc_aisearch_plugin.module
+
+*/

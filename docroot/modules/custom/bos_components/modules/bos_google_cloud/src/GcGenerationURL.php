@@ -7,7 +7,14 @@ use Drupal;
 class GcGenerationURL {
 
   public const CONVERSATION = 0;
-  public const PREDICTION = 1;
+
+  public const SEARCH = 1;
+  public const PREDICTION = 2;
+  public const DATASTORE = 4;
+  public const PROJECT = 8;
+  public const SEARCH_ANSWER = 16;
+  public const ENGINE = 32;
+
 
   /**
    * Creates the URL for the endpoint base don the specified $type.
@@ -20,6 +27,14 @@ class GcGenerationURL {
   public static function build(int $type, array $options):string|bool {
 
     switch ($type) {
+
+      case self::SEARCH_ANSWER:
+      case self::SEARCH:
+        if (empty($options["endpoint"]) || empty($options["project_id"])
+          || empty($options["location_id"]) || empty($options["engine_id"])) {
+          return FALSE;
+        }
+        return self::buildSearch($options["endpoint"], $options["project_id"], $options["location_id"], $options["engine_id"], $type);
 
       case self::CONVERSATION:
         if (empty($options["endpoint"]) || empty($options["project_id"])
@@ -34,6 +49,26 @@ class GcGenerationURL {
           return FALSE;
         }
         return self::buildPrediction($options["endpoint"], $options["project_id"], $options["location_id"], $options["model_id"]);
+
+      case self::DATASTORE:
+        if (empty($options["endpoint"]) || empty($options["project_id"])
+          || empty($options["location_id"])) {
+          return FALSE;
+        }
+        return self::buildDataStore($options["endpoint"], $options["project_id"], $options["location_id"]);
+
+      case self::ENGINE:
+        if (empty($options["endpoint"]) || empty($options["project_id"])
+          || empty($options["location_id"])) {
+          return FALSE;
+        }
+        return self::buildEngine($options["endpoint"], $options["project_id"], $options["location_id"]);
+
+      case self::PROJECT:
+        if (empty($options["endpoint"])) {
+          return FALSE;
+        }
+        return self::buildProject($options["endpoint"]);
 
       default:
         return FALSE;
@@ -68,6 +103,33 @@ class GcGenerationURL {
   }
 
   /**
+   * Produces the standardized URL/endpoint for the projects.locations.collections.engines.servingConfigs.search
+   * endpoint.
+   *
+   * @param string $endpoint
+   * @param string $project_id
+   * @param string $location_id
+   * @param string $engine_id
+   *
+   * @return string
+   *
+   * @see https://cloud.google.com/generative-ai-app-builder/docs/apis
+   * @see https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.collections.engines.servingConfigs
+   * @see https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.collections.engines.servingConfigs/search
+   */
+  private static function buildSearch(string $endpoint, string $project_id, string $location_id, string $engine_id, int $type): string {
+
+    $url = $endpoint;
+    $url .= "/v1alpha/projects/$project_id";
+    $url .= "/locations/$location_id";
+    $url .= "/collections/default_collection/engines/$engine_id";
+    $url .= "/servingConfigs/default_search:" ;
+    $url .= ($type == self::SEARCH ? "search" : "answer");
+    return $url;
+
+  }
+
+  /**
    *  Produces the standardized URL/endpoint for the models:streamGenerateContent
    *  endpoint.
    *
@@ -84,6 +146,60 @@ class GcGenerationURL {
     $url .= "/v1/projects/$project_id";
     $url .= "/locations/$location_id";
     $url .= "/publishers/google/models/$model_id:streamGenerateContent";
+    return $url;
+
+  }
+
+  /**
+   *  Produces the standardized URL/endpoint to query DataStores
+   *
+   * @param string $endpoint
+   * @param string $project_id
+   * @param string $location_id
+   *
+   * @return string
+   */
+  private static function buildDataStore(string $endpoint, string $project_id, string $location_id): string {
+
+    $url = $endpoint;
+    $url .= "/v1/projects/$project_id";
+    $url .= "/locations/$location_id";
+    $url .= "/collections/default_collection/dataStores";
+    return $url;
+
+  }
+
+  /**
+   *  Produces the standardized URL/endpoint to query Engines
+   *
+   * @param string $endpoint
+   * @param string $project_id
+   * @param string $location_id
+   *
+   * @return string
+   */
+  private static function buildEngine(string $endpoint, string $project_id, string $location_id): string {
+
+    $url = $endpoint;
+    $url .= "/v1/projects/$project_id";
+    $url .= "/locations/$location_id";
+    $url .= "/collections/default_collection/engines";
+    return $url;
+
+  }
+
+  /**
+   *  Produces the standardized URL/endpoint to query projects
+   *
+   * @param string $endpoint
+   *
+   * @return string
+   */
+  private static function buildProject(string $endpoint): string {
+
+    // For this to work the service account needs resourcemanager.projects.list
+    // permission on the organization. Right now, this has not been granted.
+    $url = "https://cloudresourcemanager.googleapis.com/v3/projects";
     return $url;
 
   }
@@ -112,6 +228,7 @@ class GcGenerationURL {
           ->get("vertex_ai.quota") ?? 10;   // # requests allowed in the window.
         break;
 
+      case self::SEARCH:
       case self::CONVERSATION:
         // Current limits found here:
         // @see https://console.cloud.google.com/iam-admin/quotas?project=vertex-ai-poc-406419&pageState=(%22allQuotasTable%22:(%22f%22:%22%255B%257B_22k_22_3A_22Name_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_22Conversation%2520other%2520operations%2520per%2520minute_5C_22_22_2C_22s_22_3Atrue_2C_22i_22_3A_22displayName_22%257D_2C%257B_22k_22_3A_22_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_22OR_5C_22_22_2C_22o_22_3Atrue_2C_22s_22_3Atrue%257D_2C%257B_22k_22_3A_22Name_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_22Conversational%2520search%2520read%2520requests%2520per%2520minute_5C_22_22_2C_22s_22_3Atrue_2C_22i_22_3A_22displayName_22%257D%255D%22))

@@ -24,6 +24,7 @@ permissions:
   - 'access workbench'
   - 'bypass honeypot protection'
   - 'download any document files'
+  - 'view ai-enabled search permission'
   - 'view files'
   - 'view media'
   - 'view own unpublished media'

@@ -1,0 +1,145 @@
+.aienableddisclaimerform {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  color: #58585b;
+  padding: 68px 32px 42px 32px;
+  border-radius: 2px;
+  width: 326px !important;
+  border: none !important;
+}
+.aienableddisclaimerform .ui-titlebar-hidden.ui-dialog-titlebar {
+  display: none;
+  position: absolute;
+  top: calc((40px - 13px) / 2 );
+  right: calc((40px - 13px) / 2 );
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  width: 326px;
+}
+.aienableddisclaimerform .ui-titlebar-hidden .ui-dialog-title {
+  display: none;
+}
+.aienableddisclaimerform .ui-titlebar-hidden .ui-dialog-titlebar-close {
+  background-color: transparent;
+  border: none;
+  width: 26px;
+  height: 26px;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  right: 0;
+}
+.aienableddisclaimerform .ui-titlebar-hidden .ui-icon-closethick {
+  background-image: url("../img/x.svg") ;
+  background-size: 13px;
+  background-position: unset;
+}
+.aienableddisclaimerform #drupal-modal.ui-dialog-content {
+  padding: 0;
+  margin: 0;
+}
+.aienableddisclaimerform .search-disclaimer-wrapper {
+  width: 263px;
+}
+.aienableddisclaimerform .search-disclaimer-wrapper .h2 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: calc(1em + 14px);
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-weight: 700;
+  color: #091F2F;
+}
+.aienableddisclaimerform .search-disclaimer-wrapper .search-disclaimer-text {
+  font-size: 1em;
+  line-height: 25px;
+  margin-top: 16px;
+  margin-bottom: 40px;
+  padding: 0;
+}
+.aienableddisclaimerform .button {
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 1px;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: 0 transparent solid;
+  border-radius: 4px;
+}
+.aienableddisclaimerform .form-submit,
+.aienableddisclaimerform .form-submit:visited {
+  background-color: #288BE4;
+  color: #FFFFFF;
+  outline: none;
+}
+.aienableddisclaimerform .form-submit:focus,
+.aienableddisclaimerform .form-submit:hover {
+  background-color: #1376CF;
+  color: #FFFFFF;
+}
+.aienableddisclaimerform .form-submit:active {
+  background-color: #0062BB;
+  color: #FFFFFF;
+}
+.aienableddisclaimerform .btn-cancel,
+.aienableddisclaimerform .btn-cancel:visited {
+  margin-top: 24px;
+  background-color: transparent;
+  color: #091f2f;
+}
+.aienableddisclaimerform .btn-cancel:focus,
+.aienableddisclaimerform .btn-cancel:hover {
+  background-color: inherit;
+  color: #1376CF;
+}
+.aienableddisclaimerform .btn-cancel:active {
+  background-color: inherit;
+  color: #1376CF;
+  border: 2px #1376cf solid;
+  border-radius: 2px;
+}
+
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+
+@media screen and (min-width: 480px) {
+  .aienableddisclaimerform {
+    width: 591px !important;
+    padding: 36px 66px;
+  }
+  .aienableddisclaimerform .ui-titlebar-hidden.ui-dialog-titlebar {
+    top: 32px;
+    right: 42px;
+    padding: 0;
+    width: 483px;
+  }
+  .aienableddisclaimerform .ui-titlebar-hidden .ui-icon-closethick {
+    top: 3px;
+    left: 3px;
+    margin:0;
+    padding: 0;
+    background-size: 20px;
+    height: 20px;
+    background-position: center;
+    width: 20px;
+    position: absolute;
+  }
+  .aienableddisclaimerform .search-disclaimer-wrapper {
+    margin-top: 40px;
+    width: 449px;
+  }
+  .aienableddisclaimerform .search-disclaimer-wrapper .h2 {
+    font-size: calc(1em + 16px);
+    line-height: 25px;
+  }
+  .aienableddisclaimerform .search-disclaimer-wrapper .search-disclaimer-text {
+    font-size: calc(1em + 2px);
+    line-height: 25px;
+    padding: 0;
+    margin-top: 32px;
+  }
+}

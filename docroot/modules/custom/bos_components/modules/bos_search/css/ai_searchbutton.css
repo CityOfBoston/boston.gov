@@ -1,0 +1,47 @@
+.aienabledsearchbutton-wrapper {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size:  16px;
+  line-height: calc(16px  * 1.75);
+  color:  #58585B;
+  font-weight:  400;
+  background-color: #f2f2f2;
+}
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button {
+  background-color: #288be4;
+  color: #ffffff;
+  max-width: fit-content;
+  position: relative;
+  padding-left: 47px;
+}
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button:hover { background-color: #1376CF;}
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button:focus,
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button:active { background-color: #0062BB;}
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button:disabled { background-color: #d2d2d2; color: #58585b; }
+
+.aienabledsearchbutton-wrapper .aienabledsearchbutton a.button:before {
+  content: "";
+  background-image: url(../img/twinkle_white.svg);
+  height: 24px;
+  width: 24px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 13px;
+  left: 12px;
+}
+.aienabledsearchbutton-wrapper .aienabledsearchbutton legend {
+  width: fit-content;
+  font-size: calc(1em + 2px);
+  max-width: 1000px;
+  margin: 0 0 16px 0;
+  padding : 0;
+
+}
+/**
+ * DESKTOP adjustments
+ * This component considers mobile upto window width of 480px
+ */
+@media screen and (min-width: 480px) {
+
+}
+

@@ -1,0 +1,6 @@
+bos_search.AiSearchConfigForm:
+  title: 'AI-enabled Search'
+  description: 'Configure AI-enabled Search for boston.gov.'
+  parent: bos_core.admin
+  route_name: bos_search.AiSearchConfigForm
+  weight: 0

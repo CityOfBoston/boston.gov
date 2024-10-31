@@ -1,0 +1,9 @@
+<?php
+
+/*
+  Main Drupal module for bos_aws_services
+
+  david 07 2024
+  @file docroot/modules/custom/bos_components/modules/bos_aws_services/bos_aws_services.module
+
+*/

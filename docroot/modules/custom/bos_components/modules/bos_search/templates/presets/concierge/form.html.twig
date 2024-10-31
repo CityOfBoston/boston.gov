@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - configuration: The configuration for the block, including preset
+ * - preset: The preset used by this form instance
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ * @see bos_search_preprocess
+ */
+#}
+{% if form_header %}
+  {{ form_header }}
+{% endif %}
+
+<form{{ attributes.addClass("bos-search-aisearchform") }}>
+
+  {% block SearchContent %}
+    {{ element.AiSearchForm.content.messages }}
+    {{ element.AiSearchForm.content.preset }}
+    {{ element.AiSearchForm.content.session_id }}
+
+    {% block SearchResults %}
+      <div id="edit-searchresults" data-drupal-selector="edit-searchresults" class="js-form-wrapper form-wrapper">
+        <div id="edit-welcome" data-drupal-selector="edit-welcome" class="js-form-wrapper form-wrapper">
+
+          {% if element.AiSearchForm.content.searchresults.welcome.title or element.AiSearchForm.content.searchresults.welcome.body %}
+            <div id="welcome-copy" class='sf--h'>
+
+              {% if element.AiSearchForm.content.searchresults.welcome.title %}
+                <div id="welcome-title" class='sf--t'>
+                  {{ element.AiSearchForm.content.searchresults.welcome.title }}
+                </div>
+              {% endif %}
+
+              {% if element.AiSearchForm.content.searchresults.welcome.body %}
+                <div id="welcome-body" class='t--s400 lh--300'>
+                  {{ element.AiSearchForm.content.searchresults.welcome.body }}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endif %}
+
+          {% if element.AiSearchForm.content.searchresults.welcome.cards %}
+            <div id="welcome-cards" class='t--s400 lh--300'>
+              {{ element.AiSearchForm.content.searchresults.welcome.cards }}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div id="search-conversation-wrapper"></div>
+
+    {% endblock %}
+  {% endblock %}
+
+  {% block SearchBar %}
+    {{ element.AiSearchForm.searchbar }}
+  {% endblock  %}
+
+  {% block Actions %}
+    {{ element.AiSearchForm.actions }}
+  {% endblock  %}
+
+  {{ element.form_id }}
+  {{ element.form_build_id }}
+  {{ element.form_token }}
+
+</form>

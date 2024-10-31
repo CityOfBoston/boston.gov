@@ -4,6 +4,7 @@ namespace Drupal\bos_google_cloud\Services;
 
 use Drupal;
 use Drupal\bos_core\Controllers\Curl\BosCurlControllerBase;
+use Drupal\bos_google_cloud\GcGenerationPrompt;
 use Drupal\bos_google_cloud\GcGenerationURL;
 use Drupal\bos_google_cloud\GcGenerationPayload;
 use Drupal\Core\Config\ConfigFactory;
@@ -46,7 +47,18 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
    */
   protected GcAuthenticator $authenticator;
 
-  public function __construct(LoggerChannelFactory $logger, ConfigFactory $config) {
+  /** @var array Standardized search response. Clone of class AiSearchResponse.*/
+  protected array $sc_response = [
+    "ai_answer" => '',          // Text only answer from Vertex
+    "body" => '',               // Markup response from Vertex - with citations
+    "citations" => [],          // Array of citations
+    "session_id" => '',    // The unique ID for this conversation
+    "metadata" => [],           // Safety and other metadata returned from search
+    "references" => [],         // References .. ???
+    "search_results" => [],     // List of search result objects
+  ];
+
+    public function __construct(LoggerChannelFactory $logger, ConfigFactory $config) {
 
     // Load the service-supplied variables.
     $this->log = $logger->get('bos_google_cloud');
@@ -89,7 +101,8 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
    *  Adds some text to a conversation, using a pre-defined prompt.
    *
    * @param array $parameters Array containing "text" URLencode text to be
-   *   summarized, and "prompt" A search type prompt.
+   *   summarized, and "prompt" A search type prompt "session_id" unique id
+   *   to continue a previous conversation.
    *
    * @return string
    * /
@@ -101,29 +114,35 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
       $this->error = "Some text for the conversation is needed.";
       return $this->error();
     }
-
-    $parameters["prompt"] = $parameters["prompt"] ?? "default";
-
-    $settings = $this->settings["conversation"] ?? [];
+    elseif (empty($this->settings[$this->id()])) {
+      $this->error = "The conversation API settings are empty or missing.";
+      return $this->error();
+    }
 
     // check quota.
     if (GcGenerationURL::quota_exceeded(GcGenerationURL::CONVERSATION)) {
-      $this->error = "Quota exceeded for this API";
+      $this->error = "Quota exceeded for Discovery API";
       return $this->error;
     }
 
+    // Specify the prompt to use.
+    $parameters["prompt"] = $parameters["prompt"] ?? "default";
+    // Specify the LLM to use.
+    $parameters["model"] = $this->settings[$this->id()]["model"] ?? "stable";
+
     // Manage conversations.
-    if ($settings["allow_conversation"] ?? FALSE || $parameters["allow_conversation"] ?? FALSE) {
+    if ($this->settings[$this->id()]["allow_conversation"] ?? FALSE && $parameters["allow_conversation"] ?? FALSE) {
 
       // Find any previous conversation and save in the parameters object.
-      if (empty($parameters["conversation_id"])) {
+      if (empty($parameters["session_id"])) {
         $parameters["conversation"] = [];
       }
       else {
         // try to retrieve the previous conversation.
-        $parameters["conversation"] = Drupal::service("keyvalue.expirable")
+        $KeyValueService = Drupal::service("keyvalue.expirable");
+        $parameters["conversation"] = $KeyValueService
           ->get(self::id())
-          ->get($parameters["conversation_id"]) ?? [];
+          ->get($parameters["session_id"]) ?? [];
       }
 
     }
@@ -131,7 +150,7 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
     // Get token.
     try {
       $headers = [
-        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer")
+        "Authorization" => $this->authenticator->getAccessToken($this->settings[$this->id()]['service_account'], "Bearer")
       ];
     }
     catch (Exception $e) {
@@ -139,13 +158,29 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
       return $this->error();
     }
 
-    $url = GcGenerationURL::build(GcGenerationURL::CONVERSATION, $settings);
+    // If we have overrides for the default projects or datastores, apply the
+    // override here.
+    if (!empty($parameters["service_account"])) {
+      $this->settings[$this->id()]['service_account'] = $parameters["service_account"];
+    }
+    if (!empty($parameters["project_id"])) {
+      $this->settings[$this->id()]['project_id'] = $parameters["project_id"];
+    }
+    if (!empty($parameters["datastore_id"])) {
+      $this->settings[$this->id()]['datastore_id'] = $parameters["datastore_id"];
+    }
+    if (!empty($parameters["engine_id"])) {
+      $this->settings[$this->id()]['engine_id'] = $parameters["engine_id"];
+    }
+
+    $url = GcGenerationURL::build(GcGenerationURL::CONVERSATION, $this->settings[$this->id()]);
 
     if (!$payload = GcGenerationPayload::build(GcGenerationPayload::CONVERSATION, $parameters)) {
       $this->error = "Could not build Payload";
       return $this->error;
     }
 
+    // Query the AI.
     $results = $this->post($url, $payload, $headers);
 
     if ($this->http_code() == 200 && !$this->error()) {
@@ -155,25 +190,62 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
         return $this->error();
       }
 
-      $this->response["ai_answer"] = $results["reply"]["reply"];
-      $this->loadSafetyRatings($results["reply"]["summary"]["safetyAttributes"]);
-
-      if ($settings["allow_conversation"] ?? TRUE) {
-        // Save the conversation as keyvalue with the conversation_id as key.
-        $this->response["conversation_id"] = $results["conversation"]["userPseudoId"];
-        Drupal::service("keyvalue.expirable")
-          ->get(self::id())
-          ->setWithExpire($this->response["conversation_id"], $results["conversation"], 300);
+      // Gather vertex conversation metadata.
+      $metadata = $this->loadMetadata($parameters);
+      // Process safety information into metadata.
+      if (!empty($results["reply"]["summary"]["safetyAttributes"])) {
+        $metadata += $this->loadSafetyRatings($results["reply"]["summary"]["safetyAttributes"]);
       }
 
-      return $this->formattedResponse();
+      // Load up the standardized Search response.
+      $this->sc_response = [
+        'body' => $results["reply"]["reply"],
+        'metadata' => $metadata,
+      ];
+
+      // Check for Out-of-scope response.
+      if (!empty($this->response["body"]["reply"]["summary"]["summarySkippedReasons"])) {
+        $this->sc_response['violations'] = implode(', ', $this->response["body"]["reply"]["summary"]["summarySkippedReasons"]);
+        $this->response["body"] = $results["reply"]["summary"]["summaryText"];
+      }
+
+      // Include any citations.
+      else if ($parameters["include_citations"] ?? FALSE) {
+        // Load the citations
+        $this->sc_response['citations'] = $this->loadCitations(
+          $this->response["body"]["reply"]["summary"]["summaryWithMetadata"]["citationMetadata"]["citations"] ?? [],
+          $this->response["body"]["reply"]["summary"]["summaryWithMetadata"]["references"] ?? [],
+          $this->sc_response["body"]
+        );
+      }
+
+      else {
+        // Use the summary text with citations.
+        if (!empty($results["reply"]["summary"]["summaryWithMetadata"]["summary"])) {
+          $this->sc_response['body'] = $results["reply"]["summary"]["summaryWithMetadata"]["summary"];
+        }
+      }
+
+      // Add in the Search Results
+      $this->sc_response['search_results'] = $this->loadSearchResults($this->response["body"]["searchResults"] ?? []);
+
+      // Manage the conversation.
+      if ($this->settings[$this->id()]["allow_conversation"] ?? FALSE) {
+        // Save the conversation as keyvalue with the session_id as key.
+        $this->sc_response['session_id'] = $results["conversation"]["userPseudoId"];
+        Drupal::service("keyvalue.expirable")
+          ->get(self::id())
+          ->setWithExpire($this->sc_response['session_id'], $results["conversation"], 300);
+      }
+
+      return $this->sc_response['body'];
 
     }
 
     elseif ($this->http_code() == 401) {
       // The token is invalid, because we are caching for the lifetime of the
       // token, this probably means it has been refreshed elsewhere.
-      $this->authenticator->invalidateAuthToken($settings["service_account"]);
+      $this->authenticator->invalidateAuthToken($this->settings[$this->id()]["service_account"]);
       if (empty($parameters["invalid-retry"])) {
         $parameters["invalid-retry"] = 1;
         return $this->execute($parameters);
@@ -192,17 +264,21 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
 
   }
 
-  private function formattedResponse(): string {
-    $data = $this->response["body"]["reply"]["summary"]["summaryWithMetadata"];
-
+  /**
+   * Takes the output and turns it into an HTML block.
+   * ToDo: Change this into a twig templated object.
+   *
+   * @return string
+   */
+  public function render(): string {
     $refs = [];
-    foreach($data["references"] as $key => $reference) {
+    foreach($this->sc_response["references"] as $key => $reference) {
       $ref_id = $key + 1;
       $refs[$key] = "<a href='{$reference["uri"]}' id='conv-cite-ref-$ref_id-link' data-vertex-doc='{$reference["document"]}'>{$reference["title"]}</a>";
     }
 
     $cites = [];
-    foreach($data["citationMetadata"]["citations"] as $citation) {
+    foreach($this->sc_response["citations"] as $citation) {
       foreach ($citation["sources"] as $key => $source) {
         $ref_id = $source["referenceIndex"] ?? $key;
         $cites[$ref_id] = $refs[$ref_id];
@@ -217,7 +293,6 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
       $citations .= "    </div>\n";
     }
 
-    $data = $this->response["body"];
     $results = "<div id='conv-wrapper'>\n";
     $results .= "  <div id='conv-reply'>{$this->response["ai_answer"]}</div>\n";
     $results .= "  <div id='conv-cite-wrapper'>\n";
@@ -226,7 +301,7 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
     $results .= "  </div>\n";
     $results .= "  <div id='conv-results-wrapper'>\n";
     $results .= "    <div id='conv-results-title'>RESULTS</div>\n";
-    foreach($data["searchResults"] as $key => $result) {
+    foreach($this->sc_response["search_results"] as $key => $result) {
       $res_id = $key + 1;
       $ans = '';
       $snip = "";
@@ -262,23 +337,241 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
   }
 
   /**
-   * Update the $this->response["conversation"]["ratings"] array if the safety scores
-   * in $ratings are higher (less safe) than those already stored.
-   *
-   * @param array $ratings The safetyRatings from a gemini ::predict call.
-   *
-   * @return void
+   * Return the processed results in a standardized array.
+   * @return array
    */
-  private function loadSafetyRatings(array $ratings): void {
+  public function getResults(): array {
+    return $this->sc_response;
+  }
 
-    if (!isset($this->response["body"]["safetyRatings"])) {
-      $this->response["body"]["safetyRatings"] = [];
+  /**
+   * Establish the safety scores and retuurn.
+   * Only save safety scores in $ratings are higher (less safe) than those
+   * already stored.
+   *
+   * @param array $ratings The safetyRatings from vertex.
+   *
+   * @return array
+   */
+  private function loadSafetyRatings(array $ratings): array {
+
+    $output = [];
+
+    foreach(($ratings["categories"] ?? []) as $key => $rating) {
+      $output[$rating] = $ratings["scores"][$key];
     }
 
-    foreach($ratings["categories"] as $key => $rating) {
-      $this->response["body"]["safetyRatings"][$rating] = $ratings["scores"][$key];
+    return $output;
+
+  }
+
+  /**
+   * Load Search Results into a simple, standardized search output format.
+   * Also de-duplicates the results based on the ultimate node which is
+   * referenced in the result link.
+   *
+   * The array returned is a clone of the array in aiSearchResult (bos_search),
+   * but we have copied so as not to create a dependedncy between these modules
+   * at this point.
+   *
+   * @param array $results Output from AI Model
+   *
+   * @return array Standardized & simplified array of search results.
+   */
+  private function loadSearchResults(array $results): array {
+    $output = [];
+
+    if (empty($results)) {
+      return [];
     }
 
+    $alias_manager = \Drupal::service('path_alias.manager');
+    $redirect_manager = \Drupal::service('redirect.repository');
+
+    $citations = $this->sc_response["citations"] ?: [];
+
+    foreach($results as $result) {
+
+      // Check if this result is already showing in the citations.h
+      $is_citation = FALSE;
+      if (!empty($citations)) {
+        foreach ($citations as $key => $citation) {
+          if ($citation["id"] == $result["id"]) {
+            // Mark results as being in the citations set
+            $is_citation = TRUE;
+            // Mark citation as being in results set.
+            $this->sc_response["citations"][$key]["is_result"] = TRUE;
+            break;
+          }
+        }
+      }
+
+      /** Standardizes search result - output array is a clone of class aiSearchResult. */
+
+      $path_alias = explode(".gov",$result["document"]["derivedStructData"]["link"],2)[1];
+      if (!empty($path_alias)) {
+
+        // Strip out the alias from any other querystings etc
+        $path_alias = explode('?', $path_alias, 2);
+        $path_alias = explode('#', $path_alias[0], 2)[0];
+
+        // get the nid for this page alias (to prevent duplicates)
+        $path = $alias_manager->getPathByAlias($path_alias);
+        $path_parts = explode('/', $path);
+        $nid = array_pop($path_parts);
+
+        if (!is_numeric($nid)) {
+          // If we can't get the node ID then it is possibly a redirect to
+          // another page, so try to track that down...
+
+          $redirects = $redirect_manager->findBySourcePath(trim($path_alias, "/"));
+          if (!empty($redirects)) {
+            $redirect = reset($redirects);
+            $original_alias = explode(":", $redirect->getRedirect()['uri'], 2)[1] ?? $redirect->getRedirect()['uri'];
+            $path = $alias_manager->getPathByAlias($original_alias);
+            $path_parts = explode('/', $path);
+            $nid = array_pop($path_parts);
+          }
+        }
+
+        if (!is_numeric($nid)) {
+          // Well ... interesting.
+          // Set the nid equal to the original node path so at least we
+          // de-duplicate.
+          $nid = $path;
+        }
+
+      }
+
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+      $description = "";
+      if ($node && $node->hasField("field_intro_text")) {
+        $description = $node->get("field_intro_text")->value;
+      }
+      if ($node && $node->hasField("body")) {
+        $description .= $node->get("body")->summary ?: $node->get("body")->value;
+      }
+      if (empty($description) && $node && $node->hasField("field_need_to_know")) {
+        $description = $node->get("field_need_to_know")->value;
+      }
+
+      $title = explode("|", $result['document']['derivedStructData']['title'], 2)[0];
+      $output[$result['id']] = [
+        "content" => $result['document']['derivedStructData']['extractive_answers'][0]['content'],
+        "description" => trim(strip_tags($description)),
+        "id" => $result['id'],
+        "is_citation" => $is_citation,
+        "link" => $result['document']['derivedStructData']['link'],
+        "link_title" => $result['document']['derivedStructData']['displayLink'],
+        "ref" => $result['document']['name'],
+        "snippet" => $result['document']['derivedStructData']['snippets'][0]['snippet'] ?: "",
+        "title" => trim($title),
+      ];
+
+
+    }
+    return array_values($output);
+  }
+
+  /**
+   * Load Vertex available metadata into array and return.
+   *
+   * @param array $metadata
+   *
+   * @return array
+   */
+  private function loadMetadata(array $metadata) {
+    $map = [
+      "session_id" => "Drupal Internal",
+    ];
+    $exclude_meta = [
+      "conversation",
+      "session_id"
+    ];
+    foreach($metadata as $key => $value) {
+      $node = $map[$key] ?? "Request";
+      if (!in_array($key, $exclude_meta)) {
+        $output[$node][ucwords(str_replace("_", " ", $key))] = [
+          "key" => $key,
+          "value" => $value,
+        ];
+      }
+    }
+    $output[$node]["Full Prompt"] = [
+      "key" => "Full Prompt",
+      "value" => $this->request["body"]["summarySpec"]["modelPromptSpec"]["preamble"],
+    ];
+    foreach($this->settings[$this->id()] as $key => $value) {
+      $node = $map[$key] ?? "Model Config";
+      $output[$node][ucwords(str_replace("_", " ", $key))] = [
+        "key" => $key,
+        "value" => $value
+      ];
+    }
+    $output["Model State"]["Current Conversation Length"] = ["key" => "conversation_length", "value" => count($this->response["body"]["conversation"]["messages"]) / 2];
+    $output["Model Response"]["Endpoint"] = ["key" => "conversation_endpoint", "value" => $this->request["protocol"] . "//" . $this->request["host"] . '/' . $this->request["endpoint"]];
+    $output["Model Response"]["Conversation"] = ["key" => "conversation_name", "value" => $this->response["body"]["conversation"]["name"]];
+    $output["Model Response"]["State"] = ["key" => "conversation_state", "value" => $this->response["body"]["conversation"]["state"]];
+    $output["Model Response"]["PseudoId"] = ["key" => "conversation_ref", "value" => $this->response["body"]["conversation"]["userPseudoId"]];
+    $output["Model Response"]["Drupal Internal Id"] = ["key" => "session_id", "value" => $metadata["session_id"] ?? ""];
+    $output["Model Response"]["Query Duration"] = ["key" => "conversation_query_duration", "value" => $this->response["elapsedTime"]];
+    $output["Model Response"]["Search Results Returned"] = ["key" => "results_length", "value" => count($this->response["body"]["searchResults"] ?? [])];
+    $output["Model Response"]["Citations Returned"] = ["key" => "citations_length", "value" => count($this->response["body"]["reply"]["summary"]["summaryWithMetadata"]["citationMetadata"]["citations"] ?? [])];
+    return $output;
+  }
+
+  /**
+   * Creates a unified citation array from a list of citations and references.
+   *
+   * @param array $citations Citations from Vertex
+   * @param array $references References from Vertex
+   *
+   * @return array a unified array of citations with their references.
+   */
+  private function loadCitations(array $citations, array $references, string &$body): array {
+    $output = [];
+
+    foreach ($references as $key => $reference) {
+      $output[$key] = $reference;
+      $output[$key]["title"] = trim(explode("|", $output[$key]["title"], 2)[0]);
+      $output[$key]["ref"] = $output[$key]["document"];
+      $ref = explode("/", $output[$key]["document"]);
+      $output[$key]["id"] = array_pop($ref);
+      $output[$key]["locations"] = [];
+      //      $output[$key]["original_key"] = $key;
+
+      foreach ($citations as $citation) {
+        foreach ($citation["sources"] as $source) {
+          if (($source["referenceIndex"] ?? 0) == $key) {
+            $output[$key]["locations"][] = [
+              "startIndex" => $citation["startIndex"] ?? 0,
+              "endIndex" => $citation["endIndex"] ?? strlen($body),
+            ];
+          }
+        }
+      }
+
+      unset($output[$key]["document"]);
+    }
+
+    // reindex the output array, keep the original key to match the citation #'s
+    // and replace text on the page
+    $out = [];
+    $new_key = 1;
+    foreach ($output as $key => $value) {
+      if (!empty($value["locations"])) {
+        $value["original_key"] = $key + 1;
+        $body = preg_replace("~\[" . $value["original_key"] . "\]~", "[" . $new_key . "]", $body);
+        $body = preg_replace("~, " . $value["original_key"] . "~", "[" . $new_key . "]", $body);
+        $body = preg_replace("~" . $value["original_key"] . " ,~", "[" . $new_key . "]", $body);
+        $out[$new_key++] = $value;
+      }
+    }
+
+    // Make the index numbers sequential, starting at 1
+
+    // Todo: add links into the body ?
+    return $out;
   }
 
   /**
@@ -288,8 +581,10 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
 
     $project_id="612042612588";
     $model_id="drupalwebsite_1702919119768";
+    $engine_id="oeoi-search-pilot_1726266124376";
     $location_id="global";
     $endpoint="https://discoveryengine.googleapis.com";
+    $model="stable";
 
     $settings = $this->settings['conversation'] ?? [];
 
@@ -326,6 +621,16 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
             "placeholder" => 'e.g. ' . $model_id,
           ],
         ],
+        'engine_id' => [
+          '#type' => 'textfield',
+          '#title' => t('Engine'),
+          '#description' => t(''),
+          '#default_value' => $settings['engine_id'] ?? $engine_id,
+          '#required' => TRUE,
+          '#attributes' => [
+            "placeholder" => 'e.g. ' . $engine_id,
+          ],
+        ],
         'location_id' => [
           '#type' => 'textfield',
           '#title' => t('Location (always global for now)'),
@@ -346,6 +651,17 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
           '#attributes' => [
             "placeholder" => 'e.g. ' . $endpoint,
           ],
+        ],
+        'model' => [
+          '#type' => 'select',
+          '#title' => t('The LLM model to use'),
+          '#description' => t('This is the model that will be used.<br>Best to set to "stable" for latest stable release (which typically is frozen and only updated periodically) or "preview" for the latest model (which is more experimental and can be updated more frequently).<br>See https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models#models'),
+          '#default_value' => $settings['model'] ?? $model,
+          '#options' => [
+            'stable' => 'Stable',
+            'preview' => 'Preview',
+          ],
+          '#required' => TRUE,
         ],
         'service_account' => [
           '#type' => 'select',
@@ -400,15 +716,19 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
 
     if ($config->get("conversation.project_id") !== $values['project_id']
       ||$config->get("conversation.datastore_id") !== $values['datastore_id']
+      ||$config->get("conversation.engine_id") !== $values['engine_id']
       ||$config->get("conversation.location_id") !== $values['location_id']
       ||$config->get("conversation.service_account") !== $values['service_account']
       ||$config->get("conversation.allow_conversation") !== $values['allow_conversation']
+      ||$config->get("conversation.model") !== $values['model']
       ||$config->get("conversation.endpoint") !== $values['endpoint']) {
       $config->set("conversation.project_id", $values['project_id'])
         ->set("conversation.datastore_id", $values['datastore_id'])
+        ->set("conversation.engine_id", $values['engine_id'])
         ->set("conversation.location_id", $values['location_id'])
         ->set("conversation.allow_conversation", $values['allow_conversation'])
         ->set("conversation.endpoint", $values['endpoint'])
+        ->set("conversation.model", $values['model'])
         ->set("conversation.service_account", $values['service_account'])
         ->save();
     }
@@ -421,7 +741,6 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
   public function validateForm(array $form, FormStateInterface &$form_state): void {
     // not required
   }
-
 
   /**
    * Ajax callback to test Conversation Service.
@@ -451,6 +770,160 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
     else {
       return ["#markup" => Markup::create("<span id='edit-convo-result' style='color:red'><b>&#x2717; Failed:</b> {$conversation->error()}</span>")];
     }
+
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function hasFollowup(): bool {
+    return $this->config->get("conversation.allow_conversation");
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function getSettings(): array {
+    return $this->settings[$this->id()];
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function availablePrompts(): array {
+    return GcGenerationPrompt::getPrompts($this->id());
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function availableDataStores(?string $service_account, ?string $project_id): array {
+
+    $settings =  $this->settings[$this->id()];
+
+    if (!empty($service_account) && $service_account != "default") {
+      $settings['service_account'] = $service_account;
+    }
+    if (!empty($project_id) && $project_id != "default") {
+      $settings['project_id'] = $project_id;
+    }
+
+    // Get token.
+    try {
+      $headers = [
+        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer")
+      ];
+    }
+    catch (Exception $e) {
+      $this->error = $e->getMessage() ?? "Error getting access token.";
+      return [];
+    }
+
+    $url = GcGenerationURL::build(GcGenerationURL::DATASTORE, $settings);
+
+    // Query the AI.
+    try {
+      $results = $this->get($url, NULL, $headers);
+    }
+    catch(\Exception $e) {
+      return [];
+    }
+
+    $output = [];
+    foreach($results["dataStores"] ?? [] as $dataStore) {
+      $dataStoreName = explode("/", $dataStore["name"]);
+      $dataStoreId = array_pop($dataStoreName);
+      $output[$dataStoreId] = $dataStore['displayName'];
+    }
+    return $output;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function availableEngines(?string $service_account, ?string $project_id): array {
+    // Get token.
+    $settings =  $this->settings[$this->id()];
+
+    if (!empty($service_account) && $service_account != "default") {
+      $settings['service_account'] = $service_account;
+    }
+    if (!empty($project_id) && $project_id != "default") {
+      $settings['project_id'] = $project_id;
+    }
+
+    try {
+      $headers = [
+        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer")
+      ];
+    }
+    catch (Exception $e) {
+      $this->error = $e->getMessage() ?? "Error getting access token.";
+      return [];
+    }
+
+    $url = GcGenerationURL::build(GcGenerationURL::ENGINE, $settings);
+
+    // Query the AI.
+    $output = [];
+    try {
+      $results = $this->get($url, NULL, $headers);
+    }
+    catch(\Exception $e) {}
+
+    foreach($results["engines"] ?: [] as $engine) {
+      $engineName = explode("/", $engine["name"]);
+      $engineId = array_pop($engineName);
+      $output[$engineId] = $engine['displayName'];
+    }
+
+    return $output;
+
+  }
+
+  public function availableProjects(?string $service_account): array {
+
+    if (!empty($service_account) && $service_account != "default") {
+      $settings['service_account'] = $service_account;
+    }
+
+    // TODO: For this to work the service account needs resourcemanager.projects.list
+    //  permission on the organization. Right now, this has not been granted.
+    return [
+      "738313172788" => "ai-search-boston-gov-91793",
+      "612042612588" => "vertex-ai-poc-406419",
+    ];
+
+    // Get token.
+    try {
+      $headers = [
+        "Authorization" => $this->authenticator->getAccessToken($this->settings[$this->id()]['service_account'], "Bearer"),
+        "Accept" => "application/json",
+      ];
+    }
+    catch (Exception $e) {
+      $this->error = $e->getMessage() ?? "Error getting access token.";
+      return [];
+    }
+
+    $url = GcGenerationURL::build(GcGenerationURL::PROJECT, $this->settings[$this->id()]);
+
+    // Query the AI.
+    $output = [];
+    $post_fields = NULL;
+    $post_fields = "parent=" . urlencode("organizations/593266943271");
+//    $post_fields = [
+//      "scope" => urlencode("organizations/593266943271"),
+//      "assetTypes" => ["cloudresourcemanager.googleapis.com/Project"]
+//    ];
+    $results = $this->get($url, $post_fields, $headers);
+    foreach($results["dataStores"] ?: [] as $dataStore) {
+      $dataStoreName = explode("/", $results["dataStores"][0]["name"]);
+      $dataStoreId = array_pop($dataStoreName);
+      //      $output[$dataStoreId] = $dataStore['displayName'];
+      $output[$dataStoreId] = $dataStoreId;
+    }
+    return $output;
 
   }
 
