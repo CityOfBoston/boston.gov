@@ -184,7 +184,7 @@ class GcGenerationPayload {
       case self::SEARCH:
         $payload = new Search();
         $payload->set("query", $options["text"]);
-        $payload->set("pageSize", $options["num_results"] ?? 5);
+        $payload->set("pageSize", ($options["num_results"] * 2) ?? 5);
         if (!$options["engine_mds"]) {
           // QueryExpansionSpec not supported in multi-datastore engines/apps.
           $queryExpansionSpec = new QueryExpansionSpec([
@@ -196,22 +196,6 @@ class GcGenerationPayload {
         $content_spec = [
           "snippetSpec" => new SnippetSpec([
             "returnSnippet" => TRUE,
-          ]),
-          "summarySpec" => new SummarySpec([
-            "summaryResultCount" => ($options["num_results"] * 2) ?? 5,
-            "includeCitations" => $options["include_citations"] ?? FALSE,
-            "ignoreAdversarialQuery" => $options["ignoreAdversarialQuery"] ?? TRUE,
-            "ignoreNonSummarySeekingQuery" => $options["ignoreNonSummarySeekingQuery"] ?? TRUE,
-            "ignoreLowRelevantContent" => $options["ignoreLowRelevantContent"] ?? TRUE,
-            "ignoreJailBreakingQuery" => $options["ignoreJailBreakingQuery"] ?? TRUE,
-            "languageCode" => NULL,
-            "modelPromptSpec" => new ModelPromptSpec([
-              "preamble" => GcGenerationPrompt::getPromptText("search", $options["prompt"]) . " " . $options["extra_prompt"],
-            ]),
-            "modelSpec" => new ModelSpec([
-              "version" => $options["model"] ?? "stable",
-            ]),
-            "useSemanticChunks" => $options["semantic_chunks"] ?? FALSE,
           ]),
           "extractiveContentSpec" => new ExtractiveContentSpec([
             "maxExtractiveAnswerCount" => $options["num_results"],
@@ -226,9 +210,11 @@ class GcGenerationPayload {
             "numNextChunks" => 0,
           ]),
         ];
-        if ($options["allow_conversation"]) {
-          unset($content_spec["summarySpec"]);
-          $payload->setSession($options["project_id"], $options["engine_id"], $options["session_id"] ?: "-");
+        if ($options["allow_conversation"] && !empty($options["session_id"])) {
+          $payload->setSession($options["project_id"], $options["engine_id"], $options["session_id"]);
+        }
+        else {
+          $payload->setSession($options["project_id"], $options["engine_id"], "-");
         }
         $payload->set("contentSearchSpec", new ContentSearchSpec($content_spec));
         if (!empty($options["datastore_id"]) && $options["datastore_id"] != "default") {

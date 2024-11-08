@@ -13,15 +13,30 @@ use Drupal\bos_core\Controllers\Settings\CobSettings;
 use Exception;
 use Google\Auth\ApplicationDefaultCredentials;
 
-/*
-  class GcAuthenticator
-  Creates a service/controller for bos_google_cloud to control logins.
-
-  david 01 2024
-  @file docroot/modules/custom/bos_components/modules/bos_google_cloud/src/Services/GcAuthenticator.php
-*/
-
+/**
+ * Class GcAuthenticator.
+ *
+ * Creates a service/controller for bos_google_cloud to control logins.
+ *
+ * david 01 2024
+ */
 class GcAuthenticator extends ControllerBase implements GcServiceInterface {
+
+  /**
+   * CONSTANT ARRAY: List of service accounts (== hardcoded!))
+   */
+  public const SVS_ACCOUNT_LIST = [
+    "service_account_1",
+    "service_account_2",
+  ];
+
+  /**
+   * CONSTANT ARRAY: Maps service accounts to local files for authentication.
+   */
+  public const SVS_FILE_MAPPING = [
+    "service_account_1" => "google_cloud_service_account_1.json",
+    "service_account_2" => "google_cloud_service_account_2.json",
+  ];
 
   /**
    * Logger object for class.
@@ -30,6 +45,20 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
    */
   protected LoggerChannelInterface $log;
 
+  private const GOOGLE_AUTH_ENVAR = "GOOGLE_APPLICATION_CREDENTIALS";
+
+  /**
+   * SCOPE CONSTANTS.
+   *
+   * Used to define scope for OAUTH2 authentication.
+   *
+   * @see setScope().
+   */
+  private const SCOPE_NO_SCOPE = -1;
+  public const SCOPE_GOOGLE_CLOUD = 0;
+  public const SCOPE_GOOGLE_DRIVE = 1;
+  public const SCOPE_BIG_QUERY = 2;
+
   /**
    * Config object for class.
    *
@@ -37,26 +66,52 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
    */
   protected ImmutableConfig $config;
 
+  /**
+   * Settings for bos_google_cloud.settings.
+   *
+   * @var array
+   */
   protected array $settings;
 
+  /**
+   * Flags and reports errors which occur (mainly from CuRL).
+   *
+   * @var string
+   */
   protected string $error;
 
-  protected CacheBackendInterface $ai_cache;
+  /**
+   * Array to hold OAuth scopes.
+   *
+   * @var array
+   */
+  private array $scope = [];
 
-  public const SVS_ACCOUNT_LIST = [
-    "service_account_1",
-    "service_account_2",
-  ];
-  public const SVS_FILE_MAPPING = [
-    "service_account_1" => "google_cloud_service_account_1.json",
-    "service_account_2" => "google_cloud_service_account_2.json",
-  ];
+  /**
+   * Cache tag (relevant to specified scope).
+   *
+   * @var int
+   */
+  private int $cacheTag;
 
-  private const GOOGLE_AUTH_ENVAR = "GOOGLE_APPLICATION_CREDENTIALS";
+  /**
+   * The Authentication cache.
+   *
+   * @var \Drupal\Core\Cache\CacheBackendInterface
+   */
+  protected CacheBackendInterface $aiCache;
 
-  public array $current_authentication = [];
+  /**
+   * Properties for the currently active authentication.
+   *
+   * @var array
+   */
+  public array $currentAuthentication = [];
 
-  public function __construct(string $service_account = "") {
+  /**
+   * {@inheritDoc}
+   */
+  public function __construct(string $service_account = "", int $scope = self::SCOPE_GOOGLE_CLOUD) {
 
     if (!empty($service_account)) {
       $this->useSvsAcctCredsFile($service_account);
@@ -67,7 +122,10 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
       'bos_google_cloud',
     );
 
-    $this->ai_cache = $this->cache("gen_ai");
+    // This is the main Cache for our Authentication.
+    $this->aiCache = $this->cache("gen_ai");
+
+    $this->setScope($scope);
 
   }
 
@@ -161,7 +219,7 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public function submitForm(array $form, FormStateInterface $form_state): void {
 
@@ -196,10 +254,10 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public function validateForm(array $form, FormStateInterface &$form_state): void {
-    // Not required
+    // Not required.
   }
 
   /**
@@ -218,8 +276,8 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
   public function useSvsAcctCredsFile(string $service_account):bool {
 
     // Check and see if we have already set the envar.
-    if (($this->current_authentication["service_account"]["envar_set"] ?? FALSE)
-      && ($this->current_authentication["service_account"]["name"] ?? "") == $service_account) {
+    if (($this->currentAuthentication["service_account"]["envar_set"] ?? FALSE)
+      && ($this->currentAuthentication["service_account"]["name"] ?? "") == $service_account) {
       return TRUE;
     }
 
@@ -244,7 +302,7 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
     // service account credentials file, and then use that as a bearer token.
     putenv(self::GOOGLE_AUTH_ENVAR . "=" . $filename);
 
-    $this->current_authentication["service_account"] = [
+    $this->currentAuthentication["service_account"] = [
       "name" => $service_account,
       "envar" => self::GOOGLE_AUTH_ENVAR,
       "auth_json_file" => self::SVS_FILE_MAPPING[$service_account],
@@ -257,6 +315,7 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
 
   /**
    * This gets an access token from Google using the specified service account.
+   *
    * The token has a 60min lifetime, after which it expires.
    * The token should not be saved in any calling function, call this function
    * instead and a new token or an existing token will be returned.
@@ -264,25 +323,41 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
    * The function updates the class current_authentication["auth_token"] array
    * which can be inspected after calling for additional information.
    *
-   * @param string $service_account The service account to use from self::SVS_ACCOUNT_LIST
-   * @param bool $asHeader If TRUE an authorization string will
-   *      be constructed - which can be quickly injected into a CuRL header.
+   * The function will always authenticate using
+   *         https://www.googleapis.com/auth/cloud-platform
+   *       but other scopes can be added: e.g.:
+   *         https://www.googleapis.com/auth/drive.readonly
+   *         https://www.googleapis.com/auth/bigquery
    *
-   * @return string The access token.
+   * @param string $service_account
+   *   The service account to use from self::SVS_ACCOUNT_LIST.
+   * @param bool $asHeader
+   *   If TRUE an authorization string will be constructed - which can be
+   *   injected into a CuRL header.
+   * @param array $extra_scope
+   *   [optional] additional scopes for OAuth2 authentication.
+   *      e.g. https://www.googleapis.com/auth/drive.readonly.
+   *
+   * @return string
+   *   The access token.
+   *
    * @throws \Exception
    */
-  public function getAccessToken(string $service_account, bool $asHeader = FALSE): string {
+  public function getAccessToken(string $service_account, bool $asHeader = FALSE, int $scope = self::SCOPE_NO_SCOPE): string {
 
-    $cache_id = "$service_account.token";
+    $cache_id = "$service_account.{$this->cacheTag}.token";
 
-    if ($response = $this->ai_cache->get($cache_id)) {
-      $this->current_authentication["auth_token"] = $response->data;
+    if ($response = $this->aiCache->get($cache_id)) {
+      $this->currentAuthentication["auth_token"] = $response->data;
     }
     else {
       if ($this->useSvsAcctCredsFile($service_account)) {
+        if ($scope != self::SCOPE_NO_SCOPE) {
+          $this->setScope($scope);
+        }
         try {
-          $credentials = ApplicationDefaultCredentials::getCredentials('https://www.googleapis.com/auth/cloud-platform');
-          $this->current_authentication["auth_token"] = $credentials->fetchAuthToken();
+          $credentials = ApplicationDefaultCredentials::getCredentials($this->scope);
+          $this->currentAuthentication["auth_token"] = $credentials->fetchAuthToken();
         }
         catch (DomainException $e) {
           $file = basename(__FILE__);
@@ -291,12 +366,12 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
           throw new Exception($file . ": " . $e->getMessage());
         }
 
-        $this->current_authentication["service_account"]["client_name"] = $credentials->getClientName();
-        $this->current_authentication["project_id"] = $credentials->getProjectId();
+        $this->currentAuthentication["service_account"]["client_name"] = $credentials->getClientName();
+        $this->currentAuthentication["project_id"] = $credentials->getProjectId();
 
-        $token = $this->current_authentication["auth_token"];
-        $expiry = strtotime("now") + $this->current_authentication["auth_token"]["expires_in"] - 30;
-        $this->ai_cache->set($cache_id, $token, $expiry);
+        $token = $this->currentAuthentication["auth_token"];
+        $expiry = strtotime("now") + $this->currentAuthentication["auth_token"]["expires_in"] - 30;
+        $this->aiCache->set($cache_id, $token, $expiry);
 
       }
       else {
@@ -304,9 +379,9 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
       }
     }
 
-    $response = $this->current_authentication["auth_token"]["access_token"];
+    $response = $this->currentAuthentication["auth_token"]["access_token"];
     if ($asHeader) {
-      $response = "{$this->current_authentication["auth_token"]["token_type"]} $response";
+      $response = "{$this->currentAuthentication["auth_token"]["token_type"]} $response";
     }
     return $response;
 
@@ -319,8 +394,11 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
    *
    * @return void
    */
-  public function invalidateAuthToken(string $service_account): void {
-    $this->ai_cache->invalidate("$service_account.token");
+  public function invalidateAuthToken(string $service_account, int $scope = self::SCOPE_NO_SCOPE): void {
+    if ($scope != self::SCOPE_NO_SCOPE) {
+      $this->setScope($scope);
+    }
+    $this->aiCache->invalidate("$service_account.{$this->cacheTag}.token");
   }
 
   /**
@@ -331,7 +409,7 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
    * @return bool
    */
   public function validateServiceAccount(string $service_account): bool {
-    return in_array($service_account,self::SVS_ACCOUNT_LIST);
+    return in_array($service_account, self::SVS_ACCOUNT_LIST);
   }
 
   /**
@@ -467,6 +545,32 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
   public static function ajaxTestService(array &$form, FormStateInterface $form_state): array {
     // not required.
     return [];
+  }
+
+  /**
+   * Sets the OAUTH2 key scope based on the given integer flags.
+   *
+   * @param int $scope
+   *   Bitwise flags indicating the required scopes.
+   *
+   * @return array
+   *   Array of scope URLs.
+   */
+  private function setScope(int $scope):array {
+
+    // Use the scope as a cache tag.
+    $this->cacheTag = $scope;
+
+    // Always enable cloud platform.
+    $this->scope = ["https://www.googleapis.com/auth/cloud-platform"];
+
+    if ($scope & self::SCOPE_GOOGLE_DRIVE) {
+      $this->scope[] = "https://www.googleapis.com/auth/drive.readonly";
+    }
+    if ($scope & self::SCOPE_BIG_QUERY) {
+      $this->scope[] = "https://www.googleapis.com/auth/bigquery";
+    }
+    return $this->scope;
   }
 
 }

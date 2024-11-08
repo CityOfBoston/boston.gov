@@ -284,7 +284,7 @@ handlers:
     handler_id: post_to_bigquery
     label: 'Post to BigQuery'
     notes: ''
-    status: true
+    status: false
     conditions: {  }
     weight: 0
     settings:

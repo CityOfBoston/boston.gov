@@ -123,7 +123,7 @@ class ConfigForm extends ConfigFormBase {
 
     // Conversation section.
     /**
-     * @var \Drupal\bos_google_cloud\Services\GcSearch $search
+     * @var \Drupal\bos_google_cloud\Services\GcConversation $conversation
      */
     $conversation = Drupal::service("bos_google_cloud.GcConversation");
     $conversation->buildForm($form["google_cloud"]["services_wrapper"]["discovery_engine"]);
@@ -144,7 +144,7 @@ class ConfigForm extends ConfigFormBase {
 
     // Translation section.
     /**
-     * @var \Drupal\bos_google_cloud\Services\GcTranslation $search
+     * @var \Drupal\bos_google_cloud\Services\GcTranslation $translation
      */
     $translation = Drupal::service("bos_google_cloud.GcTranslate");
     $translation->buildForm($form["google_cloud"]["services_wrapper"]["vertex_ai"]);

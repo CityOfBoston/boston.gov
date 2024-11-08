@@ -10,14 +10,12 @@ use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Exception;
 
-// TODO: To enable this plugin, need to change @_WebformHandler on line 17 to be
-//       @WebformHandler
 // @see Drupal\bos_google_cloud\Services\GcBigQuery
 
 /**
  * Form submission handler.
  *
- * @_WebformHandler(
+ * @WebformHandler(
  *   id = "bigquery_form_handler",
  *   label = @Translation("Post to BigQuery"),
  *   category = @Translation("DataWarehouse"),

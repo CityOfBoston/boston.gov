@@ -1582,7 +1582,7 @@ Hide default contact info
   }
   .field-group-html-element .field--name-field-hide-contact-form {
     display: block;
-    width:100%;
+    width: 100%;
     vertical-align: auto;
   }
 }

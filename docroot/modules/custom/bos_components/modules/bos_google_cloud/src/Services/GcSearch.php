@@ -130,7 +130,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     }
 
     // Manage conversations.
-    $allow_conversation = ($this->settings[$this->id()]["allow_conversation"] ?? FALSE && $parameters["allow_conversation"] ?? FALSE);
+    $allow_conversation = ($this->settings[$this->id()]["allow_conversation"] ?? FALSE) && ($parameters["allow_conversation"] ?? FALSE);
 
     // If we have overrides for the default projects or datastores, apply the
     // override here.
@@ -153,7 +153,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     // Build the payload (:search).
     try {
       if (!$payload = GcGenerationPayload::build(GcGenerationPayload::SEARCH, $parameters)) {
-        $this->error = "Could not build Payload";
+        $this->error = "Could not build :search endpoint payload";
         return $this->error;
       }
     }
@@ -194,58 +194,46 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     }
     unset($this->response["body"]);
 
-    if ($allow_conversation) {
+    // Fetch the sessionid (and queryid) from the response.
+    $session_id = explode("/", $results["sessionInfo"]["name"]);
+    $parameters["session_id"] = array_pop($session_id);
+    $query_id = explode("/", $results["sessionInfo"]["queryId"]);
+    $parameters["query_id"] = array_pop($query_id);
 
-      /* When we built the initial Payload, the $allow_conversation = TRUE
-      caused the query to be set up for follow-up questions (by creating a
-      session).
-      The SearchResponse will have returned search results and session info.
-      Now we need to use the sessioninfo get a generated answer with a call
-      to projects.locations.collections.engines.servingconfigs.answer */
+    // Save the search request and response objects for later.
+    // (Calling the post method creates new request & response objects,
+    // overwriting what we currently have.)
+    $this->response["session_id"] = $parameters["session_id"];
+    $this->response["query_id"] = $parameters["query_id"];
 
-      // Fetch the sessionid (and queryid) from the response.
-      $session_id = explode("/", $results["sessionInfo"]["name"]);
-      $session_id = array_pop($session_id);
-      $parameters["session_id"] = $session_id;
-      $query_id = explode("/", $results["sessionInfo"]["queryId"]);
-      $query_id = array_pop($query_id);
-      $parameters["query_id"] = $query_id;
+    $searchResponse = $this->response;
+    $this->searchRequest = $this->request;
 
-      // Save the search request and response objects for later.
-      // (Calling the post method creates new request & response objects,
-      // overwriting what we currently have.)
-      $this->response["session_id"] = $session_id;
-      $this->response["query_id"] = $query_id;
-      $searchResponse = $this->response;
-      $this->searchRequest = $this->request;
+    // Build the endpoint.
+    $url = GcGenerationURL::build(GcGenerationURL::SEARCH_ANSWER, $this->settings[$this->id()]);
 
-      // Build the endpoint.
-      $url = GcGenerationURL::build(GcGenerationURL::SEARCH_ANSWER, $this->settings[$this->id()]);
-
-      // Build the payload (:answer).
-      try {
-        if (!$payload = GcGenerationPayload::build(GcGenerationPayload::SEARCH_ANSWER, $parameters)) {
-          $this->error = "Could not build Payload";
-          return $this->error;
-        }
-      }
-      catch (Exception $e) {
-        $this->error = $e->getMessage();
+    // Build the payload (:answer).
+    try {
+      if (!$payload = GcGenerationPayload::build(GcGenerationPayload::SEARCH_ANSWER, $parameters)) {
+        $this->error = "Could not build :Answer endpoint payload";
         return $this->error;
       }
-
-      // Run the second query.
-      $results = $this->post($url, $payload, $headers);
-
-      if (!$results) {
-        throw new \Exception($this->error);
-      }
-
-      // Merge the Answer Results into the Search Results.
-      $this->mergeResults($searchResponse, $results);
-      $this->response = $searchResponse;
-
     }
+    catch (Exception $e) {
+      $this->error = $e->getMessage();
+      return $this->error;
+    }
+
+    // Run the second query.
+    $results = $this->post($url, $payload, $headers);
+
+    if (!$results) {
+      throw new \Exception($this->error);
+    }
+
+    // Merge the Answer Results into the Search Results.
+    $this->mergeResults($searchResponse, $results);
+    $this->response = $searchResponse;
 
     // Gather Vertex search metadata.
     $this->loadMetadata($parameters);
@@ -856,6 +844,29 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
    */
   public function fqDataStorename(string $projectid, string $dsname):string {
     return "projects/$projectid/locations/global/collections/default_collection/dataStores/$dsname";
+  }
+
+  /**
+   * Convert a standardized GC document path into its elements.
+   *
+   * @param string $document_path
+   *   The document string containing a path delimited by "/".
+   *
+   * @return array
+   *   An associative array with the document path parsed out.
+   */
+  public static function readDocumentPath(string $document_path):array {
+    $doc = [
+      "original_path" => $document_path,
+    ];
+    $document_path = explode("/", $document_path);
+    foreach ($document_path as $key => $part) {
+      if ($key % 2 == 1) {
+        // Odd numbered elements only.
+        $doc[$document_path[$key - 1]] = $part;
+      }
+    }
+    return $doc;
   }
 
 }

@@ -51,7 +51,7 @@ class GcBigQuery extends BosCurlControllerBase {
   ];
 
   public function __construct(string $service_account, string $project, string $dataset) {
-    $this->connectionString["account"] = $service_account;
+    $this->connectionString["account"] = GcAuthenticator::SVS_ACCOUNT_LIST[$service_account];
     $this->connectionString["project"] = $project;
     $this->connectionString["dataset"] = $dataset;
     parent::__construct();
@@ -131,7 +131,8 @@ class GcBigQuery extends BosCurlControllerBase {
   private function authenticate(): array {
     // Get token.
     try {
-      $this->authenticator = new GcAuthenticator();
+      // Add in big query scope for authentication.
+      $this->authenticator = new GcAuthenticator(scope: GcAuthenticator::SCOPE_BIG_QUERY);
       return [
         "Authorization" => $this->authenticator
           ->getAccessToken($this->connectionString["account"], "Bearer"),
@@ -179,12 +180,23 @@ class GcBigQuery extends BosCurlControllerBase {
    *
    * @return array
    *   The constructed payload.
+   *
+   * @see https://cloud.google.com/bigquery/docs/reference/rest/v2/tabledata/insertAll
    */
   private function buildPayload(string $action, array $records = []):array {
     switch ($action) {
       case "insertAll":
       default:
-        return $records;
+        return [
+          "kind" => "",
+          "skipInvalidRows" => TRUE,
+          "ignoreUnknownValues" => TRUE,
+          "templateSuffix" => "",
+          "rows" => [
+            "insertId " => '',
+            "json" => '',
+          ],
+        ];
     }
   }
 

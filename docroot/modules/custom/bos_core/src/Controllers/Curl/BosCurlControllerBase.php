@@ -86,7 +86,7 @@ class BosCurlControllerBase {
     // Any supplied headers will overwrite the defaults headers.
     $this->request["headers"] = array_merge($this->default_headers, $headers);
     $_headers = [];
-    foreach($this->request["headers"] as $key => $value) {
+    foreach ($this->request["headers"] as $key => $value) {
       $_headers[] = "{$key}: {$value}";
       if (strtolower($key) == "content-type") {
         $content_type = explode("/", $value);
@@ -110,7 +110,7 @@ class BosCurlControllerBase {
     $this->request["protocol"] = $urlparts[0];
     $this->request["endpoint"] = $urlparts[3];
     if ($type == "GET") {
-      $urlparts = explode("?", $urlparts[3],2);
+      $urlparts = explode("?", $urlparts[3], 2);
       $this->request["endpoint"] = $urlparts[0];
       !empty($urlparts[1]) && $this->request["query"] = $urlparts[1];
     }
@@ -121,7 +121,7 @@ class BosCurlControllerBase {
     // Make the CuRL object and return its handle.
     try {
       if (!$ch = curl_init()) {
-        throw new  Exception("CuRL initialization error.", self::CURL_GENERAL_ERROR);
+        throw new Exception("CuRL initialization error.", self::CURL_GENERAL_ERROR);
       }
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
       curl_setopt($ch, CURLOPT_URL, $post_url);
@@ -404,7 +404,7 @@ class BosCurlControllerBase {
 
     if (is_array($payload)) {
 
-      switch($content_type) {
+      switch ($content_type) {
 
         case "json":
           $payload = json_encode($payload);
@@ -412,8 +412,8 @@ class BosCurlControllerBase {
 
         default:
         case "xxx-url-encoded-form":
-          // Make a urlencode query string
-          foreach($payload as &$value) {
+          // Make a urlencode query string.
+          foreach ($payload as &$value) {
             $value = rawurlencode(trim($value));
           }
           $payload = implode("&", $payload);
