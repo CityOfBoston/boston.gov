@@ -1,0 +1,14 @@
+uuid: 2bed2c3b-d9c6-4e7a-a292-f35ef060abc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_features
+id: taxonomy_vocabulary_project_features
+entity_type_id: taxonomy_vocabulary
+entity_id: project_features
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

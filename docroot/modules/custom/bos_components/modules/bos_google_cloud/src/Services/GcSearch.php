@@ -6,8 +6,8 @@ use Drupal;
 use Drupal\bos_core\Controllers\Curl\BosCurlControllerBase;
 use Drupal\bos_google_cloud\Apis\v1alpha\SearchResponse;
 use Drupal\bos_google_cloud\GcGenerationPrompt;
-use Drupal\bos_google_cloud\GcGenerationURL;
 use Drupal\bos_google_cloud\GcGenerationPayload;
+use Drupal\bos_google_cloud\GcGenerationURL;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Form\FormStateInterface;
@@ -28,7 +28,6 @@ use Exception;
  * @extends BosCurlControllerBase
  * @implements GcServiceInterface, GcAgentBuilderInterface
  *
- * @file docroot/modules/custom/bos_components/modules/bos_google_cloud/src/Services/GcSearch.php
  * @see https://cloud.google.com/generative-ai-app-builder/docs/introduction
  */
 class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAgentBuilderInterface {
@@ -47,10 +46,24 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
    */
   protected ImmutableConfig $config;
 
+  /**
+   * Cache for last engines search.
+   *
+   * @var array
+   */
+  public array $engines = [];
+
+  /**
+   * Cache for settings.
+   *
+   * @var array
+   */
   protected array $settings;
 
   /**
-   * @var GcAuthenticator Google Cloud Authenication Service.
+   * Google Cloud Authenication Service.
+   *
+   * @var GcAuthenticator
    */
   protected GcAuthenticator $authenticator;
 
@@ -110,7 +123,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
       return $this->error();
     }
 
-    // Check quota
+    // Check quota.
     if (GcGenerationURL::quota_exceeded(GcGenerationURL::SEARCH)) {
       $this->error = "Quota exceeded for Discovery API";
       return $this->error;
@@ -126,7 +139,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     // Get new or cached OAuth2 authorization from GC.
     try {
       $headers = [
-        "Authorization" => $this->authenticator->getAccessToken($this->settings[$this->id()]["service_account"], "Bearer")
+        "Authorization" => $this->authenticator->getAccessToken($this->settings[$this->id()]["service_account"], "Bearer"),
       ];
     }
     catch (Exception $e) {
@@ -164,7 +177,9 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     }
 
     elseif (empty($results) || $this->error() || $this->http_code() != 200) {
-      if (empty($this->error)) {$this->error = " Unknown Error: ";}
+      if (empty($this->error)) {
+        $this->error = " Unknown Error: ";
+      }
       $this->error .= ", HTTP-CODE: " . $this->response["http_code"];
       throw new Exception($this->error);
     }
@@ -226,7 +241,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
         throw new \Exception($this->error);
       }
 
-      // Merge the Answer Results into the Search Results
+      // Merge the Answer Results into the Search Results.
       $this->mergeResults($searchResponse, $results);
       $this->response = $searchResponse;
 
@@ -240,23 +255,28 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public function buildForm(array &$form): void {
 
-    $project_id="612042612588";
-    $datastore_id="drupalwebsite_1702919119768";
-    $engine_id="oeoi-search-pilot_1726266124376";
-    $location_id="global";
-    $endpoint="https://discoveryengine.googleapis.com";
-    $model="stable";
-
-    $svs_accounts = [];
-    foreach ($this->settings["auth"]??[] as $name => $value) {
+    // Gather a list of service accounts.
+    $optAccounts = [];
+    foreach ($this->settings["auth"] ?? [] as $name => $value) {
       if ($name) {
-        $svs_accounts[$name] = $name;
+        $optAccounts[$name] = $name;
       }
     }
+    // Gather a list of Projects.
+    $svsAcct = $settings['service_account'] ?? array_key_first($optAccounts);
+    $optProjects = $this->availableProjects($svsAcct);
+    // Gather a list of Agent Builder Engine/Apps.
+    $project_id = $settings['project_id'] ?? "";
+    $optEngines = $this->availableEngines($svsAcct, $project_id);
+    foreach ($optEngines as $key => &$value) {
+      $value = $value['name'];
+    }
+    // Gather a list of datastores.
+    $optDataStores = $this->availableDataStores($svsAcct, $project_id);
 
     $settings = $this->settings[$this->id()] ?? [];
 
@@ -266,83 +286,86 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
         '#title' => 'Gen-AI Search',
         "#description" => "Service which searches a website-based datastore and returns summary text, page results, annotations and references.",
         '#open' => FALSE,
-        'project_id' => [
-          '#type' => 'textfield',
-          '#title' => t('Google Cloud Project'),
-          '#description' => t(''),
-          '#default_value' => $settings['project_id'] ?? $project_id,
-          '#required' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . $project_id,
-          ],
-        ],
-        'datastore_id' => [
-          '#type' => 'textfield',
-          '#title' => t('Data Store'),
-          '#description' => t(''),
-          '#default_value' => $settings['datastore_id'] ?? $datastore_id,
-          '#required' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . $datastore_id,
-          ],
-        ],
-        'engine_id' => [
-          '#type' => 'textfield',
-          '#title' => t('Engine'),
-          '#description' => t(''),
-          '#default_value' => $settings['engine_id'] ?? $engine_id,
-          '#required' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . $engine_id,
-          ],
-        ],
-        'location_id' => [
-          '#type' => 'textfield',
-          '#title' => t('Location (always global for now)'),
-          '#description' => t(''),
-          '#default_value' => $settings['location_id'] ?? $location_id,
-          '#required' => TRUE,
-          '#disabled' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . $location_id,
-          ],
-        ],
         'endpoint' => [
           '#type' => 'textfield',
           '#title' => t('Endpoint URL'),
-          '#description' => t('Ensure the API version is appended to the URL, e.g. /v1 or /v1alpha'),
-          '#default_value' => $settings['endpoint'] ?? $endpoint,
+          '#description' => t('The URL for the DiscoveryEngine Endpoint.'),
+          '#default_value' => $settings['endpoint'] ?? 'https://discoveryengine.googleapis.com',
+          '#disabled' => TRUE,
           '#required' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . $endpoint,
-          ],
         ],
-        'model' => [
+        'endpoint_version' => [
           '#type' => 'select',
-          '#title' => t('The LLM model to use'),
-          '#description' => t('This is the model that will be used.<br>Best to set to "stable" for latest stable release (which typically is frozen and only updated periodically) or "preview" for the latest model (which is more experimental and can be updated more frequently).<br>See https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models#models'),
-          '#default_value' => $settings['model'] ?? $model,
           '#options' => [
-            'stable' => 'Stable',
-            'preview' => 'Preview',
+            'v1' => 'v1',
+            'v1alpha' => 'v1alpha',
           ],
+          '#title' => t('Endpoint API version'),
+          '#disabled' => TRUE,
+          '#description' => t('Select the API version to be used, e.g. /v1 or /v1alpha'),
+          '#default_value' => $settings['endpoint_version'] ?? 'v1alpha',
           '#required' => TRUE,
         ],
         'service_account' => [
           '#type' => 'select',
           '#title' => t('The default service account to use'),
           '#description' => t('This default can be overridden using the API.'),
-          '#default_value' => $settings['service_account'] ?? ($svs_accounts[0] ?? ""),
-          '#options' => $svs_accounts,
+          '#default_value' => $svsAcct,
+          '#options' => $optAccounts,
           '#required' => TRUE,
-          '#attributes' => [
-            "placeholder" => 'e.g. ' . ($svs_accounts[0] ?? "No Service Accounts!"),
+        ],
+        'location_id' => [
+          '#type' => 'textfield',
+          '#title' => t('Location (always global for now)'),
+          '#description' => t('This is "global" for the time-being.'),
+          '#default_value' => $settings['location_id'] ?? 'global',
+          '#required' => TRUE,
+          '#disabled' => TRUE,
+        ],
+        'project_id' => [
+          '#type' => 'select',
+          '#options' => $optProjects,
+          '#title' => t('Google Cloud Project'),
+          '#description' => t('Enter the project machine name or numeric id.'),
+          '#default_value' => $project_id,
+          '#required' => TRUE,
+        ],
+        'engine_id' => [
+          '#type' => 'select',
+          '#options' => $optEngines,
+          '#title' => t('Engine (Vertex Agent Builder App)'),
+          '#description' => t('Enter the Vertex Agent Builder App machine name.'),
+          '#default_value' => $settings['engine_id'] ?? '',
+          '#required' => TRUE,
+        ],
+        'model' => [
+          '#type' => 'select',
+          '#title' => t('The LLM model to use'),
+          '#description' => t("Select the AI Model that will be used by the Engine.<br>Best to set to 'stable' for latest stable release (which typically is frozen and only updated periodically) or 'preview' for the latest model (which is more experimental and can be updated more frequently).<br>See https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models#models"),
+          '#default_value' => $settings['model'] ?? 'stable',
+          '#options' => [
+            'stable' => 'Stable',
+            'preview' => 'Preview',
           ],
+          '#required' => TRUE,
+        ],
+        'datastore_id' => [
+          '#type' => 'select',
+          '#options' => $optDataStores,
+          '#multiple' => TRUE,
+          '#markup' => "text",
+          '#title' => t('Data Store(s)'),
+          // At the moment we are not allowing users to specify a DataStore.
+          // We always use the default datastores defined in the engine/app.
+          '#disabled' => TRUE,
+          '#description' => t('Currently, only use the default datastores defined in the engine/app.'),
+          '#default_value' => array_keys($optDataStores),
+          '#required' => TRUE,
         ],
         'allow_conversation' => [
           '#type' => 'checkbox',
           '#title' => t('Allow conversations to continue.'),
-          '#description' => t('If this option is de-selected, previous questions and answers are not considered for context.'),
+          '#description' => t('If this option is selected, previous questions and answers can be used as context for later questions in the same session.'),
           '#default_value' => $settings['allow_conversation'] ?? 0,
           '#required' => FALSE,
         ],
@@ -352,7 +375,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
             "#value" => t('Test Search'),
             '#attributes' => [
               'class' => ['button', 'button--primary'],
-              'title' => "Test the provided configuration for this service"
+              'title' => "Test the provided configuration for this service",
             ],
             '#access' => TRUE,
             '#ajax' => [
@@ -362,7 +385,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
               'disable-refocus' => TRUE,
               'progress' => [
                 'type' => 'throbber',
-              ]
+              ],
             ],
             '#suffix' => '<span id="edit-search-result"></span>',
           ],
@@ -380,19 +403,21 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     $config = Drupal::configFactory()->getEditable("bos_google_cloud.settings");
 
     if ($config->get("search.project_id") !== $values['project_id']
-      ||$config->get("search.datastore_id") !== $values['datastore_id']
-      ||$config->get("search.engine_id") !== $values['engine_id']
-      ||$config->get("search.location_id") !== $values['location_id']
-      ||$config->get("search.service_account") !== $values['service_account']
-      ||$config->get("search.allow_conversation") !== $values['allow_conversation']
-      ||$config->get("search.endpoint") !== $values['endpoint']
-      ||$config->get("search.model") !== $values['model']) {
+      || $config->get("search.engine_id") !== $values['engine_id']
+      || $config->get("search.location_id") !== $values['location_id']
+      || $config->get("search.service_account") !== $values['service_account']
+      || $config->get("search.datastore_id") !== $values['datastore_id']
+      || $config->get("search.allow_conversation") !== $values['allow_conversation']
+      || $config->get("search.endpoint") !== $values['endpoint']
+      || $config->get("search.endpoint_version") !== $values['endpoint_version']
+      || $config->get("search.model") !== $values['model']) {
       $config->set("search.project_id", $values['project_id'])
-        ->set("search.datastore_id", $values['datastore_id'])
         ->set("search.engine_id", $values['engine_id'])
         ->set("search.location_id", $values['location_id'])
+        ->set("search.datastore_id", $values['datastore_id'])
         ->set("search.allow_conversation", $values['allow_conversation'])
         ->set("search.endpoint", $values['endpoint'])
+        ->set("search.endpoint_version", $values['endpoint_version'])
         ->set("search.model", $values['model'])
         ->set("search.service_account", $values['service_account'])
         ->save();
@@ -467,24 +492,24 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     $this->response["metadata"] = [
       "Model" => array_merge($this->settings[$this->id()], [
         $service_account => [
-            "client_id" => $this->settings["auth"][$service_account]["client_id"],
-            "client_email" => $this->settings["auth"][$service_account]["client_email"],
-            "project_id" => $this->settings["auth"][$service_account]["project_id"],
-          ]
-        ]),
+          "client_id" => $this->settings["auth"][$service_account]["client_id"],
+          "client_email" => $this->settings["auth"][$service_account]["client_email"],
+          "project_id" => $this->settings["auth"][$service_account]["project_id"],
+        ],
+      ]),
       "Search Presets" => [],
       "Search Query Request" => NULL,
       "Summary Query Request" => $this->request(),
       "Response" => $this->response(),
     ];
-    if (property_exists($this, "searchRequest")){
+    if (property_exists($this, "searchRequest")) {
       $this->response["metadata"]["Search Query Request"] = $this->searchRequest;
     }
     else {
       unset($this->response["metadata"]["Search Query Request"]);
     }
 
-    // Flatten the SearchResponse object
+    // Flatten the SearchResponse object.
     $this->response["metadata"]["Response"]["SearchResponse"] = $this->response["metadata"]["Response"]["object"]->toArray();
 
     // Remove elements we don't need.
@@ -515,7 +540,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
    */
   public function availableDataStores(?string $service_account, ?string $project_id): array {
 
-    $settings =  $this->settings[$this->id()];
+    $settings = $this->settings[$this->id()];
 
     if (!empty($service_account) && $service_account != "default") {
       $settings['service_account'] = $service_account;
@@ -527,7 +552,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     // Get token.
     try {
       $headers = [
-        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer")
+        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer"),
       ];
     }
     catch (Exception $e) {
@@ -541,12 +566,12 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     try {
       $results = $this->get($url, NULL, $headers);
     }
-    catch(\Exception $e) {
+    catch (\Exception $e) {
       return [];
     }
 
     $output = [];
-    foreach($results["dataStores"] ?? [] as $dataStore) {
+    foreach ($results["dataStores"] ?? [] as $dataStore) {
       $dataStoreName = explode("/", $dataStore["name"]);
       $dataStoreId = array_pop($dataStoreName);
       $output[$dataStoreId] = $dataStore['displayName'];
@@ -559,7 +584,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
    */
   public function availableEngines(?string $service_account, ?string $project_id): array {
     // Get token.
-    $settings =  $this->settings[$this->id()];
+    $settings = $this->settings[$this->id()];
 
     if (!empty($service_account) && $service_account != "default") {
       $settings['service_account'] = $service_account;
@@ -570,7 +595,7 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
 
     try {
       $headers = [
-        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer")
+        "Authorization" => $this->authenticator->getAccessToken($settings['service_account'], "Bearer"),
       ];
     }
     catch (Exception $e) {
@@ -581,19 +606,28 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     $url = GcGenerationURL::build(GcGenerationURL::ENGINE, $settings);
 
     // Query the AI.
-    $output = [];
+    $this->engines = [];
     try {
       $results = $this->get($url, NULL, $headers);
     }
-    catch(\Exception $e) {}
-
-    foreach($results["engines"] ?: [] as $engine) {
-      $engineName = explode("/", $engine["name"]);
-      $engineId = array_pop($engineName);
-      $output[$engineId] = $engine['displayName'];
+    catch (\Exception $e) {
+      // Do nothing.
     }
 
-    return $output;
+    foreach ($results["engines"] ?: [] as $engine) {
+      if ($results["engines"][0]["solutionType"] == "SOLUTION_TYPE_SEARCH") {
+        // For this class, we only want SEARCH not CONVERSATION or AGENT.
+        $engineName = explode("/", $engine["name"]);
+        $engineId = array_pop($engineName);
+        $this->engines[$engineId] = [
+          "name" => $engine['displayName'],
+          "datastores" => $engine['dataStoreIds'],
+          "multi-ds" => (count($engine["dataStoreIds"]) > 1) ? "true" : "false",
+        ];
+      }
+    }
+
+    return $this->engines;
 
   }
 
@@ -644,9 +678,8 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
       $this->error = "The conversation API settings are empty or missing.";
     }
 
-    // ensure these parameters have a default setting.
+    // Ensure these parameters have a default setting.
     $parameters["prompt"] = $parameters["prompt"] ?? "default";
-    $parameters["model"] = $this->settings[$this->id()]["model"] ?? "stable";
 
   }
 
@@ -676,11 +709,19 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
       $parameters["project_id"] = $this->settings[$this->id()]['project_id'];
     }
 
-    if (!empty($parameters["datastore_id"])) {
+    // At the moment we are not allowing users to specify a DataStore.
+    // We are always using the default datastores defined in the engine/app.
+    // If we do enable the override of datastores, this code is needed to
+    // give a fully qualified datastore name as required by the API.
+    if (!empty($parameters["datastore_id"] ?? "")) {
       $this->settings[$this->id()]['datastore_id'] = $parameters["datastore_id"];
     }
     else {
-      $parameters["datastore_id"] = $this->settings[$this->id()]['datastore_id'];
+      if (is_array($parameters["datastore_id"] ?? "")) {
+        foreach ($parameters["datastore_id"] as &$ds) {
+          $ds = $this->fqDataStorename($parameters["project_id"], $ds);
+        }
+      }
     }
 
     if (!empty($parameters["engine_id"])) {
@@ -688,6 +729,13 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
     }
     else {
       $parameters["engine_id"] = $this->settings[$this->id()]['engine_id'];
+    }
+
+    if (!empty($parameters["model"])) {
+      $this->settings[$this->id()]['model'] = $parameters["model"];
+    }
+    else {
+      $parameters["model"] = $this->settings[$this->id()]['model'];
     }
 
   }
@@ -801,6 +849,13 @@ class GcSearch extends BosCurlControllerBase implements GcServiceInterface, GcAg
       ];
     }
     return $output;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function fqDataStorename(string $projectid, string $dsname):string {
+    return "projects/$projectid/locations/global/collections/default_collection/dataStores/$dsname";
   }
 
 }

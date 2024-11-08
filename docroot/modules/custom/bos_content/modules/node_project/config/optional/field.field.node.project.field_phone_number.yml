@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_number
+    - node.type.project
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Contact Phone'
+id: node.project.field_phone_number
+field_name: field_phone_number
+entity_type: node
+bundle: project
+label: 'Phone Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

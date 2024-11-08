@@ -16,8 +16,8 @@ abstract class GcDiscoveryEngineObjectsBase implements GcDiscoveryEngineObjectsI
    */
   public function set(string $key, int|bool|string|array|GcDiscoveryEngineObjectsInterface $value): GcDiscoveryEngineObjectsInterface {
     if (array_key_exists($key, $this->object)) {
-      if (is_array($value)){
-        $this->object[$key] = array_merge($this->object[$key], $value);
+      if (is_array($value)) {
+        $this->object[$key] = array_merge($this->object[$key] ?: [], $value);
       }
       else {
         $this->object[$key] = $value;
@@ -60,6 +60,12 @@ abstract class GcDiscoveryEngineObjectsBase implements GcDiscoveryEngineObjectsI
       if ($value != NULL) {
         if (is_object($value)) {
           $newval = $this->trimArray($value->toArray());
+          if ($newval !== NULL) {
+            $output[$key] = $newval;
+          }
+        }
+        elseif (is_array($value)) {
+          $newval = $this->trimArray($value);
           if ($newval !== NULL) {
             $output[$key] = $newval;
           }

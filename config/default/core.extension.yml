@@ -234,6 +234,7 @@ module:
   node_post: 2
   node_procurement_advertisement: 2
   node_program_initiative_profile: 2
+  node_project: 2
   node_public_notice: 2
   node_rollcall: 2
   node_script_page: 2

@@ -1,0 +1,29 @@
+uuid: 24e88914-d53d-4be3-b168-c628a880da50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_role
+    - paragraphs.paragraphs_type.contact_role
+    - taxonomy.vocabulary.project_role
+id: paragraph.contact_role.field_role
+field_name: field_role
+entity_type: paragraph
+bundle: contact_role
+label: Role
+description: 'Select the Role for this contact'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_role: project_role
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

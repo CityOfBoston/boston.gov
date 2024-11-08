@@ -19,6 +19,7 @@ dependencies:
     - node.type.post
     - node.type.procurement_advertisement
     - node.type.program_initiative_profile
+    - node.type.project
     - node.type.public_notice
     - node.type.script_page
     - node.type.site_alert
@@ -142,6 +143,7 @@ permissions:
   - 'delete any document files'
   - 'delete any image files'
   - 'delete any media'
+  - 'delete any project content'
   - 'delete any video files'
   - 'delete own audio files'
   - 'delete own document files'
@@ -164,6 +166,7 @@ permissions:
   - 'edit any post content'
   - 'edit any procurement_advertisement content'
   - 'edit any program_initiative_profile content'
+  - 'edit any project content'
   - 'edit any public_notice content'
   - 'edit any script_page content'
   - 'edit any site_alert content'
@@ -242,6 +245,7 @@ permissions:
   - 'set post published on date'
   - 'set procurement_advertisement published on date'
   - 'set program_initiative_profile published on date'
+  - 'set project published on date'
   - 'set public_notice published on date'
   - 'set topic_page published on date'
   - 'set transaction published on date'

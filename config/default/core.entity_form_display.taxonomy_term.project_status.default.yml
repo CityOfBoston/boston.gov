@@ -1,0 +1,86 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.icon_entity_browser
+    - field.field.taxonomy_term.project_status.field_icon
+    - taxonomy.vocabulary.project_status
+  module:
+    - entity_browser
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_project_status:
+      children:
+        - group_basic_information
+      label: 'Project Status'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: vertical
+        width_breakpoint: 640
+    group_basic_information:
+      children:
+        - name
+        - field_icon
+        - description
+      label: 'Basic Information'
+      region: content
+      parent_name: group_project_status
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: "<h4>A Project Status is a status that will appear on all time-lines for all new and existing Project content types.</h4>\r\n<h3 class=\"color-warning\"><b>Care: </b>this will affect the timeline on all past, current and future Projects.</h3>"
+        required_fields: true
+id: taxonomy_term.project_status.default
+targetEntityType: taxonomy_term
+bundle: project_status
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: entity_browser_entity_reference
+    weight: 2
+    region: content
+    settings:
+      entity_browser: icon_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: false
+      open: false
+      field_widget_display_settings:
+        view_mode: default
+      selection_mode: selection_append
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  status: true

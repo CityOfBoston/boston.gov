@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.project
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Contact Email'
+id: node.project.field_email
+field_name: field_email
+entity_type: node
+bundle: project
+label: Email
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

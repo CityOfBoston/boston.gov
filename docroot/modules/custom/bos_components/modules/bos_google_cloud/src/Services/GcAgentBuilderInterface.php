@@ -61,4 +61,20 @@ interface GcAgentBuilderInterface {
    */
   public function availableApps(?string $service_account, ?string $project_id): array;
 
+  /**
+   * Format datastore as required by API.
+   *
+   * Generate the "fully qualified" data store name based on the provided
+   * project ID and data store name.
+   *
+   * @param string $projectid
+   *   The ID of the project.
+   * @param string $dsname
+   *   The name of the data store.
+   *
+   * @return string
+   *   The "fully qualified" data store name.
+   */
+  public function fqDataStorename(string $projectid, string $dsname): string;
+
 }

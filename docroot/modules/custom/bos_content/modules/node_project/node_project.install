@@ -1,0 +1,279 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+
+function node_project_uninstall() {
+if (function_exists("_bos_core_uninstall_boston")) {
+  _bos_core_uninstall_boston(basename(__FILE__, ".install"));
+  }
+}
+
+/**
+* Implements hook_install().
+*/
+function node_project_install() {
+  // Copy any icons into expected location.
+  _bos_core_install_icons(basename(__FILE__, ".install"));
+  // Set-up the default taxonomies.
+  _node_project_load_taxonomies();
+}
+
+/**
+ * Loads and ensures the project's taxonomies are created and populated.
+ *
+ * This function initializes a set of predefined taxonomies related to projects,
+ * and ensures that both vocabularies and terms exist in the Drupal instance.
+ * If they do not exist, it creates them. It also sets specific fields for
+ * the terms based on the provided structure.
+ *
+ * @return void
+ */
+function _node_project_load_taxonomies():void {
+
+  $tax_struct = [
+    'project_features' => [
+      'name' => 'Project Features',
+      'description' => 'Features related to a Project.',
+      'terms' => [
+        'Community-funded' => [
+          'fields' => [
+            'field_icon' => "circle community room"
+          ]
+        ],
+        'Mayor-sponsored' => [
+          'fields' => [
+            'field_icon' => "experiential mayoral proclamation"
+          ]
+        ],
+      ],
+    ],
+    'project_role' => [
+      'name' => 'Project Role',
+      'description' => 'Roles that are related to Project personnel or vendors.',
+      'terms' => [
+        'Architect' => [],
+        'Designer' => [],
+        'Construction Manager' => [],
+        'Consultant' => [],
+        'Developer' => [],
+        'Project Manager' => [],
+        'Vendor' => [],
+      ],
+    ],
+    'project_type' => [
+      'name' => 'Project Type',
+      'description' => 'The Project type.',
+      'fields' => ['field_icon'],
+      'terms' => [
+        'Arts and Culture' => [
+          'fields' => [
+            'field_icon' => "experiential art supplies"
+          ]
+        ],
+        'Community Centers' => [
+          'fields' => [
+            'field_icon' => "circle community centers"
+          ]
+        ],
+        'Housing' => [
+          'fields' => [
+            'field_icon' => "experiential house"
+          ]
+        ],
+        'Libraries' => [
+          'fields' => [
+            'field_icon' => "experiential open book"
+          ]
+        ],
+        'Municipal Buildings' => [
+          'fields' => [
+            'field_icon' => "experiential city hall"
+          ]
+        ],
+        'Other Public Facilities' => [
+          'fields' => [
+            'field_icon' => "experiential school 2"
+          ]
+        ],
+        'Parks and Green Space' => [
+          'fields' => [
+            'field_icon' => "experiential park location"
+          ]
+        ],
+        'Public Safety' => [
+          'fields' => [
+            'field_icon' => "experiential fire truck"
+          ]
+        ],
+        'Schools' => [
+          'fields' => [
+            'field_icon' => "experiential school"
+          ]
+        ],
+        'Streets' => [
+          'fields' => [
+            'field_icon' => "experiential street sign"
+          ]
+        ],
+      ],
+    ],
+    'project_status' => [
+      'name' => 'Project Status',
+      'description' => 'Project timeline status.',
+      'terms' => [
+        'Complete' => [
+          'fields' => [
+            'field_icon' => "experiential dove"
+          ]
+        ],
+        'Construction' => [
+          'fields' => [
+            'field_icon' => "experiential construction"
+          ]
+        ],
+        'Design' => [
+          'fields' => [
+            'field_icon' => "experiential art supplies"
+          ]
+        ],
+        'Pending' => [
+          'fields' => [
+            'field_icon' => "experiential custom hours"
+          ]
+        ],
+        'Planning' => [
+          'fields' => [
+            'field_icon' => "experiential plan"
+          ]
+        ],
+      ],
+    ],
+    'project_stage' => [
+      'name' => 'Project Stage',
+      'description' => 'The projects Status/Stage.',
+      'terms' => [
+        'Pending Stage' => [
+          'fields' => [
+            'field_icon' => "experiential custom hours",
+            'field_project_status' => "Pending",
+            'field_project_type' => [
+              "Other Public Facilities",
+              "Parks and Green Space"
+            ],
+          ]
+        ],
+        'Design Stage' => [
+          'fields' => [
+            'field_icon' => "experiential lock",
+            'field_project_status' => "Design",
+            'field_project_type' => [
+              "Other Public Facilities",
+              "Parks and Green Space"
+            ],
+          ]
+        ],
+        'Completed Stage' => [
+          'fields' => [
+            'field_icon' => "Method...",
+            'field_project_status' => "Complete",
+            'field_project_type' => [
+              "Other Public Facilities",
+              "Parks and Green Space"
+            ],
+          ]
+        ],
+        'In Progress Stage' => [
+          'fields' => [
+            'field_icon' => "experiential construction tool",
+            'field_project_status' => "Construction",
+            'field_project_type' => [
+              "Other Public Facilities",
+              "Parks and Green Space"
+            ],
+          ]
+        ],
+        'Planning Stage' => [
+          'fields' => [
+            'field_icon' => "experiential plan",
+            'field_project_status' => "Planning",
+            'field_project_type' => [
+              "Other Public Facilities",
+              "Parks and Green Space"
+            ],
+          ]
+        ],
+      ],
+    ],
+  ];
+
+  foreach ($tax_struct as $type => &$data) {
+    // Ensure the vocabulary exists. Create it if it does not.
+    $vocabulary = Vocabulary::load('project_status');
+    if (!$vocabulary) {
+      // Create the vocab if it does not exist yet.
+      $vocabulary = Vocabulary::create([
+        'vid' => $type,
+        'name' => $data['name'],
+        'description' => $data['description'],
+      ]);
+      $vocabulary->save();
+    }
+
+    // Check the terms in the structure.
+    foreach ($data['terms'] as $term_name => &$term_data) {
+      $term_id = \Drupal::entityQuery('taxonomy_term')
+        ->condition('vid', $type)
+        ->condition('name', $term_name, '=')
+        ->accessCheck(FALSE)
+        ->execute();
+
+      if ($term_id) {
+        // This Term exists, note it's tid for later, and load it.
+        $term_id = reset($term_id);
+        $term = Term::load($term_id);
+      }
+      else {
+        // This Term does not exist, create it and note it's tid for later.
+        $term = Term::create([
+          'vid' => $type,
+          'name' => $term_name,
+        ]);
+        $term->save();
+        $term_id = $term->id;
+      }
+      $term_data["tid"] = $term_id;
+
+      foreach ($term_data["fields"] ?? [] as $field_name => $field_value) {
+        // Update/set the fields required in the Term.
+        switch ($field_name) {
+          case 'field_icon':
+            // Find the media entity by name.
+            if ($entity = \Drupal::entityTypeManager()
+              ->getStorage('media')
+              ->loadByProperties(["name" => $field_value])) {
+              $term->set("field_icon", [
+                  'target_id' => array_key_first($entity)
+                ]
+              )->save();
+            }
+            break;
+          case 'field_project_status':
+          case 'field_project_type':
+            // Get the tid for the entity reference, and save.
+            $target_term_name = str_ireplace("field_", "", $field_name);
+            if (!is_array($field_value)) {
+              $field_value = [$field_value];
+            }
+            foreach($field_value as $field_delta_value) {
+              $term->set($field_name, [
+                "target_id" => $tax_struct[$target_term_name]['terms'][$field_delta_value]['tid'],
+              ])->save();
+            }
+            break;
+        }
+      }
+    }
+  }
+}

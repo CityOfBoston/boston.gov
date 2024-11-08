@@ -6,6 +6,13 @@
   opacity: .5;
 }
 
+/**
+ * SUPPRESS AJAX error message block - only for anonymous browsers.
+ */
+.not-logged-in .messages__wrapper .messages--error {
+  display: none;
+}
+
 /***
  * MOBILE FIRST CSS.
  */

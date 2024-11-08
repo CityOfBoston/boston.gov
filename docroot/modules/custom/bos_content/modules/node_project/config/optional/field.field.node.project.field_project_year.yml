@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_year
+    - node.type.project
+  module:
+    - options
+id: node.project.field_project_year
+field_name: field_project_year
+entity_type: node
+bundle: project
+label: 'Project Year'
+description: 'Financial year this project is allocated to. '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

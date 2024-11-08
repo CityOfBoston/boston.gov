@@ -1,0 +1,9 @@
+uuid: bec9b728-8164-40ae-8ccb-db113b3645cc
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Type'
+vid: project_type
+description: 'The project Type (project)'
+weight: 0
+new_revision: false

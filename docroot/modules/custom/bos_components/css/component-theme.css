@@ -358,7 +358,7 @@
 
 .paragraphs-item-transaction-grid.b--w .lwi:focus,
 .paragraphs-item-transaction-grid.b--w .lwi:hover {
-  background-color: #288be4;
+  background-color: #1871bd;
   color: #fff;
 }
 
@@ -615,7 +615,7 @@ article .paragraphs-item-3-column-w-image.b--w ul li {
 }
 .paragraphs-item-drawers.b--w .b--g .dr-h:hover,
 .paragraphs-item-drawers.b--w .b--g .dr-h:focus {
-  background-color: #288be4;
+  background-color: #1871bd;
 }
 
 .paragraphs-item-drawers.b--w .b--g .dr-tr:checked ~ .dr-h,

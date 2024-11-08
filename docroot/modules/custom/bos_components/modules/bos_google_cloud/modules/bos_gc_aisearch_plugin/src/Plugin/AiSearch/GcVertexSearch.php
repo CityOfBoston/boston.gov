@@ -54,6 +54,7 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
           "include_citations" => $preset["results"]["citations"] ?? 0,
 //          "min_citation_relevance" => $preset["results"]["min_citation_relevance"] ?? 0,
           "related_questions" => $preset["results"]["related_questions"] ?? 0,
+          "engine_mds" => (($preset["model_tuning"]["overrides"]["engine_mds"] ?? "true") == "true"),
           "safe_search" => $preset["model_tuning"]['search']["safe_search"] ?? 0,
           "ignoreAdversarialQuery" => $preset["model_tuning"]['summary']["ignoreAdversarialQuery"] ?? 0,
           "ignoreNonSummarySeekingQuery" => $preset["model_tuning"]['summary']["ignoreNonSummarySeekingQuery"] ?? 0,
@@ -67,14 +68,38 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
           $parameters["service_account"] = $preset["model_tuning"]["overrides"]["service_account"];
           $this->service->setServiceAccount($parameters["service_account"]);
         }
+
         if (!empty($preset["model_tuning"]["overrides"]["project_id"]) && $preset["model_tuning"]["overrides"]["project_id"] != "default") {
           $parameters["project_id"] = $preset["model_tuning"]["overrides"]["project_id"];
         }
+
         if (!empty($preset["model_tuning"]["overrides"]["datastore_id"]) && $preset["model_tuning"]["overrides"]["datastore_id"] != "default") {
+          // At the moment we are not allowing users to specify a DataStore.
+          // We are always using the default datastores defined in the engine.
+          // This block is redundant and only left in case we enable overrides.
           $parameters["datastore_id"] = $preset["model_tuning"]["overrides"]["datastore_id"];
+          if (is_array($preset["model_tuning"]["overrides"]["datastore_id"])) {
+            foreach ($parameters["datastore_id"] as &$ds) {
+              $ds = $this->service->fqDataStorename($parameters["project_id"], $ds);
+            }
+          }
+          else {
+            $parameters["datastore_id"] = [$this->service->fqDataStorename($parameters["project_id"], $preset["model_tuning"]["overrides"]["datastore_id"])];
+          }
         }
+
         if (!empty($preset["model_tuning"]["overrides"]["engine_id"]) && $preset["model_tuning"]["overrides"]["engine_id"] != "default") {
           $parameters["engine_id"] = $preset["model_tuning"]["overrides"]["engine_id"];
+        }
+
+        if (!empty($preset["model_tuning"]["overrides"]["model"]) && $preset["model_tuning"]["overrides"]["model"] != "default") {
+          $parameters["model"] = $preset["model_tuning"]["overrides"]["model"];
+        }
+
+        // Set multi-datastore requirements.
+        if (!empty($preset["model_tuning"]["overrides"]["engine_mds"] == "true")) {
+          // If this is a multi-datastore dataset, cannot have safe_search.
+          $parameters["safe_search"] = FALSE;
         }
 
         // Query the Agent Builder.
@@ -287,7 +312,9 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
     // Cycle through the Citations, and load them into aiSearchResponse.
     foreach ($citations as $citation_key => $citation) {
 
-      $searchCitation = new AiSearchCitation($citation['startIndex'], $citation['endIndex']);
+      $start_index = $citation['startIndex'] ?? 0;
+      $end_index = $citation['endIndex'] ?? strlen($aiSearchResponse->get("body"));
+      $searchCitation = new AiSearchCitation($start_index, $end_index);
 
       // Get find the relevance score for each source (Reference) and only
       // save the source if it is the only one, or if it is above the threshold
@@ -327,7 +354,7 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
           if ($source["referenceIndex"] == $reference_key) {
             $locations[] = [
               "startIndex" => $citation["startIndex"] ?? 0,
-              "endIndex" => $citation["endIndex"] ?? strlen($aiSearchResponse["body"]),
+              "endIndex" => $citation["endIndex"] ?? strlen($aiSearchResponse->get("body")),
             ];
             break;
           }
@@ -364,7 +391,7 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
               $source["referenceIndex"] = -$idx;
             }
           }
-          $citation_collection->updateCitation($cit_key, $citation);
+          $citation_collection->updateCitation($citation, $cit_key);
         }
 
       }
@@ -377,7 +404,7 @@ class GcVertexSearch extends AiSearchBase implements AiSearchInterface {
           $source["referenceIndex"] = abs($source["referenceIndex"]);
         }
       }
-      $citation_collection->updateCitation($cit_key, $citation);
+      $citation_collection->updateCitation($citation, $cit_key);
     }
 
     // Make sure the Citations are indexed correctly.

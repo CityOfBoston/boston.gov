@@ -20,6 +20,7 @@ dependencies:
     - node.type.post
     - node.type.procurement_advertisement
     - node.type.program_initiative_profile
+    - node.type.project
     - node.type.public_notice
     - node.type.script_page
     - node.type.site_alert

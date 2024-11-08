@@ -172,12 +172,10 @@ class BosCurlControllerBase {
      * EXECUTE
      **************************/
     try {
-
       $time = microtime(TRUE);
       $response = curl_exec($this->handle);
       $this->response["elapsedTime"] = microtime(TRUE) - $time;
-      $this->extractHeaders( $response, $this->response["headers"]);
-
+      $this->extractHeaders($response, $this->response["headers"]);
     }
     catch (Exception $e) {
       $this->error = $e->getMessage() ?? "Error executing CuRL";
@@ -240,12 +238,12 @@ class BosCurlControllerBase {
         $this->response["body"] = json_decode($response, TRUE);
       }
       else {
-        // see if we can json_decode the response even if it's not MIMEd json.
+        // See if we can json_decode the response even if it's not MIMEd json.
         $response = urldecode($response);
         try {
           $response = json_decode($response, TRUE);
           if (!empty($response)) {
-            // Got json
+            // Got JSON.
             $this->response["body"] = $response;
           }
           else {
@@ -272,7 +270,7 @@ class BosCurlControllerBase {
     /**************************
      * VALIDATE
      **************************/
-    if ($this->response["http_code"] == 500 ) {
+    if ($this->response["http_code"] == 500) {
       $this->writeError("Vendor API internal error: {$this->response["response_raw"]}");
       throw new Exception($this->error, self::VENDOR_INTERNAL_ERROR);
     }

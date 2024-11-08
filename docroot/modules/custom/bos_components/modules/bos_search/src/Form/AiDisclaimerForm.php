@@ -7,19 +7,14 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 
-/*
-  class PromptTesterForm
-  - Performs AI Searches using the requested preset.
-
-  david 04 2024
-  @file docroot/modules/custom/bos_components/modules/bos_google_cloud/src/Form/src/Form/PromptTesterForm.php
-*/
-
+/**
+ * Class AiDisclaimerForm.
+ *
+ * Displays a modal disclaimer form.
+ *
+ * David 04 2024.
+ */
 class AiDisclaimerForm extends FormBase {
-
-  /**
-   * This form allows a user to submit a conversation-based search.
-   */
 
   /**
    * {@inheritdoc}
@@ -47,7 +42,7 @@ class AiDisclaimerForm extends FormBase {
           '#value' => 'Continue',
           '#attributes' => [
             "class" => [
-              "btn-submit"
+              "btn-submit",
             ],
           ],
         ],
@@ -57,7 +52,7 @@ class AiDisclaimerForm extends FormBase {
           '#access' => FALSE,
           '#attributes' => [
             "class" => [
-              "btn-cancel"
+              "btn-cancel",
             ],
           ],
         ],
@@ -69,7 +64,7 @@ class AiDisclaimerForm extends FormBase {
   }
 
   /**
-   * @inheritDoc
+   * {@inheritDoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Not required.

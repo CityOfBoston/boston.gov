@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: contact_role
+label: 'Contact Role'
+icon_uuid: null
+icon_default: null
+description: 'Component to track an individual or company and link to some other component or entity.'
+behavior_plugins: {  }

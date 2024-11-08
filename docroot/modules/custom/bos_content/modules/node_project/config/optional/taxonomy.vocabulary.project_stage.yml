@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Stage'
+vid: project_stage
+description: 'The projects Status/Stage.'
+weight: 0
+new_revision: false

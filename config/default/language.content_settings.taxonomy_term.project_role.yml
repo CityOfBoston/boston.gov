@@ -1,0 +1,11 @@
+uuid: cd6c49e4-1e5c-4f3b-bbd4-80b5f0431a24
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_role
+id: taxonomy_term.project_role
+target_entity_type_id: taxonomy_term
+target_bundle: project_role
+default_langcode: site_default
+language_alterable: false

@@ -40,6 +40,13 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
    */
   protected ImmutableConfig $config;
 
+  /**
+   * Cache for last engines search.
+   *
+   * @var array
+   */
+  public array $engines = [];
+
   protected array $settings;
 
   /**
@@ -865,22 +872,31 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
     $url = GcGenerationURL::build(GcGenerationURL::ENGINE, $settings);
 
     // Query the AI.
-    $output = [];
+    $this->engines = [];
     try {
       $results = $this->get($url, NULL, $headers);
     }
-    catch(\Exception $e) {}
-
-    foreach($results["engines"] ?: [] as $engine) {
-      $engineName = explode("/", $engine["name"]);
-      $engineId = array_pop($engineName);
-      $output[$engineId] = $engine['displayName'];
+    catch(\Exception $e) {
+      // Do nothing.
     }
 
-    return $output;
+    foreach ($results["engines"] ?: [] as $engine) {
+      $engineName = explode("/", $engine["name"]);
+      $engineId = array_pop($engineName);
+      $this->engines[$engineId] = [
+        "name" => $engine['displayName'],
+        "multi-ds" => (count($engine["dataStoreIds"]) > 1) ? "true" : "false",
+        "datastores" => $engine['dataStoreIds'],
+      ];
+    }
+
+    return $this->engines;
 
   }
 
+  /**
+   * {@inheritDoc}
+   */
   public function availableProjects(?string $service_account): array {
 
     if (!empty($service_account) && $service_account != "default") {
@@ -925,6 +941,13 @@ class GcConversation extends BosCurlControllerBase implements GcServiceInterface
     }
     return $output;
 
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public function fqDataStorename(string $dsname, string $projectid):string {
+    return "projects/$projectid/locations/global/collections/default_collection/dataStores/$dsname";
   }
 
 }

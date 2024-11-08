@@ -1,0 +1,225 @@
+<?php
+
+/*
+  Main Drupal module for node_project
+
+  david 08 2024
+  @file docroot/modules/custom/bos_content/modules/node_project/node_project.module
+
+*/
+
+use Drupal\Core\Render\Markup;
+use Drupal\taxonomy\Entity\Term;
+use Symfony\Component\DomCrawler\Crawler;
+use Drupal\bos_geocoder\Controller\BosGeocoderController;
+use Drupal\bos_geocoder\Utility\BosGeoAddress;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+
+function node_project_theme() {
+  return [
+    'node__project' => [
+      'render element' => 'content',
+      'base hook' => 'node',
+    ],
+    'node__project__map' => [
+      'base hook' => "node",
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function node_project_preprocess(&$variables, $hook) {
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function node_project_preprocess_form(&$variables) {}
+
+/**
+ * Implements hook_field_widget_info_alter().
+ */
+function node_project_field_widget_info_alter(array &$info) {
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function node_project_preprocess_geolocation_map_wrapper(&$variables, $hook) {
+  $variables['attached'] = BubbleableMetadata::mergeAttachments(
+    empty($variables['attached']) ? [] : $variables['attached'],
+    [
+      'drupalSettings', [
+        'geolocation' => [
+          'map' => [
+            'hello' => 1,
+          ]
+        ],
+        'david' => [],
+      ],
+    ],
+  );
+}
+/**
+ * Implements hook_form_alter().
+ */
+function node_project_form_node_project_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _node_project_create_ajax($form);
+}
+function node_project_form_node_project_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _node_project_create_ajax($form);
+}
+
+/**
+ * Implements hook_paragraph_HOOK_summary_alter().
+ */
+function node_project_paragraph_contact_role_summary_alter(array $form_widget, array $para, array $attributes) {
+  if ($termid = $para["entity"]->field_role->target_id) {
+    $term = Term::load($termid);
+    $term = $term->getName() ?? '';
+    $markup[] = Markup::create("$term: <i>{$para["entity"]->field_company_name->value}</i>");
+    return [
+      'attributes' => $attributes,
+      'content' => $markup,
+    ];
+  }
+}
+
+function _node_project_create_ajax(array &$form){
+  $ajax = [
+    "callback" => '_ajax_cb_geocode',
+    "event" => "click",
+    "wrapper" => "edit-field-project-address-geolocatio-0-lat",
+    'progress' => [
+      'type' => 'throbber',
+      'message' => t('Fetching Geocode data...'),
+    ]
+  ];
+  // Button to lookup info for the geolocation field
+  $form['field_project_address']['widget'][0]['geo'] = [
+    '#type'   => 'button',
+    '#value'  => t('Fetch Geo-data'),
+    '#name'   => 'field_address_ajax_submit',
+    '#ajax'   => $ajax,
+    '#prefix' => '<div id="edit-field-address-wrapper">',
+    '#suffix' => '</div>',
+  ];
+  $form['field_project_address']['widget'][0]['geotxt'] = [
+    '#markup' => "<div id='geotxt' style='display:none'></div>",
+  ];
+  // Button to preview the map:
+  $form['group_mapping_data']['preview_map'] = [
+    '#type' => 'button',
+    '#value' => t('Preview Map'),
+    '#attributes' => ['class' => ['use-ajax']],
+    '#attached' => [
+      'library' => [
+        'core/drupal.dialog.ajax',
+//        'node_project/modal',
+      ],
+    ],
+    '#weight' => 1000,
+    '#ajax' => [
+      'callback' => '_node_project_preview_map',
+      'event' => 'click',
+    ],
+  ];
+}
+
+function _ajax_cb_geocode(array $form, FormStateInterface $form_state) {
+
+  $response = new AjaxResponse();
+  $address = $form_state->getUserInput()["field_project_address"][0]['address'] ?? [];
+  $neighborhood = $form_state->getUserInput()["field_single_neighborhood"] ?? "_none";
+
+  if ($address["address_line1"] == "" || $address["postal_code"] == "") {
+    $response->addCommand(new HtmlCommand(
+      '#geotxt',
+      "<div id='geotxt'>Error: To fetch a GIS locator, an address and zipcode are required.</div>"
+    ));
+  }
+  else {
+    $_address = new BosGeoAddress(
+      address: $address["address_line1"] . " " . $address["address_line2"] ?? "",
+      neighborhood: $neighborhood == "_none" ? "" : $neighborhood,
+      zip: $address["postal_code"] ?? "",
+      country: $address["country_code"]
+    );
+    $geo = new BosGeocoderController($_address);
+    $result = $geo->geocode($geo::AREA_BOSTON_ONLY);
+    $response->addCommand(new InvokeCommand(
+      '#edit-field-project-address-geolocatio-0-lat',
+      "val",
+      [$result->location()->lat()]
+    ));
+    $response->addCommand(new InvokeCommand(
+      '#edit-field-project-address-geolocatio-0-lng',
+      "val",
+      [$result->location()->long()]
+    ));
+
+  }
+  return $response;
+}
+
+function _node_project_preview_map(array $form, FormStateInterface $form_state) {
+  $response = new AjaxResponse();
+
+  // Get geolocation field value from the form state.
+  $geolocation_value = $form_state->getValue('field_project_address_geolocatio');
+  $latitude = $geolocation_value[0]['lat'];
+  $longitude = $geolocation_value[0]['lng'];
+
+  // Render the map display for the project
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+  $nid = $form_state->getBuildInfo()["callback_object"]->getEntity()->id();
+  $node = Drupal::entityTypeManager()->getStorage("node")->load($nid);
+  $render_array = $view_builder->view($node, "map");
+
+  // Render the array to HTML.
+//  $map = \Drupal::service('renderer')->renderRoot($render_array);
+  $map = \Drupal::service('renderer')->render($render_array);
+
+  $response->addCommand(new OpenModalDialogCommand('Map Preview', $map, ['width' => '800']));
+
+  // Attach the map library and initialize the map with the geolocation data.
+  // TODO figure out how to render the widget.  Also why do I need to add in all these
+  //   js libraries.  The render step is missing something I think - maybe we are rendering the container and not the
+  //   geocoder field?
+  $crawler = new Crawler($map);
+  $map_id = $crawler->filter(".geolocation-map-wrapper")->first()->attr("id");
+  $settings =  \Drupal::config("core.entity_view_display.node.project.map")
+    ->get("content.field_project_address_geolocatio.settings");
+  $response->setAttachments([
+    'library' => [
+      'node_project/map',
+//      'geolocation/geolocation.map',
+    ],
+    'drupalSettings' => [
+      'geolocation' => [
+        'maps' => [
+          $map_id => [
+            'control_locate' => [ "enable" => true ],
+//            'id' => $map_id,
+//            'lat' => $latitude,
+//            'lng' => $longitude,
+            "settings" => [
+              "google_map_settings" => $settings["map_provider_settings"]["map_features"],
+            ],
+//            "type" => $settings["map_provider_id"],
+          ]
+        ],
+      ],
+    ],
+  ]);
+
+  return $response;
+}

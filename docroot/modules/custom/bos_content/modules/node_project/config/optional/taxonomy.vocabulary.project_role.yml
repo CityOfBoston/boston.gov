@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Role'
+vid: project_role
+description: 'List of roles that are related to Project personnel or vendors.'
+weight: 0
+new_revision: false

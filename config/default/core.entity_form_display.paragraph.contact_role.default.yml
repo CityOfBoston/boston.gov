@@ -1,0 +1,85 @@
+uuid: 16be68ae-d2e5-45c7-84b5-f06fed8fd87c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_role.field_company_name
+    - field.field.paragraph.contact_role.field_email
+    - field.field.paragraph.contact_role.field_phone
+    - field.field.paragraph.contact_role.field_role
+    - paragraphs.paragraphs_type.contact_role
+  module:
+    - field_group
+    - telephone
+third_party_settings:
+  field_group:
+    group_contact_method:
+      children:
+        - field_email
+        - field_phone
+      label: 'Contact Method'
+      region: content
+      parent_name: group_role
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: rolecontact-details-grid
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+    group_role:
+      children:
+        - field_company_name
+        - field_role
+        - group_contact_method
+      label: ''
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: rolecontact-wrapper
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+id: paragraph.contact_role.default
+targetEntityType: paragraph
+bundle: contact_role
+mode: default
+content:
+  field_company_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_role:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

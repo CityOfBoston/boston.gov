@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.project_stage.field_icon
+    - field.field.taxonomy_term.project_stage.field_project_status
+    - field.field.taxonomy_term.project_stage.field_project_type
+    - taxonomy.vocabulary.project_stage
+  module:
+    - fences
+    - text
+id: taxonomy_term.project_stage.default
+targetEntityType: taxonomy_term
+bundle: project_stage
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: b--g
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 2
+    region: content
+  field_project_status:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_project_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

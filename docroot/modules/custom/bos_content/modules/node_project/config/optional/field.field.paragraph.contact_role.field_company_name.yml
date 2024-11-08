@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_company_name
+    - paragraphs.paragraphs_type.contact_role
+id: paragraph.contact_role.field_company_name
+field_name: field_company_name
+entity_type: paragraph
+bundle: contact_role
+label: 'Contact Name'
+description: 'The full name of the contact person (first name + last name) or company.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

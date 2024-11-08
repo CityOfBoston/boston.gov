@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_features
+id: taxonomy_term.project_features
+target_entity_type_id: taxonomy_term
+target_bundle: project_features
+default_langcode: site_default
+language_alterable: false

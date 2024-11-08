@@ -1,0 +1,9 @@
+uuid: b16e52fb-ad42-478d-b401-a0e9ffd188e1
+langcode: en
+status: true
+dependencies: {  }
+name: 'Project Features'
+vid: project_features
+description: 'Features related to a Project.'
+weight: 0
+new_revision: false

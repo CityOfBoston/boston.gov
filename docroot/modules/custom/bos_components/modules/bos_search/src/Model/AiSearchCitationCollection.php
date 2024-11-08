@@ -21,11 +21,18 @@ class AiSearchCitationCollection extends AiSearchObjectsBase {
   /**
    * Add a citation to the collection.
    *
-   * @param \Drupal\bos_search\AiSearchResult $result
+   * Checks for duplicates and will not add again if this citation is already
+   * in the collection.
+   *
+   * @param \Drupal\bos_search\Model\AiSearchCitation $citation
+   *   The citation object to add to the collection.
+   * @param int|null $key
+   *   Index position in the collection. If null then appends to the end.
    *
    * @return $this
+   *   Updated collection.
    */
-  public function addCitation(AiSearchCitation $citation, int $key = NULL): AiSearchCitationCollection {
+  public function addCitation(AiSearchCitation $citation, int|null $key = NULL): AiSearchCitationCollection {
     if (empty($key)) {
       $key = count($this->citations ?? []);
     }
@@ -44,22 +51,41 @@ class AiSearchCitationCollection extends AiSearchObjectsBase {
     return $this;
   }
 
-  public function updateCitation($key, array $citation):AiSearchCitationCollection {
+  /**
+   * Updates citation at the specified key with the provided citation array.
+   *
+   * **Note**: does not check for duplicates.
+   *
+   * @param array $citation
+   *   The citation details to update.
+   * @param int $key
+   *   The key identifying the citation to be updated.
+   *
+   * @return AiSearchCitationCollection
+   *   Returns the updated citation collection.
+   */
+  public function updateCitation(array $citation, int $key):AiSearchCitationCollection {
     $this->citations[$key] = $citation;
     return $this;
   }
+
   /**
-   * Get all results as an array of AISearchCitation objects.
+   * Retrieves the collection of citations.
+   *
+   * Each array member is a **Drupal/bos_search/Model/AiSearchCitation** object.
    *
    * @return array
+   *   Returns an array of objects.
    */
   public function getCitations(): array {
     return $this->citations;
   }
 
   /**
-   * Returns the number of AISearchCitation objects in the collection.
+   * Counts the total number of citations in the collection.
+   *
    * @return int
+   *   The total count of citations.
    */
   public function count(): int {
     return count($this->citations);

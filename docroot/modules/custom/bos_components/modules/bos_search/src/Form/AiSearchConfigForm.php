@@ -16,14 +16,15 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/*
-  class SearchConfigForm
-  - Allows the management of Search Presets used by AiSearchForm.
-
-  david 06 2024
-  @file docroot/modules/custom/bos_components/modules/bos_search/src/Form/SearchConfigForm.php
-*/
-
+/**
+ * Class SearchConfigForm.
+ *
+ * - Allows the management of Search Presets used by AiSearchForm.
+ *
+ *  david 06 2024
+ *
+ * @file docroot/modules/custom/bos_components/modules/bos_search/src/Form/SearchConfigForm.php
+ */
 class AiSearchConfigForm extends ConfigFormBase {
 
   /** @var $pluginManagerAiSearch AiSearchPluginManager */
@@ -81,15 +82,15 @@ class AiSearchConfigForm extends ConfigFormBase {
               'event' => 'click',
               'wrapper' => 'edit-presets',
               'disable-refocus' => FALSE,
-              'limit' => FALSE
-            ]
-          ]
-        ]
+              'limit' => FALSE,
+            ],
+          ],
+        ],
       ],
     ];
 
     // Get and populate each existing preset.
-    foreach($presets as $pid => $preset) {
+    foreach ($presets as $pid => $preset) {
       $form['SearchConfigForm']['presets'][$pid] = $this->preset($pid);
     }
 
@@ -118,7 +119,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $values = $form_state->getUserInput();
     $config = $this->config('bos_search.settings');
     $params = [];
-    foreach($values["SearchConfigForm"]["presets"] as &$preset) {
+    foreach ($values["SearchConfigForm"]["presets"] as &$preset) {
       if (empty($preset['pid'])) {
         $preset['pid'] = AiSearch::machineName($preset["name"]);
       }
@@ -127,7 +128,8 @@ class AiSearchConfigForm extends ConfigFormBase {
     }
     $config->set("presets", $params);
     $config->save();
-    parent::submitForm($form, $form_state); // optional
+    // Optional.
+    parent::submitForm($form, $form_state);
   }
 
   /**
@@ -175,7 +177,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $pid = count($form_state->getValues()['SearchConfigForm']['presets'] ?? []);
     $form['SearchConfigForm']['presets'][$pid] = $this->preset();
     $rand = intval(microtime(TRUE) * 1000);
-    foreach($form['SearchConfigForm']['presets'][$pid] as $key => &$preset) {
+    foreach ($form['SearchConfigForm']['presets'][$pid] as $key => &$preset) {
       if (!str_contains($key, "#")) {
         $preset["#id"] = "edit-searchconfigform-presets-$pid-$key--$rand";
         $preset["#attributes"] = [
@@ -235,7 +237,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $service_plugins = $this->pluginManagerAiSearch->getDefinitions();
     // Populate an array of service plugins.
     $service_opts = [];
-    foreach($service_plugins as $service_plugin) {
+    foreach ($service_plugins as $service_plugin) {
       $service_opts[$service_plugin["id"]] = $service_plugin["id"];
     }
     // Get info on the service this preset is referencing.
@@ -244,13 +246,26 @@ class AiSearchConfigForm extends ConfigFormBase {
     $this_service = \Drupal::service($this_service_id);
     $this_service_settings = $this_service->getSettings();
 
+    // Get the projectname.
     $project_name = $this->getProjects($this_service)[$this_service_settings["project_id"]];
+
+    // Get the Engines/apps.
+    $engine_name = $preset['model_tuning']['overrides']['engine_id'] ?? "default";
+    $optEngines = [];
+    $engines = $this->getEngines($this_service, ($preset['model_tuning']['overrides']['service_account'] ?? "default"), ($preset['model_tuning']['overrides']['project_id'] ?? "default"));
+    foreach ($engines ?? [] as $key => $engine) {
+      $optEngines[$key] = $engine["name"];
+    }
+    $mds = $engines[$engine_name]["multi-ds"];
+
+    // Get Datastores.
+    $optDataStores = $engines[$engine_name]["datastores"] ?? ["default"];
 
     $themes = AiSearch::getFormThemes();
 
     $output = [
       '#type' => 'details',
-      '#title' => (empty($preset) ? "": $preset['name']) . (empty($preset) ? "" : " (". $this_service->id() .")"),
+      '#title' => (empty($preset) ? "" : $preset['name']) . (empty($preset) ? "" : " (" . $this_service->id() . ")"),
       '#open' => FALSE,
 
       'name' => [
@@ -263,17 +278,17 @@ class AiSearchConfigForm extends ConfigFormBase {
       'plugin' => [
         '#type' => 'select',
         '#options' => $service_opts,
-        "#default_value" => empty($preset) ? "" : ($preset['plugin'] ?? "") ,
+        "#default_value" => empty($preset) ? "" : ($preset['plugin'] ?? ""),
         '#title' => $this->t("Select the AI Service Plugin to use:"),
         '#ajax' => [
           'callback' => '::ajaxCallbackChangedModel',
           'progress' => [
             'type' => 'throbber',
-            'message' => "Reloading default configs ..."
-          ]
+            'message' => "Reloading default configs ...",
+          ],
         ],
       ],
-      'prompt' =>  [
+      'prompt' => [
         '#type' => 'select',
         '#options' => $this->getPrompts($this_service),
         "#default_value" => empty($preset) ? "" : ($preset['prompt'] ?? "") ,
@@ -283,7 +298,7 @@ class AiSearchConfigForm extends ConfigFormBase {
         '#prefix' => "<div id='edit-prompt'>",
         '#suffix' => "</div>",
       ],
-      'model_tuning' =>[
+      'model_tuning' => [
         '#type' => "details",
         '#title' => "Advanced AI Model Tuning",
 
@@ -293,54 +308,83 @@ class AiSearchConfigForm extends ConfigFormBase {
           '#description' => $this->t("The default Service Settings are set on the <a href='/admin/config/system/boston/googlecloud'>Google Cloud Conversation configuration page</a>."),
           '#description_display' => 'before',
 
-          'service_account' =>  [
+          'service_account' => [
             '#type' => 'select',
             '#options' => $this->getServiceAccounts($this_service),
             "#default_value" => empty($preset) ? "default" : ($preset['model_tuning']['overrides']['service_account'] ?? "default") ,
             '#title' => $this->t("Override the default Service Account for the AI Model to use:"),
-            '#description' => $this->t("The current default Service Account is: <b>{$this_service_settings["service_account"]}</b>"),
+            '#description' => $this->t("The current default Service Account is:") . " <b>{$this_service_settings["service_account"]}</b>",
             '#description_display' => 'after',
             '#prefix' => "<div id='edit-svsact'>",
             '#suffix' => "</div>",
             '#validated' => TRUE,
             '#ajax' => [
-              'callback' => '::ajaxCallbackGetServiceAccount',
-              'event' => 'focus',
+              'callback' => '::ajaxCallbackGetProjects',
+              'event' => 'change',
               'progress' => [
                 'type' => 'throbber',
-                'message' => "Finding Service Accounts ..."
-              ]
+                'message' => "Finding Projects ...",
+              ],
             ],
-
           ],
 
-          'project_id' =>  [
+          'project_id' => [
             '#type' => 'select',
             '#options' => $this->getProjects($this_service, ($preset['model_tuning']['overrides']['service_account'] ?? "default")),
             "#default_value" => empty($preset) ? "" : ($preset['model_tuning']['overrides']['project_id'] ?? ""),
             '#title' => $this->t("Override the Project for the AI Model to use."),
-            '#description' => $this->t("Leave empty to use the default.<br>The current default Project is: <b>$project_name</b>"),
+            '#description' => $this->t("Leave empty to use the default.<br>The current default Project is:") . " <b>$project_name</b>",
             '#description_display' => 'after',
             '#validated' => TRUE,
             '#prefix' => "<div id='edit-project'>",
             '#suffix' => "</div>",
             '#ajax' => [
-              'callback' => '::ajaxCallbackGetProjects',
-              'event' => 'click',
+              'callback' => '::ajaxCallbackGetEngines',
+              'event' => 'change',
               'progress' => [
                 'type' => 'throbber',
-                'message' => "Finding Projects ..."
-              ]
+                'message' => "Finding Engines ...",
+              ],
             ],
           ],
-          'datastore_id' =>  [
+          'engine_id' => [
             '#type' => 'select',
-            '#options' => $this->getDatastores($this_service, ($preset['model_tuning']['overrides']['service_account'] ?? "default"), ($preset['model_tuning']['overrides']['project_id'] ?? "default")),
-            "#default_value" => empty($preset) ? "default" : ($preset['model_tuning']['overrides']['datastore_id'] ?? "default") ,
-            '#title' => $this->t("Override the default Datastore for the AI Model to use:"),
-            '#description' => $this->t("The current default dataStore is: <b>{$this_service_settings["datastore_id"]}</b>"),
+            '#options' => $optEngines,
+            "#default_value" => $engine_name,
+            '#title' => $this->t("Override the default Engine (App) for the AI Model to use:"),
+            '#description' => $this->t("The current default engine (app) is:") . " <b>{$this_service_settings["engine_id"]}</b>",
             '#description_display' => 'after',
             '#validated' => TRUE,
+            '#prefix' => "<div id='edit-engine'>",
+            '#suffix' => "</div>",
+            '#ajax' => [
+              'callback' => '::ajaxCallbackGetEngines',
+              'event' => 'change',
+              'progress' => [
+                'type' => 'throbber',
+                'message' => "Checking Engines ...",
+              ],
+            ],
+          ],
+          'engine_mds' => [
+            '#type' => 'hidden',
+            "#value" => $mds,
+            '#prefix' => "<div id='edit-engine-mds'>",
+            '#suffix' => "</div>",
+          ],
+           // At the moment we are not allowing users to specify a DataStore.
+           // We always use the default datastores defined in the engine/app.
+          'datastore_id' => [
+            '#type' => 'select',
+            '#multiple' => TRUE,
+            '#options' => $optDataStores,
+            "#default_value" => $optDataStores,
+            '#title' => $this->t("Override the default Datastore for the AI Model to use:"),
+            '#description' => $this->t("These are DataStores defined by the Engine/App. Changing them is not supported at this time."),
+            '#description_display' => 'after',
+            '#disabled' => TRUE,
+            '#validated' => TRUE,
+            '#size' => 5,
             '#prefix' => "<div id='edit-datastore'>",
             '#suffix' => "</div>",
             '#ajax' => [
@@ -348,28 +392,21 @@ class AiSearchConfigForm extends ConfigFormBase {
               'event' => 'focus',
               'progress' => [
                 'type' => 'throbber',
-                'message' => "Finding Datastores ..."
-              ]
+                'message' => "Finding Datastores ...",
+              ],
             ],
           ],
-          'engine_id' =>  [
+          'model' => [
             '#type' => 'select',
-            '#options' => $this->getEngines($this_service,  ($preset['model_tuning']['overrides']['service_account'] ?? "default"), ($preset['model_tuning']['overrides']['project_id'] ?? "default")),
-            "#default_value" => empty($preset) ? "default" : ($preset['model_tuning']['overrides']['engine_id'] ?? "default") ,
-            '#title' => $this->t("Override the default Engine for the AI Model to use:"),
-            '#description' => $this->t("The current default engine is: <b>{$this_service_settings["engine_id"]}</b>"),
-            '#description_display' => 'after',
-            '#validated' => TRUE,
-            '#prefix' => "<div id='edit-engine'>",
-            '#suffix' => "</div>",
-            '#ajax' => [
-              'callback' => '::ajaxCallbackGetEngines',
-              'event' => 'focus',
-              'progress' => [
-                'type' => 'throbber',
-                'message' => "Finding Engines ..."
-              ]
+            '#title' => t('Override the LLM model to use'),
+            '#description' => t("Select the AI Model that will be used by the Engine."),
+            '#default_value' => $preset['model_tuning']['overrides']['model'] ?? 'default',
+            '#options' => [
+              'default' => 'Use Default',
+              'stable' => 'Stable',
+              'preview' => 'Preview',
             ],
+            '#required' => TRUE,
           ],
         ],
         'summary' => [
@@ -379,31 +416,31 @@ class AiSearchConfigForm extends ConfigFormBase {
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 1 : ($preset['model_tuning']['summary']['ignoreAdversarialQuery'] ?? 0),
             '#title' => $this->t("Ignore Adverserial Queries."),
-            '#description' => 'When selected, no summary is returned if the search query is classified as an adversarial query. For example, a user might ask a question regarding negative comments about the company or submit a query designed to generate unsafe, policy-violating output.'
+            '#description' => 'When selected, no summary is returned if the search query is classified as an adversarial query. For example, a user might ask a question regarding negative comments about the company or submit a query designed to generate unsafe, policy-violating output.',
           ],
           'ignoreNonSummarySeekingQuery' => [
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 1 : ($preset['model_tuning']['summary']['ignoreNonSummarySeekingQuery'] ?? 0),
             '#title' => $this->t("Ignore Non-summary Seeking Queries."),
-            '#description' => 'When selected, no summary is returned if the search query is classified as a non-summary seeking query. For example, why is the sky blue and Who is the best soccer player in the world? are summary-seeking queries, but SFO airport and world cup 2026 are not.'
+            '#description' => 'When selected, no summary is returned if the search query is classified as a non-summary seeking query. For example, why is the sky blue and Who is the best soccer player in the world? are summary-seeking queries, but SFO airport and world cup 2026 are not.',
           ],
           'ignoreLowRelevantContent' => [
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 1 : ($preset['model_tuning']['summary']['ignoreLowRelevantContent'] ?? 0),
             '#title' => $this->t("Ignore Low Relevant Content."),
-            '#description' => 'When selected, only queries with high relevance search results will generate answers.'
+            '#description' => 'When selected, only queries with high relevance search results will generate answers.',
           ],
           'ignoreJailBreakingQuery' => [
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 1 : ($preset['model_tuning']['summary']['ignoreJailBreakingQuery'] ?? 0),
             '#title' => $this->t("Ignore Jail-breaking Queries."),
-            '#description' => "When selected, search-query classification is applied to detect queries that attempts to exploit vulnerabilities or weaknesses in the model's design or training data. No summary is returned if the search query is classified as a jail-breaking query."
+            '#description' => "When selected, search-query classification is applied to detect queries that attempts to exploit vulnerabilities or weaknesses in the model's design or training data. No summary is returned if the search query is classified as a jail-breaking query.",
           ],
           'semantic_chunks' => [
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 0 : ($preset['model_tuning']['summary']['semantic_chunks'] ?? 0),
             '#title' => $this->t("Enable Semantic Chunk Search."),
-            '#description' => 'When selected, the summary will be generated from most relevant chunks from top search results. This feature will improve summary quality. Note that with this feature enabled, not all top search results will be referenced and included in the reference list, so the citation source index only points to the search results listed in the reference list.'
+            '#description' => 'When selected, the summary will be generated from most relevant chunks from top search results. This feature will improve summary quality. Note that with this feature enabled, not all top search results will be referenced and included in the reference list, so the citation source index only points to the search results listed in the reference list.',
           ],
         ],
         'search' => [
@@ -413,7 +450,7 @@ class AiSearchConfigForm extends ConfigFormBase {
             '#type' => 'checkbox',
             "#default_value" => empty($preset) ? 1 : ($preset['model_tuning']['search']['safe_search'] ?? 0),
             '#title' => $this->t("Enable Safe Search."),
-            '#description' => 'When selected, significantly reduces the level of explicit content that the system can display in the results. This is similar to the feature used in Google Search, where you can modify your settings to filter explicit content, such as nudity, violence, and other adult content, from the search results.'
+            '#description' => 'When selected, significantly reduces the level of explicit content that the system can display in the results. This is similar to the feature used in Google Search, where you can modify your settings to filter explicit content, such as nudity, violence, and other adult content, from the search results.',
           ],
         ],
       ],
@@ -424,12 +461,12 @@ class AiSearchConfigForm extends ConfigFormBase {
         'theme' => [
           '#type' => 'select',
           '#options' => $themes,
-          "#default_value" => empty($preset) ? "" : ($preset['results']['theme'] ?? "") ,
+          "#default_value" => empty($preset) ? "" : ($preset['results']['theme'] ?? ""),
           '#title' => $this->t("Select the theme for the form configured by this preset"),
         ],
         'disclaimer' => [
           '#type' => 'fieldset',
-          '#title' =>  $this->t("Pop-up Disclaimer"),
+          '#title' => $this->t("Pop-up Disclaimer"),
           '#description' => $this->t("Control the presence and content of an interstitial disclaimer which shows before the search form is shown."),
           '#description_display' => 'before',
           'enabled' => [
@@ -491,7 +528,7 @@ class AiSearchConfigForm extends ConfigFormBase {
             '#description' => $this->t("Add follow-on/body copy to appear on the search form. Can be blank."),
             '#description_display' => 'before',
           ],
-          'cards' =>[
+          'cards' => [
             '#type' => 'fieldset',
             '#title' => $this->t("Example/Suggested Searches"),
             '#description' => $this->t("Example search terms presented as cards"),
@@ -575,13 +612,13 @@ class AiSearchConfigForm extends ConfigFormBase {
             '#type' => 'textfield',
             '#title' => $this->t("Search Prompt"),
             "#default_value" => empty($preset) ? "" : ($preset['searchform']['searchbar']['search_text'] ?? ""),
-            '#placeholder' => "How can we help you ?"
+            '#placeholder' => "How can we help you ?",
           ],
           'waiting_text' => [
             '#type' => 'textfield',
             '#title' => $this->t("Text to show in searchbar when waiting for search results"),
             "#default_value" => empty($preset) ? "" : ($preset['searchform']['searchbar']['waiting_text'] ?? ""),
-            '#placeholder' => "Searching Boston.gov?"
+            '#placeholder' => "Searching Boston.gov?",
           ],
           'audio_search_input' => [
             '#type' => 'checkbox',
@@ -612,7 +649,7 @@ class AiSearchConfigForm extends ConfigFormBase {
             15 => "15",
             20 => "20",
           ],
-          "#default_value" => empty($preset) ? 0 : ($preset['results']['result_count'] ?? 0) ,
+          "#default_value" => empty($preset) ? 0 : ($preset['results']['result_count'] ?? 0),
           '#title' => $this->t("How many results should be returned?"),
         ],
         'summary' => [
@@ -673,9 +710,11 @@ class AiSearchConfigForm extends ConfigFormBase {
           '#description' => $this->t("References with relevance scores below this number will be suppressed in Citations marked in the Summary."),
           '#description_display' => "below",
           '#states' => [
-            'visible' => [[
-              ':input[name="SearchConfigForm[presets][' . $pid . '][results][citations]"]' => ['checked' => TRUE],
-            ]],
+            'visible' => [
+              [
+                ':input[name="SearchConfigForm[presets][' . $pid . '][results][citations]"]' => ['checked' => TRUE],
+              ],
+            ],
           ],
         ],
         'searchresults' => [
@@ -685,13 +724,15 @@ class AiSearchConfigForm extends ConfigFormBase {
         ],
         'no_dup_citations' => [
           '#type' => 'checkbox',
-          "#default_value" => empty($preset) ? 0 : ($preset['results']['no_dup_citations']  ?? 0),
+          "#default_value" => empty($preset) ? 0 : ($preset['results']['no_dup_citations'] ?? 0),
           '#title' => $this->t("Remove search result links that already appear in the citations listing."),
           '#states' => [
-            'visible' => [[
-              ':input[name="SearchConfigForm[presets][' . $pid . '][results][citations]"]' => ['checked' => TRUE],
-              ':input[name="SearchConfigForm[presets][' . $pid . '][results][searchresults]"]' => ['checked' => TRUE],
-            ]],
+            'visible' => [
+              [
+                ':input[name="SearchConfigForm[presets][' . $pid . '][results][citations]"]' => ['checked' => TRUE],
+                ':input[name="SearchConfigForm[presets][' . $pid . '][results][searchresults]"]' => ['checked' => TRUE],
+              ],
+            ],
           ],
         ],
         'related_questions' => [
@@ -701,12 +742,12 @@ class AiSearchConfigForm extends ConfigFormBase {
         ],
         'feedback' => [
           '#type' => 'checkbox',
-          "#default_value" => empty($preset) ? 0 : ($preset['results']['feedback']  ?? 0),
+          "#default_value" => empty($preset) ? 0 : ($preset['results']['feedback'] ?? 0),
           '#title' => $this->t("Show feedback buttons below results output."),
         ],
         'metadata' => [
           '#type' => 'checkbox',
-          "#default_value" => empty($preset) ? 0 : ($preset['results']['metadata']  ?? 0),
+          "#default_value" => empty($preset) ? 0 : ($preset['results']['metadata'] ?? 0),
           '#title' => $this->t("Show AI Model metadata in results output (if available)."),
         ],
         'pid' => [
@@ -720,7 +761,7 @@ class AiSearchConfigForm extends ConfigFormBase {
         '#value' => "Delete Preset",
         '#attributes' => [
           "class" => [
-            "button--danger"
+            "button--danger",
           ],
           "data-pid" => "$pid",
         ],
@@ -729,15 +770,15 @@ class AiSearchConfigForm extends ConfigFormBase {
           'event' => 'click',
           'wrapper' => 'edit-presets',
           'disable-refocus' => FALSE,
-          'limit' => FALSE
-        ]
+          'limit' => FALSE,
+        ],
       ],
     ];
 
     if (!isset($pid) || $pid == "") {
       // Configure for a new Preset.
       unset($output["actions"]);
-      foreach($output as &$row) {
+      foreach ($output as &$row) {
         if (is_array($row) && $row["#type"] == "textarea") {
           $row["#value"] = "";
         }
@@ -747,21 +788,21 @@ class AiSearchConfigForm extends ConfigFormBase {
 
     if (!empty($preset['model_tuning']['overrides']['service_account']) && $preset['model_tuning']['overrides']['service_account'] != "default") {
       $output["model_tuning"]["overrides"]["service_account"]["#value"] = $preset['model_tuning']['overrides']['service_account'];
-      if (!array_key_exists($preset["model_tuning"]["overrides"]["service_account"],$output["model_tuning"]["overrides"]["service_account"]["#options"] )) {
+      if (!array_key_exists($preset["model_tuning"]["overrides"]["service_account"], $output["model_tuning"]["overrides"]["service_account"]["#options"])) {
         $output["model_tuning"]["overrides"]["service_account"]["#options"][$preset["model_tuning"]["overrides"]["service_account"]] = $preset["model_tuning"]["overrides"]["service_account"];
       }
     }
 
     if (!empty($preset['model_tuning']['overrides']['datastore_id']) && $preset['model_tuning']['overrides']['datastore_id'] != "default") {
       $output["model_tuning"]["overrides"]["datastore_id"]["#value"] = $preset['model_tuning']['overrides']['datastore_id'];
-      if (!array_key_exists($preset["model_tuning"]["overrides"]["datastore_id"],$output["model_tuning"]["overrides"]["datastore_id"]["#options"] )) {
+      if (!array_key_exists($preset["model_tuning"]["overrides"]["datastore_id"][0], $output["model_tuning"]["overrides"]["datastore_id"]["#options"])) {
         $output["model_tuning"]["overrides"]["datastore_id"]["#options"][$preset["model_tuning"]["overrides"]["datastore_id"]] = $preset["model_tuning"]["overrides"]["datastore_id"];
       }
     }
 
     if (!empty($preset['model_tuning']['overrides']['engine_id']) && $preset['model_tuning']['overrides']['engine_id'] != "default") {
       $output["model_tuning"]["overrides"]["engine_id"]["#value"] = $preset['model_tuning']['overrides']['engine_id'];
-      if (!array_key_exists($preset["model_tuning"]["overrides"]["engine_id"],$output["model_tuning"]["overrides"]["engine_id"]["#options"] )) {
+      if (!array_key_exists($preset["model_tuning"]["overrides"]["engine_id"], $output["model_tuning"]["overrides"]["engine_id"]["#options"])) {
         $output["model_tuning"]["overrides"]["engine_id"]["#options"][$preset["model_tuning"]["overrides"]["engine_id"]] = $preset["model_tuning"]["overrides"]["engine_id"];
       }
     }
@@ -787,7 +828,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $trigger = $form_state->getTriggeringElement();
     $active_preset_id = $trigger["#parents"][2];
     $active_preset = $form_state->getValues()["SearchConfigForm"]["presets"][$active_preset_id];
-    // Find the selected service and its prompts
+    // Find the selected service and its prompts.
     $service_plugins = $this->pluginManagerAiSearch->getDefinitions();
     $this_service_plugin = $service_plugins[$active_preset["plugin"]];
     $this_service = \Drupal::service($this_service_plugin["service"]);
@@ -819,11 +860,11 @@ class AiSearchConfigForm extends ConfigFormBase {
    */
   public function ajaxCallbackChangedModel(array $form, FormStateInterface $form_state): AjaxResponse {
 
-    // Get info from submitted form changes
+    // Get info from submitted form changes.
     $trigger = $form_state->getTriggeringElement();
     $active_preset_id = $trigger["#parents"][2];
     $active_preset = $form_state->getValues()["SearchConfigForm"]["presets"][$active_preset_id];
-    // Find the selected service and its prompts
+    // Find the selected service and its prompts.
     $service_plugins = $this->pluginManagerAiSearch->getDefinitions();
     $this_service_plugin = $service_plugins[$trigger['#value']];
     $this_service = \Drupal::service($this_service_plugin["service"]);
@@ -834,7 +875,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $output = new AjaxResponse();
 
     // Update the prompts available to this service. If the current
-    // prompt exists, then use it, otherwise use the "default"
+    // prompt exists, then use it, otherwise use the "default".
     $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id);
     $output->addCommand(new ReplaceCommand($target_preset . ' #edit-prompt', [
       'prompt' => [
@@ -846,18 +887,18 @@ class AiSearchConfigForm extends ConfigFormBase {
         '#description_display' => 'after',
         '#prefix' => "<div id='edit-prompt'>",
         '#suffix' => "</div>",
-      ]
+      ],
     ]));
-    // Set notification below Service Account
+    // Set notification below Service Account.
     $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides-service-account--description b";
     $output->addCommand(new HtmlCommand($target_preset, $this_service_settings["service_account"]));
-    // Set notification below Project
+    // Set notification below Project.
     $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides-project-id--description b";
     $output->addCommand(new HtmlCommand($target_preset, $project_name));
-    // Set notification below DataStore
-    $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides-datastore-id--description b";
-    $output->addCommand(new HtmlCommand($target_preset, $this_service_settings["datastore_id"]));
-    // Set notification below Engine
+    // Set notification below DataStore.
+//    $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides-datastore-id--description b";
+//    $output->addCommand(new HtmlCommand($target_preset, $this_service_settings["datastore_id"]));
+    // Set notification below Engine.
     $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides-engine-id--description b";
     $output->addCommand(new HtmlCommand($target_preset, $this_service_settings["engine_id"]));
 
@@ -915,12 +956,12 @@ class AiSearchConfigForm extends ConfigFormBase {
    */
   public function ajaxCallbackGetDataStores(array $form, FormStateInterface $form_state): AjaxResponse {
 
-    // Get info from submitted form changes
+    // Get info from submitted form changes.
     $trigger = $form_state->getTriggeringElement();
     $active_preset_id = $trigger["#parents"][2];
     $active_preset = $form_state->getValues()["SearchConfigForm"]["presets"][$active_preset_id];
     $overrides = $active_preset["model_tuning"]["overrides"];
-    // Find the selected service and its prompts
+    // Find the selected service and its prompts.
     $service_plugins = $this->pluginManagerAiSearch->getDefinitions();
     $this_service_plugin = $service_plugins[$active_preset["plugin"]];
     $service = \Drupal::service($this_service_plugin["service"]);
@@ -928,7 +969,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $output = new AjaxResponse();
 
     // Update the datastores available to this project. If the current
-    // datastore exists, then use it, otherwise use the "default"
+    // datastore exists, then use it, otherwise use the "default".
     $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning-overrides";
     $service_account = $overrides["service_account"] == "default" ? "" : $overrides["service_account"];
     $project = $overrides["project_id"] == "default" ? "" : $overrides["project_id"];
@@ -938,7 +979,7 @@ class AiSearchConfigForm extends ConfigFormBase {
     $found_datastores = $this->getDatastores($service, $service_account, $project);
     $new_datastore = array_key_first($found_datastores);
     foreach ($found_datastores as $key => $datastore) {
-      if ($trigger["#value"] && $ds == $key || count($found_datastores) == 1) {
+      if ($trigger["#value"] && $ds == $key || count($found_datastores) == 1 || $form["select_all_datastores"]) {
         $html .= '<option value="' . $key . '" selected>' . $datastore . '</option>';
         $new_datastore = $key;
       }
@@ -965,21 +1006,19 @@ class AiSearchConfigForm extends ConfigFormBase {
    */
   public function ajaxCallbackGetEngines(array $form, FormStateInterface $form_state): AjaxResponse {
 
-    // Get info from submitted form changes
+    // Get info from submitted form changes.
     $trigger = $form_state->getTriggeringElement();
     $active_preset_id = $trigger["#parents"][2];
     $active_preset = $form_state->getValues()["SearchConfigForm"]["presets"][$active_preset_id];
     $overrides = $active_preset["model_tuning"]["overrides"];
-    // Find the selected service and its prompts
+    // Find the selected service and its prompts.
     $service_plugins = $this->pluginManagerAiSearch->getDefinitions();
     $this_service_plugin = $service_plugins[$active_preset["plugin"]];
     $service = \Drupal::service($this_service_plugin["service"]);
 
-    $output = new AjaxResponse();
-
     // Update the datastores available to this project. If the current
-    // datastore exists, then use it, otherwise use the "default"
-    $target_preset = '#edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning";
+    // datastore exists, then use it, otherwise use the "default".
+    $target_preset = 'edit-searchconfigform-presets-' . str_replace("_", "-", $active_preset_id) . "-model-tuning";
     $service_account = $overrides["service_account"] == "default" ? "" : $overrides["service_account"];
     $project = $overrides["project_id"] == "default" ? "" : $overrides["project_id"];
 
@@ -988,17 +1027,50 @@ class AiSearchConfigForm extends ConfigFormBase {
 
     $found_engines = $this->getEngines($service, $service_account, $project);
     $new_engine = array_key_first($found_engines);
+
+    $output = new AjaxResponse();
     foreach ($found_engines as $key => $engine) {
       if ($trigger["#value"] && $ds == $key) {
-        $html .= '<option value="' . $key . '" selected>' . $engine . '</option>';
+        $html .= '<option value="' . $key . '" selected>' . $engine["name"] . '</option>';
         $new_engine = $key;
       }
       else {
-        $html .= '<option value="' . $key . '">' . $engine . '</option>';
+        $html .= '<option value="' . $key . '">' . $engine["name"] . '</option>';
       }
     }
-    $output->addCommand(new HtmlCommand($target_preset . ' #edit-engine select', $html));
-    $output->addCommand(new InvokeCommand($target_preset . ' #edit-engine select', 'attr', ['value', $new_engine]));
+    $trigger_name = array_pop($trigger["#array_parents"]);
+    if ($trigger_name == "project_id") {
+      $output->addCommand(new HtmlCommand("#" . $target_preset . ' #edit-engine select', $html));
+      $output->addCommand(new InvokeCommand("#" . $target_preset . ' #edit-engine select', 'attr', [
+        'value',
+        $new_engine,
+      ]));
+    }
+    if ($trigger_name == "engine_id") {
+      // Find the datastores for this app.
+      $html = "";
+      foreach ($found_engines[$new_engine]["datastores"] as $key => $datastore) {
+        $html .= '<option value="' . $key . '" selected>' . $datastore . '</option>';
+      }
+      $output->addCommand(new HtmlCommand("#" . $target_preset . ' #edit-datastore select', $html));
+      $output->addCommand(new InvokeCommand("#" . $target_preset . ' #edit-datastore select', 'attr', [
+        'value',
+        $found_engines[$new_engine]["datastores"],
+      ]));
+      // Add the multi-datastore flag into the AjaxResponse object.
+      $output->addCommand(new ReplaceCommand("#" . $target_preset . ' #edit-engine-mds', [
+        'engine-mds' => [
+          '#type' => 'hidden',
+          "#value" => "{$found_engines[$new_engine]["multi-ds"]}",
+          '#prefix' => "<div id='edit-engine-mds'>",
+          '#suffix' => "</div>",
+          "#attributes" => [
+            "data-drupal-selector" => $target_preset . "-overrides-engine-mds",
+            "name" => "SearchConfigForm[presets][vertex_search][model_tuning][overrides][engine_mds]",
+          ],
+        ],
+      ]));
+    }
 
     return $output;
 
@@ -1053,8 +1125,10 @@ class AiSearchConfigForm extends ConfigFormBase {
    *
    * @return array An array of available datastores with a default option included.
    */
-  private function getDatastores(GcServiceInterface|GcAgentBuilderInterface $service, ?string $service_account = NULL, ?string $project = NULL): array {
-    return ["default" => "use default"] + $service->availableDatastores($service_account, $project);
+  private function getDatastores(GcServiceInterface|GcAgentBuilderInterface $service, ?string $service_account = NULL, ?string $project_id = NULL, ?string $engine_id = NULL): array {
+//    return ["default" => "use default"] + $service->availableDatastores($service_account, $project_id);
+    $engines = $service->availableEngines($service_account, $engine_id);
+    return $engines[$project_id] ?? ["default" => "use default"];
   }
 
   /**
@@ -1065,7 +1139,7 @@ class AiSearchConfigForm extends ConfigFormBase {
    * @return string[]
    */
   private function getEngines(GcServiceInterface|GcAgentBuilderInterface $service, ?string $service_account = NULL, ?string $project_id = NULL): array {
-    return ["default" => "use default"] + $service->availableEngines($service_account, $project_id);
+    return ["default" => ["name" => "use default", "multi-ds" => "true"]] + $service->availableEngines($service_account, $project_id);
   }
 
 }

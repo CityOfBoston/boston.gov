@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - filter.format.filtered_html
+    - node.type.project
+  module:
+    - text
+id: node.project.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: project
+label: 'Intro Text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - filtered_html
+field_type: text_long

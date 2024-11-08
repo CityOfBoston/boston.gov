@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_role
+id: taxonomy_vocabulary_project_role
+entity_type_id: taxonomy_vocabulary
+entity_id: project_role
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

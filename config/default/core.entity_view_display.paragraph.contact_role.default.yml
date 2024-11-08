@@ -1,0 +1,46 @@
+uuid: be17a09f-83e5-462b-b7d4-376a3bff6baf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_role.field_company_name
+    - field.field.paragraph.contact_role.field_email
+    - field.field.paragraph.contact_role.field_phone
+    - field.field.paragraph.contact_role.field_role
+    - paragraphs.paragraphs_type.contact_role
+id: paragraph.contact_role.default
+targetEntityType: paragraph
+bundle: contact_role
+mode: default
+content:
+  field_company_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_role:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

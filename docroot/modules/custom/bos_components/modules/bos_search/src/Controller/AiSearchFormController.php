@@ -12,21 +12,21 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
-/*
-  class SearchFormController
-  Creates the search form for bos_search
-
-  david 06 2024
-  @file docroot/modules/custom/bos_components/modules/bos_search/src/Form/src/Controller/AiSearchFormController.php
-*/
-
+/**
+ * Class AiSearchFormController.
+ *
+ * This Controller class is used to launch a modal instance of the AiSearchForm.
+ * Creates the search form for bos_search.
+ *
+ * david 06 2024
+ */
 class AiSearchFormController extends ControllerBase {
 
   /**
-   * This Controller class is used to launch a modal instance of the
-   * AiSearchForm.
+   * Internal formBuilder object.
+   *
+   * @var \Drupal\Core\Form\FormBuilder
    */
-
   protected $formBuilder;
 
   /**
@@ -54,7 +54,14 @@ class AiSearchFormController extends ControllerBase {
   }
 
   /**
-   * Callback for opening the modal form.
+   * Callback: Opens a modal form with the AiSearch form.
+   *
+   * This method checks the configuration for a disclaimer and shows it if
+   * necessary. Then, it creates and returns an AjaxResponse to open a modal
+   * dialog containing the AiSearch form.
+   *
+   * @return \Drupal\Core\Ajax\AjaxResponse
+   *   The AjaxResponse to open the modal dialog with the form content.
    */
   public function openModalForm(): AjaxResponse {
 
@@ -65,11 +72,10 @@ class AiSearchFormController extends ControllerBase {
       if (($config["searchform"]['disclaimer']['show_once'] && !AiSearch::getSessionCookie('shown_search_disclaimer'))
         || !$config["searchform"]['disclaimer']['show_once']) {
 
-        // Show the interstitial (modal) disclaimer
+        // Show the interstitial (modal) disclaimer.
         $response = $this->openDisclaimerForm(AiSearch::getPreset());
         AiSearch::setSessionCookie('shown_search_disclaimer', TRUE);
         return $response;
-
       }
     }
 
@@ -93,7 +99,7 @@ class AiSearchFormController extends ControllerBase {
       'width' => '85%',
       'maxWidth' => '85%',
       "classes" => [
-        "ui-dialog" => "aisearch-modal-form ui-corner-all aienabledsearchform"
+        "ui-dialog" => "aisearch-modal-form ui-corner-all aienabledsearchform",
       ],
       "closeOnEscape" => TRUE,
       'closeText' => "Close this window",
@@ -107,6 +113,13 @@ class AiSearchFormController extends ControllerBase {
     return $response;
   }
 
+  /**
+   * Opens a disclaimer form in a modal dialog via an AJAX response.
+   *
+   * @return \Drupal\Core\Ajax\AjaxResponse
+   *   The AJAX response containing the modal dialog command with the disclaimer
+   *   form.
+   */
   public function openDisclaimerForm(): AjaxResponse {
     $response = new AjaxResponse();
     $modal_form = $this->formBuilder->getForm('Drupal\bos_search\Form\AiDisclaimerForm');
@@ -115,7 +128,7 @@ class AiSearchFormController extends ControllerBase {
     $ui_options = [
       'width' => '591px',
       "classes" => [
-        "ui-dialog" => "aisearch-disclaimer-form ui-corner-all aienableddisclaimerform"
+        "ui-dialog" => "aisearch-disclaimer-form ui-corner-all aienableddisclaimerform",
       ],
       "closeOnEscape" => TRUE,
       'closeText' => "Close this window",

@@ -1,0 +1,29 @@
+uuid: dc190c1f-b293-4b9d-abe0-8ceb7b219682
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_stage
+    - node.type.project
+    - taxonomy.vocabulary.project_stage
+id: node.project.field_project_stage
+field_name: field_project_stage
+entity_type: node
+bundle: project
+label: 'Project Stage'
+description: 'Select the current Project Stage. <br>(maps to a Status on the Project Timeline)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_stage: project_stage
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

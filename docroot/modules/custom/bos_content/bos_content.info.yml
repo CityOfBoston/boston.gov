@@ -7,12 +7,12 @@ core_version_requirement: ^8 || ^9 || ^10
 dependencies:
   - bos_core
   - bos_components
-  - paragraphs
-  - taxonomy
+  - drupal:paragraphs
+  - drupal:taxonomy
   - content_translation
   - content_moderation
-  - node
-  - user
+  - drupal:node
+  - drupal:user
 config_devel:
   - field.storage.node.body
   - field.storage.node.field_additional_information

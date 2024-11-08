@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact
+    - node.type.project
+    - taxonomy.vocabulary.contact
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: Department
+id: node.project.field_contact
+field_name: field_contact
+entity_type: node
+bundle: project
+label: Department
+description: 'Select multiple contacts which will populate the "Who''s Involved" component on the Project homepage.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      contact: contact
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

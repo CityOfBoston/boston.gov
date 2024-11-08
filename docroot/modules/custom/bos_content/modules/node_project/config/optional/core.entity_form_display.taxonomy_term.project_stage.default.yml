@@ -1,0 +1,153 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.project_stage.field_icon
+    - field.field.taxonomy_term.project_stage.field_project_status
+    - field.field.taxonomy_term.project_stage.field_project_type
+    - taxonomy.vocabulary.project_stage
+  module:
+    - advanced_text_formatter
+    - bos_core
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_project_stage:
+      children:
+        - group_basic_information
+      label: 'Project Stage'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: vertical
+        width_breakpoint: 640
+    group_basic_information:
+      children:
+        - name
+        - group_grid
+        - field_icon
+      label: 'Basic Information'
+      region: content
+      parent_name: group_project_stage
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: '<h4>The <b>Project Stage</b> is specific to a Project Type, and defines a stage which is displayed on the Project homepage.<br>The Project Stage is attached to a Project Status, and the Status is used to construct a visual progress timeime on the Project homepage.</h4>'
+        required_fields: true
+    group_grid:
+      children:
+        - group_project_type
+        - group_project_status
+      label: Structure
+      region: content
+      parent_name: group_basic_information
+      weight: 22
+      format_type: html_element
+      format_settings:
+        classes: g
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+    group_project_type:
+      children:
+        - field_project_type
+      label: 'project type'
+      region: content
+      parent_name: group_grid
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: g--24
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+    group_project_status:
+      children:
+        - field_project_status
+      label: 'project status'
+      region: content
+      parent_name: group_grid
+      weight: 21
+      format_type: html_element
+      format_settings:
+        classes: g--24
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+id: taxonomy_term.project_stage.default
+targetEntityType: taxonomy_term
+bundle: project_stage
+mode: default
+content:
+  field_icon:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_project_status:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_project_type:
+    type: options_select
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: 'The Project Stage'
+    third_party_settings:
+      advanced_text_formatter:
+        show_token_tree: 0
+      bos_core:
+        show_token_tree: 0
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

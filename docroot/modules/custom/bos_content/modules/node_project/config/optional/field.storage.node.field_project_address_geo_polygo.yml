@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - geolocation_geometry
+    - node
+id: node.field_project_address_geo_polygo
+field_name: field_project_address_geo_polygo
+entity_type: node
+type: geolocation_geometry_multipolygon
+settings: {  }
+module: geolocation_geometry
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

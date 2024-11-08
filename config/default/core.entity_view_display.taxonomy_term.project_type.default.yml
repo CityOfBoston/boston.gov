@@ -1,0 +1,40 @@
+uuid: a7af5b34-dd51-43c1-b8e0-675e1b184966
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.project_type.field_icon
+    - taxonomy.vocabulary.project_type
+  module:
+    - fences
+    - text
+id: taxonomy_term.project_type.default
+targetEntityType: taxonomy_term
+bundle: project_type
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: div
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: b--g
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 1
+    region: content
+hidden:
+  langcode: true

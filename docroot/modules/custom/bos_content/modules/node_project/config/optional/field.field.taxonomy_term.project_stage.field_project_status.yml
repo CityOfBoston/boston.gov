@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_project_status
+    - taxonomy.vocabulary.project_stage
+    - taxonomy.vocabulary.project_status
+  content:
+    - 'taxonomy_term:project_status:c1feeaaa-1edc-4804-9c77-93ef42c9b6f3'
+id: taxonomy_term.project_stage.field_project_status
+field_name: field_project_status
+entity_type: taxonomy_term
+bundle: project_stage
+label: 'Project Status'
+description: 'Select the timeline status that this stage is an alias for.'
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: c1feeaaa-1edc-4804-9c77-93ef42c9b6f3
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_status: project_status
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

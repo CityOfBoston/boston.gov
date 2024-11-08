@@ -18,7 +18,7 @@
 	text-align:left;
 }
 #web-app ul button:focus {
-	background-color: #288be4;
+	background-color: #1871bd;
 }
 #web-app .mnl-c-group::after {
 	content: "";
@@ -106,7 +106,7 @@
 	background-color: #fff;
 }
 #web-app .pointer-mnl:hover .cd-c, #web-app .pointer-mnl:focus .cd-c{
-	background-color: #288be4;
+	background-color: #1871bd;
 }
 #web-app .bg--cb{
 	text-align:center;
@@ -122,14 +122,14 @@
   display: inline-block;
 }
 #web-app .mnl .pointer-mnl:focus {
-  background-color: #288be4;
+  background-color: #1871bd;
   color: #fff;
 }
 #web-app .section.cd:hover .cd-st, #web-app .section.cd:focus .cd-st {
     color:#091f2f;
 }
 #web-app .section.cd:hover .cd-ic, #web-app .section.cd:focus .cd-ic {
-	background-color:#288be4;
+	background-color: #1871bd;
 }
 #web-app .section.cd.bg--y .cd-ic,
 #web-app .section.cd.bg--y:hover .cd-ic,

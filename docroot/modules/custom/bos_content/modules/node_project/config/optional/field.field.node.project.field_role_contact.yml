@@ -1,0 +1,258 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_role_contact
+    - node.type.project
+    - paragraphs.paragraphs_type.contact_role
+  module:
+    - entity_reference_revisions
+id: node.project.field_role_contact
+field_name: field_role_contact
+entity_type: node
+bundle: project
+label: 'Project Roles'
+description: 'Create up to 5 Role-based contacts for this Project.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      contact_role: contact_role
+    negate: 0
+    target_bundles_drag_drop:
+      3_column_w_image:
+        weight: 78
+        enabled: false
+      bid:
+        weight: 79
+        enabled: false
+      bos311:
+        weight: 80
+        enabled: false
+      bos_chart:
+        weight: 81
+        enabled: false
+      bos_node_search:
+        weight: 140
+        enabled: false
+      bos_signup_emergency_alerts:
+        weight: 143
+        enabled: false
+      branded_links:
+        weight: 82
+        enabled: false
+      cabinet:
+        weight: 83
+        enabled: false
+      card:
+        weight: 84
+        enabled: false
+      charts:
+        weight: 85
+        enabled: false
+      city_score_dashboard:
+        weight: 86
+        enabled: false
+      columns:
+        weight: 148
+        enabled: false
+      commission_contact_info:
+        weight: 87
+        enabled: false
+      commission_members:
+        weight: 88
+        enabled: false
+      commission_search:
+        weight: 89
+        enabled: false
+      commission_summary:
+        weight: 90
+        enabled: false
+      contact_role:
+        weight: 91
+        enabled: true
+      custom_hours_text:
+        weight: 92
+        enabled: false
+      daily_hours:
+        weight: 93
+        enabled: false
+      discussion_topic:
+        weight: 94
+        enabled: false
+      document:
+        weight: 95
+        enabled: false
+      drawer:
+        weight: 96
+        enabled: false
+      drawers:
+        weight: 97
+        enabled: false
+      election_area_results:
+        weight: 98
+        enabled: false
+      election_candidate_results:
+        weight: 99
+        enabled: false
+      election_card:
+        weight: 100
+        enabled: false
+      election_contest_results:
+        weight: 101
+        enabled: false
+      election_results:
+        weight: 102
+        enabled: false
+      embed_view:
+        weight: 103
+        enabled: false
+      events_and_notices:
+        weight: 104
+        enabled: false
+      external_link:
+        weight: 105
+        enabled: false
+      featured_topics:
+        weight: 106
+        enabled: false
+      from_library:
+        weight: 108
+        enabled: false
+      fyi:
+        weight: 109
+        enabled: false
+      gol_list_links:
+        weight: 110
+        enabled: false
+      grid_links:
+        weight: 111
+        enabled: false
+      grid_of_cards:
+        weight: 112
+        enabled: false
+      grid_of_people:
+        weight: 113
+        enabled: false
+      grid_of_places:
+        weight: 114
+        enabled: false
+      grid_of_programs_initiatives:
+        weight: 115
+        enabled: false
+      grid_of_quotes:
+        weight: 116
+        enabled: false
+      grid_of_topics:
+        weight: 117
+        enabled: false
+      group_of_links_grid:
+        weight: 118
+        enabled: false
+      group_of_links_list:
+        weight: 119
+        enabled: false
+      group_of_links_mini_grid:
+        weight: 120
+        enabled: false
+      group_of_links_quick_links:
+        weight: 121
+        enabled: false
+      header_text:
+        weight: 122
+        enabled: false
+      hero_image:
+        weight: 123
+        enabled: false
+      how_to_contact_step:
+        weight: 124
+        enabled: false
+      how_to_tab:
+        weight: 125
+        enabled: false
+      how_to_text_step:
+        weight: 126
+        enabled: false
+      iframe:
+        weight: 127
+        enabled: false
+      internal_link:
+        weight: 128
+        enabled: false
+      lightbox_link:
+        weight: 129
+        enabled: false
+      list:
+        weight: 130
+        enabled: false
+      map:
+        weight: 131
+        enabled: false
+      message_for_the_day:
+        weight: 132
+        enabled: false
+      news_and_announcements:
+        weight: 134
+        enabled: false
+      newsletter:
+        weight: 133
+        enabled: false
+      photo:
+        weight: 136
+        enabled: false
+      quote:
+        weight: 137
+        enabled: false
+      roll_call_vote:
+        weight: 138
+        enabled: false
+      seamless_doc:
+        weight: 139
+        enabled: false
+      sidebar_item:
+        weight: 141
+        enabled: false
+      sidebar_item_w_icon:
+        weight: 142
+        enabled: false
+      social_media_links:
+        weight: 144
+        enabled: false
+      social_networking:
+        weight: 145
+        enabled: false
+      status_overrides:
+        weight: 146
+        enabled: false
+      tabbed_content_tab:
+        weight: 147
+        enabled: false
+      text:
+        weight: 107
+        enabled: false
+      text_one_column:
+        weight: 135
+        enabled: false
+      text_three_column:
+        weight: 149
+        enabled: false
+      text_two_column:
+        weight: 150
+        enabled: false
+      transaction_grid:
+        weight: 152
+        enabled: false
+      transactions:
+        weight: 151
+        enabled: false
+      video:
+        weight: 153
+        enabled: false
+      web_app:
+        weight: 154
+        enabled: false
+field_type: entity_reference_revisions

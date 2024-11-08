@@ -44,13 +44,13 @@ class ConfigForm extends ConfigFormBase {
 
     $settings = Drupal::configFactory()->getEditable("bos_google_cloud.settings");
 
-    // Base form structure
+    // Base form structure.
     $form = [
       'google_cloud' => [
         '#type' => 'fieldset',
         '#title' => 'Google Cloud Configurations',
         "#markup" => "<h5>This page allows you to set the various Google Cloud configurations and locations for Services exposed in this module.</h5>",
-        '#tree' => true,
+        '#tree' => TRUE,
         'authentication_wrapper' => [
           '#type' => "fieldset",
           '#title' => "Authentication",
@@ -114,51 +114,37 @@ class ConfigForm extends ConfigFormBase {
     $authenticator = new GcAuthenticator();
     $authenticator->buildForm($form['google_cloud']['authentication_wrapper']);
 
-    // Search section
+    // Search section.
     /**
-     * @var $search \Drupal\bos_google_cloud\Services\GcSearch
-
-          ],
-        ],
-
-      ]
-    ];
-
-    // Authentication section.
-    $authenticator = new GcAuthenticator();
-    $authenticator->buildForm($form['google_cloud']['authentication_wrapper']);
-
-    // Search section
-    /**
-     * @var $search \Drupal\bos_google_cloud\Services\GcSearch
+     * @var \Drupal\bos_google_cloud\Services\GcSearch $search
      */
     $search = Drupal::service("bos_google_cloud.GcSearch");
     $search->buildForm($form["google_cloud"]["services_wrapper"]["discovery_engine"]);
 
-    // Conversation section
+    // Conversation section.
     /**
-     * @var $search \Drupal\bos_google_cloud\Services\GcSearch
+     * @var \Drupal\bos_google_cloud\Services\GcSearch $search
      */
     $conversation = Drupal::service("bos_google_cloud.GcConversation");
     $conversation->buildForm($form["google_cloud"]["services_wrapper"]["discovery_engine"]);
 
-    // Rewiter section
+    // Rewiter section.
     /**
-     * @var $rewriter \Drupal\bos_google_cloud\Services\GcTextRewriter
+     * @var \Drupal\bos_google_cloud\Services\GcTextRewriter $rewriter
      */
     $rewriter = Drupal::service("bos_google_cloud.GcTextRewriter");
     $rewriter->buildForm($form["google_cloud"]["services_wrapper"]["vertex_ai"]);
 
-    // Summaraizer section
+    // Summaraizer section.
     /**
-     * @var $summarizer \Drupal\bos_google_cloud\Services\GcTextSummarizer
+     * @var \Drupal\bos_google_cloud\Services\GcTextSummarizer $summarizer
      */
     $summarizer = Drupal::service("bos_google_cloud.GcTextSummarizer");
     $summarizer->buildForm($form["google_cloud"]["services_wrapper"]["vertex_ai"]);
 
-    // Translation section
+    // Translation section.
     /**
-     * @var $search \Drupal\bos_google_cloud\Services\GcTranslation
+     * @var \Drupal\bos_google_cloud\Services\GcTranslation $search
      */
     $translation = Drupal::service("bos_google_cloud.GcTranslate");
     $translation->buildForm($form["google_cloud"]["services_wrapper"]["vertex_ai"]);
@@ -167,7 +153,7 @@ class ConfigForm extends ConfigFormBase {
     $geocoder = new GcGeocoder();
     $geocoder->buildForm($form['google_cloud']["services_wrapper"]['google_cloud']);
 
-    // Prompt section
+    // Prompt section.
     $prompt = new GcGenerationPrompt();
     $prompt->buildForm($form['google_cloud']["prompts_wrapper"]);
 

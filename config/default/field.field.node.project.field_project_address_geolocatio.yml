@@ -1,0 +1,21 @@
+uuid: 9e0e3386-1f18-44b6-bc52-4724cb328eed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_address_geolocatio
+    - node.type.project
+  module:
+    - geolocation
+id: node.project.field_project_address_geolocatio
+field_name: field_project_address_geolocatio
+entity_type: node
+bundle: project
+label: 'Project Address Geolocation'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_features
+    - node.type.project
+    - taxonomy.vocabulary.project_features
+id: node.project.field_project_features
+field_name: field_project_features
+entity_type: node
+bundle: project
+label: 'Project Features'
+description: "Select as many features as required.<br>\r\nUse ctrl/cmd+click to select multiple."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project_features: project_features
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

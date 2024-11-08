@@ -15,14 +15,23 @@ class GcGenerationURL {
   public const SEARCH_ANSWER = 16;
   public const ENGINE = 32;
 
-
   /**
-   * Creates the URL for the endpoint base don the specified $type.
+   * Creates the URL for the endpoint based on the specified $type.
    *
-   * @param int $type a constant from this class
+   * @param int $type
+   *   The query type - use a constant from this class.
    * @param array $options
+   *   Array of options with at minimum:
+   *   - endpoint (search)(conversation)(prediction)(datastore)(engine)(project)
+   *   - endpoint_version (search)
+   *   - location_id (search)(conversation)(prediction)(datastore)(engine)
+   *   - project_id (search)(conversation)(prediction)(datastore)(engine)
+   *   - engine_id (search)
+   *   - model_id (prediction)
+   *   - datastore_id (conversation)
    *
    * @return string|bool
+   *   The correctly formatted URL for the endpoint.
    */
   public static function build(int $type, array $options):string|bool {
 
@@ -31,9 +40,12 @@ class GcGenerationURL {
       case self::SEARCH_ANSWER:
       case self::SEARCH:
         if (empty($options["endpoint"]) || empty($options["project_id"])
-          || empty($options["location_id"]) || empty($options["engine_id"])) {
+          || empty($options["location_id"]) || empty($options["engine_id"])
+          || empty($options["endpoint_version"])) {
           return FALSE;
         }
+        // Ensure the correct API endpoint version is used.
+        $options["endpoint"] = "{$options["endpoint"]}/{$options["endpoint_version"]}";
         return self::buildSearch($options["endpoint"], $options["project_id"], $options["location_id"], $options["engine_id"], $type);
 
       case self::CONVERSATION:
@@ -120,10 +132,10 @@ class GcGenerationURL {
   private static function buildSearch(string $endpoint, string $project_id, string $location_id, string $engine_id, int $type): string {
 
     $url = $endpoint;
-    $url .= "/v1alpha/projects/$project_id";
+    $url .= "/projects/$project_id";
     $url .= "/locations/$location_id";
     $url .= "/collections/default_collection/engines/$engine_id";
-    $url .= "/servingConfigs/default_search:" ;
+    $url .= "/servingConfigs/default_search:";
     $url .= ($type == self::SEARCH ? "search" : "answer");
     return $url;
 

@@ -1,0 +1,21 @@
+uuid: 384d249e-70ec-4971-8a43-ee2628476d5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_address_geo_polygo
+    - node.type.project
+  module:
+    - geolocation_geometry
+id: node.project.field_project_address_geo_polygo
+field_name: field_project_address_geo_polygo
+entity_type: node
+bundle: project
+label: 'Project Address Geo-polygon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation_geometry_multipolygon

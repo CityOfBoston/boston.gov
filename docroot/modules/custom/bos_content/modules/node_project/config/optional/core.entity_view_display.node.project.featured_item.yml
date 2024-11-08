@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_item
+    - field.field.node.project.body
+    - field.field.node.project.field_components
+    - field.field.node.project.field_contact
+    - field.field.node.project.field_email
+    - field.field.node.project.field_intro_text
+    - field.field.node.project.field_phone_number
+    - field.field.node.project.field_project_address
+    - field.field.node.project.field_project_address_geo_polygo
+    - field.field.node.project.field_project_address_geolocatio
+    - field.field.node.project.field_project_cost
+    - field.field.node.project.field_project_date
+    - field.field.node.project.field_project_features
+    - field.field.node.project.field_project_image
+    - field.field.node.project.field_project_stage
+    - field.field.node.project.field_project_type
+    - field.field.node.project.field_project_year
+    - field.field.node.project.field_role_contact
+    - field.field.node.project.field_single_neighborhood
+    - node.type.project
+  module:
+    - user
+id: node.project.featured_item
+targetEntityType: node
+bundle: project
+mode: featured_item
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_components: true
+  field_contact: true
+  field_email: true
+  field_intro_text: true
+  field_phone_number: true
+  field_project_address: true
+  field_project_address_geo_polygo: true
+  field_project_address_geolocatio: true
+  field_project_cost: true
+  field_project_date: true
+  field_project_features: true
+  field_project_image: true
+  field_project_stage: true
+  field_project_type: true
+  field_project_year: true
+  field_role_contact: true
+  field_single_neighborhood: true
+  langcode: true
+  published_at: true

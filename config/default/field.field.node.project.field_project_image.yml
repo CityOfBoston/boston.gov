@@ -1,0 +1,34 @@
+uuid: 543f08fb-5fb2-4fc3-ac7e-7f431631d4fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_image
+    - media.type.image
+    - node.type.project
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: 'Project Hero Image'
+id: node.project.field_project_image
+field_name: field_project_image
+entity_type: node
+bundle: project
+label: 'Project Hero Image'
+description: "Click add media and then select or upload image.<br>\r\nThis image is used on the top of the project page, and in all cards across the website."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

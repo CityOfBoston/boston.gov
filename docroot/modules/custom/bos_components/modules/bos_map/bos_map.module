@@ -56,7 +56,7 @@ function bos_map_preprocess_paragraph__map(&$variables) {
       $background_image = end($background_image);
       $uri = $background_image->getFileUri();
       $css = BackgroundResponsiveImage::buildMediaQueries($uri, "photo_bleed_images", ".$photo_id");
-      $css .= ".ph-p-m {background-color: #288be4; background-blend-mode: screen;}";
+      $css .= ".ph-p-m {background-color: #1871bd; background-blend-mode: screen;}";
     }
     $variables['#attached']['html_head'][] = [
       [

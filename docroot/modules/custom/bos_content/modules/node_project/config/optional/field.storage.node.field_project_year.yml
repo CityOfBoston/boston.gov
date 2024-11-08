@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_project_year
+field_name: field_project_year
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: fy_2019
+      label: 'FY 2019'
+    -
+      value: fy2020
+      label: FY2020
+    -
+      value: fy2021
+      label: FY2021
+    -
+      value: fy2022
+      label: FY2022
+    -
+      value: fy2023
+      label: FY2023
+    -
+      value: fy2024
+      label: FY2024
+    -
+      value: fy2025
+      label: FY2025
+    -
+      value: fy2026
+      label: FY2026
+    -
+      value: fy2027
+      label: FY2027
+    -
+      value: fy2028
+      label: FY2028
+    -
+      value: fy2029
+      label: FY2029
+    -
+      value: fy2030
+      label: FY2030
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

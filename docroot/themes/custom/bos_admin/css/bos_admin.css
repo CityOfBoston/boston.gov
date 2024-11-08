@@ -1167,7 +1167,7 @@ What: Helper for status_display preview - restricts icon sizing.
   display: -webkit-box;
   display: -ms-flexbox;
   -js-display: flex;
-  display: flex;
+  display: flex !important;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-flow: row wrap;
@@ -1262,7 +1262,6 @@ What: Helper for status_display preview - restricts icon sizing.
   font-size: calc(14px + 2 * ((100vw - 420px) / 860));
   line-height: 1.1;
 }
-
 .t--upper {
   text-transform: uppercase;
 }
@@ -1309,7 +1308,7 @@ What: Creates a horizontally arranged group.
 @media screen and (max-width: 975px) {
   .cob-group-grid {
     flex-flow: column wrap;
-    max-width: available;
+    max-width: -webkit-fill-available;
   }
 }
 .cob-group-grid .form-wrapper {
@@ -1586,4 +1585,120 @@ Hide default contact info
     width:100%;
     vertical-align: auto;
   }
+}
+
+/** Main tabs layout **/
+@media screen and (min-width: 780px), (orientation: landscape) and (min-device-height: 780px) {
+  /* Make the content editor layout more responsive */
+  .bos_admin .layout-node-form  {
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .bos_admin .layout-node-form .layout-region-node-main {
+    width: 70%;
+    padding: 0;
+  }
+  .bos_admin .layout-node-form .layout-region-node-secondary {
+    width: calc(30% - 30px);
+    margin-top:  10px;
+  }
+  .bos_admin .layout-node-form .layout-region-node-footer {
+  width:  100%;
+  }
+  .bos_admin .layout-region-node-main .vertical-tabs {
+    display: flex;
+  }
+  .bos_admin .layout-region-node-main .vertical-tabs .vertical-tabs__menu {
+    width: 40%;
+    margin: 0;
+    max-width: fit-content;
+  }
+  .bos_admin .layout-region-node-main .vertical-tabs .vertical-tabs__panes {
+    width: fit-content;
+    width: -webkit-fill-available;
+    margin:  0;
+  }
+}
+
+/** Date Range Component (daterange) **/
+.bos_admin .layout-region-node-main .field--type-daterange .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 15px;
+  align-items: center;
+}
+.bos_admin .layout-region-node-main .field--type-daterange .fieldset-wrapper .description {
+  width: 100%;
+}
+/** Geolocation component (geolocation) **/
+.bos_admin .field--type-geolocation .form-wrapper .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 20px;
+}
+.bos_admin .field--type-geolocation .form-wrapper .form-item {
+  width : calc(50% - 20px);
+}
+/** Role Contact component (contact_role paragraph) **/
+.bos_admin .rolecontact-details-grid .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 20px;
+}
+.bos_admin .rolecontact-details-grid .fieldset-wrapper .form-wrapper {
+  width : calc(50% - 20px);
+}
+/** Fieldset Labels (legends) **/
+.bos_admin .seven-details summary :not(.before),
+.bos_admin .form-wrapper .form-item label :not(label.option),
+.bos_admin legend .fieldset-legend {
+  font-size: 1.5rem;
+  padding: .5rem 0;
+  font-variant: all-small-caps;
+  letter-spacing: normal;
+}
+.bos_admin .layout-region-node-main .description {
+ font-style: italic;
+}
+.bos_admin fieldset.no-title {
+  padding-top: 0;
+}
+.bos_admin fieldset.no-title legend {
+  display: none;
+}
+
+/** PROJECT content-type specific **/
+.bos_admin .project-type-grid .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+}
+.bos_admin .project-type-grid .fieldset-wrapper .form-wrapper {
+  width: 33%;
+  max-width: 33%;
+}
+.bos_admin .project-contact-grid .fieldset-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  gap: 0 10px;
+}
+.bos_admin .project-contact-grid .fieldset-wrapper .form-wrapper {
+ width: calc(33% - 10px);
+}
+.bos_admin .field--name-field-project-address [id*=address-country-code] {
+  display: none;
+}
+.bos_admin .project-manager-contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 0 20px;
+}
+.bos_admin .project-manager-contact-grid .form-wrapper{
+  width : calc(50% - 20px);
 }

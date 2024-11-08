@@ -22,9 +22,11 @@ class AiSearchFormCallbacks implements TrustedCallbackInterface {
   protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
+   * FormBuilderInterface type object.
+   *
    * @var \Drupal\Core\Form\FormBuilderInterface
    */
-  protected FormBuilderInterface $form_builder;
+  protected FormBuilderInterface $formBuilder;
 
   /**
    * Callbacks constructor.
@@ -32,10 +34,11 @@ class AiSearchFormCallbacks implements TrustedCallbackInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   *   FormBuilderInterface type object.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, FormBuilderInterface $form_builder) {
     $this->entityTypeManager = $entity_type_manager;
-    $this->form_builder = $form_builder;
+    $this->formBuilder = $form_builder;
   }
 
   /**
@@ -51,12 +54,11 @@ class AiSearchFormCallbacks implements TrustedCallbackInterface {
    * @return array|string
    *   Render array or an emty string.
    */
-  public function renderSearchForm(?string $preset = NULL) { //(string $title = "", ?string $preset = NULL) {
+  public function renderSearchForm(?string $preset = NULL) {
 
-    $form = $this->form_builder->getForm('Drupal\bos_search\Form\AiSearchForm', $preset);
+    $form = $this->formBuilder->getForm('Drupal\bos_search\Form\AiSearchForm', $preset);
 
     // Enable the disclaimer if required by preset.
-//    $preset = $form["AiSearchForm"]["content"]["preset"]["#value"] ?: $preset;
     $config = AiSearch::getPresetValues($preset);
 
     if ($config && $config["searchform"]['disclaimer']['enabled']) {
@@ -80,10 +82,12 @@ class AiSearchFormCallbacks implements TrustedCallbackInterface {
     return $form;
 
   }
+
   /**
    * AJAX callback to open the modal disclaimer form - not implemented.
    */
   public function ajaxOpenDisclaimerModalForm(array &$form, FormStateInterface $form_state) {
     return new AjaxResponse();
   }
+
 }

@@ -60,7 +60,7 @@ class AiSearchForm extends FormBase {
       return $form;
     }
 
-     $form += [
+    $form += [
       'AiSearchForm' => [
         '#tree' => FALSE,
 
@@ -86,10 +86,10 @@ class AiSearchForm extends FormBase {
                 "id" => "edit-welcome",
               ],
               "title" => [
-                '#markup' => Markup::create($config["searchform"]['welcome']["body_title"])
+                '#markup' => Markup::create($config["searchform"]['welcome']["body_title"]),
               ],
               "body" => [
-                '#markup' => Markup::create($config["searchform"]['welcome']["body_text"])
+                '#markup' => Markup::create($config["searchform"]['welcome']["body_text"]),
               ],
               "cards" => [
                 '#type' => 'grid_of_cards',
@@ -101,7 +101,7 @@ class AiSearchForm extends FormBase {
                     '#type' => 'card',
                     '#theme' => 'card',
                     '#attributes' => [
-                      'class' => ['br--4', "bg--lb"]
+                      'class' => ['br--4', "bg--lb"],
                     ],
                     '#content' => $config["searchform"]['welcome']["cards"]["card_1"] ?: "",
                   ],
@@ -109,7 +109,7 @@ class AiSearchForm extends FormBase {
                     '#type' => 'card',
                     '#theme' => 'card',
                     '#attributes' => [
-                      'class' => ['br--4', "bg--lb"]
+                      'class' => ['br--4', "bg--lb"],
                     ],
                     '#content' => $config["searchform"]['welcome']["cards"]["card_2"] ?: "",
                   ],
@@ -117,11 +117,11 @@ class AiSearchForm extends FormBase {
                     '#type' => 'card',
                     '#theme' => 'card',
                     '#attributes' => [
-                      'class' => ['br--4', "bg--lb"]
+                      'class' => ['br--4', "bg--lb"],
                     ],
                     '#content' => $config["searchform"]['welcome']["cards"]["card_3"] ?: "",
                   ],
-                ]
+                ],
               ],
             ],
           ],
@@ -129,7 +129,7 @@ class AiSearchForm extends FormBase {
             '#type' => 'hidden',
             '#prefix' => "<div id='edit-session_id'>",
             '#suffix' => "</div>",
-            '#default_value' => $form_state->getValue("session_id")  ?: "",
+            '#default_value' => $form_state->getValue("session_id") ?: "",
           ],
         ],
         'actions' => [
@@ -142,7 +142,7 @@ class AiSearchForm extends FormBase {
             'callback' => '::ajaxCallbackSearch',
             'progress' => [
               'type' => 'none',
-            ]
+            ],
           ],
         ],
         'searchbar' => [
@@ -185,7 +185,8 @@ class AiSearchForm extends FormBase {
     }
     $config = \Drupal::config("bos_search.settings")->get("presets");
     $form_values = $form_state->getUserInput();
-    $fake = FALSE;     // TRUE = don't actually send to AI Model.
+    // If TRUE = don't actually send to AI Model.
+    $fake = FALSE;
 
     try {
 
@@ -278,8 +279,8 @@ class AiSearchForm extends FormBase {
         ],
         '#prefix' => "<div id='edit-session_id'>",
         '#suffix' => "</div>",
-        '#value' => $request->get("session_id")  ?: "",
-      ]
+        '#value' => $request->get("session_id") ?: "",
+      ],
     ]));
     $output->addCommand(new SettingsCommand(["has_results" => TRUE], TRUE));
 

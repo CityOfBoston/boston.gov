@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_role
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_project_roles:
+      children:
+        - group_basic_information
+      label: 'Project Roles'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: vertical
+        width_breakpoint: 640
+    group_basic_information:
+      children:
+        - name
+      label: 'Basic Information'
+      region: content
+      parent_name: group_project_roles
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: false
+        formatter: open
+        description: '<h4>A Project Role is an identified role that a City of Boston staff member, or external vendor, performs related to a Project.</h4>'
+        required_fields: true
+id: taxonomy_term.project_role.default
+targetEntityType: taxonomy_term
+bundle: project_role
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true
+  status: true

@@ -1,0 +1,32 @@
+modal:
+  version: 1.x
+#  js:
+#    js/modal.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.dialog.ajax
+
+map:
+  version: 1.x
+#  js:
+#    js/map.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/drupal
+    - core/drupal.ajax
+    - geolocation/geolocation.widget.map
+    - geolocation/geolocation.api
+    - geolocation/map_center.fitlocations
+    - geolocation_google_maps/googlemapsapi
+    - geolocation_google_maps/mapfeature.control_locate
+    - geolocation_google_maps/mapfeature.control_loading_indicator
+    - geolocation_google_maps/mapfeature.control_recenter
+    - geolocation_google_maps/mapfeature.control_zoom
+    - geolocation_google_maps/mapfeature.control_maptype
+    - geolocation_google_maps/mapfeature.marker_infowindow
+    - geolocation_google_maps/widget.google
+
+#  css:
+#    theme:
+#      css/map.css: {}

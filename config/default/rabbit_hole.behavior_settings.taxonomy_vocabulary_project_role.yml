@@ -1,0 +1,14 @@
+uuid: d456547e-a0cb-4a3e-8e67-7305293caca4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.project_role
+id: taxonomy_vocabulary_project_role
+entity_type_id: taxonomy_vocabulary
+entity_id: project_role
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
