@@ -15,14 +15,23 @@ namespace Drupal\bos_search\Model;
  */
 class AiSearchResultCollection extends AiSearchObjectsBase {
 
-  /** @var array Array of AiSearchResult objects */
+  /**
+   * Array of AiSearchResult objects.
+   *
+   * @var array
+   */
   protected array $results;
 
-  protected int $max_count;
+  /**
+   * The maximum number of results to return.
+   *
+   * @var int
+   */
+  protected int $maxCount;
 
   public function __construct(int $max_count = -1) {
     if ($max_count != -1) {
-      $this->max_count = $max_count;
+      $this->maxCount = $max_count;
     }
     $this->results = [];
   }
@@ -30,19 +39,30 @@ class AiSearchResultCollection extends AiSearchObjectsBase {
   /**
    * Add a search result to the collection.
    *
-   * @param \Drupal\bos_search\AiSearchResult $result
+   * @param \Drupal\bos_search\model\AiSearchResult $result
+   *   The populated search results object.
    *
    * @return $this
    */
   public function addResult(AiSearchResult $result): AiSearchResultCollection {
-    if ($this->max_count === 0 || $this->count() < $this->max_count) {
+    if ($this->maxCount === 0 || $this->count() < $this->maxCount) {
       // Only add the requested number of results.
       $this->results[] = $result;
     }
     return $this;
   }
 
-  public function updateResult($key, AiSearchResult $result):AiSearchResultCollection {
+  /**
+   * Replaces a result element in the array.
+   *
+   * @param int|string $key
+   *   The key for the placement in the array.
+   * @param \Drupal\bos_search\Model\AiSearchResult $result
+   *   A fully completed result array.
+   *
+   * @return $this
+   */
+  public function updateResult(int|string $key, AiSearchResult $result):AiSearchResultCollection {
     $this->results[$key] = $result;
     return $this;
   }
@@ -51,27 +71,38 @@ class AiSearchResultCollection extends AiSearchObjectsBase {
    * Get all results as an array of AiSearchResult objects.
    *
    * @return array
+   *   An array of AiSearchRsult objects that have been added to this class.
    */
   public function getResults(): array {
-    return $this->results;
+    if ($this->maxCount == -1) {
+      return $this->results;
+    }
+    else {
+      return array_slice($this->results, 0, $this->maxCount);
+    }
   }
 
   /**
    * Returns the number of AiSearchResult objects in the collection.
+   *
    * @return int
+   *   Number of elements the Results array.
    */
   public function count(): int {
     return count($this->results);
   }
 
   /**
-   * Sets the maximum number of AiSearchResults objects allowed in the collection.
-   * @param $count
+   * Sets the maximum no. of AiSearchResults objects allowed in the class.
+   *
+   * @param int $count
+   *   The number of results allowed in the class.
    *
    * @return void
+   *   Nothing.
    */
   public function setMaxResults(int $count):void {
-    $this->max_count = $count;
+    $this->maxCount = $count;
   }
 
 }

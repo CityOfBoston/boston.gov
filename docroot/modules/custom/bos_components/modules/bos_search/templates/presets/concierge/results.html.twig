@@ -75,7 +75,7 @@
     <div class="results-title txt-l">ADDITIONAL RESOURCES</div>
     {% for key,item in items %}
       <div class="search-result-wrapper search-result-{{ key }}">
-        <a class="search-result-anchor search-anchor-{{ key }}" href="{{ item.link }}" target="_blank"  rel="noopener noreferrer">
+        <a class="search-result-anchor search-anchor-{{ key }}" id="search-result-link-{{  key }} href="{{ item.link }}" target="_blank"  rel="noopener noreferrer">
           <div>
             <span class="search-result-title">{{ item.title }}</span>
 

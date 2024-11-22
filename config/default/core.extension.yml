@@ -298,6 +298,7 @@ module:
   bos_time: 3
   bos_transaction_grid: 3
   bos_translate: 3
+  bos_user_info: 3
   bos_video: 3
   bos_vocab: 3
   bos_web_app: 3

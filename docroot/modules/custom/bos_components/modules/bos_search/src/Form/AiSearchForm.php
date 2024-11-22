@@ -202,7 +202,7 @@ class AiSearchForm extends FormBase {
       $plugin_id = $preset["plugin"];
 
       // Create the search request object.
-      $request = new AiSearchRequest($form_values["searchbar"], $preset['results']["result_count"] ?? 0);
+      $request = new AiSearchRequest($form["#form_id"], $form_values["searchbar"], $preset['results']["result_count"] ?? 0);
       $request->set("preset", $preset);
 
       if ($preset["searchform"]["searchbar"]["allow_conversation"]
@@ -245,15 +245,15 @@ class AiSearchForm extends FormBase {
           ],
           '#prefix' => "<div id='edit-session_id'>",
           '#suffix' => "</div>",
-          '#value' => $request->get("session_id")  ?: "",
-        ]
+          '#value' => $request->get("session_id") ?: "",
+        ],
       ]));
       $output->addCommand(new SettingsCommand(["has_results" => TRUE], TRUE));
 
       return $output;
     }
 
-    // Save this search so we can continue the conversation later
+    // Save this search so we can continue the conversation later.
     if ($preset["searchform"]["searchbar"]["allow_conversation"] && $request->get("session_id") != $response->getAll()["session_id"]) {
       // Either the session_id was not yet created, or else the session
       // for the original conversation has timed-out.
@@ -266,7 +266,7 @@ class AiSearchForm extends FormBase {
     // This will render the output form using the input array.
     $rendered_result = [
       "#type" => "inline_template",
-      "#template" => $response->build()
+      "#template" => $response->build(),
     ];
     $output = new AjaxResponse();
     $output->addCommand(new AppendCommand('#search-conversation-wrapper', $rendered_result));

@@ -25,6 +25,7 @@ class AiSearchRequest extends AiSearchObjectsBase {
 
   /** @var string The unique ID for this conversation. */
   protected string $session_id = "";
+  protected string $form_id = "";
 
   protected int $result_count = 0;
   protected string $result_template = "";
@@ -37,7 +38,8 @@ class AiSearchRequest extends AiSearchObjectsBase {
 
   protected string $prompt = "default";
 
-  public function __construct(string $search_text = "", int $result_count = 0, string $result_template = "") {
+  public function __construct(string $form_id = "", string $search_text = "", int $result_count = 0, string $result_template = "") {
+    $this->form_id = $form_id;
     if (!empty($search_text)) {
       $search_text = AiSearch::sanitize($search_text);
       $this->search_text = trim($search_text);

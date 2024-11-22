@@ -3,7 +3,8 @@
 namespace Drupal\bos_search\Model;
 
 /**
- * class AiSearchResult.
+ * Class AiSearchResult.
+ *
  * This class defines a search result to be used by any AiSearch plugin.
  *
  * @see \Drupal\bos_search\AiSearchResponse
@@ -12,7 +13,6 @@ namespace Drupal\bos_search\Model;
  * Example implementation:
  * @see \Drupal\bos_gc_aisearch_plugin\Plugin\AiSearch\GcVertexConversation
  */
-
 class AiSearchResult extends AiSearchObjectsBase {
 
   /** @var string Direct extract of copy from the page */
@@ -30,7 +30,7 @@ class AiSearchResult extends AiSearchObjectsBase {
   protected string $link = "";
 
   /** @var string [optional] Link for the title */
-  protected string $link_title = '';
+  protected string $linkTitle = '';
 
   /** @var string [optional] AI Model reference for result */
   protected string $ref = '';
@@ -61,11 +61,11 @@ class AiSearchResult extends AiSearchObjectsBase {
       "description" => $this->description,
       "id" => $this->id,
       "link" => $this->link,
-      "link_title" => $this->link_title,
+      "link_title" => $this->linkTitle,
       "ref" => $this->ref,
-      "summary" => $this->summary,
-      "title" => $this->title,
-      "nid" => $this->nid
+      "summary" => html_entity_decode($this->summary),
+      "title" => html_entity_decode($this->title),
+      "nid" => $this->nid,
     ];
   }
 

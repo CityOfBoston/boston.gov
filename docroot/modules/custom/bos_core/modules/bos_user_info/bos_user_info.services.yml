@@ -1,0 +1,15 @@
+services:
+  bos_user_info.user_agent:
+    class: Drupal\bos_user_info\Services\UserAgentAnalysis
+    arguments: ['@request_stack']
+
+  bos_user_info.ip_address_scanner:
+    class: Drupal\bos_user_info\Services\IpAddressScanner
+    arguments: [ '@request_stack','@bos_user_info.ip_address_scanner.cache']
+
+  bos_user_info.ip_address_scanner.cache:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: [ '@cache_factory', 'get' ]
+    arguments: [ 'ipscanner' ]

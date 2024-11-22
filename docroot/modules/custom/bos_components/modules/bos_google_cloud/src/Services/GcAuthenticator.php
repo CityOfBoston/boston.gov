@@ -261,17 +261,21 @@ class GcAuthenticator extends ControllerBase implements GcServiceInterface {
   }
 
   /**
-   * Set the self::GOOGLE_AUTH_ENVAR envar which is used by many
-   * google cloud services for authentication.
+   * Set the self::GOOGLE_AUTH_ENVAR envar.
+   *
+   * This envar is used by many Google Cloud Srvices for authentication.
+   *
    * This is pretty secure becaue the envar only exists for the duration of this
    * PHP client session and is available only to this session.
    *
    * The class current_authentication["service_account"] array is updated
    * and can be inspected after calling for additional information.
    *
-   * @param string $service_account The service account from SVS_ACCOUNT_LIST
+   * @param string $service_account
+   *   The service account from SVS_ACCOUNT_LIST.
    *
-   * @return bool FALSE if the creds file cannot be created and/or saved.
+   * @return bool
+   *   FALSE if the creds file cannot be created and/or saved.
    */
   public function useSvsAcctCredsFile(string $service_account):bool {
 

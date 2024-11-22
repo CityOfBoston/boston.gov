@@ -1,0 +1,8 @@
+name: 'COB User Information'
+type: module
+description: 'Provides utilities to extract information about the current user'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies:
+  - drupal:bos_core
+config_devel: { }

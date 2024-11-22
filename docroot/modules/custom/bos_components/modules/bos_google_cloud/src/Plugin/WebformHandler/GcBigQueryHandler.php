@@ -2,6 +2,7 @@
 
 namespace Drupal\bos_google_cloud\Plugin\WebformHandler;
 
+
 use Drupal\bos_google_cloud\Services\GcAuthenticator;
 use Drupal\bos_google_cloud\Services\GcBigQuery;
 use Drupal\Core\Form\FormStateInterface;
@@ -9,6 +10,7 @@ use Drupal\webform\Annotation\WebformHandler;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Exception;
+use GeoIp2\WebService\Client;
 
 // @see Drupal\bos_google_cloud\Services\GcBigQuery
 
@@ -105,12 +107,72 @@ class GcBigQueryHandler extends WebformHandlerBase {
     // The form is being submitted. Handle it here.
     $api = new GcBigQuery($this->configuration['service_account'], $this->configuration['project'], $this->configuration['dataset']);
     try {
-      $api->insertAll($this->configuration['table'], $webform_submission->getData());
+      $record = $api->getGa4EventBody();
+      $this->updateRecordData($record, $webform_submission->getData(), $webform_submission->getWebform()->getElementsDecodedAndFlattened());
+      $api->insertRow($this->configuration['table'], $record);
     }
     catch (Exception $e) {
       $this->messenger()
         ->addError($this->t('Error: @message', ['@message' => $api->error() ?? $e->getMessage()]));
     }
+  }
+
+  /**
+   * Processes and formats the provided record data for insertion into BQ.
+   *
+   * @param array $record
+   *   The record to be inserted into BigQuery.
+   * @param array $submission
+   *   The raw data from websubmission to be added to record.
+   * @param array $elements
+   *   List of form elements (fields) to be scanned.
+   *
+   * @return void
+   *   Nothing return, the $record is altered byRef.
+   */
+  private function updateRecordData(array &$record, array $submission, array $elements): void {
+
+    $record["event_name"] = "webform.{$this->getWebform()->id()}";
+    $record["device"]["language"] = $this->webformSubmission->getLangcode();
+    $record["event_params"][] = [
+      "key" => "source",
+      "value" => ["string_value" => "GcBigQueryHander.php"],
+    ];
+
+    // Add in data for the event, in this case a webform submission.
+    foreach ($elements as $field_name => $field_definition) {
+      switch ($field_definition["#type"]) {
+        case "checkbox":
+          $response = $submission[$field_name] ?? 0;
+          $record["event_params"][] = [
+            "key" => $field_name,
+            "value" => ["int_value" => $response],
+          ];
+          break;
+
+        case "checkboxes":
+          $flipped_record = array_flip($submission[$field_name]);
+          foreach ($field_definition["#options"] as $option_name => $option_value) {
+            $response = (array_key_exists($option_name, $flipped_record) ? 1 : 0);
+            $record["event_params"][] = [
+              "key" => "{$field_name}.{$option_name}",
+              "value" => ["int_value" => $response],
+            ];
+          }
+          break;
+
+        case "textfield":
+        case "hidden":
+        case "textarea":
+          $response = $submission[$field_name] ?? "";
+          $record["event_params"][] = [
+            "key" => $field_name,
+            "value" => ["string_value" => $response],
+          ];
+          break;
+      }
+    }
+
   }
 
 }

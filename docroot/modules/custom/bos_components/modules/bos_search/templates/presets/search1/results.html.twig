@@ -53,9 +53,9 @@
         {% for key,item in items %}
         <div class="search-result-wrapper search-result-{{ key }}">
           <li>
-            <span class="search-result-title"><a href="{{ item.link }}">{{ item.title }}</a></span>
+            <span class="search-result-title"><a href="{{ item.link }}">{{ item.title|raw }}</a></span>
             <div class="search-result">{{ item.summary|raw }}</div>
-            <a class="search-result-link" href="{{ item.link }}">{{ item.link }}</a>
+            <a class="search-result-link" id="search-result-link-{{  key }}" href="{{ item.link }}">{{ item.link }}</a>
             <a class="search-result-link-mobile" href="{{ item.link }}">Page Link</a>
           </li>
         </div>
