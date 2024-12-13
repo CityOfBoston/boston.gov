@@ -119,6 +119,7 @@
         "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jquery_ui_accordion": "^2.0",
         "drupal/jquery_ui_slider": "^2.0",
+        "drupal/js_cookie": "^1.0",
         "drupal/jsonapi_extras": "^3.20",
         "drupal/key": "^1.17",
         "drupal/key_asymmetric": "^1.1",

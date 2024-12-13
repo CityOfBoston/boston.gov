@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.image_entity_browser
     - field.field.node.article.body
     - field.field.node.article.field_components
     - field.field.node.article.field_contact
     - field.field.node.article.field_content_feeds
     - field.field.node.article.field_hide_contact_form
+    - field.field.node.article.field_intro_image
     - field.field.node.article.field_intro_text
     - field.field.node.article.field_manual_date
     - field.field.node.article.field_metatags
@@ -19,6 +21,7 @@ dependencies:
   module:
     - content_moderation
     - datetime
+    - entity_browser
     - field_group
     - metatag
     - paragraphs
@@ -47,6 +50,7 @@ third_party_settings:
       children:
         - group_contact
         - title
+        - field_intro_image
         - field_intro_text
         - body
       label: 'Basic Information'
@@ -148,7 +152,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 20
+    weight: 21
     region: content
     settings:
       rows: 9
@@ -164,7 +168,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: paragraphs
-    weight: 7
+    weight: 2
     region: content
     settings:
       title: 'Article Component'
@@ -208,9 +212,24 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_intro_image:
+    type: entity_browser_entity_reference
+    weight: 19
+    region: content
+    settings:
+      entity_browser: image_entity_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings:
+        view_mode: thumbnail
+      selection_mode: selection_append
+    third_party_settings: {  }
   field_intro_text:
     type: text_textarea
-    weight: 19
+    weight: 20
     region: content
     settings:
       rows: 5

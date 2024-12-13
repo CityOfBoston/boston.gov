@@ -727,7 +727,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '+90 minutes'
+            value: '+180 minutes'
             type: offset
           group: 1
           exposed: false

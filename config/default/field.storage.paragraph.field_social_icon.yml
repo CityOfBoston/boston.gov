@@ -38,6 +38,9 @@ settings:
     -
       value: icon-glassdoor
       label: Glassdoor
+    -
+      value: icon-bluesky
+      label: Bluesky
   allowed_values_function: ''
 module: options
 locked: false

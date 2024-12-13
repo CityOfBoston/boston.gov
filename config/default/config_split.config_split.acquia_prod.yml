@@ -14,6 +14,7 @@ module:
   acquia_connector: 0
   acquia_purge: 0
   autologout: 0
+  js_cookie: 0
   captcha: 0
   purge: 0
   purge_drush: 0

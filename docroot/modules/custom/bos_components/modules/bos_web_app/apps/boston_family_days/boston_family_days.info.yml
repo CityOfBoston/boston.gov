@@ -1,0 +1,7 @@
+name: 'Boston Family Days'
+type: module
+description: 'Register for Family Day Pass (family cultural pass)'
+core_version_requirement: ^10
+package: 'Custom'
+dependencies: { }
+config_devel: { }

@@ -589,7 +589,7 @@ display:
           exposed: false
           draggable_views_reference: this
           draggable_views_null_order: after
-          draggable_views_pass_arguments: 1
+          draggable_views_pass_arguments: true
       arguments:
         field_content_feeds_target_id:
           id: field_content_feeds_target_id

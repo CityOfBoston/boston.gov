@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_contact
     - field.field.node.article.field_content_feeds
     - field.field.node.article.field_hide_contact_form
+    - field.field.node.article.field_intro_image
     - field.field.node.article.field_intro_text
     - field.field.node.article.field_manual_date
     - field.field.node.article.field_metatags
@@ -48,7 +49,7 @@ content:
       view_mode: full
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   field_contact:
     type: entity_reference_entity_view
@@ -64,7 +65,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 3
+    weight: 4
     region: content
   field_hide_contact_form:
     type: boolean
@@ -74,7 +75,23 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 15
+    weight: 11
+    region: content
+  field_intro_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: responsive_image_intro_image
+      link: false
+    third_party_settings:
+      fences:
+        fences_field_tag: none
+        fences_field_classes: ''
+        fences_field_item_tag: none
+        fences_field_item_classes: ''
+        fences_label_tag: none
+        fences_label_classes: ''
+    weight: 3
     region: content
   field_intro_text:
     type: text_default
@@ -91,14 +108,14 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 8
+    weight: 9
     region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 10
     region: content
   field_published_date:
     type: datetime_default
@@ -114,7 +131,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: div
         fences_label_classes: ''
-    weight: 6
+    weight: 7
     region: content
   field_sidebar_components:
     type: entity_reference_revisions_entity_view
@@ -123,7 +140,7 @@ content:
       view_mode: sidebar
       link: ''
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
   field_updated_date:
     type: datetime_default
@@ -139,7 +156,7 @@ content:
         fences_field_item_classes: ''
         fences_label_tag: none
         fences_label_classes: ''
-    weight: 5
+    weight: 6
     region: content
 hidden:
   field_content_feeds: true

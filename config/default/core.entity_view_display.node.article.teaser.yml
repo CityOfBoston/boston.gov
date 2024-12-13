@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_contact
     - field.field.node.article.field_content_feeds
     - field.field.node.article.field_hide_contact_form
+    - field.field.node.article.field_intro_image
     - field.field.node.article.field_intro_text
     - field.field.node.article.field_manual_date
     - field.field.node.article.field_metatags
@@ -47,6 +48,7 @@ hidden:
   field_contact: true
   field_content_feeds: true
   field_hide_contact_form: true
+  field_intro_image: true
   field_intro_text: true
   field_manual_date: true
   field_metatags: true

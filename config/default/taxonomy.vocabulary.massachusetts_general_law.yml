@@ -6,6 +6,6 @@ _core:
   default_config_hash: L3duDpJKgUCn8yLCnSeRFOU9DHppdLJXJ-yXlcbm9m8
 name: 'Massachusetts General Law'
 vid: massachusetts_general_law
-description: ''
+description: null
 weight: 0
 new_revision: false

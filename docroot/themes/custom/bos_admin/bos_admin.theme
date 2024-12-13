@@ -129,6 +129,14 @@ function bos_admin_preprocess_input__textfield(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function bos_admin_preprocess_form_element(&$variables) {
+  // Fix for the label displaying below the textare input box on admin forms.
+  $variables["label_display"] = $variables["title_display"];
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function bos_admin_form_revision_overview_form_alter(&$form, FormStateInterface $form_state) {

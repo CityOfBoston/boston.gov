@@ -1,0 +1,36 @@
+<?php
+
+/*
+  Main Drupal module for boston_family_days
+
+  david 12 2024
+  @file docroot/modules/custom/bos_components/modules/bos_web_app/apps/boston_family_days.module
+
+*/
+
+/**
+ * Implements module preprocess_paragraph__web_app()
+ *
+ * In this function we embed the css and js required by the webapp component,
+ * (using a library).
+ *
+ * @param array $vars
+ *
+ * @return void
+ */
+function boston_family_days_preprocess_paragraph__web_app(array &$vars) {
+
+  if ($vars["paragraph"]->hasField('field_webapp_name')
+    && $vars["paragraph"]->get('field_webapp_name')->value == "boston_family_days") {
+
+    // Attach the sanitation scheduling library.
+    if (getenv('AH_SITE_ENVIRONMENT') == "prod") {
+      $vars['#attached']['library'][] = 'boston_family_days/boston_family_days';
+    }
+    else {
+      $vars['#attached']['library'][] = 'boston_family_days/boston_family_days-dev';
+    }
+
+  }
+
+}

@@ -1,0 +1,21 @@
+boston_family_days-dev:
+  version: bfd.20240412.2
+  css:
+    layout:
+      css/boston_family_days.overrides.css: {preprocess: false, attributes: {media: screen, type: 'text/css'}}
+      //family-cultural-pass--dev.web.app/assets/index.css: {preprocess: false, attributes: {media: screen, type: 'text/css', weight: 10000}}
+  js:
+    //family-cultural-pass--dev.web.app/assets/bundle.js: {preprocess: false, attributes: {crossorigin:, type: module, id: family_days-js}}
+  dependencies:
+    - core/drupalSettings
+
+boston_family_days:
+  version: bfd.20240412.1
+  css:
+    layout:
+      css/boston_family_days.overrides.css: {preprocess: true, attributes: {media: screen, type: 'text/css'}}
+      //family-cultural-pass.web.app/assets/index.css: {preprocess: false, attributes: {media: screen, type: 'text/css', weight: 10000}}
+  js:
+    //family-cultural-pass.web.app/assets/bundle.js: {preprocess: false, attributes: {type: 'module', id: family_days-js}}
+  dependencies:
+    - core/drupalSettings

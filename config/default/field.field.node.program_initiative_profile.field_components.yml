@@ -41,6 +41,7 @@ dependencies:
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.transaction_grid
     - paragraphs.paragraphs_type.video
+    - paragraphs.paragraphs_type.web_app
   module:
     - entity_reference_revisions
 _core:
@@ -95,6 +96,7 @@ settings:
       from_library: from_library
       group_of_links_quick_links: group_of_links_quick_links
       events_and_notices: events_and_notices
+      web_app: web_app
     negate: 0
     target_bundles_drag_drop:
       3_column_w_image:
@@ -318,5 +320,5 @@ settings:
         enabled: true
       web_app:
         weight: 132
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions

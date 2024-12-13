@@ -16,19 +16,42 @@
  */
 #}
 
-<div class="breadcrumb" data-swiftype-index="false">
-  {{ drupal_block('system_breadcrumb_block') }}
-</div>
+{% if content.intro_image %}
 
-<div class="brc-lu">
-  {% if (content.field_updated_date["#items"]) %}
-    Last updated: {{ content.field_updated_date }}
-  {% elseif (content.field_published_date["#items"]) %}
-    Last updated: {{ content.field_published_date }}
-  {% else %}
-    Not published yet!
-  {% endif %}
-</div>
+  {{ content.intro_image }}
+
+  <div class="brc--wh" data-swiftype-index="false">
+    {{ drupal_block('system_breadcrumb_block') }}
+  </div>
+
+{% endif %}
+{% if content.intro_image %}
+  <div class="brc-lu">
+    {% if (content.field_updated_date["#items"]) %}
+      Last updated: {{ content.field_updated_date }}
+    {% elseif (content.field_published_date["#items"]) %}
+      Last updated: {{ content.field_published_date }}
+    {% else %}
+      Not published yet!
+    {% endif %}
+  </div>
+{% endif %}
+{% if not content.intro_image %}
+  <div class="b-c b-c--nbp">
+    <div class="brc-t" data-swiftype-index="false">
+      {{ drupal_block('system_breadcrumb_block') }}
+    </div>
+    <div class="brc-lu">
+      {% if (content.field_updated_date["#items"]) %}
+        Last updated: {{ content.field_updated_date }}
+      {% elseif (content.field_published_date["#items"]) %}
+        Last updated: {{ content.field_published_date }}
+      {% else %}
+        Not published yet!
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
 
 <article{{ attributes }}>
   <div class="p-v400">

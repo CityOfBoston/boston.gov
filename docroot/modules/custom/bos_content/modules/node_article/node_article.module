@@ -5,7 +5,9 @@
  * Provides an article entity type.
  */
 
+use Drupal\bos_core\BackgroundResponsiveImage;
 use Drupal\Core\Render\Element;
+use Drupal\Component\Utility\Html;
 use Drupal\editor\Entity\Editor;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -89,6 +91,33 @@ function node_article_form_node_article_edit_form_alter(&$form, FormStateInterfa
  */
 function node_article_preprocess_node__article(&$variables) {
   _bos_content_fix_attributes($variables);
+
+  // Handle intro_image if present.
+  // Has to happen in this template_preprocess_hook or does not #attach(ed).
+  if (isset($variables['content']['field_intro_image'])) {
+    $background_image = $variables["elements"]["field_intro_image"];
+    $background_image[0]["default_responsive_image_style_id"] = "intro_image_fields";
+
+    if (isset($background_image["#items"]) && $background_image["#items"]->count()) {
+      $photo_id = Html::getUniqueId('cd-ic-' . $variables["elements"]['#node']->id());
+      $css = BackgroundResponsiveImage::createBackgroundCss($background_image, ".$photo_id");
+      $variables['#attached']['html_head'][] = [
+        [
+          "#tag" => "style",
+          "#value" => $css,
+          "#weight" => 100,
+        ],
+        "pip-intro-image-css-" . $photo_id,
+      ];
+
+      $nestedElement = [
+        ["div" => "b b--fw b--fw--480"],
+        ["div" => "hro $photo_id hro--pt hro--pb"],
+      ];
+      $variables["content"]["intro_image"] = BackgroundResponsiveImage::createBackgroundFramework($nestedElement);
+
+    }
+  }
 }
 
 /**

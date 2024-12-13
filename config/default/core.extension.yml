@@ -302,8 +302,9 @@ module:
   bos_video: 3
   bos_vocab: 3
   bos_web_app: 3
-  metrolist: 3
-  sanitation_scheduling: 3
+  boston_family_days: 4
+  metrolist: 4
+  sanitation_scheduling: 4
   menu_link_content: 5
   pathauto: 5
   content_translation: 10
